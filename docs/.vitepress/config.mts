@@ -24,7 +24,7 @@ defineConfig({
 
   title: "Eclipse Daanse",
   description: "Data Analysis Services",
-  base: "/eclipse-daanse.github.io/",
+  base: "/",
 
   sitemap: {
     hostname: 'https://daanse.org',
