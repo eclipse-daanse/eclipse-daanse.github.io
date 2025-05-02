@@ -1,0 +1,46 @@
+---
+title: LevelDefinition
+group: Enum
+---
+
+# LevelDefinition<a name="enum-leveldefinition"></a>
+
+
+- **REGULAR** (0)
+- **TIME_YEARS** (0)
+- **TIME_HALF_YEARS** (0)
+- **TIME_QUARTERS** (0)
+- **TIME_MONTHS** (0)
+- **TIME_WEEKS** (0)
+- **TIME_DAYS** (0)
+- **TIME_HOURS** (0)
+- **TIME_MINUTES** (0)
+- **TIME_SECONDS** (0)
+- **TIME_UNDEFINED** (0)
+- **NULL** (0)
+- **GEO_CONTINENT** (0)
+- **GEO_REGION** (0)
+- **GEO_COUNTRY** (0)
+- **GEO_STATE_OR_PROVINCE** (0)
+- **GEO_COUNTY** (0)
+- **GEO_CITY** (0)
+- **GEO_POSTALCODE** (0)
+- **GEO_POINT** (0)
+- **ORG_UNIT** (0)
+- **BOM_RESOURCE** (0)
+- **QUANTITATIVE** (0)
+- **ACCOUNT** (0)
+- **CUSTOMER** (0)
+- **CUSTOMER_GROUP** (0)
+- **CUSTOMER_HOUSEHOLD** (0)
+- **PRODUCT** (0)
+- **PRODUCT_GROUP** (0)
+- **SCENARIO** (0)
+- **UTILITY** (0)
+- **PERSON** (0)
+- **COMPANY** (0)
+- **CURRENCY_SOURCE** (0)
+- **CURRENCY_DESTINATION** (0)
+- **CHANNEL** (0)
+- **REPRESENTATIVE** (0)
+- **PROMOTION** (0)

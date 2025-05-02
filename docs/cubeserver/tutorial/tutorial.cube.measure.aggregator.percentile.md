@@ -1,0 +1,115 @@
+---
+title: Cube - Percentile
+group: Measure
+kind: TUTORIAL
+number: 2.2.7
+---
+# Multiple Measures and Aggragators
+
+Data cubes can also have percentile measures.
+
+
+## Database Schema
+
+The cube defined in this example is based on a single table that stores all the data. The table, named `Fact`, contains two columns: `KEY` and `VALUE`. The `KEY` column acts as a discriminator, while the `VALUE` column holds the measurements to be aggregated.
+
+
+```xml
+<roma:DatabaseSchema   id="databaseSchema">
+  <tables xsi:type="roma:PhysicalTable" id="_tab" name="Fact">
+    <columns xsi:type="roma:PhysicalColumn" id="_col_key" name="KEY"/>
+    <columns xsi:type="roma:PhysicalColumn" id="_col" name="VALUE" type="Integer"/>
+  </tables>
+</roma:DatabaseSchema>
+
+```
+
+## Query
+
+This example uses a TableQuery, as it directly references the physical table `Fact`.
+
+
+```xml
+<roma:TableQuery  id="_query" table="roma:PhysicalTable catalog.xmi#_tab"/>
+
+```
+
+## Cube, MeasureGroup and Measure
+
+In this example, multiple measures are defined. All measures reference the `VALUE` column and use the following aggregation functions:
+- Percentile disc 0.25 – Percentile 'disc' 0.25.
+- Percentile cont 0.25 – Percentile 'cont' 0.25.
+- Percentile disc 0.42 – Percentile 'disc' 0.42.
+- Percentile cont 0.42 – Percentile 'cont' 0.42.
+- Percentile disc 0.5 – Percentile 'disc' 0.5.
+- Percentile cont 0.5 – Percentile 'cont' 0.5.
+- Percentile disc 0.75 – Percentile 'disc' 0.75.
+- Percentile cont 0.75 – Percentile 'cont' 0.75.
+- Percentile disc 1.0 – Percentile 'disc' 1.00.
+- Percentile cont 1.0 – Percentile 'cont' 1.00.
+
+
+```xml
+<roma:PhysicalCube   id="_cube" name="MeasuresAggregatorsCube" query="roma:TableQuery catalog.xmi#_query">
+  <dimensionConnectors foreignKey="roma:PhysicalColumn catalog.xmi#_col_key" dimension="roma:StandardDimension catalog.xmi#Diml" overrideDimensionName="Dim"/>
+  <measureGroups>
+    <measures xsi:type="roma:PercentileMeasure" id="_measure1" name="Percentile disc 0.25" column="catalog.xmi#orderedColumn" percentile="0.25"/>
+    <measures xsi:type="roma:PercentileMeasure" id="_measure2" name="Percentile cont 0.25" column="catalog.xmi#orderedColumn" percentType="cont" percentile="0.25"/>
+    <measures xsi:type="roma:PercentileMeasure" id="_measure3" name="Percentile disc 0.42" column="catalog.xmi#orderedColumn" percentile="0.42"/>
+    <measures xsi:type="roma:PercentileMeasure" id="_measure4" name="Percentile cont 0.42" column="catalog.xmi#orderedColumn" percentType="cont" percentile="0.42"/>
+    <measures xsi:type="roma:PercentileMeasure" id="_measure5" name="Percentile disc 0.5" column="catalog.xmi#orderedColumn" percentile="0.5"/>
+    <measures xsi:type="roma:PercentileMeasure" id="_measure6" name="Percentile cont 0.5" column="catalog.xmi#orderedColumn" percentType="cont" percentile="0.5"/>
+    <measures xsi:type="roma:PercentileMeasure" id="_measure7" name="Percentile disc 0.75" column="catalog.xmi#orderedColumn" percentile="0.75"/>
+    <measures xsi:type="roma:PercentileMeasure" id="_measure8" name="Percentile cont 0.75" column="catalog.xmi#orderedColumn" percentType="cont" percentile="0.75"/>
+    <measures xsi:type="roma:PercentileMeasure" id="_measure9" name="Percentile disc 1.00" column="catalog.xmi#orderedColumn"/>
+    <measures xsi:type="roma:PercentileMeasure" id="_measure10" name="Percentile cont 1.00" column="catalog.xmi#orderedColumn" percentType="cont" percentile="0.75"/>
+  </measureGroups>
+</roma:PhysicalCube>
+
+```
+
+
+## Definition
+
+This files represent the complete definition of the catalog.
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
+  <roma:OrderedColumn id="orderedColumn" column="_col"/>
+  <roma:Catalog name="Cube - Percentile" cubes="_cube" dbschemas="databaseSchema"/>
+  <roma:DatabaseSchema id="databaseSchema">
+    <tables xsi:type="roma:PhysicalTable" id="_tab" name="Fact">
+      <columns xsi:type="roma:PhysicalColumn" id="_col_key" name="KEY"/>
+      <columns xsi:type="roma:PhysicalColumn" id="_col" name="VALUE" type="Integer"/>
+    </tables>
+  </roma:DatabaseSchema>
+  <roma:TableQuery id="_query" table="_tab"/>
+  <roma:Level id="Level" name="Level" column="_col_key"/>
+  <roma:Hierarchy id="Hierarchy" name="Hierarchy" levels="Level" hasAll="true" primaryKey="_col_key" query="_query"/>
+  <roma:StandardDimension id="Diml" name="Diml" hierarchies="Hierarchy"/>
+  <roma:PhysicalCube id="_cube" name="MeasuresAggregatorsCube" query="_query">
+    <dimensionConnectors foreignKey="_col_key" dimension="Diml" overrideDimensionName="Dim"/>
+    <measureGroups>
+      <measures xsi:type="roma:PercentileMeasure" id="_measure1" name="Percentile disc 0.25" column="orderedColumn" percentile="0.25"/>
+      <measures xsi:type="roma:PercentileMeasure" id="_measure2" name="Percentile cont 0.25" column="orderedColumn" percentType="cont" percentile="0.25"/>
+      <measures xsi:type="roma:PercentileMeasure" id="_measure3" name="Percentile disc 0.42" column="orderedColumn" percentile="0.42"/>
+      <measures xsi:type="roma:PercentileMeasure" id="_measure4" name="Percentile cont 0.42" column="orderedColumn" percentType="cont" percentile="0.42"/>
+      <measures xsi:type="roma:PercentileMeasure" id="_measure5" name="Percentile disc 0.5" column="orderedColumn" percentile="0.5"/>
+      <measures xsi:type="roma:PercentileMeasure" id="_measure6" name="Percentile cont 0.5" column="orderedColumn" percentType="cont" percentile="0.5"/>
+      <measures xsi:type="roma:PercentileMeasure" id="_measure7" name="Percentile disc 0.75" column="orderedColumn" percentile="0.75"/>
+      <measures xsi:type="roma:PercentileMeasure" id="_measure8" name="Percentile cont 0.75" column="orderedColumn" percentType="cont" percentile="0.75"/>
+      <measures xsi:type="roma:PercentileMeasure" id="_measure9" name="Percentile disc 1.00" column="orderedColumn"/>
+      <measures xsi:type="roma:PercentileMeasure" id="_measure10" name="Percentile cont 1.00" column="orderedColumn" percentType="cont" percentile="0.75"/>
+    </measureGroups>
+  </roma:PhysicalCube>
+</xmi:XMI>
+
+```
+
+
+
+## Turorial Zip
+This files contaisn the data-tables as csv and the mapping as xmi file.
+
+<a href="./zip/tutorial.cube.measure.aggregator.percentile.zip" download>Download Zip File</a>
