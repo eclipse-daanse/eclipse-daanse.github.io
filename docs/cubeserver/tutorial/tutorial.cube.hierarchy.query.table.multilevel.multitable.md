@@ -1,0 +1,156 @@
+---
+title: Query based on a Table with 2 Levels
+group: Hierarchy
+kind: TUTORIAL
+number: 2.3.2.2
+---
+# Hierarchy - Query based on a Table with 2 Levels
+
+            In some cases, a table for a lower-level entity also contains additional information for a higher-level entity. This often happens when no dedicated columns exist for the higher-level entity and the database designer decides that fully applying Third Normal Form (3NF) would involve more work than it seems to be worth, or they wish to optimize lookup speed. Although we strongly recommend using 3NF wherever possible, this tutorial demonstrates how to handle a scenario in which two levels share the same table.
+
+In this example, besides storing the town ID and town NAME, our table also includes information about the COUNTRY in a separate column.
+
+
+## Database Schema
+
+The cube defined in this example is based on two tables. Fact and Town. The Fact table contains a measures and a reference to the Town table. The Fact table is linked with its ID column to the Town table by the TOWN_ID column. The Town table has the ID, NAME and COUNTRY.
+
+
+```xml
+<roma:DatabaseSchema   id="_dbschema">
+  <tables xsi:type="roma:PhysicalTable" id="_tab_fact" name="Fact">
+    <columns xsi:type="roma:PhysicalColumn" id="_col_fact_townId" name="TOWN_ID" type="Integer"/>
+    <columns xsi:type="roma:PhysicalColumn" id="_col_fact_value" name="VALUE" type="Integer"/>
+  </tables>
+  <tables xsi:type="roma:PhysicalTable" id="_tab_town" name="Town">
+    <columns xsi:type="roma:PhysicalColumn" id="_col_town_id" name="ID" type="Integer"/>
+    <columns xsi:type="roma:PhysicalColumn" id="_col_town_name" name="NAME"/>
+    <columns xsi:type="roma:PhysicalColumn" id="_col_country" name="COUNTRY"/>
+  </tables>
+</roma:DatabaseSchema>
+
+```
+
+## Query Level
+
+The TableQuery for the Level, as it directly references the physical table `Town`.
+
+
+```xml
+<roma:TableQuery  id="_Query_LevelTown" table="roma:PhysicalTable catalog.xmi#_tab_town"/>
+
+```
+
+## Query Fact
+
+The TableQuery for the Level, as it directly references the physical table `Fact`.
+
+
+```xml
+<roma:TableQuery  id="_query_Fact" table="roma:PhysicalTable catalog.xmi#_tab_fact"/>
+
+```
+
+## Level
+
+The level  of the Town used the `column` attribute to define the primary key column and the `nameColumn` attribute.
+
+
+
+
+```xml
+<roma:Level  id="_level_town" name="Town" column="roma:PhysicalColumn catalog.xmi#_col_town_id" nameColumn="roma:PhysicalColumn catalog.xmi#_col_town_name"/>
+
+```
+
+## Level
+
+The level  of the Country used the `column` attribute to define the primary key column on the Country table of the Town table.
+
+
+```xml
+<roma:Level  id="_level_country" name="Country" column="roma:PhysicalColumn catalog.xmi#_col_country"/>
+
+```
+
+## Hierarchy
+
+This Hierarchy contains both defined levels. The `primaryKey` attribute defines the column that contains the primary key of the hierarchy. The `query` attribute references to the query that will be used to retrieve the data for the hierarchy.
+
+The order of the Levels in the hierarchy is important, as it determines the drill-down path for the hierarchy.
+
+
+```xml
+<roma:Hierarchy  id="_hierarchy_town" name="TownHierarchy" levels="catalog.xmi#_level_country catalog.xmi#_level_town" primaryKey="roma:PhysicalColumn catalog.xmi#_col_town_id" query="roma:TableQuery catalog.xmi#_Query_LevelTown"/>
+
+```
+
+## Dimension
+
+The Dimension has only one hierarchy.
+
+
+```xml
+<roma:StandardDimension  id="_dim_town" name="Town" hierarchies="catalog.xmi#_hierarchy_town"/>
+
+```
+
+## Cube and DimensionConnector and Measure
+
+The cube contains only one Measure in a unnamed MeasureGroup and references to the Dimension.
+
+To connect the dimension to the cube, a DimensionConnector is used. The dimension has set the attribute `foreignKey` to define the column that contains the foreign key of the dimension in the fact table.
+
+
+```xml
+<roma:PhysicalCube   id="_cube" name="Cube Query linked Tables" query="roma:TableQuery catalog.xmi#_query_Fact">
+  <dimensionConnectors foreignKey="roma:PhysicalColumn catalog.xmi#_col_fact_townId" dimension="roma:StandardDimension catalog.xmi#_dim_town"/>
+  <measureGroups>
+    <measures xsi:type="roma:SumMeasure" id="_measure" name="theMeasure" column="roma:PhysicalColumn catalog.xmi#_col_fact_value"/>
+  </measureGroups>
+</roma:PhysicalCube>
+
+```
+
+
+## Definition
+
+This files represent the complete definition of the catalog.
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
+  <roma:Catalog name="Hierarchy - Query based on a Table with 2 Levels" cubes="_cube" dbschemas="_dbschema"/>
+  <roma:DatabaseSchema id="_dbschema">
+    <tables xsi:type="roma:PhysicalTable" id="_tab_fact" name="Fact">
+      <columns xsi:type="roma:PhysicalColumn" id="_col_fact_townId" name="TOWN_ID" type="Integer"/>
+      <columns xsi:type="roma:PhysicalColumn" id="_col_fact_value" name="VALUE" type="Integer"/>
+    </tables>
+    <tables xsi:type="roma:PhysicalTable" id="_tab_town" name="Town">
+      <columns xsi:type="roma:PhysicalColumn" id="_col_town_id" name="ID" type="Integer"/>
+      <columns xsi:type="roma:PhysicalColumn" id="_col_town_name" name="NAME"/>
+      <columns xsi:type="roma:PhysicalColumn" id="_col_country" name="COUNTRY"/>
+    </tables>
+  </roma:DatabaseSchema>
+  <roma:TableQuery id="_query_Fact" table="_tab_fact"/>
+  <roma:TableQuery id="_Query_LevelTown" table="_tab_town"/>
+  <roma:Level id="_level_town" name="Town" column="_col_town_id" nameColumn="_col_town_name"/>
+  <roma:Level id="_level_country" name="Country" column="_col_country"/>
+  <roma:Hierarchy id="_hierarchy_town" name="TownHierarchy" levels="_level_country _level_town" primaryKey="_col_town_id" query="_Query_LevelTown"/>
+  <roma:StandardDimension id="_dim_town" name="Town" hierarchies="_hierarchy_town"/>
+  <roma:PhysicalCube id="_cube" name="Cube Query linked Tables" query="_query_Fact">
+    <dimensionConnectors foreignKey="_col_fact_townId" dimension="_dim_town"/>
+    <measureGroups>
+      <measures xsi:type="roma:SumMeasure" id="_measure" name="theMeasure" column="_col_fact_value"/>
+    </measureGroups>
+  </roma:PhysicalCube>
+</xmi:XMI>
+
+```
+
+
+
+## Turorial Zip
+This files contaisn the data-tables as csv and the mapping as xmi file.
+
+<a href="./zip/tutorial.cube.hierarchy.query.table.multilevel.multitable.zip" download>Download Zip File</a>
