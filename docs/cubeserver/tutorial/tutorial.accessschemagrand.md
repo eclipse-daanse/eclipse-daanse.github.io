@@ -28,16 +28,16 @@ This files represent the complete definition of the catalog.
   <roma:Level id="Level2" name="Level2" column="Fact_KEY"/>
   <roma:Hierarchy id="Hierarchy1" name="Hierarchy1" levels="Level2" primaryKey="Fact_KEY" query="FactQuery"/>
   <roma:StandardDimension id="Dimension1" name="Dimension1" hierarchies="Hierarchy1"/>
-  <roma:PhysicalCube id="Cube2" name="Cube2" query="FactQuery">
-    <dimensionConnectors foreignKey="Fact_KEY" dimension="Dimension1" overrideDimensionName="Dimension1"/>
-    <measureGroups/>
-  </roma:PhysicalCube>
   <roma:PhysicalCube id="Cube1" name="Cube1" query="FactQuery">
     <dimensionConnectors foreignKey="Fact_KEY" dimension="Dimension1" overrideDimensionName="Dimension1"/>
     <dimensionConnectors foreignKey="Fact_KEY" dimension="Dimension1" overrideDimensionName="Dimension2"/>
     <measureGroups>
       <measures xsi:type="roma:SumMeasure" id="Measure1" name="Measure1" column="Fact_VALUE"/>
     </measureGroups>
+  </roma:PhysicalCube>
+  <roma:PhysicalCube id="Cube2" name="Cube2" query="FactQuery">
+    <dimensionConnectors foreignKey="Fact_KEY" dimension="Dimension1" overrideDimensionName="Dimension1"/>
+    <measureGroups/>
   </roma:PhysicalCube>
   <roma:AccessRole id="role1" name="role1">
     <accessCatalogGrants catalogAccess="all_dimensions"/>

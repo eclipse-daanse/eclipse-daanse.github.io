@@ -43,7 +43,7 @@ This KPI is additionally using a ParentKpiID.
 
 
 ```xml
-<roma:Kpi  id="_kpi_2" name="Kpi2" value="[Measures].[Measure1-Sum]" parentKpi="catalog.xmi#_kpi_1"/>
+<roma:Kpi  id="_kpi_2" name="Kpi2" value="[Measures].[Measure1-Sum]" parentKpi="_kpi_1"/>
 
 ```
 
@@ -63,12 +63,12 @@ This cube holds references to the KPI, and does not use any dimensions.
 
 
 ```xml
-<roma:PhysicalCube   id="_cube" name="Cube Kpi" query="roma:TableQuery catalog.xmi#_query">
+<roma:PhysicalCube   id="_cube" name="Cube Kpi" query="roma:TableQuery _query">
   <kpis id="_kpi_1" name="Kpi1" value="[Measures].[Measure1-Sum]"/>
   <kpis id="_kpi_2" name="Kpi2" value="[Measures].[Measure1-Sum]" parentKpi="_kpi_1"/>
   <kpis id="_kpi_4" name="Kpi3" displayFolder="theDisplayFolder\otherDisplayFolder" value="[Measures].[Measure1-Sum]"/>
   <measureGroups>
-    <measures xsi:type="roma:SumMeasure" id="Measure1-Sum" name="Measure1-Sum" column="roma:PhysicalColumn catalog.xmi#_col_fact_value"/>
+    <measures xsi:type="roma:SumMeasure" id="Measure1-Sum" name="Measure1-Sum" column="roma:PhysicalColumn _col_fact_value"/>
   </measureGroups>
 </roma:PhysicalCube>
 

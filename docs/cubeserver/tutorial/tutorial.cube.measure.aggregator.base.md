@@ -30,7 +30,7 @@ This example uses a TableQuery, as it directly references the physical table `Fa
 
 
 ```xml
-<roma:TableQuery  id="_query" table="roma:PhysicalTable catalog.xmi#_tab"/>
+<roma:TableQuery  id="_query" table="roma:PhysicalTable _tab"/>
 
 ```
 
@@ -44,12 +44,12 @@ In this example, multiple measures are defined. All measures reference the `VALU
 
 
 ```xml
-<roma:PhysicalCube   id="_cube" name="MeasuresAggregatorsCube" query="roma:TableQuery catalog.xmi#_query">
+<roma:PhysicalCube   id="_cube" name="MeasuresAggregatorsCube" query="roma:TableQuery _query">
   <measureGroups>
-    <measures xsi:type="roma:SumMeasure" id="_measure1" name="Sum of Value" column="roma:PhysicalColumn catalog.xmi#_col"/>
-    <measures xsi:type="roma:MaxMeasure" id="_measure2" name="Max of Value" column="roma:PhysicalColumn catalog.xmi#_col"/>
-    <measures xsi:type="roma:MinMeasure" id="_measure3" name="Min of Value" column="roma:PhysicalColumn catalog.xmi#_col"/>
-    <measures xsi:type="roma:AvgMeasure" id="_measure4" name="Avg of Value" column="roma:PhysicalColumn catalog.xmi#_col"/>
+    <measures xsi:type="roma:SumMeasure" id="_measure1" name="Sum of Value" column="roma:PhysicalColumn _col"/>
+    <measures xsi:type="roma:MaxMeasure" id="_measure2" name="Max of Value" column="roma:PhysicalColumn _col"/>
+    <measures xsi:type="roma:MinMeasure" id="_measure3" name="Min of Value" column="roma:PhysicalColumn _col"/>
+    <measures xsi:type="roma:AvgMeasure" id="_measure4" name="Avg of Value" column="roma:PhysicalColumn _col"/>
   </measureGroups>
 </roma:PhysicalCube>
 

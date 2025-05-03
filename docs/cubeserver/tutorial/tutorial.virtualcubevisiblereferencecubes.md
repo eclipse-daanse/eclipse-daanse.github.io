@@ -27,19 +27,19 @@ This files represent the complete definition of the catalog.
   <roma:Level id="Level2" name="Level2" column="Fact_KEY"/>
   <roma:Hierarchy id="HierarchyWithHasAll" name="HierarchyWithHasAll" levels="Level2" primaryKey="Fact_KEY" query="factQuery"/>
   <roma:StandardDimension id="Dimension1" name="Dimension1" hierarchies="HierarchyWithHasAll"/>
-  <roma:PhysicalCube id="Cube1" name="Cube1" visible="false" query="factQuery">
-    <dimensionConnectors dimension="Dimension1" overrideDimensionName="Cube1Dimension1"/>
-    <measureGroups>
-      <measures xsi:type="roma:SumMeasure" id="MeasureCube1" name="MeasureCube1" column="Fact_VALUE"/>
-    </measureGroups>
-  </roma:PhysicalCube>
   <roma:PhysicalCube id="Cube2" name="Cube2" visible="false" query="factQuery">
     <dimensionConnectors dimension="Dimension1" overrideDimensionName="Cube2Dimension1"/>
     <measureGroups>
       <measures xsi:type="roma:SumMeasure" id="MeasureCube2" name="MeasureCube2" column="Fact_VALUE"/>
     </measureGroups>
   </roma:PhysicalCube>
-  <roma:VirtualCube id="Cube1Cube2" name="Cube1Cube2" defaultMeasure="MeasureCube1" dimensionConnectors="/6/@dimensionConnectors.0 /7/@dimensionConnectors.0" referencedMeasures="MeasureCube1 MeasureCube2"/>
+  <roma:PhysicalCube id="Cube1" name="Cube1" visible="false" query="factQuery">
+    <dimensionConnectors dimension="Dimension1" overrideDimensionName="Cube1Dimension1"/>
+    <measureGroups>
+      <measures xsi:type="roma:SumMeasure" id="MeasureCube1" name="MeasureCube1" column="Fact_VALUE"/>
+    </measureGroups>
+  </roma:PhysicalCube>
+  <roma:VirtualCube id="Cube1Cube2" name="Cube1Cube2" defaultMeasure="MeasureCube1" dimensionConnectors="/7/@dimensionConnectors.0 /6/@dimensionConnectors.0" referencedMeasures="MeasureCube1 MeasureCube2"/>
 </xmi:XMI>
 
 ```

@@ -37,7 +37,7 @@ This example uses a TableQuery, as it directly references the physical table `Fa
 
 
 ```xml
-<roma:TableQuery  id="_query" table="roma:PhysicalTable catalog.xmi#_tab"/>
+<roma:TableQuery  id="_query" table="roma:PhysicalTable _tab"/>
 
 ```
 
@@ -49,12 +49,12 @@ In this example, multiple measures are defined. All measures reference the `VALU
 
 
 ```xml
-<roma:PhysicalCube   id="_cube" name="MeasuresTextAggregatorsCube" query="roma:TableQuery catalog.xmi#_query">
-  <dimensionConnectors foreignKey="roma:PhysicalColumn catalog.xmi#_col_fact_country" dimension="roma:StandardDimension catalog.xmi#_dim_town"/>
-  <dimensionConnectors foreignKey="roma:PhysicalColumn catalog.xmi#_col_fact_year" dimension="roma:TimeDimension catalog.xmi#_dim_time"/>
+<roma:PhysicalCube   id="_cube" name="MeasuresTextAggregatorsCube" query="roma:TableQuery _query">
+  <dimensionConnectors foreignKey="roma:PhysicalColumn _col_fact_country" dimension="roma:StandardDimension _dim_town"/>
+  <dimensionConnectors foreignKey="roma:PhysicalColumn _col_fact_year" dimension="roma:TimeDimension _dim_time"/>
   <measureGroups>
-    <measures xsi:type="roma:SumMeasure" id="_measure1" name="Sum of Value" column="roma:PhysicalColumn catalog.xmi#_col"/>
-    <measures xsi:type="roma:TextAggMeasure" id="_measure6" name="Comment" column="roma:SQLExpressionColumn catalog.xmi#sql_expression" orderByColumns="catalog.xmi#orderedColumn" separator=", "/>
+    <measures xsi:type="roma:SumMeasure" id="_measure1" name="Sum of Value" column="roma:PhysicalColumn _col"/>
+    <measures xsi:type="roma:TextAggMeasure" id="_measure6" name="Comment" column="roma:SQLExpressionColumn sql_expression" orderByColumns="orderedColumn" separator=", "/>
   </measureGroups>
 </roma:PhysicalCube>
 
@@ -90,11 +90,11 @@ This files represent the complete definition of the catalog.
     </sqls>
   </roma:SQLExpressionColumn>
   <roma:TableQuery id="_query" table="_tab"/>
-  <roma:Level id="_level_month" name="Month" column="_col_fact_month" type="TimeMonths" nameColumn="_col_fact_month_name"/>
   <roma:Level id="_level_continent" name="Continent" column="_col_fact_cntinent"/>
-  <roma:Level id="_level_country" name="Country" column="_col_fact_country"/>
-  <roma:Level id="_level_town" name="Town" column="_col_key"/>
   <roma:Level id="_level_year" name="Year" column="_col_fact_year" type="TimeYears"/>
+  <roma:Level id="_level_country" name="Country" column="_col_fact_country"/>
+  <roma:Level id="_level_month" name="Month" column="_col_fact_month" type="TimeMonths" nameColumn="_col_fact_month_name"/>
+  <roma:Level id="_level_town" name="Town" column="_col_key"/>
   <roma:Hierarchy id="_hierarchy_time" name="TimeHierarchy" levels="_level_year _level_month" primaryKey="_col_key" query="_query"/>
   <roma:Hierarchy id="_hierarchy_town" name="TownHierarchy" levels="_level_continent _level_country _level_town" primaryKey="_col_key" query="_query"/>
   <roma:StandardDimension id="_dim_town" name="Town" hierarchies="_hierarchy_town"/>

@@ -30,7 +30,7 @@ This example uses a TableQuery, as it directly references the physical table `Fa
 
 
 ```xml
-<roma:TableQuery  id="_query" table="roma:PhysicalTable catalog.xmi#_tab"/>
+<roma:TableQuery  id="_query" table="roma:PhysicalTable _tab"/>
 
 ```
 
@@ -55,10 +55,10 @@ If the `datatype` attribute is not explicitly defined, the data type is determin
 
 
 ```xml
-<roma:PhysicalCube   id="_cube" name="MeasuresDatatypeCube" query="roma:TableQuery catalog.xmi#_query">
+<roma:PhysicalCube   id="_cube" name="MeasuresDatatypeCube" query="roma:TableQuery _query">
   <measureGroups>
-    <measures xsi:type="roma:SumMeasure" id="_measure1" name="Measure - Datatype Integer" dataType="Integer" column="roma:PhysicalColumn catalog.xmi#_col"/>
-    <measures xsi:type="roma:SumMeasure" id="_measure2" name="Measure - Datatype Numeric" dataType="Numeric" column="roma:PhysicalColumn catalog.xmi#_col"/>
+    <measures xsi:type="roma:SumMeasure" id="_measure1" name="Measure - Datatype Integer" dataType="Integer" column="roma:PhysicalColumn _col"/>
+    <measures xsi:type="roma:SumMeasure" id="_measure2" name="Measure - Datatype Numeric" dataType="Numeric" column="roma:PhysicalColumn _col"/>
   </measureGroups>
 </roma:PhysicalCube>
 

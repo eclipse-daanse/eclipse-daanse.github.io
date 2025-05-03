@@ -28,19 +28,19 @@ This files represent the complete definition of the catalog.
   <roma:Level id="Level2" name="Level2" column="Fact_KEY"/>
   <roma:Hierarchy id="HierarchyWithoutHasAll" name="HierarchyWithoutHasAll" levels="Level2" primaryKey="Fact_KEY" query="FactQuery"/>
   <roma:StandardDimension id="Dimension1" name="Dimension1" hierarchies="HierarchyWithoutHasAll"/>
-  <roma:PhysicalCube id="Cube2" name="Cube2" query="FactQuery">
-    <dimensionConnectors dimension="Dimension1" overrideDimensionName="Cube2Dimension1"/>
-    <measureGroups>
-      <measures xsi:type="roma:SumMeasure" id="MeasureCube2" name="MeasureCube2" column="Fact_VALUE"/>
-    </measureGroups>
-  </roma:PhysicalCube>
   <roma:PhysicalCube id="Cube1" name="Cube1" query="FactQuery">
     <dimensionConnectors dimension="Dimension1" overrideDimensionName="Cube1Dimension1"/>
     <measureGroups>
       <measures xsi:type="roma:SumMeasure" id="MeasureCube1" name="MeasureCube1" column="Fact_VALUE"/>
     </measureGroups>
   </roma:PhysicalCube>
-  <roma:VirtualCube id="Cube1Cube2Kpi" name="Cube1Cube2Kpi" defaultMeasure="MeasureCube1" dimensionConnectors="/7/@dimensionConnectors.0 /6/@dimensionConnectors.0" referencedMeasures="MeasureCube1 MeasureCube2">
+  <roma:PhysicalCube id="Cube2" name="Cube2" query="FactQuery">
+    <dimensionConnectors dimension="Dimension1" overrideDimensionName="Cube2Dimension1"/>
+    <measureGroups>
+      <measures xsi:type="roma:SumMeasure" id="MeasureCube2" name="MeasureCube2" column="Fact_VALUE"/>
+    </measureGroups>
+  </roma:PhysicalCube>
+  <roma:VirtualCube id="Cube1Cube2Kpi" name="Cube1Cube2Kpi" defaultMeasure="MeasureCube1" dimensionConnectors="/6/@dimensionConnectors.0 /7/@dimensionConnectors.0" referencedMeasures="MeasureCube1 MeasureCube2">
     <calculatedMembers id="CalculatedValue" name="CalculatedValue" formula="[Measures].[MeasureCube1] + [Measures].[MeasureCube2]" hierarchy="HierarchyWithoutHasAll"/>
     <calculatedMembers id="CalculatedTrend" name="CalculatedTrend" formula="[Measures].[MeasureCube1] + [Measures].[MeasureCube2]" hierarchy="HierarchyWithoutHasAll"/>
     <kpis id="Kpi1" description="Kpi with all parameters" name="Kpi1" displayFolder="Kpi1Folder1\Kpi1Folder3" associatedMeasureGroupID="Kpi2MeasureGroupID" value="[Measures].[CalculatedValue]" trend="[Measures].[CalculatedTrend]"/>

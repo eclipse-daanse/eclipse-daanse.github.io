@@ -37,8 +37,8 @@ This files represent the complete definition of the catalog.
       <columns xsi:type="roma:PhysicalColumn" id="factwb_USER" name="USER" columnSize="100"/>
     </tables>
   </roma:DatabaseSchema>
-  <roma:TableQuery id="l1Query" table="L1"/>
   <roma:TableQuery id="FactQuery" table="FACT"/>
+  <roma:TableQuery id="l1Query" table="L1"/>
   <roma:TableQuery id="l2Query" table="L2"/>
   <roma:JoinQuery id="join">
     <left key="L1_L2" query="l1Query"/>

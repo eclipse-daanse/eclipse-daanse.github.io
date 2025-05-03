@@ -30,7 +30,7 @@ The TableQuery for the Levels and the Measure.
 
 
 ```xml
-<roma:TableQuery  id="_query" table="roma:PhysicalTable catalog.xmi#_tab_fact"/>
+<roma:TableQuery  id="_query" table="roma:PhysicalTable _tab_fact"/>
 
 ```
 
@@ -40,7 +40,7 @@ The level of the Town used the `column` attribute to define the column that hold
 
 
 ```xml
-<roma:Level  id="_level_town" name="Town" column="roma:PhysicalColumn catalog.xmi#_col_fact_key"/>
+<roma:Level  id="_level_town" name="Town" column="roma:PhysicalColumn _col_fact_key"/>
 
 ```
 
@@ -50,7 +50,7 @@ The level  of the Country used the `column` attribute to define the column that 
 
 
 ```xml
-<roma:Level  id="_level_country" name="Country" column="roma:PhysicalColumn catalog.xmi#_col_fact_country"/>
+<roma:Level  id="_level_country" name="Country" column="roma:PhysicalColumn _col_fact_country"/>
 
 ```
 
@@ -62,7 +62,7 @@ The order of the Levels in the hierarchy is important, as it determines the dril
 
 
 ```xml
-<roma:Hierarchy  id="_hierarchy_town" name="TownHierarchy" levels="catalog.xmi#_level_country catalog.xmi#_level_town" primaryKey="roma:PhysicalColumn catalog.xmi#_col_fact_key" query="roma:TableQuery catalog.xmi#_query"/>
+<roma:Hierarchy  id="_hierarchy_town" name="TownHierarchy" levels="_level_country _level_town" primaryKey="roma:PhysicalColumn _col_fact_key" query="roma:TableQuery _query"/>
 
 ```
 
@@ -72,7 +72,7 @@ The Dimension has only one hierarchy.
 
 
 ```xml
-<roma:StandardDimension  id="_dim_town" name="Town" hierarchies="catalog.xmi#_hierarchy_town"/>
+<roma:StandardDimension  id="_dim_town" name="Town" hierarchies="_hierarchy_town"/>
 
 ```
 
@@ -84,10 +84,10 @@ To connect the dimension to the cube, a DimensionConnector is used. The dimensio
 
 
 ```xml
-<roma:PhysicalCube   id="_cube" name="Cube Query linked Tables" query="roma:TableQuery catalog.xmi#_query">
-  <dimensionConnectors foreignKey="roma:PhysicalColumn catalog.xmi#_col_fact_country" dimension="roma:StandardDimension catalog.xmi#_dim_town"/>
+<roma:PhysicalCube   id="_cube" name="Cube Query linked Tables" query="roma:TableQuery _query">
+  <dimensionConnectors foreignKey="roma:PhysicalColumn _col_fact_country" dimension="roma:StandardDimension _dim_town"/>
   <measureGroups>
-    <measures xsi:type="roma:SumMeasure" id="_measure" name="theMeasure" column="roma:PhysicalColumn catalog.xmi#_col_fact_value"/>
+    <measures xsi:type="roma:SumMeasure" id="_measure" name="theMeasure" column="roma:PhysicalColumn _col_fact_value"/>
   </measureGroups>
 </roma:PhysicalCube>
 
@@ -110,8 +110,8 @@ This files represent the complete definition of the catalog.
   </roma:DatabaseSchema>
   <roma:PhysicalColumn id="_col_fact_key" name="KEY"/>
   <roma:TableQuery id="_query" table="_tab_fact"/>
-  <roma:Level id="_level_country" name="Country" column="_col_fact_country"/>
   <roma:Level id="_level_town" name="Town" column="_col_fact_key"/>
+  <roma:Level id="_level_country" name="Country" column="_col_fact_country"/>
   <roma:Hierarchy id="_hierarchy_town" name="TownHierarchy" levels="_level_country _level_town" primaryKey="_col_fact_key" query="_query"/>
   <roma:StandardDimension id="_dim_town" name="Town" hierarchies="_hierarchy_town"/>
   <roma:PhysicalCube id="_cube" name="Cube Query linked Tables" query="_query">

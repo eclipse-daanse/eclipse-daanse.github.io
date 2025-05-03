@@ -31,6 +31,10 @@ This files represent the complete definition of the catalog.
   <roma:Level id="Level2" name="Level2" column="Fact_KEY"/>
   <roma:Hierarchy id="Hierarchy1" name="Hierarchy1" levels="Level2" primaryKey="Fact_KEY" query="Fact_Query"/>
   <roma:StandardDimension id="Dimension1" name="Dimension1" hierarchies="Hierarchy1"/>
+  <roma:PhysicalCube id="Cube2" name="Cube2" query="Fact_Query">
+    <dimensionConnectors foreignKey="Fact_KEY" dimension="Dimension1" overrideDimensionName="Dimension1"/>
+    <measureGroups/>
+  </roma:PhysicalCube>
   <roma:PhysicalCube id="Cube1" name="Cube1" query="Fact_Query">
     <dimensionConnectors foreignKey="Fact_KEY" dimension="Dimension1" overrideDimensionName="Dimension1" id="DimensionConnector1"/>
     <dimensionConnectors foreignKey="Fact_KEY" dimension="Dimension1" overrideDimensionName="Dimension2" id="DimensionConnector2"/>
@@ -38,32 +42,6 @@ This files represent the complete definition of the catalog.
       <measures xsi:type="roma:SumMeasure" id="Measure1" name="Measure1" column="Fact_VALUE"/>
     </measureGroups>
   </roma:PhysicalCube>
-  <roma:PhysicalCube id="Cube2" name="Cube2" query="Fact_Query">
-    <dimensionConnectors foreignKey="Fact_KEY" dimension="Dimension1" overrideDimensionName="Dimension1"/>
-    <measureGroups/>
-  </roma:PhysicalCube>
-  <roma:AccessRole id="role3" name="role3">
-    <accessCatalogGrants>
-      <cubeGrants cubeAccess="all" cube="Cube1">
-        <hierarchyGrants hierarchyAccess="custom" hierarchy="Hierarchy1" topLevel="Level2">
-          <memberGrants memberAccess="all" member="[Dimension1].[A]"/>
-          <memberGrants member="[Dimension1].[B]"/>
-        </hierarchyGrants>
-      </cubeGrants>
-    </accessCatalogGrants>
-  </roma:AccessRole>
-  <roma:AccessRole id="role_u" name="role_u">
-    <referencedAccessRoles id="role11" name="role11">
-      <accessCatalogGrants>
-        <cubeGrants cubeAccess="all" cube="Cube1"/>
-      </accessCatalogGrants>
-    </referencedAccessRoles>
-    <referencedAccessRoles id="role12" name="role12">
-      <accessCatalogGrants>
-        <cubeGrants cubeAccess="all" cube="Cube2"/>
-      </accessCatalogGrants>
-    </referencedAccessRoles>
-  </roma:AccessRole>
   <roma:AccessRole id="role1" name="role1">
     <accessCatalogGrants catalogAccess="all">
       <cubeGrants cube="Cube2"/>
@@ -84,8 +62,30 @@ This files represent the complete definition of the catalog.
     </accessCatalogGrants>
   </roma:AccessRole>
   <roma:AccessRole id="role2" name="role2"/>
+  <roma:AccessRole id="role_u" name="role_u">
+    <referencedAccessRoles id="role11" name="role11">
+      <accessCatalogGrants>
+        <cubeGrants cubeAccess="all" cube="Cube1"/>
+      </accessCatalogGrants>
+    </referencedAccessRoles>
+    <referencedAccessRoles id="role12" name="role12">
+      <accessCatalogGrants>
+        <cubeGrants cubeAccess="all" cube="Cube2"/>
+      </accessCatalogGrants>
+    </referencedAccessRoles>
+  </roma:AccessRole>
   <roma:AccessRole id="role3" name="role3">
     <accessCatalogGrants catalogAccess="all"/>
+  </roma:AccessRole>
+  <roma:AccessRole id="role3" name="role3">
+    <accessCatalogGrants>
+      <cubeGrants cubeAccess="all" cube="Cube1">
+        <hierarchyGrants hierarchyAccess="custom" hierarchy="Hierarchy1" topLevel="Level2">
+          <memberGrants memberAccess="all" member="[Dimension1].[A]"/>
+          <memberGrants member="[Dimension1].[B]"/>
+        </hierarchyGrants>
+      </cubeGrants>
+    </accessCatalogGrants>
   </roma:AccessRole>
 </xmi:XMI>
 

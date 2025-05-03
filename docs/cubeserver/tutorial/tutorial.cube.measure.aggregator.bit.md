@@ -30,7 +30,7 @@ This example uses a TableQuery, as it directly references the physical table `Fa
 
 
 ```xml
-<roma:TableQuery  id="_query" table="roma:PhysicalTable catalog.xmi#_tab"/>
+<roma:TableQuery  id="_query" table="roma:PhysicalTable _tab"/>
 
 ```
 
@@ -46,14 +46,14 @@ In this example, multiple measures are defined. All measures reference the `VALU
 
 
 ```xml
-<roma:PhysicalCube   id="_cube" name="MeasuresAggregatorsCube" query="roma:TableQuery catalog.xmi#_query">
+<roma:PhysicalCube   id="_cube" name="MeasuresAggregatorsCube" query="roma:TableQuery _query">
   <measureGroups>
-    <measures xsi:type="roma:BitAggMeasure" id="_measure1" name="BitAgg AND" column="roma:PhysicalColumn catalog.xmi#_col"/>
-    <measures xsi:type="roma:BitAggMeasure" id="_measure2" name="BitAgg OR" column="roma:PhysicalColumn catalog.xmi#_col" aggType="or"/>
-    <measures xsi:type="roma:BitAggMeasure" id="_measure3" name="BitAgg XOR" column="roma:PhysicalColumn catalog.xmi#_col" aggType="xor"/>
-    <measures xsi:type="roma:BitAggMeasure" id="_measure4" name="BitAgg NAND" column="roma:PhysicalColumn catalog.xmi#_col" not="true"/>
-    <measures xsi:type="roma:BitAggMeasure" id="_measure2" name="BitAgg NOR" column="roma:PhysicalColumn catalog.xmi#_col" aggType="or" not="true"/>
-    <measures xsi:type="roma:BitAggMeasure" id="_measure3" name="BitAgg NXOR" column="roma:PhysicalColumn catalog.xmi#_col" aggType="xor" not="true"/>
+    <measures xsi:type="roma:BitAggMeasure" id="_measure1" name="BitAgg AND" column="roma:PhysicalColumn _col"/>
+    <measures xsi:type="roma:BitAggMeasure" id="_measure2" name="BitAgg OR" column="roma:PhysicalColumn _col" aggType="or"/>
+    <measures xsi:type="roma:BitAggMeasure" id="_measure3" name="BitAgg XOR" column="roma:PhysicalColumn _col" aggType="xor"/>
+    <measures xsi:type="roma:BitAggMeasure" id="_measure4" name="BitAgg NAND" column="roma:PhysicalColumn _col" not="true"/>
+    <measures xsi:type="roma:BitAggMeasure" id="_measure2" name="BitAgg NOR" column="roma:PhysicalColumn _col" aggType="or" not="true"/>
+    <measures xsi:type="roma:BitAggMeasure" id="_measure3" name="BitAgg NXOR" column="roma:PhysicalColumn _col" aggType="xor" not="true"/>
   </measureGroups>
 </roma:PhysicalCube>
 
