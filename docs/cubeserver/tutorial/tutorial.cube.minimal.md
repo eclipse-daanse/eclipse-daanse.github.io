@@ -30,7 +30,7 @@ The bridge between the cube and the database is the query element. In this case,
 
 
 ```xml
-<roma:TableQuery  id="_query" table="roma:PhysicalTable catalog.xmi#_tab"/>
+<roma:TableQuery  id="_query" table="roma:PhysicalTable _tab"/>
 
 ```
 
@@ -40,9 +40,9 @@ The cube is the element visible to users in analysis tools. A cube is based on e
 
 
 ```xml
-<roma:PhysicalCube   id="_cube" name="MinimalCube" query="roma:TableQuery catalog.xmi#_query">
+<roma:PhysicalCube   id="_cube" name="MinimalCube" query="roma:TableQuery _query">
   <measureGroups>
-    <measures xsi:type="roma:SumMeasure" id="_measure" name="Measure-Sum" column="roma:PhysicalColumn catalog.xmi#_col_value"/>
+    <measures xsi:type="roma:SumMeasure" id="_measure" name="Measure-Sum" column="roma:PhysicalColumn _col_value"/>
   </measureGroups>
 </roma:PhysicalCube>
 

@@ -32,7 +32,7 @@ This example uses a TableQuery, as it directly references the physical table Fac
 
 
 ```xml
-<roma:TableQuery  id="_query" table="roma:PhysicalTable catalog.xmi#_tab"/>
+<roma:TableQuery  id="_query" table="roma:PhysicalTable _tab"/>
 
 ```
 
@@ -46,11 +46,11 @@ All measures use sum aggregation.
 
 
 ```xml
-<roma:PhysicalCube   id="_cube" name="MultipleMeasuresCube" defaultMeasure="roma:SumMeasure _measure3" query="roma:TableQuery catalog.xmi#_query">
+<roma:PhysicalCube   id="_cube" name="MultipleMeasuresCube" defaultMeasure="roma:SumMeasure _measure3" query="roma:TableQuery _query">
   <measureGroups>
-    <measures xsi:type="roma:SumMeasure" id="_measure1" name="Sum of Value1" column="roma:PhysicalColumn catalog.xmi#_col_value1"/>
-    <measures xsi:type="roma:SumMeasure" id="_measure2" name="Sum of Value2" column="roma:PhysicalColumn catalog.xmi#_col_value2"/>
-    <measures xsi:type="roma:SumMeasure" id="_measure3" name="Sum of Value3" column="roma:PhysicalColumn catalog.xmi#_col_value3"/>
+    <measures xsi:type="roma:SumMeasure" id="_measure1" name="Sum of Value1" column="roma:PhysicalColumn _col_value1"/>
+    <measures xsi:type="roma:SumMeasure" id="_measure2" name="Sum of Value2" column="roma:PhysicalColumn _col_value2"/>
+    <measures xsi:type="roma:SumMeasure" id="_measure3" name="Sum of Value3" column="roma:PhysicalColumn _col_value3"/>
   </measureGroups>
 </roma:PhysicalCube>
 

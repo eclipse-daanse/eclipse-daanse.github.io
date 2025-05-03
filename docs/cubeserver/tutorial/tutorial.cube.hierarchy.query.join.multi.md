@@ -56,7 +56,7 @@ The TableQuery for the Town level directly references the physical Town table.
 
 
 ```xml
-<roma:TableQuery  id="_query_town" table="roma:PhysicalTable catalog.xmi#_tab_town"/>
+<roma:TableQuery  id="_query_town" table="roma:PhysicalTable _tab_town"/>
 
 ```
 
@@ -66,7 +66,7 @@ The TableQuery for the Country level directly references the physical Country ta
 
 
 ```xml
-<roma:TableQuery  id="_query_country" table="roma:PhysicalTable catalog.xmi#_tab_country"/>
+<roma:TableQuery  id="_query_country" table="roma:PhysicalTable _tab_country"/>
 
 ```
 
@@ -80,8 +80,8 @@ The JoinQuery specifies which TableQueries should be joined. It also defines the
 
 ```xml
 <roma:JoinQuery  id="_query_TownToCountry">
-  <left key="roma:PhysicalColumn catalog.xmi#_col_town_countryid" query="roma:TableQuery catalog.xmi#_query_town"/>
-  <right key="roma:PhysicalColumn catalog.xmi#_col_country_id" query="roma:JoinQuery catalog.xmi#_query_CountryToContinent"/>
+  <left key="roma:PhysicalColumn _col_town_countryid" query="roma:TableQuery _query_town"/>
+  <right key="roma:PhysicalColumn _col_country_id" query="roma:JoinQuery _query_CountryToContinent"/>
 </roma:JoinQuery>
 
 ```
@@ -92,7 +92,7 @@ The TableQuery for the Continent level directly references the physical Continen
 
 
 ```xml
-<roma:TableQuery  id="_query_continent" table="roma:PhysicalTable catalog.xmi#_tab_continent"/>
+<roma:TableQuery  id="_query_continent" table="roma:PhysicalTable _tab_continent"/>
 
 ```
 
@@ -107,8 +107,8 @@ In this vase we join a TableQuery with a JoinQuery.
 
 ```xml
 <roma:JoinQuery  id="_query_TownToCountry">
-  <left key="roma:PhysicalColumn catalog.xmi#_col_town_countryid" query="roma:TableQuery catalog.xmi#_query_town"/>
-  <right key="roma:PhysicalColumn catalog.xmi#_col_country_id" query="roma:JoinQuery catalog.xmi#_query_CountryToContinent"/>
+  <left key="roma:PhysicalColumn _col_town_countryid" query="roma:TableQuery _query_town"/>
+  <right key="roma:PhysicalColumn _col_country_id" query="roma:JoinQuery _query_CountryToContinent"/>
 </roma:JoinQuery>
 
 ```
@@ -119,7 +119,7 @@ The TableQuery for the Level, as it directly references the physical table `Fact
 
 
 ```xml
-<roma:TableQuery  id="_query_fact" table="roma:PhysicalTable catalog.xmi#_tab_fact"/>
+<roma:TableQuery  id="_query_fact" table="roma:PhysicalTable _tab_fact"/>
 
 ```
 
@@ -129,7 +129,7 @@ The Level uses the column attribute to specify the primary key column. Additiona
 
 
 ```xml
-<roma:Level  id="_level_town" name="Town" column="roma:PhysicalColumn catalog.xmi#_col_town_id" nameColumn="roma:PhysicalColumn catalog.xmi#_col_town_name"/>
+<roma:Level  id="_level_town" name="Town" column="roma:PhysicalColumn _col_town_id" nameColumn="roma:PhysicalColumn _col_town_name"/>
 
 ```
 
@@ -139,7 +139,7 @@ The Country level follows the same pattern as the Town level.
 
 
 ```xml
-<roma:Level  id="_level_country" name="County" column="roma:PhysicalColumn catalog.xmi#_col_country_id" nameColumn="roma:PhysicalColumn catalog.xmi#_col_country_name"/>
+<roma:Level  id="_level_country" name="County" column="roma:PhysicalColumn _col_country_id" nameColumn="roma:PhysicalColumn _col_country_name"/>
 
 ```
 
@@ -149,7 +149,7 @@ The Continent level follows the same pattern as the Town ans Country level.
 
 
 ```xml
-<roma:Level  id="_level_continent" name="Continent" column="roma:PhysicalColumn catalog.xmi#_col_continent_id" nameColumn="roma:PhysicalColumn catalog.xmi#_col_continent_name"/>
+<roma:Level  id="_level_continent" name="Continent" column="roma:PhysicalColumn _col_continent_id" nameColumn="roma:PhysicalColumn _col_continent_name"/>
 
 ```
 
@@ -163,7 +163,7 @@ The order of the Levels in the hierarchy is important, as it determines the dril
 
 
 ```xml
-<roma:Hierarchy  id="_hierarchy_town" name="TownHierarchy" levels="catalog.xmi#_level_continent catalog.xmi#_level_country catalog.xmi#_level_town" primaryKey="roma:PhysicalColumn catalog.xmi#_col_town_id" query="roma:JoinQuery catalog.xmi#_query_TownToCountry"/>
+<roma:Hierarchy  id="_hierarchy_town" name="TownHierarchy" levels="_level_continent _level_country _level_town" primaryKey="roma:PhysicalColumn _col_town_id" query="roma:JoinQuery _query_TownToCountry"/>
 
 ```
 
@@ -173,7 +173,7 @@ The Dimension has only one hierarchy.
 
 
 ```xml
-<roma:StandardDimension  id="_dim" name="Continent - Country - Town" hierarchies="catalog.xmi#_hierarchy_town"/>
+<roma:StandardDimension  id="_dim" name="Continent - Country - Town" hierarchies="_hierarchy_town"/>
 
 ```
 
@@ -185,10 +185,10 @@ To connect the dimension to the cube, a DimensionConnector is used. The dimensio
 
 
 ```xml
-<roma:PhysicalCube   id="_cube" name="Cube Query linked Tables" query="roma:TableQuery catalog.xmi#_query_fact">
-  <dimensionConnectors foreignKey="roma:PhysicalColumn catalog.xmi#_col_fact_townId" dimension="roma:StandardDimension catalog.xmi#_dim"/>
+<roma:PhysicalCube   id="_cube" name="Cube Query linked Tables" query="roma:TableQuery _query_fact">
+  <dimensionConnectors foreignKey="roma:PhysicalColumn _col_fact_townId" dimension="roma:StandardDimension _dim"/>
   <measureGroups>
-    <measures xsi:type="roma:SumMeasure" id="_measure" name="theMeasure" column="roma:PhysicalColumn catalog.xmi#_col_fact_value"/>
+    <measures xsi:type="roma:SumMeasure" id="_measure" name="theMeasure" column="roma:PhysicalColumn _col_fact_value"/>
   </measureGroups>
 </roma:PhysicalCube>
 
@@ -225,15 +225,15 @@ This files represent the complete definition of the catalog.
   </roma:DatabaseSchema>
   <roma:TableQuery id="_query_fact" table="_tab_fact"/>
   <roma:TableQuery id="_query_country" table="_tab_country"/>
-  <roma:TableQuery id="_query_continent" table="_tab_continent"/>
   <roma:TableQuery id="_query_town" table="_tab_town"/>
-  <roma:JoinQuery id="_query_TownToCountry">
-    <left key="_col_town_countryid" query="_query_town"/>
-    <right key="_col_country_id" query="_query_CountryToContinent"/>
-  </roma:JoinQuery>
+  <roma:TableQuery id="_query_continent" table="_tab_continent"/>
   <roma:JoinQuery id="_query_CountryToContinent">
     <left key="_col_country_continentid" query="_query_country"/>
     <right key="_col_continent_id" query="_query_continent"/>
+  </roma:JoinQuery>
+  <roma:JoinQuery id="_query_TownToCountry">
+    <left key="_col_town_countryid" query="_query_town"/>
+    <right key="_col_country_id" query="_query_CountryToContinent"/>
   </roma:JoinQuery>
   <roma:Level id="_level_town" name="Town" column="_col_town_id" nameColumn="_col_town_name"/>
   <roma:Level id="_level_continent" name="Continent" column="_col_continent_id" nameColumn="_col_continent_name"/>

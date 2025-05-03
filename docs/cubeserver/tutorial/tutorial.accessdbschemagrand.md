@@ -34,12 +34,6 @@ This files represent the complete definition of the catalog.
       <measures xsi:type="roma:SumMeasure" id="Measure1" name="Measure1" column="Fact_VALUE"/>
     </measureGroups>
   </roma:PhysicalCube>
-  <roma:AccessRole id="role_database_schema_access_all" name="role_database_schema_access_all">
-    <accessCatalogGrants catalogAccess="custom">
-      <cubeGrants cubeAccess="all" cube="Cube"/>
-      <databaseSchemaGrants databaseSchemaAccess="all" databaseSchema="databaseSchema"/>
-    </accessCatalogGrants>
-  </roma:AccessRole>
   <roma:AccessRole id="role_database_schema_access_custom" name="role_database_schema_access_custom">
     <accessCatalogGrants catalogAccess="custom">
       <cubeGrants cubeAccess="all" cube="Cube"/>
@@ -50,6 +44,12 @@ This files represent the complete definition of the catalog.
           <columnGrants column="Fact1_VALUE"/>
         </tableGrants>
       </databaseSchemaGrants>
+    </accessCatalogGrants>
+  </roma:AccessRole>
+  <roma:AccessRole id="role_database_schema_access_all" name="role_database_schema_access_all">
+    <accessCatalogGrants catalogAccess="custom">
+      <cubeGrants cubeAccess="all" cube="Cube"/>
+      <databaseSchemaGrants databaseSchemaAccess="all" databaseSchema="databaseSchema"/>
     </accessCatalogGrants>
   </roma:AccessRole>
 </xmi:XMI>

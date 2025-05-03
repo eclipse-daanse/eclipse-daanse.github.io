@@ -32,7 +32,7 @@ This example uses a TableQuery, as it directly references the physical table `Fa
 
 
 ```xml
-<roma:TableQuery  id="_query" table="roma:PhysicalTable catalog.xmi#_tab"/>
+<roma:TableQuery  id="_query" table="roma:PhysicalTable _tab"/>
 
 ```
 
@@ -42,7 +42,7 @@ The level is the most basic element of a hierarchy. It defines the granularity o
 
 
 ```xml
-<roma:Level  id="_level" name="theLevel" column="roma:PhysicalColumn catalog.xmi#_col_key"/>
+<roma:Level  id="_level" name="theLevel" column="roma:PhysicalColumn _col_key"/>
 
 ```
 
@@ -56,7 +56,7 @@ Additionally, a primary key column can be specified for the hierarchy. The prima
 
 
 ```xml
-<roma:Hierarchy  id="_hierarchy" name="theHierarchy" levels="catalog.xmi#_level" primaryKey="roma:PhysicalColumn catalog.xmi#_col_key" query="roma:TableQuery catalog.xmi#_query"/>
+<roma:Hierarchy  id="_hierarchy" name="theHierarchy" levels="_level" primaryKey="roma:PhysicalColumn _col_key" query="roma:TableQuery _query"/>
 
 ```
 
@@ -66,7 +66,7 @@ The Dimension is the main element of the cube. It defines the structure of the d
 
 
 ```xml
-<roma:StandardDimension  id="_dimension" name="theDimension" hierarchies="catalog.xmi#_hierarchy"/>
+<roma:StandardDimension  id="_dimension" name="theDimension" hierarchies="_hierarchy"/>
 
 ```
 
@@ -78,10 +78,10 @@ To connect the dimension to the cube, a DimensionConnector is used. The Dimensio
 
 
 ```xml
-<roma:PhysicalCube   id="_cube" name="CubeWithSimpleDimension" query="roma:TableQuery catalog.xmi#_query">
-  <dimensionConnectors dimension="roma:StandardDimension catalog.xmi#_dimension"/>
+<roma:PhysicalCube   id="_cube" name="CubeWithSimpleDimension" query="roma:TableQuery _query">
+  <dimensionConnectors dimension="roma:StandardDimension _dimension"/>
   <measureGroups>
-    <measures xsi:type="roma:SumMeasure" id="_measure" name="theMeasure" column="roma:PhysicalColumn catalog.xmi#_col_value"/>
+    <measures xsi:type="roma:SumMeasure" id="_measure" name="theMeasure" column="roma:PhysicalColumn _col_value"/>
   </measureGroups>
 </roma:PhysicalCube>
 

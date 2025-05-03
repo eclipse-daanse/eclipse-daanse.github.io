@@ -53,8 +53,8 @@ This files represent the complete definition of the catalog.
     </tables>
   </roma:DatabaseSchema>
   <roma:TableQuery id="FactQuery" table="Fact"/>
-  <roma:Level id="Level1" name="Level1" column="Fact_KEY" nameColumn="nameExpression"/>
   <roma:Level id="Level2" name="Level2" captionColumn="captionExpression" column="keyExpression" ordinalColumn="ordinalExpression"/>
+  <roma:Level id="Level1" name="Level1" column="Fact_KEY" nameColumn="nameExpression"/>
   <roma:Hierarchy id="HierarchyWithHasAll" name="HierarchyWithHasAll" levels="Level1 Level2" hasAll="true" primaryKey="Fact_KEY" query="FactQuery"/>
   <roma:StandardDimension id="Dimension" name="Dimension" hierarchies="HierarchyWithHasAll"/>
   <roma:PhysicalCube id="Cube" name="Cube" query="FactQuery">

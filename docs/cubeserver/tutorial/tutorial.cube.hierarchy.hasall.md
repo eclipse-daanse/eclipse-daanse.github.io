@@ -43,7 +43,7 @@ This Query references the Fact table and will be udes for the Cube and all Hiera
 
 
 ```xml
-<roma:TableQuery  id="_query" table="roma:PhysicalTable catalog.xmi#_table"/>
+<roma:TableQuery  id="_query" table="roma:PhysicalTable _table"/>
 
 ```
 
@@ -54,27 +54,7 @@ This the only Level that exists in this example and will be used in all hierarch
 
 
 ```xml
-<roma:Level  id="_level" name="theLevel" column="roma:PhysicalColumn catalog.xmi#_col_fact_key"/>
-
-```
-
-## Hierarchy with hasAll Level and custom names
-
-tHis hierarchy sets the attribute `hasAll` to true, which means that a top level will be generated. The hierarchy will contain the levels defined in the Level object and an additional top level with the custom Name for the All-Level and the All-Member.
-
-
-```xml
-<roma:Hierarchy  id="_hierarchy_hasall_complex" name="Hierarchy - with HasAll and Names" levels="catalog.xmi#_level" allLevelName="theAllLevelName" allMemberName="theAllMemberName" hasAll="true" primaryKey="roma:PhysicalColumn catalog.xmi#_col_fact_key" query="roma:TableQuery catalog.xmi#_query"/>
-
-```
-
-## Hierarchy without hasAll Level
-
-This Hierarchy sets the attribute `hasAll` to false, which means that no top level will be generated. The hierarchy will only contain the levels defined in the Level object.
-
-
-```xml
-<roma:Hierarchy  id="_hierarchy_hasall_no" name="Hierarchy - Without HasAll" levels="catalog.xmi#_level" primaryKey="roma:PhysicalColumn catalog.xmi#_col_fact_key" query="roma:TableQuery catalog.xmi#_query"/>
+<roma:Level  id="_level" name="theLevel" column="roma:PhysicalColumn _col_fact_key"/>
 
 ```
 
@@ -84,7 +64,27 @@ This hierarchy sets the attribute `hasAll` to true, which means that a top level
 
 
 ```xml
-<roma:Hierarchy  id="_hierarchy_hasall_simple" name="Hierarchy - with HasAll" levels="catalog.xmi#_level" hasAll="true" primaryKey="roma:PhysicalColumn catalog.xmi#_col_fact_key" query="roma:TableQuery catalog.xmi#_query"/>
+<roma:Hierarchy  id="_hierarchy_hasall_simple" name="Hierarchy - with HasAll" levels="_level" hasAll="true" primaryKey="roma:PhysicalColumn _col_fact_key" query="roma:TableQuery _query"/>
+
+```
+
+## Hierarchy without hasAll Level
+
+This Hierarchy sets the attribute `hasAll` to false, which means that no top level will be generated. The hierarchy will only contain the levels defined in the Level object.
+
+
+```xml
+<roma:Hierarchy  id="_hierarchy_hasall_no" name="Hierarchy - Without HasAll" levels="_level" primaryKey="roma:PhysicalColumn _col_fact_key" query="roma:TableQuery _query"/>
+
+```
+
+## Hierarchy with hasAll Level and custom names
+
+tHis hierarchy sets the attribute `hasAll` to true, which means that a top level will be generated. The hierarchy will contain the levels defined in the Level object and an additional top level with the custom Name for the All-Level and the All-Member.
+
+
+```xml
+<roma:Hierarchy  id="_hierarchy_hasall_complex" name="Hierarchy - with HasAll and Names" levels="_level" allLevelName="theAllLevelName" allMemberName="theAllMemberName" hasAll="true" primaryKey="roma:PhysicalColumn _col_fact_key" query="roma:TableQuery _query"/>
 
 ```
 
@@ -94,7 +94,7 @@ The Dimension that containes all the hierarchies.
 
 
 ```xml
-<roma:StandardDimension  id="_dimension" name="Dimension1" hierarchies="catalog.xmi#_hierarchy_hasall_simple catalog.xmi#_hierarchy_hasall_complex catalog.xmi#_hierarchy_hasall_no"/>
+<roma:StandardDimension  id="_dimension" name="Dimension1" hierarchies="_hierarchy_hasall_simple _hierarchy_hasall_complex _hierarchy_hasall_no"/>
 
 ```
 
@@ -104,10 +104,10 @@ The cube contains only one Measure in a unnamed MeasureGroup and references to t
 
 
 ```xml
-<roma:PhysicalCube   id="_cube" name="HasAll Cube" query="roma:TableQuery catalog.xmi#_query">
-  <dimensionConnectors dimension="roma:StandardDimension catalog.xmi#_dimension"/>
+<roma:PhysicalCube   id="_cube" name="HasAll Cube" query="roma:TableQuery _query">
+  <dimensionConnectors dimension="roma:StandardDimension _dimension"/>
   <measureGroups>
-    <measures xsi:type="roma:SumMeasure" id="_measure" name="theMeasure" column="roma:PhysicalColumn catalog.xmi#_col_fact_value"/>
+    <measures xsi:type="roma:SumMeasure" id="_measure" name="theMeasure" column="roma:PhysicalColumn _col_fact_value"/>
   </measureGroups>
 </roma:PhysicalCube>
 
@@ -130,9 +130,9 @@ This files represent the complete definition of the catalog.
   </roma:DatabaseSchema>
   <roma:TableQuery id="_query" table="_table"/>
   <roma:Level id="_level" name="theLevel" column="_col_fact_key"/>
-  <roma:Hierarchy id="_hierarchy_hasall_complex" name="Hierarchy - with HasAll and Names" levels="_level" allLevelName="theAllLevelName" allMemberName="theAllMemberName" hasAll="true" primaryKey="_col_fact_key" query="_query"/>
-  <roma:Hierarchy id="_hierarchy_hasall_no" name="Hierarchy - Without HasAll" levels="_level" primaryKey="_col_fact_key" query="_query"/>
   <roma:Hierarchy id="_hierarchy_hasall_simple" name="Hierarchy - with HasAll" levels="_level" hasAll="true" primaryKey="_col_fact_key" query="_query"/>
+  <roma:Hierarchy id="_hierarchy_hasall_no" name="Hierarchy - Without HasAll" levels="_level" primaryKey="_col_fact_key" query="_query"/>
+  <roma:Hierarchy id="_hierarchy_hasall_complex" name="Hierarchy - with HasAll and Names" levels="_level" allLevelName="theAllLevelName" allMemberName="theAllMemberName" hasAll="true" primaryKey="_col_fact_key" query="_query"/>
   <roma:StandardDimension id="_dimension" name="Dimension1" hierarchies="_hierarchy_hasall_simple _hierarchy_hasall_complex _hierarchy_hasall_no"/>
   <roma:PhysicalCube id="_cube" name="HasAll Cube" query="_query">
     <dimensionConnectors dimension="_dimension"/>

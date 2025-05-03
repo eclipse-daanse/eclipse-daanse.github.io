@@ -30,7 +30,7 @@ This example uses a TableQuery, as it directly references the physical table `Fa
 
 
 ```xml
-<roma:TableQuery  id="_query" table="roma:PhysicalTable catalog.xmi#_tab"/>
+<roma:TableQuery  id="_query" table="roma:PhysicalTable _tab"/>
 
 ```
 
@@ -50,19 +50,19 @@ In this example, multiple measures are defined. All measures reference the `VALU
 
 
 ```xml
-<roma:PhysicalCube   id="_cube" name="MeasuresAggregatorsCube" query="roma:TableQuery catalog.xmi#_query">
-  <dimensionConnectors foreignKey="roma:PhysicalColumn catalog.xmi#_col_key" dimension="roma:StandardDimension catalog.xmi#Diml" overrideDimensionName="Dim"/>
+<roma:PhysicalCube   id="_cube" name="MeasuresAggregatorsCube" query="roma:TableQuery _query">
+  <dimensionConnectors foreignKey="roma:PhysicalColumn _col_key" dimension="roma:StandardDimension Diml" overrideDimensionName="Dim"/>
   <measureGroups>
-    <measures xsi:type="roma:PercentileMeasure" id="_measure1" name="Percentile disc 0.25" column="catalog.xmi#orderedColumn" percentile="0.25"/>
-    <measures xsi:type="roma:PercentileMeasure" id="_measure2" name="Percentile cont 0.25" column="catalog.xmi#orderedColumn" percentType="cont" percentile="0.25"/>
-    <measures xsi:type="roma:PercentileMeasure" id="_measure3" name="Percentile disc 0.42" column="catalog.xmi#orderedColumn" percentile="0.42"/>
-    <measures xsi:type="roma:PercentileMeasure" id="_measure4" name="Percentile cont 0.42" column="catalog.xmi#orderedColumn" percentType="cont" percentile="0.42"/>
-    <measures xsi:type="roma:PercentileMeasure" id="_measure5" name="Percentile disc 0.5" column="catalog.xmi#orderedColumn" percentile="0.5"/>
-    <measures xsi:type="roma:PercentileMeasure" id="_measure6" name="Percentile cont 0.5" column="catalog.xmi#orderedColumn" percentType="cont" percentile="0.5"/>
-    <measures xsi:type="roma:PercentileMeasure" id="_measure7" name="Percentile disc 0.75" column="catalog.xmi#orderedColumn" percentile="0.75"/>
-    <measures xsi:type="roma:PercentileMeasure" id="_measure8" name="Percentile cont 0.75" column="catalog.xmi#orderedColumn" percentType="cont" percentile="0.75"/>
-    <measures xsi:type="roma:PercentileMeasure" id="_measure9" name="Percentile disc 1.00" column="catalog.xmi#orderedColumn"/>
-    <measures xsi:type="roma:PercentileMeasure" id="_measure10" name="Percentile cont 1.00" column="catalog.xmi#orderedColumn" percentType="cont" percentile="0.75"/>
+    <measures xsi:type="roma:PercentileMeasure" id="_measure1" name="Percentile disc 0.25" column="orderedColumn" percentile="0.25"/>
+    <measures xsi:type="roma:PercentileMeasure" id="_measure2" name="Percentile cont 0.25" column="orderedColumn" percentType="cont" percentile="0.25"/>
+    <measures xsi:type="roma:PercentileMeasure" id="_measure3" name="Percentile disc 0.42" column="orderedColumn" percentile="0.42"/>
+    <measures xsi:type="roma:PercentileMeasure" id="_measure4" name="Percentile cont 0.42" column="orderedColumn" percentType="cont" percentile="0.42"/>
+    <measures xsi:type="roma:PercentileMeasure" id="_measure5" name="Percentile disc 0.5" column="orderedColumn" percentile="0.5"/>
+    <measures xsi:type="roma:PercentileMeasure" id="_measure6" name="Percentile cont 0.5" column="orderedColumn" percentType="cont" percentile="0.5"/>
+    <measures xsi:type="roma:PercentileMeasure" id="_measure7" name="Percentile disc 0.75" column="orderedColumn" percentile="0.75"/>
+    <measures xsi:type="roma:PercentileMeasure" id="_measure8" name="Percentile cont 0.75" column="orderedColumn" percentType="cont" percentile="0.75"/>
+    <measures xsi:type="roma:PercentileMeasure" id="_measure9" name="Percentile disc 1.00" column="orderedColumn"/>
+    <measures xsi:type="roma:PercentileMeasure" id="_measure10" name="Percentile cont 1.00" column="orderedColumn" percentType="cont" percentile="0.75"/>
   </measureGroups>
 </roma:PhysicalCube>
 

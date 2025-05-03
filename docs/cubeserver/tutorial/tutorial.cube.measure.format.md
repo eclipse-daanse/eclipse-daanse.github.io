@@ -30,7 +30,7 @@ This example uses a TableQuery, as it directly references the physical table `Fa
 
 
 ```xml
-<roma:TableQuery  id="_query" table="roma:PhysicalTable catalog.xmi#_tab"/>
+<roma:TableQuery  id="_query" table="roma:PhysicalTable _tab"/>
 
 ```
 
@@ -43,11 +43,11 @@ In this example, multiple measures are defined. All measures reference the `VALU
 
 
 ```xml
-<roma:PhysicalCube   id="_cube" name="MeasuresFormatCube" query="roma:TableQuery catalog.xmi#_query">
+<roma:PhysicalCube   id="_cube" name="MeasuresFormatCube" query="roma:TableQuery _query">
   <measureGroups>
-    <measures xsi:type="roma:SumMeasure" id="_measure1" name="Format ,##0.00" formatString=",##0.00" column="roma:PhysicalColumn catalog.xmi#_col"/>
-    <measures xsi:type="roma:SumMeasure" id="_measure2" name="Format ,##0" formatString=",##0" column="roma:PhysicalColumn catalog.xmi#_col"/>
-    <measures xsi:type="roma:SumMeasure" id="_measure3" name="Format ,##0." formatString=",##0." column="roma:PhysicalColumn catalog.xmi#_col"/>
+    <measures xsi:type="roma:SumMeasure" id="_measure1" name="Format ,##0.00" formatString=",##0.00" column="roma:PhysicalColumn _col"/>
+    <measures xsi:type="roma:SumMeasure" id="_measure2" name="Format ,##0" formatString=",##0" column="roma:PhysicalColumn _col"/>
+    <measures xsi:type="roma:SumMeasure" id="_measure3" name="Format ,##0." formatString=",##0." column="roma:PhysicalColumn _col"/>
   </measureGroups>
 </roma:PhysicalCube>
 

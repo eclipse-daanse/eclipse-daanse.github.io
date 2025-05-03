@@ -30,15 +30,15 @@ This files represent the complete definition of the catalog.
       <columns xsi:type="roma:PhysicalColumn" id="Level_2_L1_KEY" name="L1_KEY" type="Integer"/>
     </tables>
   </roma:DatabaseSchema>
+  <roma:TableQuery id="queryLevel1" table="Level_1"/>
   <roma:TableQuery id="queryLevel2" table="Level_2"/>
   <roma:TableQuery id="queryFact" table="Fact"/>
-  <roma:TableQuery id="queryLevel1" table="Level_1"/>
   <roma:JoinQuery id="queryJoin1">
     <left key="Level_2_L1_KEY" query="queryLevel2"/>
     <right key="Level_1_KEY" query="queryLevel1"/>
   </roma:JoinQuery>
-  <roma:Level id="h1Level2" name="Level2" column="Level_2_KEY" hideMemberIf="IfParentsName" nameColumn="Level_2_NAME"/>
   <roma:Level id="h1Level1" name="Level1" column="Level_1_KEY" nameColumn="Level_1_NAME"/>
+  <roma:Level id="h1Level2" name="Level2" column="Level_2_KEY" hideMemberIf="IfParentsName" nameColumn="Level_2_NAME"/>
   <roma:Hierarchy id="Hierarchy1" name="Hierarchy1" levels="h1Level1 h1Level2" hasAll="true" primaryKey="Level_2_KEY" query="queryJoin1"/>
   <roma:StandardDimension id="DimensionMembersHiddenIfParentsName" name="DimensionMembersHiddenIfParentsName" hierarchies="Hierarchy1"/>
   <roma:PhysicalCube id="HiddenMembersIfParentName" name="HiddenMembersIfParentName" query="queryFact">

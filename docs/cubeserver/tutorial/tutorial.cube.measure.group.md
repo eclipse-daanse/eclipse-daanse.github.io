@@ -30,7 +30,7 @@ This example uses a TableQuery, as it directly references the physical table `Fa
 
 
 ```xml
-<roma:TableQuery  id="_query" table="roma:PhysicalTable catalog.xmi#_tab"/>
+<roma:TableQuery  id="_query" table="roma:PhysicalTable _tab"/>
 
 ```
 
@@ -40,13 +40,13 @@ A `MeasureGroup` is a logical container designed to group related measures. Each
 
 
 ```xml
-<roma:PhysicalCube   id="_cube" name="MeasureGroupCube" query="roma:TableQuery catalog.xmi#_query">
+<roma:PhysicalCube   id="_cube" name="MeasureGroupCube" query="roma:TableQuery _query">
   <measureGroups name="Group Alphabetic">
-    <measures xsi:type="roma:SumMeasure" id="_measure1" name="Measure A" column="roma:PhysicalColumn catalog.xmi#_col"/>
-    <measures xsi:type="roma:SumMeasure" id="_measure2" name="Measure B" column="roma:PhysicalColumn catalog.xmi#_col"/>
+    <measures xsi:type="roma:SumMeasure" id="_measure1" name="Measure A" column="roma:PhysicalColumn _col"/>
+    <measures xsi:type="roma:SumMeasure" id="_measure2" name="Measure B" column="roma:PhysicalColumn _col"/>
   </measureGroups>
   <measureGroups name="Group Other">
-    <measures xsi:type="roma:SumMeasure" id="_measure3" name="Measure 1" column="roma:PhysicalColumn catalog.xmi#_col"/>
+    <measures xsi:type="roma:SumMeasure" id="_measure3" name="Measure 1" column="roma:PhysicalColumn _col"/>
   </measureGroups>
 </roma:PhysicalCube>
 

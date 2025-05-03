@@ -16,7 +16,7 @@ The catalog is the primary object in a Daanse server. It serves as a logical gro
 
 
 ```xml
-<roma:Catalog  id="_cat" name="Database - Intro" dbschemas="catalog.xmi#_dbschema"/>
+<roma:Catalog  id="_cat" name="Database - Intro" dbschemas="_dbschema"/>
 
 ```
 

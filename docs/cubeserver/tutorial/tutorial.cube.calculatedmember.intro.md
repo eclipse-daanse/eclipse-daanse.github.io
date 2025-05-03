@@ -31,7 +31,7 @@ The Query is a simple TableQuery that selects all columns from the Fact table to
 
 
 ```xml
-<roma:TableQuery  id="_query" table="roma:PhysicalTable catalog.xmi#_table_fact"/>
+<roma:TableQuery  id="_query" table="roma:PhysicalTable _table_fact"/>
 
 ```
 
@@ -41,7 +41,7 @@ This Example uses one simple Level bases on the KEY column.
 
 
 ```xml
-<roma:Level  id="_level" name="theLevel" column="roma:PhysicalColumn catalog.xmi#_col_fact_key"/>
+<roma:Level  id="_level" name="theLevel" column="roma:PhysicalColumn _col_fact_key"/>
 
 ```
 
@@ -51,7 +51,7 @@ The Hierarchy is defined with the hasAll property set to true and the one level.
 
 
 ```xml
-<roma:Hierarchy  id="_hierarchy" name="theHierarchy" levels="catalog.xmi#_level" hasAll="true" primaryKey="roma:PhysicalColumn catalog.xmi#_col_fact_key" query="roma:TableQuery catalog.xmi#_query"/>
+<roma:Hierarchy  id="_hierarchy" name="theHierarchy" levels="_level" hasAll="true" primaryKey="roma:PhysicalColumn _col_fact_key" query="roma:TableQuery _query"/>
 
 ```
 
@@ -61,7 +61,7 @@ The dimension is defined with the one hierarchy. The hierarchy is used in the cu
 
 
 ```xml
-<roma:StandardDimension  id="_dimension" name="theDimension" hierarchies="catalog.xmi#_hierarchy"/>
+<roma:StandardDimension  id="_dimension" name="theDimension" hierarchies="_hierarchy"/>
 
 ```
 
@@ -82,7 +82,7 @@ This calculated member has also a Formula. Additionaly it references the Hierarc
 
 
 ```xml
-<roma:CalculatedMember  id="_cm2" name="Calculated Member 2" formula="[Measures].[Measure1-Sum] / [Measures].[Measure2-Count]" parent="[theDimension].[theHierarchy].[All theHierarchys]" hierarchy="catalog.xmi#_hierarchy"/>
+<roma:CalculatedMember  id="_cm2" name="Calculated Member 2" formula="[Measures].[Measure1-Sum] / [Measures].[Measure2-Count]" parent="[theDimension].[theHierarchy].[All theHierarchys]" hierarchy="_hierarchy"/>
 
 ```
 
@@ -92,13 +92,13 @@ The cube is defines by the DimensionConnector and the MeasureGroup and most impo
 
 
 ```xml
-<roma:PhysicalCube   id="_cube" name="Cube CalculatedMember" query="roma:TableQuery catalog.xmi#_query">
+<roma:PhysicalCube   id="_cube" name="Cube CalculatedMember" query="roma:TableQuery _query">
   <calculatedMembers id="_cm1" name="Calculated Member 1" formula="[Measures].[Measure1-Sum] / [Measures].[Measure2-Count]"/>
-  <calculatedMembers id="_cm2" name="Calculated Member 2" formula="[Measures].[Measure1-Sum] / [Measures].[Measure2-Count]" parent="[theDimension].[theHierarchy].[All theHierarchys]" hierarchy="catalog.xmi#_hierarchy"/>
-  <dimensionConnectors foreignKey="roma:PhysicalColumn catalog.xmi#_col_fact_key" dimension="roma:StandardDimension catalog.xmi#_dimension"/>
+  <calculatedMembers id="_cm2" name="Calculated Member 2" formula="[Measures].[Measure1-Sum] / [Measures].[Measure2-Count]" parent="[theDimension].[theHierarchy].[All theHierarchys]" hierarchy="_hierarchy"/>
+  <dimensionConnectors foreignKey="roma:PhysicalColumn _col_fact_key" dimension="roma:StandardDimension _dimension"/>
   <measureGroups>
-    <measures xsi:type="roma:SumMeasure" id="Measure1-Sum" name="Measure1-Sum" column="roma:PhysicalColumn catalog.xmi#_col_fact_value"/>
-    <measures xsi:type="roma:CountMeasure" id="Measure2-Count" name="Measure2-Count" column="roma:PhysicalColumn catalog.xmi#_col_fact_value"/>
+    <measures xsi:type="roma:SumMeasure" id="Measure1-Sum" name="Measure1-Sum" column="roma:PhysicalColumn _col_fact_value"/>
+    <measures xsi:type="roma:CountMeasure" id="Measure2-Count" name="Measure2-Count" column="roma:PhysicalColumn _col_fact_value"/>
   </measureGroups>
 </roma:PhysicalCube>
 
