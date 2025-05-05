@@ -21,16 +21,16 @@ hero:
     alt: EclipseDaanse
 
 features:
-  - icon: 📝 
+  - icon: 📊
     title: Webclient DashBoard
     details: Design your Dashboard without the need of installing a Server. Find your Favorite DCAT-Datasources 
-  - icon: 📝
+  - icon: 📈
     title: DataCube Analysis Server
     details: XMLA Server to provide DataCubes to PowerBI, Excel and other Analysis Tools
-  - icon: 📝
+  - icon: 📄
     title: ReportServer (planned)
     details: Create PDF/A - Document Reports
-  - icon: 📝
+  - icon: 🔍
     title: OpenData and OpenAnalyzes
     details: Publish the Data AND all Querys and Filters for Full Tranaparency
 ---
