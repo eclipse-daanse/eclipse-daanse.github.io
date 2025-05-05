@@ -42,11 +42,10 @@ This files represent the complete definition of the catalog.
       <measures xsi:type="roma:SumMeasure" id="Measure1" name="Measure1" column="Fact_VALUE"/>
     </measureGroups>
   </roma:PhysicalCube>
-  <roma:AccessRole id="role1" name="role1">
-    <accessCatalogGrants catalogAccess="all">
-      <cubeGrants cube="Cube2"/>
-    </accessCatalogGrants>
+  <roma:AccessRole id="role3" name="role3">
+    <accessCatalogGrants catalogAccess="all"/>
   </roma:AccessRole>
+  <roma:AccessRole id="role2" name="role2"/>
   <roma:AccessRole id="manager" name="manager">
     <accessCatalogGrants>
       <cubeGrants cubeAccess="all" cube="Cube1">
@@ -61,7 +60,6 @@ This files represent the complete definition of the catalog.
       </cubeGrants>
     </accessCatalogGrants>
   </roma:AccessRole>
-  <roma:AccessRole id="role2" name="role2"/>
   <roma:AccessRole id="role_u" name="role_u">
     <referencedAccessRoles id="role11" name="role11">
       <accessCatalogGrants>
@@ -74,8 +72,10 @@ This files represent the complete definition of the catalog.
       </accessCatalogGrants>
     </referencedAccessRoles>
   </roma:AccessRole>
-  <roma:AccessRole id="role3" name="role3">
-    <accessCatalogGrants catalogAccess="all"/>
+  <roma:AccessRole id="role1" name="role1">
+    <accessCatalogGrants catalogAccess="all">
+      <cubeGrants cube="Cube2"/>
+    </accessCatalogGrants>
   </roma:AccessRole>
   <roma:AccessRole id="role3" name="role3">
     <accessCatalogGrants>

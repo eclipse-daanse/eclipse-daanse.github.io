@@ -23,7 +23,7 @@ The SqlView must contain a SqlStatement that is used to get the data from the Da
 </roma:SqlView>
 
 ```
-
+*<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 
 ## Definition
 

@@ -1,5 +1,5 @@
 ---
-title: Cube - Measures and Datatypes
+title: Datatypes
 group: Measure
 kind: TUTORIAL
 number: 2.2.3
@@ -23,17 +23,17 @@ The cube defined in this example is based on a single table that stores all the 
 </roma:DatabaseSchema>
 
 ```
-
+*<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Query
 
 This example uses a TableQuery, as it directly references the physical table `Fact`.
 
 
 ```xml
-<roma:TableQuery  id="_query" table="roma:PhysicalTable _tab"/>
+<roma:TableQuery  id="_query" table="_tab"/>
 
 ```
-
+*<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Defining the Data Type of a Measure
 
 When changing the data type of a measure, the optional `datatype` attribute of the `Measure` element can be used.
@@ -55,15 +55,15 @@ If the `datatype` attribute is not explicitly defined, the data type is determin
 
 
 ```xml
-<roma:PhysicalCube   id="_cube" name="MeasuresDatatypeCube" query="roma:TableQuery _query">
+<roma:PhysicalCube   id="_cube" name="MeasuresDatatypeCube" query="_query">
   <measureGroups>
-    <measures xsi:type="roma:SumMeasure" id="_measure1" name="Measure - Datatype Integer" dataType="Integer" column="roma:PhysicalColumn _col"/>
-    <measures xsi:type="roma:SumMeasure" id="_measure2" name="Measure - Datatype Numeric" dataType="Numeric" column="roma:PhysicalColumn _col"/>
+    <measures xsi:type="roma:SumMeasure" id="_measure1" name="Measure - Datatype Integer" dataType="Integer" column="_col"/>
+    <measures xsi:type="roma:SumMeasure" id="_measure2" name="Measure - Datatype Numeric" dataType="Numeric" column="_col"/>
   </measureGroups>
 </roma:PhysicalCube>
 
 ```
-
+*<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 
 ## Definition
 
@@ -72,7 +72,7 @@ This files represent the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:Catalog name="Cube - Measures and Datatypes" cubes="_cube" dbschemas="databaseSchema"/>
+  <roma:Catalog name="Measure - Datatypes" cubes="_cube" dbschemas="databaseSchema"/>
   <roma:DatabaseSchema id="databaseSchema">
     <tables xsi:type="roma:PhysicalTable" id="_tab" name="Fact">
       <columns xsi:type="roma:PhysicalColumn" id="_col_key" name="KEY"/>

@@ -26,7 +26,7 @@ A table `Fact` with a Column `VALUE` to have a reference for the Measure.
 </roma:DatabaseSchema>
 
 ```
-
+*<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## KPI - value only
 
 This KPI is defined solely by its value expression, which in this example references the following measure: `[Measures].[Measure1-Sum]`"
@@ -36,7 +36,7 @@ This KPI is defined solely by its value expression, which in this example refere
 <roma:Kpi  id="_kpi_1" name="Kpi1" value="[Measures].[Measure1-Sum]"/>
 
 ```
-
+*<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## KPI - DisplayFolder
 
 This KPI is additionally using a ParentKpiID.
@@ -46,7 +46,7 @@ This KPI is additionally using a ParentKpiID.
 <roma:Kpi  id="_kpi_2" name="Kpi2" value="[Measures].[Measure1-Sum]" parentKpi="_kpi_1"/>
 
 ```
-
+*<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## KPI - Parent
 
 In addition to its value, this KPI has a display folder defined, which includes a folder hierarchy with folder and subfolder.
@@ -56,24 +56,24 @@ In addition to its value, this KPI has a display folder defined, which includes 
 <roma:Kpi  id="_kpi_4" name="Kpi3" displayFolder="theDisplayFolder\otherDisplayFolder" value="[Measures].[Measure1-Sum]"/>
 
 ```
-
+*<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Cube and DimensionConnector and Measure
 
 This cube holds references to the KPI, and does not use any dimensions.
 
 
 ```xml
-<roma:PhysicalCube   id="_cube" name="Cube Kpi" query="roma:TableQuery _query">
+<roma:PhysicalCube   id="_cube" name="Cube Kpi" query="_query">
   <kpis id="_kpi_1" name="Kpi1" value="[Measures].[Measure1-Sum]"/>
   <kpis id="_kpi_2" name="Kpi2" value="[Measures].[Measure1-Sum]" parentKpi="_kpi_1"/>
   <kpis id="_kpi_4" name="Kpi3" displayFolder="theDisplayFolder\otherDisplayFolder" value="[Measures].[Measure1-Sum]"/>
   <measureGroups>
-    <measures xsi:type="roma:SumMeasure" id="Measure1-Sum" name="Measure1-Sum" column="roma:PhysicalColumn _col_fact_value"/>
+    <measures xsi:type="roma:SumMeasure" id="Measure1-Sum" name="Measure1-Sum" column="_col_fact_value"/>
   </measureGroups>
 </roma:PhysicalCube>
 
 ```
-
+*<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 
 ## Definition
 

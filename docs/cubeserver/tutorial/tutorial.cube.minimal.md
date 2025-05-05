@@ -23,31 +23,31 @@ The cube defined in this example is based on a single table that stores all the 
 </roma:DatabaseSchema>
 
 ```
-
+*<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Query
 
 The bridge between the cube and the database is the query element. In this case, it is a TableQuery, as it directly references the physical table `Fact`. The query element is not visible to users accessing the cube through the XMLA API, such as Daanse Dashboard, Power BI, or Excel.
 
 
 ```xml
-<roma:TableQuery  id="_query" table="roma:PhysicalTable _tab"/>
+<roma:TableQuery  id="_query" table="_tab"/>
 
 ```
-
+*<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Cube, MeasureGroup and Measure
 
 The cube is the element visible to users in analysis tools. A cube is based on elements such as measures, dimensions, hierarchies, KPIs, and named sets. In this case, we only define measures, which are the minimal required elements. The other elements are optional. To link a measure to the cube, we use the `MeasureGroup` element. The `MeasureGroup` is useful for organizing multiple measures into logical groups. Measures are used to define the data that should be aggregated. In this example, the measure is named Measure-Sum and references the `VALUE` column in the Fact table. The measure is aggregated using summation.
 
 
 ```xml
-<roma:PhysicalCube   id="_cube" name="MinimalCube" query="roma:TableQuery _query">
+<roma:PhysicalCube   id="_cube" name="MinimalCube" query="_query">
   <measureGroups>
-    <measures xsi:type="roma:SumMeasure" id="_measure" name="Measure-Sum" column="roma:PhysicalColumn _col_value"/>
+    <measures xsi:type="roma:SumMeasure" id="_measure" name="Measure-Sum" column="_col_value"/>
   </measureGroups>
 </roma:PhysicalCube>
 
 ```
-
+*<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 
 ## Definition
 

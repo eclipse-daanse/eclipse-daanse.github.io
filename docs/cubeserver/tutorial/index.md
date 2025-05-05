@@ -31,33 +31,33 @@ A recommended reading order is provided below to help you build your understandi
 
 [Cube - Minimal](./tutorial.cube.minimal.md)
 
-[Cube - Measures and Aggregators](./tutorial.cube.measure.aggregator.base.md)
+[Measure - Basic Aggregators](./tutorial.cube.measure.aggregator.base.md)
 
-[Cube - Measures Multiple](./tutorial.cube.measure.multiple.md)
+[Measure - Multiple Measures](./tutorial.cube.measure.multiple.md)
 
-[Cube - Measures and Datatypes](./tutorial.cube.measure.datatype.md)
+[Measure - Datatypes](./tutorial.cube.measure.datatype.md)
 
-[Cube - Measures and Formats](./tutorial.cube.measure.format.md)
+[Measure - Formats](./tutorial.cube.measure.format.md)
 
-[Cube - Measures and MeasureGroups](./tutorial.cube.measure.group.md)
+[Measure - MeasureGroups](./tutorial.cube.measure.group.md)
 
-[Cube - Measures and Aggregators](./tutorial.cube.measure.aggregator.bit.md)
+[Measure - Bit Aggragators](./tutorial.cube.measure.aggregator.bit.md)
 
-[Cube - Percentile](./tutorial.cube.measure.aggregator.percentile.md)
+[Measure - Percentile Aggragator](./tutorial.cube.measure.aggregator.percentile.md)
 
-[Cube - Measures and Text Aggregators with comments](./tutorial.cube.measure.aggregator.textagg.md)
+[Measure - Text Aggregator](./tutorial.cube.measure.aggregator.textagg.md)
 
 [Dimension - Introduction](./tutorial.cube.dimension.intro.md)
 
-[Hierarchy - Query based on seperate Tables for Fact and Dimension](./tutorial.cube.hierarchy.query.table.base.md)
+[Hierarchy - Query - seperate Tables, Fact and Dimension](./tutorial.cube.hierarchy.query.table.base.md)
 
-[Hierarchy - Query based on a Table with 2 Levels](./tutorial.cube.hierarchy.query.table.multilevel.multitable.md)
+[Hierarchy - Query - 1 Table, 2 Levels](./tutorial.cube.hierarchy.query.table.multilevel.multitable.md)
 
-[Hierarchy - Query based on all in one Table](./tutorial.cube.hierarchy.query.table.multilevel.singletable.md)
+[Hierarchy - Query - all in 1 Table](./tutorial.cube.hierarchy.query.table.multilevel.singletable.md)
 
-[Hierarchy - Query based on Join](./tutorial.cube.hierarchy.query.join.base.md)
+[Hierarchy - Query - 1 Join](./tutorial.cube.hierarchy.query.join.base.md)
 
-[Hierarchy - Query based on a 2 Joind with 3 Levels](./tutorial.cube.hierarchy.query.join.multi.md)
+[Hierarchy - Query - 2 Joins, 3 Levels](./tutorial.cube.hierarchy.query.join.multi.md)
 
 [Hierarchy - HasAll-Level](./tutorial.cube.hierarchy.hasall.md)
 

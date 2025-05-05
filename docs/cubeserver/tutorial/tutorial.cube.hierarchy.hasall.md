@@ -4,7 +4,7 @@ group: Hierarchy
 kind: TUTORIAL
 number: 2.3.4
 ---
-# Hierarchy - HasAll-Level
+# Hierarchy - Level - HasAll
 
 In a hierarchy, the top level can sometimes be a special case. Typically, levels are created using a Level object, along with a reference to a column and a query on the hierarchy. However, there are situations where no dedicated column or table entry exists for the top level. For example if you want to represent a grand total. In such cases, you can generate a generic top level that serves as a final aggregation for all members of the level below.
 
@@ -36,17 +36,17 @@ The cube defined in this example is based on three table: Fact.
 </roma:DatabaseSchema>
 
 ```
-
+*<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Query
 
 This Query references the Fact table and will be udes for the Cube and all Hierarchies in same way.
 
 
 ```xml
-<roma:TableQuery  id="_query" table="roma:PhysicalTable _table"/>
+<roma:TableQuery  id="_query" table="_table"/>
 
 ```
-
+*<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Level
 
 The Level object uses the column attribute to specify the column names `KEY` that represents the level and its members.
@@ -54,40 +54,40 @@ This the only Level that exists in this example and will be used in all hierarch
 
 
 ```xml
-<roma:Level  id="_level" name="theLevel" column="roma:PhysicalColumn _col_fact_key"/>
+<roma:Level  id="_level" name="theLevel" column="_col_fact_key"/>
 
 ```
-
-## Hierarchy with hasAll Level and defaut names
-
-This hierarchy sets the attribute `hasAll` to true, which means that a top level will be generated. The hierarchy will contain the levels defined in the Level object and an additional top level with the default Name for the All-Level and the All-Member.
-
-
-```xml
-<roma:Hierarchy  id="_hierarchy_hasall_simple" name="Hierarchy - with HasAll" levels="_level" hasAll="true" primaryKey="roma:PhysicalColumn _col_fact_key" query="roma:TableQuery _query"/>
-
-```
-
+*<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Hierarchy without hasAll Level
 
 This Hierarchy sets the attribute `hasAll` to false, which means that no top level will be generated. The hierarchy will only contain the levels defined in the Level object.
 
 
 ```xml
-<roma:Hierarchy  id="_hierarchy_hasall_no" name="Hierarchy - Without HasAll" levels="_level" primaryKey="roma:PhysicalColumn _col_fact_key" query="roma:TableQuery _query"/>
+<roma:Hierarchy  id="_hierarchy_hasall_no" name="Hierarchy - Without HasAll" levels="_level" primaryKey="_col_fact_key" query="_query"/>
 
 ```
-
+*<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Hierarchy with hasAll Level and custom names
 
 tHis hierarchy sets the attribute `hasAll` to true, which means that a top level will be generated. The hierarchy will contain the levels defined in the Level object and an additional top level with the custom Name for the All-Level and the All-Member.
 
 
 ```xml
-<roma:Hierarchy  id="_hierarchy_hasall_complex" name="Hierarchy - with HasAll and Names" levels="_level" allLevelName="theAllLevelName" allMemberName="theAllMemberName" hasAll="true" primaryKey="roma:PhysicalColumn _col_fact_key" query="roma:TableQuery _query"/>
+<roma:Hierarchy  id="_hierarchy_hasall_complex" name="Hierarchy - with HasAll and Names" levels="_level" allLevelName="theAllLevelName" allMemberName="theAllMemberName" hasAll="true" primaryKey="_col_fact_key" query="_query"/>
 
 ```
+*<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
+## Hierarchy with hasAll Level and defaut names
 
+This hierarchy sets the attribute `hasAll` to true, which means that a top level will be generated. The hierarchy will contain the levels defined in the Level object and an additional top level with the default Name for the All-Level and the All-Member.
+
+
+```xml
+<roma:Hierarchy  id="_hierarchy_hasall_simple" name="Hierarchy - with HasAll" levels="_level" hasAll="true" primaryKey="_col_fact_key" query="_query"/>
+
+```
+*<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Dimension
 
 The Dimension that containes all the hierarchies.
@@ -97,22 +97,22 @@ The Dimension that containes all the hierarchies.
 <roma:StandardDimension  id="_dimension" name="Dimension1" hierarchies="_hierarchy_hasall_simple _hierarchy_hasall_complex _hierarchy_hasall_no"/>
 
 ```
-
+*<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Cube and DimensionConnector and Measure
 
 The cube contains only one Measure in a unnamed MeasureGroup and references to the Dimension.
 
 
 ```xml
-<roma:PhysicalCube   id="_cube" name="HasAll Cube" query="roma:TableQuery _query">
+<roma:PhysicalCube   id="_cube" name="HasAll Cube" query="_query">
   <dimensionConnectors dimension="roma:StandardDimension _dimension"/>
   <measureGroups>
-    <measures xsi:type="roma:SumMeasure" id="_measure" name="theMeasure" column="roma:PhysicalColumn _col_fact_value"/>
+    <measures xsi:type="roma:SumMeasure" id="_measure" name="theMeasure" column="_col_fact_value"/>
   </measureGroups>
 </roma:PhysicalCube>
 
 ```
-
+*<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 
 ## Definition
 
@@ -130,9 +130,9 @@ This files represent the complete definition of the catalog.
   </roma:DatabaseSchema>
   <roma:TableQuery id="_query" table="_table"/>
   <roma:Level id="_level" name="theLevel" column="_col_fact_key"/>
-  <roma:Hierarchy id="_hierarchy_hasall_simple" name="Hierarchy - with HasAll" levels="_level" hasAll="true" primaryKey="_col_fact_key" query="_query"/>
   <roma:Hierarchy id="_hierarchy_hasall_no" name="Hierarchy - Without HasAll" levels="_level" primaryKey="_col_fact_key" query="_query"/>
   <roma:Hierarchy id="_hierarchy_hasall_complex" name="Hierarchy - with HasAll and Names" levels="_level" allLevelName="theAllLevelName" allMemberName="theAllMemberName" hasAll="true" primaryKey="_col_fact_key" query="_query"/>
+  <roma:Hierarchy id="_hierarchy_hasall_simple" name="Hierarchy - with HasAll" levels="_level" hasAll="true" primaryKey="_col_fact_key" query="_query"/>
   <roma:StandardDimension id="_dimension" name="Dimension1" hierarchies="_hierarchy_hasall_simple _hierarchy_hasall_complex _hierarchy_hasall_no"/>
   <roma:PhysicalCube id="_cube" name="HasAll Cube" query="_query">
     <dimensionConnectors dimension="_dimension"/>

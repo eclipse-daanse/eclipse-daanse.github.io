@@ -19,7 +19,7 @@ The catalog is the primary object in a Daanse server. It serves as a logical gro
 <roma:Catalog  id="_cat" name="Database - Intro" dbschemas="_dbschema"/>
 
 ```
-
+*<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Schema
 
 A catalog can be structured into databaseSchemas to logically group tables. The same table name can exist in multiple schemas.
@@ -31,7 +31,7 @@ In Daanse, we represent the database schema, where the data is stored, as a Data
 <roma:DatabaseSchema  id="_dbschema"/>
 
 ```
-
+*<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Table
 
 A schema contains the tables within a database. There are multiple types of tables, which we will explain in further tutorials.
@@ -43,7 +43,7 @@ The most common type we use is the physical table. The tables defined in a schem
 <roma:PhysicalTable  id="_tab" name="TableOne"/>
 
 ```
-
+*<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Column
 
 A table consists of columns, each with a name and a data type.
@@ -55,7 +55,7 @@ The columns defined in a table do not have to match all columns in the actual da
 <roma:PhysicalColumn  id="_col" name="ColumnOne"/>
 
 ```
-
+*<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 
 ## Definition
 

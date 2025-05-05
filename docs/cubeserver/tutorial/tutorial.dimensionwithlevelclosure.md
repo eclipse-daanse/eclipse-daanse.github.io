@@ -31,8 +31,8 @@ This files represent the complete definition of the catalog.
       <columns xsi:type="roma:PhysicalColumn" id="Hierarchy_PARENT_KEY" name="PARENT_KEY" type="Integer"/>
     </tables>
   </roma:DatabaseSchema>
-  <roma:TableQuery id="HierarchyQuery" table="Hierarchy"/>
   <roma:TableQuery id="FactQuery" table="Fact"/>
+  <roma:TableQuery id="HierarchyQuery" table="Hierarchy"/>
   <roma:Level id="Level" name="Level" column="Hierarchy_KEY" nameColumn="Hierarchy_NAME" parentColumn="Hierarchy_PARENT_KEY" uniqueMembers="true">
     <parentChildLink childColumn="Closure_CHILD_KEY" parentColumn="Closure_PARENT_KEY">
       <table id="ClosureQuery" table="Closure"/>

@@ -51,18 +51,18 @@ This files represent the complete definition of the catalog.
     </tables>
   </roma:DatabaseSchema>
   <roma:TableQuery id="FactQuery" table="AUTOMOTIVE_DIM"/>
+  <roma:Level id="Model" name="Model" column="AUTOMOTIVE_DIM_MODEL_ID" nameColumn="AUTOMOTIVE_DIM_MODEL"/>
+  <roma:Level id="Make" name="Make" column="AUTOMOTIVE_DIM_MAKE_ID" nameColumn="AUTOMOTIVE_DIM_MAKE"/>
   <roma:Level id="ManufacturingPlant" name="ManufacturingPlant" column="AUTOMOTIVE_DIM_PLANT_ID" nameColumn="AUTOMOTIVE_DIM_PLANT">
     <memberProperties id="State" name="State" column="AUTOMOTIVE_DIM_PLANT_STATE_ID" dependsOnLevelValue="true" propertyType="Numeric"/>
     <memberProperties id="City" name="City" column="AUTOMOTIVE_DIM_PLANT_CITY_ID" dependsOnLevelValue="true" propertyType="Numeric"/>
   </roma:Level>
-  <roma:Level id="Make" name="Make" column="AUTOMOTIVE_DIM_MAKE_ID" nameColumn="AUTOMOTIVE_DIM_MAKE"/>
+  <roma:Level id="LicensePlateNum" name="LicensePlateNum" column="AUTOMOTIVE_DIM_VEHICLE_ID">
+    <memberProperties id="State" name="State" column="AUTOMOTIVE_DIM_LICENSE_STATE_ID" dependsOnLevelValue="true" propertyType="Numeric"/>
+  </roma:Level>
   <roma:Level id="Vehicle_Identification_Number" name="Vehicle Identification Number" column="AUTOMOTIVE_DIM_VEHICLE_ID">
     <memberProperties id="Color" name="Color" column="AUTOMOTIVE_DIM_COLOR_ID" dependsOnLevelValue="true" propertyType="Numeric"/>
     <memberProperties id="Trim" name="Trim" column="AUTOMOTIVE_DIM_TRIM_ID" dependsOnLevelValue="true" propertyType="Numeric"/>
-  </roma:Level>
-  <roma:Level id="Model" name="Model" column="AUTOMOTIVE_DIM_MODEL_ID" nameColumn="AUTOMOTIVE_DIM_MODEL"/>
-  <roma:Level id="LicensePlateNum" name="LicensePlateNum" column="AUTOMOTIVE_DIM_VEHICLE_ID">
-    <memberProperties id="State" name="State" column="AUTOMOTIVE_DIM_LICENSE_STATE_ID" dependsOnLevelValue="true" propertyType="Numeric"/>
   </roma:Level>
   <roma:Hierarchy id="hierarchy" levels="Make Model ManufacturingPlant Vehicle_Identification_Number LicensePlateNum" hasAll="true" primaryKey="AUTOMOTIVE_DIM_AUTO_DIM_ID" uniqueKeyLevelName="Vehicle Identification Number" query="FactQuery"/>
   <roma:StandardDimension id="Automotive" name="Automotive" hierarchies="hierarchy"/>

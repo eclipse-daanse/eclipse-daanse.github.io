@@ -1,5 +1,5 @@
 ---
-title: Cube - Measures and Aggregators
+title: Basic Aggregators
 group: Measure
 kind: TUTORIAL
 number: 2.2.1
@@ -23,17 +23,17 @@ The cube defined in this example is based on a single table that stores all the 
 </roma:DatabaseSchema>
 
 ```
-
+*<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Query
 
 This example uses a TableQuery, as it directly references the physical table `Fact`.
 
 
 ```xml
-<roma:TableQuery  id="_query" table="roma:PhysicalTable _tab"/>
+<roma:TableQuery  id="_query" table="_tab"/>
 
 ```
-
+*<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Cube, MeasureGroup and Measure
 
 In this example, multiple measures are defined. All measures reference the `VALUE` column and use the following aggregation functions:
@@ -44,17 +44,17 @@ In this example, multiple measures are defined. All measures reference the `VALU
 
 
 ```xml
-<roma:PhysicalCube   id="_cube" name="MeasuresAggregatorsCube" query="roma:TableQuery _query">
+<roma:PhysicalCube   id="_cube" name="MeasuresAggregatorsCube" query="_query">
   <measureGroups>
-    <measures xsi:type="roma:SumMeasure" id="_measure1" name="Sum of Value" column="roma:PhysicalColumn _col"/>
-    <measures xsi:type="roma:MaxMeasure" id="_measure2" name="Max of Value" column="roma:PhysicalColumn _col"/>
-    <measures xsi:type="roma:MinMeasure" id="_measure3" name="Min of Value" column="roma:PhysicalColumn _col"/>
-    <measures xsi:type="roma:AvgMeasure" id="_measure4" name="Avg of Value" column="roma:PhysicalColumn _col"/>
+    <measures xsi:type="roma:SumMeasure" id="_measure1" name="Sum of Value" column="_col"/>
+    <measures xsi:type="roma:MaxMeasure" id="_measure2" name="Max of Value" column="_col"/>
+    <measures xsi:type="roma:MinMeasure" id="_measure3" name="Min of Value" column="_col"/>
+    <measures xsi:type="roma:AvgMeasure" id="_measure4" name="Avg of Value" column="_col"/>
   </measureGroups>
 </roma:PhysicalCube>
 
 ```
-
+*<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 
 ## Definition
 
@@ -63,7 +63,7 @@ This files represent the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:Catalog name="Cube - Measures and Aggregators" cubes="_cube" dbschemas="databaseSchema"/>
+  <roma:Catalog name="Measure - Basic Aggregators" cubes="_cube" dbschemas="databaseSchema"/>
   <roma:DatabaseSchema id="databaseSchema">
     <tables xsi:type="roma:PhysicalTable" id="_tab" name="Fact">
       <columns xsi:type="roma:PhysicalColumn" id="_col_key" name="KEY"/>
