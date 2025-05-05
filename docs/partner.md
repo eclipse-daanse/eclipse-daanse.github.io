@@ -24,7 +24,7 @@ Below you'll find the key contributors to the project and their areas of experti
 ---
 
 ### ![Logo](/LogoBis.svg) **Business Intelligence Solutions**
-[www.](https://www.)
+[www.bisolutions.dev](https://www.bisolutions.dev)
 
 **Role in the project:**
 - Senior Developers Dashboard and CubeServer
