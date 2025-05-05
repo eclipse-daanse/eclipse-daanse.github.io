@@ -1,5 +1,5 @@
 ---
-title: Cube - Measures and Formats
+title: Formats
 group: Measure
 kind: TUTORIAL
 number: 2.2.4
@@ -23,17 +23,17 @@ The cube defined in this example is based on a single table that stores all the 
 </roma:DatabaseSchema>
 
 ```
-
+*<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Query
 
 This example uses a TableQuery, as it directly references the physical table `Fact`.
 
 
 ```xml
-<roma:TableQuery  id="_query" table="roma:PhysicalTable _tab"/>
+<roma:TableQuery  id="_query" table="_tab"/>
 
 ```
-
+*<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Formats on Measures
 
 In this example, multiple measures are defined. All measures reference the `VALUE` column and use the following Formats functions:
@@ -43,16 +43,16 @@ In this example, multiple measures are defined. All measures reference the `VALU
 
 
 ```xml
-<roma:PhysicalCube   id="_cube" name="MeasuresFormatCube" query="roma:TableQuery _query">
+<roma:PhysicalCube   id="_cube" name="MeasuresFormatCube" query="_query">
   <measureGroups>
-    <measures xsi:type="roma:SumMeasure" id="_measure1" name="Format ,##0.00" formatString=",##0.00" column="roma:PhysicalColumn _col"/>
-    <measures xsi:type="roma:SumMeasure" id="_measure2" name="Format ,##0" formatString=",##0" column="roma:PhysicalColumn _col"/>
-    <measures xsi:type="roma:SumMeasure" id="_measure3" name="Format ,##0." formatString=",##0." column="roma:PhysicalColumn _col"/>
+    <measures xsi:type="roma:SumMeasure" id="_measure1" name="Format ,##0.00" formatString=",##0.00" column="_col"/>
+    <measures xsi:type="roma:SumMeasure" id="_measure2" name="Format ,##0" formatString=",##0" column="_col"/>
+    <measures xsi:type="roma:SumMeasure" id="_measure3" name="Format ,##0." formatString=",##0." column="_col"/>
   </measureGroups>
 </roma:PhysicalCube>
 
 ```
-
+*<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Further Formats
 
 General Number Formats
@@ -96,7 +96,7 @@ This files represent the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:Catalog name="Cube - Measures and Formats" cubes="_cube" dbschemas="databaseSchema"/>
+  <roma:Catalog name="Measure - Formats" cubes="_cube" dbschemas="databaseSchema"/>
   <roma:DatabaseSchema id="databaseSchema">
     <tables xsi:type="roma:PhysicalTable" id="_tab" name="Fact">
       <columns xsi:type="roma:PhysicalColumn" id="_col_key" name="KEY"/>

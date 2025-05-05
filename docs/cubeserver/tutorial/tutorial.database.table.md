@@ -18,7 +18,7 @@ Physical Tables are the most common Tables.  They are used to store data in the 
 <roma:PhysicalTable  id="_tab" name="TableOne"/>
 
 ```
-
+*<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## View Table
 
 View Tables ate Database views. Virtual tables that are the result of a query inside the underlaying Database. They are used to simplify complex queries and to hide the complexity.
@@ -28,7 +28,7 @@ View Tables ate Database views. Virtual tables that are the result of a query in
 <roma:ViewTable  id="_tab" name="ViewOne"/>
 
 ```
-
+*<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## System Table
 
 Sytsem Tables are are used and managed by the underlaying Database Management System. They are used to store metadata and other information about the Database itsselfe. Please be carefill when using System Tables, this may cause secutiry issues.
@@ -38,7 +38,7 @@ Sytsem Tables are are used and managed by the underlaying Database Management Sy
 <roma:SystemTable  id="_tab" name="TableOne"/>
 
 ```
-
+*<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 
 ## Definition
 

@@ -19,17 +19,17 @@ The InlineTable is a virtual table. The table and data does not exist in the dat
   <columns xsi:type="roma:PhysicalColumn" id="Fact_KEY" name="KEY"/>
   <columns xsi:type="roma:PhysicalColumn" id="Fact_VALUE" name="VALUE" type="Integer"/>
   <rows>
-    <rowValues column="roma:PhysicalColumn Fact_KEY" value="A"/>
-    <rowValues column="roma:PhysicalColumn Fact_VALUE" value="100"/>
+    <rowValues column="Fact_KEY" value="A"/>
+    <rowValues column="Fact_VALUE" value="100"/>
   </rows>
   <rows>
-    <rowValues column="roma:PhysicalColumn Fact_KEY" value="B"/>
-    <rowValues column="roma:PhysicalColumn Fact_VALUE" value="42"/>
+    <rowValues column="Fact_KEY" value="B"/>
+    <rowValues column="Fact_VALUE" value="42"/>
   </rows>
 </roma:InlineTable>
 
 ```
-
+*<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 
 ## Definition
 

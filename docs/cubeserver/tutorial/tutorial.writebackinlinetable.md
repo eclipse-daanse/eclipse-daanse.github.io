@@ -63,14 +63,14 @@ This files represent the complete definition of the catalog.
       <columns xsi:type="roma:PhysicalColumn" id="factwb_USER" name="USER" columnSize="100"/>
     </tables>
   </roma:DatabaseSchema>
-  <roma:TableQuery id="l2TableQuery" table="L2"/>
   <roma:TableQuery id="l1TableQuery" table="L1"/>
+  <roma:TableQuery id="l2TableQuery" table="L2"/>
   <roma:JoinQuery id="join">
     <left key="L1_L2" query="l1TableQuery"/>
     <right key="L2_L2" query="l2TableQuery"/>
   </roma:JoinQuery>
-  <roma:Level id="L2Level" name="L2" column="L2_L2"/>
   <roma:Level id="L1Level" name="L1" column="L1_L1"/>
+  <roma:Level id="L2Level" name="L2" column="L2_L2"/>
   <roma:Hierarchy id="HierarchyWithHasAll" name="HierarchyWithHasAll" levels="L1Level L2Level" hasAll="true" primaryKey="L1_L2" query="join"/>
   <roma:StandardDimension id="Dimension" name="Dimension" hierarchies="HierarchyWithHasAll"/>
   <roma:PhysicalCube id="C" name="C" query="FactQuery">

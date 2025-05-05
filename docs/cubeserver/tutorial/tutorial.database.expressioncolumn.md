@@ -20,7 +20,7 @@ The dialects attribute of an SqlStatement specifies the target database system. 
 <roma:SQLExpressionColumn  id="_col2" name="SqlExpressionColumn"/>
 
 ```
-
+*<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 
 ## Definition
 

@@ -49,8 +49,8 @@ This files represent the complete definition of the catalog.
     <left key="L1_L2" query="l1Query"/>
     <right key="L2_L2" query="l2Query"/>
   </roma:JoinQuery>
-  <roma:Level id="L1Level" name="L1" column="L1_L1"/>
   <roma:Level id="L2Level" name="L2" column="L2_L2"/>
+  <roma:Level id="L1Level" name="L1" column="L1_L1"/>
   <roma:Hierarchy id="HierarchyWithHasAll" name="HierarchyWithHasAll" levels="L1Level L2Level" hasAll="true" primaryKey="L1_L2" query="joinQuery"/>
   <roma:StandardDimension id="Dimension" name="Dimension" hierarchies="HierarchyWithHasAll"/>
   <roma:PhysicalCube id="C" name="C" query="query">

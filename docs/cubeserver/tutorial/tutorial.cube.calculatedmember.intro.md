@@ -24,37 +24,37 @@ The Database Schema contains the Fact table with three columns: KEY and VALUE an
 </roma:DatabaseSchema>
 
 ```
-
+*<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Query
 
 The Query is a simple TableQuery that selects all columns from the Fact table to use in in the hierarchy and in the cube for the measures.
 
 
 ```xml
-<roma:TableQuery  id="_query" table="roma:PhysicalTable _table_fact"/>
+<roma:TableQuery  id="_query" table="_table_fact"/>
 
 ```
-
+*<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Level
 
 This Example uses one simple Level bases on the KEY column.
 
 
 ```xml
-<roma:Level  id="_level" name="theLevel" column="roma:PhysicalColumn _col_fact_key"/>
+<roma:Level  id="_level" name="theLevel" column="_col_fact_key"/>
 
 ```
-
+*<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Hierarchy without hasAll Level
 
 The Hierarchy is defined with the hasAll property set to true and the one level.
 
 
 ```xml
-<roma:Hierarchy  id="_hierarchy" name="theHierarchy" levels="_level" hasAll="true" primaryKey="roma:PhysicalColumn _col_fact_key" query="roma:TableQuery _query"/>
+<roma:Hierarchy  id="_hierarchy" name="theHierarchy" levels="_level" hasAll="true" primaryKey="_col_fact_key" query="_query"/>
 
 ```
-
+*<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Dimension
 
 The dimension is defined with the one hierarchy. The hierarchy is used in the cube and in the calculated member.
@@ -64,7 +64,7 @@ The dimension is defined with the one hierarchy. The hierarchy is used in the cu
 <roma:StandardDimension  id="_dimension" name="theDimension" hierarchies="_hierarchy"/>
 
 ```
-
+*<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Calculated Member in Measure
 
 This calculated member only coes a calculation with both of the existing Measures. The Forula holds the calculation instruction. The Formula Expression is a MDX expression.
@@ -74,7 +74,7 @@ This calculated member only coes a calculation with both of the existing Measure
 <roma:CalculatedMember  id="_cm1" name="Calculated Member 1" formula="[Measures].[Measure1-Sum] / [Measures].[Measure2-Count]"/>
 
 ```
-
+*<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Calculated Member in Dimension
 
 This calculated member has also a Formula. Additionaly it references the Hierarchy where it should be addes and a Parent Expression that defins unter wich Element it should be added. The Parent Expression is a MDX expression.
@@ -85,25 +85,25 @@ This calculated member has also a Formula. Additionaly it references the Hierarc
 <roma:CalculatedMember  id="_cm2" name="Calculated Member 2" formula="[Measures].[Measure1-Sum] / [Measures].[Measure2-Count]" parent="[theDimension].[theHierarchy].[All theHierarchys]" hierarchy="_hierarchy"/>
 
 ```
-
+*<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Cube and DimensionConnector and Measure
 
 The cube is defines by the DimensionConnector and the MeasureGroup and most importantly the calculated members.
 
 
 ```xml
-<roma:PhysicalCube   id="_cube" name="Cube CalculatedMember" query="roma:TableQuery _query">
+<roma:PhysicalCube   id="_cube" name="Cube CalculatedMember" query="_query">
   <calculatedMembers id="_cm1" name="Calculated Member 1" formula="[Measures].[Measure1-Sum] / [Measures].[Measure2-Count]"/>
   <calculatedMembers id="_cm2" name="Calculated Member 2" formula="[Measures].[Measure1-Sum] / [Measures].[Measure2-Count]" parent="[theDimension].[theHierarchy].[All theHierarchys]" hierarchy="_hierarchy"/>
   <dimensionConnectors foreignKey="roma:PhysicalColumn _col_fact_key" dimension="roma:StandardDimension _dimension"/>
   <measureGroups>
-    <measures xsi:type="roma:SumMeasure" id="Measure1-Sum" name="Measure1-Sum" column="roma:PhysicalColumn _col_fact_value"/>
-    <measures xsi:type="roma:CountMeasure" id="Measure2-Count" name="Measure2-Count" column="roma:PhysicalColumn _col_fact_value"/>
+    <measures xsi:type="roma:SumMeasure" id="Measure1-Sum" name="Measure1-Sum" column="_col_fact_value"/>
+    <measures xsi:type="roma:CountMeasure" id="Measure2-Count" name="Measure2-Count" column="_col_fact_value"/>
   </measureGroups>
 </roma:PhysicalCube>
 
 ```
-
+*<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 
 ## Definition
 

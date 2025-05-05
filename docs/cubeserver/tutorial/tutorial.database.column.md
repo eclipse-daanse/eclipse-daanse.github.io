@@ -18,7 +18,7 @@ A Column has the fields `id,` `name`, `description` and `nullable`. Id is used t
 <roma:PhysicalColumn  id="_col1" description="Non nullable Column with description" name="ColumnWithDescription" nullable="true"/>
 
 ```
-
+*<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Types of Columns
 
 In database tables, columns can have various data types to store data efficiently. These types come with additional attributes that provide more detailed descriptions and constraints.
@@ -32,7 +32,7 @@ The ColumnSize field in represents the maximum width or precision of a column, d
 <roma:PhysicalColumn  id="_col2" name="ColumnVarchar" columnSize="255"/>
 
 ```
-
+*<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ### Decimal
 
 DECIMAL type represents Fixed-point number with exact precision (p) and scale (s), used for precise calculations (e.g., financial data).
@@ -48,7 +48,7 @@ The NumPrecRadix field represents the numeric precision radix (or base) used for
 <roma:PhysicalColumn  id="_col3" name="ColumnDecimal" type="Decimal" decimalDigits="2" numPrecRadix="3"/>
 
 ```
-
+*<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ### Numeric
 
 Numeric are the same as DECIMAL, but some databases treat it as stricter in enforcing precision.
@@ -57,7 +57,7 @@ Numeric are the same as DECIMAL, but some databases treat it as stricter in enfo
 <roma:PhysicalColumn  id="_col4" name="ColumnNumeric" type="Numeric"/>
 
 ```
-
+*<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ### Float
 
 Float Approximate floating-point number, implementation-dependent precision, can introduce rounding errors
@@ -66,7 +66,7 @@ Float Approximate floating-point number, implementation-dependent precision, can
 <roma:PhysicalColumn  id="_col5" name="ColumnFloat" type="Float"/>
 
 ```
-
+*<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ### Real
 
 REAL are Single-precision (32-bit) floating-point number, less precise than DOUBLE.
@@ -75,7 +75,7 @@ REAL are Single-precision (32-bit) floating-point number, less precise than DOUB
 <roma:PhysicalColumn  id="_col6" name="ColumnReal" type="Real"/>
 
 ```
-
+*<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ### Double
 
 DOUBLE (or DOUBLE PRECISION) – Double-precision (64-bit) floating-point number, more accurate than REAL.
@@ -84,7 +84,7 @@ DOUBLE (or DOUBLE PRECISION) – Double-precision (64-bit) floating-point number
 <roma:PhysicalColumn  id="_col7" name="ColumnDouble" type="Double"/>
 
 ```
-
+*<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ### Integer
 
 INTEGER are the whole number type, typically 32-bit, used for exact, non-decimal values.
@@ -93,7 +93,7 @@ INTEGER are the whole number type, typically 32-bit, used for exact, non-decimal
 <roma:PhysicalColumn  id="_col8" name="ColumnInteger" type="Integer"/>
 
 ```
-
+*<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 
 ## Definition
 

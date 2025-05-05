@@ -20,7 +20,7 @@ The name of a database schema is optional and can be left empty. In such cases, 
 <roma:DatabaseSchema  id="_dbschema2"/>
 
 ```
-
+*<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Schema and attrebutes
 
 It is more secure to explicitly define the schema using the `name` attribute. To provide a clearer description of the schema's contents, you can use the `description` attribute.
@@ -30,14 +30,14 @@ It is more secure to explicitly define the schema using the `name` attribute. To
 <roma:DatabaseSchema  id="_dbschema1" description="theDescription" name="foo"/>
 
 ```
-
+*<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 Schema can be refernced in the catalog. You can see this by checking the `dbSchema attribute` in the catalog.
 
 ```xml
 <roma:Catalog  id="_cat" name="Database - Schema" dbschemas="_dbschema2 _dbschema1"/>
 
 ```
-
+*<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 
 ## Definition
 

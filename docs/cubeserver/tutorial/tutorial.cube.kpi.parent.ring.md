@@ -27,7 +27,7 @@ A table `Fact` with a Column `VALUE` to have a reference for the Measure.
 </roma:DatabaseSchema>
 
 ```
-
+*<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## KPI - value only
 
 This KPI is defined solely by its value expression, which in this example references the following measure: `[Measures].[Measure1-Sum]`
@@ -38,7 +38,7 @@ This KPI is additionally using a Kpi3 as parent. We have cyrcle link here"
 <roma:Kpi  id="_kpi_1" name="Kpi1" value="[Measures].[Measure1-Sum]" parentKpi="_kpi_3"/>
 
 ```
-
+*<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## KPI - DisplayFolder
 
 This KPI is additionally using a Kpi1 as parent.
@@ -48,7 +48,7 @@ This KPI is additionally using a Kpi1 as parent.
 <roma:Kpi  id="_kpi_2" name="Kpi2" value="[Measures].[Measure1-Sum]" parentKpi="_kpi_1"/>
 
 ```
-
+*<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## KPI - Parent
 
 This KPI is additionally using a Kpi2 as parent. And this KPI is parent for Kpi1.
@@ -58,24 +58,24 @@ This KPI is additionally using a Kpi2 as parent. And this KPI is parent for Kpi1
 <roma:Kpi  id="_kpi_3" name="Kpi3" value="[Measures].[Measure1-Sum]" parentKpi="_kpi_1"/>
 
 ```
-
+*<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Cube and Measure and KPI parent ring
 
 This cube holds references to the KPI, and does not use any dimensions.
 
 
 ```xml
-<roma:PhysicalCube   id="_cube" name="Cube Kpi" query="roma:TableQuery _query">
+<roma:PhysicalCube   id="_cube" name="Cube Kpi" query="_query">
   <kpis id="_kpi_1" name="Kpi1" value="[Measures].[Measure1-Sum]" parentKpi="_kpi_3"/>
   <kpis id="_kpi_2" name="Kpi2" value="[Measures].[Measure1-Sum]" parentKpi="_kpi_1"/>
   <kpis id="_kpi_3" name="Kpi3" value="[Measures].[Measure1-Sum]" parentKpi="_kpi_1"/>
   <measureGroups>
-    <measures xsi:type="roma:SumMeasure" id="Measure1-Sum" name="Measure1-Sum" column="roma:PhysicalColumn _col_fact_value"/>
+    <measures xsi:type="roma:SumMeasure" id="Measure1-Sum" name="Measure1-Sum" column="_col_fact_value"/>
   </measureGroups>
 </roma:PhysicalCube>
 
 ```
-
+*<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 
 ## Definition
 

@@ -10,9 +10,9 @@ NamedSet as Set in dimension Dimension1
 
 NamedSet use only Dimension1 in formula. By this reason it connected to Dimension1.
 
-NamedSet use Dimension1 and Dimension2 in formula. By this reason it connected to Cube.
-
 NamedSet use only Dimension1 in formula. By this reason it connected to Dimension1. NamedSet have folder
+
+NamedSet use Dimension1 and Dimension2 in formula. By this reason it connected to Cube.
 
 NamedSet use Dimension1 and Dimension2 in formula. By this reason it connected to Cube. NamedSet have folder
 

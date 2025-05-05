@@ -49,11 +49,11 @@ This files represent the complete definition of the catalog.
     <tables xsi:type="roma:PhysicalTable" id="AGG_LC_100_SALES_FACT_1997" name="AGG_LC_100_SALES_FACT_1997"/>
   </roma:DatabaseSchema>
   <roma:TableQuery id="productClassQuery" table="PRODUCT_CLASS"/>
-  <roma:TableQuery id="productQuery" table="PRODUCT"/>
   <roma:TableQuery id="salesFact1997Query" aggregationTables="aggregationName" table="SALES_FACT_1997">
     <aggregationExcludes name="AGG_C_14_SALES_FACT_1997"/>
     <aggregationExcludes name="AGG_LC_100_SALES_FACT_1997"/>
   </roma:TableQuery>
+  <roma:TableQuery id="productQuery" table="PRODUCT"/>
   <roma:JoinQuery id="joinQuery">
     <left key="PRODUCT_PRODUCT_CLASS_ID" query="productQuery"/>
     <right key="PRODUCT_CLASS_PRODUCT_CLASS_ID" query="productClassQuery"/>

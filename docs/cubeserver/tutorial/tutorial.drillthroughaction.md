@@ -36,9 +36,9 @@ This files represent the complete definition of the catalog.
       <columns xsi:type="roma:PhysicalColumn" id="HX_L2_H2L1_KEY" name="H2L1_KEY" type="Integer"/>
     </tables>
   </roma:DatabaseSchema>
-  <roma:TableQuery id="FactQuery" table="Fact"/>
   <roma:TableQuery id="HxL2Query" table="HX_L2"/>
   <roma:TableQuery id="H1L1Query" table="H1_L1"/>
+  <roma:TableQuery id="FactQuery" table="Fact"/>
   <roma:JoinQuery id="join1">
     <left key="HX_L2_H1L1_KEY" query="HxL2Query"/>
     <right key="H1_L1_VALUE" query="H1L1Query"/>

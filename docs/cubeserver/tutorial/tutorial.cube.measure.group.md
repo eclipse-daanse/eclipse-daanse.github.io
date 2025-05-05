@@ -1,5 +1,5 @@
 ---
-title: Cube - Measures and MeasureGroups
+title: MeasureGroups
 group: Measure
 kind: TUTORIAL
 number: 2.2.5
@@ -23,35 +23,35 @@ The cube defined in this example is based on a single table that stores all the 
 </roma:DatabaseSchema>
 
 ```
-
+*<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Query
 
 This example uses a TableQuery, as it directly references the physical table `Fact`.
 
 
 ```xml
-<roma:TableQuery  id="_query" table="roma:PhysicalTable _tab"/>
+<roma:TableQuery  id="_query" table="_tab"/>
 
 ```
-
+*<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Grouping Measures
 
 A `MeasureGroup` is a logical container designed to group related measures. Each `MeasureGroup` can have a  name. Names must be unique within the `Cube`. `Measure` only can be in `Cube`s if they are contained in `MeasureGroup`s. In this example we group all alphabetic measures in one group and all other measures in another group.
 
 
 ```xml
-<roma:PhysicalCube   id="_cube" name="MeasureGroupCube" query="roma:TableQuery _query">
+<roma:PhysicalCube   id="_cube" name="MeasureGroupCube" query="_query">
   <measureGroups name="Group Alphabetic">
-    <measures xsi:type="roma:SumMeasure" id="_measure1" name="Measure A" column="roma:PhysicalColumn _col"/>
-    <measures xsi:type="roma:SumMeasure" id="_measure2" name="Measure B" column="roma:PhysicalColumn _col"/>
+    <measures xsi:type="roma:SumMeasure" id="_measure1" name="Measure A" column="_col"/>
+    <measures xsi:type="roma:SumMeasure" id="_measure2" name="Measure B" column="_col"/>
   </measureGroups>
   <measureGroups name="Group Other">
-    <measures xsi:type="roma:SumMeasure" id="_measure3" name="Measure 1" column="roma:PhysicalColumn _col"/>
+    <measures xsi:type="roma:SumMeasure" id="_measure3" name="Measure 1" column="_col"/>
   </measureGroups>
 </roma:PhysicalCube>
 
 ```
-
+*<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 
 ## Definition
 
@@ -60,7 +60,7 @@ This files represent the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:Catalog name="Cube - Measures and MeasureGroups" cubes="_cube" dbschemas="databaseSchema"/>
+  <roma:Catalog name="Measure - MeasureGroups" cubes="_cube" dbschemas="databaseSchema"/>
   <roma:DatabaseSchema id="databaseSchema">
     <tables xsi:type="roma:PhysicalTable" id="_tab" name="Fact">
       <columns xsi:type="roma:PhysicalColumn" id="_col_key" name="KEY"/>

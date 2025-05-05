@@ -25,27 +25,27 @@ The cube defined in this example is based on a single table that stores all the 
 </roma:DatabaseSchema>
 
 ```
-
+*<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Query
 
 This example uses a TableQuery, as it directly references the physical table `Fact`.
 
 
 ```xml
-<roma:TableQuery  id="_query" table="roma:PhysicalTable _tab"/>
+<roma:TableQuery  id="_query" table="_tab"/>
 
 ```
-
+*<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Level
 
 The level is the most basic element of a hierarchy. It defines the granularity of the data in the hierarchy. To create a Level we need do set the key column, which is the column that uniquely identifies the Level in the table. In this example we use the `KEY` column of the `Fact` table as the key column of the level.
 
 
 ```xml
-<roma:Level  id="_level" name="theLevel" column="roma:PhysicalColumn _col_key"/>
+<roma:Level  id="_level" name="theLevel" column="_col_key"/>
 
 ```
-
+*<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Hierarchy
 
 A hierarchy is a collection of levels that defines the structure of data within a dimension. It provides a name for the group the contained Level elements.
@@ -56,10 +56,10 @@ Additionally, a primary key column can be specified for the hierarchy. The prima
 
 
 ```xml
-<roma:Hierarchy  id="_hierarchy" name="theHierarchy" levels="_level" primaryKey="roma:PhysicalColumn _col_key" query="roma:TableQuery _query"/>
+<roma:Hierarchy  id="_hierarchy" name="theHierarchy" levels="_level" primaryKey="_col_key" query="_query"/>
 
 ```
-
+*<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Dimension
 
 The Dimension is the main element of the cube. It defines the structure of the data in the cube. The dimension can contain one or multiple hierarchies. In this example we use one hierarchy, which contains one level.
@@ -69,7 +69,7 @@ The Dimension is the main element of the cube. It defines the structure of the d
 <roma:StandardDimension  id="_dimension" name="theDimension" hierarchies="_hierarchy"/>
 
 ```
-
+*<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Cube and DimensionConnector and Measure
 
 The cube contains only one Measure in a unnamed MeasureGroup and references to the Dimension.
@@ -78,15 +78,15 @@ To connect the dimension to the cube, a DimensionConnector is used. The Dimensio
 
 
 ```xml
-<roma:PhysicalCube   id="_cube" name="CubeWithSimpleDimension" query="roma:TableQuery _query">
+<roma:PhysicalCube   id="_cube" name="CubeWithSimpleDimension" query="_query">
   <dimensionConnectors dimension="roma:StandardDimension _dimension"/>
   <measureGroups>
-    <measures xsi:type="roma:SumMeasure" id="_measure" name="theMeasure" column="roma:PhysicalColumn _col_value"/>
+    <measures xsi:type="roma:SumMeasure" id="_measure" name="theMeasure" column="_col_value"/>
   </measureGroups>
 </roma:PhysicalCube>
 
 ```
-
+*<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 
 ## Definition
 

@@ -1,5 +1,5 @@
 ---
-title: Cube - Measures Multiple
+title: Multiple Measures
 group: Measure
 kind: TUTORIAL
 number: 2.2.2
@@ -25,17 +25,17 @@ The cube defined in this example is based on a single table that stores all the 
 </roma:DatabaseSchema>
 
 ```
-
+*<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Query
 
 This example uses a TableQuery, as it directly references the physical table Fact.
 
 
 ```xml
-<roma:TableQuery  id="_query" table="roma:PhysicalTable _tab"/>
+<roma:TableQuery  id="_query" table="_tab"/>
 
 ```
-
+*<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Measures
 
 In this example, multiple measures are defined:
@@ -46,16 +46,16 @@ All measures use sum aggregation.
 
 
 ```xml
-<roma:PhysicalCube   id="_cube" name="MultipleMeasuresCube" defaultMeasure="roma:SumMeasure _measure3" query="roma:TableQuery _query">
+<roma:PhysicalCube   id="_cube" name="MultipleMeasuresCube" defaultMeasure="roma:SumMeasure _measure3" query="_query">
   <measureGroups>
-    <measures xsi:type="roma:SumMeasure" id="_measure1" name="Sum of Value1" column="roma:PhysicalColumn _col_value1"/>
-    <measures xsi:type="roma:SumMeasure" id="_measure2" name="Sum of Value2" column="roma:PhysicalColumn _col_value2"/>
-    <measures xsi:type="roma:SumMeasure" id="_measure3" name="Sum of Value3" column="roma:PhysicalColumn _col_value3"/>
+    <measures xsi:type="roma:SumMeasure" id="_measure1" name="Sum of Value1" column="_col_value1"/>
+    <measures xsi:type="roma:SumMeasure" id="_measure2" name="Sum of Value2" column="_col_value2"/>
+    <measures xsi:type="roma:SumMeasure" id="_measure3" name="Sum of Value3" column="_col_value3"/>
   </measureGroups>
 </roma:PhysicalCube>
 
 ```
-
+*<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## DefaultMeasure
 
 Specifying `defaultMeasure` in the `Cube` element allows users to explicitly set a base measure as the default. If `defaultMeasure` is not specified, the first measure in the list is automatically considered the default measure.
@@ -69,7 +69,7 @@ This files represent the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:Catalog name="Cube - Measures Multiple" cubes="_cube" dbschemas="databaseSchema"/>
+  <roma:Catalog name="Measure - Multiple Measures" cubes="_cube" dbschemas="databaseSchema"/>
   <roma:DatabaseSchema id="databaseSchema">
     <tables xsi:type="roma:PhysicalTable" id="_tab" name="Fact">
       <columns xsi:type="roma:PhysicalColumn" id="_col_key" name="KEY"/>
