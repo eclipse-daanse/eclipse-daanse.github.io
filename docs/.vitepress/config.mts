@@ -86,10 +86,6 @@ function nav(): DefaultTheme.NavItem[] {
       activeMatch: '/partner/'
     },
     {
-      text: 'Blog',
-      link: '/blog',
-    },
-    {
       text: 'Analysis Server',
       items: [
         {
