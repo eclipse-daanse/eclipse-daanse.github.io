@@ -15,6 +15,7 @@ This files represent the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
+  <roma:ExplicitHierarchy id="HierarchyWithHasAll" name="HierarchyWithHasAll" hasAll="true" primaryKey="L1_L2" query="joinQuery" levels="L1Level L2Level"/>
   <roma:Catalog description="Schema with writeback with fact as sql view" name="tutorial_for_writeback_with_fact_view" cubes="C" dbschemas="databaseSchema"/>
   <roma:DatabaseSchema id="databaseSchema">
     <tables xsi:type="roma:PhysicalTable" id="L1" name="L1">
@@ -51,7 +52,6 @@ This files represent the complete definition of the catalog.
   </roma:JoinQuery>
   <roma:Level id="L2Level" name="L2" column="L2_L2"/>
   <roma:Level id="L1Level" name="L1" column="L1_L1"/>
-  <roma:Hierarchy id="HierarchyWithHasAll" name="HierarchyWithHasAll" levels="L1Level L2Level" hasAll="true" primaryKey="L1_L2" query="joinQuery"/>
   <roma:StandardDimension id="Dimension" name="Dimension" hierarchies="HierarchyWithHasAll"/>
   <roma:PhysicalCube id="C" name="C" query="query">
     <dimensionConnectors foreignKey="L1_L2" dimension="Dimension" overrideDimensionName="D1" id="D1"/>

@@ -19,6 +19,7 @@ This files represent the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
+  <roma:ExplicitHierarchy id="HierarchyWithHasAll" name="HierarchyWithHasAll" hasAll="true" primaryKey="Fact_KEY" query="FactQuery" levels="Level"/>
   <roma:Catalog description="Schema of a minimal cube with level with smallInt boolan type" name="Minimal_Cube_with_cube_dimension_smallInt_boolean_level" cubes="Cube" dbschemas="databaseSchema"/>
   <roma:DatabaseSchema id="databaseSchema">
     <tables xsi:type="roma:PhysicalTable" id="Fact" name="Fact">
@@ -29,7 +30,6 @@ This files represent the complete definition of the catalog.
   </roma:DatabaseSchema>
   <roma:TableQuery id="FactQuery" table="Fact"/>
   <roma:Level id="Level" name="Level" column="Fact_FLAG" columnType="Boolean"/>
-  <roma:Hierarchy id="HierarchyWithHasAll" name="HierarchyWithHasAll" levels="Level" hasAll="true" primaryKey="Fact_KEY" query="FactQuery"/>
   <roma:StandardDimension id="Dimension" name="Dimension" hierarchies="HierarchyWithHasAll"/>
   <roma:PhysicalCube id="Cube" name="Cube" query="FactQuery">
     <dimensionConnectors dimension="Dimension" overrideDimensionName="Dimension"/>

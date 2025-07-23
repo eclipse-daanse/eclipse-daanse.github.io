@@ -76,6 +76,7 @@ This files represent the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
+  <roma:ExplicitHierarchy id="Hierarchy" name="Hierarchy" hasAll="true" primaryKey="_col_key" query="_query" levels="_level"/>
   <roma:OrderedColumn id="_orderedColumn" column="_col"/>
   <roma:Catalog name="Measure - Percentile Aggragator" cubes="_cube" dbschemas="_databaseSchema"/>
   <roma:DatabaseSchema id="_databaseSchema">
@@ -86,7 +87,6 @@ This files represent the complete definition of the catalog.
   </roma:DatabaseSchema>
   <roma:TableQuery id="_query" table="_tab"/>
   <roma:Level id="_level" name="Level" column="_col_key"/>
-  <roma:Hierarchy id="Hierarchy" name="Hierarchy" levels="_level" hasAll="true" primaryKey="_col_key" query="_query"/>
   <roma:StandardDimension id="_diml" name="Diml" hierarchies="Hierarchy"/>
   <roma:PhysicalCube id="_cube" name="MeasuresAggregatorsCube" query="_query">
     <dimensionConnectors foreignKey="_col_key" dimension="_diml" overrideDimensionName="Dim"/>

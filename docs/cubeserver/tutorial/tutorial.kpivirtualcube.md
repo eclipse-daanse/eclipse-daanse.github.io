@@ -16,6 +16,7 @@ This files represent the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
+  <roma:ExplicitHierarchy id="HierarchyWithoutHasAll" name="HierarchyWithoutHasAll" primaryKey="Fact_KEY" query="FactQuery" levels="Level2"/>
   <roma:Catalog description="Cube with virtual cube with kpi" name="Cube_with_virtual_cube_with_kpi" cubes="Cube1 Cube2 Cube1Cube2Kpi" dbschemas="databaseSchema"/>
   <roma:DatabaseSchema id="databaseSchema">
     <tables xsi:type="roma:PhysicalTable" id="Fact" name="Fact">
@@ -26,7 +27,6 @@ This files represent the complete definition of the catalog.
   </roma:DatabaseSchema>
   <roma:TableQuery id="FactQuery" table="Fact"/>
   <roma:Level id="Level2" name="Level2" column="Fact_KEY"/>
-  <roma:Hierarchy id="HierarchyWithoutHasAll" name="HierarchyWithoutHasAll" levels="Level2" primaryKey="Fact_KEY" query="FactQuery"/>
   <roma:StandardDimension id="Dimension1" name="Dimension1" hierarchies="HierarchyWithoutHasAll"/>
   <roma:PhysicalCube id="Cube1" name="Cube1" query="FactQuery">
     <dimensionConnectors dimension="Dimension1" overrideDimensionName="Cube1Dimension1"/>

@@ -62,7 +62,7 @@ The order of the Levels in the hierarchy is important, as it determines the dril
 
 
 ```xml
-<roma:Hierarchy  id="_hierarchy_town" name="TownHierarchy" levels="_level_country _level_town" primaryKey="_col_fact_key" query="_query"/>
+<roma:ExplicitHierarchy  id="_hierarchy_town" name="TownHierarchy" primaryKey="_col_fact_key" query="_query" levels="_level_country _level_town"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -72,7 +72,7 @@ The Dimension has only one hierarchy.
 
 
 ```xml
-<roma:StandardDimension  id="_dim_town" name="Town" hierarchies="_hierarchy_town"/>
+<roma:StandardDimension  id="_dim_town" name="Town" hierarchies="roma:ExplicitHierarchy _hierarchy_town"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -101,6 +101,7 @@ This files represent the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
+  <roma:ExplicitHierarchy id="_hierarchy_town" name="TownHierarchy" primaryKey="_col_fact_key" query="_query" levels="_level_country _level_town"/>
   <roma:Catalog name="Hierarchy - Query - all in 1 Table" cubes="_cube" dbschemas="_dbschema"/>
   <roma:DatabaseSchema id="_dbschema">
     <tables xsi:type="roma:PhysicalTable" id="_tab_fact" name="Fact">
@@ -110,9 +111,8 @@ This files represent the complete definition of the catalog.
   </roma:DatabaseSchema>
   <roma:PhysicalColumn id="_col_fact_key" name="KEY"/>
   <roma:TableQuery id="_query" table="_tab_fact"/>
-  <roma:Level id="_level_country" name="Country" column="_col_fact_country"/>
   <roma:Level id="_level_town" name="Town" column="_col_fact_key"/>
-  <roma:Hierarchy id="_hierarchy_town" name="TownHierarchy" levels="_level_country _level_town" primaryKey="_col_fact_key" query="_query"/>
+  <roma:Level id="_level_country" name="Country" column="_col_fact_country"/>
   <roma:StandardDimension id="_dim_town" name="Town" hierarchies="_hierarchy_town"/>
   <roma:PhysicalCube id="_cube" name="Cube Query linked Tables" query="_query">
     <dimensionConnectors foreignKey="_col_fact_country" dimension="_dim_town"/>

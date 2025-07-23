@@ -14,6 +14,7 @@ This files represent the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
+  <roma:ExplicitHierarchy id="Hierarchy1" name="Hierarchy1" hasAll="true" primaryKey="Level_2_KEY" query="queryJoin1" levels="h1Level1 h1Level2"/>
   <roma:Catalog description="Schema of a minimal cube with single Hierarchy Hidden Members with IfParentsName" name="Minimal_Single_Hierarchy_Hidden_Members_with_IfParentsName" cubes="HiddenMembersIfParentName" dbschemas="databaseSchema"/>
   <roma:DatabaseSchema id="databaseSchema">
     <tables xsi:type="roma:PhysicalTable" id="Fact" name="Fact">
@@ -31,15 +32,14 @@ This files represent the complete definition of the catalog.
     </tables>
   </roma:DatabaseSchema>
   <roma:TableQuery id="queryLevel1" table="Level_1"/>
-  <roma:TableQuery id="queryFact" table="Fact"/>
   <roma:TableQuery id="queryLevel2" table="Level_2"/>
+  <roma:TableQuery id="queryFact" table="Fact"/>
   <roma:JoinQuery id="queryJoin1">
     <left key="Level_2_L1_KEY" query="queryLevel2"/>
     <right key="Level_1_KEY" query="queryLevel1"/>
   </roma:JoinQuery>
   <roma:Level id="h1Level2" name="Level2" column="Level_2_KEY" hideMemberIf="IfParentsName" nameColumn="Level_2_NAME"/>
   <roma:Level id="h1Level1" name="Level1" column="Level_1_KEY" nameColumn="Level_1_NAME"/>
-  <roma:Hierarchy id="Hierarchy1" name="Hierarchy1" levels="h1Level1 h1Level2" hasAll="true" primaryKey="Level_2_KEY" query="queryJoin1"/>
   <roma:StandardDimension id="DimensionMembersHiddenIfParentsName" name="DimensionMembersHiddenIfParentsName" hierarchies="Hierarchy1"/>
   <roma:PhysicalCube id="HiddenMembersIfParentName" name="HiddenMembersIfParentName" query="queryFact">
     <dimensionConnectors foreignKey="Fact_DIM_KEY" dimension="DimensionMembersHiddenIfParentsName" overrideDimensionName="DimensionMembersHiddenIfBlankName"/>

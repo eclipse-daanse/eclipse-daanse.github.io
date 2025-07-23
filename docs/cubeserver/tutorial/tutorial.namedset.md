@@ -10,9 +10,9 @@ NamedSet as Set in dimension Dimension1
 
 NamedSet use only Dimension1 in formula. By this reason it connected to Dimension1.
 
-NamedSet use only Dimension1 in formula. By this reason it connected to Dimension1. NamedSet have folder
-
 NamedSet use Dimension1 and Dimension2 in formula. By this reason it connected to Cube.
+
+NamedSet use only Dimension1 in formula. By this reason it connected to Dimension1. NamedSet have folder
 
 NamedSet use Dimension1 and Dimension2 in formula. By this reason it connected to Cube. NamedSet have folder
 
@@ -24,6 +24,7 @@ This files represent the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
+  <roma:ExplicitHierarchy id="Hierarchy" name="Hierarchy" hasAll="true" primaryKey="Fact_KEY" query="FactQuery" levels="Level2"/>
   <roma:Catalog description="Schema of a minimal cube with namedSet" name="Cube_with_NamedSet" cubes="Cube" dbschemas="databaseSchema"/>
   <roma:DatabaseSchema id="databaseSchema">
     <tables xsi:type="roma:PhysicalTable" id="Fact" name="Fact">
@@ -33,7 +34,6 @@ This files represent the complete definition of the catalog.
   </roma:DatabaseSchema>
   <roma:TableQuery id="FactQuery" table="Fact"/>
   <roma:Level id="Level2" name="Level2" column="Fact_KEY"/>
-  <roma:Hierarchy id="Hierarchy" name="Hierarchy" levels="Level2" hasAll="true" primaryKey="Fact_KEY" query="FactQuery"/>
   <roma:StandardDimension id="Dimension1" name="Dimension1" hierarchies="Hierarchy"/>
   <roma:PhysicalCube id="Cube" name="Cube" query="FactQuery">
     <namedSets id="NsWithFolderDimension1" name="NsWithFolderDimension1" displayFolder="Folder1" formula="TopCount([Dimension1].[Level2].MEMBERS, 5, [Measures].[Measure1])"/>

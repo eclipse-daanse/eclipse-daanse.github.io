@@ -15,6 +15,11 @@ This files represent the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
+  <roma:ParentChildHierarchy id="hierarchy" allMemberName="All Employees" hasAll="true" primaryKey="Fact_employee_id" query="FactQuery" nullParentValue="0" parentColumn="Fact_supervisor_id" level="EmployeeIdLevel">
+    <parentChildLink childColumn="employee_closure_employee_id" parentColumn="employee_closure_supervisor_id">
+      <table id="EmployeeClosureQuery" table="employee_closure"/>
+    </parentChildLink>
+  </roma:ParentChildHierarchy>
   <roma:Catalog description="Schema of a minimal cube with cube dimension level with closure table" name="Minimal_Cube_with_cube_dimension_level_with_closure_table" cubes="Cube" dbschemas="databaseSchema"/>
   <roma:DatabaseSchema id="databaseSchema">
     <tables xsi:type="roma:PhysicalTable" id="Fact" name="Fact">
@@ -35,10 +40,7 @@ This files represent the complete definition of the catalog.
     </tables>
   </roma:DatabaseSchema>
   <roma:TableQuery id="FactQuery" table="Fact"/>
-  <roma:Level id="EmployeeIdLevel" name="Employee Id" column="Fact_employee_id" nameColumn="Fact_full_name" nullParentValue="0" parentColumn="Fact_supervisor_id" uniqueMembers="true">
-    <parentChildLink childColumn="employee_closure_employee_id" parentColumn="employee_closure_supervisor_id">
-      <table id="EmployeeClosureQuery" table="employee_closure"/>
-    </parentChildLink>
+  <roma:Level id="EmployeeIdLevel" name="Employee Id" column="Fact_employee_id" nameColumn="Fact_full_name" uniqueMembers="true">
     <memberProperties id="MaritalStatus" name="Marital Status" column="Fact_marital_status"/>
     <memberProperties id="PositionTitle" name="Position Title" column="Fact_position_title"/>
     <memberProperties id="Gender" name="Gender" column="Fact_gender"/>
@@ -46,7 +48,6 @@ This files represent the complete definition of the catalog.
     <memberProperties id="EducationLevel" name="Education Level" column="Fact_education_level"/>
     <memberProperties id="ManagementRole" name="Management Role" column="Fact_management_role"/>
   </roma:Level>
-  <roma:Hierarchy id="hierarchy" levels="EmployeeIdLevel" allMemberName="All Employees" hasAll="true" primaryKey="Fact_employee_id" query="FactQuery"/>
   <roma:StandardDimension id="Employees" name="Employees" hierarchies="hierarchy"/>
   <roma:PhysicalCube id="Cube" name="Cube" query="FactQuery">
     <dimensionConnectors foreignKey="Fact_employee_id" dimension="Employees" overrideDimensionName="Employees"/>
