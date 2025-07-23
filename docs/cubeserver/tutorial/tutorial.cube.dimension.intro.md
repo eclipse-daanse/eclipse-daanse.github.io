@@ -56,7 +56,7 @@ Additionally, a primary key column can be specified for the hierarchy. The prima
 
 
 ```xml
-<roma:Hierarchy  id="_hierarchy" name="theHierarchy" levels="_level" primaryKey="_col_key" query="_query"/>
+<roma:ExplicitHierarchy  id="_hierarchy" name="theHierarchy" primaryKey="_col_key" query="_query" levels="_level"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -66,7 +66,7 @@ The Dimension is the main element of the cube. It defines the structure of the d
 
 
 ```xml
-<roma:StandardDimension  id="_dimension" name="theDimension" hierarchies="_hierarchy"/>
+<roma:StandardDimension  id="_dimension" name="theDimension" hierarchies="roma:ExplicitHierarchy _hierarchy"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -95,6 +95,7 @@ This files represent the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
+  <roma:ExplicitHierarchy id="_hierarchy" name="theHierarchy" primaryKey="_col_key" query="_query" levels="_level"/>
   <roma:Catalog id="_catalog" name="Dimension - Introduction" cubes="_cube" dbschemas="_dbschema"/>
   <roma:DatabaseSchema id="_dbschema">
     <tables xsi:type="roma:PhysicalTable" id="_tab" name="Fact">
@@ -104,7 +105,6 @@ This files represent the complete definition of the catalog.
   </roma:DatabaseSchema>
   <roma:TableQuery id="_query" table="_tab"/>
   <roma:Level id="_level" name="theLevel" column="_col_key"/>
-  <roma:Hierarchy id="_hierarchy" name="theHierarchy" levels="_level" primaryKey="_col_key" query="_query"/>
   <roma:StandardDimension id="_dimension" name="theDimension" hierarchies="_hierarchy"/>
   <roma:PhysicalCube id="_cube" name="CubeWithSimpleDimension" query="_query">
     <dimensionConnectors dimension="_dimension"/>

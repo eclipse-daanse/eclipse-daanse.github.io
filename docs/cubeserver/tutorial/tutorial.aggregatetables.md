@@ -19,6 +19,7 @@ This files represent the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
+  <roma:ExplicitHierarchy id="Product_Family_Hierarchy" name="Product Family" displayFolder="Details" hasAll="true" primaryKey="PRODUCT_PRODUCT_ID" query="joinQuery" levels="Product_Family_Level"/>
   <roma:AggregationName id="aggregationName" name="AGG_C_SPECIAL_SALES_FACT_1997">
     <aggregationFactCount column="aggCSpecialSalesFact1997_FACT_COUNT"/>
     <aggregationMeasures column="aggCSpecialSalesFact1997_STORE_COST_SUM" name="[Measures].[Store Cost]"/>
@@ -48,18 +49,17 @@ This files represent the complete definition of the catalog.
     <tables xsi:type="roma:PhysicalTable" id="AGG_C_14_SALES_FACT_1997" name="AGG_C_14_SALES_FACT_1997"/>
     <tables xsi:type="roma:PhysicalTable" id="AGG_LC_100_SALES_FACT_1997" name="AGG_LC_100_SALES_FACT_1997"/>
   </roma:DatabaseSchema>
-  <roma:TableQuery id="productClassQuery" table="PRODUCT_CLASS"/>
+  <roma:TableQuery id="productQuery" table="PRODUCT"/>
   <roma:TableQuery id="salesFact1997Query" aggregationTables="aggregationName" table="SALES_FACT_1997">
     <aggregationExcludes name="AGG_C_14_SALES_FACT_1997"/>
     <aggregationExcludes name="AGG_LC_100_SALES_FACT_1997"/>
   </roma:TableQuery>
-  <roma:TableQuery id="productQuery" table="PRODUCT"/>
+  <roma:TableQuery id="productClassQuery" table="PRODUCT_CLASS"/>
   <roma:JoinQuery id="joinQuery">
     <left key="PRODUCT_PRODUCT_CLASS_ID" query="productQuery"/>
     <right key="PRODUCT_CLASS_PRODUCT_CLASS_ID" query="productClassQuery"/>
   </roma:JoinQuery>
   <roma:Level id="Product_Family_Level" name="Product Family" column="PRODUCT_CLASS_PRODUCT_FAMILE"/>
-  <roma:Hierarchy id="Product_Family_Hierarchy" name="Product Family" levels="Product_Family_Level" displayFolder="Details" hasAll="true" primaryKey="PRODUCT_PRODUCT_ID" query="joinQuery"/>
   <roma:StandardDimension id="ProductDimension" name="Product" hierarchies="Product_Family_Hierarchy"/>
   <roma:PhysicalCube id="Sales" name="Sales" query="salesFact1997Query">
     <dimensionConnectors foreignKey="SALES_FACT_1997_PRODUCT_ID" dimension="ProductDimension" overrideDimensionName="Product"/>

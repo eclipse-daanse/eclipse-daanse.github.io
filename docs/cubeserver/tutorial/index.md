@@ -45,6 +45,8 @@ A recommended reading order is provided below to help you build your understandi
 
 [Measure - Percentile Aggragator](./tutorial.cube.measure.aggregator.percentile.md)
 
+[Measure - NTH value Aggragator](./tutorial.cube.measure.aggregator.nth.md)
+
 [Measure - Text Aggregator](./tutorial.cube.measure.aggregator.textagg.md)
 
 [Dimension - Introduction](./tutorial.cube.dimension.intro.md)
@@ -103,6 +105,8 @@ A recommended reading order is provided below to help you build your understandi
 
 [Minimal_Cubes_With_KPI_all_Properties](./tutorial.kpiall.md)
 
+[CubeOneMeasureInlineTableLevelPhysicalAndInlineTables](./tutorial.inlinetablewithphysical.md)
+
 [CubeOneMeasureInlineTable](./tutorial.inlinetable.md)
 
 [Cube_with_share_dimension_with hierarchy_with_view_reference](./tutorial.hierarchywithview.md)
@@ -124,6 +128,12 @@ A recommended reading order is provided below to help you build your understandi
 [Minimal_Cube_with_cube_dimension_level_attribute](./tutorial.dimensionwithlevelattribute.md)
 
 [Minimal_Cube_with_cube_dimension_with_functional_dependency_optimizations](./tutorial.dimensionwithfunctionaldependencyoptimization.md)
+
+[Minimal_Cube_with_cube_dimension_level_with_parent_child_with_null_parent_value](./tutorial.cube.hierarchy.parentchild.nullparent.md)
+
+[Minimal_Cube_with_cube_dimension_level_with_parent_child_with_closure](./tutorial.cube.hierarchy.parentchild.closure.md)
+
+[Minimal_Cube_with_cube_dimension_level_with_parent_child](./tutorial.cube.hierarchy.parentchild.base.md)
 
 [Minimal_Cube_With_Measures_CellFormatter](./tutorial.cellformatter.md)
 

@@ -51,7 +51,7 @@ The Hierarchy is defined with the hasAll property set to true and the one level.
 
 
 ```xml
-<roma:Hierarchy  id="_hierarchy" name="theHierarchy" levels="_level" hasAll="true" primaryKey="_col_fact_key" query="_query"/>
+<roma:ExplicitHierarchy  id="_hierarchy" name="theHierarchy" hasAll="true" primaryKey="_col_fact_key" query="_query" levels="_level"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -61,7 +61,7 @@ The dimension is defined with the one hierarchy. The hierarchy is used in the cu
 
 
 ```xml
-<roma:StandardDimension  id="_dimension" name="theDimension" hierarchies="_hierarchy"/>
+<roma:StandardDimension  id="_dimension" name="theDimension" hierarchies="roma:ExplicitHierarchy _hierarchy"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -82,7 +82,7 @@ This calculated member has also a Formula. Additionaly it references the Hierarc
 
 
 ```xml
-<roma:CalculatedMember  id="_cm2" name="Calculated Member 2" formula="[Measures].[Measure1-Sum] / [Measures].[Measure2-Count]" parent="[theDimension].[theHierarchy].[All theHierarchys]" hierarchy="_hierarchy"/>
+<roma:CalculatedMember  id="_cm2" name="Calculated Member 2" formula="[Measures].[Measure1-Sum] / [Measures].[Measure2-Count]" parent="[theDimension].[theHierarchy].[All theHierarchys]" hierarchy="roma:ExplicitHierarchy _hierarchy"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -94,7 +94,7 @@ The cube is defines by the DimensionConnector and the MeasureGroup and most impo
 ```xml
 <roma:PhysicalCube   id="_cube" name="Cube CalculatedMember" query="_query">
   <calculatedMembers id="_cm1" name="Calculated Member 1" formula="[Measures].[Measure1-Sum] / [Measures].[Measure2-Count]"/>
-  <calculatedMembers id="_cm2" name="Calculated Member 2" formula="[Measures].[Measure1-Sum] / [Measures].[Measure2-Count]" parent="[theDimension].[theHierarchy].[All theHierarchys]" hierarchy="_hierarchy"/>
+  <calculatedMembers id="_cm2" name="Calculated Member 2" formula="[Measures].[Measure1-Sum] / [Measures].[Measure2-Count]" parent="[theDimension].[theHierarchy].[All theHierarchys]" hierarchy="roma:ExplicitHierarchy _hierarchy"/>
   <dimensionConnectors foreignKey="roma:PhysicalColumn _col_fact_key" dimension="roma:StandardDimension _dimension"/>
   <measureGroups>
     <measures xsi:type="roma:SumMeasure" id="Measure1-Sum" name="Measure1-Sum" column="_col_fact_value"/>
@@ -112,6 +112,7 @@ This files represent the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
+  <roma:ExplicitHierarchy id="_hierarchy" name="theHierarchy" hasAll="true" primaryKey="_col_fact_key" query="_query" levels="_level"/>
   <roma:Catalog name="Cube - CalculatedMembers Intro" cubes="_cube" dbschemas="_databaseschema"/>
   <roma:DatabaseSchema id="_databaseschema">
     <tables xsi:type="roma:PhysicalTable" id="_table_fact" name="Fact">
@@ -121,7 +122,6 @@ This files represent the complete definition of the catalog.
   </roma:DatabaseSchema>
   <roma:TableQuery id="_query" table="_table_fact"/>
   <roma:Level id="_level" name="theLevel" column="_col_fact_key"/>
-  <roma:Hierarchy id="_hierarchy" name="theHierarchy" levels="_level" hasAll="true" primaryKey="_col_fact_key" query="_query"/>
   <roma:StandardDimension id="_dimension" name="theDimension" hierarchies="_hierarchy"/>
   <roma:PhysicalCube id="_cube" name="Cube CalculatedMember" query="_query">
     <calculatedMembers id="_cm1" name="Calculated Member 1" formula="[Measures].[Measure1-Sum] / [Measures].[Measure2-Count]"/>

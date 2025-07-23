@@ -75,7 +75,7 @@ This Hierarchy contains only one level. The `primaryKey` attribute defines the c
 
 
 ```xml
-<roma:Hierarchy  id="_hierarchy_town" name="TownHierarchy" levels="_level_town" primaryKey="_col_town_id" query="_Query_LevelTown"/>
+<roma:ExplicitHierarchy  id="_hierarchy_town" name="TownHierarchy" primaryKey="_col_town_id" query="_Query_LevelTown" levels="_level_town"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -85,7 +85,7 @@ The Dimension has only one hierarchy.
 
 
 ```xml
-<roma:StandardDimension  id="_dim_town" name="Town" hierarchies="_hierarchy_town"/>
+<roma:StandardDimension  id="_dim_town" name="Town" hierarchies="roma:ExplicitHierarchy _hierarchy_town"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -114,6 +114,7 @@ This files represent the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
+  <roma:ExplicitHierarchy id="_hierarchy_town" name="TownHierarchy" primaryKey="_col_town_id" query="_Query_LevelTown" levels="_level_town"/>
   <roma:Catalog name="Level - MemberProperties Intro" cubes="_cube" dbschemas="_dbschema"/>
   <roma:DatabaseSchema id="_dbschema">
     <tables xsi:type="roma:PhysicalTable" id="_tab_fact" name="Fact">
@@ -126,12 +127,11 @@ This files represent the complete definition of the catalog.
     </tables>
   </roma:DatabaseSchema>
   <roma:PhysicalColumn id="_col_town_capital" name="CAPITAL" columnSize="100"/>
-  <roma:TableQuery id="_query_Fact" table="_tab_fact"/>
   <roma:TableQuery id="_Query_LevelTown" table="_tab_town"/>
+  <roma:TableQuery id="_query_Fact" table="_tab_fact"/>
   <roma:Level id="_level_town" name="Town" column="_col_town_id" nameColumn="_col_town_name">
     <memberProperties id="_memberprop" name="Capital" column="_col_town_capital"/>
   </roma:Level>
-  <roma:Hierarchy id="_hierarchy_town" name="TownHierarchy" levels="_level_town" primaryKey="_col_town_id" query="_Query_LevelTown"/>
   <roma:StandardDimension id="_dim_town" name="Town" hierarchies="_hierarchy_town"/>
   <roma:PhysicalCube id="_cube" name="Cube Query linked Tables" query="_query_Fact">
     <dimensionConnectors foreignKey="_col_fact_townId" dimension="_dim_town"/>
