@@ -68,8 +68,8 @@ This files represent the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:ExplicitHierarchy id="_hierarchy_time" name="TimeHierarchy" primaryKey="_col_key" query="_query" levels="_level_year _level_month"/>
   <roma:ExplicitHierarchy id="_hierarchy_town" name="TownHierarchy" primaryKey="_col_key" query="_query" levels="_level_continent _level_country _level_town"/>
+  <roma:ExplicitHierarchy id="_hierarchy_time" name="TimeHierarchy" primaryKey="_col_key" query="_query" levels="_level_year _level_month"/>
   <roma:OrderedColumn id="orderedColumn" column="_col_fact_comment"/>
   <roma:Catalog name="Measure - Text Aggregator" cubes="_cube" dbschemas="_databaseSchema"/>
   <roma:DatabaseSchema id="_databaseSchema">
@@ -92,11 +92,11 @@ This files represent the complete definition of the catalog.
     </sqls>
   </roma:SQLExpressionColumn>
   <roma:TableQuery id="_query" table="_tab"/>
-  <roma:Level id="_level_year" name="Year" column="_col_fact_year" type="TimeYears"/>
-  <roma:Level id="_level_continent" name="Continent" column="_col_fact_cntinent"/>
-  <roma:Level id="_level_town" name="Town" column="_col_key"/>
   <roma:Level id="_level_month" name="Month" column="_col_fact_month" type="TimeMonths" nameColumn="_col_fact_month_name"/>
   <roma:Level id="_level_country" name="Country" column="_col_fact_country"/>
+  <roma:Level id="_level_town" name="Town" column="_col_key"/>
+  <roma:Level id="_level_year" name="Year" column="_col_fact_year" type="TimeYears"/>
+  <roma:Level id="_level_continent" name="Continent" column="_col_fact_cntinent"/>
   <roma:StandardDimension id="_dim_town" name="Town" hierarchies="_hierarchy_town"/>
   <roma:TimeDimension id="_dim_time" name="Time" hierarchies="_hierarchy_time"/>
   <roma:PhysicalCube id="_cube" name="MeasuresTextAggregatorsCube" query="_query">

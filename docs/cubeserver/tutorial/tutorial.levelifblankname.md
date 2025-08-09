@@ -16,8 +16,8 @@ This files represent the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:ExplicitHierarchy id="Hierarchy1_2" name="Hierarchy1" hasAll="true" primaryKey="Level_3_Multiple_KEY" query="queryJoin2" levels="h2Level1 h2Level2 h2Level3"/>
-  <roma:ExplicitHierarchy id="Hierarchy1_1" name="Hierarchy1" hasAll="true" primaryKey="Level_2_NULL_KEY" query="queryJoin1" levels="h1Level1 h1Level2"/>
+  <roma:ExplicitHierarchy id="Hierarchy1_1" name="Hierarchy1" primaryKey="Level_2_NULL_KEY" query="queryJoin1" levels="h1Level1 h1Level2"/>
+  <roma:ExplicitHierarchy id="Hierarchy1_2" name="Hierarchy1" primaryKey="Level_3_Multiple_KEY" query="queryJoin2" levels="h2Level1 h2Level2 h2Level3"/>
   <roma:Catalog description="Schema of a minimal cube with single Hierarchy Hidden Members with IfBlankName" name="Minimal_Single_Hierarchy_Hidden_Members_with_IfBlankName" cubes="HiddenMembersIfBlankName HiddenMembersIfBlankName" dbschemas="databaseSchema"/>
   <roma:DatabaseSchema id="databaseSchema">
     <tables xsi:type="roma:PhysicalTable" id="Fact" name="Fact">
@@ -52,16 +52,12 @@ This files represent the complete definition of the catalog.
       <columns xsi:type="roma:PhysicalColumn" id="Level_3_Multiple_L2_KEY" name="L2_KEY" type="Integer"/>
     </tables>
   </roma:DatabaseSchema>
-  <roma:TableQuery id="queryLevel1" table="Level_1"/>
-  <roma:TableQuery id="queryLevel3Multiple" table="Level_3_Multiple"/>
-  <roma:TableQuery id="queryLevel2Null" table="Level_2_NULL"/>
   <roma:TableQuery id="queryFact" table="Fact"/>
-  <roma:TableQuery id="queryLevel2Multiple" table="Level_2_Multiple"/>
   <roma:TableQuery id="queryLevel1Multiple" table="Level_1_Multiple"/>
-  <roma:JoinQuery id="queryJoin2">
-    <left key="Level_3_Multiple_L2_KEY" query="queryLevel3Multiple"/>
-    <right key="Level_1_Multiple_KEY" query="queryJoin2Right"/>
-  </roma:JoinQuery>
+  <roma:TableQuery id="queryLevel1" table="Level_1"/>
+  <roma:TableQuery id="queryLevel2Null" table="Level_2_NULL"/>
+  <roma:TableQuery id="queryLevel2Multiple" table="Level_2_Multiple"/>
+  <roma:TableQuery id="queryLevel3Multiple" table="Level_3_Multiple"/>
   <roma:JoinQuery id="queryJoin1">
     <left key="Level_2_NULL_L1_KEY" query="queryLevel2Null"/>
     <right key="Level_1_KEY" query="queryLevel1"/>
@@ -70,13 +66,17 @@ This files represent the complete definition of the catalog.
     <left key="Level_2_Multiple_L1_KEY" query="queryLevel2Multiple"/>
     <right key="Level_1_Multiple_KEY" query="queryLevel1Multiple"/>
   </roma:JoinQuery>
+  <roma:JoinQuery id="queryJoin2">
+    <left key="Level_3_Multiple_L2_KEY" query="queryLevel3Multiple"/>
+    <right key="Level_1_Multiple_KEY" query="queryJoin2Right"/>
+  </roma:JoinQuery>
+  <roma:Level id="h1Level2" name="Level2" column="Level_2_NULL_KEY" hideMemberIf="IfBlankName" nameColumn="Level_2_NULL_NAME"/>
+  <roma:Level id="h1Level1" name="Level1" column="Level_1_KEY" nameColumn="Level_1_NAME"/>
+  <roma:Level id="h2Level2" name="Level2" column="Level_2_Multiple_KEY" hideMemberIf="IfBlankName" nameColumn="Level_2_Multiple_NAME"/>
   <roma:Level id="h2Level1" name="Level1" column="Level_1_Multiple_KEY" nameColumn="Level_1_Multiple_NAME"/>
   <roma:Level id="h2Level3" name="Level3" column="Level_3_Multiple_KEY" hideMemberIf="IfBlankName" nameColumn="Level_3_Multiple_NAME"/>
-  <roma:Level id="h2Level2" name="Level2" column="Level_2_Multiple_KEY" hideMemberIf="IfBlankName" nameColumn="Level_2_Multiple_NAME"/>
-  <roma:Level id="h1Level1" name="Level1" column="Level_1_KEY" nameColumn="Level_1_NAME"/>
-  <roma:Level id="h1Level2" name="Level2" column="Level_2_NULL_KEY" hideMemberIf="IfBlankName" nameColumn="Level_2_NULL_NAME"/>
-  <roma:StandardDimension id="DimensionMembersHiddenIfBlankName" name="DimensionMembersHiddenIfBlankName" hierarchies="Hierarchy1_1"/>
   <roma:StandardDimension id="DimensionMembersHiddenMultipleLevels" name="DimensionMembersHiddenMultipleLevels" hierarchies="Hierarchy1_2"/>
+  <roma:StandardDimension id="DimensionMembersHiddenIfBlankName" name="DimensionMembersHiddenIfBlankName" hierarchies="Hierarchy1_1"/>
   <roma:PhysicalCube id="HiddenMembersIfBlankName" name="HiddenMembersIfBlankName" query="queryFact">
     <dimensionConnectors foreignKey="Fact_DIM_KEY" dimension="DimensionMembersHiddenIfBlankName" overrideDimensionName="DimensionMembersHiddenIfBlankName"/>
     <measureGroups>

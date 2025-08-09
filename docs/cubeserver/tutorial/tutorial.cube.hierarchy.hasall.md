@@ -58,13 +58,13 @@ This the only Level that exists in this example and will be used in all hierarch
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
-## Hierarchy without hasAll Level
+## Hierarchy with hasAll Level and defaut names
 
-This Hierarchy sets the attribute `hasAll` to false, which means that no top level will be generated. The hierarchy will only contain the levels defined in the Level object.
+This hierarchy sets the attribute `hasAll` to true, which means that a top level will be generated. The hierarchy will contain the levels defined in the Level object and an additional top level with the default Name for the All-Level and the All-Member.
 
 
 ```xml
-<roma:ExplicitHierarchy  id="_hierarchy_hasall_no" name="Hierarchy - Without HasAll" primaryKey="_col_fact_key" query="_query" levels="_level"/>
+<roma:ExplicitHierarchy  id="_hierarchy_hasall_simple" name="Hierarchy - with HasAll" primaryKey="_col_fact_key" query="_query" levels="_level"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -74,17 +74,17 @@ tHis hierarchy sets the attribute `hasAll` to true, which means that a top level
 
 
 ```xml
-<roma:ExplicitHierarchy  id="_hierarchy_hasall_complex" name="Hierarchy - with HasAll and Names" allLevelName="theAllLevelName" allMemberName="theAllMemberName" hasAll="true" primaryKey="_col_fact_key" query="_query" levels="_level"/>
+<roma:ExplicitHierarchy  id="_hierarchy_hasall_complex" name="Hierarchy - with HasAll and Names" allLevelName="theAllLevelName" allMemberName="theAllMemberName" primaryKey="_col_fact_key" query="_query" levels="_level"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
-## Hierarchy with hasAll Level and defaut names
+## Hierarchy without hasAll Level
 
-This hierarchy sets the attribute `hasAll` to true, which means that a top level will be generated. The hierarchy will contain the levels defined in the Level object and an additional top level with the default Name for the All-Level and the All-Member.
+This Hierarchy sets the attribute `hasAll` to false, which means that no top level will be generated. The hierarchy will only contain the levels defined in the Level object.
 
 
 ```xml
-<roma:ExplicitHierarchy  id="_hierarchy_hasall_simple" name="Hierarchy - with HasAll" hasAll="true" primaryKey="_col_fact_key" query="_query" levels="_level"/>
+<roma:ExplicitHierarchy  id="_hierarchy_hasall_no" name="Hierarchy - Without HasAll" hasAll="false" primaryKey="_col_fact_key" query="_query" levels="_level"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -121,9 +121,9 @@ This files represent the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:ExplicitHierarchy id="_hierarchy_hasall_no" name="Hierarchy - Without HasAll" primaryKey="_col_fact_key" query="_query" levels="_level"/>
-  <roma:ExplicitHierarchy id="_hierarchy_hasall_complex" name="Hierarchy - with HasAll and Names" allLevelName="theAllLevelName" allMemberName="theAllMemberName" hasAll="true" primaryKey="_col_fact_key" query="_query" levels="_level"/>
-  <roma:ExplicitHierarchy id="_hierarchy_hasall_simple" name="Hierarchy - with HasAll" hasAll="true" primaryKey="_col_fact_key" query="_query" levels="_level"/>
+  <roma:ExplicitHierarchy id="_hierarchy_hasall_simple" name="Hierarchy - with HasAll" primaryKey="_col_fact_key" query="_query" levels="_level"/>
+  <roma:ExplicitHierarchy id="_hierarchy_hasall_complex" name="Hierarchy - with HasAll and Names" allLevelName="theAllLevelName" allMemberName="theAllMemberName" primaryKey="_col_fact_key" query="_query" levels="_level"/>
+  <roma:ExplicitHierarchy id="_hierarchy_hasall_no" name="Hierarchy - Without HasAll" hasAll="false" primaryKey="_col_fact_key" query="_query" levels="_level"/>
   <roma:Catalog name="Hierarchy - HasAll-Level" cubes="_cube" dbschemas="_databaseschema"/>
   <roma:DatabaseSchema id="_databaseschema">
     <tables xsi:type="roma:PhysicalTable" id="_table" name="Fact">

@@ -224,21 +224,21 @@ This files represent the complete definition of the catalog.
       <columns xsi:type="roma:PhysicalColumn" id="_col_continent_name" name="NAME"/>
     </tables>
   </roma:DatabaseSchema>
-  <roma:TableQuery id="_query_fact" table="_tab_fact"/>
-  <roma:TableQuery id="_query_town" table="_tab_town"/>
   <roma:TableQuery id="_query_continent" table="_tab_continent"/>
   <roma:TableQuery id="_query_country" table="_tab_country"/>
-  <roma:JoinQuery id="_query_TownToCountry">
-    <left key="_col_town_countryid" query="_query_town"/>
-    <right key="_col_country_id" query="_query_CountryToContinent"/>
-  </roma:JoinQuery>
+  <roma:TableQuery id="_query_fact" table="_tab_fact"/>
+  <roma:TableQuery id="_query_town" table="_tab_town"/>
   <roma:JoinQuery id="_query_CountryToContinent">
     <left key="_col_country_continentid" query="_query_country"/>
     <right key="_col_continent_id" query="_query_continent"/>
   </roma:JoinQuery>
-  <roma:Level id="_level_country" name="County" column="_col_country_id" nameColumn="_col_country_name"/>
-  <roma:Level id="_level_town" name="Town" column="_col_town_id" nameColumn="_col_town_name"/>
+  <roma:JoinQuery id="_query_TownToCountry">
+    <left key="_col_town_countryid" query="_query_town"/>
+    <right key="_col_country_id" query="_query_CountryToContinent"/>
+  </roma:JoinQuery>
   <roma:Level id="_level_continent" name="Continent" column="_col_continent_id" nameColumn="_col_continent_name"/>
+  <roma:Level id="_level_town" name="Town" column="_col_town_id" nameColumn="_col_town_name"/>
+  <roma:Level id="_level_country" name="County" column="_col_country_id" nameColumn="_col_country_name"/>
   <roma:StandardDimension id="_dim" name="Continent - Country - Town" hierarchies="_hierarchy_town"/>
   <roma:PhysicalCube id="_cube" name="Cube Query linked Tables" query="_query_fact">
     <dimensionConnectors foreignKey="_col_fact_townId" dimension="_dim"/>

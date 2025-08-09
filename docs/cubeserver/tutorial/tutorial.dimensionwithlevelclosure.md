@@ -14,7 +14,7 @@ This files represent the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:ParentChildHierarchy id="Hierarchy1" name="Hierarchy1" hasAll="true" primaryKey="Hierarchy_KEY" query="HierarchyQuery" parentColumn="Hierarchy_PARENT_KEY" level="Level">
+  <roma:ParentChildHierarchy id="Hierarchy1" name="Hierarchy1" primaryKey="Hierarchy_KEY" query="HierarchyQuery" parentColumn="Hierarchy_PARENT_KEY" level="Level">
     <parentChildLink childColumn="Closure_CHILD_KEY" parentColumn="Closure_PARENT_KEY">
       <table id="ClosureQuery" table="Closure"/>
     </parentChildLink>

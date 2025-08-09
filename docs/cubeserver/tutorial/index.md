@@ -65,11 +65,41 @@ A recommended reading order is provided below to help you build your understandi
 
 [Level - MemberProperties Intro](./tutorial.cube.level.member.property.intro.md)
 
+[Cube - logic functions](./tutorial.functions.logic.md)
+
 [Cube - CalculatedMembers Intro](./tutorial.cube.calculatedmember.intro.md)
 
-[Kpi - Introduction](./tutorial.cube.kpi.intro.md)
+[Cube - CalculatedMembers with different colors](./tutorial.cube.calculatedmember.color.md)
 
-[Kpi - parent ring](./tutorial.cube.kpi.parent.ring.md)
+[Cube with roles access database schema](./tutorial.access.databaseschemagrand.md)
+
+[Cube with roles access table](./tutorial.access.tablegrand.md)
+
+[Cube with roles access column](./tutorial.access.columngrand.md)
+
+[Cube with roles access catalog](./tutorial.access.cataloggrand.md)
+
+[Cube with role CubeGrant](./tutorial.access.cubegrand.md)
+
+[Cube with role access DimensionGrant](./tutorial.access.dimensiongrand.md)
+
+[Cube with HierarchyGrant](./tutorial.access.hierarchygrand.md)
+
+[Cube with access all dimension_cube1 access to A only](./tutorial.access.membergrand.md)
+
+[Catalog with cube with different member identifiers](./tutorial.member.identifier.md)
+
+[Kpi - Introduction](./tutorial.kpi.intro.md)
+
+[Minimal Cube with KPI with all properties](./tutorial.kpi.all.md)
+
+[Kpi - parent ring](./tutorial.kpi.parent.ring.md)
+
+[Cube with virtual cube with kpi](./tutorial.kpi.virtualcube.md)
+
+[Cube with NamedSets](./tutorial.namedset.md)
+
+[Minimal Cube with Time_Dimension](./tutorial.dimension.timedimension.md)
 
 [Schulwesen](./complex.school.md)
 
@@ -91,19 +121,11 @@ A recommended reading order is provided below to help you build your understandi
 
 [Minimal_Virtual_Cubes_With_Measures](./tutorial.virtualcube.md)
 
-[Minimal_Cube_with_Time_Dimension](./tutorial.timedimension.md)
-
-[Cube_with_NamedSet](./tutorial.namedset.md)
-
 [Minimal_Cubes_With_MeasureExpression](./tutorial.measureexpression.md)
 
 [Minimal_Single_Hierarchy_Hidden_Members_with_IfParentsName](./tutorial.levelifparentsname.md)
 
 [Minimal_Single_Hierarchy_Hidden_Members_with_IfBlankName](./tutorial.levelifblankname.md)
-
-[Cube_with_virtual_cube_with_kpi](./tutorial.kpivirtualcube.md)
-
-[Minimal_Cubes_With_KPI_all_Properties](./tutorial.kpiall.md)
 
 [CubeOneMeasureInlineTableLevelPhysicalAndInlineTables](./tutorial.inlinetablewithphysical.md)
 
@@ -140,13 +162,3 @@ A recommended reading order is provided below to help you build your understandi
 [Cube_with_Aggregate_tables](./tutorial.aggregatetables.md)
 
 [Cube_with_table_reference_with_AggExclude](./tutorial.aggexclude.md)
-
-[Cube_with_access_all_dimension](./tutorial.accessschemagrand.md)
-
-[Cube_with_access_all_dimension_cube1_access_to_A_only](./tutorial.accesshierarchygrand.md)
-
-[Cube_with_access_database_schema](./tutorial.accessdbschemagrand.md)
-
-[Cube_with_access_all_dimension_cube1_access_only](./tutorial.accesscubegrand.md)
-
-[Cube_with_role_access_all_none_custom](./tutorial.accessallnonecustom.md)

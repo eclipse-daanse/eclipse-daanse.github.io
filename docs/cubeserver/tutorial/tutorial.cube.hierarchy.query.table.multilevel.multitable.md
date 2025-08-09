@@ -135,8 +135,8 @@ This files represent the complete definition of the catalog.
   </roma:DatabaseSchema>
   <roma:TableQuery id="_Query_LevelTown" table="_tab_town"/>
   <roma:TableQuery id="_query_Fact" table="_tab_fact"/>
-  <roma:Level id="_level_town" name="Town" column="_col_town_id" nameColumn="_col_town_name"/>
   <roma:Level id="_level_country" name="Country" column="_col_country"/>
+  <roma:Level id="_level_town" name="Town" column="_col_town_id" nameColumn="_col_town_name"/>
   <roma:StandardDimension id="_dim_town" name="Town" hierarchies="_hierarchy_town"/>
   <roma:PhysicalCube id="_cube" name="Cube Query linked Tables" query="_query_Fact">
     <dimensionConnectors foreignKey="_col_fact_townId" dimension="_dim_town"/>

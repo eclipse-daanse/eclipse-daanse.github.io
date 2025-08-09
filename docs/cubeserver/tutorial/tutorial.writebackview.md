@@ -15,7 +15,7 @@ This files represent the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:ExplicitHierarchy id="HierarchyWithHasAll" name="HierarchyWithHasAll" hasAll="true" primaryKey="L1_L2" query="joinQuery" levels="L1Level L2Level"/>
+  <roma:ExplicitHierarchy id="HierarchyWithHasAll" name="HierarchyWithHasAll" primaryKey="L1_L2" query="joinQuery" levels="L1Level L2Level"/>
   <roma:Catalog description="Schema with writeback with fact as sql view" name="tutorial_for_writeback_with_fact_view" cubes="C" dbschemas="databaseSchema"/>
   <roma:DatabaseSchema id="databaseSchema">
     <tables xsi:type="roma:PhysicalTable" id="L1" name="L1">

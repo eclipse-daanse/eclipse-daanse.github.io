@@ -15,7 +15,7 @@ This files represent the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:ParentChildHierarchy id="hierarchy" allMemberName="All Employees" hasAll="true" primaryKey="Fact_employee_id" query="FactQuery" nullParentValue="0" parentColumn="Fact_supervisor_id" level="EmployeeIdLevel">
+  <roma:ParentChildHierarchy id="hierarchy" allMemberName="All Employees" primaryKey="Fact_employee_id" query="FactQuery" nullParentValue="0" parentColumn="Fact_supervisor_id" level="EmployeeIdLevel">
     <parentChildLink childColumn="employee_closure_employee_id" parentColumn="employee_closure_supervisor_id">
       <table id="EmployeeClosureQuery" table="employee_closure"/>
     </parentChildLink>

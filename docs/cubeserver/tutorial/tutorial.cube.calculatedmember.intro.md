@@ -51,7 +51,7 @@ The Hierarchy is defined with the hasAll property set to true and the one level.
 
 
 ```xml
-<roma:ExplicitHierarchy  id="_hierarchy" name="theHierarchy" hasAll="true" primaryKey="_col_fact_key" query="_query" levels="_level"/>
+<roma:ExplicitHierarchy  id="_hierarchy" name="theHierarchy" primaryKey="_col_fact_key" query="_query" levels="_level"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -112,7 +112,7 @@ This files represent the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:ExplicitHierarchy id="_hierarchy" name="theHierarchy" hasAll="true" primaryKey="_col_fact_key" query="_query" levels="_level"/>
+  <roma:ExplicitHierarchy id="_hierarchy" name="theHierarchy" primaryKey="_col_fact_key" query="_query" levels="_level"/>
   <roma:Catalog name="Cube - CalculatedMembers Intro" cubes="_cube" dbschemas="_databaseschema"/>
   <roma:DatabaseSchema id="_databaseschema">
     <tables xsi:type="roma:PhysicalTable" id="_table_fact" name="Fact">
