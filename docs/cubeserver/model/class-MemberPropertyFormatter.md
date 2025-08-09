@@ -5,7 +5,7 @@ group: Class
 
 # MemberPropertyFormatter<a name="class-memberpropertyformatter"></a>
 
-
+Specialized formatter for controlling the presentation of member properties in dimensional browsers, tooltip displays, drill-through results, and other contexts where additional member attributes need to be presented in user-friendly, contextually appropriate formats.
 ## Extends
 - Formatter [🔗](./class-Formatter)- IMemberPropertyFormatter [🔗](./class-IMemberPropertyFormatter)
 ## Attributes
@@ -15,7 +15,7 @@ group: Class
     <tr>
       <th>Name</th>
       <th>Id</th>
-      <th>Typ</th>
+      <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
     </tr>
@@ -30,7 +30,7 @@ group: Class
   <thead>
     <tr>
       <th>Name</th>
-      <th>Typ</th>
+      <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
       <th>Containment</th>

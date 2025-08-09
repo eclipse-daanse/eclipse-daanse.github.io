@@ -5,7 +5,7 @@ group: Class
 
 # AccessColumnGrant<a name="class-accesscolumngrant"></a>
 
-
+Provides the most granular level of database security control by defining access permissions for individual database columns, enabling extremely precise data governance policies that can restrict access to specific data elements based on sensitivity, regulatory requirements, privacy concerns, or business confidentiality needs.
 ## Extends
 
 ## Attributes
@@ -15,7 +15,7 @@ group: Class
     <tr>
       <th>Name</th>
       <th>Id</th>
-      <th>Typ</th>
+      <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
     </tr>
@@ -29,7 +29,7 @@ group: Class
       <td>1</td>
     </tr>
     <tr>
-      <td colspan="5"><em> here you will see the description.</em></td>
+      <td colspan="5"><em>Specifies the access level for the column using ColumnAccess enumeration values, providing the finest-grained control over data access at the individual column level.</em></td>
     </tr>
   </tbody>
 </table>
@@ -40,7 +40,7 @@ group: Class
   <thead>
     <tr>
       <th>Name</th>
-      <th>Typ</th>
+      <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
       <th>Containment</th>
@@ -55,7 +55,7 @@ group: Class
       <td>false</td>
     </tr>
     <tr>
-      <td colspan="5"><em> here you will see the description.</em></td>
+      <td colspan="5"><em>References the specific column to which this access grant applies, establishing the security boundary at the individual column level.</em></td>
     </tr>
   </tbody>
 </table>

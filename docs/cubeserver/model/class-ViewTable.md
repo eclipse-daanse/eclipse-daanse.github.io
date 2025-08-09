@@ -5,7 +5,7 @@ group: Class
 
 # ViewTable<a name="class-viewtable"></a>
 
-
+Represents a database view that provides a logical table interface over underlying physical tables. ViewTable enables complex OLAP mappings that require data transformation or aggregation at the database level.
 ## Extends
 - Table [🔗](./class-Table)
 ## Attributes
@@ -15,7 +15,7 @@ group: Class
     <tr>
       <th>Name</th>
       <th>Id</th>
-      <th>Typ</th>
+      <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
     </tr>
@@ -30,7 +30,7 @@ group: Class
   <thead>
     <tr>
       <th>Name</th>
-      <th>Typ</th>
+      <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
       <th>Containment</th>

@@ -5,7 +5,7 @@ group: Class
 
 # Table<a name="class-table"></a>
 
-
+Abstract base class for database tables that serve as data sources for OLAP operations. Table defines common structure and metadata for physical tables, views, and queries used in dimensional modeling.
 ## Extends
 - AbstractElement [🔗](./class-AbstractElement)
 ## Attributes
@@ -15,7 +15,7 @@ group: Class
     <tr>
       <th>Name</th>
       <th>Id</th>
-      <th>Typ</th>
+      <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
     </tr>
@@ -30,7 +30,7 @@ group: Class
   <thead>
     <tr>
       <th>Name</th>
-      <th>Typ</th>
+      <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
       <th>Containment</th>
@@ -45,7 +45,7 @@ group: Class
       <td>true</td>
     </tr>
     <tr>
-      <td colspan="5"><em> here you will see the description.</em></td>
+      <td colspan="5"><em>Collection of columns that define the table structure. Columns specify data types, constraints, and metadata required for OLAP dimension and measure mappings.</em></td>
     </tr>
     <tr>
       <td><strong>schema</strong></td>
@@ -55,7 +55,7 @@ group: Class
       <td>false</td>
     </tr>
     <tr>
-      <td colspan="5"><em> here you will see the description.</em></td>
+      <td colspan="5"><em>Reference to the parent database schema that contains this table. Establishes the schema-table relationship for proper database organization and namespace management.</em></td>
     </tr>
   </tbody>
 </table>

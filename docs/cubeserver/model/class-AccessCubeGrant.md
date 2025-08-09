@@ -5,7 +5,7 @@ group: Class
 
 # AccessCubeGrant<a name="class-accesscubegrant"></a>
 
-
+Defines cube-level security permissions that control access to a specific OLAP cube and provide the foundation for more granular dimension, hierarchy, and member-level access controls within that analytical context. AccessCubeGrant operates as the primary business-domain security boundary, since cubes typically represent complete analytical subjects such as Sales Analysis, Financial Reporting, or Operations Management that align with organizational responsibilities and business processes.
 ## Extends
 
 ## Attributes
@@ -15,7 +15,7 @@ group: Class
     <tr>
       <th>Name</th>
       <th>Id</th>
-      <th>Typ</th>
+      <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
     </tr>
@@ -29,7 +29,7 @@ group: Class
       <td>1</td>
     </tr>
     <tr>
-      <td colspan="5"><em> here you will see the description.</em></td>
+      <td colspan="5"><em>Specifies the access level for the cube using the CubeAccess enumeration values (all, none, custom), determining whether role members can view cube data and structure.</em></td>
     </tr>
   </tbody>
 </table>
@@ -40,7 +40,7 @@ group: Class
   <thead>
     <tr>
       <th>Name</th>
-      <th>Typ</th>
+      <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
       <th>Containment</th>
@@ -55,7 +55,7 @@ group: Class
       <td>true</td>
     </tr>
     <tr>
-      <td colspan="5"><em> here you will see the description.</em></td>
+      <td colspan="5"><em>Collection of dimension-level access grants that provide fine-grained security control over specific dimensions within the cube's multidimensional space.</em></td>
     </tr>
     <tr>
       <td><strong>hierarchyGrants</strong></td>
@@ -65,7 +65,7 @@ group: Class
       <td>true</td>
     </tr>
     <tr>
-      <td colspan="5"><em> here you will see the description.</em></td>
+      <td colspan="5"><em>Collection of hierarchy-level access grants that define granular security permissions for specific hierarchies within the cube's dimensional structure.</em></td>
     </tr>
     <tr>
       <td><strong>cube</strong></td>
@@ -75,7 +75,7 @@ group: Class
       <td>false</td>
     </tr>
     <tr>
-      <td colspan="5"><em> here you will see the description.</em></td>
+      <td colspan="5"><em>References the specific cube instance to which this access grant applies, establishing the security boundary for the targeted analytical domain.</em></td>
     </tr>
   </tbody>
 </table>

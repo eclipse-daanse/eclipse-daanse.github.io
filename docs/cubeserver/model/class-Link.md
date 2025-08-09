@@ -5,7 +5,7 @@ group: Class
 
 # Link<a name="class-link"></a>
 
-
+Defines a foreign key relationship between two database tables, establishing referential integrity constraints that are essential for dimensional modeling in OLAP systems. Links connect fact tables to dimension tables, enabling proper join relationships for star and snowflake schema implementations.
 ## Extends
 
 ## Attributes
@@ -15,7 +15,7 @@ group: Class
     <tr>
       <th>Name</th>
       <th>Id</th>
-      <th>Typ</th>
+      <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
     </tr>
@@ -30,7 +30,7 @@ group: Class
   <thead>
     <tr>
       <th>Name</th>
-      <th>Typ</th>
+      <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
       <th>Containment</th>
@@ -45,7 +45,7 @@ group: Class
       <td>false</td>
     </tr>
     <tr>
-      <td colspan="5"><em> here you will see the description.</em></td>
+      <td colspan="5"><em>Reference to the primary key column in the target dimension table. This column serves as the unique identifier that foreign key columns reference to establish table relationships in the dimensional model.</em></td>
     </tr>
     <tr>
       <td><strong>foreignKey</strong></td>
@@ -55,7 +55,7 @@ group: Class
       <td>false</td>
     </tr>
     <tr>
-      <td colspan="5"><em> here you will see the description.</em></td>
+      <td colspan="5"><em>Reference to the foreign key column in the source table (typically a fact table) that points to the primary key in the target dimension table. This column contains dimension key values that enable joins between fact and dimension tables.</em></td>
     </tr>
   </tbody>
 </table>

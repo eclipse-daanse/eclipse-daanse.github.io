@@ -14,7 +14,7 @@ group: Class
     <tr>
       <th>Name</th>
       <th>Id</th>
-      <th>Typ</th>
+      <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
     </tr>
@@ -28,7 +28,7 @@ group: Class
       <td>1</td>
     </tr>
     <tr>
-      <td colspan="5"><em> here you will see the description.</em></td>
+      <td colspan="5"><em></em></td>
     </tr>
     <tr>
       <td><strong>value</strong></td>
@@ -38,7 +38,7 @@ group: Class
       <td>1</td>
     </tr>
     <tr>
-      <td colspan="5"><em> here you will see the description.</em></td>
+      <td colspan="5"><em></em></td>
     </tr>
     <tr>
       <td><strong>orderMajor</strong></td>
@@ -48,7 +48,7 @@ group: Class
       <td>1</td>
     </tr>
     <tr>
-      <td colspan="5"><em> here you will see the description.</em></td>
+      <td colspan="5"><em></em></td>
     </tr>
     <tr>
       <td><strong>orderMinor</strong></td>
@@ -58,7 +58,7 @@ group: Class
       <td>1</td>
     </tr>
     <tr>
-      <td colspan="5"><em> here you will see the description.</em></td>
+      <td colspan="5"><em></em></td>
     </tr>
     <tr>
       <td><strong>orderMicro</strong></td>
@@ -68,7 +68,7 @@ group: Class
       <td>1</td>
     </tr>
     <tr>
-      <td colspan="5"><em> here you will see the description.</em></td>
+      <td colspan="5"><em></em></td>
     </tr>
     <tr>
       <td><strong>showContainer</strong></td>
@@ -78,7 +78,7 @@ group: Class
       <td>1</td>
     </tr>
     <tr>
-      <td colspan="5"><em> here you will see the description.</em></td>
+      <td colspan="5"><em></em></td>
     </tr>
     <tr>
       <td><strong>showContainments</strong></td>
@@ -88,7 +88,7 @@ group: Class
       <td>1</td>
     </tr>
     <tr>
-      <td colspan="5"><em> here you will see the description.</em></td>
+      <td colspan="5"><em></em></td>
     </tr>
   </tbody>
 </table>
@@ -99,7 +99,7 @@ group: Class
   <thead>
     <tr>
       <th>Name</th>
-      <th>Typ</th>
+      <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
       <th>Containment</th>

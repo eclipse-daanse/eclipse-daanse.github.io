@@ -5,7 +5,7 @@ group: Class
 
 # DatabaseSchema<a name="class-databaseschema"></a>
 
-
+Defines a database schema containing tables and their structural relationships. DatabaseSchema provides the logical grouping of tables that serve as the data foundation for OLAP cube construction and dimensional modeling.
 ## Extends
 - AbstractElement [🔗](./class-AbstractElement)
 ## Attributes
@@ -15,7 +15,7 @@ group: Class
     <tr>
       <th>Name</th>
       <th>Id</th>
-      <th>Typ</th>
+      <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
     </tr>
@@ -30,7 +30,7 @@ group: Class
   <thead>
     <tr>
       <th>Name</th>
-      <th>Typ</th>
+      <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
       <th>Containment</th>
@@ -45,7 +45,7 @@ group: Class
       <td>true</td>
     </tr>
     <tr>
-      <td colspan="5"><em> here you will see the description.</em></td>
+      <td colspan="5"><em>Collection of tables within this database schema. Tables include fact tables, dimension tables, and aggregation tables that provide the physical data structure for OLAP operations.</em></td>
     </tr>
   </tbody>
 </table>

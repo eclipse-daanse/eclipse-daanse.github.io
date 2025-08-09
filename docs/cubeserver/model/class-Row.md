@@ -5,7 +5,7 @@ group: Class
 
 # Row<a name="class-row"></a>
 
-
+Represents a single data row within an InlineTable, containing a collection of column values. Row provides the structure for embedding tabular data directly in the OLAP schema definition.
 ## Extends
 
 ## Attributes
@@ -15,7 +15,7 @@ group: Class
     <tr>
       <th>Name</th>
       <th>Id</th>
-      <th>Typ</th>
+      <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
     </tr>
@@ -30,7 +30,7 @@ group: Class
   <thead>
     <tr>
       <th>Name</th>
-      <th>Typ</th>
+      <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
       <th>Containment</th>
@@ -45,7 +45,7 @@ group: Class
       <td>true</td>
     </tr>
     <tr>
-      <td colspan="5"><em> here you will see the description.</em></td>
+      <td colspan="5"><em>Collection of column values for this row. Each RowValue pairs a column reference with its corresponding data value, defining the complete content of this table row.</em></td>
     </tr>
   </tbody>
 </table>

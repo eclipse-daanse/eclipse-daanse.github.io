@@ -5,7 +5,7 @@ group: Class
 
 # AccessHierarchyGrant<a name="class-accesshierarchygrant"></a>
 
-
+Provides sophisticated hierarchy-level access control that enables fine-grained security policies for dimensional navigation, member visibility, and aggregation behavior within a specific hierarchy. AccessHierarchyGrant represents one of the most powerful and complex aspects of the OLAP security model, supporting advanced scenarios including member-level restrictions, level-based access boundaries, dynamic security expressions, and rollup policy controls that determine how aggregate values are calculated when some members are inaccessible.
 ## Extends
 
 ## Attributes
@@ -15,7 +15,7 @@ group: Class
     <tr>
       <th>Name</th>
       <th>Id</th>
-      <th>Typ</th>
+      <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
     </tr>
@@ -29,7 +29,7 @@ group: Class
       <td>1</td>
     </tr>
     <tr>
-      <td colspan="5"><em> here you will see the description.</em></td>
+      <td colspan="5"><em>Specifies the access level for the hierarchy using HierarchyAccess enumeration values, controlling overall hierarchy visibility and navigation permissions.</em></td>
     </tr>
     <tr>
       <td><strong>rollupPolicy</strong></td>
@@ -39,7 +39,7 @@ group: Class
       <td>1</td>
     </tr>
     <tr>
-      <td colspan="5"><em> here you will see the description.</em></td>
+      <td colspan="5"><em>Defines how aggregate values are calculated when some hierarchy members are inaccessible, ensuring data consistency and security in partial access scenarios.</em></td>
     </tr>
   </tbody>
 </table>
@@ -50,7 +50,7 @@ group: Class
   <thead>
     <tr>
       <th>Name</th>
-      <th>Typ</th>
+      <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
       <th>Containment</th>
@@ -65,7 +65,7 @@ group: Class
       <td>true</td>
     </tr>
     <tr>
-      <td colspan="5"><em> here you will see the description.</em></td>
+      <td colspan="5"><em>Collection of member-level access grants that provide the finest level of control over individual members within the hierarchy.</em></td>
     </tr>
     <tr>
       <td><strong>hierarchy</strong></td>
@@ -75,7 +75,7 @@ group: Class
       <td>false</td>
     </tr>
     <tr>
-      <td colspan="5"><em> here you will see the description.</em></td>
+      <td colspan="5"><em>References the specific hierarchy to which this access grant applies, establishing the security boundary at the hierarchy level.</em></td>
     </tr>
     <tr>
       <td><strong>bottomLevel</strong></td>
@@ -85,7 +85,7 @@ group: Class
       <td>false</td>
     </tr>
     <tr>
-      <td colspan="5"><em> here you will see the description.</em></td>
+      <td colspan="5"><em>Optional reference to the deepest level in the hierarchy that role members can access, establishing a floor for dimensional navigation.</em></td>
     </tr>
     <tr>
       <td><strong>topLevel</strong></td>
@@ -95,7 +95,7 @@ group: Class
       <td>false</td>
     </tr>
     <tr>
-      <td colspan="5"><em> here you will see the description.</em></td>
+      <td colspan="5"><em>Optional reference to the highest level in the hierarchy that role members can access, establishing a ceiling for dimensional navigation.</em></td>
     </tr>
   </tbody>
 </table>

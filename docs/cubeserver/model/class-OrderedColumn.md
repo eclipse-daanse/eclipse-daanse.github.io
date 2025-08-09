@@ -5,7 +5,7 @@ group: Class
 
 # OrderedColumn<a name="class-orderedcolumn"></a>
 
-
+Represents a column with specific ordering information used in queries and result sets. OrderedColumn is typically used in OLAP contexts where explicit column ordering is required for query processing or result presentation.
 ## Extends
 - Column [🔗](./class-Column)
 ## Attributes
@@ -15,7 +15,7 @@ group: Class
     <tr>
       <th>Name</th>
       <th>Id</th>
-      <th>Typ</th>
+      <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
     </tr>
@@ -29,7 +29,7 @@ group: Class
       <td>1</td>
     </tr>
     <tr>
-      <td colspan="5"><em> here you will see the description.</em></td>
+      <td colspan="5"><em>Boolean flag indicating sort direction. When true, sort in ascending order; when false, sort in descending order. Defaults to true for ascending sort.</em></td>
     </tr>
   </tbody>
 </table>
@@ -40,7 +40,7 @@ group: Class
   <thead>
     <tr>
       <th>Name</th>
-      <th>Typ</th>
+      <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
       <th>Containment</th>
@@ -55,7 +55,7 @@ group: Class
       <td>false</td>
     </tr>
     <tr>
-      <td colspan="5"><em> here you will see the description.</em></td>
+      <td colspan="5"><em>Required reference to the column that provides the ordering basis. This column's values determine the sort order for query results and dimensional member presentation.</em></td>
     </tr>
   </tbody>
 </table>
@@ -66,6 +66,7 @@ group: Class
 
 - TextAggMeasure[🔗](./class-TextAggMeasure) → orderByColumns
 - PercentileMeasure[🔗](./class-PercentileMeasure) → column
+- NthAggMeasure[🔗](./class-NthAggMeasure) → orderByColumns
 
 ## ClassDiagramm
 
