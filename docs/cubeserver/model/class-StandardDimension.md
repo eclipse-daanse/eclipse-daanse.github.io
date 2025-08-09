@@ -5,7 +5,7 @@ group: Class
 
 # StandardDimension<a name="class-standarddimension"></a>
 
-
+General-purpose dimension for non-temporal analytical axes such as Geography, Product Categories, Customer Segments, or any other business classification hierarchy. StandardDimensions provide flexible hierarchical structures with configurable levels, member properties, and ordering rules that can model complex business taxonomies and support drill-down/drill-up navigation patterns.
 ## Extends
 - Dimension [🔗](./class-Dimension)
 ## Attributes
@@ -15,7 +15,7 @@ group: Class
     <tr>
       <th>Name</th>
       <th>Id</th>
-      <th>Typ</th>
+      <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
     </tr>
@@ -30,7 +30,7 @@ group: Class
   <thead>
     <tr>
       <th>Name</th>
-      <th>Typ</th>
+      <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
       <th>Containment</th>

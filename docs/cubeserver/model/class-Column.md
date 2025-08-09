@@ -5,7 +5,7 @@ group: Class
 
 # Column<a name="class-column"></a>
 
-
+Abstract base class for database columns that define data structure and metadata for OLAP mappings. Column provides common attributes for data type, size, and constraints used in dimensional modeling and measure definitions.
 ## Extends
 - AbstractElement [🔗](./class-AbstractElement)
 ## Attributes
@@ -15,7 +15,7 @@ group: Class
     <tr>
       <th>Name</th>
       <th>Id</th>
-      <th>Typ</th>
+      <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
     </tr>
@@ -29,7 +29,7 @@ group: Class
       <td>1</td>
     </tr>
     <tr>
-      <td colspan="5"><em> here you will see the description.</em></td>
+      <td colspan="5"><em>Data type of the column specifying the kind of data stored. Column type determines how data is processed in OLAP operations and dimensional mappings. Defaults to Varchar.</em></td>
     </tr>
     <tr>
       <td><strong>columnSize</strong></td>
@@ -39,7 +39,7 @@ group: Class
       <td>1</td>
     </tr>
     <tr>
-      <td colspan="5"><em> here you will see the description.</em></td>
+      <td colspan="5"><em>Maximum size or length of data that can be stored in this column. For character types, specifies maximum character count; for numeric types, specifies precision.</em></td>
     </tr>
     <tr>
       <td><strong>decimalDigits</strong></td>
@@ -49,7 +49,7 @@ group: Class
       <td>1</td>
     </tr>
     <tr>
-      <td colspan="5"><em> here you will see the description.</em></td>
+      <td colspan="5"><em>Number of digits to the right of the decimal point for numeric columns. Specifies the scale for decimal and numeric data types used in measure calculations.</em></td>
     </tr>
     <tr>
       <td><strong>charOctetLength</strong></td>
@@ -59,7 +59,7 @@ group: Class
       <td>1</td>
     </tr>
     <tr>
-      <td colspan="5"><em> here you will see the description.</em></td>
+      <td colspan="5"><em>Maximum length in bytes for character data types. Specifies the storage space required for variable-length character columns in the database.</em></td>
     </tr>
     <tr>
       <td><strong>numPrecRadix</strong></td>
@@ -69,7 +69,7 @@ group: Class
       <td>1</td>
     </tr>
     <tr>
-      <td colspan="5"><em> here you will see the description.</em></td>
+      <td colspan="5"><em>Radix for numeric precision, typically 10 for decimal or 2 for binary numeric types. Defines the base for interpreting the precision value of numeric columns.</em></td>
     </tr>
     <tr>
       <td><strong>nullable</strong></td>
@@ -79,7 +79,7 @@ group: Class
       <td>1</td>
     </tr>
     <tr>
-      <td colspan="5"><em> here you will see the description.</em></td>
+      <td colspan="5"><em>Boolean flag indicating whether the column can contain null values. Critical for OLAP operations as null handling affects aggregation calculations and dimensional member processing.</em></td>
     </tr>
   </tbody>
 </table>
@@ -90,7 +90,7 @@ group: Class
   <thead>
     <tr>
       <th>Name</th>
-      <th>Typ</th>
+      <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
       <th>Containment</th>
@@ -105,7 +105,7 @@ group: Class
       <td>false</td>
     </tr>
     <tr>
-      <td colspan="5"><em> here you will see the description.</em></td>
+      <td colspan="5"><em>Reference to the parent table that contains this column. Establishes the table-column relationship for proper database structure organization.</em></td>
     </tr>
     <tr>
       <td><strong>primaryLinks</strong></td>
@@ -115,7 +115,7 @@ group: Class
       <td>false</td>
     </tr>
     <tr>
-      <td colspan="5"><em> here you will see the description.</em></td>
+      <td colspan="5"><em>Collection of links where this column serves as the primary key. These links define relationships where this column is the target of foreign key references from other tables.</em></td>
     </tr>
     <tr>
       <td><strong>foreignLinks</strong></td>
@@ -125,7 +125,7 @@ group: Class
       <td>false</td>
     </tr>
     <tr>
-      <td colspan="5"><em> here you will see the description.</em></td>
+      <td colspan="5"><em>Collection of links where this column acts as a foreign key referencing primary keys in other tables. These links establish dimensional relationships in OLAP schemas.</em></td>
     </tr>
   </tbody>
 </table>
@@ -142,7 +142,7 @@ group: Class
 - Level[🔗](./class-Level) → column
 - Level[🔗](./class-Level) → nameColumn
 - Level[🔗](./class-Level) → ordinalColumn
-- Level[🔗](./class-Level) → parentColumn
+- ParentChildHierarchy[🔗](./class-ParentChildHierarchy) → parentColumn
 - MemberProperty[🔗](./class-MemberProperty) → column
 - ParentChildLink[🔗](./class-ParentChildLink) → childColumn
 - ParentChildLink[🔗](./class-ParentChildLink) → parentColumn

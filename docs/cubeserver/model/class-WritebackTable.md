@@ -5,7 +5,7 @@ group: Class
 
 # WritebackTable<a name="class-writebacktable"></a>
 
-
+Defines the physical database table structure that receives modified analytical data when users perform writeback operations. Maps cube measures and dimensional attributes to specific database columns where user modifications are persisted. Required for cubes that support data modification through OLAP interfaces. Integrates with WritebackUtil for SQL generation and allocation policy processing.
 ## Extends
 
 ## Attributes
@@ -15,7 +15,7 @@ group: Class
     <tr>
       <th>Name</th>
       <th>Id</th>
-      <th>Typ</th>
+      <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
     </tr>
@@ -29,7 +29,7 @@ group: Class
       <td>1</td>
     </tr>
     <tr>
-      <td colspan="5"><em> here you will see the description.</em></td>
+      <td colspan="5"><em>Database table name where writeback data is stored. Used by WritebackUtil.commit() to generate SQL INSERT statements. Must contain columns matching the WritebackMeasure and WritebackAttribute definitions plus system columns (ID, USER).</em></td>
     </tr>
     <tr>
       <td><strong>schema</strong></td>
@@ -39,7 +39,7 @@ group: Class
       <td>1</td>
     </tr>
     <tr>
-      <td colspan="5"><em> here you will see the description.</em></td>
+      <td colspan="5"><em>Optional database schema name qualifying the writeback table. When specified, used to construct fully qualified table names in SQL statements. Supports database environments requiring schema-based table organization.</em></td>
     </tr>
   </tbody>
 </table>
@@ -50,7 +50,7 @@ group: Class
   <thead>
     <tr>
       <th>Name</th>
-      <th>Typ</th>
+      <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
       <th>Containment</th>
@@ -65,7 +65,7 @@ group: Class
       <td>true</td>
     </tr>
     <tr>
-      <td colspan="5"><em> here you will see the description.</em></td>
+      <td colspan="5"><em>Collection of dimensional attributes that will be included in writeback operations. Each WritebackAttribute maps a dimension's members to database columns in the writeback table. Used to maintain dimensional context when persisting modified measure values.</em></td>
     </tr>
     <tr>
       <td><strong>writebackMeasure</strong></td>
@@ -75,7 +75,7 @@ group: Class
       <td>true</td>
     </tr>
     <tr>
-      <td colspan="5"><em> here you will see the description.</em></td>
+      <td colspan="5"><em>Collection of measures that can be modified through writeback operations. Each WritebackMeasure maps a cube measure to a database column where modified values are stored. Supports allocation policies (equal, weighted, increment) for distributing values across atomic cells.</em></td>
     </tr>
   </tbody>
 </table>

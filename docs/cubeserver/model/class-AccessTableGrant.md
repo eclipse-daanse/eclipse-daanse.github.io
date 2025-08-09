@@ -5,7 +5,7 @@ group: Class
 
 # AccessTableGrant<a name="class-accesstablegrant"></a>
 
-
+Defines table-level security permissions that control access to specific database tables and their columns, providing fine-grained data governance at the physical storage level.
 ## Extends
 
 ## Attributes
@@ -15,7 +15,7 @@ group: Class
     <tr>
       <th>Name</th>
       <th>Id</th>
-      <th>Typ</th>
+      <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
     </tr>
@@ -29,7 +29,7 @@ group: Class
       <td>1</td>
     </tr>
     <tr>
-      <td colspan="5"><em> here you will see the description.</em></td>
+      <td colspan="5"><em>Specifies the access level for the table using TableAccess enumeration values, controlling whether role members can view or modify table data.</em></td>
     </tr>
   </tbody>
 </table>
@@ -40,7 +40,7 @@ group: Class
   <thead>
     <tr>
       <th>Name</th>
-      <th>Typ</th>
+      <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
       <th>Containment</th>
@@ -55,7 +55,7 @@ group: Class
       <td>true</td>
     </tr>
     <tr>
-      <td colspan="5"><em> here you will see the description.</em></td>
+      <td colspan="5"><em>Collection of column-level access grants that provide the finest level of security control over individual columns within the table.</em></td>
     </tr>
     <tr>
       <td><strong>table</strong></td>
@@ -65,7 +65,7 @@ group: Class
       <td>false</td>
     </tr>
     <tr>
-      <td colspan="5"><em> here you will see the description.</em></td>
+      <td colspan="5"><em>References the specific table to which this access grant applies, establishing the security boundary at the table level.</em></td>
     </tr>
   </tbody>
 </table>

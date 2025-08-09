@@ -5,7 +5,7 @@ group: Class
 
 # DatabaseCatalog<a name="class-databasecatalog"></a>
 
-
+Represents a database catalog that organizes database schemas and external data links. DatabaseCatalog serves as the top-level container for database metadata, providing structured access to schema definitions and connection management.
 ## Extends
 - AbstractElement [🔗](./class-AbstractElement)
 ## Attributes
@@ -15,7 +15,7 @@ group: Class
     <tr>
       <th>Name</th>
       <th>Id</th>
-      <th>Typ</th>
+      <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
     </tr>
@@ -30,7 +30,7 @@ group: Class
   <thead>
     <tr>
       <th>Name</th>
-      <th>Typ</th>
+      <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
       <th>Containment</th>
@@ -45,7 +45,7 @@ group: Class
       <td>true</td>
     </tr>
     <tr>
-      <td colspan="5"><em> here you will see the description.</em></td>
+      <td colspan="5"><em>Collection of database schemas contained within this catalog. Each schema defines tables, columns, and relationships that form the physical data foundation for OLAP cubes and dimensions.</em></td>
     </tr>
     <tr>
       <td><strong>links</strong></td>
@@ -55,7 +55,7 @@ group: Class
       <td>true</td>
     </tr>
     <tr>
-      <td colspan="5"><em> here you will see the description.</em></td>
+      <td colspan="5"><em>Collection of external data links that connect to remote databases or data sources. Links enable distributed OLAP architectures where data can be accessed from multiple database systems.</em></td>
     </tr>
   </tbody>
 </table>

@@ -5,7 +5,7 @@ group: Class
 
 # AccessDimensionGrant<a name="class-accessdimensiongrant"></a>
 
-
+Defines dimension-level security permissions that control access to specific dimensions within a cube, providing targeted control over dimensional navigation and member visibility.
 ## Extends
 
 ## Attributes
@@ -15,7 +15,7 @@ group: Class
     <tr>
       <th>Name</th>
       <th>Id</th>
-      <th>Typ</th>
+      <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
     </tr>
@@ -29,7 +29,7 @@ group: Class
       <td>1</td>
     </tr>
     <tr>
-      <td colspan="5"><em> here you will see the description.</em></td>
+      <td colspan="5"><em>Specifies the access level for the dimension using DimensionAccess enumeration values, controlling whether role members can view and navigate the dimension.</em></td>
     </tr>
   </tbody>
 </table>
@@ -40,7 +40,7 @@ group: Class
   <thead>
     <tr>
       <th>Name</th>
-      <th>Typ</th>
+      <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
       <th>Containment</th>
@@ -55,7 +55,7 @@ group: Class
       <td>false</td>
     </tr>
     <tr>
-      <td colspan="5"><em> here you will see the description.</em></td>
+      <td colspan="5"><em>References the specific dimension to which this access grant applies, establishing the security boundary at the dimension level.</em></td>
     </tr>
   </tbody>
 </table>

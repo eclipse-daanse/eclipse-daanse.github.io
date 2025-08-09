@@ -18,7 +18,7 @@ Use this section to explore how the individual elements of your model are define
 URI: `https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping`
 Prefix: `roma`
 
-Here will be the description for the package.
+Eclipse Daanse ROLAP Mapping EMF Package - Enterprise-grade metamodel framework for defining comprehensive multidimensional analytical schemas, OLAP cube architectures, and sophisticated business intelligence data structures in Relational OLAP (ROLAP) systems. This EMF-based modeling framework represents the culmination of decades of OLAP research and enterprise deployment experience, providing a complete type system that seamlessly bridges the conceptual gap between traditional relational database structures and advanced multidimensional analytical paradigms required for modern business intelligence applications. Supports database schema modeling, multidimensional cube architectures, hierarchical dimensional modeling, advanced measure calculations, comprehensive security frameworks, aggregation optimization, writeback capabilities, cross-database compatibility, SQL integration, KPI management, and enterprise deployment patterns.
 
 ## PackageDiagram
 
@@ -51,18 +51,6 @@ classDiagram
       + name : EString
   }
     AbstractElement --> Annotation : annotations
-
-  class Enviroment {
-  }
-    Enviroment --> Catalog : schemas
-    Enviroment --> Cube : cubes
-    Enviroment --> Dimension : dimensions
-    Enviroment --> Hierarchy : hierarchies
-    Enviroment --> Level : levels
-    Enviroment --> Formatter : formatters
-    Enviroment --> AccessRole : accessRoles
-    Enviroment --> AggregationTable : aggregationTables
-    Enviroment --> AggregationExclude : aggregationExcludes
 
   class Catalog {
       + measuresDimensionName : EString
@@ -156,6 +144,12 @@ classDiagram
   }
     PercentileMeasure --> OrderedColumn : column
 
+  class NthAggMeasure {
+      + ignoreNulls : Boolean
+      + n : EIntegerObject
+  }
+    NthAggMeasure --> OrderedColumn : orderByColumns
+
   class CustomMeasure {
       + template : EString
       + properties : EString
@@ -233,7 +227,6 @@ classDiagram
       + uniqueKeyLevelName : EString
       + visible : Boolean
   }
-    Hierarchy --> Level : levels
     Hierarchy --> MemberReaderParameter : memberReaderParameters
     Hierarchy --> Column : primaryKey
     Hierarchy --> Query : query
@@ -242,19 +235,29 @@ classDiagram
       + approxRowCount : EString
       + hideMemberIf : HideMemberIf
       + type : LevelDefinition
-      + nullParentValue : EString
       + columnType : ColumnInternalDataType
       + uniqueMembers : Boolean
       + visible : Boolean
   }
-    Level --> ParentChildLink : parentChildLink
     Level --> MemberProperty : memberProperties
     Level --> MemberFormatter : memberFormatter
     Level --> Column : captionColumn
     Level --> Column : column
     Level --> Column : nameColumn
     Level --> Column : ordinalColumn
-    Level --> Column : parentColumn
+
+  class ExplicitHierarchy {
+  }
+    ExplicitHierarchy --> Level : levels
+
+  class ParentChildHierarchy {
+      + nullParentValue : EString
+      + parentAsLeafEnable : Boolean
+      + parentAsLeafNameFormat : EString
+  }
+    ParentChildHierarchy --> ParentChildLink : parentChildLink
+    ParentChildHierarchy --> Column : parentColumn
+    ParentChildHierarchy --> Level : level
 
   class MemberProperty {
       + dependsOnLevelValue : Boolean
@@ -635,6 +638,9 @@ classDiagram
 
 
 
+
+
+
   class IMemberPropertyFormatter {
   }
 
@@ -715,7 +721,6 @@ classDiagram
 - [Class DocumentedElement](./class-DocumentedElement.md)
 - [Class Annotation](./class-Annotation.md)
 - [Class AbstractElement](./class-AbstractElement.md)
-- [Class Enviroment](./class-Enviroment.md)
 - [Class Catalog](./class-Catalog.md)
 - [Class Cube](./class-Cube.md)
 - [Class PhysicalCube](./class-PhysicalCube.md)
@@ -732,6 +737,7 @@ classDiagram
 - [Class TextAggMeasure](./class-TextAggMeasure.md)
 - [Class BitAggMeasure](./class-BitAggMeasure.md)
 - [Class PercentileMeasure](./class-PercentileMeasure.md)
+- [Class NthAggMeasure](./class-NthAggMeasure.md)
 - [Class CustomMeasure](./class-CustomMeasure.md)
 - [Class SQLExpressionBaseMeasure](./class-SQLExpressionBaseMeasure.md)
 - [Class ColumnBaseMeasure](./class-ColumnBaseMeasure.md)
@@ -744,6 +750,8 @@ classDiagram
 - [Class StandardDimension](./class-StandardDimension.md)
 - [Class Hierarchy](./class-Hierarchy.md)
 - [Class Level](./class-Level.md)
+- [Class ExplicitHierarchy](./class-ExplicitHierarchy.md)
+- [Class ParentChildHierarchy](./class-ParentChildHierarchy.md)
 - [Class MemberProperty](./class-MemberProperty.md)
 - [Class CalculatedMember](./class-CalculatedMember.md)
 - [Class CalculatedMemberProperty](./class-CalculatedMemberProperty.md)

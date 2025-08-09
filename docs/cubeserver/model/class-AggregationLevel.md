@@ -5,7 +5,7 @@ group: Class
 
 # AggregationLevel<a name="class-aggregationlevel"></a>
 
-
+Maps a dimension level to a column in an aggregation table, defining how dimensional data is represented in pre-computed aggregation structures. AggregationLevel is fundamental to the aggregation matching algorithm, enabling the OLAP engine to determine whether a specific aggregation table contains the appropriate dimensional granularity to satisfy query requirements. Each mapping specifies the relationship between a logical dimension level (such as Product Category, Time Month, or Customer Region) and the physical column in the aggregation table that stores the corresponding dimension key values.
 ## Extends
 
 ## Attributes
@@ -15,7 +15,7 @@ group: Class
     <tr>
       <th>Name</th>
       <th>Id</th>
-      <th>Typ</th>
+      <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
     </tr>
@@ -29,7 +29,7 @@ group: Class
       <td>1</td>
     </tr>
     <tr>
-      <td colspan="5"><em> here you will see the description.</em></td>
+      <td colspan="5"><em>Boolean flag indicating whether this aggregation level represents a collapsed hierarchy level. When true, intermediate hierarchy levels are omitted in the aggregation table, allowing queries to roll up directly to higher levels without requiring intermediate level data.</em></td>
     </tr>
     <tr>
       <td><strong>name</strong></td>
@@ -39,7 +39,7 @@ group: Class
       <td>1</td>
     </tr>
     <tr>
-      <td colspan="5"><em> here you will see the description.</em></td>
+      <td colspan="5"><em>Required name identifier for the dimension level that this aggregation level represents. This name must correspond to a level defined in the cube schema, enabling the aggregation matching algorithm to identify appropriate aggregations for queries involving this level.</em></td>
     </tr>
   </tbody>
 </table>
@@ -50,7 +50,7 @@ group: Class
   <thead>
     <tr>
       <th>Name</th>
-      <th>Typ</th>
+      <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
       <th>Containment</th>
@@ -65,7 +65,7 @@ group: Class
       <td>true</td>
     </tr>
     <tr>
-      <td colspan="5"><em> here you will see the description.</em></td>
+      <td colspan="5"><em>Collection of property mappings that define how level properties are represented in the aggregation table. Each AggregationLevelProperty maps a level property (such as member captions, descriptions, or custom attributes) to its corresponding column in the aggregation table, enabling rich dimensional data access in aggregated queries.</em></td>
     </tr>
     <tr>
       <td><strong>captionColumn</strong></td>
@@ -75,7 +75,7 @@ group: Class
       <td>false</td>
     </tr>
     <tr>
-      <td colspan="5"><em> here you will see the description.</em></td>
+      <td colspan="5"><em>Optional reference to the column in the aggregation table that contains member caption values for this level. Caption columns provide user-friendly display names that can be shown in analytical interfaces instead of the technical key values.</em></td>
     </tr>
     <tr>
       <td><strong>column</strong></td>
@@ -85,7 +85,7 @@ group: Class
       <td>false</td>
     </tr>
     <tr>
-      <td colspan="5"><em> here you will see the description.</em></td>
+      <td colspan="5"><em>Required reference to the column in the aggregation table that stores the key values for this dimension level. This column contains the dimension member keys that correspond to the level definition, enabling proper aggregation matching and query optimization.</em></td>
     </tr>
     <tr>
       <td><strong>nameColumn</strong></td>
@@ -95,7 +95,7 @@ group: Class
       <td>false</td>
     </tr>
     <tr>
-      <td colspan="5"><em> here you will see the description.</em></td>
+      <td colspan="5"><em>Optional reference to the column in the aggregation table that contains member name values for this level. Name columns provide alternative identification for dimension members beyond the primary key column.</em></td>
     </tr>
     <tr>
       <td><strong>ordinalColumn</strong></td>
@@ -105,7 +105,7 @@ group: Class
       <td>false</td>
     </tr>
     <tr>
-      <td colspan="5"><em> here you will see the description.</em></td>
+      <td colspan="5"><em>Optional reference to the column in the aggregation table that contains ordinal values for level members. Ordinal columns provide explicit sort ordering for dimension members, enabling consistent member ordering in analytical results and user interfaces.</em></td>
     </tr>
   </tbody>
 </table>

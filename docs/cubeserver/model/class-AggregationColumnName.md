@@ -5,7 +5,7 @@ group: Class
 
 # AggregationColumnName<a name="class-aggregationcolumnname"></a>
 
-
+Specifies the column that stores fact count data in an aggregation table, enabling ROLAP engines to determine the number of base fact table rows that were aggregated into each summary row.
 ## Extends
 
 ## Attributes
@@ -15,7 +15,7 @@ group: Class
     <tr>
       <th>Name</th>
       <th>Id</th>
-      <th>Typ</th>
+      <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
     </tr>
@@ -30,7 +30,7 @@ group: Class
   <thead>
     <tr>
       <th>Name</th>
-      <th>Typ</th>
+      <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
       <th>Containment</th>
@@ -45,7 +45,7 @@ group: Class
       <td>false</td>
     </tr>
     <tr>
-      <td colspan="5"><em> here you will see the description.</em></td>
+      <td colspan="5"><em>References the physical database column containing the aggregated fact count values used by the ROLAP engine for query optimization and result validation.</em></td>
     </tr>
   </tbody>
 </table>

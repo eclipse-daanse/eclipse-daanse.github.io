@@ -5,7 +5,7 @@ group: Class
 
 # RowValue<a name="class-rowvalue"></a>
 
-
+Represents a single column value within a row of an InlineTable. RowValue pairs a column reference with its data value, providing the basic unit for embedding tabular data in OLAP schema definitions.
 ## Extends
 
 ## Attributes
@@ -15,7 +15,7 @@ group: Class
     <tr>
       <th>Name</th>
       <th>Id</th>
-      <th>Typ</th>
+      <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
     </tr>
@@ -29,7 +29,7 @@ group: Class
       <td>1</td>
     </tr>
     <tr>
-      <td colspan="5"><em> here you will see the description.</em></td>
+      <td colspan="5"><em>The actual data value for this column in string format. Values are converted to appropriate data types based on the column definition when processed by the OLAP engine.</em></td>
     </tr>
   </tbody>
 </table>
@@ -40,7 +40,7 @@ group: Class
   <thead>
     <tr>
       <th>Name</th>
-      <th>Typ</th>
+      <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
       <th>Containment</th>
@@ -55,7 +55,7 @@ group: Class
       <td>false</td>
     </tr>
     <tr>
-      <td colspan="5"><em> here you will see the description.</em></td>
+      <td colspan="5"><em>Required reference to the column definition that this value corresponds to. The column reference ensures proper data type mapping and structural consistency within the inline table.</em></td>
     </tr>
   </tbody>
 </table>

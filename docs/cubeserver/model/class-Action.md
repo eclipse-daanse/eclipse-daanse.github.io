@@ -5,7 +5,7 @@ group: Class
 
 # Action<a name="class-action"></a>
 
-
+Abstract base class for interactive actions that provide sophisticated user engagement capabilities within OLAP applications, enabling context-sensitive operations that can launch external applications, navigate to related content, execute business processes, or provide additional analytical functionality based on the user's current analytical context.
 ## Extends
 - AbstractElement [🔗](./class-AbstractElement)
 ## Attributes
@@ -15,7 +15,7 @@ group: Class
     <tr>
       <th>Name</th>
       <th>Id</th>
-      <th>Typ</th>
+      <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
     </tr>
@@ -30,7 +30,7 @@ group: Class
   <thead>
     <tr>
       <th>Name</th>
-      <th>Typ</th>
+      <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
       <th>Containment</th>

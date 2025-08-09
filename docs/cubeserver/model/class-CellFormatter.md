@@ -5,7 +5,7 @@ group: Class
 
 # CellFormatter<a name="class-cellformatter"></a>
 
-
+Specialized formatter for controlling the presentation of cell values in analytical grids, pivot tables, and other tabular presentations, providing sophisticated capabilities for transforming raw measure values into compelling, contextually appropriate visual displays that enhance user comprehension and support effective business communication.
 ## Extends
 - Formatter [🔗](./class-Formatter)
 ## Attributes
@@ -15,7 +15,7 @@ group: Class
     <tr>
       <th>Name</th>
       <th>Id</th>
-      <th>Typ</th>
+      <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
     </tr>
@@ -30,7 +30,7 @@ group: Class
   <thead>
     <tr>
       <th>Name</th>
-      <th>Typ</th>
+      <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
       <th>Containment</th>
