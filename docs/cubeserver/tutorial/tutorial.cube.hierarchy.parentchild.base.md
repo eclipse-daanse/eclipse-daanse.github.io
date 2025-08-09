@@ -15,7 +15,7 @@ This files represent the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:ParentChildHierarchy id="hierarchy" allMemberName="All" hasAll="true" primaryKey="_parent_name" query="FactQuery" parentColumn="_parent_parent" level="_level_name"/>
+  <roma:ParentChildHierarchy id="hierarchy" allMemberName="All" primaryKey="_parent_name" query="FactQuery" parentColumn="_parent_parent" level="_level_name"/>
   <roma:Catalog description="Schema of a minimal cube with cube dimension level with parent child" name="Minimal_Cube_with_cube_dimension_level_with_parent_child" cubes="Cube" dbschemas="databaseSchema"/>
   <roma:DatabaseSchema id="databaseSchema">
     <tables xsi:type="roma:PhysicalTable" id="_table_parent" name="Parent">

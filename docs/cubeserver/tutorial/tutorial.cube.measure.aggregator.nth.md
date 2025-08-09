@@ -71,7 +71,7 @@ This files represent the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:ExplicitHierarchy id="Hierarchy" name="Hierarchy" primaryKey="_col_id" query="_query" levels="_level"/>
+  <roma:ExplicitHierarchy id="Hierarchy" name="Hierarchy" hasAll="false" primaryKey="_col_id" query="_query" levels="_level"/>
   <roma:OrderedColumn id="_orderedColumn" column="_col_value"/>
   <roma:Catalog name="Measure - NTH value Aggragator" cubes="_cube" dbschemas="_databaseSchema"/>
   <roma:DatabaseSchema id="_databaseSchema">

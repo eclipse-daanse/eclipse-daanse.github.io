@@ -28,14 +28,14 @@ This files represent the complete definition of the catalog.
   </roma:DatabaseSchema>
   <roma:TableQuery id="c1TableQuery" table="C1_Fact"/>
   <roma:TableQuery id="c2TableQuery" table="C2_Fact"/>
-  <roma:PhysicalCube id="Cube1" name="Cube1" query="c1TableQuery">
-    <measureGroups>
-      <measures xsi:type="roma:SumMeasure" id="C1-Measure-Sum" name="C1-Measure-Sum" column="C1_Fact_VALUE"/>
-    </measureGroups>
-  </roma:PhysicalCube>
   <roma:PhysicalCube id="Cube2" name="Cube2" query="c2TableQuery">
     <measureGroups>
       <measures xsi:type="roma:SumMeasure" id="C2-Measure-Sum" name="C2-Measure-Sum" column="C2_Fact_VALUE"/>
+    </measureGroups>
+  </roma:PhysicalCube>
+  <roma:PhysicalCube id="Cube1" name="Cube1" query="c1TableQuery">
+    <measureGroups>
+      <measures xsi:type="roma:SumMeasure" id="C1-Measure-Sum" name="C1-Measure-Sum" column="C1_Fact_VALUE"/>
     </measureGroups>
   </roma:PhysicalCube>
   <roma:VirtualCube id="VirtualCubeMeasureOnly" name="VirtualCubeMeasureOnly" referencedMeasures="C1-Measure-Sum C2-Measure-Sum">

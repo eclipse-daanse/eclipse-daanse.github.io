@@ -18,7 +18,7 @@ This files represent the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:ExplicitHierarchy id="Hierarchy1" name="Hierarchy1" hasAll="true" primaryKey="HX_L2_KEY" query="joinQuery" levels="H1_Level1 H1_Level2"/>
+  <roma:ExplicitHierarchy id="Hierarchy1" name="Hierarchy1" primaryKey="HX_L2_KEY" query="joinQuery" levels="H1_Level1 H1_Level2"/>
   <roma:Catalog description="Schema of a minimal cube with level attribute" name="Minimal_Cube_with_cube_dimension_level_attribute" cubes="CubeMultipleHierarchy" dbschemas="databaseSchema"/>
   <roma:DatabaseSchema id="databaseSchema">
     <tables xsi:type="roma:PhysicalTable" id="Fact" name="Fact">
@@ -36,9 +36,9 @@ This files represent the complete definition of the catalog.
       <columns xsi:type="roma:PhysicalColumn" id="HX_L2_H2L1_KEY" name="H2L1_KEY" type="Integer"/>
     </tables>
   </roma:DatabaseSchema>
+  <roma:TableQuery id="FactQuery" table="Fact"/>
   <roma:TableQuery id="H1L1Query" table="H1_L1"/>
   <roma:TableQuery id="HxL2Query" table="HX_L2"/>
-  <roma:TableQuery id="FactQuery" table="Fact"/>
   <roma:JoinQuery id="joinQuery">
     <left key="HX_L2_H1L1_KEY" query="HxL2Query"/>
     <right key="H1_L1_KEY" query="H1L1Query"/>

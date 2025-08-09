@@ -18,8 +18,8 @@ This files represent the complete definition of the catalog.
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
   <roma:InlineTableQuery id="_query_country" alias="COUNTRY" table="_tab_COUNTRY"/>
-  <roma:ExplicitHierarchy id="_hierarchy" name="Hierarchy" primaryKey="_col_town_key" query="_query_hierarchy" levels="_level_country _level_town"/>
   <roma:InlineTableQuery id="_query_fact" alias="Fact" table="_tab_FACT"/>
+  <roma:ExplicitHierarchy id="_hierarchy" name="Hierarchy" primaryKey="_col_town_key" query="_query_hierarchy" levels="_level_country _level_town"/>
   <roma:Catalog description="Schema of a minimal cube consisting of one measurement and based on an virtual inline fact table and physical table town and country inline table" name="CubeOneMeasureInlineTableLevelPhysicalAndInlineTables" cubes="_cube" dbschemas="databaseSchema"/>
   <roma:DatabaseSchema id="databaseSchema">
     <tables xsi:type="roma:PhysicalTable" id="_tab_TOWN_Physical" name="TOWN">

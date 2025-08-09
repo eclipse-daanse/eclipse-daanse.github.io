@@ -174,9 +174,9 @@ This files represent the complete definition of the catalog.
       <columns xsi:type="roma:PhysicalColumn" id="_col_country_name" name="NAME"/>
     </tables>
   </roma:DatabaseSchema>
-  <roma:TableQuery id="_query_LevelCountry" table="_tab_country"/>
-  <roma:TableQuery id="_query_Fact" table="_tab_fact"/>
   <roma:TableQuery id="_query_LevelTown" table="_tab_town"/>
+  <roma:TableQuery id="_query_Fact" table="_tab_fact"/>
+  <roma:TableQuery id="_query_LevelCountry" table="_tab_country"/>
   <roma:JoinQuery id="_query_LevelTownToCountry">
     <left key="_col_town_id" query="_query_LevelTown"/>
     <right key="_col_country_id" query="_query_LevelCountry"/>

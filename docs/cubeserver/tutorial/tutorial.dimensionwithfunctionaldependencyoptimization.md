@@ -29,7 +29,7 @@ This files represent the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:ExplicitHierarchy id="hierarchy" hasAll="true" primaryKey="AUTOMOTIVE_DIM_AUTO_DIM_ID" uniqueKeyLevelName="Vehicle Identification Number" query="FactQuery" levels="Make Model ManufacturingPlant Vehicle_Identification_Number LicensePlateNum"/>
+  <roma:ExplicitHierarchy id="hierarchy" primaryKey="AUTOMOTIVE_DIM_AUTO_DIM_ID" uniqueKeyLevelName="Vehicle Identification Number" query="FactQuery" levels="Make Model ManufacturingPlant Vehicle_Identification_Number LicensePlateNum"/>
   <roma:Catalog description="Schema with cube dimension with functional dependency optimizations" name="Minimal_Cube_with_cube_dimension_with_functional_dependency_optimizations" cubes="Cube" dbschemas="databaseSchema"/>
   <roma:DatabaseSchema id="databaseSchema">
     <tables xsi:type="roma:PhysicalTable" id="AUTOMOTIVE_DIM" name="AUTOMOTIVE_DIM">
@@ -57,11 +57,11 @@ This files represent the complete definition of the catalog.
     <memberProperties id="Trim" name="Trim" column="AUTOMOTIVE_DIM_TRIM_ID" dependsOnLevelValue="true" propertyType="Numeric"/>
   </roma:Level>
   <roma:Level id="Model" name="Model" column="AUTOMOTIVE_DIM_MODEL_ID" nameColumn="AUTOMOTIVE_DIM_MODEL"/>
+  <roma:Level id="Make" name="Make" column="AUTOMOTIVE_DIM_MAKE_ID" nameColumn="AUTOMOTIVE_DIM_MAKE"/>
   <roma:Level id="ManufacturingPlant" name="ManufacturingPlant" column="AUTOMOTIVE_DIM_PLANT_ID" nameColumn="AUTOMOTIVE_DIM_PLANT">
     <memberProperties id="State" name="State" column="AUTOMOTIVE_DIM_PLANT_STATE_ID" dependsOnLevelValue="true" propertyType="Numeric"/>
     <memberProperties id="City" name="City" column="AUTOMOTIVE_DIM_PLANT_CITY_ID" dependsOnLevelValue="true" propertyType="Numeric"/>
   </roma:Level>
-  <roma:Level id="Make" name="Make" column="AUTOMOTIVE_DIM_MAKE_ID" nameColumn="AUTOMOTIVE_DIM_MAKE"/>
   <roma:Level id="LicensePlateNum" name="LicensePlateNum" column="AUTOMOTIVE_DIM_VEHICLE_ID">
     <memberProperties id="State" name="State" column="AUTOMOTIVE_DIM_LICENSE_STATE_ID" dependsOnLevelValue="true" propertyType="Numeric"/>
   </roma:Level>

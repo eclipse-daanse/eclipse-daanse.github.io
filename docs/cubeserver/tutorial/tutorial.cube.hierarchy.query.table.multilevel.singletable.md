@@ -17,6 +17,7 @@ The cube defined in this example is based on only one tables. The Fact table con
 ```xml
 <roma:DatabaseSchema   id="_dbschema">
   <tables xsi:type="roma:PhysicalTable" id="_tab_fact" name="Fact">
+    <columns xsi:type="roma:PhysicalColumn" id="_col_fact_key" name="KEY"/>
     <columns xsi:type="roma:PhysicalColumn" id="_col_fact_country" name="KEY"/>
     <columns xsi:type="roma:PhysicalColumn" id="_col_fact_value" name="VALUE" type="Integer"/>
   </tables>
@@ -105,14 +106,14 @@ This files represent the complete definition of the catalog.
   <roma:Catalog name="Hierarchy - Query - all in 1 Table" cubes="_cube" dbschemas="_dbschema"/>
   <roma:DatabaseSchema id="_dbschema">
     <tables xsi:type="roma:PhysicalTable" id="_tab_fact" name="Fact">
+      <columns xsi:type="roma:PhysicalColumn" id="_col_fact_key" name="KEY"/>
       <columns xsi:type="roma:PhysicalColumn" id="_col_fact_country" name="KEY"/>
       <columns xsi:type="roma:PhysicalColumn" id="_col_fact_value" name="VALUE" type="Integer"/>
     </tables>
   </roma:DatabaseSchema>
-  <roma:PhysicalColumn id="_col_fact_key" name="KEY"/>
   <roma:TableQuery id="_query" table="_tab_fact"/>
-  <roma:Level id="_level_town" name="Town" column="_col_fact_key"/>
   <roma:Level id="_level_country" name="Country" column="_col_fact_country"/>
+  <roma:Level id="_level_town" name="Town" column="_col_fact_key"/>
   <roma:StandardDimension id="_dim_town" name="Town" hierarchies="_hierarchy_town"/>
   <roma:PhysicalCube id="_cube" name="Cube Query linked Tables" query="_query">
     <dimensionConnectors foreignKey="_col_fact_country" dimension="_dim_town"/>
