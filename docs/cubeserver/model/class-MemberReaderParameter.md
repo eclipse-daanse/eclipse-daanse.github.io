@@ -39,7 +39,7 @@ Defines configuration parameters that are passed to custom MemberReader implemen
       <td>1</td>
     </tr>
     <tr>
-      <td colspan="5"><em>Parameter value that provides the specific configuration setting or data that the MemberReader implementation will use to customize its behavior. The value format and interpretation depends on the parameter name and the MemberReader implementation, enabling flexible configuration that can include numeric settings, string values, connection strings, file paths, or complex configuration expressions. Common parameter values include cache sizes for memory management, timeout values for external system integration, security tokens for authentication, file paths for configuration resources, and business rule expressions that influence member loading logic. The parameter value enables precise control over MemberReader behavior while maintaining type flexibility that can accommodate diverse configuration requirements across different implementation scenarios.</em></td>
+      <td colspan="5"><em>Parameter value that provides the specific configuration setting or data that the MemberReader implementation will use to customize its behavior. The value format and interpretation depends on the parameter name and the MemberReader implementation, enabling flexible configuration that can include numeric settings, string values, connection strings, file paths, or complex configuration expressions.</em></td>
     </tr>
   </tbody>
 </table>
