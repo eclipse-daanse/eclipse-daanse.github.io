@@ -85,7 +85,7 @@ Abstract base class for all cube types in the OLAP model. A cube represents a mu
       <td>true</td>
     </tr>
     <tr>
-      <td colspan="5"><em>Collection of Key Performance Indicators (KPIs) defined for this cube. KPIs are business metrics that measure progress toward specific business objectives and typically include target values, status indicators, and trend information. They provide a structured way to define and track important business measurements like sales targets, quality metrics, or operational efficiency indicators. KPIs often include visual elements like traffic light indicators and are commonly used in executive dashboards and scorecards. KPIs are defined using the <Kpi> element and are primarily exposed via XMLA; they do not directly affect MDX query results and may not be supported by all client tools.</em></td>
+      <td colspan="5"><em>Collection of Key Performance Indicators (KPIs) defined for this cube. KPIs are business metrics that measure progress toward specific business objectives and typically include target values, status indicators, and trend information. They provide a structured way to define and track important business measurements like sales targets, quality metrics, or operational efficiency indicators. KPIs often include visual elements like traffic light indicators and are commonly used in executive dashboards and scorecards. KPIs are defined using the `Kpi` element and are primarily exposed via XMLA; they do not directly affect MDX query results and may not be supported by all client tools.</em></td>
     </tr>
     <tr>
       <td><strong>defaultMeasure</strong></td>
