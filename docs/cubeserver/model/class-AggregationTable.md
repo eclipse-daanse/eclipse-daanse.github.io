@@ -95,7 +95,7 @@ Abstract base class for pre-computed aggregation tables that dramatically improv
       <td>true</td>
     </tr>
     <tr>
-      <td colspan="5"><em>Collection of measure mappings that define how pre-aggregated measure values in the aggregation table correspond to measures in the fact table and cube definition. Each AggregationMeasure specifies the measure name, the aggregation table column containing the pre-computed values, and the rollup type (SUM, AVG, COUNT, etc.) that determines how values can be further aggregated when rolling up to higher levels. This mapping is critical for enabling the OLAP engine to substitute aggregation table data for fact table scans, with measures like Sales Amount typically using SUM rollup, while distinct count measures require special handling to maintain accuracy across aggregation levels. The system supports complex measure scenarios including calculated measures, currency conversions, and weighted averages through appropriate rollup type specifications.</em></td>
+      <td colspan="5"><em>Collection of measure mappings that define how pre-aggregated measure values in the aggregation table correspond to measures in the fact table and cube definition. Each AggregationMeasure specifies the measure name, the aggregation table column containing the pre-computed values, and the rollup type (SUM, AVG, COUNT, etc.) that determines how values can be further aggregated when rolling up to higher levels.</em></td>
     </tr>
     <tr>
       <td><strong>aggregationLevels</strong></td>
@@ -105,7 +105,7 @@ Abstract base class for pre-computed aggregation tables that dramatically improv
       <td>true</td>
     </tr>
     <tr>
-      <td colspan="5"><em>Collection of dimension level mappings that specify which dimensional granularities are represented in this aggregation table and how they map to aggregation table columns. Each AggregationLevel defines the connection between a dimension level (such as Product Category, Time Month, or Geography State) and the corresponding column in the aggregation table that contains the level's key values. These mappings enable the OLAP engine's aggregation matching algorithm to determine whether a given aggregation table can satisfy a query's dimensional requirements, support proper constraint propagation, and enable rollup operations when the aggregation contains more detailed levels than required by the query. Level mappings also support collapsed hierarchies where intermediate levels are skipped, caption columns for display purposes, and level properties for additional dimensional attributes stored in the aggregation table.</em></td>
+      <td colspan="5"><em>Collection of dimension level mappings that specify which dimensional granularities are represented in this aggregation table and how they map to aggregation table columns. Each AggregationLevel defines the connection between a dimension level (such as Product Category, Time Month, or Geography State) and the corresponding column in the aggregation table that contains the level's key values.</em></td>
     </tr>
     <tr>
       <td><strong>aggregationMeasureFactCounts</strong></td>

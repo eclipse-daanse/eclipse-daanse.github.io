@@ -29,7 +29,7 @@ Defines exclusion rules that prevent specific tables from being used as aggregat
       <td>1</td>
     </tr>
     <tr>
-      <td colspan="5"><em>Boolean flag that controls whether table name matching for this exclusion rule should be case-sensitive or case-insensitive. When set to true, the exclusion matching will ignore case differences, making exclusion rules more robust in environments with inconsistent case usage in table names or when working with databases that have varying case sensitivity behaviors. Case-insensitive matching is particularly useful in heterogeneous environments where table names might be created with different case conventions by various ETL tools, database administrators, or automated processes. This setting should align with the database system's case sensitivity behavior and the organization's naming conventions to ensure exclusion rules work reliably across all deployment scenarios.</em></td>
+      <td colspan="5"><em>Boolean flag that controls whether table name matching for this exclusion rule should be case-sensitive or case-insensitive. When set to true, the exclusion matching will ignore case differences, making exclusion rules more robust in environments with inconsistent case usage in table names or when working with databases that have varying case sensitivity behaviors.</em></td>
     </tr>
     <tr>
       <td><strong>name</strong></td>
@@ -39,7 +39,7 @@ Defines exclusion rules that prevent specific tables from being used as aggregat
       <td>1</td>
     </tr>
     <tr>
-      <td colspan="5"><em>Exact table name that should be excluded from aggregation table consideration. When specified, this provides precise exclusion control for specific known tables that should never be used for aggregation, regardless of whether they match aggregation patterns or appear to contain suitable aggregation data. Name-based exclusion is ideal for handling specific problematic tables, tables with known data quality issues, or tables that are reserved for other purposes but might otherwise be mistaken for aggregation tables. This exact matching approach complements pattern-based exclusion by providing surgical control over individual tables while maintaining the broader pattern-based approach for categories of tables.</em></td>
+      <td colspan="5"><em>Exact table name that should be excluded from aggregation table consideration. When specified, this provides precise exclusion control for specific known tables that should never be used for aggregation, regardless of whether they match aggregation patterns or appear to contain suitable aggregation data.</em></td>
     </tr>
     <tr>
       <td><strong>pattern</strong></td>

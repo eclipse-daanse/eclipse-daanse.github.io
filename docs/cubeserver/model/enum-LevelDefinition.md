@@ -5,7 +5,7 @@ group: Enum
 
 # LevelDefinition<a name="enum-leveldefinition"></a>
 
-Enumeration that defines semantic level types for dimensional hierarchy levels, providing business meaning and context that enables specialized analytical behavior, client tool integration, and intelligent query processing based on the conceptual role that each level plays within the business domain. LevelDefinition addresses the need for OLAP systems to understand not just the structural relationships between hierarchy levels, but also their semantic meaning in business terms, enabling sophisticated analytical capabilities including time intelligence calculations, geographic analysis, organizational reporting, and domain-specific business logic that can adapt behavior based on level semantics. This semantic typing is essential for advanced OLAP applications that need to provide intelligent analytical features including automatic time-based calculations for temporal levels, geographic mapping and spatial analysis for location-based levels, organizational hierarchy navigation for business structure levels, and specialized formatting and presentation logic that reflects the business meaning of different level types.
+Enumeration that defines semantic level types for dimensional hierarchy levels, providing business meaning and context that enables specialized analytical behavior, client tool integration, and intelligent query processing based on the conceptual role that each level plays within the business domain.
 ## Enumeration Literals
 
 ### REGULAR - (0)
