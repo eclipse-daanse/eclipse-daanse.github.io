@@ -1,5 +1,5 @@
 ---
-title: SqlView
+title: Daanse Tutorial - Database SQL View
 group: Database
 kind: TUTORIAL
 number: 1.3.2
@@ -32,7 +32,7 @@ This files represent the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:Catalog id="_catalog_databaseSqlView" name="Database - SqlView" dbschemas="_databaseSchema_sqlView"/>
+  <roma:Catalog id="_catalog_databaseSqlView" description="SQL view definitions and usage" name="Daanse Tutorial - Database SQL View" dbschemas="_databaseSchema_sqlView"/>
   <roma:DatabaseSchema id="_databaseSchema_sqlView">
     <tables xsi:type="roma:SqlView" id="_table_sqlview" name="sqlview">
       <columns xsi:type="roma:PhysicalColumn" id="_column_sqlview_columnOne" name="ColumnOne"/>

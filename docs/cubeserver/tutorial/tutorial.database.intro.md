@@ -1,5 +1,5 @@
 ---
-title: Intro
+title: Daanse Tutorial - Database Intro
 group: Database
 kind: TUTORIAL
 number: 1.1
@@ -16,7 +16,7 @@ The catalog is the primary object in a Daanse server. It serves as a logical gro
 
 
 ```xml
-<roma:Catalog  id="_catalog_databaseIntro" name="Database - Intro" dbschemas="_databaseSchema_intro"/>
+<roma:Catalog  id="_catalog_databaseIntro" description="Basic introduction to database schema configuration" name="Daanse Tutorial - Database Intro" dbschemas="_databaseSchema_intro"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -64,7 +64,7 @@ This files represent the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:Catalog id="_catalog_databaseIntro" name="Database - Intro" dbschemas="_databaseSchema_intro"/>
+  <roma:Catalog id="_catalog_databaseIntro" description="Basic introduction to database schema configuration" name="Daanse Tutorial - Database Intro" dbschemas="_databaseSchema_intro"/>
   <roma:DatabaseSchema id="_databaseSchema_intro">
     <tables xsi:type="roma:PhysicalTable" id="_table_tableOne" name="TableOne">
       <columns xsi:type="roma:PhysicalColumn" id="_column_tableOne_columnOne" name="ColumnOne"/>

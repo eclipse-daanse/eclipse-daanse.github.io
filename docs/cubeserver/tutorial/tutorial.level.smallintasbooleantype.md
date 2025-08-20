@@ -1,5 +1,5 @@
 ---
-title: Minimal Cube with level with smallInt boolan type
+title: Daanse Tutorial - Level Small Int As Boolean Type
 group: Level
 kind: TUTORIAL
 number: 2.14.2
@@ -113,7 +113,7 @@ This files represent the complete definition of the catalog.
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
   <roma:ExplicitHierarchy id="_hierarchywithhasall" name="HierarchyWithHasAll" primaryKey="_column_fact_key" query="_table_factQuery" levels="_level_Level"/>
-  <roma:Catalog description="Schema of a minimal cube with level with smallInt boolan type" name="Minimal Cube with level with smallInt boolan type" cubes="_cube" dbschemas="_databaseSchema"/>
+  <roma:Catalog description="Level using small integer as boolean type" name="Daanse Tutorial - Level Small Int As Boolean Type" cubes="_cube" dbschemas="_databaseSchema"/>
   <roma:DatabaseSchema id="_databaseSchema">
     <tables xsi:type="roma:PhysicalTable" id="_table_fact" name="Fact">
       <columns xsi:type="roma:PhysicalColumn" id="_column_fact_key" name="KEY"/>

@@ -1,5 +1,5 @@
 ---
-title: Percentile Aggragator
+title: Daanse Tutorial - Cube Measure Aggregator Percentile
 group: Measure
 kind: TUTORIAL
 number: 2.2.7
@@ -78,7 +78,7 @@ This files represent the complete definition of the catalog.
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
   <roma:ExplicitHierarchy id="_hierarchy_Hierarchy" name="Hierarchy" primaryKey="_col_key" query="_query" levels="_level"/>
   <roma:OrderedColumn column="_col"/>
-  <roma:Catalog name="Measure - Percentile Aggragator" cubes="_cube" dbschemas="_databaseSchema"/>
+  <roma:Catalog description="Percentile aggregation functions" name="Daanse Tutorial - Cube Measure Aggregator Percentile" cubes="_cube" dbschemas="_databaseSchema"/>
   <roma:DatabaseSchema id="_databaseSchema">
     <tables xsi:type="roma:PhysicalTable" id="_tab" name="Fact">
       <columns xsi:type="roma:PhysicalColumn" id="_col_key" name="KEY"/>

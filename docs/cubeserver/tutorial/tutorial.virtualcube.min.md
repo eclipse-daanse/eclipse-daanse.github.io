@@ -1,5 +1,5 @@
 ---
-title: Minimal Virtual Cubes With Measures
+title: Daanse Tutorial - Virtual Cube Minimal
 group: VirtualCube
 kind: TUTORIAL
 number: 2.15.1
@@ -132,7 +132,7 @@ This files represent the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:Catalog description="Schema of a minimal virtual cube with measures" name="Minimal Virtual Cubes With Measures" cubes="_cube1 _cube2 _virtualcubemeasureonly" dbschemas="_databaseSchema_min"/>
+  <roma:Catalog description="Minimal virtual cube configuration" name="Daanse Tutorial - Virtual Cube Minimal" cubes="_cube1 _cube2 _virtualcubemeasureonly" dbschemas="_databaseSchema_min"/>
   <roma:DatabaseSchema id="_databaseSchema_min">
     <tables xsi:type="roma:PhysicalTable" id="_c1_fact" name="C1_Fact">
       <columns xsi:type="roma:PhysicalColumn" id="_c1_fact_key" name="KEY"/>
@@ -143,8 +143,8 @@ This files represent the complete definition of the catalog.
       <columns xsi:type="roma:PhysicalColumn" id="_c2_fact_value" name="VALUE" type="Integer"/>
     </tables>
   </roma:DatabaseSchema>
-  <roma:TableQuery id="_c2TableQuery" table="_c2_fact"/>
   <roma:TableQuery id="_c1TableQuery" table="_c1_fact"/>
+  <roma:TableQuery id="_c2TableQuery" table="_c2_fact"/>
   <roma:PhysicalCube id="_cube1" name="Cube1" query="_c1TableQuery">
     <measureGroups>
       <measures xsi:type="roma:SumMeasure" id="_c1-measure-sum" name="C1-Measure-Sum" column="_c1_fact_value"/>

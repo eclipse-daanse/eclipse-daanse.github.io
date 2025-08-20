@@ -1,5 +1,5 @@
 ---
-title: Minimal Cube with Parent Child Hierarchy with null parent value.
+title: Daanse Tutorial - Parent Child Null Parent
 group: Parent Child
 kind: TUTORIAL
 number: 2.17.2
@@ -108,7 +108,7 @@ This files represent the complete definition of the catalog.
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
   <roma:ParentChildHierarchy id="_hierarchy" name="Hierarchy" allMemberName="All" primaryKey="_parent_name" query="_table_factQuery" nullParentValue="all" parentColumn="_parent_parent" level="_level_name"/>
-  <roma:Catalog description="Minimal Cube with Parent Child Hierarchy with null parent value." name="Minimal Cube with Parent Child Hierarchy with null parent value." cubes="_cube" dbschemas="_databaseSchema"/>
+  <roma:Catalog description="Parent-child hierarchy with null parent values" name="Daanse Tutorial - Parent Child Null Parent" cubes="_cube" dbschemas="_databaseSchema"/>
   <roma:DatabaseSchema id="_databaseSchema">
     <tables xsi:type="roma:PhysicalTable" id="_table_parent" name="Parent">
       <columns xsi:type="roma:PhysicalColumn" id="_parent_name" name="NAME"/>

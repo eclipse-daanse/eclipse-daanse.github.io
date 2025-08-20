@@ -1,5 +1,5 @@
 ---
-title: Minimal Cube with Hidden Members with IfBlankName
+title: Daanse Tutorial - Level If Blank Name
 group: Level
 kind: TUTORIAL
 number: 2.14.4
@@ -175,7 +175,7 @@ This files represent the complete definition of the catalog.
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
   <roma:ExplicitHierarchy id="_hierarchy1_1" name="Hierarchy1" primaryKey="_level_2_null_key" query="_queryJoin" levels="_h1Level1 _h1Level2"/>
-  <roma:Catalog description="Schema of a minimal cube with Hidden Members with IfBlankName" name="Minimal Cube with Hidden Members with IfBlankName" cubes="_hiddenmembersifblankname" dbschemas="_databaseSchema_ifblankname"/>
+  <roma:Catalog description="Level handling blank names" name="Daanse Tutorial - Level If Blank Name" cubes="_hiddenmembersifblankname" dbschemas="_databaseSchema_ifblankname"/>
   <roma:DatabaseSchema id="_databaseSchema_ifblankname">
     <tables xsi:type="roma:PhysicalTable" id="_table_fact" name="Fact">
       <columns xsi:type="roma:PhysicalColumn" id="_column_fact_dim_key" name="DIM_KEY" type="Integer"/>
@@ -192,14 +192,14 @@ This files represent the complete definition of the catalog.
     </tables>
   </roma:DatabaseSchema>
   <roma:TableQuery id="_queryLevel1" table="_level_1"/>
-  <roma:TableQuery id="_queryLevel2Null" table="_level_2_null"/>
   <roma:TableQuery id="_queryFact" table="_table_fact"/>
+  <roma:TableQuery id="_queryLevel2Null" table="_level_2_null"/>
   <roma:JoinQuery id="_queryJoin">
     <left key="_level_2_null_l1_key" query="_queryLevel2Null"/>
     <right key="_level_1_key" query="_queryLevel1"/>
   </roma:JoinQuery>
-  <roma:Level id="_h1Level1" name="Level1" column="_level_1_key" nameColumn="_level_1_name"/>
   <roma:Level id="_h1Level2" name="Level2" column="_level_2_null_key" hideMemberIf="IfBlankName" nameColumn="_level_2_null_name"/>
+  <roma:Level id="_h1Level1" name="Level1" column="_level_1_key" nameColumn="_level_1_name"/>
   <roma:StandardDimension id="_dimensionmembershiddenifblankname" name="DimensionMembersHiddenIfBlankName" hierarchies="_hierarchy1_1"/>
   <roma:PhysicalCube id="_hiddenmembersifblankname" name="HiddenMembersIfBlankName" query="_queryFact">
     <dimensionConnectors foreignKey="_column_fact_dim_key" dimension="_dimensionmembershiddenifblankname" overrideDimensionName="DimensionMembersHiddenIfBlankName" id="_dc_dimensionMembersHiddenIfBlankName"/>

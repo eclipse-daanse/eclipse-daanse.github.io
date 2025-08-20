@@ -1,5 +1,5 @@
 ---
-title: Cube with NamedSets
+title: Daanse Tutorial - Namedset All
 group: Namedset
 kind: TUTORIAL
 number: 2.8.1
@@ -23,8 +23,6 @@ NsWithFolderDimension1    : NamedSet use only Dimension1 in formula. By this rea
 NsWithoutFolderDimension1 : NamedSet use only Dimension1 in formula. By this reason it connected to Dimension1 on excel.
 NSInCubeWithFolder        : NamedSet use Dimension1 and Dimension2 in formula. By this reason it connected to Cube on excel. NamedSet have folder
 NSInCubeWithoutFolder     : NamedSet use Dimension1 and Dimension2 in formula. By this reason it connected to Cube.
-
-
 
 
 ## Database Schema
@@ -151,7 +149,7 @@ This files represent the complete definition of the catalog.
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
   <roma:ExplicitHierarchy id="_hierarchy_dimension" name="Hierarchy" primaryKey="_column_fact_key" query="_query_fact" levels="_level_dimension"/>
-  <roma:Catalog description="Schema of a minimal cube with namedSet" name="Cube with NamedSets" cubes="_cube_namedSet" dbschemas="_databaseSchema_namedSet"/>
+  <roma:Catalog description="Named set configurations" name="Daanse Tutorial - Namedset All" cubes="_cube_namedSet" dbschemas="_databaseSchema_namedSet"/>
   <roma:DatabaseSchema id="_databaseSchema_namedSet">
     <tables xsi:type="roma:PhysicalTable" id="_table_fact" name="Fact">
       <columns xsi:type="roma:PhysicalColumn" id="_column_fact_key" name="KEY"/>

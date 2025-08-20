@@ -1,5 +1,5 @@
 ---
-title: Cube with One Measure with Inline Table and with Levels with physical and inline tables
+title: Daanse Tutorial - Measure Inline Table With Physical
 group: Measure
 kind: TUTORIAL
 number: 2.12.3
@@ -188,10 +188,10 @@ This files represent the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:InlineTableQuery id="_query_country" alias="COUNTRY" table="_tab_COUNTRY"/>
-  <roma:InlineTableQuery id="_query_fact" alias="Fact" table="_tab_FACT"/>
   <roma:ExplicitHierarchy id="_hierarchy" name="Hierarchy" primaryKey="_col_town_key" query="_query_hierarchy" levels="_level_country _level_town"/>
-  <roma:Catalog description="Schema of a minimal cube consisting of one measurement and based on an virtual inline fact table and physical table town and country inline table" name="Cube with One Measure with Inline Table and with Levels with physical and inline tables" cubes="_cube" dbschemas="_databaseSchema_inlinetablewithphysical"/>
+  <roma:InlineTableQuery id="_query_fact" alias="Fact" table="_tab_FACT"/>
+  <roma:InlineTableQuery id="_query_country" alias="COUNTRY" table="_tab_COUNTRY"/>
+  <roma:Catalog description="Measure with inline table and physical table" name="Daanse Tutorial - Measure Inline Table With Physical" cubes="_cube" dbschemas="_databaseSchema_inlinetablewithphysical"/>
   <roma:DatabaseSchema id="_databaseSchema_inlinetablewithphysical">
     <tables xsi:type="roma:PhysicalTable" id="_tab_TOWN_Physical" name="TOWN">
       <columns xsi:type="roma:PhysicalColumn" id="_col_town_key" name="KEY" type="Integer"/>

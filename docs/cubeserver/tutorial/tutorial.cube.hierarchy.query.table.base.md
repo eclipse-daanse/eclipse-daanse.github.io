@@ -1,5 +1,5 @@
 ---
-title: Query - seperate Tables, Fact and Dimension
+title: Daanse Tutorial - Cube Hierarchy Query Table Base
 group: Hierarchy
 kind: TUTORIAL
 number: 2.3.2.1
@@ -104,7 +104,7 @@ This files represent the complete definition of the catalog.
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
   <roma:ExplicitHierarchy id="_hierarchy_townHierarchy" name="TownHierarchy" primaryKey="_column_town_id" query="_query_town" levels="_level_town"/>
-  <roma:Catalog name="Hierarchy - Query - seperate Tables, Fact and Dimension" cubes="_cube_queryLinkedTables" dbschemas="_databaseSchema_main"/>
+  <roma:Catalog description="Basic hierarchy with table queries" name="Daanse Tutorial - Cube Hierarchy Query Table Base" cubes="_cube_queryLinkedTables" dbschemas="_databaseSchema_main"/>
   <roma:DatabaseSchema id="_databaseSchema_main">
     <tables xsi:type="roma:PhysicalTable" id="_table_fact" name="Fact">
       <columns xsi:type="roma:PhysicalColumn" id="_column_fact_townId" name="TOWN_ID" type="Integer"/>

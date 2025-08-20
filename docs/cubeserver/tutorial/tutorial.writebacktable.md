@@ -39,8 +39,8 @@ This files represent the complete definition of the catalog.
     </tables>
   </roma:DatabaseSchema>
   <roma:TableQuery id="l1Query" table="L1"/>
-  <roma:TableQuery id="FactQuery" table="FACT"/>
   <roma:TableQuery id="l2Query" table="L2"/>
+  <roma:TableQuery id="FactQuery" table="FACT"/>
   <roma:JoinQuery id="join">
     <left key="L1_L2" query="l1Query"/>
     <right key="L2_L2" query="l2Query"/>

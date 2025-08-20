@@ -1,5 +1,5 @@
 ---
-title: Table
+title: Daanse Tutorial - Database Table
 group: Database
 kind: TUTORIAL
 number: 1.3.1
@@ -47,7 +47,7 @@ This files represent the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:Catalog id="_catalog_databaseTable" name="Database - Table" dbschemas="_databaseSchema_tableTypes"/>
+  <roma:Catalog id="_catalog_databaseTable" description="Physical table definitions and types" name="Daanse Tutorial - Database Table" dbschemas="_databaseSchema_tableTypes"/>
   <roma:DatabaseSchema id="_databaseSchema_tableTypes">
     <tables xsi:type="roma:PhysicalTable" id="_table_tableOne" name="TableOne">
       <columns xsi:type="roma:PhysicalColumn" id="_column_tableOne_columnOne" name="ColumnOne"/>

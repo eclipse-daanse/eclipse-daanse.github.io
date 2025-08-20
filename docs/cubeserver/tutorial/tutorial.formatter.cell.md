@@ -1,5 +1,5 @@
 ---
-title: Minimal Cube With Measures CellFormatter
+title: Daanse Tutorial - Formatter Cell
 group: Formatter
 kind: TUTORIAL
 number: 2.11.1
@@ -81,7 +81,7 @@ This files represent the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:Catalog description="Schema of a minimal cube with CellFormatter with class name" name="Minimal Cube With Measures CellFormatter" cubes="_cube_cellFormatter" dbschemas="_databaseSchema_cell"/>
+  <roma:Catalog description="Cell formatter configurations" name="Daanse Tutorial - Formatter Cell" cubes="_cube_cellFormatter" dbschemas="_databaseSchema_cell"/>
   <roma:DatabaseSchema id="_databaseSchema_cell">
     <tables xsi:type="roma:PhysicalTable" id="_table_fact" name="Fact">
       <columns xsi:type="roma:PhysicalColumn" id="_column_fact_key" name="KEY"/>

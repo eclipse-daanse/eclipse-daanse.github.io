@@ -1,5 +1,5 @@
 ---
-title: CalculatedMembers with different colors
+title: Daanse Tutorial - Cube Calculated Member Color
 group: Cube
 kind: TUTORIAL
 number: 2.3.6
@@ -70,8 +70,9 @@ The dimension is defined with the one hierarchy. The hierarchy is used in the cu
 This calculated member have BACK_COLOR in format string. It show posibility to have different colors incal culated member
 
 
+
 ```xml
-<roma:CalculatedMember  id="_calculatedMember_calculatedMember1" name="Calculated Member 1" displayFolder="folder" formula="[Measures].[Measure-Sum] / [Measures].[Measure-Count]" parent="[theDimension].[theHierarchy].[All theHierarchys]" hierarchy="roma:ExplicitHierarchy _hierarchy_theHierarchy"/>
+<roma:CalculatedMember  id="_calculatedMember_calculatedMember2" name="Calculated Member 2" displayFolder="folder" formula="[Measures].[Measure-Sum] / [Measures].[Measure-Count]"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -80,9 +81,8 @@ This calculated member have BACK_COLOR in format string. It show posibility to h
 This calculated member have BACK_COLOR in format string. It show posibility to have different colors incal culated member
 
 
-
 ```xml
-<roma:CalculatedMember  id="_calculatedMember_calculatedMember2" name="Calculated Member 2" displayFolder="folder" formula="[Measures].[Measure-Sum] / [Measures].[Measure-Count]"/>
+<roma:CalculatedMember  id="_calculatedMember_calculatedMember1" name="Calculated Member 1" displayFolder="folder" formula="[Measures].[Measure-Sum] / [Measures].[Measure-Count]" parent="[theDimension].[theHierarchy].[All theHierarchys]" hierarchy="roma:ExplicitHierarchy _hierarchy_theHierarchy"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -117,7 +117,7 @@ This files represent the complete definition of the catalog.
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
   <roma:ExplicitHierarchy id="_hierarchy_theHierarchy" name="theHierarchy" primaryKey="_column_fact_key" query="_query_fact" levels="_level_theLevel"/>
-  <roma:Catalog name="Cube - CalculatedMembers with different colors" cubes="_cube_calculatedMemberColorCube" dbschemas="_databaseSchema_calculatedMemberColor"/>
+  <roma:Catalog description="Color properties for calculated members" name="Daanse Tutorial - Cube Calculated Member Color" cubes="_cube_calculatedMemberColorCube" dbschemas="_databaseSchema_calculatedMemberColor"/>
   <roma:DatabaseSchema id="_databaseSchema_calculatedMemberColor">
     <tables xsi:type="roma:PhysicalTable" id="_table_fact" name="Fact">
       <columns xsi:type="roma:PhysicalColumn" id="_column_fact_key" name="KEY"/>

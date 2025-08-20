@@ -1,5 +1,5 @@
 ---
-title: InlineTable
+title: Daanse Tutorial - Database Inline Table
 group: Database
 kind: TUTORIAL
 number: 1.3.3
@@ -38,7 +38,7 @@ This files represent the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:Catalog id="_catalog_databaseInlineTable" name="Database - InlineTable" dbschemas="_databaseSchema_inlineTable"/>
+  <roma:Catalog id="_catalog_databaseInlineTable" description="Inline table definitions with row data" name="Daanse Tutorial - Database Inline Table" dbschemas="_databaseSchema_inlineTable"/>
   <roma:DatabaseSchema id="_databaseSchema_inlineTable">
     <tables xsi:type="roma:InlineTable" id="_table_fact" name="FACT">
       <columns xsi:type="roma:PhysicalColumn" id="_column_fact_key" name="KEY"/>

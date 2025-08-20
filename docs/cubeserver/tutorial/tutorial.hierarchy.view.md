@@ -1,5 +1,5 @@
 ---
-title: Cube with dimension with hierarchy with SQL view reference
+title: Daanse Tutorial - Hierarchy View
 group: Hierarchy
 kind: TUTORIAL
 number: 2.16.2
@@ -105,7 +105,7 @@ the column that contains the name of the level.
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Measure1
 
-        Measure1 use Fact table VALUE column with sum aggregation in Cube.
+Measure1 use Fact table VALUE column with sum aggregation in Cube.
 
 
 ```xml
@@ -137,7 +137,7 @@ This files represent the complete definition of the catalog.
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
   <roma:ExplicitHierarchy id="_hierarchy_hierarchy" name="Hierarchy" primaryKey="_column_view_key" query="_query_htViewSelect" levels="_level_level1"/>
-  <roma:Catalog description="Catalog of a minimal cube with hierarchy with SQL view reference" name="Cube with dimension with hierarchy with SQL view reference" cubes="_cube_cube" dbschemas="_databaseSchema_view"/>
+  <roma:Catalog description="Hierarchy with SQL view references" name="Daanse Tutorial - Hierarchy View" cubes="_cube_cube" dbschemas="_databaseSchema_view"/>
   <roma:DatabaseSchema id="_databaseSchema_view">
     <tables xsi:type="roma:PhysicalTable" id="_table_fact" name="Fact">
       <columns xsi:type="roma:PhysicalColumn" id="_column_fact_dimKey" name="DIM_KEY"/>

@@ -1,5 +1,5 @@
 ---
-title: Cube with access all dimension_cube1 access to A only
+title: Daanse Tutorial - Access Member Grant
 group: Access
 kind: TUTORIAL
 number: 2.4.8
@@ -94,7 +94,7 @@ The cube1 is defines by the DimensionConnector1 and the DimensionConnector2  and
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Role1
 
-        The role1 use CatalogGrant access all; CubeGrant cube1 access all; dimensionGrant dimension1 access all;
+The role1 use CatalogGrant access all; CubeGrant cube1 access all; dimensionGrant dimension1 access all;
 hierarchyGrant hierarchy1 access custom with member grants [Dimension1].[A] -all, [Dimension1].[B] -none, [Dimension1].[C] -none;
 (Cube1 - access to "A" Cube2 - no access)
 
@@ -125,7 +125,7 @@ This files represent the complete definition of the catalog.
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
   <roma:ExplicitHierarchy id="_hierarchy_Hierarchy1" name="Hierarchy1" hasAll="false" primaryKey="_column_fact_key" query="_query_factQuery" levels="_level_Level1"/>
-  <roma:Catalog description="Schema with access all dimension with cube1 access to A only" name="Cube with access all dimension_cube1 access to A only" cubes="_cube_Cube1" accessRoles="_accessRole_role1" dbschemas="_databaseSchema_MemberGrand"/>
+  <roma:Catalog description="Access control with member-level grants" name="Daanse Tutorial - Access Member Grant" cubes="_cube_Cube1" accessRoles="_accessRole_role1" dbschemas="_databaseSchema_MemberGrand"/>
   <roma:DatabaseSchema id="_databaseSchema_MemberGrand">
     <tables xsi:type="roma:PhysicalTable" id="_table_fact" name="Fact">
       <columns xsi:type="roma:PhysicalColumn" id="_column_fact_key" name="KEY"/>

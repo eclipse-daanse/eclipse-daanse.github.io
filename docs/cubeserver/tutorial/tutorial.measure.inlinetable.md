@@ -1,5 +1,5 @@
 ---
-title: Cube with one measure with inline table
+title: Daanse Tutorial - Measure Inline Table
 group: Measure
 kind: TUTORIAL
 number: 2.12.2
@@ -78,7 +78,7 @@ This files represent the complete definition of the catalog.
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
   <roma:InlineTableQuery id="_query_fact" alias="Fact" table="_table_fact"/>
-  <roma:Catalog description="Schema of a minimal cube consisting of one measurement and based on an virtual inline table" name="Cube with one measure with inline table" cubes="_cube" dbschemas="_databaseSchema_inlinetable"/>
+  <roma:Catalog description="Measure with inline table data" name="Daanse Tutorial - Measure Inline Table" cubes="_cube" dbschemas="_databaseSchema_inlinetable"/>
   <roma:DatabaseSchema id="_databaseSchema_inlinetable">
     <tables xsi:type="roma:InlineTable" id="_table_fact" name="Fact">
       <columns xsi:type="roma:PhysicalColumn" id="_column_fact_key" name="KEY"/>

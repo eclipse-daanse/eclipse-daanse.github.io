@@ -1,5 +1,5 @@
 ---
-title: ColumnTypes
+title: Daanse Tutorial - Database Column
 group: Database
 kind: TUTORIAL
 number: 1.2.1
@@ -102,7 +102,7 @@ This files represent the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:Catalog id="_catalog_databaseColumnTypes" name="Database - ColumnTypes" dbschemas="_databaseSchema_columnTypes"/>
+  <roma:Catalog id="_catalog_databaseColumnTypes" description="Database column types and configuration" name="Daanse Tutorial - Database Column" dbschemas="_databaseSchema_columnTypes"/>
   <roma:DatabaseSchema id="_databaseSchema_columnTypes">
     <tables xsi:type="roma:PhysicalTable" id="_table_tableWithColumnTypes" name="TableWithColumnTypes">
       <columns xsi:type="roma:PhysicalColumn" id="_column_tableWithColumnTypes_columnWithDescription" description="Non nullable Column with description" name="ColumnWithDescription" nullable="true"/>

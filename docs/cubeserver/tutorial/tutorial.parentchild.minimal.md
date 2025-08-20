@@ -1,5 +1,5 @@
 ---
-title: Minimal Parent Child Hierarchy
+title: Daanse Tutorial - Parent Child Minimal
 group: Parent Child
 kind: TUTORIAL
 number: 2.17.1
@@ -118,7 +118,7 @@ This files represent the complete definition of the catalog.
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
   <roma:ParentChildHierarchy id="_hierarchy_parentChild" name="Hierarchy1" primaryKey="_column_member_key" query="_query_member" parentColumn="_column_member_parentKey" level="_level_parentChild"/>
-  <roma:Catalog description="Schema of a minimal cube with parent child hierarchy" name="Minimal Parent Child Hierarchy" cubes="_cube_parentChildMinimal" dbschemas="_databaseSchema_parentChildMinimal"/>
+  <roma:Catalog description="Minimal parent-child hierarchy" name="Daanse Tutorial - Parent Child Minimal" cubes="_cube_parentChildMinimal" dbschemas="_databaseSchema_parentChildMinimal"/>
   <roma:DatabaseSchema id="_databaseSchema_parentChildMinimal">
     <tables xsi:type="roma:PhysicalTable" id="_table_fact" name="Fact">
       <columns xsi:type="roma:PhysicalColumn" id="_column_fact_dimKey" name="DIM_KEY" type="Integer"/>
@@ -130,8 +130,8 @@ This files represent the complete definition of the catalog.
       <columns xsi:type="roma:PhysicalColumn" id="_column_member_parentKey" name="PARENT_KEY" type="Integer"/>
     </tables>
   </roma:DatabaseSchema>
-  <roma:TableQuery id="_query_member" table="_table_member"/>
   <roma:TableQuery id="_query_fact" table="_table_fact"/>
+  <roma:TableQuery id="_query_member" table="_table_member"/>
   <roma:Level id="_level_parentChild" name="Level" column="_column_member_key" nameColumn="_column_member_name" uniqueMembers="true"/>
   <roma:StandardDimension id="_dimension_parentChild" name="Dimension1" hierarchies="_hierarchy_parentChild"/>
   <roma:PhysicalCube id="_cube_parentChildMinimal" name="Cube" query="_query_fact">
