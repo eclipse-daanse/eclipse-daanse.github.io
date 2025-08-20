@@ -1,10 +1,10 @@
 ---
-title: Cube with roles access column
+title: Daanse Tutorial - Access Column Grant
 group: Access
 kind: TUTORIAL
 number: 2.4.3
 ---
-        Cube with examples of roles with TableGrant
+Cube with examples of roles with TableGrant
 roleAll    role: use TableGrant access all; (access all database all tables)
 roleNone   role: use TableGrant access none; (no access to database tables)
 roleCustom role: use TableGrant access custom; (access to database table Fact)
@@ -104,7 +104,7 @@ This files represent the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:Catalog description="Schema with roles access column" name="Cube with roles access column" cubes="_cube_main" accessRoles="_accessRole_all _accessRole_none" dbschemas="_databaseSchema_ColumnGrand"/>
+  <roma:Catalog description="Demonstrates access control with column-level grants" name="Daanse Tutorial - Access Column Grant" cubes="_cube_main" accessRoles="_accessRole_all _accessRole_none" dbschemas="_databaseSchema_ColumnGrand"/>
   <roma:DatabaseSchema id="_databaseSchema_ColumnGrand">
     <tables xsi:type="roma:PhysicalTable" id="_table_fact" name="Fact">
       <columns xsi:type="roma:PhysicalColumn" id="_column_fact_key" name="KEY"/>
@@ -117,6 +117,16 @@ This files represent the complete definition of the catalog.
       <measures xsi:type="roma:SumMeasure" id="_measure_sum" name="Measure1" column="_column_fact_value"/>
     </measureGroups>
   </roma:PhysicalCube>
+  <roma:AccessRole id="_accessRole_none" name="roleNone">
+    <accessCatalogGrants catalogAccess="all">
+      <cubeGrants cubeAccess="all" cube="_cube_main"/>
+      <databaseSchemaGrants databaseSchemaAccess="custom" databaseSchema="_databaseSchema_ColumnGrand">
+        <tableGrants tableAccess="custom" table="_table_fact">
+          <columnGrants column="_column_fact_value"/>
+        </tableGrants>
+      </databaseSchemaGrants>
+    </accessCatalogGrants>
+  </roma:AccessRole>
   <roma:AccessRole id="_accessRole_all" name="roleAll">
     <accessCatalogGrants catalogAccess="all">
       <cubeGrants cubeAccess="all" cube="_cube_main"/>
@@ -124,16 +134,6 @@ This files represent the complete definition of the catalog.
         <tableGrants tableAccess="custom" table="_table_fact">
           <columnGrants columnAccess="all" column="_column_fact_value"/>
           <columnGrants columnAccess="all" column="_column_fact_key"/>
-        </tableGrants>
-      </databaseSchemaGrants>
-    </accessCatalogGrants>
-  </roma:AccessRole>
-  <roma:AccessRole id="_accessRole_none" name="roleNone">
-    <accessCatalogGrants catalogAccess="all">
-      <cubeGrants cubeAccess="all" cube="_cube_main"/>
-      <databaseSchemaGrants databaseSchemaAccess="custom" databaseSchema="_databaseSchema_ColumnGrand">
-        <tableGrants tableAccess="custom" table="_table_fact">
-          <columnGrants column="_column_fact_value"/>
         </tableGrants>
       </databaseSchemaGrants>
     </accessCatalogGrants>

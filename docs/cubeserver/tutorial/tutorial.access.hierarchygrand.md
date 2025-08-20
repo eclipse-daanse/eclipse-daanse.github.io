@@ -1,5 +1,5 @@
 ---
-title: Cube with HierarchyGrant
+title: Daanse Tutorial - Access Hierarchy Grant
 group: Access
 kind: TUTORIAL
 number: 2.4.7
@@ -86,7 +86,7 @@ The cube1 is defines by the DimensionConnector1 and the MeasureGroup with measur
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Role1
 
-        The role1 use CatalogGrant access all; CubeGrant cube1 access all; dimensionGrant dimension1 access all;
+The role1 use CatalogGrant access all; CubeGrant cube1 access all; dimensionGrant dimension1 access all;
 hierarchyGrant hierarchy1 access custom with member grants [Dimension1].[A] -all, [Dimension1].[B] -none, [Dimension1].[C] -none;
 (Cube1 - access to "A" Cube2 - no access)
 
@@ -112,9 +112,9 @@ This files represent the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:ExplicitHierarchy id="_hierarchy_Hierarchy2" name="Hierarchy1" hasAll="false" primaryKey="_column_fact_key" query="_query_factQuery" levels="_level_Level2"/>
   <roma:ExplicitHierarchy id="_hierarchy_Hierarchy1" name="Hierarchy1" hasAll="false" primaryKey="_column_fact_key" query="_query_factQuery" levels="_level_Level1"/>
-  <roma:Catalog description="Schema with HierarchyGrant access to Hierarchy1 and not access to Hierarchy2" name="Cube with HierarchyGrant" cubes="_cube_Cube1" accessRoles="_accessRole_role1" dbschemas="_databaseSchema_HierarchyGrand"/>
+  <roma:ExplicitHierarchy id="_hierarchy_Hierarchy2" name="Hierarchy1" hasAll="false" primaryKey="_column_fact_key" query="_query_factQuery" levels="_level_Level2"/>
+  <roma:Catalog description="Access control with hierarchy-level grants" name="Daanse Tutorial - Access Hierarchy Grant" cubes="_cube_Cube1" accessRoles="_accessRole_role1" dbschemas="_databaseSchema_HierarchyGrand"/>
   <roma:DatabaseSchema id="_databaseSchema_HierarchyGrand">
     <tables xsi:type="roma:PhysicalTable" id="_table_fact" name="Fact">
       <columns xsi:type="roma:PhysicalColumn" id="_column_fact_key" name="KEY"/>
@@ -122,8 +122,8 @@ This files represent the complete definition of the catalog.
     </tables>
   </roma:DatabaseSchema>
   <roma:TableQuery id="_query_factQuery" table="_table_fact"/>
-  <roma:Level id="_level_Level1" name="Level1" column="_column_fact_key"/>
   <roma:Level id="_level_Level2" name="Level2" column="_column_fact_key"/>
+  <roma:Level id="_level_Level1" name="Level1" column="_column_fact_key"/>
   <roma:StandardDimension id="_dimension_Dimension1" name="Dimension1" hierarchies="_hierarchy_Hierarchy1 _hierarchy_Hierarchy2"/>
   <roma:PhysicalCube id="_cube_Cube1" name="Cube1" query="_query_factQuery">
     <dimensionConnectors foreignKey="_column_fact_key" dimension="_dimension_Dimension1" overrideDimensionName="Dimension1" id="_dimensionConnector_dimension1"/>

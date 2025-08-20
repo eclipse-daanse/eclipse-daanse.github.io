@@ -1,5 +1,5 @@
 ---
-title: MeasureGroups
+title: Daanse Tutorial - Cube Measure Group
 group: Measure
 kind: TUTORIAL
 number: 2.2.5
@@ -60,7 +60,7 @@ This files represent the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:Catalog id="_catalog_measureMeasureGroups" name="Measure - MeasureGroups" cubes="_cube_measureGroupCube" dbschemas="_databaseSchema_measureGroup"/>
+  <roma:Catalog id="_catalog_measureMeasureGroups" description="Measure group organization" name="Daanse Tutorial - Cube Measure Group" cubes="_cube_measureGroupCube" dbschemas="_databaseSchema_measureGroup"/>
   <roma:DatabaseSchema id="_databaseSchema_measureGroup">
     <tables xsi:type="roma:PhysicalTable" id="_table_fact" name="Fact">
       <columns xsi:type="roma:PhysicalColumn" id="_column_fact_key" name="KEY"/>

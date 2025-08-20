@@ -1,5 +1,5 @@
 ---
-title: Cube with virtual cube with dimension references from other cubes
+title: Daanse Tutorial - Virtual Cube Dimensions
 group: VirtualCube
 kind: TUTORIAL
 number: 2.15.2
@@ -114,7 +114,7 @@ This files represent the complete definition of the catalog.
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
   <roma:ExplicitHierarchy id="_hierarchywithouthasall" name="HierarchyWithoutHasAll" hasAll="false" primaryKey="_column_fact_key" query="_table_factQuery" levels="_level"/>
-  <roma:Catalog description="Schema with virtual cube with dimension references from other cubes" name="Cube with virtual cube with dimension references from other cubes" cubes="_cube1 _cube2 _cube1cube2" dbschemas="_databaseSchema_dimensions"/>
+  <roma:Catalog description="Dimension configuration in virtual cubes" name="Daanse Tutorial - Virtual Cube Dimensions" cubes="_cube1 _cube2 _cube1cube2" dbschemas="_databaseSchema_dimensions"/>
   <roma:DatabaseSchema id="_databaseSchema_dimensions">
     <tables xsi:type="roma:PhysicalTable" id="_table_fact" name="Fact">
       <columns xsi:type="roma:PhysicalColumn" id="_column_fact_key" name="KEY"/>

@@ -1,5 +1,5 @@
 ---
-title: Cube with dimension with hierarchy with inner table
+title: Daanse Tutorial - Hierarchy Inline Table
 group: Hierarchy
 kind: TUTORIAL
 number: 2.16.1
@@ -108,7 +108,7 @@ the column that contains the name of the level.
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Measure1
 
-        Measure1 use Fact table VALUE column with sum aggregation in Cube.
+Measure1 use Fact table VALUE column with sum aggregation in Cube.
 
 
 ```xml
@@ -139,9 +139,9 @@ This files represent the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:InlineTableQuery id="_inlineTableQuery" alias="HT" table="/3/@tables.1"/>
   <roma:ExplicitHierarchy id="_hierarchy1" name="Hierarchy1" primaryKey="_ht_key" query="_inlineTableQuery" levels="_level1"/>
-  <roma:Catalog description="Schema with hierarchy with table reference with inner table" name="Cube with dimension with hierarchy with inner table" cubes="_cube" dbschemas="_databaseSchema_inlinetable"/>
+  <roma:InlineTableQuery id="_inlineTableQuery" alias="HT" table="/3/@tables.1"/>
+  <roma:Catalog description="Hierarchy with inline table data" name="Daanse Tutorial - Hierarchy Inline Table" cubes="_cube" dbschemas="_databaseSchema_inlinetable"/>
   <roma:DatabaseSchema id="_databaseSchema_inlinetable">
     <tables xsi:type="roma:PhysicalTable" id="_table_fact" name="Fact">
       <columns xsi:type="roma:PhysicalColumn" id="_column_fact_dim_key" name="DIM_KEY"/>

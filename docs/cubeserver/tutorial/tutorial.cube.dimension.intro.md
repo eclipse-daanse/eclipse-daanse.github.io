@@ -1,5 +1,5 @@
 ---
-title: Introduction
+title: Daanse Tutorial - Cube Dimension Intro
 group: Dimension
 kind: TUTORIAL
 number: 2.3.1
@@ -96,7 +96,7 @@ This files represent the complete definition of the catalog.
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
   <roma:ExplicitHierarchy id="_hierarchy_theHierarchy" name="theHierarchy" primaryKey="_column_fact_key" query="_query_fact" levels="_level_theLevel"/>
-  <roma:Catalog id="_catalog_dimensionIntro" name="Dimension - Introduction" cubes="_cube_cubeWithSimpleDimension" dbschemas="_databaseSchema_dimensionIntro"/>
+  <roma:Catalog id="_catalog_dimensionIntro" description="Introduction to cube dimensions" name="Daanse Tutorial - Cube Dimension Intro" cubes="_cube_cubeWithSimpleDimension" dbschemas="_databaseSchema_dimensionIntro"/>
   <roma:DatabaseSchema id="_databaseSchema_dimensionIntro">
     <tables xsi:type="roma:PhysicalTable" id="_table_fact" name="Fact">
       <columns xsi:type="roma:PhysicalColumn" id="_column_fact_key" name="KEY"/>

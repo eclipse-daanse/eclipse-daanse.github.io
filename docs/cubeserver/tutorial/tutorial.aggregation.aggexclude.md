@@ -1,5 +1,5 @@
 ---
-title: Cube with table reference with AggExclude
+title: Daanse Tutorial - Aggregation Agg Exclude
 group: Aggregation
 kind: TUTORIAL
 number: 2.8.1
@@ -73,7 +73,7 @@ This files represent the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:Catalog description="Schema of a minimal cube with table reference with AggExclude" name="Cube with table reference with AggExclude" cubes="_cube_Cube" dbschemas="_databaseSchema_AggExclude"/>
+  <roma:Catalog description="Aggregate exclusion patterns" name="Daanse Tutorial - Aggregation Agg Exclude" cubes="_cube_Cube" dbschemas="_databaseSchema_AggExclude"/>
   <roma:DatabaseSchema id="_databaseSchema_AggExclude">
     <tables xsi:type="roma:PhysicalTable" id="_table_fact" name="Fact">
       <columns xsi:type="roma:PhysicalColumn" id="_column_fact_key" name="KEY"/>

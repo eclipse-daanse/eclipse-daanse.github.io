@@ -1,5 +1,5 @@
 ---
-title: Minimal Cube with ParentChildHierarchy with ParentChildLink
+title: Daanse Tutorial - Parent Child Link
 group: Parent Child
 kind: TUTORIAL
 number: 2.17.2
@@ -132,7 +132,7 @@ This files represent the complete definition of the catalog.
       <table id="_query_closure" table="_table_closure"/>
     </parentChildLink>
   </roma:ParentChildHierarchy>
-  <roma:Catalog description="Schema of a minimal cube with ParentChildHierarchy with ParentChildLink" name="Minimal Cube with ParentChildHierarchy with ParentChildLink" cubes="_cube" dbschemas="_databaseSchema_link"/>
+  <roma:Catalog description="Parent-child hierarchy with links" name="Daanse Tutorial - Parent Child Link" cubes="_cube" dbschemas="_databaseSchema_link"/>
   <roma:DatabaseSchema id="_databaseSchema_link">
     <tables xsi:type="roma:PhysicalTable" id="_table_fact" name="Fact">
       <columns xsi:type="roma:PhysicalColumn" id="_fact_name" name="NAME"/>

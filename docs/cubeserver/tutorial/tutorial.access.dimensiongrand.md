@@ -1,5 +1,5 @@
 ---
-title: Cube with role access DimensionGrant
+title: Daanse Tutorial - Access Dimension Grant
 group: Access
 kind: TUTORIAL
 number: 2.4.6
@@ -114,9 +114,9 @@ This files represent the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:ExplicitHierarchy id="_hierarchy_Hierarchy2" name="Hierarchy2" hasAll="false" primaryKey="_column_fact_key" query="_query_factQuery" levels="_level_Level2"/>
   <roma:ExplicitHierarchy id="_hierarchy_Hierarchy1" name="Hierarchy1" hasAll="false" primaryKey="_column_fact_key" query="_query_factQuery" levels="_level_Level1"/>
-  <roma:Catalog description="Schema with access DimensionGrant with access to Dimension1 only and no access to Dimension2 of Cube1" name="Cube with role access DimensionGrant" cubes="_cube_Cube1" accessRoles="_accessRole_role1" dbschemas="_databaseSchema_DimensionGrand"/>
+  <roma:ExplicitHierarchy id="_hierarchy_Hierarchy2" name="Hierarchy2" hasAll="false" primaryKey="_column_fact_key" query="_query_factQuery" levels="_level_Level2"/>
+  <roma:Catalog description="Access control with dimension-level grants" name="Daanse Tutorial - Access Dimension Grant" cubes="_cube_Cube1" accessRoles="_accessRole_role1" dbschemas="_databaseSchema_DimensionGrand"/>
   <roma:DatabaseSchema id="_databaseSchema_DimensionGrand">
     <tables xsi:type="roma:PhysicalTable" id="_table_fact" name="Fact">
       <columns xsi:type="roma:PhysicalColumn" id="_column_fact_key" name="KEY"/>
@@ -124,8 +124,8 @@ This files represent the complete definition of the catalog.
     </tables>
   </roma:DatabaseSchema>
   <roma:TableQuery id="_query_factQuery" table="_table_fact"/>
-  <roma:Level id="_level_Level2" name="Level2" column="_column_fact_key"/>
   <roma:Level id="_level_Level1" name="Level1" column="_column_fact_key"/>
+  <roma:Level id="_level_Level2" name="Level2" column="_column_fact_key"/>
   <roma:StandardDimension id="_dimension_Dimension1" name="Dimension1" hierarchies="_hierarchy_Hierarchy1"/>
   <roma:StandardDimension id="_dimension_Dimension2" name="Dimension2" hierarchies="_hierarchy_Hierarchy2"/>
   <roma:PhysicalCube id="_cube_Cube1" name="Cube1" query="_query_factQuery">

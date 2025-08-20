@@ -1,5 +1,5 @@
 ---
-title: Minimal Cube with cube with two dimension connectors with level attribute
+title: Daanse Tutorial - Dimension Optimisation With Level Attribute
 group: Dimension
 kind: TUTORIAL
 number: 2.9.2
@@ -57,16 +57,6 @@ The Query is a simple TableQuery that selects all columns from the Hx_L2 table t
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
-## H1L1Query
-
-The Query is a simple TableQuery that selects all columns from the H1_L1 table to use in the hierarchy join.
-
-
-```xml
-<roma:TableQuery  id="_h1l1query" table="_h1_l1"/>
-
-```
-*<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Query
 
 The Query is a simple TableQuery that selects all columns from the Fact table to use in the measures.
@@ -74,6 +64,16 @@ The Query is a simple TableQuery that selects all columns from the Fact table to
 
 ```xml
 <roma:TableQuery  id="_table_factQuery" table="_table_fact"/>
+
+```
+*<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
+## H1L1Query
+
+The Query is a simple TableQuery that selects all columns from the H1_L1 table to use in the hierarchy join.
+
+
+```xml
+<roma:TableQuery  id="_h1l1query" table="_h1_l1"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -165,7 +165,7 @@ This files represent the complete definition of the catalog.
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
   <roma:ExplicitHierarchy id="_hierarchy1" name="Hierarchy1" primaryKey="_hx_l2_key" query="_joinQuery" levels="_h1_level1 _h1_level2"/>
-  <roma:Catalog description="Schema of a minimal cube with level attribute" name="Minimal Cube with cube with two dimension connectors with level attribute" cubes="_cube" dbschemas="_databaseSchema_optimisationwithlevelattribute"/>
+  <roma:Catalog description="Dimension optimization with level attributes" name="Daanse Tutorial - Dimension Optimisation With Level Attribute" cubes="_cube" dbschemas="_databaseSchema_optimisationwithlevelattribute"/>
   <roma:DatabaseSchema id="_databaseSchema_optimisationwithlevelattribute">
     <tables xsi:type="roma:PhysicalTable" id="_table_fact" name="Fact">
       <columns xsi:type="roma:PhysicalColumn" id="_column_fact_dim_key" name="DIM_KEY" type="Integer"/>
@@ -183,8 +183,8 @@ This files represent the complete definition of the catalog.
     </tables>
   </roma:DatabaseSchema>
   <roma:TableQuery id="_hxl2query" table="_hx_l2"/>
-  <roma:TableQuery id="_h1l1query" table="_h1_l1"/>
   <roma:TableQuery id="_table_factQuery" table="_table_fact"/>
+  <roma:TableQuery id="_h1l1query" table="_h1_l1"/>
   <roma:JoinQuery id="_joinQuery">
     <left key="_hx_l2_h1l1_key" query="_hxl2query"/>
     <right key="_h1_l1_key" query="_h1l1query"/>

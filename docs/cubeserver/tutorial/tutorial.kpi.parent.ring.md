@@ -1,5 +1,5 @@
 ---
-title: parent ring
+title: Daanse Tutorial - KPI Parent Ring
 group: Kpi
 kind: TUTORIAL
 number: 2.7.3
@@ -84,7 +84,7 @@ This files represent the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:Catalog name="Kpi - parent ring" cubes="_cube_CubeKpi" dbschemas="_databaseSchema_KpiParentRing"/>
+  <roma:Catalog description="KPI parent-child ring relationships" name="Daanse Tutorial - KPI Parent Ring" cubes="_cube_CubeKpi" dbschemas="_databaseSchema_KpiParentRing"/>
   <roma:DatabaseSchema id="_databaseSchema_KpiParentRing">
     <tables xsi:type="roma:PhysicalTable" id="_table_fact" name="Fact">
       <columns xsi:type="roma:PhysicalColumn" id="_column_fact_value" name="VALUE" type="Integer"/>

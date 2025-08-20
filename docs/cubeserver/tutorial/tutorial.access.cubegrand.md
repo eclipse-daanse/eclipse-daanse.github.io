@@ -1,5 +1,5 @@
 ---
-title: Cube with role CubeGrant
+title: Daanse Tutorial - Access Cube Grant
 group: Access
 kind: TUTORIAL
 number: 2.4.5
@@ -126,7 +126,7 @@ This files represent the complete definition of the catalog.
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
   <roma:ExplicitHierarchy id="_hierarchy_Hierarchy1" name="Hierarchy1" hasAll="false" primaryKey="_column_fact_key" query="_query_factQuery" levels="_level_Level1"/>
-  <roma:Catalog description="Schema with CubeGrant with cube1 access only" name="Cube with role CubeGrant" cubes="_cube_Cube1 _cube_Cube2" accessRoles="_accessRole_role1" dbschemas="_databaseSchema_CubeGrand"/>
+  <roma:Catalog description="Access control with cube-level grants" name="Daanse Tutorial - Access Cube Grant" cubes="_cube_Cube1 _cube_Cube2" accessRoles="_accessRole_role1" dbschemas="_databaseSchema_CubeGrand"/>
   <roma:DatabaseSchema id="_databaseSchema_CubeGrand">
     <tables xsi:type="roma:PhysicalTable" id="_table_fact" name="Fact">
       <columns xsi:type="roma:PhysicalColumn" id="_column_fact_key" name="KEY"/>

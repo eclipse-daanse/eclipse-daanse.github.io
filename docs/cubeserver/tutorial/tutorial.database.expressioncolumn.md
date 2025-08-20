@@ -1,5 +1,5 @@
 ---
-title: SQL Expression Column
+title: Daanse Tutorial - Database Expression Column
 group: Database
 kind: TUTORIAL
 number: 1.2.2
@@ -29,7 +29,7 @@ This files represent the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:Catalog id="_catalog_databaseSqlExpressionColumn" name="Database - SQL Expression Column" dbschemas="_databaseSchema_expressionColumn"/>
+  <roma:Catalog id="_catalog_databaseSqlExpressionColumn" description="SQL expression columns and computed fields" name="Daanse Tutorial - Database Expression Column" dbschemas="_databaseSchema_expressionColumn"/>
   <roma:DatabaseSchema id="_databaseSchema_expressionColumn">
     <tables xsi:type="roma:PhysicalTable" id="_table_tableWithExpressionColumn" name="TableWithExpressionColumn">
       <columns xsi:type="roma:PhysicalColumn" id="_column_tableWithExpressionColumn_column1" name="column1"/>

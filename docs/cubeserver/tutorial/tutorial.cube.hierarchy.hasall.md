@@ -1,5 +1,5 @@
 ---
-title: HasAll-Level
+title: Daanse Tutorial - Cube Hierarchy Has All
 group: Hierarchy
 kind: TUTORIAL
 number: 2.3.4
@@ -124,7 +124,7 @@ This files represent the complete definition of the catalog.
   <roma:ExplicitHierarchy id="_hierarchy_hasall_no" name="Hierarchy - Without HasAll" hasAll="false" primaryKey="_col_fact_key" query="_query" levels="_level"/>
   <roma:ExplicitHierarchy id="_hierarchy_hasall_simple" name="Hierarchy - with HasAll" primaryKey="_col_fact_key" query="_query" levels="_level"/>
   <roma:ExplicitHierarchy id="_hierarchy_hasall_complex" name="Hierarchy - with HasAll and Names" allLevelName="theAllLevelName" allMemberName="theAllMemberName" primaryKey="_col_fact_key" query="_query" levels="_level"/>
-  <roma:Catalog name="Hierarchy - HasAll-Level" cubes="_cube" dbschemas="_databaseschema"/>
+  <roma:Catalog description="Hierarchy with all-member configuration" name="Daanse Tutorial - Cube Hierarchy Has All" cubes="_cube" dbschemas="_databaseschema"/>
   <roma:DatabaseSchema id="_databaseschema">
     <tables xsi:type="roma:PhysicalTable" id="_table" name="Fact">
       <columns xsi:type="roma:PhysicalColumn" id="_col_fact_key" name="KEY"/>

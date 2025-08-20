@@ -1,5 +1,5 @@
 ---
-title: Minimal Cube with Parent Child Hierarchy with parentAsLeafEnable.
+title: Daanse Tutorial - Parent Child Parent As Leaf
 group: Parent Child
 kind: TUTORIAL
 number: 2.17.4
@@ -108,7 +108,7 @@ This files represent the complete definition of the catalog.
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
   <roma:ParentChildHierarchy id="_hierarchy_parentChild" name="Hierarchy" allMemberName="All" primaryKey="_column_parent_name" query="_query_parentFact" nullParentValue="all" parentColumn="_column_parent_parent" parentAsLeafEnable="true" parentAsLeafNameFormat="parent %s" level="_level_name"/>
-  <roma:Catalog description="Minimal Cube with Parent Child Hierarchy with parentAsLeafEnable." name="Minimal Cube with Parent Child Hierarchy with parentAsLeafEnable." cubes="_cube_parentAsLeaf" dbschemas="_databaseSchema_parentAsLeaf"/>
+  <roma:Catalog description="Parent-child hierarchy with parent as leaf enabled" name="Daanse Tutorial - Parent Child Parent As Leaf" cubes="_cube_parentAsLeaf" dbschemas="_databaseSchema_parentAsLeaf"/>
   <roma:DatabaseSchema id="_databaseSchema_parentAsLeaf">
     <tables xsi:type="roma:PhysicalTable" id="_table_parent" name="Parent">
       <columns xsi:type="roma:PhysicalColumn" id="_column_parent_name" name="NAME"/>

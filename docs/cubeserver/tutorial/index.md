@@ -15,141 +15,141 @@ A recommended reading order is provided below to help you build your understandi
 
 
 
-[Database - Intro](./tutorial.database.intro.md)
+[Daanse Tutorial - Database Intro](./tutorial.database.intro.md)
 
-[Database - ColumnTypes](./tutorial.database.column.md)
+[Daanse Tutorial - Database Column](./tutorial.database.column.md)
 
-[Database - SQL Expression Column](./tutorial.database.expressioncolumn.md)
+[Daanse Tutorial - Database Expression Column](./tutorial.database.expressioncolumn.md)
 
-[Database - Schema](./tutorial.database.schema.md)
+[Daanse Tutorial - Database Schema](./tutorial.database.schema.md)
 
-[Database - Table](./tutorial.database.table.md)
+[Daanse Tutorial - Database Table](./tutorial.database.table.md)
 
-[Database - SqlView](./tutorial.database.sqlview.md)
+[Daanse Tutorial - Database SQL View](./tutorial.database.sqlview.md)
 
-[Database - InlineTable](./tutorial.database.inlinetable.md)
+[Daanse Tutorial - Database Inline Table](./tutorial.database.inlinetable.md)
 
-[Cube - Minimal](./tutorial.cube.minimal.md)
+[Daanse Tutorial - Cube Minimal](./tutorial.cube.minimal.md)
 
-[Minimal Cube with DrillThroughAction](./tutorial.action.drillthrough.md)
+[Daanse Tutorial - Action Drillthrough](./tutorial.action.drillthrough.md)
 
-[Minimal Cube With Measures CellFormatter](./tutorial.formatter.cell.md)
+[Daanse Tutorial - Formatter Cell](./tutorial.formatter.cell.md)
 
-[Minimal Cube With SQLExpressionColumn](./tutorial.measure.expression.md)
+[Daanse Tutorial - Measure Expression](./tutorial.measure.expression.md)
 
-[Cube with one measure with inline table](./tutorial.measure.inlinetable.md)
+[Daanse Tutorial - Measure Inline Table](./tutorial.measure.inlinetable.md)
 
-[Cube with One Measure with Inline Table and with Levels with physical and inline tables](./tutorial.measure.inlinetablewithphysical.md)
+[Daanse Tutorial - Measure Inline Table With Physical](./tutorial.measure.inlinetablewithphysical.md)
 
-[Minimal Cube with level with expressions](./tutorial.level.expressions.md)
+[Daanse Tutorial - Level Expressions](./tutorial.level.expressions.md)
 
-[Minimal Cube with level with smallInt boolan type](./tutorial.level.smallintasbooleantype.md)
+[Daanse Tutorial - Level Small Int As Boolean Type](./tutorial.level.smallintasbooleantype.md)
 
-[Minimal Cube Hidden Members with IfParentsName](./tutorial.level.ifparentsname.md)
+[Daanse Tutorial - Level If Parents Name](./tutorial.level.ifparentsname.md)
 
-[Minimal Cube with Hidden Members with IfBlankName with multiple levels](./tutorial.level.ifblanknamemultiple.md)
+[Daanse Tutorial - Level If Blank Name Multiple](./tutorial.level.ifblanknamemultiple.md)
 
-[Minimal Cube with Hidden Members with IfBlankName](./tutorial.level.ifblankname.md)
+[Daanse Tutorial - Level If Blank Name](./tutorial.level.ifblankname.md)
 
-[Minimal Virtual Cubes With Measures](./tutorial.virtualcube.min.md)
+[Daanse Tutorial - Virtual Cube Minimal](./tutorial.virtualcube.min.md)
 
-[Cube with virtual cube with dimension references from other cubes](./tutorial.virtualcube.dimensions.md)
+[Daanse Tutorial - Virtual Cube Dimensions](./tutorial.virtualcube.dimensions.md)
 
-[Cube with virtual cube with calculatedMember](./tutorial.virtualcube.calculatedmember.md)
+[Daanse Tutorial - Virtual Cube Calculated Member](./tutorial.virtualcube.calculatedmember.md)
 
-[Cube with virtual cube with un visible reference cubes](./tutorial.virtualcube.unvisiblereferencecubes.md)
+[Daanse Tutorial - Virtual Cube Unvisible Reference Cubes](./tutorial.virtualcube.unvisiblereferencecubes.md)
 
-[Cube with dimension with hierarchy with inner table](./tutorial.hierarchy.inlinetable.md)
+[Daanse Tutorial - Hierarchy Inline Table](./tutorial.hierarchy.inlinetable.md)
 
-[Cube with dimension with hierarchy with SQL view reference](./tutorial.hierarchy.view.md)
+[Daanse Tutorial - Hierarchy View](./tutorial.hierarchy.view.md)
 
-[Minimal Cube with hierarchy with functional dependency optimizations](./tutorial.hierarchy.uniquekeylevelname.md)
+[Daanse Tutorial - Hierarchy Unique Key Level Name](./tutorial.hierarchy.uniquekeylevelname.md)
 
-[Minimal Parent Child Hierarchy](./tutorial.parentchild.minimal.md)
+[Daanse Tutorial - Parent Child Minimal](./tutorial.parentchild.minimal.md)
 
-[Minimal Cube with Parent Child Hierarchy with null parent value.](./tutorial.parentchild.nullparent.md)
+[Daanse Tutorial - Parent Child Null Parent](./tutorial.parentchild.nullparent.md)
 
-[Minimal Cube with ParentChildHierarchy with ParentChildLink](./tutorial.parentchild.link.md)
+[Daanse Tutorial - Parent Child Link](./tutorial.parentchild.link.md)
 
-[Minimal Cube with Parent Child Hierarchy with parentAsLeafEnable.](./tutorial.parentchild.parentasleaf.md)
+[Daanse Tutorial - Parent Child Parent As Leaf](./tutorial.parentchild.parentasleaf.md)
 
-[Measure - Basic Aggregators](./tutorial.cube.measure.aggregator.base.md)
+[Daanse Tutorial - Cube Measure Aggregator Base](./tutorial.cube.measure.aggregator.base.md)
 
-[Measure - Multiple Measures](./tutorial.cube.measure.multiple.md)
+[Daanse Tutorial - Cube Measure Multiple](./tutorial.cube.measure.multiple.md)
 
-[Measure - Datatypes](./tutorial.cube.measure.datatype.md)
+[Daanse Tutorial - Cube Measure Datatype](./tutorial.cube.measure.datatype.md)
 
-[Measure - Formats](./tutorial.cube.measure.format.md)
+[Daanse Tutorial - Cube Measure Format](./tutorial.cube.measure.format.md)
 
-[Measure - MeasureGroups](./tutorial.cube.measure.group.md)
+[Daanse Tutorial - Cube Measure Group](./tutorial.cube.measure.group.md)
 
-[Measure - Bit Aggragators](./tutorial.cube.measure.aggregator.bit.md)
+[Daanse Tutorial - Cube Measure Aggregator Bit](./tutorial.cube.measure.aggregator.bit.md)
 
-[Measure - Percentile Aggragator](./tutorial.cube.measure.aggregator.percentile.md)
+[Daanse Tutorial - Cube Measure Aggregator Percentile](./tutorial.cube.measure.aggregator.percentile.md)
 
-[Measure - NTH value Aggragator](./tutorial.cube.measure.aggregator.nth.md)
+[Daanse Tutorial - Cube Measure Aggregator Nth](./tutorial.cube.measure.aggregator.nth.md)
 
-[Measure - Text Aggregator](./tutorial.cube.measure.aggregator.textagg.md)
+[Daanse Tutorial - Cube Measure Aggregator Text Agg](./tutorial.cube.measure.aggregator.textagg.md)
 
-[Dimension - Introduction](./tutorial.cube.dimension.intro.md)
+[Daanse Tutorial - Cube Dimension Intro](./tutorial.cube.dimension.intro.md)
 
-[Hierarchy - Query - seperate Tables, Fact and Dimension](./tutorial.cube.hierarchy.query.table.base.md)
+[Daanse Tutorial - Cube Hierarchy Query Table Base](./tutorial.cube.hierarchy.query.table.base.md)
 
-[Hierarchy - Query - 1 Table, 2 Levels](./tutorial.cube.hierarchy.query.table.multilevel.multitable.md)
+[Daanse Tutorial - Cube Hierarchy Query Table Multilevel Multitable](./tutorial.cube.hierarchy.query.table.multilevel.multitable.md)
 
-[Hierarchy - Query - all in 1 Table](./tutorial.cube.hierarchy.query.table.multilevel.singletable.md)
+[Daanse Tutorial - Cube Hierarchy Query Table Multilevel Singletable](./tutorial.cube.hierarchy.query.table.multilevel.singletable.md)
 
-[Hierarchy - Query - 1 Join](./tutorial.cube.hierarchy.query.join.base.md)
+[Daanse Tutorial - Cube Hierarchy Query Join Base](./tutorial.cube.hierarchy.query.join.base.md)
 
-[Hierarchy - Query - 2 Joins, 3 Levels](./tutorial.cube.hierarchy.query.join.multi.md)
+[Daanse Tutorial - Cube Hierarchy Query Join Multi](./tutorial.cube.hierarchy.query.join.multi.md)
 
-[Hierarchy - HasAll-Level](./tutorial.cube.hierarchy.hasall.md)
+[Daanse Tutorial - Cube Hierarchy Has All](./tutorial.cube.hierarchy.hasall.md)
 
-[Level - MemberProperties Intro](./tutorial.cube.level.member.property.intro.md)
+[Daanse Tutorial - Cube Level Member Property Intro](./tutorial.cube.level.member.property.intro.md)
 
-[Cube - logic functions](./tutorial.function.logic.md)
+[Daanse Tutorial - Function Logic](./tutorial.function.logic.md)
 
-[Cube - CalculatedMembers Intro](./tutorial.cube.calculatedmember.intro.md)
+[Daanse Tutorial - Cube Calculated Member Intro](./tutorial.cube.calculatedmember.intro.md)
 
-[Cube - CalculatedMembers with different colors](./tutorial.cube.calculatedmember.color.md)
+[Daanse Tutorial - Cube Calculated Member Color](./tutorial.cube.calculatedmember.color.md)
 
-[Cube with roles access database schema](./tutorial.access.databaseschemagrand.md)
+[Daanse Tutorial - Access Database Schema Grant](./tutorial.access.databaseschemagrand.md)
 
-[Cube with roles access table](./tutorial.access.tablegrand.md)
+[Daanse Tutorial - Access Table Grant](./tutorial.access.tablegrand.md)
 
-[Cube with roles access column](./tutorial.access.columngrand.md)
+[Daanse Tutorial - Access Column Grant](./tutorial.access.columngrand.md)
 
-[Cube with roles access catalog](./tutorial.access.cataloggrand.md)
+[Daanse Tutorial - Access Catalog Grant](./tutorial.access.cataloggrand.md)
 
-[Cube with role CubeGrant](./tutorial.access.cubegrand.md)
+[Daanse Tutorial - Access Cube Grant](./tutorial.access.cubegrand.md)
 
-[Cube with role access DimensionGrant](./tutorial.access.dimensiongrand.md)
+[Daanse Tutorial - Access Dimension Grant](./tutorial.access.dimensiongrand.md)
 
-[Cube with HierarchyGrant](./tutorial.access.hierarchygrand.md)
+[Daanse Tutorial - Access Hierarchy Grant](./tutorial.access.hierarchygrand.md)
 
-[Cube with access all dimension_cube1 access to A only](./tutorial.access.membergrand.md)
+[Daanse Tutorial - Access Member Grant](./tutorial.access.membergrand.md)
 
-[Catalog with cube with different member identifiers](./tutorial.member.identifier.md)
+[Daanse Tutorial - Member Identifier](./tutorial.member.identifier.md)
 
-[Kpi - Introduction](./tutorial.kpi.intro.md)
+[Daanse Tutorial - KPI Intro](./tutorial.kpi.intro.md)
 
-[Minimal Cube with KPI with all properties](./tutorial.kpi.all.md)
+[Daanse Tutorial - KPI All](./tutorial.kpi.all.md)
 
-[Kpi - parent ring](./tutorial.kpi.parent.ring.md)
+[Daanse Tutorial - KPI Parent Ring](./tutorial.kpi.parent.ring.md)
 
-[Cube with virtual cube with kpi](./tutorial.kpi.virtualcube.md)
+[Daanse Tutorial - KPI Virtual Cube](./tutorial.kpi.virtualcube.md)
 
-[Cube with NamedSets](./tutorial.namedset.md)
+[Daanse Tutorial - Namedset All](./tutorial.namedset.md)
 
-[Cube with table reference with AggExclude](./tutorial.aggregation.aggexclude.md)
+[Daanse Tutorial - Aggregation Agg Exclude](./tutorial.aggregation.aggexclude.md)
 
-[Cube with aggregate tables](./tutorial.aggregation.aggregatetables.md)
+[Daanse Tutorial - Aggregation Aggregate Tables](./tutorial.aggregation.aggregatetables.md)
 
-[Minimal Cube with Time_Dimension](./tutorial.dimension.timedimension.md)
+[Daanse Tutorial - Dimension Time Dimension](./tutorial.dimension.timedimension.md)
 
-[Minimal Cube with cube with two dimension connectors with level attribute](./tutorial.dimension.optimisationwithlevelattribute.md)
+[Daanse Tutorial - Dimension Optimisation With Level Attribute](./tutorial.dimension.optimisationwithlevelattribute.md)
 
-[Schulwesen](./complex.school.md)
+[Daanse Example - Schulwesen](./complex.school.md)
 
 [Writeback_without_dimension](./tutorial.writebackwithoutdimension.md)
 

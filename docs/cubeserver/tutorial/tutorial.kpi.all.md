@@ -1,5 +1,5 @@
 ---
-title: Minimal Cube with KPI with all properties
+title: Daanse Tutorial - KPI All
 group: Kpi
 kind: TUTORIAL
 number: 2.7.2
@@ -81,7 +81,7 @@ This files represent the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:Catalog description="Minimal Cube with KPI with all properties" name="Minimal Cube with KPI with all properties" cubes="_cubekpi" dbschemas="_databaseSchema_KpiAll"/>
+  <roma:Catalog description="Complete KPI implementation examples" name="Daanse Tutorial - KPI All" cubes="_cubekpi" dbschemas="_databaseSchema_KpiAll"/>
   <roma:DatabaseSchema id="_databaseSchema_KpiAll">
     <tables xsi:type="roma:PhysicalTable" id="_table_fact" name="Fact">
       <columns xsi:type="roma:PhysicalColumn" id="_column_fact_key" name="KEY"/>

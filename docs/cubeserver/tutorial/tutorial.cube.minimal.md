@@ -1,5 +1,5 @@
 ---
-title: Minimal
+title: Daanse Tutorial - Cube Minimal
 group: Cube
 kind: TUTORIAL
 number: 2.1
@@ -56,7 +56,7 @@ This files represent the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:Catalog id="_catalog_minimal" name="Cube - Minimal" cubes="_cube_minimal" dbschemas="_databaseSchema_minimal"/>
+  <roma:Catalog id="_catalog_minimal" description="Basic cube structure with measures only" name="Daanse Tutorial - Cube Minimal" cubes="_cube_minimal" dbschemas="_databaseSchema_minimal"/>
   <roma:DatabaseSchema id="_databaseSchema_minimal">
     <tables xsi:type="roma:PhysicalTable" id="_table_fact" name="Fact">
       <columns xsi:type="roma:PhysicalColumn" id="_column_fact_key" name="KEY"/>

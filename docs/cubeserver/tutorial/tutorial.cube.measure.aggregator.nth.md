@@ -1,5 +1,5 @@
 ---
-title: NTH value Aggragator
+title: Daanse Tutorial - Cube Measure Aggregator Nth
 group: Measure
 kind: TUTORIAL
 number: 2.2.7
@@ -51,13 +51,13 @@ In this example, multiple measures are defined. All measures reference the `VALU
 <roma:PhysicalCube   id="_cube" name="MeasuresAggregatorsCube" query="_query">
   <dimensionConnectors foreignKey="roma:PhysicalColumn _col_id" dimension="roma:StandardDimension _diml" overrideDimensionName="Dim" id="_dc_dim"/>
   <measureGroups>
-    <measures xsi:type="roma:NthAggMeasure" id="_measure1" name="NthAgg1" column="_col_value" orderByColumns="/0" n="1"/>
-    <measures xsi:type="roma:NthAggMeasure" id="_measure2" name="NthAgg2" column="_col_value" orderByColumns="/0" n="2"/>
-    <measures xsi:type="roma:NthAggMeasure" id="_measure3" name="NthAgg3" column="_col_value" orderByColumns="/0" n="3"/>
-    <measures xsi:type="roma:NthAggMeasure" id="_measure4" name="NthAgg4" column="_col_value" orderByColumns="/0" n="4"/>
-    <measures xsi:type="roma:NthAggMeasure" id="_measure5" name="NthAgg5" column="_col_value" orderByColumns="/0" n="5"/>
-    <measures xsi:type="roma:NthAggMeasure" id="_measure6" name="NthAgg6" column="_col_value" orderByColumns="/0" n="6"/>
-    <measures xsi:type="roma:NthAggMeasure" id="_measure7" name="NthAgg7" column="_col_value" orderByColumns="/0" n="7"/>
+    <measures xsi:type="roma:NthAggMeasure" id="_measure1" name="NthAgg1" column="_col_value" orderByColumns="/1" n="1"/>
+    <measures xsi:type="roma:NthAggMeasure" id="_measure2" name="NthAgg2" column="_col_value" orderByColumns="/1" n="2"/>
+    <measures xsi:type="roma:NthAggMeasure" id="_measure3" name="NthAgg3" column="_col_value" orderByColumns="/1" n="3"/>
+    <measures xsi:type="roma:NthAggMeasure" id="_measure4" name="NthAgg4" column="_col_value" orderByColumns="/1" n="4"/>
+    <measures xsi:type="roma:NthAggMeasure" id="_measure5" name="NthAgg5" column="_col_value" orderByColumns="/1" n="5"/>
+    <measures xsi:type="roma:NthAggMeasure" id="_measure6" name="NthAgg6" column="_col_value" orderByColumns="/1" n="6"/>
+    <measures xsi:type="roma:NthAggMeasure" id="_measure7" name="NthAgg7" column="_col_value" orderByColumns="/1" n="7"/>
   </measureGroups>
 </roma:PhysicalCube>
 
@@ -71,9 +71,9 @@ This files represent the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:OrderedColumn column="_col_value"/>
   <roma:ExplicitHierarchy id="_hierarchy_Hierarchy" name="Hierarchy" hasAll="false" primaryKey="_col_id" query="_query" levels="_level"/>
-  <roma:Catalog name="Measure - NTH value Aggragator" cubes="_cube" dbschemas="_databaseSchema"/>
+  <roma:OrderedColumn column="_col_value"/>
+  <roma:Catalog description="Nth value aggregation functions" name="Daanse Tutorial - Cube Measure Aggregator Nth" cubes="_cube" dbschemas="_databaseSchema"/>
   <roma:DatabaseSchema id="_databaseSchema">
     <tables xsi:type="roma:PhysicalTable" id="_tab" name="Fact">
       <columns xsi:type="roma:PhysicalColumn" id="_col_id" name="ID" type="Integer"/>
@@ -87,13 +87,13 @@ This files represent the complete definition of the catalog.
   <roma:PhysicalCube id="_cube" name="MeasuresAggregatorsCube" query="_query">
     <dimensionConnectors foreignKey="_col_id" dimension="_diml" overrideDimensionName="Dim" id="_dc_dim"/>
     <measureGroups>
-      <measures xsi:type="roma:NthAggMeasure" id="_measure1" name="NthAgg1" column="_col_value" orderByColumns="/0" n="1"/>
-      <measures xsi:type="roma:NthAggMeasure" id="_measure2" name="NthAgg2" column="_col_value" orderByColumns="/0" n="2"/>
-      <measures xsi:type="roma:NthAggMeasure" id="_measure3" name="NthAgg3" column="_col_value" orderByColumns="/0" n="3"/>
-      <measures xsi:type="roma:NthAggMeasure" id="_measure4" name="NthAgg4" column="_col_value" orderByColumns="/0" n="4"/>
-      <measures xsi:type="roma:NthAggMeasure" id="_measure5" name="NthAgg5" column="_col_value" orderByColumns="/0" n="5"/>
-      <measures xsi:type="roma:NthAggMeasure" id="_measure6" name="NthAgg6" column="_col_value" orderByColumns="/0" n="6"/>
-      <measures xsi:type="roma:NthAggMeasure" id="_measure7" name="NthAgg7" column="_col_value" orderByColumns="/0" n="7"/>
+      <measures xsi:type="roma:NthAggMeasure" id="_measure1" name="NthAgg1" column="_col_value" orderByColumns="/1" n="1"/>
+      <measures xsi:type="roma:NthAggMeasure" id="_measure2" name="NthAgg2" column="_col_value" orderByColumns="/1" n="2"/>
+      <measures xsi:type="roma:NthAggMeasure" id="_measure3" name="NthAgg3" column="_col_value" orderByColumns="/1" n="3"/>
+      <measures xsi:type="roma:NthAggMeasure" id="_measure4" name="NthAgg4" column="_col_value" orderByColumns="/1" n="4"/>
+      <measures xsi:type="roma:NthAggMeasure" id="_measure5" name="NthAgg5" column="_col_value" orderByColumns="/1" n="5"/>
+      <measures xsi:type="roma:NthAggMeasure" id="_measure6" name="NthAgg6" column="_col_value" orderByColumns="/1" n="6"/>
+      <measures xsi:type="roma:NthAggMeasure" id="_measure7" name="NthAgg7" column="_col_value" orderByColumns="/1" n="7"/>
     </measureGroups>
   </roma:PhysicalCube>
 </xmi:XMI>

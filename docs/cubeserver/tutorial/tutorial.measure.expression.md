@@ -1,5 +1,5 @@
 ---
-title: Minimal Cube With SQLExpressionColumn
+title: Daanse Tutorial - Measure Expression
 group: Measure
 kind: TUTORIAL
 number: 2.12.1
@@ -132,7 +132,7 @@ This files represent the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:Catalog description="Minimal Cube With SQLExpressionColumn" name="Minimal Cube With SQLExpressionColumn" cubes="_cube" dbschemas="_databaseSchema_expression"/>
+  <roma:Catalog description="Measure with expression-based calculations" name="Daanse Tutorial - Measure Expression" cubes="_cube" dbschemas="_databaseSchema_expression"/>
   <roma:DatabaseSchema id="_databaseSchema_expression">
     <tables xsi:type="roma:PhysicalTable" id="_fact" name="FACT">
       <columns xsi:type="roma:PhysicalColumn" id="_column_fact_key" name="KEY"/>

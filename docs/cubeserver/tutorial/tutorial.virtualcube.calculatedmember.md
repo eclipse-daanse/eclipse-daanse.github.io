@@ -1,5 +1,5 @@
 ---
-title: Cube with virtual cube with calculatedMember
+title: Daanse Tutorial - Virtual Cube Calculated Member
 group: VirtualCube
 kind: TUTORIAL
 number: 2.15.3
@@ -47,7 +47,7 @@ as it directly references the physical table `Fact`.
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## MeasureCube1
 
-        Measure uses C1_Fact table VALUE column with sum aggregation in Cube1.
+Measure uses C1_Fact table VALUE column with sum aggregation in Cube1.
 
 
 ```xml
@@ -57,7 +57,7 @@ as it directly references the physical table `Fact`.
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Sum_Cub
 
-        CalculatedMember uses MeasureCube1 from Cube1 and MeasureCube2 from Cube2 in formula.
+CalculatedMember uses MeasureCube1 from Cube1 and MeasureCube2 from Cube2 in formula.
 
 
 ```xml
@@ -67,7 +67,7 @@ as it directly references the physical table `Fact`.
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## MeasureCube2
 
-        Measure uses Fact table VALUE column with sum aggregation in Cube2.
+Measure uses Fact table VALUE column with sum aggregation in Cube2.
 
 
 ```xml
@@ -127,7 +127,7 @@ This files represent the complete definition of the catalog.
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
   <roma:ExplicitHierarchy id="_hierarchy_HierarchyWithoutHasAll" name="HierarchyWithoutHasAll" hasAll="false" primaryKey="_column_fact_key" query="_table_factQuery" levels="_level"/>
-  <roma:Catalog description="Schema with virtual cube with calculatedMember" name="Cube with virtual cube with calculatedMember" cubes="_cube1 _cube2 _cube1cube2" dbschemas="_databaseSchema_calculatedmember"/>
+  <roma:Catalog description="Calculated members in virtual cubes" name="Daanse Tutorial - Virtual Cube Calculated Member" cubes="_cube1 _cube2 _cube1cube2" dbschemas="_databaseSchema_calculatedmember"/>
   <roma:DatabaseSchema id="_databaseSchema_calculatedmember">
     <tables xsi:type="roma:PhysicalTable" id="_table_fact" name="Fact">
       <columns xsi:type="roma:PhysicalColumn" id="_column_fact_key" name="KEY"/>
@@ -137,16 +137,16 @@ This files represent the complete definition of the catalog.
   <roma:TableQuery id="_table_factQuery" table="_table_fact"/>
   <roma:Level id="_level" name="Level" column="_column_fact_key"/>
   <roma:StandardDimension id="_dimension1" name="Dimension1" hierarchies="_hierarchy_HierarchyWithoutHasAll"/>
-  <roma:PhysicalCube id="_cube2" name="Cube2" query="_table_factQuery">
-    <dimensionConnectors foreignKey="_column_fact_key" dimension="_dimension1" overrideDimensionName="Cube2Dimension1" id="_dc_cube2Dimension1"/>
-    <measureGroups>
-      <measures xsi:type="roma:SumMeasure" id="_measurecube2" name="MeasureCube2" column="_column_fact_value"/>
-    </measureGroups>
-  </roma:PhysicalCube>
   <roma:PhysicalCube id="_cube1" name="Cube1" query="_table_factQuery">
     <dimensionConnectors foreignKey="_column_fact_key" dimension="_dimension1" overrideDimensionName="Cube1Dimension1" id="_dc_cube1Dimension1"/>
     <measureGroups>
       <measures xsi:type="roma:SumMeasure" id="_measurecube1" name="MeasureCube1" column="_column_fact_value"/>
+    </measureGroups>
+  </roma:PhysicalCube>
+  <roma:PhysicalCube id="_cube2" name="Cube2" query="_table_factQuery">
+    <dimensionConnectors foreignKey="_column_fact_key" dimension="_dimension1" overrideDimensionName="Cube2Dimension1" id="_dc_cube2Dimension1"/>
+    <measureGroups>
+      <measures xsi:type="roma:SumMeasure" id="_measurecube2" name="MeasureCube2" column="_column_fact_value"/>
     </measureGroups>
   </roma:PhysicalCube>
   <roma:VirtualCube id="_cube1cube2" name="Cube1Cube2" dimensionConnectors="_dc_cube1Dimension1 _dc_cube2Dimension1" referencedMeasures="_measurecube1 _measurecube2">

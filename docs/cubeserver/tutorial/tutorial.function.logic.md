@@ -1,5 +1,5 @@
 ---
-title: logic functions
+title: Daanse Tutorial - Function Logic
 group: Cube
 kind: TUTORIAL
 number: 2.3.6
@@ -81,7 +81,7 @@ This files represent the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:Catalog name="Cube - logic functions" cubes="_cube" dbschemas="_databaseschema"/>
+  <roma:Catalog description="Logic function implementations" name="Daanse Tutorial - Function Logic" cubes="_cube" dbschemas="_databaseschema"/>
   <roma:DatabaseSchema id="_databaseschema">
     <tables xsi:type="roma:PhysicalTable" id="_table_fact" name="Fact">
       <columns xsi:type="roma:PhysicalColumn" id="_col_fact_key" name="KEY"/>

@@ -1,5 +1,5 @@
 ---
-title: Schema
+title: Daanse Tutorial - Database Schema
 group: Database
 kind: TUTORIAL
 number: 1.3
@@ -34,7 +34,7 @@ It is more secure to explicitly define the schema using the `name` attribute. To
 Schema can be refernced in the catalog. You can see this by checking the `dbSchema attribute` in the catalog.
 
 ```xml
-<roma:Catalog  id="_catalog_databaseSchema" name="Database - Schema" dbschemas="_databaseSchema_default _databaseSchema_foo"/>
+<roma:Catalog  id="_catalog_databaseSchema" description="Database schema configuration and organization" name="Daanse Tutorial - Database Schema" dbschemas="_databaseSchema_default _databaseSchema_foo"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -46,7 +46,7 @@ This files represent the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:Catalog id="_catalog_databaseSchema" name="Database - Schema" dbschemas="_databaseSchema_default _databaseSchema_foo"/>
+  <roma:Catalog id="_catalog_databaseSchema" description="Database schema configuration and organization" name="Daanse Tutorial - Database Schema" dbschemas="_databaseSchema_default _databaseSchema_foo"/>
   <roma:DatabaseSchema id="_databaseSchema_foo" description="theDescription" name="foo">
     <tables xsi:type="roma:PhysicalTable" id="_table_theTable" name="theTable">
       <columns xsi:type="roma:PhysicalColumn" id="_column_theTable_theColumn" name="theColumn"/>

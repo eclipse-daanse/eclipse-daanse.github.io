@@ -44,14 +44,14 @@ This files represent the complete definition of the catalog.
       </sqlStatements>
     </sql>
   </roma:SqlSelectQuery>
-  <roma:TableQuery id="l2Query" table="L2"/>
   <roma:TableQuery id="l1Query" table="L1"/>
+  <roma:TableQuery id="l2Query" table="L2"/>
   <roma:JoinQuery id="joinQuery">
     <left key="L1_L2" query="l1Query"/>
     <right key="L2_L2" query="l2Query"/>
   </roma:JoinQuery>
-  <roma:Level id="L2Level" name="L2" column="L2_L2"/>
   <roma:Level id="L1Level" name="L1" column="L1_L1"/>
+  <roma:Level id="L2Level" name="L2" column="L2_L2"/>
   <roma:StandardDimension id="Dimension" name="Dimension" hierarchies="HierarchyWithHasAll"/>
   <roma:PhysicalCube id="C" name="C" query="query">
     <dimensionConnectors foreignKey="L1_L2" dimension="Dimension" overrideDimensionName="D1" id="D1"/>

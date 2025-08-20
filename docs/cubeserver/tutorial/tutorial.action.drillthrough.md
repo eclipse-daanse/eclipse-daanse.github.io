@@ -1,5 +1,5 @@
 ---
-title: Minimal Cube with DrillThroughAction
+title: Daanse Tutorial - Action Drillthrough
 group: Actions
 kind: TUTORIAL
 number: 2.10.1
@@ -48,16 +48,6 @@ The KEY column of Fact table is used as the discriminator in the the dimension.
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
-## H1L1Query
-
-The Query is a simple TableQuery that selects all columns from the H1_L1 table table.
-
-
-```xml
-<roma:TableQuery  id="_query_H1L1Query" table="_table_h1_l1"/>
-
-```
-*<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## H2L1Query
 
 The Query is a simple TableQuery that selects all columns from the H2_L1 table table.
@@ -65,6 +55,16 @@ The Query is a simple TableQuery that selects all columns from the H2_L1 table t
 
 ```xml
 <roma:TableQuery  id="_query_H2L1Query" table="_table_h2_l1"/>
+
+```
+*<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
+## H1L1Query
+
+The Query is a simple TableQuery that selects all columns from the H1_L1 table table.
+
+
+```xml
+<roma:TableQuery  id="_query_H1L1Query" table="_table_h1_l1"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -130,16 +130,6 @@ This Example uses H2_Level1 level bases on the KEY column as kew and NAME column
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
-## Level2
-
-This Example uses H1_Level2 level bases on the KEY column as kew and NAME column as name from HX_L2 table.
-
-
-```xml
-<roma:Level  id="_level_H1_Level2" name="H1_Level2" column="_column_hx_l2_key" nameColumn="_column_hx_l2_name"/>
-
-```
-*<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Level4
 
 This Example uses H2_Level2 level bases on the KEY column as kew and NAME column as name from HX_L2 table.
@@ -157,6 +147,16 @@ This Example uses H1_Level1 level bases on the KEY column as kew and NAME column
 
 ```xml
 <roma:Level  id="_level_H1_Level1" name="H1_Level1" column="_column_h1_l1_key" nameColumn="_column_h1_l1_name"/>
+
+```
+*<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
+## Level2
+
+This Example uses H1_Level2 level bases on the KEY column as kew and NAME column as name from HX_L2 table.
+
+
+```xml
+<roma:Level  id="_level_H1_Level2" name="H1_Level2" column="_column_hx_l2_key" nameColumn="_column_hx_l2_name"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -247,7 +247,7 @@ This files represent the complete definition of the catalog.
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
   <roma:ExplicitHierarchy id="_hierarchy_Hierarchy1" name="Hierarchy1" primaryKey="_column_hx_l2_key" query="_joinQuery_join1" levels="_level_H1_Level1 _level_H1_Level2"/>
   <roma:ExplicitHierarchy id="_hierarchy_Hierarchy2" name="Hierarchy2" primaryKey="_column_hx_l2_key" query="_joinQuery_join2" levels="_level_H2_Level1 _level_H2_Level2"/>
-  <roma:Catalog description="Schema of a minimal cube with DrillThroughAction" name="Minimal Cube with DrillThroughAction" cubes="_cube_Cube" dbschemas="_databaseSchema_DrillThrough"/>
+  <roma:Catalog description="Drill-through action configuration" name="Daanse Tutorial - Action Drillthrough" cubes="_cube_Cube" dbschemas="_databaseSchema_DrillThrough"/>
   <roma:DatabaseSchema id="_databaseSchema_DrillThrough">
     <tables xsi:type="roma:PhysicalTable" id="_table_fact" name="Fact">
       <columns xsi:type="roma:PhysicalColumn" id="_column_fact_key" name="KEY"/>
@@ -268,9 +268,9 @@ This files represent the complete definition of the catalog.
       <columns xsi:type="roma:PhysicalColumn" id="_column_hx_l2_h2l1_key" name="H2L1_KEY" type="Integer"/>
     </tables>
   </roma:DatabaseSchema>
-  <roma:TableQuery id="_query_H1L1Query" table="_table_h1_l1"/>
   <roma:TableQuery id="_query_H2L1Query" table="_table_h2_l1"/>
   <roma:TableQuery id="_query_HxL2Query" table="_table_hx_l2"/>
+  <roma:TableQuery id="_query_H1L1Query" table="_table_h1_l1"/>
   <roma:TableQuery id="_query_factQuery" table="_table_fact"/>
   <roma:JoinQuery id="_joinQuery_join2">
     <left key="_column_hx_l2_h2l1_key" query="_query_HxL2Query"/>
@@ -281,9 +281,9 @@ This files represent the complete definition of the catalog.
     <right key="_column_h1_l1_key" query="_query_H1L1Query"/>
   </roma:JoinQuery>
   <roma:Level id="_level_H2_Level1" name="H2_Level1" column="_column_h2_l1_key" nameColumn="_column_h2_l1_name"/>
-  <roma:Level id="_level_H1_Level2" name="H1_Level2" column="_column_hx_l2_key" nameColumn="_column_hx_l2_name"/>
   <roma:Level id="_level_H2_Level2" name="H2_Level2" column="_column_hx_l2_key" nameColumn="_column_hx_l2_name"/>
   <roma:Level id="_level_H1_Level1" name="H1_Level1" column="_column_h1_l1_key" nameColumn="_column_h1_l1_name"/>
+  <roma:Level id="_level_H1_Level2" name="H1_Level2" column="_column_hx_l2_key" nameColumn="_column_hx_l2_name"/>
   <roma:StandardDimension id="_dimension_Dimension1" name="Dimension1" hierarchies="_hierarchy_Hierarchy1 _hierarchy_Hierarchy2"/>
   <roma:PhysicalCube id="_cube_Cube" name="Cube" query="_query_factQuery">
     <dimensionConnectors foreignKey="_column_fact_key" dimension="_dimension_Dimension1" overrideDimensionName="Dimension1" id="_dimensionConnector_dimension1"/>
