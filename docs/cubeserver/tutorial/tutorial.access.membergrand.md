@@ -1,5 +1,5 @@
 ---
-title: Daanse Tutorial - Access Member Grant
+title: Access Member Grant
 group: Access
 kind: TUTORIAL
 number: 2.4.8
@@ -161,7 +161,7 @@ This files represent the complete definition of the catalog.
 
 
 
-## Turorial Zip
+## Tutorial Zip
 This files contaisn the data-tables as csv and the mapping as xmi file.
 
 <a href="./zip/tutorial.access.membergrand.zip" download>Download Zip File</a>

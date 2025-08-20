@@ -1,5 +1,5 @@
 ---
-title: Daanse Tutorial - Aggregation Agg Exclude
+title: Aggregation Agg Exclude
 group: Aggregation
 kind: TUTORIAL
 number: 2.8.1
@@ -98,7 +98,7 @@ This files represent the complete definition of the catalog.
 
 
 
-## Turorial Zip
+## Tutorial Zip
 This files contaisn the data-tables as csv and the mapping as xmi file.
 
 <a href="./zip/tutorial.aggregation.aggexclude.zip" download>Download Zip File</a>

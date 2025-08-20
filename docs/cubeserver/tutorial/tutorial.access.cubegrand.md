@@ -1,5 +1,5 @@
 ---
-title: Daanse Tutorial - Access Cube Grant
+title: Access Cube Grant
 group: Access
 kind: TUTORIAL
 number: 2.4.5
@@ -160,7 +160,7 @@ This files represent the complete definition of the catalog.
 
 
 
-## Turorial Zip
+## Tutorial Zip
 This files contaisn the data-tables as csv and the mapping as xmi file.
 
 <a href="./zip/tutorial.access.cubegrand.zip" download>Download Zip File</a>

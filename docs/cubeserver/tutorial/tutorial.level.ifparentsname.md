@@ -1,5 +1,5 @@
 ---
-title: Daanse Tutorial - Level If Parents Name
+title: Level If Parents Name
 group: Level
 kind: TUTORIAL
 number: 2.14.3
@@ -55,22 +55,22 @@ as it directly references the physical table `Fact`.
 ## Query Level1
 
 The bridge between the cube and the database is the query element. In this case, it is a TableQuery,
-as it directly references the physical table `Level_1`.
+as it directly references the physical table `Level_2`.
 
 
 ```xml
-<roma:TableQuery  id="_queryLevel1" table="_level_1"/>
+<roma:TableQuery  id="_queryLevel2" table="_level_2"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Query Level1
 
 The bridge between the cube and the database is the query element. In this case, it is a TableQuery,
-as it directly references the physical table `Level_2`.
+as it directly references the physical table `Level_1`.
 
 
 ```xml
-<roma:TableQuery  id="_queryLevel2" table="_level_2"/>
+<roma:TableQuery  id="_queryLevel1" table="_level_1"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -190,8 +190,8 @@ This files represent the complete definition of the catalog.
       <columns xsi:type="roma:PhysicalColumn" id="_level_2_l1_key" name="L1_KEY" type="Integer"/>
     </tables>
   </roma:DatabaseSchema>
-  <roma:TableQuery id="_queryLevel1" table="_level_1"/>
   <roma:TableQuery id="_queryLevel2" table="_level_2"/>
+  <roma:TableQuery id="_queryLevel1" table="_level_1"/>
   <roma:TableQuery id="_queryFact" table="_table_fact"/>
   <roma:JoinQuery id="_queryJoin1">
     <left key="_level_2_l1_key" query="_queryLevel2"/>
@@ -212,7 +212,7 @@ This files represent the complete definition of the catalog.
 
 
 
-## Turorial Zip
+## Tutorial Zip
 This files contaisn the data-tables as csv and the mapping as xmi file.
 
 <a href="./zip/tutorial.level.ifparentsname.zip" download>Download Zip File</a>

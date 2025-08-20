@@ -1,5 +1,5 @@
 ---
-title: Daanse Tutorial - Hierarchy Unique Key Level Name
+title: Hierarchy Unique Key Level Name
 group: Hierarchy
 kind: TUTORIAL
 number: 2.16.3
@@ -207,11 +207,6 @@ This files represent the complete definition of the catalog.
     </tables>
   </roma:DatabaseSchema>
   <roma:TableQuery id="_query_fact" table="_table_automotiveDim"/>
-  <roma:Level id="_level_model" name="Model" column="_column_automotiveDim_modelId" nameColumn="_column_automotiveDim_model"/>
-  <roma:Level id="_level_vehicleIdentificationNumber" name="Vehicle Identification Number" column="_column_automotiveDim_vehicleId">
-    <memberProperties id="_memberProperty_color" name="Color" column="_column_automotiveDim_colorId" dependsOnLevelValue="true" propertyType="Numeric"/>
-    <memberProperties id="_memberProperty_trim" name="Trim" column="_column_automotiveDim_trimId" dependsOnLevelValue="true" propertyType="Numeric"/>
-  </roma:Level>
   <roma:Level id="_level_make" name="Make" column="_column_automotiveDim_makeId" nameColumn="_column_automotiveDim_make"/>
   <roma:Level id="_level_manufacturingPlant" name="ManufacturingPlant" column="_column_automotiveDim_plantId" nameColumn="_column_automotiveDim_plant">
     <memberProperties id="_memberProperty_state" name="State" column="_column_automotiveDim_plantStateId" dependsOnLevelValue="true" propertyType="Numeric"/>
@@ -219,6 +214,11 @@ This files represent the complete definition of the catalog.
   </roma:Level>
   <roma:Level id="_level_licensePlateNum" name="LicensePlateNum" column="_column_automotiveDim_licenseId">
     <memberProperties id="_memberProperty_licenseState" name="State" column="_column_automotiveDim_licenseStateId" dependsOnLevelValue="true" propertyType="Numeric"/>
+  </roma:Level>
+  <roma:Level id="_level_model" name="Model" column="_column_automotiveDim_modelId" nameColumn="_column_automotiveDim_model"/>
+  <roma:Level id="_level_vehicleIdentificationNumber" name="Vehicle Identification Number" column="_column_automotiveDim_vehicleId">
+    <memberProperties id="_memberProperty_color" name="Color" column="_column_automotiveDim_colorId" dependsOnLevelValue="true" propertyType="Numeric"/>
+    <memberProperties id="_memberProperty_trim" name="Trim" column="_column_automotiveDim_trimId" dependsOnLevelValue="true" propertyType="Numeric"/>
   </roma:Level>
   <roma:StandardDimension id="_dimension_automotive" name="Automotive" hierarchies="_hierarchy_automotive"/>
   <roma:PhysicalCube id="_cube_cube" name="Cube" query="_query_fact">
@@ -233,7 +233,7 @@ This files represent the complete definition of the catalog.
 
 
 
-## Turorial Zip
+## Tutorial Zip
 This files contaisn the data-tables as csv and the mapping as xmi file.
 
 <a href="./zip/tutorial.hierarchy.uniquekeylevelname.zip" download>Download Zip File</a>

@@ -1,5 +1,5 @@
 ---
-title: Daanse Tutorial - Level Small Int As Boolean Type
+title: Level Small Int As Boolean Type
 group: Level
 kind: TUTORIAL
 number: 2.14.2
@@ -136,7 +136,7 @@ This files represent the complete definition of the catalog.
 
 
 
-## Turorial Zip
+## Tutorial Zip
 This files contaisn the data-tables as csv and the mapping as xmi file.
 
 <a href="./zip/tutorial.level.smallintasbooleantype.zip" download>Download Zip File</a>

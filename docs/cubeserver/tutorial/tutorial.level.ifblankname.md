@@ -1,5 +1,5 @@
 ---
-title: Daanse Tutorial - Level If Blank Name
+title: Level If Blank Name
 group: Level
 kind: TUTORIAL
 number: 2.14.4
@@ -198,8 +198,8 @@ This files represent the complete definition of the catalog.
     <left key="_level_2_null_l1_key" query="_queryLevel2Null"/>
     <right key="_level_1_key" query="_queryLevel1"/>
   </roma:JoinQuery>
-  <roma:Level id="_h1Level2" name="Level2" column="_level_2_null_key" hideMemberIf="IfBlankName" nameColumn="_level_2_null_name"/>
   <roma:Level id="_h1Level1" name="Level1" column="_level_1_key" nameColumn="_level_1_name"/>
+  <roma:Level id="_h1Level2" name="Level2" column="_level_2_null_key" hideMemberIf="IfBlankName" nameColumn="_level_2_null_name"/>
   <roma:StandardDimension id="_dimensionmembershiddenifblankname" name="DimensionMembersHiddenIfBlankName" hierarchies="_hierarchy1_1"/>
   <roma:PhysicalCube id="_hiddenmembersifblankname" name="HiddenMembersIfBlankName" query="_queryFact">
     <dimensionConnectors foreignKey="_column_fact_dim_key" dimension="_dimensionmembershiddenifblankname" overrideDimensionName="DimensionMembersHiddenIfBlankName" id="_dc_dimensionMembersHiddenIfBlankName"/>
@@ -213,7 +213,7 @@ This files represent the complete definition of the catalog.
 
 
 
-## Turorial Zip
+## Tutorial Zip
 This files contaisn the data-tables as csv and the mapping as xmi file.
 
 <a href="./zip/tutorial.level.ifblankname.zip" download>Download Zip File</a>

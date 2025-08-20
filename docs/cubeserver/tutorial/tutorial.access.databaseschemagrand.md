@@ -1,5 +1,5 @@
 ---
-title: Daanse Tutorial - Access Database Schema Grant
+title: Access Database Schema Grant
 group: Access
 kind: TUTORIAL
 number: 2.4.1
@@ -125,7 +125,7 @@ This files represent the complete definition of the catalog.
 
 
 
-## Turorial Zip
+## Tutorial Zip
 This files contaisn the data-tables as csv and the mapping as xmi file.
 
 <a href="./zip/tutorial.access.databaseschemagrand.zip" download>Download Zip File</a>

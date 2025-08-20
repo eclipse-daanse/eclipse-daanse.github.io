@@ -1,5 +1,5 @@
 ---
-title: Daanse Tutorial - Database Inline Table
+title: Database Inline Table
 group: Database
 kind: TUTORIAL
 number: 1.3.3
@@ -59,7 +59,7 @@ This files represent the complete definition of the catalog.
 
 
 
-## Turorial Zip
+## Tutorial Zip
 This files contaisn the data-tables as csv and the mapping as xmi file.
 
 <a href="./zip/tutorial.database.inlinetable.zip" download>Download Zip File</a>

@@ -1,5 +1,5 @@
 ---
-title: Daanse Tutorial - Access Catalog Grant
+title: Access Catalog Grant
 group: Access
 kind: TUTORIAL
 number: 2.4.4
@@ -175,11 +175,6 @@ This files represent the complete definition of the catalog.
   <roma:AccessRole id="_accessRole_none" name="roleNone">
     <accessCatalogGrants/>
   </roma:AccessRole>
-  <roma:AccessRole id="_accessRole_allDimWithoutCubeGrand" name="roleAllDimWithoutCubeGrand">
-    <accessCatalogGrants catalogAccess="all_dimensions">
-      <databaseSchemaGrants databaseSchemaAccess="all" databaseSchema="_databaseSchema_CatalogGrand"/>
-    </accessCatalogGrants>
-  </roma:AccessRole>
   <roma:AccessRole id="_accessRole_allDimWithCubeGrand" name="roleAllDimWithCubeGrand">
     <accessCatalogGrants catalogAccess="all_dimensions">
       <cubeGrants cubeAccess="all" cube="_cube_main"/>
@@ -188,13 +183,18 @@ This files represent the complete definition of the catalog.
   <roma:AccessRole id="_accessRole_all" name="roleAll">
     <accessCatalogGrants catalogAccess="all"/>
   </roma:AccessRole>
+  <roma:AccessRole id="_accessRole_allDimWithoutCubeGrand" name="roleAllDimWithoutCubeGrand">
+    <accessCatalogGrants catalogAccess="all_dimensions">
+      <databaseSchemaGrants databaseSchemaAccess="all" databaseSchema="_databaseSchema_CatalogGrand"/>
+    </accessCatalogGrants>
+  </roma:AccessRole>
 </xmi:XMI>
 
 ```
 
 
 
-## Turorial Zip
+## Tutorial Zip
 This files contaisn the data-tables as csv and the mapping as xmi file.
 
 <a href="./zip/tutorial.access.cataloggrand.zip" download>Download Zip File</a>

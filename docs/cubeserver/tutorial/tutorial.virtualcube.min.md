@@ -1,5 +1,5 @@
 ---
-title: Daanse Tutorial - Virtual Cube Minimal
+title: Virtual Cube Minimal
 group: VirtualCube
 kind: TUTORIAL
 number: 2.15.1
@@ -143,8 +143,8 @@ This files represent the complete definition of the catalog.
       <columns xsi:type="roma:PhysicalColumn" id="_c2_fact_value" name="VALUE" type="Integer"/>
     </tables>
   </roma:DatabaseSchema>
-  <roma:TableQuery id="_c1TableQuery" table="_c1_fact"/>
   <roma:TableQuery id="_c2TableQuery" table="_c2_fact"/>
+  <roma:TableQuery id="_c1TableQuery" table="_c1_fact"/>
   <roma:PhysicalCube id="_cube1" name="Cube1" query="_c1TableQuery">
     <measureGroups>
       <measures xsi:type="roma:SumMeasure" id="_c1-measure-sum" name="C1-Measure-Sum" column="_c1_fact_value"/>
@@ -166,7 +166,7 @@ This files represent the complete definition of the catalog.
 
 
 
-## Turorial Zip
+## Tutorial Zip
 This files contaisn the data-tables as csv and the mapping as xmi file.
 
 <a href="./zip/tutorial.virtualcube.min.zip" download>Download Zip File</a>

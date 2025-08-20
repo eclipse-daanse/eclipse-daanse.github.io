@@ -1,5 +1,5 @@
 ---
-title: Daanse Tutorial - Cube Hierarchy Query Join Base
+title: Cube Hierarchy Query Join Base
 group: Hierarchy
 kind: TUTORIAL
 number: 2.3.3.1
@@ -174,8 +174,8 @@ This files represent the complete definition of the catalog.
       <columns xsi:type="roma:PhysicalColumn" id="_column_country_name" name="NAME"/>
     </tables>
   </roma:DatabaseSchema>
-  <roma:TableQuery id="_query_fact" table="_table_fact"/>
   <roma:TableQuery id="_query_town" table="_table_town"/>
+  <roma:TableQuery id="_query_fact" table="_table_fact"/>
   <roma:TableQuery id="_query_country" table="_table_country"/>
   <roma:JoinQuery id="_query_townToCountry">
     <left key="_column_town_id" query="_query_town"/>
@@ -196,7 +196,7 @@ This files represent the complete definition of the catalog.
 
 
 
-## Turorial Zip
+## Tutorial Zip
 This files contaisn the data-tables as csv and the mapping as xmi file.
 
 <a href="./zip/tutorial.cube.hierarchy.query.join.base.zip" download>Download Zip File</a>

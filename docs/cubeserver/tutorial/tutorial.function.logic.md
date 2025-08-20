@@ -1,5 +1,5 @@
 ---
-title: Daanse Tutorial - Function Logic
+title: Function Logic
 group: Cube
 kind: TUTORIAL
 number: 2.3.6
@@ -114,7 +114,7 @@ This files represent the complete definition of the catalog.
 
 
 
-## Turorial Zip
+## Tutorial Zip
 This files contaisn the data-tables as csv and the mapping as xmi file.
 
 <a href="./zip/tutorial.function.logic.zip" download>Download Zip File</a>

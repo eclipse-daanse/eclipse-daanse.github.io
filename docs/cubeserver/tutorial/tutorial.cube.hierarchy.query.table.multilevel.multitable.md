@@ -1,5 +1,5 @@
 ---
-title: Daanse Tutorial - Cube Hierarchy Query Table Multilevel Multitable
+title: Cube Hierarchy Query Table Multilevel Multitable
 group: Hierarchy
 kind: TUTORIAL
 number: 2.3.2.2
@@ -135,8 +135,8 @@ This files represent the complete definition of the catalog.
   </roma:DatabaseSchema>
   <roma:TableQuery id="_query_fact" table="_table_fact"/>
   <roma:TableQuery id="_query_town" table="_table_town"/>
-  <roma:Level id="_level_town" name="Town" column="_column_town_id" nameColumn="_column_town_name"/>
   <roma:Level id="_level_country" name="Country" column="_column_town_country"/>
+  <roma:Level id="_level_town" name="Town" column="_column_town_id" nameColumn="_column_town_name"/>
   <roma:StandardDimension id="_dimension_town" name="Town" hierarchies="_hierarchy_townHierarchy"/>
   <roma:PhysicalCube id="_cube_queryLinkedTables" name="Cube Query linked Tables" query="_query_fact">
     <dimensionConnectors foreignKey="_column_fact_townId" dimension="_dimension_town" id="_dimensionConnector_town"/>
@@ -150,7 +150,7 @@ This files represent the complete definition of the catalog.
 
 
 
-## Turorial Zip
+## Tutorial Zip
 This files contaisn the data-tables as csv and the mapping as xmi file.
 
 <a href="./zip/tutorial.cube.hierarchy.query.table.multilevel.multitable.zip" download>Download Zip File</a>

@@ -1,5 +1,5 @@
 ---
-title: Daanse Tutorial - Hierarchy View
+title: Hierarchy View
 group: Hierarchy
 kind: TUTORIAL
 number: 2.16.2
@@ -175,7 +175,7 @@ This files represent the complete definition of the catalog.
 
 
 
-## Turorial Zip
+## Tutorial Zip
 This files contaisn the data-tables as csv and the mapping as xmi file.
 
 <a href="./zip/tutorial.hierarchy.view.zip" download>Download Zip File</a>

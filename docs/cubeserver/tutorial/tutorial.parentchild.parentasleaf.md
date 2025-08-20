@@ -1,5 +1,5 @@
 ---
-title: Daanse Tutorial - Parent Child Parent As Leaf
+title: Parent Child Parent As Leaf
 group: Parent Child
 kind: TUTORIAL
 number: 2.17.4
@@ -131,7 +131,7 @@ This files represent the complete definition of the catalog.
 
 
 
-## Turorial Zip
+## Tutorial Zip
 This files contaisn the data-tables as csv and the mapping as xmi file.
 
 <a href="./zip/tutorial.parentchild.parentasleaf.zip" download>Download Zip File</a>

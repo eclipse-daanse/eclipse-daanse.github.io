@@ -1,5 +1,5 @@
 ---
-title: Daanse Tutorial - Measure Inline Table
+title: Measure Inline Table
 group: Measure
 kind: TUTORIAL
 number: 2.12.2
@@ -100,7 +100,7 @@ This files represent the complete definition of the catalog.
 
 
 
-## Turorial Zip
+## Tutorial Zip
 This files contaisn the data-tables as csv and the mapping as xmi file.
 
 <a href="./zip/tutorial.measure.inlinetable.zip" download>Download Zip File</a>

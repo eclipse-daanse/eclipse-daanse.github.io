@@ -1,5 +1,5 @@
 ---
-title: Daanse Tutorial - Member Identifier
+title: Member Identifier
 group: Member
 kind: TUTORIAL
 number: 2.6.1
@@ -113,8 +113,8 @@ This files represent the complete definition of the catalog.
     </tables>
   </roma:DatabaseSchema>
   <roma:TableQuery id="_query_fact" table="_table_fact"/>
-  <roma:Level id="_level_level2" name="level2" column="_column_fact_key2"/>
   <roma:Level id="_level_level1" name="level1" column="_column_fact_key1"/>
+  <roma:Level id="_level_level2" name="level2" column="_column_fact_key2"/>
   <roma:StandardDimension id="_dimension_dimension" name="Dimension" hierarchies="_hierarchy_hierarchy"/>
   <roma:PhysicalCube id="_cube_cube" name="Cube" query="_query_fact">
     <dimensionConnectors foreignKey="_column_fact_key1" dimension="_dimension_dimension" id="_dimensionConnector_dimension"/>
@@ -128,7 +128,7 @@ This files represent the complete definition of the catalog.
 
 
 
-## Turorial Zip
+## Tutorial Zip
 This files contaisn the data-tables as csv and the mapping as xmi file.
 
 <a href="./zip/tutorial.member.identifier.zip" download>Download Zip File</a>

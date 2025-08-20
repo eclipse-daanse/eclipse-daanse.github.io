@@ -1,5 +1,5 @@
 ---
-title: Daanse Tutorial - Cube Hierarchy Query Join Multi
+title: Cube Hierarchy Query Join Multi
 group: Hierarchy
 kind: TUTORIAL
 number: 2.3.3.2
@@ -224,10 +224,10 @@ This files represent the complete definition of the catalog.
       <columns xsi:type="roma:PhysicalColumn" id="_column_continent_name" name="NAME"/>
     </tables>
   </roma:DatabaseSchema>
-  <roma:TableQuery id="_query_town" table="_table_town"/>
-  <roma:TableQuery id="_query_country" table="_table_country"/>
   <roma:TableQuery id="_query_continent" table="_table_continent"/>
   <roma:TableQuery id="_query_fact" table="_table_fact"/>
+  <roma:TableQuery id="_query_town" table="_table_town"/>
+  <roma:TableQuery id="_query_country" table="_table_country"/>
   <roma:JoinQuery id="_query_countryToContinent">
     <left key="_column_country_continentId" query="_query_country"/>
     <right key="_column_continent_id" query="_query_continent"/>
@@ -236,9 +236,9 @@ This files represent the complete definition of the catalog.
     <left key="_column_town_countryId" query="_query_town"/>
     <right key="_column_country_id" query="_query_countryToContinent"/>
   </roma:JoinQuery>
+  <roma:Level id="_level_country" name="County" column="_column_country_id" nameColumn="_column_country_name"/>
   <roma:Level id="_level_town" name="Town" column="_column_town_id" nameColumn="_column_town_name"/>
   <roma:Level id="_level_continent" name="Continent" column="_column_continent_id" nameColumn="_column_continent_name"/>
-  <roma:Level id="_level_country" name="County" column="_column_country_id" nameColumn="_column_country_name"/>
   <roma:StandardDimension id="_dimension_continentCountryTown" name="Continent - Country - Town" hierarchies="_hierarchy_townHierarchy"/>
   <roma:PhysicalCube id="_cube_queryLinkedTables" name="Cube Query linked Tables" query="_query_fact">
     <dimensionConnectors foreignKey="_column_fact_townId" dimension="_dimension_continentCountryTown" id="_dimensionConnector_continentCountryTown"/>
@@ -252,7 +252,7 @@ This files represent the complete definition of the catalog.
 
 
 
-## Turorial Zip
+## Tutorial Zip
 This files contaisn the data-tables as csv and the mapping as xmi file.
 
 <a href="./zip/tutorial.cube.hierarchy.query.join.multi.zip" download>Download Zip File</a>

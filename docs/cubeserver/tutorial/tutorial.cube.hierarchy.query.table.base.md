@@ -1,5 +1,5 @@
 ---
-title: Daanse Tutorial - Cube Hierarchy Query Table Base
+title: Cube Hierarchy Query Table Base
 group: Hierarchy
 kind: TUTORIAL
 number: 2.3.2.1
@@ -115,8 +115,8 @@ This files represent the complete definition of the catalog.
       <columns xsi:type="roma:PhysicalColumn" id="_column_town_name" name="NAME"/>
     </tables>
   </roma:DatabaseSchema>
-  <roma:TableQuery id="_query_town" table="_table_town"/>
   <roma:TableQuery id="_query_fact" table="_table_fact"/>
+  <roma:TableQuery id="_query_town" table="_table_town"/>
   <roma:Level id="_level_town" name="Town" column="_column_town_id" nameColumn="_column_town_name"/>
   <roma:StandardDimension id="_dimension_town" name="Town" hierarchies="_hierarchy_townHierarchy"/>
   <roma:PhysicalCube id="_cube_queryLinkedTables" name="Cube Query linked Tables" query="_query_fact">
@@ -131,7 +131,7 @@ This files represent the complete definition of the catalog.
 
 
 
-## Turorial Zip
+## Tutorial Zip
 This files contaisn the data-tables as csv and the mapping as xmi file.
 
 <a href="./zip/tutorial.cube.hierarchy.query.table.base.zip" download>Download Zip File</a>

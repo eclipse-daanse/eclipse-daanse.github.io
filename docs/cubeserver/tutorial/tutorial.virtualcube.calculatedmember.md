@@ -1,5 +1,5 @@
 ---
-title: Daanse Tutorial - Virtual Cube Calculated Member
+title: Virtual Cube Calculated Member
 group: VirtualCube
 kind: TUTORIAL
 number: 2.15.3
@@ -158,7 +158,7 @@ This files represent the complete definition of the catalog.
 
 
 
-## Turorial Zip
+## Tutorial Zip
 This files contaisn the data-tables as csv and the mapping as xmi file.
 
 <a href="./zip/tutorial.virtualcube.calculatedmember.zip" download>Download Zip File</a>

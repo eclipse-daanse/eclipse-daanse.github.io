@@ -1,5 +1,5 @@
 ---
-title: Daanse Tutorial - Measure Inline Table With Physical
+title: Measure Inline Table With Physical
 group: Measure
 kind: TUTORIAL
 number: 2.12.3
@@ -188,9 +188,9 @@ This files represent the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
+  <roma:InlineTableQuery id="_query_country" alias="COUNTRY" table="_tab_COUNTRY"/>
   <roma:ExplicitHierarchy id="_hierarchy" name="Hierarchy" primaryKey="_col_town_key" query="_query_hierarchy" levels="_level_country _level_town"/>
   <roma:InlineTableQuery id="_query_fact" alias="Fact" table="_tab_FACT"/>
-  <roma:InlineTableQuery id="_query_country" alias="COUNTRY" table="_tab_COUNTRY"/>
   <roma:Catalog description="Measure with inline table and physical table" name="Daanse Tutorial - Measure Inline Table With Physical" cubes="_cube" dbschemas="_databaseSchema_inlinetablewithphysical"/>
   <roma:DatabaseSchema id="_databaseSchema_inlinetablewithphysical">
     <tables xsi:type="roma:PhysicalTable" id="_tab_TOWN_Physical" name="TOWN">
@@ -232,8 +232,8 @@ This files represent the complete definition of the catalog.
     <left key="_col_town_country_key" query="_query_town"/>
     <right key="_col_country_KEY" query="_query_country"/>
   </roma:JoinQuery>
-  <roma:Level id="_level_country" name="Country" column="_col_country_KEY" nameColumn="_col_country_NAME"/>
   <roma:Level id="_level_town" name="Town" column="_col_town_key" nameColumn="_col_level_name"/>
+  <roma:Level id="_level_country" name="Country" column="_col_country_KEY" nameColumn="_col_country_NAME"/>
   <roma:StandardDimension id="_dim_town" name="Dimension" hierarchies="_hierarchy"/>
   <roma:PhysicalCube id="_cube" name="CubeTwoLevelsInlineAndPhysicalTable" query="_query_fact">
     <dimensionConnectors foreignKey="_col_Fact_KEY" dimension="_dim_town" id="_dc_town"/>
@@ -247,7 +247,7 @@ This files represent the complete definition of the catalog.
 
 
 
-## Turorial Zip
+## Tutorial Zip
 This files contaisn the data-tables as csv and the mapping as xmi file.
 
 <a href="./zip/tutorial.measure.inlinetablewithphysical.zip" download>Download Zip File</a>

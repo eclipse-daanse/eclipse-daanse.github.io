@@ -1,5 +1,5 @@
 ---
-title: Daanse Tutorial - Cube Measure Format
+title: Cube Measure Format
 group: Measure
 kind: TUTORIAL
 number: 2.2.4
@@ -117,7 +117,7 @@ This files represent the complete definition of the catalog.
 
 
 
-## Turorial Zip
+## Tutorial Zip
 This files contaisn the data-tables as csv and the mapping as xmi file.
 
 <a href="./zip/tutorial.cube.measure.format.zip" download>Download Zip File</a>
