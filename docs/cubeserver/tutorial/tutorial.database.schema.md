@@ -17,7 +17,7 @@ The name of a database schema is optional and can be left empty. In such cases, 
 
 
 ```xml
-<roma:DatabaseSchema  id="_dbschema2"/>
+<roma:DatabaseSchema  id="_databaseSchema_default"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -27,14 +27,14 @@ It is more secure to explicitly define the schema using the `name` attribute. To
 
 
 ```xml
-<roma:DatabaseSchema  id="_dbschema1" description="theDescription" name="foo"/>
+<roma:DatabaseSchema  id="_databaseSchema_foo" description="theDescription" name="foo"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 Schema can be refernced in the catalog. You can see this by checking the `dbSchema attribute` in the catalog.
 
 ```xml
-<roma:Catalog  id="_cat" name="Database - Schema" dbschemas="_dbschema2 _dbschema1"/>
+<roma:Catalog  id="_catalog_databaseSchema" name="Database - Schema" dbschemas="_databaseSchema_default _databaseSchema_foo"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -46,15 +46,15 @@ This files represent the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:Catalog id="_cat" name="Database - Schema" dbschemas="_dbschema2 _dbschema1"/>
-  <roma:DatabaseSchema id="_dbschema2">
-    <tables xsi:type="roma:PhysicalTable" id="_tab2" name="theTable">
-      <columns xsi:type="roma:PhysicalColumn" id="_colt2c1" name="theColumn"/>
+  <roma:Catalog id="_catalog_databaseSchema" name="Database - Schema" dbschemas="_databaseSchema_default _databaseSchema_foo"/>
+  <roma:DatabaseSchema id="_databaseSchema_foo" description="theDescription" name="foo">
+    <tables xsi:type="roma:PhysicalTable" id="_table_theTable" name="theTable">
+      <columns xsi:type="roma:PhysicalColumn" id="_column_theTable_theColumn" name="theColumn"/>
     </tables>
   </roma:DatabaseSchema>
-  <roma:DatabaseSchema id="_dbschema1" description="theDescription" name="foo">
-    <tables xsi:type="roma:PhysicalTable" id="_tab1" name="theTable">
-      <columns xsi:type="roma:PhysicalColumn" id="_colt1c1" name="theColumn"/>
+  <roma:DatabaseSchema id="_databaseSchema_default">
+    <tables xsi:type="roma:PhysicalTable" id="_table_theTableDefault" name="theTable">
+      <columns xsi:type="roma:PhysicalColumn" id="_column_theTableDefault_theColumn" name="theColumn"/>
     </tables>
   </roma:DatabaseSchema>
 </xmi:XMI>

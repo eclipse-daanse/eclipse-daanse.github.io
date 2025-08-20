@@ -16,10 +16,10 @@ The Database Schema contains the Fact table with three columns: KEY and VALUE an
 
 
 ```xml
-<roma:DatabaseSchema   id="_databaseschema">
+<roma:DatabaseSchema   id="_databaseSchema_calculatedMemberColor">
   <tables xsi:type="roma:PhysicalTable" id="_table_fact" name="Fact">
-    <columns xsi:type="roma:PhysicalColumn" id="_col_fact_key" name="KEY"/>
-    <columns xsi:type="roma:PhysicalColumn" id="_col_fact_value" name="VALUE" type="Integer"/>
+    <columns xsi:type="roma:PhysicalColumn" id="_column_fact_key" name="KEY"/>
+    <columns xsi:type="roma:PhysicalColumn" id="_column_fact_value" name="VALUE" type="Integer"/>
   </tables>
 </roma:DatabaseSchema>
 
@@ -31,7 +31,7 @@ The Query is a simple TableQuery that selects all columns from the Fact table to
 
 
 ```xml
-<roma:TableQuery  id="_query" table="_table_fact"/>
+<roma:TableQuery  id="_query_fact" table="_table_fact"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -41,7 +41,7 @@ This Example uses one simple Level bases on the KEY column.
 
 
 ```xml
-<roma:Level  id="_level" name="theLevel" column="_col_fact_key"/>
+<roma:Level  id="_level_theLevel" name="theLevel" column="_column_fact_key"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -51,7 +51,7 @@ The Hierarchy is defined with the hasAll property set to true and the one level.
 
 
 ```xml
-<roma:ExplicitHierarchy  id="_hierarchy" name="theHierarchy" primaryKey="_col_fact_key" query="_query" levels="_level"/>
+<roma:ExplicitHierarchy  id="_hierarchy_theHierarchy" name="theHierarchy" primaryKey="_column_fact_key" query="_query_fact" levels="_level_theLevel"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -61,7 +61,7 @@ The dimension is defined with the one hierarchy. The hierarchy is used in the cu
 
 
 ```xml
-<roma:StandardDimension  id="_dimension" name="theDimension" hierarchies="roma:ExplicitHierarchy _hierarchy"/>
+<roma:StandardDimension  id="_dimension_theDimension" name="theDimension" hierarchies="roma:ExplicitHierarchy _hierarchy_theHierarchy"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -71,7 +71,7 @@ This calculated member have BACK_COLOR in format string. It show posibility to h
 
 
 ```xml
-<roma:CalculatedMember  id="_cm1" name="Calculated Member 1" displayFolder="folder" formula="[Measures].[Measure-Sum] / [Measures].[Measure-Count]" parent="[theDimension].[theHierarchy].[All theHierarchys]" hierarchy="roma:ExplicitHierarchy _hierarchy"/>
+<roma:CalculatedMember  id="_calculatedMember_calculatedMember1" name="Calculated Member 1" displayFolder="folder" formula="[Measures].[Measure-Sum] / [Measures].[Measure-Count]" parent="[theDimension].[theHierarchy].[All theHierarchys]" hierarchy="roma:ExplicitHierarchy _hierarchy_theHierarchy"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -82,7 +82,7 @@ This calculated member have BACK_COLOR in format string. It show posibility to h
 
 
 ```xml
-<roma:CalculatedMember  id="_cm2" name="Calculated Member 2" displayFolder="folder" formula="[Measures].[Measure-Sum] / [Measures].[Measure-Count]"/>
+<roma:CalculatedMember  id="_calculatedMember_calculatedMember2" name="Calculated Member 2" displayFolder="folder" formula="[Measures].[Measure-Sum] / [Measures].[Measure-Count]"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -92,17 +92,17 @@ The cube is defines by the DimensionConnector and the MeasureGroup and most impo
 
 
 ```xml
-<roma:PhysicalCube   id="_cube" name="Cube CalculatedMember with different colors" query="_query">
-  <calculatedMembers id="_cm2" name="Calculated Member 2" displayFolder="folder" formula="[Measures].[Measure-Sum] / [Measures].[Measure-Count]">
-    <calculatedMemberProperties id="_format2" name="FORMAT_STRING" value="$#,##;BACK_COLOR=255;FORE_COLOR=13369395"/>
+<roma:PhysicalCube   id="_cube_calculatedMemberColorCube" name="Cube CalculatedMember with different colors" query="_query_fact">
+  <calculatedMembers id="_calculatedMember_calculatedMember2" name="Calculated Member 2" displayFolder="folder" formula="[Measures].[Measure-Sum] / [Measures].[Measure-Count]">
+    <calculatedMemberProperties id="_calculatedMemberProperty_format2" name="FORMAT_STRING" value="$#,##;BACK_COLOR=255;FORE_COLOR=13369395"/>
   </calculatedMembers>
-  <calculatedMembers id="_cm1" name="Calculated Member 1" displayFolder="folder" formula="[Measures].[Measure-Sum] / [Measures].[Measure-Count]" parent="[theDimension].[theHierarchy].[All theHierarchys]" hierarchy="roma:ExplicitHierarchy _hierarchy">
-    <calculatedMemberProperties id="_format1" name="FORMAT_STRING" value="$#,##0.00;BACK_COLOR=65535;FORE_COLOR=13369395"/>
+  <calculatedMembers id="_calculatedMember_calculatedMember1" name="Calculated Member 1" displayFolder="folder" formula="[Measures].[Measure-Sum] / [Measures].[Measure-Count]" parent="[theDimension].[theHierarchy].[All theHierarchys]" hierarchy="roma:ExplicitHierarchy _hierarchy_theHierarchy">
+    <calculatedMemberProperties id="_calculatedMemberProperty_format1" name="FORMAT_STRING" value="$#,##0.00;BACK_COLOR=65535;FORE_COLOR=13369395"/>
   </calculatedMembers>
-  <dimensionConnectors foreignKey="roma:PhysicalColumn _col_fact_key" dimension="roma:StandardDimension _dimension"/>
+  <dimensionConnectors foreignKey="roma:PhysicalColumn _column_fact_key" dimension="roma:StandardDimension _dimension_theDimension" id="_dimensionConnector_theDimension"/>
   <measureGroups>
-    <measures xsi:type="roma:SumMeasure" id="Measure-Sum" name="Measure-Sum" formatString="$#,##0.00;BACK_COLOR=32768;FORE_COLOR=0" column="_col_fact_value"/>
-    <measures xsi:type="roma:CountMeasure" id="Measure-Count" name="Measure-Count" formatString="$#,##0.00;BACK_COLOR=16711680;FORE_COLOR=0" column="_col_fact_value"/>
+    <measures xsi:type="roma:SumMeasure" id="_measure_measureSum" name="Measure-Sum" formatString="$#,##0.00;BACK_COLOR=32768;FORE_COLOR=0" column="_column_fact_value"/>
+    <measures xsi:type="roma:CountMeasure" id="_measure_measureCount" name="Measure-Count" formatString="$#,##0.00;BACK_COLOR=16711680;FORE_COLOR=0" column="_column_fact_value"/>
   </measureGroups>
 </roma:PhysicalCube>
 
@@ -116,28 +116,28 @@ This files represent the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:ExplicitHierarchy id="_hierarchy" name="theHierarchy" primaryKey="_col_fact_key" query="_query" levels="_level"/>
-  <roma:Catalog name="Cube - CalculatedMembers with different colors" cubes="_cube" dbschemas="_databaseschema"/>
-  <roma:DatabaseSchema id="_databaseschema">
+  <roma:ExplicitHierarchy id="_hierarchy_theHierarchy" name="theHierarchy" primaryKey="_column_fact_key" query="_query_fact" levels="_level_theLevel"/>
+  <roma:Catalog name="Cube - CalculatedMembers with different colors" cubes="_cube_calculatedMemberColorCube" dbschemas="_databaseSchema_calculatedMemberColor"/>
+  <roma:DatabaseSchema id="_databaseSchema_calculatedMemberColor">
     <tables xsi:type="roma:PhysicalTable" id="_table_fact" name="Fact">
-      <columns xsi:type="roma:PhysicalColumn" id="_col_fact_key" name="KEY"/>
-      <columns xsi:type="roma:PhysicalColumn" id="_col_fact_value" name="VALUE" type="Integer"/>
+      <columns xsi:type="roma:PhysicalColumn" id="_column_fact_key" name="KEY"/>
+      <columns xsi:type="roma:PhysicalColumn" id="_column_fact_value" name="VALUE" type="Integer"/>
     </tables>
   </roma:DatabaseSchema>
-  <roma:TableQuery id="_query" table="_table_fact"/>
-  <roma:Level id="_level" name="theLevel" column="_col_fact_key"/>
-  <roma:StandardDimension id="_dimension" name="theDimension" hierarchies="_hierarchy"/>
-  <roma:PhysicalCube id="_cube" name="Cube CalculatedMember with different colors" query="_query">
-    <calculatedMembers id="_cm2" name="Calculated Member 2" displayFolder="folder" formula="[Measures].[Measure-Sum] / [Measures].[Measure-Count]">
-      <calculatedMemberProperties id="_format2" name="FORMAT_STRING" value="$#,##;BACK_COLOR=255;FORE_COLOR=13369395"/>
+  <roma:TableQuery id="_query_fact" table="_table_fact"/>
+  <roma:Level id="_level_theLevel" name="theLevel" column="_column_fact_key"/>
+  <roma:StandardDimension id="_dimension_theDimension" name="theDimension" hierarchies="_hierarchy_theHierarchy"/>
+  <roma:PhysicalCube id="_cube_calculatedMemberColorCube" name="Cube CalculatedMember with different colors" query="_query_fact">
+    <calculatedMembers id="_calculatedMember_calculatedMember2" name="Calculated Member 2" displayFolder="folder" formula="[Measures].[Measure-Sum] / [Measures].[Measure-Count]">
+      <calculatedMemberProperties id="_calculatedMemberProperty_format2" name="FORMAT_STRING" value="$#,##;BACK_COLOR=255;FORE_COLOR=13369395"/>
     </calculatedMembers>
-    <calculatedMembers id="_cm1" name="Calculated Member 1" displayFolder="folder" formula="[Measures].[Measure-Sum] / [Measures].[Measure-Count]" parent="[theDimension].[theHierarchy].[All theHierarchys]" hierarchy="_hierarchy">
-      <calculatedMemberProperties id="_format1" name="FORMAT_STRING" value="$#,##0.00;BACK_COLOR=65535;FORE_COLOR=13369395"/>
+    <calculatedMembers id="_calculatedMember_calculatedMember1" name="Calculated Member 1" displayFolder="folder" formula="[Measures].[Measure-Sum] / [Measures].[Measure-Count]" parent="[theDimension].[theHierarchy].[All theHierarchys]" hierarchy="_hierarchy_theHierarchy">
+      <calculatedMemberProperties id="_calculatedMemberProperty_format1" name="FORMAT_STRING" value="$#,##0.00;BACK_COLOR=65535;FORE_COLOR=13369395"/>
     </calculatedMembers>
-    <dimensionConnectors foreignKey="_col_fact_key" dimension="_dimension"/>
+    <dimensionConnectors foreignKey="_column_fact_key" dimension="_dimension_theDimension" id="_dimensionConnector_theDimension"/>
     <measureGroups>
-      <measures xsi:type="roma:SumMeasure" id="Measure-Sum" name="Measure-Sum" formatString="$#,##0.00;BACK_COLOR=32768;FORE_COLOR=0" column="_col_fact_value"/>
-      <measures xsi:type="roma:CountMeasure" id="Measure-Count" name="Measure-Count" formatString="$#,##0.00;BACK_COLOR=16711680;FORE_COLOR=0" column="_col_fact_value"/>
+      <measures xsi:type="roma:SumMeasure" id="_measure_measureSum" name="Measure-Sum" formatString="$#,##0.00;BACK_COLOR=32768;FORE_COLOR=0" column="_column_fact_value"/>
+      <measures xsi:type="roma:CountMeasure" id="_measure_measureCount" name="Measure-Count" formatString="$#,##0.00;BACK_COLOR=16711680;FORE_COLOR=0" column="_column_fact_value"/>
     </measureGroups>
   </roma:PhysicalCube>
 </xmi:XMI>

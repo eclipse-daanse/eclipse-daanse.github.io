@@ -27,10 +27,10 @@ The Database Schema contains the Fact table with two columns: KEY and VALUE. The
 
 
 ```xml
-<roma:DatabaseSchema   id="databaseSchema">
-  <tables xsi:type="roma:PhysicalTable" id="_Fact" name="Fact">
-    <columns xsi:type="roma:PhysicalColumn" id="_Fact_KEY" name="KEY"/>
-    <columns xsi:type="roma:PhysicalColumn" id="_Fact_VALUE" name="VALUE" type="Integer"/>
+<roma:DatabaseSchema   id="_databaseSchema_CatalogGrand">
+  <tables xsi:type="roma:PhysicalTable" id="_table_fact" name="Fact">
+    <columns xsi:type="roma:PhysicalColumn" id="_column_fact_key" name="KEY"/>
+    <columns xsi:type="roma:PhysicalColumn" id="_column_fact_value" name="VALUE" type="Integer"/>
   </tables>
 </roma:DatabaseSchema>
 
@@ -42,7 +42,7 @@ The Query is a simple TableQuery that selects all columns from the Fact table to
 
 
 ```xml
-<roma:TableQuery  id="_FactQuery" table="_Fact"/>
+<roma:TableQuery  id="_query_fact" table="_table_fact"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -52,7 +52,7 @@ This Example uses one simple Level1 bases on the KEY column.
 
 
 ```xml
-<roma:Level  id="_Level1" name="Level1" column="_Fact_KEY"/>
+<roma:Level  id="_level_key" name="Level1" column="_column_fact_key"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -62,7 +62,7 @@ The Hierarchy1 is defined with the hasAll property set to false and the one leve
 
 
 ```xml
-<roma:ExplicitHierarchy  id="_Hierarchy1" name="Hierarchy1" hasAll="false" primaryKey="_Fact_KEY" query="_FactQuery" levels="_Level1"/>
+<roma:ExplicitHierarchy  id="_hierarchy_main" name="Hierarchy1" hasAll="false" primaryKey="_column_fact_key" query="_query_fact" levels="_level_key"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -72,7 +72,7 @@ The dimension1 is defined with the one hierarchy1.
 
 
 ```xml
-<roma:StandardDimension  id="_Dimension1" name="Dimension1" hierarchies="roma:ExplicitHierarchy _Hierarchy1"/>
+<roma:StandardDimension  id="_dimension_main" name="Dimension1" hierarchies="roma:ExplicitHierarchy _hierarchy_main"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -82,11 +82,11 @@ The cube1 is defines by the DimensionConnector1 and the DimensionConnector2  and
 
 
 ```xml
-<roma:PhysicalCube   id="_Cube1" name="Cube1" query="_FactQuery">
-  <dimensionConnectors foreignKey="roma:PhysicalColumn _Fact_KEY" dimension="roma:StandardDimension _Dimension1" overrideDimensionName="Dimension1"/>
-  <dimensionConnectors foreignKey="roma:PhysicalColumn _Fact_KEY" dimension="roma:StandardDimension _Dimension1" overrideDimensionName="Dimension2"/>
+<roma:PhysicalCube   id="_cube_main" name="Cube1" query="_query_fact">
+  <dimensionConnectors foreignKey="roma:PhysicalColumn _column_fact_key" dimension="roma:StandardDimension _dimension_main" overrideDimensionName="Dimension1" id="_dimensionConnector_main"/>
+  <dimensionConnectors foreignKey="roma:PhysicalColumn _column_fact_key" dimension="roma:StandardDimension _dimension_main" overrideDimensionName="Dimension2" id="_dimensionConnector_secondary"/>
   <measureGroups>
-    <measures xsi:type="roma:SumMeasure" id="_Measure1" name="Measure1" column="_Fact_VALUE"/>
+    <measures xsi:type="roma:SumMeasure" id="_measure_sum" name="Measure1" column="_column_fact_value"/>
   </measureGroups>
 </roma:PhysicalCube>
 
@@ -98,7 +98,7 @@ The roleAll use CatalogGrant access all; (access cube1)
 
 
 ```xml
-<roma:AccessRole  id="_roleAll" name="roleAll">
+<roma:AccessRole  id="_accessRole_all" name="roleAll">
   <accessCatalogGrants catalogAccess="all"/>
 </roma:AccessRole>
 
@@ -110,7 +110,7 @@ The roleNone use CatalogGrant access none; (no access cube1)
 
 
 ```xml
-<roma:AccessRole  id="_roleNone" name="roleNone">
+<roma:AccessRole  id="_accessRole_none" name="roleNone">
   <accessCatalogGrants/>
 </roma:AccessRole>
 
@@ -122,9 +122,9 @@ The roleAll use CatalogGrant access all_dimensions; CubeGrant access all; (acces
 
 
 ```xml
-<roma:AccessRole  id="_roleAllDimWithCubeGrand" name="roleAllDimWithCubeGrand">
+<roma:AccessRole  id="_accessRole_allDimWithCubeGrand" name="roleAllDimWithCubeGrand">
   <accessCatalogGrants catalogAccess="all_dimensions">
-    <cubeGrants cubeAccess="all" cube="roma:PhysicalCube _Cube1"/>
+    <cubeGrants cubeAccess="all" cube="roma:PhysicalCube _cube_main"/>
   </accessCatalogGrants>
 </roma:AccessRole>
 
@@ -136,9 +136,9 @@ The roleAll use CatalogGrant access all_dimensions without CubeGrant; (no access
 
 
 ```xml
-<roma:AccessRole  id="_roleAllDimWithoutCubeGrand" name="roleAllDimWithoutCubeGrand">
+<roma:AccessRole  id="_accessRole_allDimWithoutCubeGrand" name="roleAllDimWithoutCubeGrand">
   <accessCatalogGrants catalogAccess="all_dimensions">
-    <databaseSchemaGrants databaseSchemaAccess="all" databaseSchema="databaseSchema"/>
+    <databaseSchemaGrants databaseSchemaAccess="all" databaseSchema="_databaseSchema_CatalogGrand"/>
   </accessCatalogGrants>
 </roma:AccessRole>
 
@@ -152,38 +152,38 @@ This files represent the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:ExplicitHierarchy id="_Hierarchy1" name="Hierarchy1" hasAll="false" primaryKey="_Fact_KEY" query="_FactQuery" levels="_Level1"/>
-  <roma:Catalog description="Schema with roles access catalog" name="Cube with roles access catalog" cubes="_Cube1" accessRoles="_roleAll _roleNone _roleAllDimWithCubeGrand _roleAllDimWithoutCubeGrand" dbschemas="databaseSchema"/>
-  <roma:DatabaseSchema id="databaseSchema">
-    <tables xsi:type="roma:PhysicalTable" id="_Fact" name="Fact">
-      <columns xsi:type="roma:PhysicalColumn" id="_Fact_KEY" name="KEY"/>
-      <columns xsi:type="roma:PhysicalColumn" id="_Fact_VALUE" name="VALUE" type="Integer"/>
+  <roma:ExplicitHierarchy id="_hierarchy_main" name="Hierarchy1" hasAll="false" primaryKey="_column_fact_key" query="_query_fact" levels="_level_key"/>
+  <roma:Catalog description="Schema with roles access catalog" name="Cube with roles access catalog" cubes="_cube_main" accessRoles="_accessRole_all _accessRole_none _accessRole_allDimWithCubeGrand _accessRole_allDimWithoutCubeGrand" dbschemas="_databaseSchema_CatalogGrand"/>
+  <roma:DatabaseSchema id="_databaseSchema_CatalogGrand">
+    <tables xsi:type="roma:PhysicalTable" id="_table_fact" name="Fact">
+      <columns xsi:type="roma:PhysicalColumn" id="_column_fact_key" name="KEY"/>
+      <columns xsi:type="roma:PhysicalColumn" id="_column_fact_value" name="VALUE" type="Integer"/>
     </tables>
   </roma:DatabaseSchema>
-  <roma:TableQuery id="_FactQuery" table="_Fact"/>
-  <roma:Level id="_Level1" name="Level1" column="_Fact_KEY"/>
-  <roma:StandardDimension id="_Dimension1" name="Dimension1" hierarchies="_Hierarchy1"/>
-  <roma:PhysicalCube id="_Cube1" name="Cube1" query="_FactQuery">
-    <dimensionConnectors foreignKey="_Fact_KEY" dimension="_Dimension1" overrideDimensionName="Dimension1"/>
-    <dimensionConnectors foreignKey="_Fact_KEY" dimension="_Dimension1" overrideDimensionName="Dimension2"/>
+  <roma:TableQuery id="_query_fact" table="_table_fact"/>
+  <roma:Level id="_level_key" name="Level1" column="_column_fact_key"/>
+  <roma:StandardDimension id="_dimension_main" name="Dimension1" hierarchies="_hierarchy_main"/>
+  <roma:PhysicalCube id="_cube_main" name="Cube1" query="_query_fact">
+    <dimensionConnectors foreignKey="_column_fact_key" dimension="_dimension_main" overrideDimensionName="Dimension1" id="_dimensionConnector_main"/>
+    <dimensionConnectors foreignKey="_column_fact_key" dimension="_dimension_main" overrideDimensionName="Dimension2" id="_dimensionConnector_secondary"/>
     <measureGroups>
-      <measures xsi:type="roma:SumMeasure" id="_Measure1" name="Measure1" column="_Fact_VALUE"/>
+      <measures xsi:type="roma:SumMeasure" id="_measure_sum" name="Measure1" column="_column_fact_value"/>
     </measureGroups>
   </roma:PhysicalCube>
-  <roma:AccessRole id="_roleAllDimWithoutCubeGrand" name="roleAllDimWithoutCubeGrand">
+  <roma:AccessRole id="_accessRole_allDimWithoutCubeGrand" name="roleAllDimWithoutCubeGrand">
     <accessCatalogGrants catalogAccess="all_dimensions">
-      <databaseSchemaGrants databaseSchemaAccess="all" databaseSchema="databaseSchema"/>
+      <databaseSchemaGrants databaseSchemaAccess="all" databaseSchema="_databaseSchema_CatalogGrand"/>
     </accessCatalogGrants>
   </roma:AccessRole>
-  <roma:AccessRole id="_roleAllDimWithCubeGrand" name="roleAllDimWithCubeGrand">
-    <accessCatalogGrants catalogAccess="all_dimensions">
-      <cubeGrants cubeAccess="all" cube="_Cube1"/>
-    </accessCatalogGrants>
-  </roma:AccessRole>
-  <roma:AccessRole id="_roleAll" name="roleAll">
+  <roma:AccessRole id="_accessRole_all" name="roleAll">
     <accessCatalogGrants catalogAccess="all"/>
   </roma:AccessRole>
-  <roma:AccessRole id="_roleNone" name="roleNone">
+  <roma:AccessRole id="_accessRole_allDimWithCubeGrand" name="roleAllDimWithCubeGrand">
+    <accessCatalogGrants catalogAccess="all_dimensions">
+      <cubeGrants cubeAccess="all" cube="_cube_main"/>
+    </accessCatalogGrants>
+  </roma:AccessRole>
+  <roma:AccessRole id="_accessRole_none" name="roleNone">
     <accessCatalogGrants/>
   </roma:AccessRole>
 </xmi:XMI>

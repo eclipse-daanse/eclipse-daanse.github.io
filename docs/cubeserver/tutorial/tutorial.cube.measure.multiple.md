@@ -15,12 +15,12 @@ The cube defined in this example is based on a single table that stores all the 
 
 
 ```xml
-<roma:DatabaseSchema   id="databaseSchema">
-  <tables xsi:type="roma:PhysicalTable" id="_tab" name="Fact">
-    <columns xsi:type="roma:PhysicalColumn" id="_col_key" name="KEY"/>
-    <columns xsi:type="roma:PhysicalColumn" id="_col_value1" name="VALUE1" type="Integer"/>
-    <columns xsi:type="roma:PhysicalColumn" id="_col_value2" name="VALUE2" type="Integer"/>
-    <columns xsi:type="roma:PhysicalColumn" id="_col_value3" name="VALUE3" type="Integer"/>
+<roma:DatabaseSchema   id="_databaseSchema_measureMultiple">
+  <tables xsi:type="roma:PhysicalTable" id="_table_fact" name="Fact">
+    <columns xsi:type="roma:PhysicalColumn" id="_column_fact_key" name="KEY"/>
+    <columns xsi:type="roma:PhysicalColumn" id="_column_fact_value1" name="VALUE1" type="Integer"/>
+    <columns xsi:type="roma:PhysicalColumn" id="_column_fact_value2" name="VALUE2" type="Integer"/>
+    <columns xsi:type="roma:PhysicalColumn" id="_column_fact_value3" name="VALUE3" type="Integer"/>
   </tables>
 </roma:DatabaseSchema>
 
@@ -32,7 +32,7 @@ This example uses a TableQuery, as it directly references the physical table Fac
 
 
 ```xml
-<roma:TableQuery  id="_query" table="_tab"/>
+<roma:TableQuery  id="_query_fact" table="_table_fact"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -46,11 +46,11 @@ All measures use sum aggregation.
 
 
 ```xml
-<roma:PhysicalCube   id="_cube" name="MultipleMeasuresCube" defaultMeasure="roma:SumMeasure _measure3" query="_query">
+<roma:PhysicalCube   id="_cube_multipleMeasuresCube" name="MultipleMeasuresCube" defaultMeasure="roma:SumMeasure _measure_sumOfValue3" query="_query_fact">
   <measureGroups>
-    <measures xsi:type="roma:SumMeasure" id="_measure1" name="Sum of Value1" column="_col_value1"/>
-    <measures xsi:type="roma:SumMeasure" id="_measure2" name="Sum of Value2" column="_col_value2"/>
-    <measures xsi:type="roma:SumMeasure" id="_measure3" name="Sum of Value3" column="_col_value3"/>
+    <measures xsi:type="roma:SumMeasure" id="_measure_sumOfValue1" name="Sum of Value1" column="_column_fact_value1"/>
+    <measures xsi:type="roma:SumMeasure" id="_measure_sumOfValue2" name="Sum of Value2" column="_column_fact_value2"/>
+    <measures xsi:type="roma:SumMeasure" id="_measure_sumOfValue3" name="Sum of Value3" column="_column_fact_value3"/>
   </measureGroups>
 </roma:PhysicalCube>
 
@@ -69,21 +69,21 @@ This files represent the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:Catalog name="Measure - Multiple Measures" cubes="_cube" dbschemas="databaseSchema"/>
-  <roma:DatabaseSchema id="databaseSchema">
-    <tables xsi:type="roma:PhysicalTable" id="_tab" name="Fact">
-      <columns xsi:type="roma:PhysicalColumn" id="_col_key" name="KEY"/>
-      <columns xsi:type="roma:PhysicalColumn" id="_col_value1" name="VALUE1" type="Integer"/>
-      <columns xsi:type="roma:PhysicalColumn" id="_col_value2" name="VALUE2" type="Integer"/>
-      <columns xsi:type="roma:PhysicalColumn" id="_col_value3" name="VALUE3" type="Integer"/>
+  <roma:Catalog id="_catalog_measureMultipleMeasures" name="Measure - Multiple Measures" cubes="_cube_multipleMeasuresCube" dbschemas="_databaseSchema_measureMultiple"/>
+  <roma:DatabaseSchema id="_databaseSchema_measureMultiple">
+    <tables xsi:type="roma:PhysicalTable" id="_table_fact" name="Fact">
+      <columns xsi:type="roma:PhysicalColumn" id="_column_fact_key" name="KEY"/>
+      <columns xsi:type="roma:PhysicalColumn" id="_column_fact_value1" name="VALUE1" type="Integer"/>
+      <columns xsi:type="roma:PhysicalColumn" id="_column_fact_value2" name="VALUE2" type="Integer"/>
+      <columns xsi:type="roma:PhysicalColumn" id="_column_fact_value3" name="VALUE3" type="Integer"/>
     </tables>
   </roma:DatabaseSchema>
-  <roma:TableQuery id="_query" table="_tab"/>
-  <roma:PhysicalCube id="_cube" name="MultipleMeasuresCube" defaultMeasure="_measure3" query="_query">
+  <roma:TableQuery id="_query_fact" table="_table_fact"/>
+  <roma:PhysicalCube id="_cube_multipleMeasuresCube" name="MultipleMeasuresCube" defaultMeasure="_measure_sumOfValue3" query="_query_fact">
     <measureGroups>
-      <measures xsi:type="roma:SumMeasure" id="_measure1" name="Sum of Value1" column="_col_value1"/>
-      <measures xsi:type="roma:SumMeasure" id="_measure2" name="Sum of Value2" column="_col_value2"/>
-      <measures xsi:type="roma:SumMeasure" id="_measure3" name="Sum of Value3" column="_col_value3"/>
+      <measures xsi:type="roma:SumMeasure" id="_measure_sumOfValue1" name="Sum of Value1" column="_column_fact_value1"/>
+      <measures xsi:type="roma:SumMeasure" id="_measure_sumOfValue2" name="Sum of Value2" column="_column_fact_value2"/>
+      <measures xsi:type="roma:SumMeasure" id="_measure_sumOfValue3" name="Sum of Value3" column="_column_fact_value3"/>
     </measureGroups>
   </roma:PhysicalCube>
 </xmi:XMI>

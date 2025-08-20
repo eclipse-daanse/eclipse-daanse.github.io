@@ -85,7 +85,7 @@ Connects a cube to a dimension, establishing the relationship between fact table
       <td>false</td>
     </tr>
     <tr>
-      <td colspan="5"><em>Optional reference to  to foreign key column in the fact table that references the primary key of the dimension table, establishing the relational link between fact data and dimensional context for OLAP analysis.</em></td>
+      <td colspan="5"><em>Optional reference to  to foreign key column in the fact table that references the primary key of the dimension table, establishing the relational link between fact data and dimensional context for OLAP analysis. Foreign key can be absent if dimension hierarchies and Cube fact table use same table</em></td>
     </tr>
     <tr>
       <td><strong>dimension</strong></td>

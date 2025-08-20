@@ -23,11 +23,11 @@ A table `Fact` with a Column `VALUE` to have a reference for the Measure.
 
 
 ```xml
-<roma:DatabaseSchema   id="databaseSchema">
-  <tables xsi:type="roma:PhysicalTable" id="_Fact" name="Fact">
-    <columns xsi:type="roma:PhysicalColumn" id="_Fact_KEY" name="KEY"/>
-    <columns xsi:type="roma:PhysicalColumn" id="_Fact_VALUE" name="VALUE" type="Integer"/>
-    <columns xsi:type="roma:PhysicalColumn" id="_Fact_VALUE_NUMERIC" name="VALUE_NUMERIC" type="Integer"/>
+<roma:DatabaseSchema   id="_databaseSchema_virtualcube">
+  <tables xsi:type="roma:PhysicalTable" id="_table_fact" name="Fact">
+    <columns xsi:type="roma:PhysicalColumn" id="_column_fact_key" name="KEY"/>
+    <columns xsi:type="roma:PhysicalColumn" id="_column_fact_value" name="VALUE" type="Integer"/>
+    <columns xsi:type="roma:PhysicalColumn" id="_column_fact_value_numeric" name="VALUE_NUMERIC" type="Integer"/>
   </tables>
 </roma:DatabaseSchema>
 
@@ -44,7 +44,7 @@ DisplayFolder     Kpi1Folder1\Kpi1Folder3 - folder tree of kpi item
 
 
 ```xml
-<roma:Kpi  id="_Kpi1" description="Kpi with all parameters" name="Kpi1" displayFolder="Kpi1Folder1\Kpi1Folder3" associatedMeasureGroupID="Kpi2MeasureGroupID" value="[Measures].[CalculatedValue]" trend="[Measures].[CalculatedTrend]"/>
+<roma:Kpi  id="_kpi1" description="Kpi with all parameters" name="Kpi1" displayFolder="Kpi1Folder1\Kpi1Folder3" associatedMeasureGroupID="Kpi2MeasureGroupID" value="[Measures].[CalculatedValue]" trend="[Measures].[CalculatedTrend]"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -54,10 +54,10 @@ This cube holds references to measure1 and DimensionConnector Cube1Dimension1
 
 
 ```xml
-<roma:PhysicalCube   id="_Cube1" name="Cube1" query="_FactQuery">
-  <dimensionConnectors dimension="roma:StandardDimension _Dimension1" overrideDimensionName="Cube1Dimension1"/>
+<roma:PhysicalCube   id="_cube1" name="Cube1" query="_table_factQuery">
+  <dimensionConnectors dimension="roma:StandardDimension _dimension1" overrideDimensionName="Cube1Dimension1" id="_dc_cube1Dimension1"/>
   <measureGroups>
-    <measures xsi:type="roma:SumMeasure" id="_MeasureCube1" name="MeasureCube1" column="_Fact_VALUE"/>
+    <measures xsi:type="roma:SumMeasure" id="_measurecube1" name="MeasureCube1" column="_column_fact_value"/>
   </measureGroups>
 </roma:PhysicalCube>
 
@@ -69,10 +69,10 @@ This cube holds references to measure2 and DimensionConnector Cube2Dimension1
 
 
 ```xml
-<roma:PhysicalCube   id="_Cube2" name="Cube2" query="_FactQuery">
-  <dimensionConnectors dimension="roma:StandardDimension _Dimension1" overrideDimensionName="Cube2Dimension1"/>
+<roma:PhysicalCube   id="_cube2" name="Cube2" query="_table_factQuery">
+  <dimensionConnectors dimension="roma:StandardDimension _dimension1" overrideDimensionName="Cube2Dimension1" id="_dc_cube2Dimension1"/>
   <measureGroups>
-    <measures xsi:type="roma:SumMeasure" id="_MeasureCube2" name="MeasureCube2" column="_Fact_VALUE"/>
+    <measures xsi:type="roma:SumMeasure" id="_measurecube2" name="MeasureCube2" column="_column_fact_value"/>
   </measureGroups>
 </roma:PhysicalCube>
 
@@ -87,10 +87,10 @@ Cube have KPI which use CalculatedMembers for parameters Value, Trend.
 
 
 ```xml
-<roma:VirtualCube  id="_Cube1Cube2Kpi" name="Cube1Cube2Kpi" defaultMeasure="roma:SumMeasure _MeasureCube1" dimensionConnectors="/6/@dimensionConnectors.0 /7/@dimensionConnectors.0" referencedMeasures="roma:SumMeasure _MeasureCube1 roma:SumMeasure _MeasureCube2">
-  <calculatedMembers id="_CalculatedValue" name="CalculatedValue" formula="[Measures].[MeasureCube1] + [Measures].[MeasureCube2]" hierarchy="roma:ExplicitHierarchy _HierarchyWithoutHasAll"/>
-  <calculatedMembers id="_CalculatedTrend" name="CalculatedTrend" formula="[Measures].[MeasureCube1] + [Measures].[MeasureCube2]" hierarchy="roma:ExplicitHierarchy _HierarchyWithoutHasAll"/>
-  <kpis id="_Kpi1" description="Kpi with all parameters" name="Kpi1" displayFolder="Kpi1Folder1\Kpi1Folder3" associatedMeasureGroupID="Kpi2MeasureGroupID" value="[Measures].[CalculatedValue]" trend="[Measures].[CalculatedTrend]"/>
+<roma:VirtualCube  id="_cube1cube2kpi" name="Cube1Cube2Kpi" defaultMeasure="roma:SumMeasure _measurecube1" dimensionConnectors="_dc_cube1Dimension1 _dc_cube2Dimension1" referencedMeasures="roma:SumMeasure _measurecube1 roma:SumMeasure _measurecube2">
+  <calculatedMembers id="_calculatedvalue" name="CalculatedValue" formula="[Measures].[MeasureCube1] + [Measures].[MeasureCube2]" hierarchy="roma:ExplicitHierarchy _hierarchywithouthasall"/>
+  <calculatedMembers id="_calculatedtrend" name="CalculatedTrend" formula="[Measures].[MeasureCube1] + [Measures].[MeasureCube2]" hierarchy="roma:ExplicitHierarchy _hierarchywithouthasall"/>
+  <kpis id="_kpi1" description="Kpi with all parameters" name="Kpi1" displayFolder="Kpi1Folder1\Kpi1Folder3" associatedMeasureGroupID="Kpi2MeasureGroupID" value="[Measures].[CalculatedValue]" trend="[Measures].[CalculatedTrend]"/>
 </roma:VirtualCube>
 
 ```
@@ -103,34 +103,34 @@ This files represent the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:ExplicitHierarchy id="_HierarchyWithoutHasAll" name="HierarchyWithoutHasAll" hasAll="false" primaryKey="_Fact_KEY" query="_FactQuery" levels="_Level2"/>
-  <roma:Catalog description="Cube with virtual cube with kpi" name="Cube with virtual cube with kpi" cubes="_Cube1 _Cube2 _Cube1Cube2Kpi" dbschemas="databaseSchema"/>
-  <roma:DatabaseSchema id="databaseSchema">
-    <tables xsi:type="roma:PhysicalTable" id="_Fact" name="Fact">
-      <columns xsi:type="roma:PhysicalColumn" id="_Fact_KEY" name="KEY"/>
-      <columns xsi:type="roma:PhysicalColumn" id="_Fact_VALUE" name="VALUE" type="Integer"/>
-      <columns xsi:type="roma:PhysicalColumn" id="_Fact_VALUE_NUMERIC" name="VALUE_NUMERIC" type="Integer"/>
+  <roma:ExplicitHierarchy id="_hierarchywithouthasall" name="HierarchyWithoutHasAll" hasAll="false" primaryKey="_column_fact_key" query="_table_factQuery" levels="_level2"/>
+  <roma:Catalog description="Cube with virtual cube with kpi" name="Cube with virtual cube with kpi" cubes="_cube1 _cube2 _cube1cube2kpi" dbschemas="_databaseSchema_virtualcube"/>
+  <roma:DatabaseSchema id="_databaseSchema_virtualcube">
+    <tables xsi:type="roma:PhysicalTable" id="_table_fact" name="Fact">
+      <columns xsi:type="roma:PhysicalColumn" id="_column_fact_key" name="KEY"/>
+      <columns xsi:type="roma:PhysicalColumn" id="_column_fact_value" name="VALUE" type="Integer"/>
+      <columns xsi:type="roma:PhysicalColumn" id="_column_fact_value_numeric" name="VALUE_NUMERIC" type="Integer"/>
     </tables>
   </roma:DatabaseSchema>
-  <roma:TableQuery id="_FactQuery" table="_Fact"/>
-  <roma:Level id="_Level2" name="Level2" column="_Fact_KEY"/>
-  <roma:StandardDimension id="_Dimension1" name="Dimension1" hierarchies="_HierarchyWithoutHasAll"/>
-  <roma:PhysicalCube id="_Cube1" name="Cube1" query="_FactQuery">
-    <dimensionConnectors dimension="_Dimension1" overrideDimensionName="Cube1Dimension1"/>
+  <roma:TableQuery id="_table_factQuery" table="_table_fact"/>
+  <roma:Level id="_level2" name="Level2" column="_column_fact_key"/>
+  <roma:StandardDimension id="_dimension1" name="Dimension1" hierarchies="_hierarchywithouthasall"/>
+  <roma:PhysicalCube id="_cube1" name="Cube1" query="_table_factQuery">
+    <dimensionConnectors dimension="_dimension1" overrideDimensionName="Cube1Dimension1" id="_dc_cube1Dimension1"/>
     <measureGroups>
-      <measures xsi:type="roma:SumMeasure" id="_MeasureCube1" name="MeasureCube1" column="_Fact_VALUE"/>
+      <measures xsi:type="roma:SumMeasure" id="_measurecube1" name="MeasureCube1" column="_column_fact_value"/>
     </measureGroups>
   </roma:PhysicalCube>
-  <roma:PhysicalCube id="_Cube2" name="Cube2" query="_FactQuery">
-    <dimensionConnectors dimension="_Dimension1" overrideDimensionName="Cube2Dimension1"/>
+  <roma:PhysicalCube id="_cube2" name="Cube2" query="_table_factQuery">
+    <dimensionConnectors dimension="_dimension1" overrideDimensionName="Cube2Dimension1" id="_dc_cube2Dimension1"/>
     <measureGroups>
-      <measures xsi:type="roma:SumMeasure" id="_MeasureCube2" name="MeasureCube2" column="_Fact_VALUE"/>
+      <measures xsi:type="roma:SumMeasure" id="_measurecube2" name="MeasureCube2" column="_column_fact_value"/>
     </measureGroups>
   </roma:PhysicalCube>
-  <roma:VirtualCube id="_Cube1Cube2Kpi" name="Cube1Cube2Kpi" defaultMeasure="_MeasureCube1" dimensionConnectors="/6/@dimensionConnectors.0 /7/@dimensionConnectors.0" referencedMeasures="_MeasureCube1 _MeasureCube2">
-    <calculatedMembers id="_CalculatedValue" name="CalculatedValue" formula="[Measures].[MeasureCube1] + [Measures].[MeasureCube2]" hierarchy="_HierarchyWithoutHasAll"/>
-    <calculatedMembers id="_CalculatedTrend" name="CalculatedTrend" formula="[Measures].[MeasureCube1] + [Measures].[MeasureCube2]" hierarchy="_HierarchyWithoutHasAll"/>
-    <kpis id="_Kpi1" description="Kpi with all parameters" name="Kpi1" displayFolder="Kpi1Folder1\Kpi1Folder3" associatedMeasureGroupID="Kpi2MeasureGroupID" value="[Measures].[CalculatedValue]" trend="[Measures].[CalculatedTrend]"/>
+  <roma:VirtualCube id="_cube1cube2kpi" name="Cube1Cube2Kpi" defaultMeasure="_measurecube1" dimensionConnectors="_dc_cube1Dimension1 _dc_cube2Dimension1" referencedMeasures="_measurecube1 _measurecube2">
+    <calculatedMembers id="_calculatedvalue" name="CalculatedValue" formula="[Measures].[MeasureCube1] + [Measures].[MeasureCube2]" hierarchy="_hierarchywithouthasall"/>
+    <calculatedMembers id="_calculatedtrend" name="CalculatedTrend" formula="[Measures].[MeasureCube1] + [Measures].[MeasureCube2]" hierarchy="_hierarchywithouthasall"/>
+    <kpis id="_kpi1" description="Kpi with all parameters" name="Kpi1" displayFolder="Kpi1Folder1\Kpi1Folder3" associatedMeasureGroupID="Kpi2MeasureGroupID" value="[Measures].[CalculatedValue]" trend="[Measures].[CalculatedTrend]"/>
   </roma:VirtualCube>
 </xmi:XMI>
 

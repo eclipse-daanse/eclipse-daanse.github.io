@@ -15,8 +15,8 @@ The SqlView must contain a SqlStatement that is used to get the data from the Da
 
 
 ```xml
-<roma:SqlView   id="_tab" name="sqlview">
-  <columns xsi:type="roma:PhysicalColumn" id="_col" name="ColumnOne"/>
+<roma:SqlView   id="_table_sqlview" name="sqlview">
+  <columns xsi:type="roma:PhysicalColumn" id="_column_sqlview_columnOne" name="ColumnOne"/>
   <sqlStatements sql="select t.c as ColumnOne from table t">
     <dialects>h2</dialects>
   </sqlStatements>
@@ -32,10 +32,10 @@ This files represent the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:Catalog id="_cat" name="Database - SqlView" dbschemas="_dbschema"/>
-  <roma:DatabaseSchema id="_dbschema">
-    <tables xsi:type="roma:SqlView" id="_tab" name="sqlview">
-      <columns xsi:type="roma:PhysicalColumn" id="_col" name="ColumnOne"/>
+  <roma:Catalog id="_catalog_databaseSqlView" name="Database - SqlView" dbschemas="_databaseSchema_sqlView"/>
+  <roma:DatabaseSchema id="_databaseSchema_sqlView">
+    <tables xsi:type="roma:SqlView" id="_table_sqlview" name="sqlview">
+      <columns xsi:type="roma:PhysicalColumn" id="_column_sqlview_columnOne" name="ColumnOne"/>
       <sqlStatements sql="select t.c as ColumnOne from table t">
         <dialects>h2</dialects>
       </sqlStatements>

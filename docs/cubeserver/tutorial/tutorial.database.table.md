@@ -15,7 +15,7 @@ Physical Tables are the most common Tables.  They are used to store data in the 
 
 
 ```xml
-<roma:PhysicalTable  id="_tab" name="TableOne"/>
+<roma:PhysicalTable  id="_table_tableOne" name="TableOne"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -25,7 +25,7 @@ View Tables ate Database views. Virtual tables that are the result of a query in
 
 
 ```xml
-<roma:ViewTable  id="_tab" name="ViewOne"/>
+<roma:ViewTable  id="_table_viewOne" name="ViewOne"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -35,7 +35,7 @@ Sytsem Tables are are used and managed by the underlaying Database Management Sy
 
 
 ```xml
-<roma:SystemTable  id="_tab" name="TableOne"/>
+<roma:SystemTable  id="_table_systemTableOne" name="TableOne"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -47,16 +47,16 @@ This files represent the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:Catalog id="_cat" name="Database - Table" dbschemas="_dbschema"/>
-  <roma:DatabaseSchema id="_dbschema">
-    <tables xsi:type="roma:PhysicalTable" id="_tab" name="TableOne">
-      <columns xsi:type="roma:PhysicalColumn" id="_col" name="ColumnOne"/>
+  <roma:Catalog id="_catalog_databaseTable" name="Database - Table" dbschemas="_databaseSchema_tableTypes"/>
+  <roma:DatabaseSchema id="_databaseSchema_tableTypes">
+    <tables xsi:type="roma:PhysicalTable" id="_table_tableOne" name="TableOne">
+      <columns xsi:type="roma:PhysicalColumn" id="_column_tableOne_columnOne" name="ColumnOne"/>
     </tables>
-    <tables xsi:type="roma:ViewTable" id="_tab" name="ViewOne">
-      <columns xsi:type="roma:PhysicalColumn" id="_col" name="ColumnOne"/>
+    <tables xsi:type="roma:ViewTable" id="_table_viewOne" name="ViewOne">
+      <columns xsi:type="roma:PhysicalColumn" id="_column_viewOne_columnOne" name="ColumnOne"/>
     </tables>
-    <tables xsi:type="roma:SystemTable" id="_tab" name="TableOne">
-      <columns xsi:type="roma:PhysicalColumn" id="_col" name="ColumnOne"/>
+    <tables xsi:type="roma:SystemTable" id="_table_systemTableOne" name="TableOne">
+      <columns xsi:type="roma:PhysicalColumn" id="_column_systemTableOne_columnOne" name="ColumnOne"/>
     </tables>
   </roma:DatabaseSchema>
 </xmi:XMI>
