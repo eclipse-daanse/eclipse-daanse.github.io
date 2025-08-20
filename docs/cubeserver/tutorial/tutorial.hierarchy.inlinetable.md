@@ -1,5 +1,5 @@
 ---
-title: Daanse Tutorial - Hierarchy Inline Table
+title: Hierarchy Inline Table
 group: Hierarchy
 kind: TUTORIAL
 number: 2.16.1
@@ -139,8 +139,8 @@ This files represent the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:ExplicitHierarchy id="_hierarchy1" name="Hierarchy1" primaryKey="_ht_key" query="_inlineTableQuery" levels="_level1"/>
   <roma:InlineTableQuery id="_inlineTableQuery" alias="HT" table="/3/@tables.1"/>
+  <roma:ExplicitHierarchy id="_hierarchy1" name="Hierarchy1" primaryKey="_ht_key" query="_inlineTableQuery" levels="_level1"/>
   <roma:Catalog description="Hierarchy with inline table data" name="Daanse Tutorial - Hierarchy Inline Table" cubes="_cube" dbschemas="_databaseSchema_inlinetable"/>
   <roma:DatabaseSchema id="_databaseSchema_inlinetable">
     <tables xsi:type="roma:PhysicalTable" id="_table_fact" name="Fact">
@@ -178,7 +178,7 @@ This files represent the complete definition of the catalog.
 
 
 
-## Turorial Zip
+## Tutorial Zip
 This files contaisn the data-tables as csv and the mapping as xmi file.
 
 <a href="./zip/tutorial.hierarchy.inlinetable.zip" download>Download Zip File</a>

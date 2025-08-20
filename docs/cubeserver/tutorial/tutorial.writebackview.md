@@ -44,8 +44,8 @@ This files represent the complete definition of the catalog.
       </sqlStatements>
     </sql>
   </roma:SqlSelectQuery>
-  <roma:TableQuery id="l1Query" table="L1"/>
   <roma:TableQuery id="l2Query" table="L2"/>
+  <roma:TableQuery id="l1Query" table="L1"/>
   <roma:JoinQuery id="joinQuery">
     <left key="L1_L2" query="l1Query"/>
     <right key="L2_L2" query="l2Query"/>
@@ -71,7 +71,7 @@ This files represent the complete definition of the catalog.
 
 
 
-## Turorial Zip
+## Tutorial Zip
 This files contaisn the data-tables as csv and the mapping as xmi file.
 
 <a href="./zip/tutorial.writebackview.zip" download>Download Zip File</a>

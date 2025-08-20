@@ -1,5 +1,5 @@
 ---
-title: Daanse Tutorial - Level Expressions
+title: Level Expressions
 group: Level
 kind: TUTORIAL
 number: 2.14.1
@@ -186,8 +186,8 @@ This files represent the complete definition of the catalog.
     </tables>
   </roma:DatabaseSchema>
   <roma:TableQuery id="_table_factQuery" table="_table_fact"/>
-  <roma:Level id="_level2" name="Level2" captionColumn="_captionExpression" column="_keyExpression" ordinalColumn="_ordinalExpression"/>
   <roma:Level id="_level1" name="Level1" column="_column_fact_key" nameColumn="_nameExpression"/>
+  <roma:Level id="_level2" name="Level2" captionColumn="_captionExpression" column="_keyExpression" ordinalColumn="_ordinalExpression"/>
   <roma:StandardDimension id="_dimension" name="Dimension" hierarchies="_hierarchywithhasall"/>
   <roma:PhysicalCube id="_cube" name="Cube" query="_table_factQuery">
     <dimensionConnectors dimension="_dimension" overrideDimensionName="Dimension" id="_dc_dimension"/>
@@ -201,7 +201,7 @@ This files represent the complete definition of the catalog.
 
 
 
-## Turorial Zip
+## Tutorial Zip
 This files contaisn the data-tables as csv and the mapping as xmi file.
 
 <a href="./zip/tutorial.level.expressions.zip" download>Download Zip File</a>

@@ -1,5 +1,5 @@
 ---
-title: Daanse Tutorial - Cube Level Member Property Intro
+title: Cube Level Member Property Intro
 group: Member
 kind: TUTORIAL
 number: 2.3.5.1
@@ -127,8 +127,8 @@ This files represent the complete definition of the catalog.
     </tables>
   </roma:DatabaseSchema>
   <roma:PhysicalColumn id="_column_town_capital" name="CAPITAL" columnSize="100"/>
-  <roma:TableQuery id="_query_fact" table="_table_fact"/>
   <roma:TableQuery id="_query_town" table="_table_town"/>
+  <roma:TableQuery id="_query_fact" table="_table_fact"/>
   <roma:Level id="_level_town" name="Town" column="_column_town_id" nameColumn="_column_town_name">
     <memberProperties id="_memberProperty_capital" name="Capital" column="_column_town_capital"/>
   </roma:Level>
@@ -145,7 +145,7 @@ This files represent the complete definition of the catalog.
 
 
 
-## Turorial Zip
+## Tutorial Zip
 This files contaisn the data-tables as csv and the mapping as xmi file.
 
 <a href="./zip/tutorial.cube.level.member.property.intro.zip" download>Download Zip File</a>

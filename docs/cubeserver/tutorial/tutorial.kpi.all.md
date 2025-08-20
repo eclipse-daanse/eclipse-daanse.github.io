@@ -1,5 +1,5 @@
 ---
-title: Daanse Tutorial - KPI All
+title: KPI All
 group: Kpi
 kind: TUTORIAL
 number: 2.7.2
@@ -107,7 +107,7 @@ This files represent the complete definition of the catalog.
 
 
 
-## Turorial Zip
+## Tutorial Zip
 This files contaisn the data-tables as csv and the mapping as xmi file.
 
 <a href="./zip/tutorial.kpi.all.zip" download>Download Zip File</a>

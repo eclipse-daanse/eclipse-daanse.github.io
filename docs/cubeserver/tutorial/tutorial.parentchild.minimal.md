@@ -1,5 +1,5 @@
 ---
-title: Daanse Tutorial - Parent Child Minimal
+title: Parent Child Minimal
 group: Parent Child
 kind: TUTORIAL
 number: 2.17.1
@@ -130,8 +130,8 @@ This files represent the complete definition of the catalog.
       <columns xsi:type="roma:PhysicalColumn" id="_column_member_parentKey" name="PARENT_KEY" type="Integer"/>
     </tables>
   </roma:DatabaseSchema>
-  <roma:TableQuery id="_query_fact" table="_table_fact"/>
   <roma:TableQuery id="_query_member" table="_table_member"/>
+  <roma:TableQuery id="_query_fact" table="_table_fact"/>
   <roma:Level id="_level_parentChild" name="Level" column="_column_member_key" nameColumn="_column_member_name" uniqueMembers="true"/>
   <roma:StandardDimension id="_dimension_parentChild" name="Dimension1" hierarchies="_hierarchy_parentChild"/>
   <roma:PhysicalCube id="_cube_parentChildMinimal" name="Cube" query="_query_fact">
@@ -146,7 +146,7 @@ This files represent the complete definition of the catalog.
 
 
 
-## Turorial Zip
+## Tutorial Zip
 This files contaisn the data-tables as csv and the mapping as xmi file.
 
 <a href="./zip/tutorial.parentchild.minimal.zip" download>Download Zip File</a>

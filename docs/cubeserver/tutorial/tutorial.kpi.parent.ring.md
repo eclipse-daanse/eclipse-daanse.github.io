@@ -1,5 +1,5 @@
 ---
-title: Daanse Tutorial - KPI Parent Ring
+title: KPI Parent Ring
 group: Kpi
 kind: TUTORIAL
 number: 2.7.3
@@ -105,7 +105,7 @@ This files represent the complete definition of the catalog.
 
 
 
-## Turorial Zip
+## Tutorial Zip
 This files contaisn the data-tables as csv and the mapping as xmi file.
 
 <a href="./zip/tutorial.kpi.parent.ring.zip" download>Download Zip File</a>

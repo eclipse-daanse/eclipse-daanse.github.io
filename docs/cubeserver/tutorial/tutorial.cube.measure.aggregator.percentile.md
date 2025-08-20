@@ -1,5 +1,5 @@
 ---
-title: Daanse Tutorial - Cube Measure Aggregator Percentile
+title: Cube Measure Aggregator Percentile
 group: Measure
 kind: TUTORIAL
 number: 2.2.7
@@ -109,7 +109,7 @@ This files represent the complete definition of the catalog.
 
 
 
-## Turorial Zip
+## Tutorial Zip
 This files contaisn the data-tables as csv and the mapping as xmi file.
 
 <a href="./zip/tutorial.cube.measure.aggregator.percentile.zip" download>Download Zip File</a>

@@ -1,5 +1,5 @@
 ---
-title: Daanse Tutorial - Access Table Grant
+title: Access Table Grant
 group: Access
 kind: TUTORIAL
 number: 2.4.2
@@ -113,19 +113,19 @@ This files represent the complete definition of the catalog.
       <measures xsi:type="roma:SumMeasure" id="_measure_Measure1" name="Measure1" column="_column_fact_value"/>
     </measureGroups>
   </roma:PhysicalCube>
-  <roma:AccessRole id="_accessRole_roleAll" name="roleAll">
-    <accessCatalogGrants catalogAccess="all">
-      <cubeGrants cubeAccess="all" cube="_cube_Cube1"/>
-      <databaseSchemaGrants databaseSchemaAccess="custom" databaseSchema="_databaseSchema_TableGrand">
-        <tableGrants tableAccess="all" table="_table_fact"/>
-      </databaseSchemaGrants>
-    </accessCatalogGrants>
-  </roma:AccessRole>
   <roma:AccessRole id="_accessRole_roleNone" name="roleNone">
     <accessCatalogGrants catalogAccess="all">
       <cubeGrants cubeAccess="all" cube="_cube_Cube1"/>
       <databaseSchemaGrants databaseSchemaAccess="custom" databaseSchema="_databaseSchema_TableGrand">
         <tableGrants table="_table_fact"/>
+      </databaseSchemaGrants>
+    </accessCatalogGrants>
+  </roma:AccessRole>
+  <roma:AccessRole id="_accessRole_roleAll" name="roleAll">
+    <accessCatalogGrants catalogAccess="all">
+      <cubeGrants cubeAccess="all" cube="_cube_Cube1"/>
+      <databaseSchemaGrants databaseSchemaAccess="custom" databaseSchema="_databaseSchema_TableGrand">
+        <tableGrants tableAccess="all" table="_table_fact"/>
       </databaseSchemaGrants>
     </accessCatalogGrants>
   </roma:AccessRole>
@@ -135,7 +135,7 @@ This files represent the complete definition of the catalog.
 
 
 
-## Turorial Zip
+## Tutorial Zip
 This files contaisn the data-tables as csv and the mapping as xmi file.
 
 <a href="./zip/tutorial.access.tablegrand.zip" download>Download Zip File</a>

@@ -1,5 +1,5 @@
 ---
-title: Daanse Tutorial - Database Intro
+title: Database Intro
 group: Database
 kind: TUTORIAL
 number: 1.1
@@ -76,7 +76,7 @@ This files represent the complete definition of the catalog.
 
 
 
-## Turorial Zip
+## Tutorial Zip
 This files contaisn the data-tables as csv and the mapping as xmi file.
 
 <a href="./zip/tutorial.database.intro.zip" download>Download Zip File</a>

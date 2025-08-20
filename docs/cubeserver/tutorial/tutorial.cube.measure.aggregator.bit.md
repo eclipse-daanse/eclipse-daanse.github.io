@@ -1,5 +1,5 @@
 ---
-title: Daanse Tutorial - Cube Measure Aggregator Bit
+title: Cube Measure Aggregator Bit
 group: Measure
 kind: TUTORIAL
 number: 2.2.6
@@ -91,7 +91,7 @@ This files represent the complete definition of the catalog.
 
 
 
-## Turorial Zip
+## Tutorial Zip
 This files contaisn the data-tables as csv and the mapping as xmi file.
 
 <a href="./zip/tutorial.cube.measure.aggregator.bit.zip" download>Download Zip File</a>

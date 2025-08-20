@@ -1,5 +1,5 @@
 ---
-title: Daanse Tutorial - Namedset All
+title: Namedset All
 group: Namedset
 kind: TUTORIAL
 number: 2.8.1
@@ -7,13 +7,13 @@ number: 2.8.1
 Cube with NamedSet.
 
 
-NamedSet use only Dimension1 in formula. By this reason it connected to Dimension1. NamedSet have folder
+NamedSet use Dimension1 and Dimension2 in formula. By this reason it connected to Cube. NamedSet have folder
 
 NamedSet use Dimension1 and Dimension2 in formula. By this reason it connected to Cube.
 
-NamedSet use only Dimension1 in formula. By this reason it connected to Dimension1.
+NamedSet use only Dimension1 in formula. By this reason it connected to Dimension1. NamedSet have folder
 
-NamedSet use Dimension1 and Dimension2 in formula. By this reason it connected to Cube. NamedSet have folder
+NamedSet use only Dimension1 in formula. By this reason it connected to Dimension1.
 
 # catalog with Cube with NamedSets
 
@@ -176,7 +176,7 @@ This files represent the complete definition of the catalog.
 
 
 
-## Turorial Zip
+## Tutorial Zip
 This files contaisn the data-tables as csv and the mapping as xmi file.
 
 <a href="./zip/tutorial.namedset.zip" download>Download Zip File</a>

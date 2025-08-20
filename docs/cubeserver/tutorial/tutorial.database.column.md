@@ -1,5 +1,5 @@
 ---
-title: Daanse Tutorial - Database Column
+title: Database Column
 group: Database
 kind: TUTORIAL
 number: 1.2.1
@@ -121,7 +121,7 @@ This files represent the complete definition of the catalog.
 
 
 
-## Turorial Zip
+## Tutorial Zip
 This files contaisn the data-tables as csv and the mapping as xmi file.
 
 <a href="./zip/tutorial.database.column.zip" download>Download Zip File</a>

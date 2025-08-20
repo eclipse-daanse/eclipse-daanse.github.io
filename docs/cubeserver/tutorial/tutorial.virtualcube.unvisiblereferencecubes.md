@@ -1,5 +1,5 @@
 ---
-title: Daanse Tutorial - Virtual Cube Unvisible Reference Cubes
+title: Virtual Cube Unvisible Reference Cubes
 group: VirtualCube
 kind: TUTORIAL
 number: 2.15.4
@@ -130,16 +130,16 @@ This files represent the complete definition of the catalog.
   <roma:TableQuery id="_query_fact" table="_table_fact"/>
   <roma:Level id="_level_Level2" name="Level2" column="_column_fact_key"/>
   <roma:StandardDimension id="_dimension_Dimension1" name="Dimension1" hierarchies="_hierarchy_HierarchyWithHasAll"/>
-  <roma:PhysicalCube id="_cube_cube1" name="Cube1" visible="false" query="_query_fact">
-    <dimensionConnectors dimension="_dimension_Dimension1" overrideDimensionName="Cube1Dimension1" id="_dc_cube1Dimension1"/>
-    <measureGroups>
-      <measures xsi:type="roma:SumMeasure" id="_measure_MeasureCube1" name="MeasureCube1" column="_column_fact_value"/>
-    </measureGroups>
-  </roma:PhysicalCube>
   <roma:PhysicalCube id="_cube_cube2" name="Cube2" visible="false" query="_query_fact">
     <dimensionConnectors dimension="_dimension_Dimension1" overrideDimensionName="Cube2Dimension1" id="_dc_cube2Dimension1"/>
     <measureGroups>
       <measures xsi:type="roma:SumMeasure" id="_measure_MeasureCube2" name="MeasureCube2" column="_column_fact_value"/>
+    </measureGroups>
+  </roma:PhysicalCube>
+  <roma:PhysicalCube id="_cube_cube1" name="Cube1" visible="false" query="_query_fact">
+    <dimensionConnectors dimension="_dimension_Dimension1" overrideDimensionName="Cube1Dimension1" id="_dc_cube1Dimension1"/>
+    <measureGroups>
+      <measures xsi:type="roma:SumMeasure" id="_measure_MeasureCube1" name="MeasureCube1" column="_column_fact_value"/>
     </measureGroups>
   </roma:PhysicalCube>
   <roma:VirtualCube id="_virtualCube_Cube1Cube2" name="Cube1Cube2" defaultMeasure="_measure_MeasureCube1" dimensionConnectors="_dc_cube1Dimension1 _dc_cube2Dimension1" referencedMeasures="_measure_MeasureCube1 _measure_MeasureCube2"/>
@@ -149,7 +149,7 @@ This files represent the complete definition of the catalog.
 
 
 
-## Turorial Zip
+## Tutorial Zip
 This files contaisn the data-tables as csv and the mapping as xmi file.
 
 <a href="./zip/tutorial.virtualcube.unvisiblereferencecubes.zip" download>Download Zip File</a>

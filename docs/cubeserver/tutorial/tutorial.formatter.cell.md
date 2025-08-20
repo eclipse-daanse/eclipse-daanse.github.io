@@ -1,5 +1,5 @@
 ---
-title: Daanse Tutorial - Formatter Cell
+title: Formatter Cell
 group: Formatter
 kind: TUTORIAL
 number: 2.11.1
@@ -101,7 +101,7 @@ This files represent the complete definition of the catalog.
 
 
 
-## Turorial Zip
+## Tutorial Zip
 This files contaisn the data-tables as csv and the mapping as xmi file.
 
 <a href="./zip/tutorial.formatter.cell.zip" download>Download Zip File</a>

@@ -1,5 +1,5 @@
 ---
-title: Daanse Tutorial - Measure Expression
+title: Measure Expression
 group: Measure
 kind: TUTORIAL
 number: 2.12.1
@@ -170,7 +170,7 @@ This files represent the complete definition of the catalog.
 
 
 
-## Turorial Zip
+## Tutorial Zip
 This files contaisn the data-tables as csv and the mapping as xmi file.
 
 <a href="./zip/tutorial.measure.expression.zip" download>Download Zip File</a>
