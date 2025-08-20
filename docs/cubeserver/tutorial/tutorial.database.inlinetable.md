@@ -15,16 +15,16 @@ The InlineTable is a virtual table. The table and data does not exist in the dat
 
 
 ```xml
-<roma:InlineTable   id="_table" name="FACT">
-  <columns xsi:type="roma:PhysicalColumn" id="Fact_KEY" name="KEY"/>
-  <columns xsi:type="roma:PhysicalColumn" id="Fact_VALUE" name="VALUE" type="Integer"/>
+<roma:InlineTable   id="_table_fact" name="FACT">
+  <columns xsi:type="roma:PhysicalColumn" id="_column_fact_key" name="KEY"/>
+  <columns xsi:type="roma:PhysicalColumn" id="_column_fact_value" name="VALUE" type="Integer"/>
   <rows>
-    <rowValues column="Fact_KEY" value="A"/>
-    <rowValues column="Fact_VALUE" value="100"/>
+    <rowValues column="_column_fact_key" value="A"/>
+    <rowValues column="_column_fact_value" value="100"/>
   </rows>
   <rows>
-    <rowValues column="Fact_KEY" value="B"/>
-    <rowValues column="Fact_VALUE" value="42"/>
+    <rowValues column="_column_fact_key" value="B"/>
+    <rowValues column="_column_fact_value" value="42"/>
   </rows>
 </roma:InlineTable>
 
@@ -38,18 +38,18 @@ This files represent the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:Catalog id="_cat" name="Database - InlineTable" dbschemas="_dbschema"/>
-  <roma:DatabaseSchema id="_dbschema">
-    <tables xsi:type="roma:InlineTable" id="_table" name="FACT">
-      <columns xsi:type="roma:PhysicalColumn" id="Fact_KEY" name="KEY"/>
-      <columns xsi:type="roma:PhysicalColumn" id="Fact_VALUE" name="VALUE" type="Integer"/>
+  <roma:Catalog id="_catalog_databaseInlineTable" name="Database - InlineTable" dbschemas="_databaseSchema_inlineTable"/>
+  <roma:DatabaseSchema id="_databaseSchema_inlineTable">
+    <tables xsi:type="roma:InlineTable" id="_table_fact" name="FACT">
+      <columns xsi:type="roma:PhysicalColumn" id="_column_fact_key" name="KEY"/>
+      <columns xsi:type="roma:PhysicalColumn" id="_column_fact_value" name="VALUE" type="Integer"/>
       <rows>
-        <rowValues column="Fact_KEY" value="A"/>
-        <rowValues column="Fact_VALUE" value="100"/>
+        <rowValues column="_column_fact_key" value="A"/>
+        <rowValues column="_column_fact_value" value="100"/>
       </rows>
       <rows>
-        <rowValues column="Fact_KEY" value="B"/>
-        <rowValues column="Fact_VALUE" value="42"/>
+        <rowValues column="_column_fact_key" value="B"/>
+        <rowValues column="_column_fact_value" value="42"/>
       </rows>
     </tables>
   </roma:DatabaseSchema>

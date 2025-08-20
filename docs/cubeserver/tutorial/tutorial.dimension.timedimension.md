@@ -23,7 +23,7 @@ TimeWeeks   Level is a week
 TimeDays    Level represents days
 
 
-# catalog with Cube with NamedSets
+# catalog with Cube with Time Dimensions
 
 This tutorial discusses NamedSets.
 
@@ -33,24 +33,24 @@ NSInCubeWithFolder        : NamedSet use Dimension1 and Dimension2 in formula. B
 NSInCubeWithoutFolder     : NamedSet use Dimension1 and Dimension2 in formula. By this reason it connected to Cube.
 
 
-## Cube with NamedSets
+## Database Schema
 
 The Database Schema contains the Fact table with 9 columns: DATE_KEY, YEAR_ID, QTR_ID, QTR_NAME, MONTH_ID, MONTH_NAME, WEEK_IN_MONTH, DAY_IN_MONTH and VALUE.
 The DATE_KEY column is used as the discriminator in the Hierarchy definitions.
 
 
 ```xml
-<roma:DatabaseSchema   id="_databaseSchema">
-  <tables xsi:type="roma:PhysicalTable" id="_Fact" name="Fact">
-    <columns xsi:type="roma:PhysicalColumn" id="_Fact_DATE_KEY" name="DATE_KEY" type="Timestamp"/>
-    <columns xsi:type="roma:PhysicalColumn" id="_Fact_VALUE" name="VALUE" type="Integer"/>
-    <columns xsi:type="roma:PhysicalColumn" id="_Fact_YEAR_ID" name="YEAR_ID" type="Integer"/>
-    <columns xsi:type="roma:PhysicalColumn" id="_Fact_QTR_ID" name="QTR_ID"/>
-    <columns xsi:type="roma:PhysicalColumn" id="_Fact_QTR_NAME" name="QTR_NAME"/>
-    <columns xsi:type="roma:PhysicalColumn" id="_Fact_MONTH_ID" name="MONTH_ID"/>
-    <columns xsi:type="roma:PhysicalColumn" id="_Fact_MONTH_NAME" name="MONTH_NAME"/>
-    <columns xsi:type="roma:PhysicalColumn" id="_Fact_WEEK_IN_MONTH" name="WEEK_IN_MONTH" type="Integer"/>
-    <columns xsi:type="roma:PhysicalColumn" id="_Fact_DAY_IN_MONTH" name="DAY_IN_MONTH" type="Integer"/>
+<roma:DatabaseSchema   id="_databaseSchema_timeDimension">
+  <tables xsi:type="roma:PhysicalTable" id="_table_fact" name="Fact">
+    <columns xsi:type="roma:PhysicalColumn" id="_column_fact_dateKey" name="DATE_KEY" type="Timestamp"/>
+    <columns xsi:type="roma:PhysicalColumn" id="_column_fact_value" name="VALUE" type="Integer"/>
+    <columns xsi:type="roma:PhysicalColumn" id="_column_fact_yearId" name="YEAR_ID" type="Integer"/>
+    <columns xsi:type="roma:PhysicalColumn" id="_column_fact_qtrId" name="QTR_ID"/>
+    <columns xsi:type="roma:PhysicalColumn" id="_column_fact_qtrName" name="QTR_NAME"/>
+    <columns xsi:type="roma:PhysicalColumn" id="_column_fact_monthId" name="MONTH_ID"/>
+    <columns xsi:type="roma:PhysicalColumn" id="_column_fact_monthName" name="MONTH_NAME"/>
+    <columns xsi:type="roma:PhysicalColumn" id="_column_fact_weekInMonth" name="WEEK_IN_MONTH" type="Integer"/>
+    <columns xsi:type="roma:PhysicalColumn" id="_column_fact_dayInMonth" name="DAY_IN_MONTH" type="Integer"/>
   </tables>
 </roma:DatabaseSchema>
 
@@ -62,7 +62,7 @@ The Query is a simple TableQuery that selects all columns from the Fact table to
 
 
 ```xml
-<roma:TableQuery  id="_FactQuery" table="_Fact"/>
+<roma:TableQuery  id="_query_fact" table="_table_fact"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -72,7 +72,7 @@ This Example uses Years level bases on the YEAR_ID column and has TIME_YEARS typ
 
 
 ```xml
-<roma:Level  id="_Years" name="Years" column="_Fact_YEAR_ID" type="TimeYears" uniqueMembers="true"/>
+<roma:Level  id="_level_years" name="Years" column="_column_fact_yearId" type="TimeYears" uniqueMembers="true"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -82,7 +82,7 @@ This Example uses Quarters level bases on the QTR_ID column and has TIME_QUARTER
 
 
 ```xml
-<roma:Level  id="_Quarters" name="Quarters" column="_Fact_QTR_NAME" type="TimeQuarters" ordinalColumn="roma:PhysicalColumn _Fact_QTR_ID"/>
+<roma:Level  id="_level_quarters" name="Quarters" column="_column_fact_qtrName" type="TimeQuarters" ordinalColumn="roma:PhysicalColumn _column_fact_qtrId"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -92,7 +92,7 @@ This Example uses Months level bases on the MONTH_ID column and has TIME_MONTHS 
 
 
 ```xml
-<roma:Level  id="_Months" name="Months" column="_Fact_MONTH_NAME" type="TimeMonths" ordinalColumn="roma:PhysicalColumn _Fact_MONTH_ID"/>
+<roma:Level  id="_level_months" name="Months" column="_column_fact_monthName" type="TimeMonths" ordinalColumn="roma:PhysicalColumn _column_fact_monthId"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -102,7 +102,7 @@ This Example uses Week level bases on the MONTH_ID column and has TIME_WEEKS typ
 
 
 ```xml
-<roma:Level  id="_Week" name="Week" column="_Fact_WEEK_IN_MONTH" type="TimeWeeks"/>
+<roma:Level  id="_level_week" name="Week" column="_column_fact_weekInMonth" type="TimeWeeks"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -112,7 +112,7 @@ This Example uses Week level bases on the MONTH_ID column and has TIME_DAYS type
 
 
 ```xml
-<roma:Level  id="_Day" name="Day" column="_Fact_DAY_IN_MONTH" type="TimeDays"/>
+<roma:Level  id="_level_day" name="Day" column="_column_fact_dayInMonth" type="TimeDays"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -122,7 +122,7 @@ The Hierarchy1 is defined with the hasAll property set to false and the one leve
 
 
 ```xml
-<roma:ExplicitHierarchy  id="_hierarchy" allMemberName="All Years" primaryKey="_Fact_DATE_KEY" query="_FactQuery" levels="_Years _Quarters _Months _Week _Day"/>
+<roma:ExplicitHierarchy  id="_hierarchy_time" allMemberName="All Years" primaryKey="_column_fact_dateKey" query="_query_fact" levels="_level_years _level_quarters _level_months _level_week _level_day"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -132,7 +132,7 @@ The time dimension is defined with the one hierarchy.
 
 
 ```xml
-<roma:TimeDimension  id="_TimeDimension" name="Time" hierarchies="roma:ExplicitHierarchy _hierarchy"/>
+<roma:TimeDimension  id="_dimension_time" name="Time" hierarchies="roma:ExplicitHierarchy _hierarchy_time"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -149,10 +149,10 @@ TimeDays    Level represents days
 
 
 ```xml
-<roma:PhysicalCube   id="_CubeTimeDimension" name="CubeTimeDimension" query="_FactQuery">
-  <dimensionConnectors dimension="roma:TimeDimension _TimeDimension" overrideDimensionName="Time"/>
+<roma:PhysicalCube   id="_cube_timeDimension" name="CubeTimeDimension" query="_query_fact">
+  <dimensionConnectors dimension="roma:TimeDimension _dimension_time" overrideDimensionName="Time" id="_dimensionConnector_time"/>
   <measureGroups>
-    <measures xsi:type="roma:SumMeasure" id="_Measure-Sum" name="Measure-Sum" column="_Fact_VALUE"/>
+    <measures xsi:type="roma:SumMeasure" id="_measure_sum" name="Measure-Sum" column="_column_fact_value"/>
   </measureGroups>
 </roma:PhysicalCube>
 
@@ -166,32 +166,32 @@ This files represent the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:ExplicitHierarchy id="_hierarchy" allMemberName="All Years" primaryKey="_Fact_DATE_KEY" query="_FactQuery" levels="_Years _Quarters _Months _Week _Day"/>
-  <roma:Catalog description="Schema with cube with Time Dimension" name="Minimal Cube with Time_Dimension" cubes="_CubeTimeDimension" dbschemas="_databaseSchema"/>
-  <roma:DatabaseSchema id="_databaseSchema">
-    <tables xsi:type="roma:PhysicalTable" id="_Fact" name="Fact">
-      <columns xsi:type="roma:PhysicalColumn" id="_Fact_DATE_KEY" name="DATE_KEY" type="Timestamp"/>
-      <columns xsi:type="roma:PhysicalColumn" id="_Fact_VALUE" name="VALUE" type="Integer"/>
-      <columns xsi:type="roma:PhysicalColumn" id="_Fact_YEAR_ID" name="YEAR_ID" type="Integer"/>
-      <columns xsi:type="roma:PhysicalColumn" id="_Fact_QTR_ID" name="QTR_ID"/>
-      <columns xsi:type="roma:PhysicalColumn" id="_Fact_QTR_NAME" name="QTR_NAME"/>
-      <columns xsi:type="roma:PhysicalColumn" id="_Fact_MONTH_ID" name="MONTH_ID"/>
-      <columns xsi:type="roma:PhysicalColumn" id="_Fact_MONTH_NAME" name="MONTH_NAME"/>
-      <columns xsi:type="roma:PhysicalColumn" id="_Fact_WEEK_IN_MONTH" name="WEEK_IN_MONTH" type="Integer"/>
-      <columns xsi:type="roma:PhysicalColumn" id="_Fact_DAY_IN_MONTH" name="DAY_IN_MONTH" type="Integer"/>
+  <roma:ExplicitHierarchy id="_hierarchy_time" allMemberName="All Years" primaryKey="_column_fact_dateKey" query="_query_fact" levels="_level_years _level_quarters _level_months _level_week _level_day"/>
+  <roma:Catalog description="Schema with cube with Time Dimension" name="Minimal Cube with Time_Dimension" cubes="_cube_timeDimension" dbschemas="_databaseSchema_timeDimension"/>
+  <roma:DatabaseSchema id="_databaseSchema_timeDimension">
+    <tables xsi:type="roma:PhysicalTable" id="_table_fact" name="Fact">
+      <columns xsi:type="roma:PhysicalColumn" id="_column_fact_dateKey" name="DATE_KEY" type="Timestamp"/>
+      <columns xsi:type="roma:PhysicalColumn" id="_column_fact_value" name="VALUE" type="Integer"/>
+      <columns xsi:type="roma:PhysicalColumn" id="_column_fact_yearId" name="YEAR_ID" type="Integer"/>
+      <columns xsi:type="roma:PhysicalColumn" id="_column_fact_qtrId" name="QTR_ID"/>
+      <columns xsi:type="roma:PhysicalColumn" id="_column_fact_qtrName" name="QTR_NAME"/>
+      <columns xsi:type="roma:PhysicalColumn" id="_column_fact_monthId" name="MONTH_ID"/>
+      <columns xsi:type="roma:PhysicalColumn" id="_column_fact_monthName" name="MONTH_NAME"/>
+      <columns xsi:type="roma:PhysicalColumn" id="_column_fact_weekInMonth" name="WEEK_IN_MONTH" type="Integer"/>
+      <columns xsi:type="roma:PhysicalColumn" id="_column_fact_dayInMonth" name="DAY_IN_MONTH" type="Integer"/>
     </tables>
   </roma:DatabaseSchema>
-  <roma:TableQuery id="_FactQuery" table="_Fact"/>
-  <roma:Level id="_Day" name="Day" column="_Fact_DAY_IN_MONTH" type="TimeDays"/>
-  <roma:Level id="_Months" name="Months" column="_Fact_MONTH_NAME" type="TimeMonths" ordinalColumn="_Fact_MONTH_ID"/>
-  <roma:Level id="_Quarters" name="Quarters" column="_Fact_QTR_NAME" type="TimeQuarters" ordinalColumn="_Fact_QTR_ID"/>
-  <roma:Level id="_Week" name="Week" column="_Fact_WEEK_IN_MONTH" type="TimeWeeks"/>
-  <roma:Level id="_Years" name="Years" column="_Fact_YEAR_ID" type="TimeYears" uniqueMembers="true"/>
-  <roma:TimeDimension id="_TimeDimension" name="Time" hierarchies="_hierarchy"/>
-  <roma:PhysicalCube id="_CubeTimeDimension" name="CubeTimeDimension" query="_FactQuery">
-    <dimensionConnectors dimension="_TimeDimension" overrideDimensionName="Time"/>
+  <roma:TableQuery id="_query_fact" table="_table_fact"/>
+  <roma:Level id="_level_years" name="Years" column="_column_fact_yearId" type="TimeYears" uniqueMembers="true"/>
+  <roma:Level id="_level_day" name="Day" column="_column_fact_dayInMonth" type="TimeDays"/>
+  <roma:Level id="_level_week" name="Week" column="_column_fact_weekInMonth" type="TimeWeeks"/>
+  <roma:Level id="_level_quarters" name="Quarters" column="_column_fact_qtrName" type="TimeQuarters" ordinalColumn="_column_fact_qtrId"/>
+  <roma:Level id="_level_months" name="Months" column="_column_fact_monthName" type="TimeMonths" ordinalColumn="_column_fact_monthId"/>
+  <roma:TimeDimension id="_dimension_time" name="Time" hierarchies="_hierarchy_time"/>
+  <roma:PhysicalCube id="_cube_timeDimension" name="CubeTimeDimension" query="_query_fact">
+    <dimensionConnectors dimension="_dimension_time" overrideDimensionName="Time" id="_dimensionConnector_time"/>
     <measureGroups>
-      <measures xsi:type="roma:SumMeasure" id="_Measure-Sum" name="Measure-Sum" column="_Fact_VALUE"/>
+      <measures xsi:type="roma:SumMeasure" id="_measure_sum" name="Measure-Sum" column="_column_fact_value"/>
     </measureGroups>
   </roma:PhysicalCube>
 </xmi:XMI>

@@ -16,7 +16,7 @@ The catalog is the primary object in a Daanse server. It serves as a logical gro
 
 
 ```xml
-<roma:Catalog  id="_cat" name="Database - Intro" dbschemas="_dbschema"/>
+<roma:Catalog  id="_catalog_databaseIntro" name="Database - Intro" dbschemas="_databaseSchema_intro"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -28,7 +28,7 @@ In Daanse, we represent the database schema, where the data is stored, as a Data
 
 
 ```xml
-<roma:DatabaseSchema  id="_dbschema"/>
+<roma:DatabaseSchema  id="_databaseSchema_intro"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -40,7 +40,7 @@ The most common type we use is the physical table. The tables defined in a schem
 
 
 ```xml
-<roma:PhysicalTable  id="_tab" name="TableOne"/>
+<roma:PhysicalTable  id="_table_tableOne" name="TableOne"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -52,7 +52,7 @@ The columns defined in a table do not have to match all columns in the actual da
 
 
 ```xml
-<roma:PhysicalColumn  id="_col" name="ColumnOne"/>
+<roma:PhysicalColumn  id="_column_tableOne_columnOne" name="ColumnOne"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -64,10 +64,10 @@ This files represent the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:Catalog id="_cat" name="Database - Intro" dbschemas="_dbschema"/>
-  <roma:DatabaseSchema id="_dbschema">
-    <tables xsi:type="roma:PhysicalTable" id="_tab" name="TableOne">
-      <columns xsi:type="roma:PhysicalColumn" id="_col" name="ColumnOne"/>
+  <roma:Catalog id="_catalog_databaseIntro" name="Database - Intro" dbschemas="_databaseSchema_intro"/>
+  <roma:DatabaseSchema id="_databaseSchema_intro">
+    <tables xsi:type="roma:PhysicalTable" id="_table_tableOne" name="TableOne">
+      <columns xsi:type="roma:PhysicalColumn" id="_column_tableOne_columnOne" name="ColumnOne"/>
     </tables>
   </roma:DatabaseSchema>
 </xmi:XMI>

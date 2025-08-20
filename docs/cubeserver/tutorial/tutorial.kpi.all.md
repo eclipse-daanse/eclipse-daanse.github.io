@@ -22,11 +22,11 @@ A table `Fact` with a Column `VALUE` to have a reference for the Measure.
 
 
 ```xml
-<roma:DatabaseSchema   id="databaseSchema">
-  <tables xsi:type="roma:PhysicalTable" id="_Fact" name="Fact">
-    <columns xsi:type="roma:PhysicalColumn" id="_Fact_KEY" name="KEY"/>
-    <columns xsi:type="roma:PhysicalColumn" id="_Fact_VALUE" name="VALUE" type="Integer"/>
-    <columns xsi:type="roma:PhysicalColumn" id="_Fact_VALUE_NUMERIC" name="VALUE_NUMERIC" type="Integer"/>
+<roma:DatabaseSchema   id="_databaseSchema_KpiAll">
+  <tables xsi:type="roma:PhysicalTable" id="_table_fact" name="Fact">
+    <columns xsi:type="roma:PhysicalColumn" id="_column_fact_key" name="KEY"/>
+    <columns xsi:type="roma:PhysicalColumn" id="_column_fact_value" name="VALUE" type="Integer"/>
+    <columns xsi:type="roma:PhysicalColumn" id="_column_fact_value_numeric" name="VALUE_NUMERIC" type="Integer"/>
   </tables>
 </roma:DatabaseSchema>
 
@@ -48,7 +48,7 @@ TrendGraphic      'Smiley Face' - grafic icone type for trend
 
 
 ```xml
-<roma:Kpi  id="_Kpi1" description="Kpi with all parameters" name="Kpi1" displayFolder="Kpi1Folder1\Kpi1Folder2" associatedMeasureGroupID="Kpi1MeasureGroupID" value="[Measures].[CalculatedValue]" goal="[Measures].[CalculatedGoal]" status="[Measures].[CalculatedStatus]" trend="[Measures].[CalculatedTrend]" weight="[Measures].[CalculatedValue]" trendGraphic="Smiley Face" statusGraphic="Cylinder" currentTimeMember="[Measures].[CalculatedValue]"/>
+<roma:Kpi  id="_kpi1" description="Kpi with all parameters" name="Kpi1" displayFolder="Kpi1Folder1\Kpi1Folder2" associatedMeasureGroupID="Kpi1MeasureGroupID" value="[Measures].[CalculatedValue]" goal="[Measures].[CalculatedGoal]" status="[Measures].[CalculatedStatus]" trend="[Measures].[CalculatedTrend]" weight="[Measures].[CalculatedValue]" trendGraphic="Smiley Face" statusGraphic="Cylinder" currentTimeMember="[Measures].[CalculatedValue]"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -59,15 +59,15 @@ Cube have two measures (Measure1-Sum, Measure2-Count) and 4 CalculatedMembers (C
 
 
 ```xml
-<roma:PhysicalCube   id="_CubeKPI" name="CubeKPI" query="FactQuery">
-  <calculatedMembers id="_CalculatedValue" name="CalculatedValue" visible="false" formula="[Measures].[Measure1-Sum] / [Measures].[Measure2-Count]"/>
-  <calculatedMembers id="_CalculatedGoal" name="CalculatedGoal" visible="false" formula="[Measures].[Measure1-Sum] / [Measures].[Measure2-Count]"/>
-  <calculatedMembers id="_CalculatedStatus" name="CalculatedStatus" visible="false" formula="[Measures].[Measure1-Sum] / [Measures].[Measure2-Count]"/>
-  <calculatedMembers id="_CalculatedTrend" name="CalculatedTrend" visible="false" formula="[Measures].[Measure1-Sum] / [Measures].[Measure2-Count]"/>
-  <kpis id="_Kpi1" description="Kpi with all parameters" name="Kpi1" displayFolder="Kpi1Folder1\Kpi1Folder2" associatedMeasureGroupID="Kpi1MeasureGroupID" value="[Measures].[CalculatedValue]" goal="[Measures].[CalculatedGoal]" status="[Measures].[CalculatedStatus]" trend="[Measures].[CalculatedTrend]" weight="[Measures].[CalculatedValue]" trendGraphic="Smiley Face" statusGraphic="Cylinder" currentTimeMember="[Measures].[CalculatedValue]"/>
+<roma:PhysicalCube   id="_cubekpi" name="CubeKPI" query="_query_factQuery">
+  <calculatedMembers id="_calculatedvalue" name="CalculatedValue" visible="false" formula="[Measures].[Measure1-Sum] / [Measures].[Measure2-Count]"/>
+  <calculatedMembers id="_calculatedgoal" name="CalculatedGoal" visible="false" formula="[Measures].[Measure1-Sum] / [Measures].[Measure2-Count]"/>
+  <calculatedMembers id="_calculatedstatus" name="CalculatedStatus" visible="false" formula="[Measures].[Measure1-Sum] / [Measures].[Measure2-Count]"/>
+  <calculatedMembers id="_calculatedtrend" name="CalculatedTrend" visible="false" formula="[Measures].[Measure1-Sum] / [Measures].[Measure2-Count]"/>
+  <kpis id="_kpi1" description="Kpi with all parameters" name="Kpi1" displayFolder="Kpi1Folder1\Kpi1Folder2" associatedMeasureGroupID="Kpi1MeasureGroupID" value="[Measures].[CalculatedValue]" goal="[Measures].[CalculatedGoal]" status="[Measures].[CalculatedStatus]" trend="[Measures].[CalculatedTrend]" weight="[Measures].[CalculatedValue]" trendGraphic="Smiley Face" statusGraphic="Cylinder" currentTimeMember="[Measures].[CalculatedValue]"/>
   <measureGroups>
-    <measures xsi:type="roma:SumMeasure" id="_Measure1-Sum" name="Measure1-Sum" column="_Fact_VALUE"/>
-    <measures xsi:type="roma:CountMeasure" id="_Measure2-Count" name="Measure2-Count" column="_Fact_VALUE"/>
+    <measures xsi:type="roma:SumMeasure" id="_measure1-sum" name="Measure1-Sum" column="_column_fact_value"/>
+    <measures xsi:type="roma:CountMeasure" id="_measure2-count" name="Measure2-Count" column="_column_fact_value"/>
   </measureGroups>
 </roma:PhysicalCube>
 
@@ -81,24 +81,24 @@ This files represent the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:Catalog description="Minimal Cube with KPI with all properties" name="Minimal Cube with KPI with all properties" cubes="_CubeKPI" dbschemas="databaseSchema"/>
-  <roma:DatabaseSchema id="databaseSchema">
-    <tables xsi:type="roma:PhysicalTable" id="_Fact" name="Fact">
-      <columns xsi:type="roma:PhysicalColumn" id="_Fact_KEY" name="KEY"/>
-      <columns xsi:type="roma:PhysicalColumn" id="_Fact_VALUE" name="VALUE" type="Integer"/>
-      <columns xsi:type="roma:PhysicalColumn" id="_Fact_VALUE_NUMERIC" name="VALUE_NUMERIC" type="Integer"/>
+  <roma:Catalog description="Minimal Cube with KPI with all properties" name="Minimal Cube with KPI with all properties" cubes="_cubekpi" dbschemas="_databaseSchema_KpiAll"/>
+  <roma:DatabaseSchema id="_databaseSchema_KpiAll">
+    <tables xsi:type="roma:PhysicalTable" id="_table_fact" name="Fact">
+      <columns xsi:type="roma:PhysicalColumn" id="_column_fact_key" name="KEY"/>
+      <columns xsi:type="roma:PhysicalColumn" id="_column_fact_value" name="VALUE" type="Integer"/>
+      <columns xsi:type="roma:PhysicalColumn" id="_column_fact_value_numeric" name="VALUE_NUMERIC" type="Integer"/>
     </tables>
   </roma:DatabaseSchema>
-  <roma:TableQuery id="FactQuery" table="_Fact"/>
-  <roma:PhysicalCube id="_CubeKPI" name="CubeKPI" query="FactQuery">
-    <calculatedMembers id="_CalculatedValue" name="CalculatedValue" visible="false" formula="[Measures].[Measure1-Sum] / [Measures].[Measure2-Count]"/>
-    <calculatedMembers id="_CalculatedGoal" name="CalculatedGoal" visible="false" formula="[Measures].[Measure1-Sum] / [Measures].[Measure2-Count]"/>
-    <calculatedMembers id="_CalculatedStatus" name="CalculatedStatus" visible="false" formula="[Measures].[Measure1-Sum] / [Measures].[Measure2-Count]"/>
-    <calculatedMembers id="_CalculatedTrend" name="CalculatedTrend" visible="false" formula="[Measures].[Measure1-Sum] / [Measures].[Measure2-Count]"/>
-    <kpis id="_Kpi1" description="Kpi with all parameters" name="Kpi1" displayFolder="Kpi1Folder1\Kpi1Folder2" associatedMeasureGroupID="Kpi1MeasureGroupID" value="[Measures].[CalculatedValue]" goal="[Measures].[CalculatedGoal]" status="[Measures].[CalculatedStatus]" trend="[Measures].[CalculatedTrend]" weight="[Measures].[CalculatedValue]" trendGraphic="Smiley Face" statusGraphic="Cylinder" currentTimeMember="[Measures].[CalculatedValue]"/>
+  <roma:TableQuery id="_query_factQuery" table="_table_fact"/>
+  <roma:PhysicalCube id="_cubekpi" name="CubeKPI" query="_query_factQuery">
+    <calculatedMembers id="_calculatedvalue" name="CalculatedValue" visible="false" formula="[Measures].[Measure1-Sum] / [Measures].[Measure2-Count]"/>
+    <calculatedMembers id="_calculatedgoal" name="CalculatedGoal" visible="false" formula="[Measures].[Measure1-Sum] / [Measures].[Measure2-Count]"/>
+    <calculatedMembers id="_calculatedstatus" name="CalculatedStatus" visible="false" formula="[Measures].[Measure1-Sum] / [Measures].[Measure2-Count]"/>
+    <calculatedMembers id="_calculatedtrend" name="CalculatedTrend" visible="false" formula="[Measures].[Measure1-Sum] / [Measures].[Measure2-Count]"/>
+    <kpis id="_kpi1" description="Kpi with all parameters" name="Kpi1" displayFolder="Kpi1Folder1\Kpi1Folder2" associatedMeasureGroupID="Kpi1MeasureGroupID" value="[Measures].[CalculatedValue]" goal="[Measures].[CalculatedGoal]" status="[Measures].[CalculatedStatus]" trend="[Measures].[CalculatedTrend]" weight="[Measures].[CalculatedValue]" trendGraphic="Smiley Face" statusGraphic="Cylinder" currentTimeMember="[Measures].[CalculatedValue]"/>
     <measureGroups>
-      <measures xsi:type="roma:SumMeasure" id="_Measure1-Sum" name="Measure1-Sum" column="_Fact_VALUE"/>
-      <measures xsi:type="roma:CountMeasure" id="_Measure2-Count" name="Measure2-Count" column="_Fact_VALUE"/>
+      <measures xsi:type="roma:SumMeasure" id="_measure1-sum" name="Measure1-Sum" column="_column_fact_value"/>
+      <measures xsi:type="roma:CountMeasure" id="_measure2-count" name="Measure2-Count" column="_column_fact_value"/>
     </measureGroups>
   </roma:PhysicalCube>
 </xmi:XMI>

@@ -17,7 +17,7 @@ The dialects attribute of an SqlStatement specifies the target database system. 
 
 
 ```xml
-<roma:SQLExpressionColumn  id="_col2" name="SqlExpressionColumn"/>
+<roma:SQLExpressionColumn  id="_column_tableWithExpressionColumn_sqlExpressionColumn" name="SqlExpressionColumn"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -29,11 +29,11 @@ This files represent the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:Catalog id="_cat" name="Database - SQL Expression Column" dbschemas="_dbschema"/>
-  <roma:DatabaseSchema id="_dbschema">
-    <tables xsi:type="roma:PhysicalTable" id="_tab" name="TableWithExpressionColumn">
-      <columns xsi:type="roma:PhysicalColumn" id="_col1" name="column1"/>
-      <columns xsi:type="roma:SQLExpressionColumn" id="_col2" name="SqlExpressionColumn">
+  <roma:Catalog id="_catalog_databaseSqlExpressionColumn" name="Database - SQL Expression Column" dbschemas="_databaseSchema_expressionColumn"/>
+  <roma:DatabaseSchema id="_databaseSchema_expressionColumn">
+    <tables xsi:type="roma:PhysicalTable" id="_table_tableWithExpressionColumn" name="TableWithExpressionColumn">
+      <columns xsi:type="roma:PhysicalColumn" id="_column_tableWithExpressionColumn_column1" name="column1"/>
+      <columns xsi:type="roma:SQLExpressionColumn" id="_column_tableWithExpressionColumn_sqlExpressionColumn" name="SqlExpressionColumn">
         <sqls sql="column1 + column1">
           <dialects>generic</dialects>
           <dialects>mysql</dialects>

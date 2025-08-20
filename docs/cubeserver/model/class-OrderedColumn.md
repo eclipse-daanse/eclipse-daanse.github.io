@@ -7,7 +7,7 @@ group: Class
 
 Represents a column with specific ordering information used in queries and result sets. OrderedColumn is typically used in OLAP contexts where explicit column ordering is required for query processing or result presentation.
 ## Extends
-- Column [🔗](./class-Column)
+
 ## Attributes
 
 <table>
@@ -76,7 +76,7 @@ classDiagram
     + ascend : Boolean
   }
 
-  Column <|-- OrderedColumn
+
   OrderedColumn --> Column : column
 
 ```

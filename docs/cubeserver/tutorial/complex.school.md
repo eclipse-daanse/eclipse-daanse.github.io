@@ -12,21 +12,21 @@ This files represent the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:ExplicitHierarchy id="_hierarchy_HIERARCHY5" name="Altersgruppen" allMemberName="Alle Altersgruppen" primaryKey="_col_alters_gruppe_id" query="_query_ALTERS_GRUPPE_TABLE_QUERY" levels="_level_LEVEL11"/>
-  <roma:ExplicitHierarchy id="_hierarchy_HIERARCHY10" name="Schulabschlüsse" allMemberName="Gesamt" primaryKey="_col_schul_abschluss_id" query="_query_SCHUL_ABSCHLUSS_TABLE_QUERY" levels="_level_LEVEL16"/>
-  <roma:ExplicitHierarchy id="_hierarchy_HIERARCHY3" name="Schulen nach Art" allMemberName="Alle Schulen" primaryKey="_col_schule_id" query="_join_JOIN3" levels="_level_LEVEL7 _level_LEVEL8 _level_LEVEL9"/>
-  <roma:ExplicitHierarchy id="_hierarchy_HIERARCHY6" name="Geschlecht" allMemberName="Alle Geschlechter" primaryKey="_col_geschlecht_id" query="_query_GESCHLECHT_TABLE_QUERY" levels="_level_LEVEL12"/>
-  <roma:ExplicitHierarchy id="_hierarchy_HIERARCHY8" name="Einschulung" allMemberName="Gesamt" primaryKey="_col_einschulung_id" query="_query_EINSCHULUNG_TABLE_QUERY" levels="_level_LEVEL14"/>
-  <roma:ExplicitHierarchy id="_hierarchy_HIERARCHY12" name="Wohnlandkreis" allMemberName="Alle Wohnlandkreise" primaryKey="_col_wohnort_landkreis_id" query="_join_JOIN4" levels="_level_LEVEL18 _level_LEVEL19"/>
-  <roma:ExplicitHierarchy id="_hierarchy_HIERARCHY11" name="Migrationshintergrund" allMemberName="Gesamt" primaryKey="_col_migrations_hintergrund_id" query="_query_MIGRATIONS_HINTERGRUND_TABLE_QUERY" levels="_level_LEVEL17"/>
-  <roma:ExplicitHierarchy name="Sonderpädagogische Förderung" allMemberName="Gesamt" primaryKey="_col_foerderung_art_id" query="_join_JOIN5" levels="_level_LEVEL20 _level_LEVEL21"/>
-  <roma:ExplicitHierarchy id="_hierarchy_HIERARCHY9" name="Klassenwiederholung" allMemberName="Gesamt" primaryKey="_col_klassen_wiederholung_id" query="_query_KLASSEN_WIEDERHOLUNG_TABLE_QUERY" levels="_level_LEVEL15"/>
-  <roma:ExplicitHierarchy id="_hierarchy_HIERARCHY2" name="Schulen nach Trägerschaft" allMemberName="Alle Schulen" primaryKey="_col_schule_id" query="_join_JOIN2" levels="_level_LEVEL3 _level_LEVEL4 _level_LEVEL5 _level_LEVEL6"/>
-  <roma:ExplicitHierarchy id="_hierarchy_HIERARCHY7" name="Berufsgruppen" allMemberName="Alle Berufsgruppen" primaryKey="_col_personal_art_id" query="_query_PERSONAL_ART_TABLE_QUERY" levels="_level_LEVEL13"/>
-  <roma:ExplicitHierarchy id="_hierarchy_HIERARCHY1" name="Schulen nach Ganztagsangebot" allMemberName="Alle Schulen" primaryKey="_col_schule_id" query="_join_JOIN1" levels="_level_LEVEL1 _level_LEVEL2"/>
-  <roma:ExplicitHierarchy id="_hierarchy_HIERARCHY4" name="Schuljahre" hasAll="false" primaryKey="_col_schul_jahr_id" query="_query_SCHUL_JAHT_TABLE_QUERY" levels="_level_LEVEL10"/>
-  <roma:Catalog id="_catalog_Schulwesen" name="Schulwesen" cubes="_cube_CUBE1 _cube_CUBE2 _cube_CUBE3" dbschemas="_databaseSchema"/>
-  <roma:DatabaseSchema id="_databaseSchema">
+  <roma:ExplicitHierarchy id="_hierarchy_schulen_art" name="Schulen nach Art" allMemberName="Alle Schulen" primaryKey="_col_schule_id" query="_join_schule_schulart_hierarchy" levels="_level_schulkategorie _level_schulart _level_schule_art"/>
+  <roma:ExplicitHierarchy id="_hierarchy_migrationshintergrund" name="Migrationshintergrund" allMemberName="Gesamt" primaryKey="_col_migrations_hintergrund_id" query="_query_migrations_hintergrund_table_query" levels="_level_migrationshintergrund"/>
+  <roma:ExplicitHierarchy id="_hierarchy_schulen_traegerschaft" name="Schulen nach Trägerschaft" allMemberName="Alle Schulen" primaryKey="_col_schule_id" query="_join_schule_traeger_hierarchy" levels="_level_traeger_kategorie _level_traeger_art _level_traeger _level_schule_traegerschaft"/>
+  <roma:ExplicitHierarchy id="_hierarchy_klassenwiederholung" name="Klassenwiederholung" allMemberName="Gesamt" primaryKey="_col_klassen_wiederholung_id" query="_query_klassen_wiederholung_table_query" levels="_level_klassenwiederholung"/>
+  <roma:ExplicitHierarchy id="_hierarchy_altersgruppen" name="Altersgruppen" allMemberName="Alle Altersgruppen" primaryKey="_col_alters_gruppe_id" query="_query_alters_gruppe_table_query" levels="_level_altersgruppe"/>
+  <roma:ExplicitHierarchy id="_hierarchy_schulen_ganztagsangebot" name="Schulen nach Ganztagsangebot" allMemberName="Alle Schulen" primaryKey="_col_schule_id" query="_join_schule_ganztagsart" levels="_level_ganztagsangebot _level_schule_basic"/>
+  <roma:ExplicitHierarchy id="_hierarchy_foerderung" name="Sonderpädagogische Förderung" allMemberName="Gesamt" primaryKey="_col_foerderung_art_id" query="_join_foerderbedarf_art" levels="_level_foerderbedarf _level_foerderung_art"/>
+  <roma:ExplicitHierarchy id="_hierarchy_geschlecht" name="Geschlecht" allMemberName="Alle Geschlechter" primaryKey="_col_geschlecht_id" query="_query_geschlecht_table_query" levels="_level_geschlecht"/>
+  <roma:ExplicitHierarchy id="_hierarchy_berufsgruppen" name="Berufsgruppen" allMemberName="Alle Berufsgruppen" primaryKey="_col_personal_art_id" query="_query_personal_art_table_query" levels="_level_berufsgruppe"/>
+  <roma:ExplicitHierarchy id="_hierarchy_wohnlandkreis" name="Wohnlandkreis" allMemberName="Alle Wohnlandkreise" primaryKey="_col_wohnort_landkreis_id" query="_join_wohnlandkreis_bundesland" levels="_level_bundesland _level_wohnlandkreis"/>
+  <roma:ExplicitHierarchy id="_hierarchy_schulabschluss" name="Schulabschlüsse" allMemberName="Gesamt" primaryKey="_col_schul_abschluss_id" query="_query_schul_abschluss_table_query" levels="_level_schulabschluss"/>
+  <roma:ExplicitHierarchy id="_hierarchy_einschulung" name="Einschulung" allMemberName="Gesamt" primaryKey="_col_einschulung_id" query="_query_einschulung_table_query" levels="_level_einschulung"/>
+  <roma:ExplicitHierarchy id="_hierarchy_schuljahre" name="Schuljahre" hasAll="false" primaryKey="_col_schul_jahr_id" query="_query_schul_jaht_table_query" levels="_level_schuljahr"/>
+  <roma:Catalog id="_catalog_schulwesen" name="Schulwesen" cubes="_cube_schulen_institutionen _cube_paedagogisches_personal _cube_schueler_innen" dbschemas="_databaseschema"/>
+  <roma:DatabaseSchema id="_databaseschema">
     <tables xsi:type="roma:PhysicalTable" id="_tab_schule" name="schule">
       <columns xsi:type="roma:PhysicalColumn" id="_col_schule_id" name="id" type="Integer"/>
       <columns xsi:type="roma:PhysicalColumn" id="_col_schule_schul_name" name="schul_name"/>
@@ -62,7 +62,7 @@ This files represent the complete definition of the catalog.
       <columns xsi:type="roma:PhysicalColumn" id="_col_schul_jahr_schul_jahr" name="schul_jahr"/>
       <columns xsi:type="roma:PhysicalColumn" id="_col_schul_jahr_order" name="order" type="Integer"/>
     </tables>
-    <tables xsi:type="roma:PhysicalTable" id="_col_alters_gruppe" name="alters_gruppe">
+    <tables xsi:type="roma:PhysicalTable" id="_tab_alters_gruppe" name="alters_gruppe">
       <columns xsi:type="roma:PhysicalColumn" id="_col_alters_gruppe_id" name="id" type="Integer"/>
       <columns xsi:type="roma:PhysicalColumn" id="_col_alters_gruppe_altersgruppe" name="altersgruppe" type="Integer"/>
     </tables>
@@ -143,122 +143,122 @@ This files represent the complete definition of the catalog.
       <columns xsi:type="roma:PhysicalColumn" id="_col_fact_schueler_anzahl_schueler" name="anzahl_schueler" type="Integer"/>
     </tables>
   </roma:DatabaseSchema>
-  <roma:TableQuery id="_query_FACT_SCHUELER_TABLE_QUERY" table="_tab_fact_schueler"/>
-  <roma:TableQuery id="_query_EINSCHULUNG_TABLE_QUERY" table="_tab_einschulung"/>
-  <roma:TableQuery id="_query_MIGRATIONS_HINTERGRUND_TABLE_QUERY" table="_tab_migrations_hintergrund"/>
-  <roma:TableQuery id="_query_ALTERS_GRUPPE_TABLE_QUERY" table="_col_alters_gruppe"/>
-  <roma:TableQuery id="_query_FACT_PERSONAM_TABLE_QUERY" table="_tab_fact_personal"/>
-  <roma:TableQuery id="_query_KLASSEN_WIEDERHOLUNG_TABLE_QUERY" table="_tab_klassen_wiederholung"/>
-  <roma:TableQuery id="_query_SCHUL_ABSCHLUSS_TABLE_QUERY" table="_tab_schul_abschluss"/>
-  <roma:TableQuery id="_query_SCHUL_JAHT_TABLE_QUERY" table="_tab_schul_jahr"/>
-  <roma:TableQuery id="_query_SONDERPAED_FOERDERBEDART_TABLE_QUERY" table="_tab_sonderpaed_foerderbedarf"/>
-  <roma:TableQuery id="_query_TRAEGER_TABLE_QUERY" table="_tab_traeger"/>
-  <roma:TableQuery id="_query_TRAEGER_ART_TABLE_QUERY" table="_tab_traeger_art"/>
-  <roma:TableQuery id="_query_SCHEDULE_KATEGORIE_TABLE_QUERY" table="_tab_schul_kategorie"/>
-  <roma:TableQuery id="_query_SCHEDULE_ART_TABLE_QUERY" table="_tab_schul_art"/>
-  <roma:TableQuery id="_query_FACT_SCHULEN_TABLE_QUERY" table="_tab_fact_schulen"/>
-  <roma:TableQuery id="_query_GANZTAGS_ART_TABLE_QUERY" table="_tab_ganztags_art"/>
-  <roma:TableQuery id="_query_FOERDERUNG_ART_TABLE_QUERY" table="_tab_foerderung_art"/>
-  <roma:TableQuery id="_SCHEDULE_TABLE_QUERY" table="_tab_schule"/>
-  <roma:TableQuery id="_query_GESCHLECHT_TABLE_QUERY" table="_tab_geschlecht"/>
-  <roma:TableQuery id="_query_WOHNORT_LANDKREIS_TABLE_QUERY" table="_tab_wohnort_landkreis"/>
-  <roma:TableQuery id="_query_PERSONAL_ART_TABLE_QUERY" table="_tab_personal_art"/>
-  <roma:TableQuery id="_query_TRAEGER_KATEGORIE_TABLE_QUERY" table="_tab_traeger_kategorie"/>
-  <roma:TableQuery id="_query_BUNDESLAND_TABLE_QUERY" table="_tab_bundesland"/>
-  <roma:JoinQuery id="_join_JOIN1">
-    <left key="_col_schule_ganztags_art_id" query="_SCHEDULE_TABLE_QUERY"/>
-    <right key="_col_ganztags_art_id" query="_query_GANZTAGS_ART_TABLE_QUERY"/>
+  <roma:TableQuery id="_query_table_ganztags_art" table="_tab_ganztags_art"/>
+  <roma:TableQuery id="_query_traeger_art_table_query" table="_tab_traeger_art"/>
+  <roma:TableQuery id="_query_fact_personam_table_query" table="_tab_fact_personal"/>
+  <roma:TableQuery id="_query_personal_art_table_query" table="_tab_personal_art"/>
+  <roma:TableQuery id="_query_bundesland_table_query" table="_tab_bundesland"/>
+  <roma:TableQuery id="_query_foerderung_art_table_query" table="_tab_foerderung_art"/>
+  <roma:TableQuery id="_query_table_schule" table="_tab_schule"/>
+  <roma:TableQuery id="_query_schedule_art_table_query" table="_tab_schul_art"/>
+  <roma:TableQuery id="_query_migrations_hintergrund_table_query" table="_tab_migrations_hintergrund"/>
+  <roma:TableQuery id="_query_schul_abschluss_table_query" table="_tab_schul_abschluss"/>
+  <roma:TableQuery id="_query_traeger_table_query" table="_tab_traeger"/>
+  <roma:TableQuery id="_query_klassen_wiederholung_table_query" table="_tab_klassen_wiederholung"/>
+  <roma:TableQuery id="_query_alters_gruppe_table_query" table="_tab_alters_gruppe"/>
+  <roma:TableQuery id="_query_schedule_kategorie_table_query" table="_tab_schul_kategorie"/>
+  <roma:TableQuery id="_query_einschulung_table_query" table="_tab_einschulung"/>
+  <roma:TableQuery id="_query_fact_schulen_table_query" table="_tab_fact_schulen"/>
+  <roma:TableQuery id="_query_geschlecht_table_query" table="_tab_geschlecht"/>
+  <roma:TableQuery id="_query_traeger_kategorie_table_query" table="_tab_traeger_kategorie"/>
+  <roma:TableQuery id="_query_fact_schueler_table_query" table="_tab_fact_schueler"/>
+  <roma:TableQuery id="_query_wohnort_landkreis_table_query" table="_tab_wohnort_landkreis"/>
+  <roma:TableQuery id="_query_sonderpaed_foerderbedart_table_query" table="_tab_sonderpaed_foerderbedarf"/>
+  <roma:TableQuery id="_query_schul_jaht_table_query" table="_tab_schul_jahr"/>
+  <roma:JoinQuery id="_join_schulkategorie_art">
+    <left key="_col_schul_art_schul_kategorie_id" query="_query_schedule_art_table_query"/>
+    <right key="_col_schul_kategorie_id" query="_query_schedule_kategorie_table_query"/>
   </roma:JoinQuery>
-  <roma:JoinQuery id="_join_JOIN2_1_1">
-    <left key="_col_traeger_art_traeger_kat_id" query="_query_TRAEGER_ART_TABLE_QUERY"/>
-    <right key="_col_traeger_kategorie_id" query="_query_TRAEGER_KATEGORIE_TABLE_QUERY"/>
+  <roma:JoinQuery id="_join_wohnlandkreis_bundesland">
+    <left key="_col_wohnort_landkreis_bundesland_id" query="_query_wohnort_landkreis_table_query"/>
+    <right key="_col_bundesland_id" query="_query_bundesland_table_query"/>
   </roma:JoinQuery>
-  <roma:JoinQuery id="_join_JOIN2">
-    <left key="_col_schule_traeger_id" query="_SCHEDULE_TABLE_QUERY"/>
-    <right key="_col_traeger_id" query="_join_JOIN2_1"/>
+  <roma:JoinQuery id="_join_schule_schulart_hierarchy">
+    <left key="_col_schule_schul_art_id" query="_query_table_schule"/>
+    <right key="_col_schul_art_id" query="_join_schulkategorie_art"/>
   </roma:JoinQuery>
-  <roma:JoinQuery id="_join_JOIN3">
-    <left key="_col_schule_schul_art_id" query="_SCHEDULE_TABLE_QUERY"/>
-    <right key="_col_schul_art_id" query="_join_JOIN3_1"/>
+  <roma:JoinQuery id="_join_traeger_art_traeger">
+    <left key="_col_traeger_traeger_art_id" query="_query_traeger_table_query"/>
+    <right key="_col_traeger_art_id" query="_join_traeger_kategorie_art"/>
   </roma:JoinQuery>
-  <roma:JoinQuery id="_join_JOIN5">
-    <left key="_col_foerderung_art_sp_foerderbedarf_id" query="_query_FOERDERUNG_ART_TABLE_QUERY"/>
-    <right key="_col_sonderpaed_foerderbedarf_id" query="_query_SONDERPAED_FOERDERBEDART_TABLE_QUERY"/>
+  <roma:JoinQuery id="_join_foerderbedarf_art">
+    <left key="_col_foerderung_art_sp_foerderbedarf_id" query="_query_foerderung_art_table_query"/>
+    <right key="_col_sonderpaed_foerderbedarf_id" query="_query_sonderpaed_foerderbedart_table_query"/>
   </roma:JoinQuery>
-  <roma:JoinQuery id="_join_JOIN3_1">
-    <left key="_col_schul_art_schul_kategorie_id" query="_query_SCHEDULE_ART_TABLE_QUERY"/>
-    <right key="_col_schul_kategorie_id" query="_query_SCHEDULE_KATEGORIE_TABLE_QUERY"/>
+  <roma:JoinQuery id="_join_traeger_kategorie_art">
+    <left key="_col_traeger_art_traeger_kat_id" query="_query_traeger_art_table_query"/>
+    <right key="_col_traeger_kategorie_id" query="_query_traeger_kategorie_table_query"/>
   </roma:JoinQuery>
-  <roma:JoinQuery id="_join_JOIN2_1">
-    <left key="_col_traeger_traeger_art_id" query="_query_TRAEGER_TABLE_QUERY"/>
-    <right key="_col_traeger_art_id" query="_join_JOIN2_1_1"/>
+  <roma:JoinQuery id="_join_schule_ganztagsart">
+    <left key="_col_schule_ganztags_art_id" query="_query_table_schule"/>
+    <right key="_col_ganztags_art_id" query="_query_table_ganztags_art"/>
   </roma:JoinQuery>
-  <roma:JoinQuery id="_join_JOIN4">
-    <left key="_col_wohnort_landkreis_bundesland_id" query="_query_WOHNORT_LANDKREIS_TABLE_QUERY"/>
-    <right key="_col_bundesland_id" query="_query_BUNDESLAND_TABLE_QUERY"/>
+  <roma:JoinQuery id="_join_schule_traeger_hierarchy">
+    <left key="_col_schule_traeger_id" query="_query_table_schule"/>
+    <right key="_col_traeger_id" query="_join_traeger_art_traeger"/>
   </roma:JoinQuery>
-  <roma:Level id="_level_LEVEL5" name="Schulträger" column="_col_traeger_id" nameColumn="_col_traeger_traeger_name"/>
-  <roma:Level id="_level_LEVEL20" name="Förderbedarf" column="_col_sonderpaed_foerderbedarf_id" nameColumn="_col_sonderpaed_foerderbedarf_sonderpaed_bedarf"/>
-  <roma:Level id="_level_LEVEL4" name="Schulträger-Art" column="_col_traeger_art_id" nameColumn="_col_traeger_art_traeger_art"/>
-  <roma:Level id="_level_LEVEL7" name="Schulkategorie" column="_col_schul_kategorie_id" nameColumn="_col_schul_kategorie_schul_kategorie_name"/>
-  <roma:Level id="_level_LEVEL21" name="Art der Förderung" column="_col_foerderung_art_id" nameColumn="_col_foerderung_art_foerderung_art"/>
-  <roma:Level id="_level_LEVEL16" name="Schulabschlüsse" column="_col_schul_abschluss_id" nameColumn="_col_schul_abschluss_schulabschluss"/>
-  <roma:Level id="_level_LEVEL14" name="Einschulung" column="_col_einschulung_id" nameColumn="_col_einschulung_einschulung"/>
-  <roma:Level id="_level_LEVEL6" name="Schule" column="_col_schule_id" nameColumn="_col_schule_schul_name" ordinalColumn="_col_schule_schul_nummer"/>
-  <roma:Level id="_level_LEVEL13" name="Berufsgruppe" column="_col_personal_art_id" nameColumn="_col_personal_art_bezeichnung"/>
-  <roma:Level id="_level_LEVEL9" name="Schule" column="_col_schule_id" nameColumn="_col_schule_schul_name" ordinalColumn="_col_schule_schul_nummer"/>
-  <roma:Level id="_level_LEVEL10" name="Schuljahr" column="_col_schul_jahr_id" nameColumn="_col_schul_jahr_schul_jahr" ordinalColumn="_col_schul_jahr_order"/>
-  <roma:Level id="_level_LEVEL18" name="Bundesland" column="_col_bundesland_id" nameColumn="_col_bundesland_bezeichnung"/>
-  <roma:Level id="_level_LEVEL1" name="Art des Ganztagsangebots" column="_col_ganztags_art_id" nameColumn="_col_ganztags_art_schul_umfang"/>
-  <roma:Level id="_level_LEVEL12" name="Geschlecht" column="_col_geschlecht_id" nameColumn="_col_geschlecht_bezeichnung"/>
-  <roma:Level id="_level_LEVEL15" name="Klassenwiederholung" column="_col_klassen_wiederholung_id" nameColumn="_col_klassen_wiederholung_klassenwiederholung"/>
-  <roma:Level id="_level_LEVEL17" name="Migrationshintergrund" column="_col_migrations_hintergrund_id" nameColumn="_col_migrations_hintergrund_migrations_hintergrund"/>
-  <roma:Level id="_level_LEVEL3" name="Schulträger-Kategorie" column="_col_traeger_kategorie_id" nameColumn="_col_traeger_kategorie_traeger_kategorie"/>
-  <roma:Level id="_level_LEVEL11" name="Altersgruppe" column="_col_alters_gruppe_id" nameColumn="_col_alters_gruppe_altersgruppe"/>
-  <roma:Level id="_level_LEVEL8" name="Schulart" column="_col_schul_art_id" nameColumn="_col_schul_art_schulart_name"/>
-  <roma:Level id="_level_LEVEL2" name="Schule" column="_col_schule_id" nameColumn="_col_schule_schul_name" ordinalColumn="_col_schule_schul_nummer"/>
-  <roma:Level id="_level_LEVEL19" name="Wohnlandkreis" column="_col_wohnort_landkreis_id" nameColumn="_col_wohnort_landkreis_bezeichnung"/>
-  <roma:StandardDimension id="_dimension_Einschulungen" name="Einschulungen" hierarchies="_hierarchy_HIERARCHY8"/>
-  <roma:StandardDimension id="_dimension_Migrationshintergrund" name="Migrationshintergrund" hierarchies="_hierarchy_HIERARCHY11"/>
-  <roma:StandardDimension id="_dimension_Schulen" name="Schulen" hierarchies="_hierarchy_HIERARCHY1 _hierarchy_HIERARCHY2 _hierarchy_HIERARCHY3"/>
-  <roma:StandardDimension id="_dimension_Berufsgruppen_Personal" name="Berufsgruppen Personal" hierarchies="_hierarchy_HIERARCHY7"/>
-  <roma:StandardDimension id="_dimension_Inklusion" name="Inklusion" hierarchies="/7"/>
-  <roma:StandardDimension id="_dimension_Altersgruppen_Personal" name="Altersgruppen Personal" hierarchies="_hierarchy_HIERARCHY5"/>
-  <roma:StandardDimension id="_dimension_Schuljahre" name="Schuljahre" hierarchies="_hierarchy_HIERARCHY4"/>
-  <roma:StandardDimension id="_dimension_Klassenwiederholung" name="Klassenwiederholung" hierarchies="_hierarchy_HIERARCHY9"/>
-  <roma:StandardDimension id="_dimension_Schulabschluss" name="Schulabschluss" hierarchies="_hierarchy_HIERARCHY10"/>
-  <roma:StandardDimension id="_dimension_Wohnlandkreis" name="Wohnlandkreis" hierarchies="_hierarchy_HIERARCHY12"/>
-  <roma:StandardDimension id="_dimension_Geschlecht" name="Geschlecht" hierarchies="_hierarchy_HIERARCHY6"/>
-  <roma:PhysicalCube id="_cube_CUBE2" name="Pädagogisches Personal an Jenaer Schulen" query="_query_FACT_PERSONAM_TABLE_QUERY">
-    <dimensionConnectors foreignKey="_col_fact_personal_schule_id" dimension="_dimension_Schulen" overrideDimensionName="Schulen"/>
-    <dimensionConnectors foreignKey="_col_fact_personal_schul_jahr_id" dimension="_dimension_Schuljahre" overrideDimensionName="Schuljahr"/>
-    <dimensionConnectors foreignKey="_col_fact_personal_alters_gruppe_id" dimension="_dimension_Altersgruppen_Personal" overrideDimensionName="Altersgruppe"/>
-    <dimensionConnectors foreignKey="_col_fact_personal_geschlecht_id" dimension="_dimension_Geschlecht" overrideDimensionName="Geschlecht"/>
-    <dimensionConnectors foreignKey="_col_fact_personal_personal_art_id" dimension="_dimension_Berufsgruppen_Personal" overrideDimensionName="Berufsgruppe"/>
+  <roma:Level id="_level_schulkategorie" name="Schulkategorie" column="_col_schul_kategorie_id" nameColumn="_col_schul_kategorie_schul_kategorie_name"/>
+  <roma:Level id="_level_traeger_kategorie" name="Schulträger-Kategorie" column="_col_traeger_kategorie_id" nameColumn="_col_traeger_kategorie_traeger_kategorie"/>
+  <roma:Level id="_level_schule_traegerschaft" name="Schule" column="_col_schule_id" nameColumn="_col_schule_schul_name" ordinalColumn="_col_schule_schul_nummer"/>
+  <roma:Level id="_level_schuljahr" name="Schuljahr" column="_col_schul_jahr_id" nameColumn="_col_schul_jahr_schul_jahr" ordinalColumn="_col_schul_jahr_order"/>
+  <roma:Level id="_level_geschlecht" name="Geschlecht" column="_col_geschlecht_id" nameColumn="_col_geschlecht_bezeichnung"/>
+  <roma:Level id="_level_foerderbedarf" name="Förderbedarf" column="_col_sonderpaed_foerderbedarf_id" nameColumn="_col_sonderpaed_foerderbedarf_sonderpaed_bedarf"/>
+  <roma:Level id="_level_altersgruppe" name="Altersgruppe" column="_col_alters_gruppe_id" nameColumn="_col_alters_gruppe_altersgruppe"/>
+  <roma:Level id="_level_traeger_art" name="Schulträger-Art" column="_col_traeger_art_id" nameColumn="_col_traeger_art_traeger_art"/>
+  <roma:Level id="_level_wohnlandkreis" name="Wohnlandkreis" column="_col_wohnort_landkreis_id" nameColumn="_col_wohnort_landkreis_bezeichnung"/>
+  <roma:Level id="_level_ganztagsangebot" name="Art des Ganztagsangebots" column="_col_ganztags_art_id" nameColumn="_col_ganztags_art_schul_umfang"/>
+  <roma:Level id="_level_schulart" name="Schulart" column="_col_schul_art_id" nameColumn="_col_schul_art_schulart_name"/>
+  <roma:Level id="_level_klassenwiederholung" name="Klassenwiederholung" column="_col_klassen_wiederholung_id" nameColumn="_col_klassen_wiederholung_klassenwiederholung"/>
+  <roma:Level id="_level_schule_art" name="Schule" column="_col_schule_id" nameColumn="_col_schule_schul_name" ordinalColumn="_col_schule_schul_nummer"/>
+  <roma:Level id="_level_traeger" name="Schulträger" column="_col_traeger_id" nameColumn="_col_traeger_traeger_name"/>
+  <roma:Level id="_level_foerderung_art" name="Art der Förderung" column="_col_foerderung_art_id" nameColumn="_col_foerderung_art_foerderung_art"/>
+  <roma:Level id="_level_einschulung" name="Einschulung" column="_col_einschulung_id" nameColumn="_col_einschulung_einschulung"/>
+  <roma:Level id="_level_bundesland" name="Bundesland" column="_col_bundesland_id" nameColumn="_col_bundesland_bezeichnung"/>
+  <roma:Level id="_level_schule_basic" name="Schule" column="_col_schule_id" nameColumn="_col_schule_schul_name" ordinalColumn="_col_schule_schul_nummer"/>
+  <roma:Level id="_level_berufsgruppe" name="Berufsgruppe" column="_col_personal_art_id" nameColumn="_col_personal_art_bezeichnung"/>
+  <roma:Level id="_level_schulabschluss" name="Schulabschlüsse" column="_col_schul_abschluss_id" nameColumn="_col_schul_abschluss_schulabschluss"/>
+  <roma:Level id="_level_migrationshintergrund" name="Migrationshintergrund" column="_col_migrations_hintergrund_id" nameColumn="_col_migrations_hintergrund_migrations_hintergrund"/>
+  <roma:StandardDimension id="_dimension_wohnlandkreis" name="Wohnlandkreis" hierarchies="_hierarchy_wohnlandkreis"/>
+  <roma:StandardDimension id="_dimension_klassenwiederholung" name="Klassenwiederholung" hierarchies="_hierarchy_klassenwiederholung"/>
+  <roma:StandardDimension id="_dimension_schulabschluss" name="Schulabschluss" hierarchies="_hierarchy_schulabschluss"/>
+  <roma:StandardDimension id="_dimension_altersgruppen_personal" name="Altersgruppen Personal" hierarchies="_hierarchy_altersgruppen"/>
+  <roma:StandardDimension id="_dimension_einschulungen" name="Einschulungen" hierarchies="_hierarchy_einschulung"/>
+  <roma:StandardDimension id="_dimension_geschlecht" name="Geschlecht" hierarchies="_hierarchy_geschlecht"/>
+  <roma:StandardDimension id="_dimension_migrationshintergrund" name="Migrationshintergrund" hierarchies="_hierarchy_migrationshintergrund"/>
+  <roma:StandardDimension id="_dimension_inklusion" name="Inklusion" hierarchies="_hierarchy_foerderung"/>
+  <roma:StandardDimension id="_dimension_berufsgruppen_personal" name="Berufsgruppen Personal" hierarchies="_hierarchy_berufsgruppen"/>
+  <roma:StandardDimension id="_dimension_schulen" name="Schulen" hierarchies="_hierarchy_schulen_ganztagsangebot _hierarchy_schulen_traegerschaft _hierarchy_schulen_art"/>
+  <roma:StandardDimension id="_dimension_schuljahre" name="Schuljahre" hierarchies="_hierarchy_schuljahre"/>
+  <roma:PhysicalCube id="_cube_paedagogisches_personal" name="Pädagogisches Personal an Jenaer Schulen" query="_query_fact_personam_table_query">
+    <dimensionConnectors foreignKey="_col_fact_personal_schule_id" dimension="_dimension_schulen" overrideDimensionName="Schulen"/>
+    <dimensionConnectors foreignKey="_col_fact_personal_schul_jahr_id" dimension="_dimension_schuljahre" overrideDimensionName="Schuljahr"/>
+    <dimensionConnectors foreignKey="_col_fact_personal_alters_gruppe_id" dimension="_dimension_altersgruppen_personal" overrideDimensionName="Altersgruppe"/>
+    <dimensionConnectors foreignKey="_col_fact_personal_geschlecht_id" dimension="_dimension_geschlecht" overrideDimensionName="Geschlecht"/>
+    <dimensionConnectors foreignKey="_col_fact_personal_personal_art_id" dimension="_dimension_berufsgruppen_personal" overrideDimensionName="Berufsgruppe"/>
     <measureGroups>
-      <measures xsi:type="roma:SumMeasure" id="_measure_Anzahl_Personen" name="Anzahl Personen" column="_col_fact_personal_anzahl_personen"/>
+      <measures xsi:type="roma:SumMeasure" id="_measure_anzahl_personen" name="Anzahl Personen" column="_col_fact_personal_anzahl_personen"/>
     </measureGroups>
   </roma:PhysicalCube>
-  <roma:PhysicalCube id="_cube_CUBE1" name="Schulen in Jena (Institutionen)" query="_query_FACT_SCHULEN_TABLE_QUERY">
-    <dimensionConnectors foreignKey="_col_fact_schulen_schule_id" dimension="_dimension_Schulen" overrideDimensionName="Schulen"/>
-    <dimensionConnectors foreignKey="_col_fact_schulen_schul_jahr_id" dimension="_dimension_Schuljahre" overrideDimensionName="Schuljahr"/>
+  <roma:PhysicalCube id="_cube_schueler_innen" name="Schüler:innen an Jenaer Schulen" query="_query_fact_schueler_table_query">
+    <dimensionConnectors foreignKey="_col_fact_schueler_schule_id" dimension="_dimension_schulen" overrideDimensionName="Schulen"/>
+    <dimensionConnectors foreignKey="_col_fact_schueler_schul_jahr_id" dimension="_dimension_schuljahre" overrideDimensionName="Schuljahr"/>
+    <dimensionConnectors foreignKey="_col_fact_schueler_geschlecht_id" dimension="_dimension_geschlecht" overrideDimensionName="Geschlecht"/>
+    <dimensionConnectors foreignKey="_col_fact_schueler_wohn_lk_id" dimension="_dimension_wohnlandkreis" overrideDimensionName="Wohnlandkreis"/>
+    <dimensionConnectors foreignKey="_col_fact_schueler_einschulung_id" dimension="_dimension_einschulungen" overrideDimensionName="Einschulung"/>
+    <dimensionConnectors foreignKey="_col_fact_schueler_schul_abschluss_id" dimension="_dimension_schulabschluss" overrideDimensionName="Schulabschluss"/>
+    <dimensionConnectors foreignKey="_col_fact_schueler_klassen_wdh" dimension="_dimension_klassenwiederholung" overrideDimensionName="Klassenwiederholung"/>
+    <dimensionConnectors foreignKey="_col_fact_schueler_migrations_hg_id" dimension="_dimension_migrationshintergrund" overrideDimensionName="Migrationshintergrund"/>
+    <dimensionConnectors foreignKey="_col_fact_schueler_foerder_art_id" dimension="_dimension_inklusion" overrideDimensionName="Sonderpädagogische Förderung"/>
     <measureGroups>
-      <measures xsi:type="roma:SumMeasure" id="_measure_Anzahl_Schulen" name="Anzahl Schulen" column="_col_fact_schulen_anzahl_schulen"/>
-      <measures xsi:type="roma:SumMeasure" id="_measure_Anzahl_Klassen" name="Anzahl Klassen" column="_col_fact_schulen_anzahl_klassen"/>
+      <measures xsi:type="roma:SumMeasure" id="_measure_anzahl_schuler_innen" name="Anzahl SchülerInnen" column="_col_fact_schueler_anzahl_schueler"/>
     </measureGroups>
   </roma:PhysicalCube>
-  <roma:PhysicalCube id="_cube_CUBE3" name="Schüler:innen an Jenaer Schulen" query="_query_FACT_SCHUELER_TABLE_QUERY">
-    <dimensionConnectors foreignKey="_col_fact_schueler_schule_id" dimension="_dimension_Schulen" overrideDimensionName="Schulen"/>
-    <dimensionConnectors foreignKey="_col_fact_schueler_schul_jahr_id" dimension="_dimension_Schuljahre" overrideDimensionName="Schuljahr"/>
-    <dimensionConnectors foreignKey="_col_fact_schueler_geschlecht_id" dimension="_dimension_Geschlecht" overrideDimensionName="Geschlecht"/>
-    <dimensionConnectors foreignKey="_col_fact_schueler_wohn_lk_id" dimension="_dimension_Wohnlandkreis" overrideDimensionName="Wohnlandkreis"/>
-    <dimensionConnectors foreignKey="_col_fact_schueler_einschulung_id" dimension="_dimension_Einschulungen" overrideDimensionName="Einschulung"/>
-    <dimensionConnectors foreignKey="_col_fact_schueler_schul_abschluss_id" dimension="_dimension_Schulabschluss" overrideDimensionName="Schulabschluss"/>
-    <dimensionConnectors foreignKey="_col_fact_schueler_klassen_wdh" dimension="_dimension_Klassenwiederholung" overrideDimensionName="Klassenwiederholung"/>
-    <dimensionConnectors foreignKey="_col_fact_schueler_migrations_hg_id" dimension="_dimension_Migrationshintergrund" overrideDimensionName="Migrationshintergrund"/>
-    <dimensionConnectors foreignKey="_col_fact_schueler_foerder_art_id" dimension="_dimension_Inklusion" overrideDimensionName="Sonderpädagogische Förderung"/>
+  <roma:PhysicalCube id="_cube_schulen_institutionen" name="Schulen in Jena (Institutionen)" query="_query_fact_schulen_table_query">
+    <dimensionConnectors foreignKey="_col_fact_schulen_schule_id" dimension="_dimension_schulen" overrideDimensionName="Schulen" id="_dc_schulen"/>
+    <dimensionConnectors foreignKey="_col_fact_schulen_schul_jahr_id" dimension="_dimension_schuljahre" overrideDimensionName="Schuljahr" id="_dc_schuljahr"/>
     <measureGroups>
-      <measures xsi:type="roma:SumMeasure" id="_measure_Anzahl_Schuler_innen" name="Anzahl Schüler:innen" column="_col_fact_schueler_anzahl_schueler"/>
+      <measures xsi:type="roma:SumMeasure" id="_measure_anzahl_schulen" name="Anzahl Schulen" column="_col_fact_schulen_anzahl_schulen"/>
+      <measures xsi:type="roma:SumMeasure" id="_measure_anzahl_klassen" name="Anzahl Klassen" column="_col_fact_schulen_anzahl_klassen"/>
     </measureGroups>
   </roma:PhysicalCube>
 </xmi:XMI>

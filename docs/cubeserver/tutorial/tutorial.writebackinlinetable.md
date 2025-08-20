@@ -15,8 +15,8 @@ This files represent the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:InlineTableQuery id="FactQuery" alias="FACT" table="FACT"/>
   <roma:ExplicitHierarchy id="HierarchyWithHasAll" name="HierarchyWithHasAll" primaryKey="L1_L2" query="join" levels="L1Level L2Level"/>
+  <roma:InlineTableQuery id="FactQuery" alias="FACT" table="FACT"/>
   <roma:Catalog description="Schema with writeback with fact InlineTable" name="tutorial_for_writeback_with_fact_InlineTable" cubes="C" dbschemas="databaseSchema"/>
   <roma:DatabaseSchema id="databaseSchema">
     <tables xsi:type="roma:InlineTable" id="FACT" name="FACT">

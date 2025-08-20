@@ -31,6 +31,48 @@ A recommended reading order is provided below to help you build your understandi
 
 [Cube - Minimal](./tutorial.cube.minimal.md)
 
+[Minimal Cube with DrillThroughAction](./tutorial.action.drillthrough.md)
+
+[Minimal Cube With Measures CellFormatter](./tutorial.formatter.cell.md)
+
+[Minimal Cube With SQLExpressionColumn](./tutorial.measure.expression.md)
+
+[Cube with one measure with inline table](./tutorial.measure.inlinetable.md)
+
+[Cube with One Measure with Inline Table and with Levels with physical and inline tables](./tutorial.measure.inlinetablewithphysical.md)
+
+[Minimal Cube with level with expressions](./tutorial.level.expressions.md)
+
+[Minimal Cube with level with smallInt boolan type](./tutorial.level.smallintasbooleantype.md)
+
+[Minimal Cube Hidden Members with IfParentsName](./tutorial.level.ifparentsname.md)
+
+[Minimal Cube with Hidden Members with IfBlankName with multiple levels](./tutorial.level.ifblanknamemultiple.md)
+
+[Minimal Cube with Hidden Members with IfBlankName](./tutorial.level.ifblankname.md)
+
+[Minimal Virtual Cubes With Measures](./tutorial.virtualcube.min.md)
+
+[Cube with virtual cube with dimension references from other cubes](./tutorial.virtualcube.dimensions.md)
+
+[Cube with virtual cube with calculatedMember](./tutorial.virtualcube.calculatedmember.md)
+
+[Cube with virtual cube with un visible reference cubes](./tutorial.virtualcube.unvisiblereferencecubes.md)
+
+[Cube with dimension with hierarchy with inner table](./tutorial.hierarchy.inlinetable.md)
+
+[Cube with dimension with hierarchy with SQL view reference](./tutorial.hierarchy.view.md)
+
+[Minimal Cube with hierarchy with functional dependency optimizations](./tutorial.hierarchy.uniquekeylevelname.md)
+
+[Minimal Parent Child Hierarchy](./tutorial.parentchild.minimal.md)
+
+[Minimal Cube with Parent Child Hierarchy with null parent value.](./tutorial.parentchild.nullparent.md)
+
+[Minimal Cube with ParentChildHierarchy with ParentChildLink](./tutorial.parentchild.link.md)
+
+[Minimal Cube with Parent Child Hierarchy with parentAsLeafEnable.](./tutorial.parentchild.parentasleaf.md)
+
 [Measure - Basic Aggregators](./tutorial.cube.measure.aggregator.base.md)
 
 [Measure - Multiple Measures](./tutorial.cube.measure.multiple.md)
@@ -65,7 +107,7 @@ A recommended reading order is provided below to help you build your understandi
 
 [Level - MemberProperties Intro](./tutorial.cube.level.member.property.intro.md)
 
-[Cube - logic functions](./tutorial.functions.logic.md)
+[Cube - logic functions](./tutorial.function.logic.md)
 
 [Cube - CalculatedMembers Intro](./tutorial.cube.calculatedmember.intro.md)
 
@@ -99,7 +141,13 @@ A recommended reading order is provided below to help you build your understandi
 
 [Cube with NamedSets](./tutorial.namedset.md)
 
+[Cube with table reference with AggExclude](./tutorial.aggregation.aggexclude.md)
+
+[Cube with aggregate tables](./tutorial.aggregation.aggregatetables.md)
+
 [Minimal Cube with Time_Dimension](./tutorial.dimension.timedimension.md)
+
+[Minimal Cube with cube with two dimension connectors with level attribute](./tutorial.dimension.optimisationwithlevelattribute.md)
 
 [Schulwesen](./complex.school.md)
 
@@ -110,55 +158,3 @@ A recommended reading order is provided below to help you build your understandi
 [tutorial_for_writeback](./tutorial.writebacktable.md)
 
 [tutorial_for_writeback_with_fact_InlineTable](./tutorial.writebackinlinetable.md)
-
-[Cube_with_virtual_cube_with_un_visible_reference_cube](./tutorial.virtualcubevisiblereferencecubes.md)
-
-[Minimal_Virtual_Cubes_With_Measures_only](./tutorial.virtualcubemeasureonly.md)
-
-[Cube_with_virtual_cube](./tutorial.virtualcubedimensions.md)
-
-[Cube_with_virtual_cube_with_calculatedMember](./tutorial.virtualcubecalculatedmember.md)
-
-[Minimal_Virtual_Cubes_With_Measures](./tutorial.virtualcube.md)
-
-[Minimal_Cubes_With_MeasureExpression](./tutorial.measureexpression.md)
-
-[Minimal_Single_Hierarchy_Hidden_Members_with_IfParentsName](./tutorial.levelifparentsname.md)
-
-[Minimal_Single_Hierarchy_Hidden_Members_with_IfBlankName](./tutorial.levelifblankname.md)
-
-[CubeOneMeasureInlineTableLevelPhysicalAndInlineTables](./tutorial.inlinetablewithphysical.md)
-
-[CubeOneMeasureInlineTable](./tutorial.inlinetable.md)
-
-[Cube_with_share_dimension_with hierarchy_with_view_reference](./tutorial.hierarchywithview.md)
-
-[Cube_with_dimension_with hierarchy_with_inner_table](./tutorial.hierarchywithinnertable.md)
-
-[Minimal_Cube_with_DrillThroughAction](./tutorial.drillthroughaction.md)
-
-[Minimal_Cube_with_cube_dimension_smallInt_boolean_level](./tutorial.dimensionwithsmallintbooleanlevel.md)
-
-[Minimal_Cube_with_cube_dimension_level_with_closure_table](./tutorial.dimensionwithlevelwithparentchild.md)
-
-[Minimal_Parent_Child_Hierarchy](./tutorial.dimensionwithlevelparentcolumn.md)
-
-[Minimal_Cube_with_cube_dimension_level_with_expressions](./tutorial.dimensionwithlevelexpressions.md)
-
-[Minimal_Parent_Child_With_Closure](./tutorial.dimensionwithlevelclosure.md)
-
-[Minimal_Cube_with_cube_dimension_level_attribute](./tutorial.dimensionwithlevelattribute.md)
-
-[Minimal_Cube_with_cube_dimension_with_functional_dependency_optimizations](./tutorial.dimensionwithfunctionaldependencyoptimization.md)
-
-[Minimal_Cube_with_cube_dimension_level_with_parent_child_with_null_parent_value](./tutorial.cube.hierarchy.parentchild.nullparent.md)
-
-[Minimal_Cube_with_cube_dimension_level_with_parent_child_with_closure](./tutorial.cube.hierarchy.parentchild.closure.md)
-
-[Minimal_Cube_with_cube_dimension_level_with_parent_child](./tutorial.cube.hierarchy.parentchild.base.md)
-
-[Minimal_Cube_With_Measures_CellFormatter](./tutorial.cellformatter.md)
-
-[Cube_with_Aggregate_tables](./tutorial.aggregatetables.md)
-
-[Cube_with_table_reference_with_AggExclude](./tutorial.aggexclude.md)

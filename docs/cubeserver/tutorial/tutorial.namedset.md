@@ -9,11 +9,11 @@ Cube with NamedSet.
 
 NamedSet use only Dimension1 in formula. By this reason it connected to Dimension1. NamedSet have folder
 
+NamedSet use Dimension1 and Dimension2 in formula. By this reason it connected to Cube.
+
 NamedSet use only Dimension1 in formula. By this reason it connected to Dimension1.
 
 NamedSet use Dimension1 and Dimension2 in formula. By this reason it connected to Cube. NamedSet have folder
-
-NamedSet use Dimension1 and Dimension2 in formula. By this reason it connected to Cube.
 
 # catalog with Cube with NamedSets
 
@@ -27,16 +27,16 @@ NSInCubeWithoutFolder     : NamedSet use Dimension1 and Dimension2 in formula. B
 
 
 
-## Cube with NamedSets
+## Database Schema
 
 The Database Schema contains the Fact table with two columns: KEY and VALUE. The KEY column is used as the discriminator in the the Level and Hierarchy definitions.
 
 
 ```xml
-<roma:DatabaseSchema   id="databaseSchema">
-  <tables xsi:type="roma:PhysicalTable" id="_Fact" name="Fact">
-    <columns xsi:type="roma:PhysicalColumn" id="_Fact_KEY" name="KEY"/>
-    <columns xsi:type="roma:PhysicalColumn" id="_Fact_VALUE" name="VALUE" type="Integer"/>
+<roma:DatabaseSchema   id="_databaseSchema_namedSet">
+  <tables xsi:type="roma:PhysicalTable" id="_table_fact" name="Fact">
+    <columns xsi:type="roma:PhysicalColumn" id="_column_fact_key" name="KEY"/>
+    <columns xsi:type="roma:PhysicalColumn" id="_column_fact_value" name="VALUE" type="Integer"/>
   </tables>
 </roma:DatabaseSchema>
 
@@ -48,7 +48,7 @@ The Query is a simple TableQuery that selects all columns from the Fact table to
 
 
 ```xml
-<roma:TableQuery  id="_FactQuery" table="_Fact"/>
+<roma:TableQuery  id="_query_fact" table="_table_fact"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -58,7 +58,7 @@ This Example uses one simple Level1 bases on the KEY column.
 
 
 ```xml
-<roma:Level  id="_Level2" name="Level2" column="_Fact_KEY"/>
+<roma:Level  id="_level_dimension" name="Level2" column="_column_fact_key"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -68,7 +68,7 @@ The Hierarchy1 is defined with the hasAll property set to false and the one leve
 
 
 ```xml
-<roma:ExplicitHierarchy  id="_Hierarchy" name="Hierarchy" primaryKey="_Fact_KEY" query="_FactQuery" levels="_Level2"/>
+<roma:ExplicitHierarchy  id="_hierarchy_dimension" name="Hierarchy" primaryKey="_column_fact_key" query="_query_fact" levels="_level_dimension"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -78,7 +78,7 @@ The dimension1 is defined with the one hierarchy.
 
 
 ```xml
-<roma:StandardDimension  id="_Dimension1" name="Dimension1" hierarchies="roma:ExplicitHierarchy _Hierarchy"/>
+<roma:StandardDimension  id="_dimension_first" name="Dimension1" hierarchies="roma:ExplicitHierarchy _hierarchy_dimension"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -88,7 +88,7 @@ NamedSet use only Dimension1 in formula. By this reason it connected to Dimensio
 
 
 ```xml
-<roma:NamedSet  id="_NsWithFolderDimension1" name="NsWithFolderDimension1" displayFolder="Folder1" formula="TopCount([Dimension1].[Level2].MEMBERS, 5, [Measures].[Measure1])"/>
+<roma:NamedSet  id="_namedSet_withFolderDimension1" name="NsWithFolderDimension1" displayFolder="Folder1" formula="TopCount([Dimension1].[Level2].MEMBERS, 5, [Measures].[Measure1])"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -98,7 +98,7 @@ NamedSet use only Dimension1 in formula. By this reason it connected to Dimensio
 
 
 ```xml
-<roma:NamedSet  id="_NsWithoutFolderDimension1" name="NsWithoutFolderDimension1" formula="TopCount([Dimension1].[Level2].MEMBERS, 5, [Measures].[Measure1])"/>
+<roma:NamedSet  id="_namedSet_withoutFolderDimension1" name="NsWithoutFolderDimension1" formula="TopCount([Dimension1].[Level2].MEMBERS, 5, [Measures].[Measure1])"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -108,7 +108,7 @@ NamedSet use Dimension1 and Dimension2 in formula. By this reason it connected t
 
 
 ```xml
-<roma:NamedSet  id="_NSInCubeWithFolder" name="NSInCubeWithFolder" displayFolder="Folder2" formula="{([Dimension1].[Level2].[A], [Dimension2].[Level2].[A]), ([Dimension1].[Level2].[B], [Dimension2].[Level2].[B])}"/>
+<roma:NamedSet  id="_namedSet_inCubeWithFolder" name="NSInCubeWithFolder" displayFolder="Folder2" formula="{([Dimension1].[Level2].[A], [Dimension2].[Level2].[A]), ([Dimension1].[Level2].[B], [Dimension2].[Level2].[B])}"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -118,7 +118,7 @@ NamedSet use Dimension1 and Dimension2 in formula. By this reason it connected t
 
 
 ```xml
-<roma:NamedSet  id="_NSInCubeWithoutFolder" name="NSInCubeWithoutFolder" formula="{([Dimension1].[Level2].[A], [Dimension2].[Level2].[A]), ([Dimension1].[Level2].[B], [Dimension2].[Level2].[B])}"/>
+<roma:NamedSet  id="_namedSet_inCubeWithoutFolder" name="NSInCubeWithoutFolder" formula="{([Dimension1].[Level2].[A], [Dimension2].[Level2].[A]), ([Dimension1].[Level2].[B], [Dimension2].[Level2].[B])}"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -128,15 +128,15 @@ The cube1 is defines by the DimensionConnector  and the MeasureGroup with measur
 
 
 ```xml
-<roma:PhysicalCube   id="_Cube" name="Cube" query="_FactQuery">
-  <namedSets id="_NsWithFolderDimension1" name="NsWithFolderDimension1" displayFolder="Folder1" formula="TopCount([Dimension1].[Level2].MEMBERS, 5, [Measures].[Measure1])"/>
-  <namedSets id="_NsWithoutFolderDimension1" name="NsWithoutFolderDimension1" formula="TopCount([Dimension1].[Level2].MEMBERS, 5, [Measures].[Measure1])"/>
-  <namedSets id="_NSInCubeWithFolder" name="NSInCubeWithFolder" displayFolder="Folder2" formula="{([Dimension1].[Level2].[A], [Dimension2].[Level2].[A]), ([Dimension1].[Level2].[B], [Dimension2].[Level2].[B])}"/>
-  <namedSets id="_NSInCubeWithoutFolder" name="NSInCubeWithoutFolder" formula="{([Dimension1].[Level2].[A], [Dimension2].[Level2].[A]), ([Dimension1].[Level2].[B], [Dimension2].[Level2].[B])}"/>
-  <dimensionConnectors dimension="roma:StandardDimension _Dimension1" overrideDimensionName="Dimension1"/>
-  <dimensionConnectors dimension="roma:StandardDimension _Dimension1" overrideDimensionName="Dimension2"/>
+<roma:PhysicalCube   id="_cube_namedSet" name="Cube" query="_query_fact">
+  <namedSets id="_namedSet_withFolderDimension1" name="NsWithFolderDimension1" displayFolder="Folder1" formula="TopCount([Dimension1].[Level2].MEMBERS, 5, [Measures].[Measure1])"/>
+  <namedSets id="_namedSet_withoutFolderDimension1" name="NsWithoutFolderDimension1" formula="TopCount([Dimension1].[Level2].MEMBERS, 5, [Measures].[Measure1])"/>
+  <namedSets id="_namedSet_inCubeWithFolder" name="NSInCubeWithFolder" displayFolder="Folder2" formula="{([Dimension1].[Level2].[A], [Dimension2].[Level2].[A]), ([Dimension1].[Level2].[B], [Dimension2].[Level2].[B])}"/>
+  <namedSets id="_namedSet_inCubeWithoutFolder" name="NSInCubeWithoutFolder" formula="{([Dimension1].[Level2].[A], [Dimension2].[Level2].[A]), ([Dimension1].[Level2].[B], [Dimension2].[Level2].[B])}"/>
+  <dimensionConnectors dimension="roma:StandardDimension _dimension_first" overrideDimensionName="Dimension1" id="_dimensionConnector_first"/>
+  <dimensionConnectors dimension="roma:StandardDimension _dimension_first" overrideDimensionName="Dimension2" id="_dimensionConnector_second"/>
   <measureGroups>
-    <measures xsi:type="roma:SumMeasure" id="_Measure1" name="Measure1" column="_Fact_VALUE"/>
+    <measures xsi:type="roma:SumMeasure" id="_measure_sum" name="Measure1" column="_column_fact_value"/>
   </measureGroups>
 </roma:PhysicalCube>
 
@@ -150,26 +150,26 @@ This files represent the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:ExplicitHierarchy id="_Hierarchy" name="Hierarchy" primaryKey="_Fact_KEY" query="_FactQuery" levels="_Level2"/>
-  <roma:Catalog description="Schema of a minimal cube with namedSet" name="Cube with NamedSets" cubes="_Cube" dbschemas="databaseSchema"/>
-  <roma:DatabaseSchema id="databaseSchema">
-    <tables xsi:type="roma:PhysicalTable" id="_Fact" name="Fact">
-      <columns xsi:type="roma:PhysicalColumn" id="_Fact_KEY" name="KEY"/>
-      <columns xsi:type="roma:PhysicalColumn" id="_Fact_VALUE" name="VALUE" type="Integer"/>
+  <roma:ExplicitHierarchy id="_hierarchy_dimension" name="Hierarchy" primaryKey="_column_fact_key" query="_query_fact" levels="_level_dimension"/>
+  <roma:Catalog description="Schema of a minimal cube with namedSet" name="Cube with NamedSets" cubes="_cube_namedSet" dbschemas="_databaseSchema_namedSet"/>
+  <roma:DatabaseSchema id="_databaseSchema_namedSet">
+    <tables xsi:type="roma:PhysicalTable" id="_table_fact" name="Fact">
+      <columns xsi:type="roma:PhysicalColumn" id="_column_fact_key" name="KEY"/>
+      <columns xsi:type="roma:PhysicalColumn" id="_column_fact_value" name="VALUE" type="Integer"/>
     </tables>
   </roma:DatabaseSchema>
-  <roma:TableQuery id="_FactQuery" table="_Fact"/>
-  <roma:Level id="_Level2" name="Level2" column="_Fact_KEY"/>
-  <roma:StandardDimension id="_Dimension1" name="Dimension1" hierarchies="_Hierarchy"/>
-  <roma:PhysicalCube id="_Cube" name="Cube" query="_FactQuery">
-    <namedSets id="_NsWithFolderDimension1" name="NsWithFolderDimension1" displayFolder="Folder1" formula="TopCount([Dimension1].[Level2].MEMBERS, 5, [Measures].[Measure1])"/>
-    <namedSets id="_NsWithoutFolderDimension1" name="NsWithoutFolderDimension1" formula="TopCount([Dimension1].[Level2].MEMBERS, 5, [Measures].[Measure1])"/>
-    <namedSets id="_NSInCubeWithFolder" name="NSInCubeWithFolder" displayFolder="Folder2" formula="{([Dimension1].[Level2].[A], [Dimension2].[Level2].[A]), ([Dimension1].[Level2].[B], [Dimension2].[Level2].[B])}"/>
-    <namedSets id="_NSInCubeWithoutFolder" name="NSInCubeWithoutFolder" formula="{([Dimension1].[Level2].[A], [Dimension2].[Level2].[A]), ([Dimension1].[Level2].[B], [Dimension2].[Level2].[B])}"/>
-    <dimensionConnectors dimension="_Dimension1" overrideDimensionName="Dimension1"/>
-    <dimensionConnectors dimension="_Dimension1" overrideDimensionName="Dimension2"/>
+  <roma:TableQuery id="_query_fact" table="_table_fact"/>
+  <roma:Level id="_level_dimension" name="Level2" column="_column_fact_key"/>
+  <roma:StandardDimension id="_dimension_first" name="Dimension1" hierarchies="_hierarchy_dimension"/>
+  <roma:PhysicalCube id="_cube_namedSet" name="Cube" query="_query_fact">
+    <namedSets id="_namedSet_withFolderDimension1" name="NsWithFolderDimension1" displayFolder="Folder1" formula="TopCount([Dimension1].[Level2].MEMBERS, 5, [Measures].[Measure1])"/>
+    <namedSets id="_namedSet_withoutFolderDimension1" name="NsWithoutFolderDimension1" formula="TopCount([Dimension1].[Level2].MEMBERS, 5, [Measures].[Measure1])"/>
+    <namedSets id="_namedSet_inCubeWithFolder" name="NSInCubeWithFolder" displayFolder="Folder2" formula="{([Dimension1].[Level2].[A], [Dimension2].[Level2].[A]), ([Dimension1].[Level2].[B], [Dimension2].[Level2].[B])}"/>
+    <namedSets id="_namedSet_inCubeWithoutFolder" name="NSInCubeWithoutFolder" formula="{([Dimension1].[Level2].[A], [Dimension2].[Level2].[A]), ([Dimension1].[Level2].[B], [Dimension2].[Level2].[B])}"/>
+    <dimensionConnectors dimension="_dimension_first" overrideDimensionName="Dimension1" id="_dimensionConnector_first"/>
+    <dimensionConnectors dimension="_dimension_first" overrideDimensionName="Dimension2" id="_dimensionConnector_second"/>
     <measureGroups>
-      <measures xsi:type="roma:SumMeasure" id="_Measure1" name="Measure1" column="_Fact_VALUE"/>
+      <measures xsi:type="roma:SumMeasure" id="_measure_sum" name="Measure1" column="_column_fact_value"/>
     </measureGroups>
   </roma:PhysicalCube>
 </xmi:XMI>

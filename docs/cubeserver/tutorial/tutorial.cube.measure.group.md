@@ -15,10 +15,10 @@ The cube defined in this example is based on a single table that stores all the 
 
 
 ```xml
-<roma:DatabaseSchema   id="databaseSchema">
-  <tables xsi:type="roma:PhysicalTable" id="_tab" name="Fact">
-    <columns xsi:type="roma:PhysicalColumn" id="_col_key" name="KEY"/>
-    <columns xsi:type="roma:PhysicalColumn" id="_col" name="VALUE" type="Integer"/>
+<roma:DatabaseSchema   id="_databaseSchema_measureGroup">
+  <tables xsi:type="roma:PhysicalTable" id="_table_fact" name="Fact">
+    <columns xsi:type="roma:PhysicalColumn" id="_column_fact_key" name="KEY"/>
+    <columns xsi:type="roma:PhysicalColumn" id="_column_fact_value" name="VALUE" type="Integer"/>
   </tables>
 </roma:DatabaseSchema>
 
@@ -30,7 +30,7 @@ This example uses a TableQuery, as it directly references the physical table `Fa
 
 
 ```xml
-<roma:TableQuery  id="_query" table="_tab"/>
+<roma:TableQuery  id="_query_fact" table="_table_fact"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -40,13 +40,13 @@ A `MeasureGroup` is a logical container designed to group related measures. Each
 
 
 ```xml
-<roma:PhysicalCube   id="_cube" name="MeasureGroupCube" query="_query">
+<roma:PhysicalCube   id="_cube_measureGroupCube" name="MeasureGroupCube" query="_query_fact">
   <measureGroups name="Group Alphabetic">
-    <measures xsi:type="roma:SumMeasure" id="_measure1" name="Measure A" column="_col"/>
-    <measures xsi:type="roma:SumMeasure" id="_measure2" name="Measure B" column="_col"/>
+    <measures xsi:type="roma:SumMeasure" id="_measure_measureA" name="Measure A" column="_column_fact_value"/>
+    <measures xsi:type="roma:SumMeasure" id="_measure_measureB" name="Measure B" column="_column_fact_value"/>
   </measureGroups>
   <measureGroups name="Group Other">
-    <measures xsi:type="roma:SumMeasure" id="_measure3" name="Measure 1" column="_col"/>
+    <measures xsi:type="roma:SumMeasure" id="_measure_measure1" name="Measure 1" column="_column_fact_value"/>
   </measureGroups>
 </roma:PhysicalCube>
 
@@ -60,21 +60,21 @@ This files represent the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:Catalog name="Measure - MeasureGroups" cubes="_cube" dbschemas="databaseSchema"/>
-  <roma:DatabaseSchema id="databaseSchema">
-    <tables xsi:type="roma:PhysicalTable" id="_tab" name="Fact">
-      <columns xsi:type="roma:PhysicalColumn" id="_col_key" name="KEY"/>
-      <columns xsi:type="roma:PhysicalColumn" id="_col" name="VALUE" type="Integer"/>
+  <roma:Catalog id="_catalog_measureMeasureGroups" name="Measure - MeasureGroups" cubes="_cube_measureGroupCube" dbschemas="_databaseSchema_measureGroup"/>
+  <roma:DatabaseSchema id="_databaseSchema_measureGroup">
+    <tables xsi:type="roma:PhysicalTable" id="_table_fact" name="Fact">
+      <columns xsi:type="roma:PhysicalColumn" id="_column_fact_key" name="KEY"/>
+      <columns xsi:type="roma:PhysicalColumn" id="_column_fact_value" name="VALUE" type="Integer"/>
     </tables>
   </roma:DatabaseSchema>
-  <roma:TableQuery id="_query" table="_tab"/>
-  <roma:PhysicalCube id="_cube" name="MeasureGroupCube" query="_query">
+  <roma:TableQuery id="_query_fact" table="_table_fact"/>
+  <roma:PhysicalCube id="_cube_measureGroupCube" name="MeasureGroupCube" query="_query_fact">
     <measureGroups name="Group Alphabetic">
-      <measures xsi:type="roma:SumMeasure" id="_measure1" name="Measure A" column="_col"/>
-      <measures xsi:type="roma:SumMeasure" id="_measure2" name="Measure B" column="_col"/>
+      <measures xsi:type="roma:SumMeasure" id="_measure_measureA" name="Measure A" column="_column_fact_value"/>
+      <measures xsi:type="roma:SumMeasure" id="_measure_measureB" name="Measure B" column="_column_fact_value"/>
     </measureGroups>
     <measureGroups name="Group Other">
-      <measures xsi:type="roma:SumMeasure" id="_measure3" name="Measure 1" column="_col"/>
+      <measures xsi:type="roma:SumMeasure" id="_measure_measure1" name="Measure 1" column="_column_fact_value"/>
     </measureGroups>
   </roma:PhysicalCube>
 </xmi:XMI>

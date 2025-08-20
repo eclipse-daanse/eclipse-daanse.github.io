@@ -16,11 +16,11 @@ space, space first, space last, separate line, long with over 100 12345678....  
 
 
 ```xml
-<roma:DatabaseSchema   id="_dbschema">
-  <tables xsi:type="roma:PhysicalTable" id="_tab_fact" name="Fact">
-    <columns xsi:type="roma:PhysicalColumn" id="_col_fact_key1" name="KEY1"/>
-    <columns xsi:type="roma:PhysicalColumn" id="_col_fact_key2" name="KEY2"/>
-    <columns xsi:type="roma:PhysicalColumn" id="_col_fact_value" name="VALUE" type="Integer"/>
+<roma:DatabaseSchema   id="_databaseSchema_main">
+  <tables xsi:type="roma:PhysicalTable" id="_table_fact" name="Fact">
+    <columns xsi:type="roma:PhysicalColumn" id="_column_fact_key1" name="KEY1"/>
+    <columns xsi:type="roma:PhysicalColumn" id="_column_fact_key2" name="KEY2"/>
+    <columns xsi:type="roma:PhysicalColumn" id="_column_fact_value" name="VALUE" type="Integer"/>
   </tables>
 </roma:DatabaseSchema>
 
@@ -32,7 +32,7 @@ The TableQuery for the Levels and the Measure.
 
 
 ```xml
-<roma:TableQuery  id="_query" table="_tab_fact"/>
+<roma:TableQuery  id="_query_fact" table="_table_fact"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -42,7 +42,7 @@ The level of the level1 used the `column` attribute to define the column that ho
 
 
 ```xml
-<roma:Level  id="_level1" name="level1" column="_col_fact_key1"/>
+<roma:Level  id="_level_level1" name="level1" column="_column_fact_key1"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -52,7 +52,7 @@ The level  of the level2 used the `column` attribute to define the column that h
 
 
 ```xml
-<roma:Level  id="_level2" name="level2" column="_col_fact_key2"/>
+<roma:Level  id="_level_level2" name="level2" column="_column_fact_key2"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -64,7 +64,7 @@ The order of the Levels in the hierarchy is important, as it determines the dril
 
 
 ```xml
-<roma:ExplicitHierarchy  id="_hierarchy" name="Hierarchy" primaryKey="_col_fact_key1" query="_query" levels="_level1 _level2"/>
+<roma:ExplicitHierarchy  id="_hierarchy_hierarchy" name="Hierarchy" primaryKey="_column_fact_key1" query="_query_fact" levels="_level_level1 _level_level2"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -74,7 +74,7 @@ The Dimension has only one hierarchy.
 
 
 ```xml
-<roma:StandardDimension  id="_dim_dimension" name="Dimension" hierarchies="roma:ExplicitHierarchy _hierarchy"/>
+<roma:StandardDimension  id="_dimension_dimension" name="Dimension" hierarchies="roma:ExplicitHierarchy _hierarchy_hierarchy"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -86,10 +86,10 @@ To connect the dimension to the cube, a DimensionConnector is used.
 
 
 ```xml
-<roma:PhysicalCube   id="_cube" name="Cube" query="_query">
-  <dimensionConnectors foreignKey="roma:PhysicalColumn _col_fact_key1" dimension="roma:StandardDimension _dim_dimension"/>
+<roma:PhysicalCube   id="_cube_cube" name="Cube" query="_query_fact">
+  <dimensionConnectors foreignKey="roma:PhysicalColumn _column_fact_key1" dimension="roma:StandardDimension _dimension_dimension" id="_dimensionConnector_dimension"/>
   <measureGroups>
-    <measures xsi:type="roma:SumMeasure" id="_measure" name="theMeasure" column="_col_fact_value"/>
+    <measures xsi:type="roma:SumMeasure" id="_measure_theMeasure" name="theMeasure" column="_column_fact_value"/>
   </measureGroups>
 </roma:PhysicalCube>
 
@@ -103,23 +103,23 @@ This files represent the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:ExplicitHierarchy id="_hierarchy" name="Hierarchy" primaryKey="_col_fact_key1" query="_query" levels="_level1 _level2"/>
-  <roma:Catalog name="Catalog with cube with different member identifiers" cubes="_cube" dbschemas="_dbschema"/>
-  <roma:DatabaseSchema id="_dbschema">
-    <tables xsi:type="roma:PhysicalTable" id="_tab_fact" name="Fact">
-      <columns xsi:type="roma:PhysicalColumn" id="_col_fact_key1" name="KEY1"/>
-      <columns xsi:type="roma:PhysicalColumn" id="_col_fact_key2" name="KEY2"/>
-      <columns xsi:type="roma:PhysicalColumn" id="_col_fact_value" name="VALUE" type="Integer"/>
+  <roma:ExplicitHierarchy id="_hierarchy_hierarchy" name="Hierarchy" primaryKey="_column_fact_key1" query="_query_fact" levels="_level_level1 _level_level2"/>
+  <roma:Catalog name="Catalog with cube with different member identifiers" cubes="_cube_cube" dbschemas="_databaseSchema_main"/>
+  <roma:DatabaseSchema id="_databaseSchema_main">
+    <tables xsi:type="roma:PhysicalTable" id="_table_fact" name="Fact">
+      <columns xsi:type="roma:PhysicalColumn" id="_column_fact_key1" name="KEY1"/>
+      <columns xsi:type="roma:PhysicalColumn" id="_column_fact_key2" name="KEY2"/>
+      <columns xsi:type="roma:PhysicalColumn" id="_column_fact_value" name="VALUE" type="Integer"/>
     </tables>
   </roma:DatabaseSchema>
-  <roma:TableQuery id="_query" table="_tab_fact"/>
-  <roma:Level id="_level2" name="level2" column="_col_fact_key2"/>
-  <roma:Level id="_level1" name="level1" column="_col_fact_key1"/>
-  <roma:StandardDimension id="_dim_dimension" name="Dimension" hierarchies="_hierarchy"/>
-  <roma:PhysicalCube id="_cube" name="Cube" query="_query">
-    <dimensionConnectors foreignKey="_col_fact_key1" dimension="_dim_dimension"/>
+  <roma:TableQuery id="_query_fact" table="_table_fact"/>
+  <roma:Level id="_level_level1" name="level1" column="_column_fact_key1"/>
+  <roma:Level id="_level_level2" name="level2" column="_column_fact_key2"/>
+  <roma:StandardDimension id="_dimension_dimension" name="Dimension" hierarchies="_hierarchy_hierarchy"/>
+  <roma:PhysicalCube id="_cube_cube" name="Cube" query="_query_fact">
+    <dimensionConnectors foreignKey="_column_fact_key1" dimension="_dimension_dimension" id="_dimensionConnector_dimension"/>
     <measureGroups>
-      <measures xsi:type="roma:SumMeasure" id="_measure" name="theMeasure" column="_col_fact_value"/>
+      <measures xsi:type="roma:SumMeasure" id="_measure_theMeasure" name="theMeasure" column="_column_fact_value"/>
     </measureGroups>
   </roma:PhysicalCube>
 </xmi:XMI>

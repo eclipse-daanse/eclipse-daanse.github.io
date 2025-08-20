@@ -15,7 +15,7 @@ A Column has the fields `id,` `name`, `description` and `nullable`. Id is used t
 
 
 ```xml
-<roma:PhysicalColumn  id="_col1" description="Non nullable Column with description" name="ColumnWithDescription" nullable="true"/>
+<roma:PhysicalColumn  id="_column_tableWithColumnTypes_columnWithDescription" description="Non nullable Column with description" name="ColumnWithDescription" nullable="true"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -29,7 +29,7 @@ The ColumnSize field in represents the maximum width or precision of a column, d
 
 
 ```xml
-<roma:PhysicalColumn  id="_col2" name="ColumnVarchar" columnSize="255"/>
+<roma:PhysicalColumn  id="_column_tableWithColumnTypes_columnVarchar" name="ColumnVarchar" columnSize="255"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -45,7 +45,7 @@ The NumPrecRadix field represents the numeric precision radix (or base) used for
 
 
 ```xml
-<roma:PhysicalColumn  id="_col3" name="ColumnDecimal" type="Decimal" decimalDigits="2" numPrecRadix="3"/>
+<roma:PhysicalColumn  id="_column_tableWithColumnTypes_columnDecimal" name="ColumnDecimal" type="Decimal" decimalDigits="2" numPrecRadix="3"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -54,7 +54,7 @@ The NumPrecRadix field represents the numeric precision radix (or base) used for
 Numeric are the same as DECIMAL, but some databases treat it as stricter in enforcing precision.
 
 ```xml
-<roma:PhysicalColumn  id="_col4" name="ColumnNumeric" type="Numeric"/>
+<roma:PhysicalColumn  id="_column_tableWithColumnTypes_columnNumeric" name="ColumnNumeric" type="Numeric"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -63,7 +63,7 @@ Numeric are the same as DECIMAL, but some databases treat it as stricter in enfo
 Float Approximate floating-point number, implementation-dependent precision, can introduce rounding errors
 
 ```xml
-<roma:PhysicalColumn  id="_col5" name="ColumnFloat" type="Float"/>
+<roma:PhysicalColumn  id="_column_tableWithColumnTypes_columnFloat" name="ColumnFloat" type="Float"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -72,7 +72,7 @@ Float Approximate floating-point number, implementation-dependent precision, can
 REAL are Single-precision (32-bit) floating-point number, less precise than DOUBLE.
 
 ```xml
-<roma:PhysicalColumn  id="_col6" name="ColumnReal" type="Real"/>
+<roma:PhysicalColumn  id="_column_tableWithColumnTypes_columnReal" name="ColumnReal" type="Real"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -81,7 +81,7 @@ REAL are Single-precision (32-bit) floating-point number, less precise than DOUB
 DOUBLE (or DOUBLE PRECISION) – Double-precision (64-bit) floating-point number, more accurate than REAL.
 
 ```xml
-<roma:PhysicalColumn  id="_col7" name="ColumnDouble" type="Double"/>
+<roma:PhysicalColumn  id="_column_tableWithColumnTypes_columnDouble" name="ColumnDouble" type="Double"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -90,7 +90,7 @@ DOUBLE (or DOUBLE PRECISION) – Double-precision (64-bit) floating-point number
 INTEGER are the whole number type, typically 32-bit, used for exact, non-decimal values.
 
 ```xml
-<roma:PhysicalColumn  id="_col8" name="ColumnInteger" type="Integer"/>
+<roma:PhysicalColumn  id="_column_tableWithColumnTypes_columnInteger" name="ColumnInteger" type="Integer"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -102,17 +102,17 @@ This files represent the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:Catalog id="_cat" name="Database - ColumnTypes" dbschemas="_dbschema"/>
-  <roma:DatabaseSchema id="_dbschema">
-    <tables xsi:type="roma:PhysicalTable" id="_tab" name="TableWithColumnTypes">
-      <columns xsi:type="roma:PhysicalColumn" id="_col1" description="Non nullable Column with description" name="ColumnWithDescription" nullable="true"/>
-      <columns xsi:type="roma:PhysicalColumn" id="_col2" name="ColumnVarchar" columnSize="255"/>
-      <columns xsi:type="roma:PhysicalColumn" id="_col3" name="ColumnDecimal" type="Decimal" decimalDigits="2" numPrecRadix="3"/>
-      <columns xsi:type="roma:PhysicalColumn" id="_col4" name="ColumnNumeric" type="Numeric"/>
-      <columns xsi:type="roma:PhysicalColumn" id="_col5" name="ColumnFloat" type="Float"/>
-      <columns xsi:type="roma:PhysicalColumn" id="_col6" name="ColumnReal" type="Real"/>
-      <columns xsi:type="roma:PhysicalColumn" id="_col7" name="ColumnDouble" type="Double"/>
-      <columns xsi:type="roma:PhysicalColumn" id="_col8" name="ColumnInteger" type="Integer"/>
+  <roma:Catalog id="_catalog_databaseColumnTypes" name="Database - ColumnTypes" dbschemas="_databaseSchema_columnTypes"/>
+  <roma:DatabaseSchema id="_databaseSchema_columnTypes">
+    <tables xsi:type="roma:PhysicalTable" id="_table_tableWithColumnTypes" name="TableWithColumnTypes">
+      <columns xsi:type="roma:PhysicalColumn" id="_column_tableWithColumnTypes_columnWithDescription" description="Non nullable Column with description" name="ColumnWithDescription" nullable="true"/>
+      <columns xsi:type="roma:PhysicalColumn" id="_column_tableWithColumnTypes_columnVarchar" name="ColumnVarchar" columnSize="255"/>
+      <columns xsi:type="roma:PhysicalColumn" id="_column_tableWithColumnTypes_columnDecimal" name="ColumnDecimal" type="Decimal" decimalDigits="2" numPrecRadix="3"/>
+      <columns xsi:type="roma:PhysicalColumn" id="_column_tableWithColumnTypes_columnNumeric" name="ColumnNumeric" type="Numeric"/>
+      <columns xsi:type="roma:PhysicalColumn" id="_column_tableWithColumnTypes_columnFloat" name="ColumnFloat" type="Float"/>
+      <columns xsi:type="roma:PhysicalColumn" id="_column_tableWithColumnTypes_columnReal" name="ColumnReal" type="Real"/>
+      <columns xsi:type="roma:PhysicalColumn" id="_column_tableWithColumnTypes_columnDouble" name="ColumnDouble" type="Double"/>
+      <columns xsi:type="roma:PhysicalColumn" id="_column_tableWithColumnTypes_columnInteger" name="ColumnInteger" type="Integer"/>
     </tables>
   </roma:DatabaseSchema>
 </xmi:XMI>

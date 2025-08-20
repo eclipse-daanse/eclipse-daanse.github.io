@@ -15,10 +15,10 @@ The cube defined in this example is based on a single table that stores all the 
 
 
 ```xml
-<roma:DatabaseSchema   id="databaseSchema">
-  <tables xsi:type="roma:PhysicalTable" id="_tab" name="Fact">
-    <columns xsi:type="roma:PhysicalColumn" id="_col_key" name="KEY"/>
-    <columns xsi:type="roma:PhysicalColumn" id="_col" name="VALUE" type="Integer"/>
+<roma:DatabaseSchema   id="_databaseSchema_measureAggregatorBit">
+  <tables xsi:type="roma:PhysicalTable" id="_table_fact" name="Fact">
+    <columns xsi:type="roma:PhysicalColumn" id="_column_fact_key" name="KEY"/>
+    <columns xsi:type="roma:PhysicalColumn" id="_column_fact_value" name="VALUE" type="Integer"/>
   </tables>
 </roma:DatabaseSchema>
 
@@ -30,7 +30,7 @@ This example uses a TableQuery, as it directly references the physical table `Fa
 
 
 ```xml
-<roma:TableQuery  id="_query" table="_tab"/>
+<roma:TableQuery  id="_query_fact" table="_table_fact"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -46,14 +46,14 @@ In this example, multiple measures are defined. All measures reference the `VALU
 
 
 ```xml
-<roma:PhysicalCube   id="_cube" name="MeasuresAggregatorsCube" query="_query">
+<roma:PhysicalCube   id="_cube_measureAggregatorsCube" name="MeasuresAggregatorsCube" query="_query_fact">
   <measureGroups>
-    <measures xsi:type="roma:BitAggMeasure" id="_measure1" name="BitAgg AND" column="_col"/>
-    <measures xsi:type="roma:BitAggMeasure" id="_measure2" name="BitAgg OR" column="_col" aggType="or"/>
-    <measures xsi:type="roma:BitAggMeasure" id="_measure3" name="BitAgg XOR" column="_col" aggType="xor"/>
-    <measures xsi:type="roma:BitAggMeasure" id="_measure4" name="BitAgg NAND" column="_col" not="true"/>
-    <measures xsi:type="roma:BitAggMeasure" id="_measure2" name="BitAgg NOR" column="_col" aggType="or" not="true"/>
-    <measures xsi:type="roma:BitAggMeasure" id="_measure3" name="BitAgg NXOR" column="_col" aggType="xor" not="true"/>
+    <measures xsi:type="roma:BitAggMeasure" id="_measure_bitAggAnd" name="BitAgg AND" column="_column_fact_value"/>
+    <measures xsi:type="roma:BitAggMeasure" id="_measure_bitAggOr" name="BitAgg OR" column="_column_fact_value" aggType="or"/>
+    <measures xsi:type="roma:BitAggMeasure" id="_measure_bitAggXor" name="BitAgg XOR" column="_column_fact_value" aggType="xor"/>
+    <measures xsi:type="roma:BitAggMeasure" id="_measure_bitAggNand" name="BitAgg NAND" column="_column_fact_value" not="true"/>
+    <measures xsi:type="roma:BitAggMeasure" id="_measure_bitAggNor" name="BitAgg NOR" column="_column_fact_value" aggType="or" not="true"/>
+    <measures xsi:type="roma:BitAggMeasure" id="_measure_bitAggNxor" name="BitAgg NXOR" column="_column_fact_value" aggType="xor" not="true"/>
   </measureGroups>
 </roma:PhysicalCube>
 
@@ -67,22 +67,22 @@ This files represent the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:Catalog name="Measure - Bit Aggragators" cubes="_cube" dbschemas="databaseSchema"/>
-  <roma:DatabaseSchema id="databaseSchema">
-    <tables xsi:type="roma:PhysicalTable" id="_tab" name="Fact">
-      <columns xsi:type="roma:PhysicalColumn" id="_col_key" name="KEY"/>
-      <columns xsi:type="roma:PhysicalColumn" id="_col" name="VALUE" type="Integer"/>
+  <roma:Catalog id="_catalog_measureBitAggregators" name="Measure - Bit Aggragators" cubes="_cube_measureAggregatorsCube" dbschemas="_databaseSchema_measureAggregatorBit"/>
+  <roma:DatabaseSchema id="_databaseSchema_measureAggregatorBit">
+    <tables xsi:type="roma:PhysicalTable" id="_table_fact" name="Fact">
+      <columns xsi:type="roma:PhysicalColumn" id="_column_fact_key" name="KEY"/>
+      <columns xsi:type="roma:PhysicalColumn" id="_column_fact_value" name="VALUE" type="Integer"/>
     </tables>
   </roma:DatabaseSchema>
-  <roma:TableQuery id="_query" table="_tab"/>
-  <roma:PhysicalCube id="_cube" name="MeasuresAggregatorsCube" query="_query">
+  <roma:TableQuery id="_query_fact" table="_table_fact"/>
+  <roma:PhysicalCube id="_cube_measureAggregatorsCube" name="MeasuresAggregatorsCube" query="_query_fact">
     <measureGroups>
-      <measures xsi:type="roma:BitAggMeasure" id="_measure1" name="BitAgg AND" column="_col"/>
-      <measures xsi:type="roma:BitAggMeasure" id="_measure2" name="BitAgg OR" column="_col" aggType="or"/>
-      <measures xsi:type="roma:BitAggMeasure" id="_measure3" name="BitAgg XOR" column="_col" aggType="xor"/>
-      <measures xsi:type="roma:BitAggMeasure" id="_measure4" name="BitAgg NAND" column="_col" not="true"/>
-      <measures xsi:type="roma:BitAggMeasure" id="_measure2" name="BitAgg NOR" column="_col" aggType="or" not="true"/>
-      <measures xsi:type="roma:BitAggMeasure" id="_measure3" name="BitAgg NXOR" column="_col" aggType="xor" not="true"/>
+      <measures xsi:type="roma:BitAggMeasure" id="_measure_bitAggAnd" name="BitAgg AND" column="_column_fact_value"/>
+      <measures xsi:type="roma:BitAggMeasure" id="_measure_bitAggOr" name="BitAgg OR" column="_column_fact_value" aggType="or"/>
+      <measures xsi:type="roma:BitAggMeasure" id="_measure_bitAggXor" name="BitAgg XOR" column="_column_fact_value" aggType="xor"/>
+      <measures xsi:type="roma:BitAggMeasure" id="_measure_bitAggNand" name="BitAgg NAND" column="_column_fact_value" not="true"/>
+      <measures xsi:type="roma:BitAggMeasure" id="_measure_bitAggNor" name="BitAgg NOR" column="_column_fact_value" aggType="or" not="true"/>
+      <measures xsi:type="roma:BitAggMeasure" id="_measure_bitAggNxor" name="BitAgg NXOR" column="_column_fact_value" aggType="xor" not="true"/>
     </measureGroups>
   </roma:PhysicalCube>
 </xmi:XMI>

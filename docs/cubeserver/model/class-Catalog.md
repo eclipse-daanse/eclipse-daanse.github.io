@@ -55,7 +55,7 @@ The root container of an OLAP schema that defines a complete analytical database
       <td>true</td>
     </tr>
     <tr>
-      <td colspan="5"><em>Collection of schema-level parameters that provide dynamic behavior and configuration within the schema. Parameters enable runtime customization of schema elements, user-specific settings, and conditional logic in calculations. These parameters are available throughout the schema for use in calculated members, named sets, security expressions, and custom formatting. Common uses include date ranges for time intelligence, user preferences, locale settings, and business rule toggles.</em></td>
+      <td colspan="5"><em>Collection of catalog-level parameters that provide dynamic behavior and configuration within the catalog. Parameters enable runtime customization of schema elements, user-specific settings, and conditional logic in calculations. These parameters are available throughout the catalog for use in calculated members, named sets, security expressions, and custom formatting. Common uses include date ranges for time intelligence, user preferences, locale settings, and business rule toggles.</em></td>
     </tr>
     <tr>
       <td><strong>cubes</strong></td>
@@ -85,7 +85,7 @@ The root container of an OLAP schema that defines a complete analytical database
       <td>false</td>
     </tr>
     <tr>
-      <td colspan="5"><em>Collection of security roles that define access control policies for the schema and its contents. Each role specifies what cubes, dimensions, hierarchies, levels, and members a user or group can access, along with the specific permissions (read, write, drill-through) for each resource. Roles can be combined to create complex security scenarios and support both broad organizational permissions and fine-grained data restrictions. These roles are enforced by the OLAP engine during query execution and metadata discovery.</em></td>
+      <td colspan="5"><em>Collection of security roles that define access control policies for the catalog and its contents. Each role specifies what cubes, dimensions, hierarchies, levels, and members a user or group can access, along with the specific permissions (read, write, drill-through) for each resource. Roles can be combined to create complex security scenarios and support both broad organizational permissions and fine-grained data restrictions. These roles are enforced by the OLAP engine during query execution and metadata discovery.</em></td>
     </tr>
     <tr>
       <td><strong>defaultAccessRole</strong></td>
@@ -95,7 +95,7 @@ The root container of an OLAP schema that defines a complete analytical database
       <td>false</td>
     </tr>
     <tr>
-      <td colspan="5"><em>Reference to the access role that should be applied by default when users connect without explicit role assignment. This provides a baseline security policy for the schema, typically configured to allow basic read access to public data while restricting sensitive information. If not specified, Daanse does not assign a built-in default role, and access will be denied unless a role is explicitly provided. This setting is particularly useful for public reporting scenarios, shared dashboards, or development environments where default read access is desirable.</em></td>
+      <td colspan="5"><em>Reference to the access role that should be applied by default when users connect without explicit role assignment. This provides a baseline security policy for the catalog, typically configured to allow basic read access to public data while restricting sensitive information. If not specified, Daanse does not assign a built-in default role, and access will be denied unless a role is explicitly provided. This setting is particularly useful for public reporting scenarios, shared dashboards, or development environments where default read access is desirable.</em></td>
     </tr>
     <tr>
       <td><strong>dbschemas</strong></td>
