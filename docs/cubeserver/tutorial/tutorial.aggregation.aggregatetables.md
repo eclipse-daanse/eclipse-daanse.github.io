@@ -4,11 +4,6 @@ group: Aggregation
 kind: TUTORIAL
 number: 2.8.2
 ---
-Aggregate tables are a way to improve performance when the fact table contains
-a huge number of rows: a million or more. An aggregate table is essentially a pre-computed
-summary of the data in the fact table.
-
-
 # Daanse Tutorial - Aggregation Aggregate Tables
 
 This tutorial discusses TableQuery with AggregationExclude.
@@ -169,13 +164,13 @@ This files represent the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
+  <roma:ExplicitHierarchy id="_hierarchy_Product_Family_Hierarchy" name="Product Family" displayFolder="Details" primaryKey="_column_product_product_id" query="_joinQuery_productClassProduct" levels="_level_Product_Family_Level"/>
   <roma:AggregationName id="_aggregationName_AGG_C_SPECIAL_SALES_FACT_1997" name="_table_agg_c_special_sales_fact_1997">
     <aggregationFactCount column="_column_agg_c_special_sales_fact_1997_fact_count"/>
     <aggregationMeasures column="_column_agg_c_special_sales_fact_1997_store_cost_sum" name="[Measures].[Store Cost]"/>
     <aggregationLevels column="_column_product_class_product_famile" name="[Product].[Product Family].[Product Family]"/>
   </roma:AggregationName>
-  <roma:ExplicitHierarchy id="_hierarchy_Product_Family_Hierarchy" name="Product Family" displayFolder="Details" primaryKey="_column_product_product_id" query="_joinQuery_productClassProduct" levels="_level_Product_Family_Level"/>
-  <roma:Catalog description="Aggregate table optimization techniques" name="Daanse Tutorial - Aggregation Aggregate Tables" cubes="_cube_Sales" dbschemas="_databaseSchema_AggregateTables"/>
+  <roma:Catalog description="Aggregate table optimization techniques" name="Daanse Tutorial - Aggregation Aggregate Tables" cubes="_cube_Sales"/>
   <roma:DatabaseSchema id="_databaseSchema_AggregateTables">
     <tables xsi:type="roma:PhysicalTable" id="_table_sales_fact_1997" name="SALES_FACT_1997">
       <columns xsi:type="roma:PhysicalColumn" id="_column_sales_fact_1997_product_id" name="PRODUCT_ID" type="Integer"/>
@@ -199,12 +194,12 @@ This files represent the complete definition of the catalog.
     <tables xsi:type="roma:PhysicalTable" id="_table_agg_c_14_sales_fact_1997" name="AGG_C_14_SALES_FACT_1997"/>
     <tables xsi:type="roma:PhysicalTable" id="_table_agg_lc_100_sales_fact_1997" name="AGG_LC_100_SALES_FACT_1997"/>
   </roma:DatabaseSchema>
-  <roma:TableQuery id="_query_productClassQuery" table="_table_product_class"/>
+  <roma:TableQuery id="_query_productQuery" table="_table_product"/>
   <roma:TableQuery id="_query_salesFact1997Query" aggregationTables="_aggregationName_AGG_C_SPECIAL_SALES_FACT_1997" table="_table_sales_fact_1997">
     <aggregationExcludes name="AGG_C_14_SALES_FACT_1997"/>
     <aggregationExcludes name="AGG_LC_100_SALES_FACT_1997"/>
   </roma:TableQuery>
-  <roma:TableQuery id="_query_productQuery" table="_table_product"/>
+  <roma:TableQuery id="_query_productClassQuery" table="_table_product_class"/>
   <roma:JoinQuery id="_joinQuery_productClassProduct">
     <left key="_column_product_product_class_id" query="_query_productQuery"/>
     <right key="_column_product_class_product_class_id" query="_query_productClassQuery"/>
