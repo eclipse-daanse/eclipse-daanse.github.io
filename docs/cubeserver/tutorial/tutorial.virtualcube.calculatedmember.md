@@ -18,7 +18,7 @@ CalculatedMember from virtual cube uses MeasureCube1 from Cube1 and MeasureCube2
 
 The cube defined in this example is based on a table that stores all the data.
 The table is named `Fact` uses for Cube1 and contains two columns: `KEY` and `VALUE`.
-The KEY column serves as a discriminator, while the `VALUE` column contains the measurements to be aggregated.
+The `KEY` column serves as a discriminator, while the `VALUE` column contains the measurements to be aggregated.
 
 
 ```xml
@@ -64,7 +64,7 @@ CalculatedMember uses MeasureCube1 from Cube1 and MeasureCube2 from Cube2 in for
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## MeasureCube2
 
-Measure uses Fact table VALUE column with sum aggregation in Cube2.
+Measure uses `Fact` table `VALUE` column with sum aggregation in Cube2.
 
 
 ```xml
@@ -74,7 +74,7 @@ Measure uses Fact table VALUE column with sum aggregation in Cube2.
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Cube1
 
-In this example uses cube with fact table Fact as data.
+In this example uses cube with fact table `Fact` as data.
 
 
 ```xml
@@ -89,7 +89,7 @@ In this example uses cube with fact table Fact as data.
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Cube1
 
-In this example uses cube with fact table Fact as data.
+In this example uses cube with fact table `Fact` as data.
 
 
 ```xml
@@ -134,16 +134,16 @@ This files represent the complete definition of the catalog.
   <roma:TableQuery id="_table_factQuery" table="_table_fact"/>
   <roma:Level id="_level" name="Level" column="_column_fact_key"/>
   <roma:StandardDimension id="_dimension1" name="Dimension1" hierarchies="_hierarchy_HierarchyWithoutHasAll"/>
-  <roma:PhysicalCube id="_cube1" name="Cube1" query="_table_factQuery">
-    <dimensionConnectors foreignKey="_column_fact_key" dimension="_dimension1" overrideDimensionName="Cube1Dimension1" id="_dc_cube1Dimension1"/>
-    <measureGroups>
-      <measures xsi:type="roma:SumMeasure" id="_measurecube1" name="MeasureCube1" column="_column_fact_value"/>
-    </measureGroups>
-  </roma:PhysicalCube>
   <roma:PhysicalCube id="_cube2" name="Cube2" query="_table_factQuery">
     <dimensionConnectors foreignKey="_column_fact_key" dimension="_dimension1" overrideDimensionName="Cube2Dimension1" id="_dc_cube2Dimension1"/>
     <measureGroups>
       <measures xsi:type="roma:SumMeasure" id="_measurecube2" name="MeasureCube2" column="_column_fact_value"/>
+    </measureGroups>
+  </roma:PhysicalCube>
+  <roma:PhysicalCube id="_cube1" name="Cube1" query="_table_factQuery">
+    <dimensionConnectors foreignKey="_column_fact_key" dimension="_dimension1" overrideDimensionName="Cube1Dimension1" id="_dc_cube1Dimension1"/>
+    <measureGroups>
+      <measures xsi:type="roma:SumMeasure" id="_measurecube1" name="MeasureCube1" column="_column_fact_value"/>
     </measureGroups>
   </roma:PhysicalCube>
   <roma:VirtualCube id="_cube1cube2" name="Cube1Cube2" dimensionConnectors="_dc_cube1Dimension1 _dc_cube2Dimension1" referencedMeasures="_measurecube1 _measurecube2">

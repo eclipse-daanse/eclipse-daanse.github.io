@@ -68,8 +68,8 @@ This files represent the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:ExplicitHierarchy id="_hierarchy_townHierarchy" name="TownHierarchy" primaryKey="_column_fact_key" query="_query_fact" levels="_level_continent _level_country _level_town"/>
   <roma:ExplicitHierarchy id="_hierarchy_timeHierarchy" name="TimeHierarchy" primaryKey="_column_fact_key" query="_query_fact" levels="_level_year _level_month"/>
+  <roma:ExplicitHierarchy id="_hierarchy_townHierarchy" name="TownHierarchy" primaryKey="_column_fact_key" query="_query_fact" levels="_level_continent _level_country _level_town"/>
   <roma:OrderedColumn column="_column_fact_comment"/>
   <roma:Catalog description="Text aggregation functions" name="Daanse Tutorial - Cube Measure Aggregator Text Agg" cubes="_cube_measuresTextAggregators" dbschemas="_databaseSchema_main"/>
   <roma:DatabaseSchema id="_databaseSchema_main">
@@ -92,11 +92,11 @@ This files represent the complete definition of the catalog.
     </sqls>
   </roma:SQLExpressionColumn>
   <roma:TableQuery id="_query_fact" table="_table_fact"/>
-  <roma:Level id="_level_town" name="Town" column="_column_fact_key"/>
-  <roma:Level id="_level_year" name="Year" column="_column_fact_year" type="TimeYears"/>
-  <roma:Level id="_level_country" name="Country" column="_column_fact_country"/>
-  <roma:Level id="_level_month" name="Month" column="_column_fact_month" type="TimeMonths" nameColumn="_column_fact_monthName"/>
   <roma:Level id="_level_continent" name="Continent" column="_column_fact_continent"/>
+  <roma:Level id="_level_country" name="Country" column="_column_fact_country"/>
+  <roma:Level id="_level_year" name="Year" column="_column_fact_year" type="TimeYears"/>
+  <roma:Level id="_level_month" name="Month" column="_column_fact_month" type="TimeMonths" nameColumn="_column_fact_monthName"/>
+  <roma:Level id="_level_town" name="Town" column="_column_fact_key"/>
   <roma:StandardDimension id="_dimension_town" name="Town" hierarchies="_hierarchy_townHierarchy"/>
   <roma:TimeDimension id="_dimension_time" name="Time" hierarchies="_hierarchy_timeHierarchy"/>
   <roma:PhysicalCube id="_cube_measuresTextAggregators" name="MeasuresTextAggregatorsCube" query="_query_fact">

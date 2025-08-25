@@ -15,11 +15,11 @@ The following example demonstrates how to define such a query.
 
 ## Database Schema
 
-The cube defined in this example is based on three tables: Fact, Town, and Country.
+The cube defined in this example is based on three tables: `Fact`, `Town`, and `Country`.
 
-- The Fact table contains measures and a reference to the Town table.
-- The Fact table is linked to the Town table through the TOWN_ID column, which corresponds to the ID column in the Town table.
-- The Town table includes a column that references the primary key of the Country table.
+- The `Fact` table contains measures and a reference to the `Town` table.
+- The `Fact` table is linked to the `Town` table through the TOWN_ID column, which corresponds to the `ID` column in the `Town` table.
+- The `Town` table includes a column that references the primary key of the `Country` table.
 - The Country table consists of two columns: ID (primary key) and Name.
 
 This structure ensures that the hierarchy is properly normalized, following the Third Normal Form (3NF).
@@ -92,7 +92,7 @@ The TableQuery for the Level, as it directly references the physical table `Fact
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Level - Town
 
-The Level uses the column attribute to specify the primary key column. Additionally, it defines the nameColumn attribute to specify the column that contains the name of the level.
+The `Town` level uses the column attribute to specify the primary key column. Additionally, it defines the nameColumn attribute to specify the column that contains the name of the level.
 
 
 ```xml
@@ -102,7 +102,7 @@ The Level uses the column attribute to specify the primary key column. Additiona
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Level - Country
 
-The Country level follows the same pattern as the Town level.
+The `Country` level follows the same pattern as the `Town` level.
 
 
 ```xml
@@ -112,7 +112,7 @@ The Country level follows the same pattern as the Town level.
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Hierarchy
 
-This hierarchy consists of two levels: Town and Country.
+This hierarchy consists of two levels: `Town` and `Country`.
 - The primaryKey attribute specifies the column that contains the primary key of the hierarchy.
 - The query attribute references the query used to retrieve the data for the hierarchy.
 
@@ -175,14 +175,14 @@ This files represent the complete definition of the catalog.
     </tables>
   </roma:DatabaseSchema>
   <roma:TableQuery id="_query_fact" table="_table_fact"/>
-  <roma:TableQuery id="_query_country" table="_table_country"/>
   <roma:TableQuery id="_query_town" table="_table_town"/>
+  <roma:TableQuery id="_query_country" table="_table_country"/>
   <roma:JoinQuery id="_query_townToCountry">
     <left key="_column_town_id" query="_query_town"/>
     <right key="_column_country_id" query="_query_country"/>
   </roma:JoinQuery>
-  <roma:Level id="_level_town" name="Town" column="_column_town_id" nameColumn="_column_town_name"/>
   <roma:Level id="_level_country" name="County" column="_column_country_id" nameColumn="_column_country_name"/>
+  <roma:Level id="_level_town" name="Town" column="_column_town_id" nameColumn="_column_town_name"/>
   <roma:StandardDimension id="_dimension_town" name="Town" hierarchies="_hierarchy_townHierarchy"/>
   <roma:PhysicalCube id="_cube_queryLinkedTables" name="Cube Query linked Tables" query="_query_fact">
     <dimensionConnectors foreignKey="_column_fact_townId" dimension="_dimension_town" id="_dimensionConnector_town"/>

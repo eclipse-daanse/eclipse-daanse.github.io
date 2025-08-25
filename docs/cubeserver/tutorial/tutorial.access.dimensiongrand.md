@@ -8,13 +8,13 @@ number: 2.4.6
 
 This tutorial discusses roles with DimensionGrant.
 
-`role1` role:   use DimensionGrant access to `Dimension1` and not access to `Dimension2` of `cube1`
+- `role1` role:   use DimensionGrant access to `Dimension1` and not access to `Dimension2` of `cube1`
 
 
 
 ## Database Schema
 
-The Database Schema contains the `Fact` table with two columns: KEY and VALUE. The KEY column is used as the discriminator in the the Level and Hierarchy definitions.
+The Database Schema contains the `Fact` table with two columns: `KEY` and `VALUE`. The `KEY` column is used as the discriminator in the the Level and Hierarchy definitions.
 
 
 ```xml
@@ -39,7 +39,7 @@ The Query is a simple TableQuery that selects all columns from the `Fact` table 
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Level1
 
-This Example uses one simple Level1 bases on the KEY column.
+This Example uses one simple Level1 bases on the `KEY` column.
 
 
 ```xml
@@ -49,7 +49,7 @@ This Example uses one simple Level1 bases on the KEY column.
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Hierarchy1 without hasAll Level1
 
-The Hierarchy1 is defined with the hasAll property set to false and the one level1.
+The Hierarchy1 is defined with the hasAll property set to false and the one `level1`.
 
 
 ```xml
@@ -59,7 +59,7 @@ The Hierarchy1 is defined with the hasAll property set to false and the one leve
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Dimension1
 
-The dimension1 is defined with the one hierarchy1.
+The `dimension1` is defined with the one `hierarchy1`.
 
 
 ```xml
@@ -69,7 +69,7 @@ The dimension1 is defined with the one hierarchy1.
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Cube1 with access all
 
-The cube1 is defines by the DimensionConnector1 and the DimensionConnector2  and the MeasureGroup with measure with aggregation sum.
+The `cube1` is defines by the DimensionConnector1 and the DimensionConnector2  and the MeasureGroup with measure with aggregation sum.
 
 
 ```xml
@@ -85,7 +85,7 @@ The cube1 is defines by the DimensionConnector1 and the DimensionConnector2  and
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Role1
 
-The `role1` use CatalogGrant access `all_dimensions`; CubeGrant cube1 access `all`; cube2 access `none` (access cube1)
+The `role1` use CatalogGrant access `all_dimensions`; CubeGrant `cube1` access `all`; `cube2` access `none` (access `cube1`)
 
 
 ```xml

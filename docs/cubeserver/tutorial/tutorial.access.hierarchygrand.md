@@ -8,7 +8,7 @@ number: 2.4.7
 
 This tutorial discusses role with HierarchyGrant
 
-`role1` role:   use HierarchyGrant hierarchy1 access `all` hierarchy2 access `none`;
+- `role1` role:   use HierarchyGrant hierarchy1 access `all` hierarchy2 access `none`;
 
 
 ## Database Schema

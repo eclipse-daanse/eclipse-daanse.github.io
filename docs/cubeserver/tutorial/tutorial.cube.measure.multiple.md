@@ -11,7 +11,7 @@ Data cubes can have multiple measures to provide different data related to the c
 
 ## Database Schema
 
-The cube defined in this example is based on a single table that stores all the data. The table, named Fact, contains four columns: KEY, VALUE1, VALUE2, and VALUE3. The KEY column acts as a discriminator, while the VALUE1, VALUE2, and VALUE3 columns contain the measurements to be aggregated.
+The cube defined in this example is based on a single table that stores all the data. The table, named `Fact`, contains four columns: `KEY`, `VALUE1`, `VALUE2`, and `VALUE3`. The `KEY` column acts as a discriminator, while the `VALUE1`, `VALUE2`, and `VALUE3` columns contain the measurements to be aggregated.
 
 
 ```xml

@@ -8,13 +8,13 @@ number: 2.4.5
 
 This tutorial discusses roles with with CubeGrant.
 
-role1 role:   use CubeGrant cube1 access all; cube2 access none (access cube1)
+- `role1` role:   use CubeGrant cube1 access `all`; cube2 access `none` (access `cube1`)
 
 
 
 ## Database Schema
 
-The Database Schema contains the Fact table with two columns: KEY and VALUE. The KEY column is used as the discriminator in the the Level and Hierarchy definitions.
+The Database Schema contains the `Fact` table with two columns: `KEY` and `VALUE`. The `KEY` column is used as the discriminator in the the Level and Hierarchy definitions.
 
 
 ```xml
@@ -29,7 +29,7 @@ The Database Schema contains the Fact table with two columns: KEY and VALUE. The
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Query
 
-The Query is a simple TableQuery that selects all columns from the Fact table to use in in the hierarchy and in the cube for the measures.
+The Query is a simple TableQuery that selects all columns from the `Fact` table to use in in the hierarchy and in the cube for the measures.
 
 
 ```xml
@@ -39,7 +39,7 @@ The Query is a simple TableQuery that selects all columns from the Fact table to
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Level1
 
-This Example uses one simple Level1 bases on the KEY column.
+This Example uses one simple Level1 bases on the `KEY` column.
 
 
 ```xml
@@ -69,7 +69,7 @@ The dimension1 is defined with the one hierarchy1.
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Cube1 with access all
 
-The cube1 is defines by the DimensionConnector1 and the DimensionConnector2  and the MeasureGroup with measure with aggregation sum.
+The `cube1` is defines by the DimensionConnector1 and the DimensionConnector2  and the MeasureGroup with measure with aggregation sum.
 
 
 ```xml
@@ -85,7 +85,7 @@ The cube1 is defines by the DimensionConnector1 and the DimensionConnector2  and
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Cube2 with access none
 
-The cube2 is defines by the DimensionConnector1 and the MeasureGroup with measure with aggregation sum.
+The `cube2` is defines by the DimensionConnector1 and the MeasureGroup with measure with aggregation sum.
 
 
 ```xml
@@ -98,7 +98,7 @@ The cube2 is defines by the DimensionConnector1 and the MeasureGroup with measur
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Role1
 
-The role1 use CatalogGrant access all_dimensions; CubeGrant cube1 access all; cube2 access none (access cube1)
+The `role1` use CatalogGrant access all_dimensions; CubeGrant `cube1` access `all`; cube2 access `none` (access cube1)
 
 
 ```xml
@@ -131,16 +131,16 @@ This files represent the complete definition of the catalog.
   <roma:TableQuery id="_query_factQuery" table="_table_fact"/>
   <roma:Level id="_level_Level1" name="Level1" column="_column_fact_key"/>
   <roma:StandardDimension id="_dimension_Dimension1" name="Dimension1" hierarchies="_hierarchy_Hierarchy1"/>
-  <roma:PhysicalCube id="_cube_Cube2" name="Cube2" query="_query_factQuery">
-    <dimensionConnectors foreignKey="_column_fact_key" dimension="_dimension_Dimension1" overrideDimensionName="Dimension1" id="_dimensionConnector_dimension1"/>
-    <measureGroups/>
-  </roma:PhysicalCube>
   <roma:PhysicalCube id="_cube_Cube1" name="Cube1" query="_query_factQuery">
     <dimensionConnectors foreignKey="_column_fact_key" dimension="_dimension_Dimension1" overrideDimensionName="Dimension1" id="_dimensionConnector_dimension11"/>
     <dimensionConnectors foreignKey="_column_fact_key" dimension="_dimension_Dimension1" overrideDimensionName="Dimension2" id="_dimensionConnector_dimension12"/>
     <measureGroups>
       <measures xsi:type="roma:SumMeasure" id="_measure_Measure1" name="Measure1" column="_column_fact_value"/>
     </measureGroups>
+  </roma:PhysicalCube>
+  <roma:PhysicalCube id="_cube_Cube2" name="Cube2" query="_query_factQuery">
+    <dimensionConnectors foreignKey="_column_fact_key" dimension="_dimension_Dimension1" overrideDimensionName="Dimension1" id="_dimensionConnector_dimension1"/>
+    <measureGroups/>
   </roma:PhysicalCube>
   <roma:AccessRole id="_accessRole_role1" name="role1">
     <accessCatalogGrants catalogAccess="all_dimensions">

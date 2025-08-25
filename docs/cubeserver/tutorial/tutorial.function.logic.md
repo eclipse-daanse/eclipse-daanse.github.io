@@ -12,7 +12,7 @@ This tutorial discusses Calculated Members with logic functions.
 
 ## Database Schema
 
-The Database Schema contains the Fact table with three columns: KEY and VALUE and VALUE_NUMERIC.
+The Database Schema contains the `Fact` table with three columns: `KEY` and `VALUE` and `VALUE_NUMERIC`.
 
 
 ```xml
@@ -37,7 +37,7 @@ The Query is a simple TableQuery that selects all columns from the Fact table to
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Calculated Member with IIF function
 
-This calculated member with IIF function.
+This calculated member with `IIF` function.
 
 
 ```xml

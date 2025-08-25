@@ -8,16 +8,16 @@ number: 2.9.1
 
 This tutorial discusses NamedSets.
 
-NsWithFolderDimension1    : NamedSet use only Dimension1 in formula. By this reason it connected to Dimension1 on excel. NamedSet have folder
-NsWithoutFolderDimension1 : NamedSet use only Dimension1 in formula. By this reason it connected to Dimension1 on excel.
-NSInCubeWithFolder        : NamedSet use Dimension1 and Dimension2 in formula. By this reason it connected to Cube on excel. NamedSet have folder
-NSInCubeWithoutFolder     : NamedSet use Dimension1 and Dimension2 in formula. By this reason it connected to Cube.
+- NsWithFolderDimension1    : NamedSet use only `Dimension1` in formula. By this reason it connected to `Dimension1` on excel. NamedSet have folder
+- NsWithoutFolderDimension1 : NamedSet use only `Dimension1` in formula. By this reason it connected to `Dimension1` on excel.
+- NSInCubeWithFolder        : NamedSet use `Dimension1` and `Dimension2` in formula. By this reason it connected to Cube on excel. NamedSet have folder
+- NSInCubeWithoutFolder     : NamedSet use `Dimension1` and `Dimension2` in formula. By this reason it connected to Cube.
 
 
 ## Database Schema
 
-The Database Schema contains the Fact table with 9 columns: DATE_KEY, YEAR_ID, QTR_ID, QTR_NAME, MONTH_ID, MONTH_NAME, WEEK_IN_MONTH, DAY_IN_MONTH and VALUE.
-The DATE_KEY column is used as the discriminator in the Hierarchy definitions.
+The Database Schema contains the `Fact` table with 9 columns: `DATE_KEY`, `YEAR_ID`, `QTR_ID`, `QTR_NAME`, `MONTH_ID`, `MONTH_NAME`, `WEEK_IN_MONTH`, `DAY_IN_MONTH` and `VALUE`.
+The `DATE_KEY` column is used as the discriminator in the Hierarchy definitions.
 
 
 ```xml
@@ -122,11 +122,11 @@ The time dimension is defined with the one hierarchy.
 The cube with TimeDimension
 Time cube have TimeDimension. The role of a level in a time dimension is indicated by the level's levelType attribute, whose allowable values are as follows:
 
-TimeYears   Level is a year
-TimeQuarters    Level is a quarter
-TimeMonths  Level is a month
-TimeWeeks   Level is a week
-TimeDays    Level represents days
+- TimeYears   Level is a year
+- TimeQuarters    Level is a quarter
+- TimeMonths  Level is a month
+- TimeWeeks   Level is a week
+- TimeDays    Level represents days
 
 
 ```xml
@@ -163,10 +163,10 @@ This files represent the complete definition of the catalog.
     </tables>
   </roma:DatabaseSchema>
   <roma:TableQuery id="_query_fact" table="_table_fact"/>
+  <roma:Level id="_level_quarters" name="Quarters" column="_column_fact_qtrName" type="TimeQuarters" ordinalColumn="_column_fact_qtrId"/>
   <roma:Level id="_level_day" name="Day" column="_column_fact_dayInMonth" type="TimeDays"/>
   <roma:Level id="_level_week" name="Week" column="_column_fact_weekInMonth" type="TimeWeeks"/>
   <roma:Level id="_level_years" name="Years" column="_column_fact_yearId" type="TimeYears" uniqueMembers="true"/>
-  <roma:Level id="_level_quarters" name="Quarters" column="_column_fact_qtrName" type="TimeQuarters" ordinalColumn="_column_fact_qtrId"/>
   <roma:Level id="_level_months" name="Months" column="_column_fact_monthName" type="TimeMonths" ordinalColumn="_column_fact_monthId"/>
   <roma:TimeDimension id="_dimension_time" name="Time" hierarchies="_hierarchy_time"/>
   <roma:PhysicalCube id="_cube_timeDimension" name="CubeTimeDimension" query="_query_fact">

@@ -48,7 +48,7 @@ This example uses a TableQuery, as it directly references the physical table `Fa
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Measure1
 
-        Measure with CellFormatter. measure reference the `VALUE` column and use the following SUM aggregation function.
+        Measure with CellFormatter. measure reference the `VALUE` column and use the following `SUM` aggregation function.
 
 
 ```xml
@@ -58,7 +58,7 @@ This example uses a TableQuery, as it directly references the physical table `Fa
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Cube with Measures CellFormatter
 
-In this example, measure with CellFormatter. measure reference the `VALUE` column and use the following SUM aggregation function.
+In this example, measure with CellFormatter. measure reference the `VALUE` column and use the following `SUM` aggregation function.
 
 
 ```xml

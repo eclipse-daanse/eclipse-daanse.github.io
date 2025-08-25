@@ -11,7 +11,7 @@ In some cases, all data are stored in one table, the fact as well as multiple le
 
 ## Database Schema
 
-The cube defined in this example is based on only one tables. The Fact table contains a measures the name of the Town and the Country.
+The cube defined in this example is based on only one tables. The `Fact` table contains a measures the name of the `Town` and the `Country`.
 
 
 ```xml
@@ -37,7 +37,7 @@ The TableQuery for the Levels and the Measure.
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Level
 
-The level of the Town used the `column` attribute to define the column that holds the name, wich is also the key Column.
+The level of the `Town` used the `column` attribute to define the column that holds the name, wich is also the key Column.
 
 
 ```xml
@@ -47,7 +47,7 @@ The level of the Town used the `column` attribute to define the column that hold
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Level
 
-The level  of the Country used the `column` attribute to define the column that holds the name, wich is also the key Column.
+The level  of the `Country` used the `column` attribute to define the column that holds the name, wich is also the key Column.
 
 
 ```xml
@@ -112,8 +112,8 @@ This files represent the complete definition of the catalog.
     </tables>
   </roma:DatabaseSchema>
   <roma:TableQuery id="_query_fact" table="_table_fact"/>
-  <roma:Level id="_level_town" name="Town" column="_column_fact_key"/>
   <roma:Level id="_level_country" name="Country" column="_column_fact_country"/>
+  <roma:Level id="_level_town" name="Town" column="_column_fact_key"/>
   <roma:StandardDimension id="_dimension_town" name="Town" hierarchies="_hierarchy_townHierarchy"/>
   <roma:PhysicalCube id="_cube_queryLinkedTables" name="Cube Query linked Tables" query="_query_fact">
     <dimensionConnectors foreignKey="_column_fact_country" dimension="_dimension_town" id="_dimensionConnector_town"/>

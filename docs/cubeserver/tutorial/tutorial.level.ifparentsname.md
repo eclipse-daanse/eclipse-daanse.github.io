@@ -13,10 +13,10 @@ SqlView represents a virtual table defined by SQL query expressions rather than 
 ## Database Schema
 
 The cube defined in this example is based on a 3 tables that stores all the data.
-The phisical table is named `Fact` uses for Cube1 and contains two columns: `DIM_KEY` and `VALUE`.
-The DIM_KEY column serves as a discriminator, while the `VALUE` column contains the measurements to be aggregated.
-The phisical table is named `Level_1` uses for Level1 and contains 2 columns: `KEY`, `NAME` .
-The phisical table is named `Level_2` uses for Level2 and contains 3 columns: `KEY`, `NAME`, `L1_KEY`.
+- The phisical table is named `Fact` uses for `Cube1` and contains two columns: `DIM_KEY` and `VALUE`.
+The `DIM_KEY` column serves as a discriminator, while the `VALUE` column contains the measurements to be aggregated.
+- The phisical table is named `Level_1` uses for Level1 and contains 2 columns: `KEY`, `NAME` .
+- The phisical table is named `Level_2` uses for Level2 and contains 3 columns: `KEY`, `NAME`, `L1_KEY`.
 
 
 ```xml
@@ -52,17 +52,6 @@ as it directly references the physical table `Fact`.
 ## Query Level1
 
 The bridge between the cube and the database is the query element. In this case, it is a TableQuery,
-as it directly references the physical table `Level_1`.
-
-
-```xml
-<roma:TableQuery  id="_queryLevel1" table="_level_1"/>
-
-```
-*<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
-## Query Level1
-
-The bridge between the cube and the database is the query element. In this case, it is a TableQuery,
 as it directly references the physical table `Level_2`.
 
 
@@ -71,12 +60,23 @@ as it directly references the physical table `Level_2`.
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
+## Query Level1
+
+The bridge between the cube and the database is the query element. In this case, it is a TableQuery,
+as it directly references the physical table `Level_1`.
+
+
+```xml
+<roma:TableQuery  id="_queryLevel1" table="_level_1"/>
+
+```
+*<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Query Join
 
 The JoinQuery specifies which TableQueries should be joined. It also defines the columns in each table that are used for the join:
 
-- In the lower-level table (Level_2), the join uses the foreign key L1_KEY.
-- In the upper-level table (Level_1), the join uses the primary key KEY.
+- In the lower-level table (`Level_2`), the join uses the foreign key `L1_KEY`.
+- In the upper-level table (`Level_1`), the join uses the primary key `KEY`.
 
 
 
@@ -127,7 +127,7 @@ the column that contains the name of the level.
 The Level uses the column attribute to specify the primary key `KEY` from `Level_2`.
 Additionally, it defines the nameColumn `NAME` from `Level_2` attribute  to specify
 the column that contains the name of the level.
-Level has  attribute HideMemberIf.IF_PARENTS_NAME
+Level has  attribute `IF_PARENTS_NAME`
 Hide members whose name matches their parent member's name.
 Eliminates redundant display where child members have identical names to their parents in the hierarchy.
 
@@ -188,8 +188,8 @@ This files represent the complete definition of the catalog.
     </tables>
   </roma:DatabaseSchema>
   <roma:TableQuery id="_queryFact" table="_table_fact"/>
-  <roma:TableQuery id="_queryLevel1" table="_level_1"/>
   <roma:TableQuery id="_queryLevel2" table="_level_2"/>
+  <roma:TableQuery id="_queryLevel1" table="_level_1"/>
   <roma:JoinQuery id="_queryJoin1">
     <left key="_level_2_l1_key" query="_queryLevel2"/>
     <right key="_column_level_1_key" query="_queryLevel1"/>

@@ -39,7 +39,7 @@ This KPI is defined solely by its value expression, which in this example refere
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## KPI - DisplayFolder
 
-This KPI is additionally using a ParentKpiID.
+This KPI is additionally using a `ParentKpiID`.
 
 
 ```xml

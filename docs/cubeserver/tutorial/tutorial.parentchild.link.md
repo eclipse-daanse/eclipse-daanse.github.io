@@ -21,9 +21,9 @@ When specified, provides significant performance benefits for deep hierarchies w
 
 ## Database Schema
 
-The Database Schema contains the Parent table with 3 columns: NAME, PARENT and VALUE.
-The NAME column is used as the discriminator in the Hierarchy definitions.
-The Database Schema also contains the Closure  table with 3 columns: NAME, PARENT and DISTANCE.
+The Database Schema contains the `Parent` table with 3 columns: `NAME`, `PARENT` and `VALUE`.
+The `NAME` column is used as the discriminator in the Hierarchy definitions.
+The Database Schema also contains the Closure  table with 3 columns: `NAME`, `PARENT` and `DISTANCE`.
 
 
 ```xml
@@ -54,7 +54,7 @@ The Query is a simple TableQuery that selects all columns from the Parent table 
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Closure Query
 
-The ClosureQuery is a simple TableQuery that selects all columns from the Parent table to use in the parent child link.
+The ClosureQuery is a simple TableQuery that selects all columns from the `Parent` table to use in the parent child link.
 
 
 ```xml
@@ -64,7 +64,7 @@ The ClosureQuery is a simple TableQuery that selects all columns from the Parent
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Level
 
-This Example uses 'Name' level bases on the NAME column as key and name column NAME of table Parent.
+This Example uses 'Name' level bases on the `NAME` column as key and name column `NAME` of table `Parent`.
 
 
 ```xml

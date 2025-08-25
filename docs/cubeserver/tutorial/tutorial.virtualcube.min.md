@@ -16,10 +16,10 @@ Catalog have two physical cubes Cube1 and Cube2 and virtual cube VirtualCubeMeas
 ## Database Schema
 
 The cube defined in this example is based on a two tables that stores all the data.
-The table is named `C1_Fact` uses for Cube1 and contains two columns: `KEY` and `VALUE`.
-The KEY column serves as a discriminator, while the `VALUE` column contains the measurements to be aggregated.
-The table is named `C2_Fact`uses for Cube2 and contains two columns: `KEY` and `VALUE`.
-The KEY column serves as a discriminator, while the `VALUE` column contains the measurements to be aggregated.
+- The table is named `C1_Fact` uses for Cube1 and contains two columns: `KEY` and `VALUE`.
+The `KEY` column serves as a discriminator, while the `VALUE` column contains the measurements to be aggregated.
+- The table is named `C2_Fact`uses for Cube2 and contains two columns: `KEY` and `VALUE`.
+The `KEY` column serves as a discriminator, while the `VALUE` column contains the measurements to be aggregated.
 
 
 ```xml
@@ -60,7 +60,7 @@ as it directly references the physical table `C2_Fact`.
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## C1-Measure-Sum
 
-        Measure use C1_Fact table VALUE column with sum aggregation.
+        Measure use `C1_Fact` table `VALUE` column with sum aggregation.
 
 
 ```xml
@@ -70,7 +70,7 @@ as it directly references the physical table `C2_Fact`.
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## C2-Measure-Sum
 
-        Measure use C2_Fact table VALUE column with sum aggregation.
+        Measure use `C2_Fact` table `VALUE` column with sum aggregation.
 
 
 ```xml

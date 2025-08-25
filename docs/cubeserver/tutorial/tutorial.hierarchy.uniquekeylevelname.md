@@ -11,10 +11,10 @@ Catalog with Minimal Cube with Parent Child Hierarchy
 
 ## Database Schema
 
-The Database Schema contains the AUTOMOTIVE_DIM table with 16 columns:
-AUTO_DIM_ID, MAKE_ID, MAKE, MODEL_ID, MODEL, PLANT_ID, PLANT, PLANT_STATE_ID,
-PLANT_CITY_ID, VEHICLE_ID, COLOR_ID, TRIM_ID, LICENSE_ID,LICENSE,LICENSE_STATE_ID,PRICE.
-The AUTO_DIM_ID column is used as the discriminator in the Hierarchy definitions.
+The Database Schema contains the `AUTOMOTIVE_DIM` table with 16 columns:
+`AUTO_DIM_ID`, `MAKE_ID`, `MAKE`, `MODEL_ID`, `MODEL`, `PLANT_ID`, `PLANT`, `PLANT_STATE_ID`,
+`PLANT_CITY_ID`, `VEHICLE_ID`, `COLOR_ID`, `TRIM_ID`, `LICENSE_ID`, `LICENSE`, `LICENSE_STATE_ID`, `PRICE`.
+The `AUTO_DIM_ID` column is used as the discriminator in the Hierarchy definitions.
 
 
 ```xml
@@ -43,7 +43,7 @@ The AUTO_DIM_ID column is used as the discriminator in the Hierarchy definitions
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Query
 
-The Query is a simple TableQuery that selects all columns from the AUTOMOTIVE_DIM table to use in the measures.
+The Query is a simple TableQuery that selects all columns from the `AUTOMOTIVE_DIM` table to use in the measures.
 
 
 ```xml
@@ -78,7 +78,7 @@ of values for all levels below it.
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Make
 
-This Example uses 'Make' level bases on the MAKE_ID column as key and name column MAKE of table AUTOMOTIVE_DIM.
+This Example uses 'Make' level bases on the `MAKE_ID` column as key and name column `MAKE` of table `AUTOMOTIVE_DIM`.
 
 
 ```xml
@@ -88,7 +88,7 @@ This Example uses 'Make' level bases on the MAKE_ID column as key and name colum
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Model
 
-This Example uses 'Model' level bases on the MODEL_ID column as key and name column MODEL of table AUTOMOTIVE_DIM.
+This Example uses 'Model' level bases on the `MODEL_ID` column as key and name column `MODEL` of table `AUTOMOTIVE_DIM`.
 
 
 ```xml
@@ -98,7 +98,7 @@ This Example uses 'Model' level bases on the MODEL_ID column as key and name col
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## ManufacturingPlant
 
-This Example uses 'ManufacturingPlant' level bases on the PLANT_ID column as key and name column PLANT of table AUTOMOTIVE_DIM.
+This Example uses 'ManufacturingPlant' level bases on the `PLANT_ID` column as key and name column `PLANT` of table `AUTOMOTIVE_DIM`.
 
 
 ```xml
@@ -111,7 +111,7 @@ This Example uses 'ManufacturingPlant' level bases on the PLANT_ID column as key
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Vehicle Identification Number
 
-This Example uses 'Vehicle Identification Number' level bases on the VEHICLE_ID column as key of table AUTOMOTIVE_DIM.
+This Example uses 'Vehicle Identification Number' level bases on the `VEHICLE_ID` column as key of table `AUTOMOTIVE_DIM`.
 
 
 ```xml
@@ -124,7 +124,7 @@ This Example uses 'Vehicle Identification Number' level bases on the VEHICLE_ID 
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## LicensePlateNum
 
-This Example uses 'LicensePlateNum' level bases on the LICENSE_ID column as key and name column LICENSE of table AUTOMOTIVE_DIM.
+This Example uses 'LicensePlateNum' level bases on the `LICENSE_ID` column as key and name column `LICENSE` of table `AUTOMOTIVE_DIM`.
 
 
 ```xml
@@ -194,13 +194,13 @@ This files represent the complete definition of the catalog.
     <memberProperties id="_memberProperty_state" name="State" column="_column_automotiveDim_plantStateId" dependsOnLevelValue="true" propertyType="Numeric"/>
     <memberProperties id="_memberProperty_city" name="City" column="_column_automotiveDim_plantCityId" dependsOnLevelValue="true" propertyType="Numeric"/>
   </roma:Level>
-  <roma:Level id="_level_vehicleIdentificationNumber" name="Vehicle Identification Number" column="_column_automotiveDim_vehicleId">
-    <memberProperties id="_memberProperty_color" name="Color" column="_column_automotiveDim_colorId" dependsOnLevelValue="true" propertyType="Numeric"/>
-    <memberProperties id="_memberProperty_trim" name="Trim" column="_column_automotiveDim_trimId" dependsOnLevelValue="true" propertyType="Numeric"/>
-  </roma:Level>
   <roma:Level id="_level_model" name="Model" column="_column_automotiveDim_modelId" nameColumn="_column_automotiveDim_model"/>
   <roma:Level id="_level_licensePlateNum" name="LicensePlateNum" column="_column_automotiveDim_licenseId">
     <memberProperties id="_memberProperty_licenseState" name="State" column="_column_automotiveDim_licenseStateId" dependsOnLevelValue="true" propertyType="Numeric"/>
+  </roma:Level>
+  <roma:Level id="_level_vehicleIdentificationNumber" name="Vehicle Identification Number" column="_column_automotiveDim_vehicleId">
+    <memberProperties id="_memberProperty_color" name="Color" column="_column_automotiveDim_colorId" dependsOnLevelValue="true" propertyType="Numeric"/>
+    <memberProperties id="_memberProperty_trim" name="Trim" column="_column_automotiveDim_trimId" dependsOnLevelValue="true" propertyType="Numeric"/>
   </roma:Level>
   <roma:Level id="_level_make" name="Make" column="_column_automotiveDim_makeId" nameColumn="_column_automotiveDim_make"/>
   <roma:StandardDimension id="_dimension_automotive" name="Automotive" hierarchies="_hierarchy_automotive"/>

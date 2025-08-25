@@ -16,7 +16,7 @@ control over which tables should be avoided during aggregation table discovery a
 ## Database Schema
 
 The cube defined in this example is based on a single table that stores all the data. The table is named `Fact` and contains two columns: `KEY` and `VALUE`.
-The KEY column serves as a discriminator, while the `VALUE` column contains the measurements to be aggregated.
+The `KEY` column serves as a discriminator, while the `VALUE` column contains the measurements to be aggregated.
 
 
 ```xml

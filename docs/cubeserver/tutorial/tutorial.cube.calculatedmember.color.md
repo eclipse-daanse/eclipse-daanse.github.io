@@ -12,7 +12,7 @@ This tutorial discusses Calculated Members and Measures with diferent colors.
 
 ## Database Schema
 
-The Database Schema contains the Fact table with three columns: KEY and VALUE and VALUE_NUMERIC. The KEY column is used as the discriminator in the the Level and Hierarchy definitions.
+The Database Schema contains the `Fact` table with three columns: `KEY` and `VALUE` and `VALUE_NUMERIC`. The `KEY` column is used as the discriminator in the the Level and Hierarchy definitions.
 
 
 ```xml
@@ -27,7 +27,7 @@ The Database Schema contains the Fact table with three columns: KEY and VALUE an
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Query
 
-The Query is a simple TableQuery that selects all columns from the Fact table to use in in the hierarchy and in the cube for the measures.
+The Query is a simple TableQuery that selects all columns from the `Fact` table to use in in the hierarchy and in the cube for the measures.
 
 
 ```xml
@@ -37,7 +37,7 @@ The Query is a simple TableQuery that selects all columns from the Fact table to
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Level
 
-This Example uses one simple Level bases on the KEY column.
+This Example uses one simple `Level` bases on the `KEY` column.
 
 
 ```xml
@@ -67,7 +67,7 @@ The dimension is defined with the one hierarchy. The hierarchy is used in the cu
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Calculated Member in Measure with different colors properties
 
-This calculated member have BACK_COLOR in format string. It show posibility to have different colors incal culated member
+This calculated member have `BACK_COLOR` in format string. It show posibility to have different colors incal culated member
 
 
 
@@ -78,7 +78,7 @@ This calculated member have BACK_COLOR in format string. It show posibility to h
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Calculated Member in Measure with different colors properties
 
-This calculated member have BACK_COLOR in format string. It show posibility to have different colors incal culated member
+This calculated member have `BACK_COLOR` in format string. It show posibility to have different colors incal culated member
 
 
 ```xml
