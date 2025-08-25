@@ -13,10 +13,10 @@ creating variable-depth structures.
 
 ## Database Schema
 
-The Database Schema contains the Fact table with two columns: DIM_KEY and VALUE.
-The DATE_KEY column is used as the discriminator in the Hierarchy definitions.
+The Database Schema contains the `Fact` table with two columns: `DIM_KEY` and `VALUE`.
+The `DATE_KEY` column is used as the discriminator in the Hierarchy definitions.
 
-Hier_One_Top_Member table with 3 columns: KEY, NAME, PARENT_KEY
+`Hier_One_Top_Member` table with 3 columns: `KEY`, `NAME`, `PARENT_KEY`
 
 
 ```xml
@@ -46,7 +46,7 @@ The Query is a simple TableQuery that selects all columns from the Fact table to
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Query
 
-The Query is a simple TableQuery that selects all columns from the Hier_One_Top_Member table.
+The Query is a simple TableQuery that selects all columns from the `Hier_One_Top_Member` table.
 
 
 ```xml
@@ -56,7 +56,7 @@ The Query is a simple TableQuery that selects all columns from the Hier_One_Top_
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Level
 
-This Example uses Level1 level bases on the KEY column and name column NAME of table Hier_One_Top_Member.
+This Example uses Level1 level bases on the KEY column and name column `NAME` of table `Hier_One_Top_Member`.
 
 
 ```xml
@@ -127,8 +127,8 @@ This files represent the complete definition of the catalog.
       <columns xsi:type="roma:PhysicalColumn" id="_column_member_parentKey" name="PARENT_KEY" type="Integer"/>
     </tables>
   </roma:DatabaseSchema>
-  <roma:TableQuery id="_query_member" table="_table_member"/>
   <roma:TableQuery id="_query_fact" table="_table_fact"/>
+  <roma:TableQuery id="_query_member" table="_table_member"/>
   <roma:Level id="_level_parentChild" name="Level" column="_column_member_key" nameColumn="_column_member_name" uniqueMembers="true"/>
   <roma:StandardDimension id="_dimension_parentChild" name="Dimension1" hierarchies="_hierarchy_parentChild"/>
   <roma:PhysicalCube id="_cube_parentChildMinimal" name="Cube" query="_query_fact">

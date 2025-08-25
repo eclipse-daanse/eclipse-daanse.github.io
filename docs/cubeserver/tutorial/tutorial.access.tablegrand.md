@@ -8,9 +8,9 @@ number: 2.4.2
 
 This tutorial discusses roles with TableGrant.
 
-`roleAll`    role: use TableGrant access `all`; (access all database all tables)<br />
-`roleNone`   role: use TableGrant access `none`; (no access to database tables)<br />
-`roleCustom` role: use TableGrant access `custom`; (access to database table Fact)<br />
+- `roleAll`    role: use TableGrant access `all`; (access all database all tables)<br />
+- `roleNone`   role: use TableGrant access `none`; (no access to database tables)<br />
+- `roleCustom` role: use TableGrant access `custom`; (access to database table Fact)<br />
 
 
 ## Database Schema

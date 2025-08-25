@@ -32,11 +32,11 @@ A table `Fact` with a Column `VALUE` to have a reference for the Measure.
 ## Kpi with parameters
 
 This KPI is defined
-value             expression, which in this example references the following CalculatedMember: `[Measures].[CalculatedValue]`
-trend             expression, which in this example references the following CalculatedMember: `[Measures].[CalculatedTrend]`
-weight            expression, which in this example references the following CalculatedMember: `[Measures].[CalculatedValue]`
-currentTimeMember expression, which in this example references the following CalculatedMember: `[Measures].[CalculatedValue]`
-DisplayFolder     Kpi1Folder1\Kpi1Folder3 - folder tree of kpi item
+- value             expression, which in this example references the following CalculatedMember: `[Measures].[CalculatedValue]`
+- trend             expression, which in this example references the following CalculatedMember: `[Measures].[CalculatedTrend]`
+- weight            expression, which in this example references the following CalculatedMember: `[Measures].[CalculatedValue]`
+- currentTimeMember expression, which in this example references the following CalculatedMember: `[Measures].[CalculatedValue]`
+- DisplayFolder     Kpi1Folder1\Kpi1Folder3 - folder tree of kpi item
 
 
 ```xml

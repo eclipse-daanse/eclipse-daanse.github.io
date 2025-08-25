@@ -17,8 +17,8 @@ If not specified joins to the lowest level of the dimension
 The Database Schema contains the Fact table with two columns: DIM_KEY and VALUE.
 The DATE_KEY column is used as the discriminator in the Hierarchy definitions.
 
-H1_L1 table with two columns: KEY and NAME
-HX_L2 table with 3 columns: KEY, NAME, H1L1_KEY, H2L1_KEY
+- `H1_L1` table with two columns: `KEY` and `NAME`
+- `HX_L2` table with 3 columns: `KEY`, `NAME`, `H1L1_KEY`, `H2L1_KEY`
 
 
 ```xml
@@ -38,6 +38,16 @@ HX_L2 table with 3 columns: KEY, NAME, H1L1_KEY, H2L1_KEY
     <columns xsi:type="roma:PhysicalColumn" id="_hx_l2_h2l1_key" name="H2L1_KEY" type="Integer"/>
   </tables>
 </roma:DatabaseSchema>
+
+```
+*<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
+## H1L1Query
+
+The Query is a simple TableQuery that selects all columns from the H1_L1 table to use in the hierarchy join.
+
+
+```xml
+<roma:TableQuery  id="_h1l1query" table="_h1_l1"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -61,22 +71,12 @@ The Query is a simple TableQuery that selects all columns from the Fact table to
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
-## H1L1Query
-
-The Query is a simple TableQuery that selects all columns from the H1_L1 table to use in the hierarchy join.
-
-
-```xml
-<roma:TableQuery  id="_h1l1query" table="_h1_l1"/>
-
-```
-*<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## JoinQuery
 
 The JoinQuery specifies which TableQueries should be joined. It also defines the columns in each table that are used for the join:
 
-- In the lower-level table (Hx_L2), the join uses the foreign key H1L1_KEY.
-- In the upper-level table (H1_L1), the join uses the primary key KEY.
+- In the lower-level table (`Hx_L2`), the join uses the foreign key `H1L1_KEY`.
+- In the upper-level table (`H1_L1`), the join uses the primary key `KEY`.
 
 
 
@@ -90,7 +90,7 @@ The JoinQuery specifies which TableQueries should be joined. It also defines the
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## H1_Level1
 
-This Example uses H1_Level1 level bases on the KEY column and name column NAME of table H1_L1.
+This Example uses `H1_Level1` level bases on the `KEY` column and name column `NAME` of table `H1_L1`.
 
 
 ```xml
@@ -100,7 +100,7 @@ This Example uses H1_Level1 level bases on the KEY column and name column NAME o
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## H1_Level2
 
-This Example uses H1_Level2 level bases on the KEY column and name column NAME of table HX_L2.
+This Example uses `H1_Level2` level bases on the `KEY` column and name column `NAME` of table `HX_L2`.
 
 
 ```xml
@@ -110,7 +110,7 @@ This Example uses H1_Level2 level bases on the KEY column and name column NAME o
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Hierarchy1
 
-The Hierarchy1 is defined with the hasAll property set to false and the two levels H1_Level1 and H1_Level2.
+The Hierarchy1 is defined with the hasAll property set to false and the two levels `H1_Level1` and `H1_Level2`.
 
 
 ```xml
@@ -176,9 +176,9 @@ This files represent the complete definition of the catalog.
       <columns xsi:type="roma:PhysicalColumn" id="_hx_l2_h2l1_key" name="H2L1_KEY" type="Integer"/>
     </tables>
   </roma:DatabaseSchema>
+  <roma:TableQuery id="_h1l1query" table="_h1_l1"/>
   <roma:TableQuery id="_hxl2query" table="_hx_l2"/>
   <roma:TableQuery id="_table_factQuery" table="_table_fact"/>
-  <roma:TableQuery id="_h1l1query" table="_h1_l1"/>
   <roma:JoinQuery id="_joinQuery">
     <left key="_hx_l2_h1l1_key" query="_hxl2query"/>
     <right key="_h1_l1_key" query="_h1l1query"/>

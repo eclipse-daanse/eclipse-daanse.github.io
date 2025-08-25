@@ -11,7 +11,7 @@ This Tutorial is about MemberProperties. MemberProperties are attributes of a hi
 
 ## Database Schema
 
-The cube defined in this example is based on two tables. Fact and Town. The Fact table contains a measures and a reference to the Town table. The Fact table is linked with its ID column to the Town table by the TOWN_ID column. The Town Table also contains the Name and the value of the MemberPropery, in this case the `CAPITAL` flag.
+The cube defined in this example is based on two tables. `Fact` and `Town`. The Fact table contains a measures and a reference to the `Town` table. The `Fact` table is linked with its `ID` column to the `Town` table by the `TOWN_ID` column. The `Town` Table also contains the `Name` and the value of the MemberPropery, in this case the `CAPITAL` flag.
 
 
 ```xml
@@ -127,8 +127,8 @@ This files represent the complete definition of the catalog.
     </tables>
   </roma:DatabaseSchema>
   <roma:PhysicalColumn id="_column_town_capital" name="CAPITAL" columnSize="100"/>
-  <roma:TableQuery id="_query_town" table="_table_town"/>
   <roma:TableQuery id="_query_fact" table="_table_fact"/>
+  <roma:TableQuery id="_query_town" table="_table_town"/>
   <roma:Level id="_level_town" name="Town" column="_column_town_id" nameColumn="_column_town_name">
     <memberProperties id="_memberProperty_capital" name="Capital" column="_column_town_capital"/>
   </roma:Level>

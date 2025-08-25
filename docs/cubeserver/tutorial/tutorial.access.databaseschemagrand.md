@@ -8,8 +8,8 @@ number: 2.4.1
 
 This tutorial discusses roles with with DatabaseSchemaGrant.
 
-`roleAll` role : use DatabaseSchemaGrant access `all`; (access all database)<br />
-`roleNone` role: use CatalogGrant access `none`; (no access to database)<br />
+- `roleAll` role : use DatabaseSchemaGrant access `all`; (access all database)
+- `roleNone` role: use CatalogGrant access `none`; (no access to database)
 
 
 ## Database Schema

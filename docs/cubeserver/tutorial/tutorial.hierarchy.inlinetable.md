@@ -13,9 +13,10 @@ Inline table represents a table with data embedded directly in the schema
 ## Database Schema
 
 The cube defined in this example is based on a two tables that stores all the data.
-The phisical table is named `Fact` uses for Cube1 and contains two columns: `DIM_KEY` and `VALUE`.
-The DIM_KEY column serves as a discriminator, while the `VALUE` column contains the measurements to be aggregated.
-The InlineTable is named `HT` uses for Hierarchy and contains 3 columns: `KEY`, `VALUE`,`NAME` .
+
+- The phisical table is named `Fact` uses for Cube1 and contains two columns: `DIM_KEY` and `VALUE`. The `DIM_KEY` column serves as a discriminator, while the `VALUE` column contains the measurements to be aggregated.
+- The InlineTable is named `HT` uses for Hierarchy and contains 3 columns: `KEY`, `VALUE`,`NAME` .
+
 InlineTable represents a table with data embedded directly in the schema.
 InlineTable uses for hierarchy.
 
@@ -134,8 +135,8 @@ This files represent the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:InlineTableQuery id="_inlineTableQuery" alias="HT" table="/3/@tables.1"/>
   <roma:ExplicitHierarchy id="_hierarchy1" name="Hierarchy1" primaryKey="_ht_key" query="_inlineTableQuery" levels="_level1"/>
+  <roma:InlineTableQuery id="_inlineTableQuery" alias="HT" table="/3/@tables.1"/>
   <roma:Catalog description="Hierarchy with inline table data" name="Daanse Tutorial - Hierarchy Inline Table" cubes="_cube" dbschemas="_databaseSchema_inlinetable"/>
   <roma:DatabaseSchema id="_databaseSchema_inlinetable">
     <tables xsi:type="roma:PhysicalTable" id="_table_fact" name="Fact">

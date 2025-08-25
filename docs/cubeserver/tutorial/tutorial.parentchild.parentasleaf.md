@@ -17,8 +17,8 @@ When true, parents can have their own measures and participate in aggregations a
 
 ## Database Schema
 
-The Database Schema contains the Parent table with 3 columns: NAME, PARENT and VALUE.
-The NAME column is used as the discriminator in the Hierarchy definitions.
+The Database Schema contains the `Parent` table with 3 columns: `NAME`, `PARENT` and `VALUE`.
+The `NAME` column is used as the discriminator in the Hierarchy definitions.
 
 
 
@@ -35,7 +35,7 @@ The NAME column is used as the discriminator in the Hierarchy definitions.
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Fact Query
 
-The Query is a simple TableQuery that selects all columns from the Parent table to use in the measures.
+The Query is a simple TableQuery that selects all columns from the `Parent` table to use in the measures.
 
 
 ```xml
@@ -45,7 +45,7 @@ The Query is a simple TableQuery that selects all columns from the Parent table 
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Level
 
-This Example uses 'Name' level bases on the NAME column as key and name column NAME of table Parent.
+This Example uses 'Name' level bases on the `NAME` column as key and name column `NAME` of table `Parent`.
 
 
 ```xml
@@ -55,8 +55,8 @@ This Example uses 'Name' level bases on the NAME column as key and name column N
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Hierarchy1
 
-The Hierarchy1 defined parentColumn to NAME column of Parent table.
-ParentColumn containing the parent reference for each member, establishing the self-referencing relationship.
+The Hierarchy1 defined parentColumn to `NAME` column of `Parent` table.
+`ParentColumn` containing the parent reference for each member, establishing the self-referencing relationship.
 This column typically contains the primary key value of the parent member, or the nullParentValue for root members. The column enables the recursive traversal that defines the hierarchy structure.
 Also Hierarchy1 defined the level 'Name'.
 Level is Single level definition that applies to all members in this parent-child hierarchy.

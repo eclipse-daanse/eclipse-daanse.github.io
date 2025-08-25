@@ -113,8 +113,8 @@ This files represent the complete definition of the catalog.
     </tables>
   </roma:DatabaseSchema>
   <roma:TableQuery id="_query_fact" table="_table_fact"/>
-  <roma:Level id="_level_level2" name="level2" column="_column_fact_key2"/>
   <roma:Level id="_level_level1" name="level1" column="_column_fact_key1"/>
+  <roma:Level id="_level_level2" name="level2" column="_column_fact_key2"/>
   <roma:StandardDimension id="_dimension_dimension" name="Dimension" hierarchies="_hierarchy_hierarchy"/>
   <roma:PhysicalCube id="_cube_cube" name="Cube" query="_query_fact">
     <dimensionConnectors foreignKey="_column_fact_key1" dimension="_dimension_dimension" id="_dimensionConnector_dimension"/>

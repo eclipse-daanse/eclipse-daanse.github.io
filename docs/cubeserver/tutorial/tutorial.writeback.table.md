@@ -12,10 +12,10 @@ This tutorial discusses writeback with fact as Table.
 ## Database Schema
 
 The Database Schema contains the
-FACT table with 3 columns VAL, VAL1, L2. The L2 column is used as the discriminator in the the Level and Hierarchy definitions
-L1 table with two columns: L1 and L2.
-L2 table with one column: L2.
-FACTWB table with 4 columns: VAL, VAL1, ID, USER.
+- `FACT` table with 3 columns `VAL`, `VAL1`, `L2`. The `L2` column is used as the discriminator in the the Level and Hierarchy definitions
+- `L1` table with two columns: `L1` and `L2`.
+- `L2` table with one column: `L2`.
+- `FACTWB` table with 4 columns: `VAL`, `VAL1`, `ID`, `USER`.
 
 
 ```xml
@@ -45,7 +45,7 @@ FACTWB table with 4 columns: VAL, VAL1, ID, USER.
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## FactQuery
 
-The FactQuery is a simple TableQuery that selects all columns from the Fact table to use in the cube for the measures.
+The `FactQuery` is a simple TableQuery that selects all columns from the `Fact` table to use in the cube for the measures.
 
 
 ```xml
@@ -55,7 +55,7 @@ The FactQuery is a simple TableQuery that selects all columns from the Fact tabl
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## l1TableQuery
 
-The l1TableQuery is a simple TableQuery that selects all columns from the L1 table to use in the cube for the L1 level.
+The `l1TableQuery` is a simple TableQuery that selects all columns from the `L1` table to use in the cube for the `L1` level.
 
 
 ```xml
@@ -65,7 +65,7 @@ The l1TableQuery is a simple TableQuery that selects all columns from the L1 tab
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## l21TableQuery
 
-The l2TableQuery is a simple TableQuery that selects all columns from the L2 table to use in the cube for the L2 level.
+The `l2TableQuery` is a simple TableQuery that selects all columns from the `L2` table to use in the cube for the `L2` level.
 
 
 ```xml
@@ -75,7 +75,7 @@ The l2TableQuery is a simple TableQuery that selects all columns from the L2 tab
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## join
 
-The join is a simple JoinedQuery that unites l1TableQuery and l2TableQuery by L2 column.
+The join is a simple JoinedQuery that unites `l1TableQuery` and l2TableQuery by `L2` column.
 
 
 ```xml
@@ -88,7 +88,7 @@ The join is a simple JoinedQuery that unites l1TableQuery and l2TableQuery by L2
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## L1
 
-This Example uses one simple L1 level bases on the L1 column. L2 column to use for connection to level L2
+This Example uses one simple `L1` level bases on the `L1` column. `L2` column to use for connection to level `L2`
 
 
 ```xml
@@ -98,7 +98,7 @@ This Example uses one simple L1 level bases on the L1 column. L2 column to use f
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## L2
 
-This Example uses one simple L2 level bases on the L2 column. L2 column to use for connection to level L1
+This Example uses one simple `L2` level bases on the `L2` column. `L2` column to use for connection to level `L1`
 
 
 ```xml
@@ -128,8 +128,8 @@ The dimension is defined with the one hierarchy.
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Cubec C 
 
-Cube C is defined by DimensionConnector D1 and a MeasureGroup containing two measures using SUM aggregation.
-The cube also contains a FACTWB WritebackTable configuration with a WritebackAttribute mapped to the VAL column from the fact table, along with two WritebackMeasures: Measure1 and Measure2.
+Cube `C` is defined by DimensionConnector `D1` and a MeasureGroup containing two measures using `SUM` aggregation.
+The cube also contains a `FACTWB` WritebackTable configuration with a WritebackAttribute mapped to the `VAL` column from the fact table, along with two WritebackMeasures: Measure1 and Measure2.
 
 
 ```xml
@@ -179,8 +179,8 @@ This files represent the complete definition of the catalog.
       <columns xsi:type="roma:PhysicalColumn" id="_column_factwb_user" name="USER" columnSize="100"/>
     </tables>
   </roma:DatabaseSchema>
-  <roma:TableQuery id="_l2Query" table="_l2"/>
   <roma:TableQuery id="_table_factQuery" table="_fact"/>
+  <roma:TableQuery id="_l2Query" table="_l2"/>
   <roma:TableQuery id="_l1Query" table="_l1"/>
   <roma:JoinQuery id="_join">
     <left key="_l1_l2" query="_l1Query"/>

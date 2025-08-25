@@ -9,15 +9,15 @@ number: 2.4.8
 This tutorial discusses role with MemberGrant
 
 role1 role: with member grants <br />
-[Dimension1].[A] -all,<br />
-[Dimension1].[B] -none,<br />
-[Dimension1].[C] -none;<br />
+- [Dimension1].[A] -all;
+- [Dimension1].[B] -none;
+- [Dimension1].[C] -none;
 (Cube1 - access to 'A' only)
 
 Rollup policy: (Full. Partial. Hidden.)<br />
-Full. The total for that member includes all children. This is the default policy if you don't specify the rollupPolicy attribute.<br />
-Partial. The total for that member includes only accessible children.<br />
-Hidden. If any of the children are inaccessible, the total is hidden.<br />
+- Full. The total for that member includes all children. This is the default policy if you don't specify the rollupPolicy attribute.
+- Partial. The total for that member includes only accessible children.
+- Hidden. If any of the children are inaccessible, the total is hidden.
 
 
 ## Database Schema

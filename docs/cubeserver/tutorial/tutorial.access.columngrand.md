@@ -8,8 +8,8 @@ number: 2.4.3
 
 This tutorial discusses roles with ColumnGrant.
 
-roleAll    role: use TableGrant access all; (access all database all tables all columns)<br />
-roleNone   role: use TableGrant access none; (no access to database columns)<br />
+- `roleAll`    role: use TableGrant access `all`; (access all database all tables all columns)
+- `roleNone`   role: use TableGrant access `none`; (no access to database columns)
 
 
 ## Database Schema
@@ -111,6 +111,16 @@ This files represent the complete definition of the catalog.
       <measures xsi:type="roma:SumMeasure" id="_measure_sum" name="Measure1" column="_column_fact_value"/>
     </measureGroups>
   </roma:PhysicalCube>
+  <roma:AccessRole id="_accessRole_none" name="roleNone">
+    <accessCatalogGrants catalogAccess="all">
+      <cubeGrants cubeAccess="all" cube="_cube_main"/>
+      <databaseSchemaGrants databaseSchemaAccess="custom" databaseSchema="_databaseSchema_ColumnGrand">
+        <tableGrants tableAccess="custom" table="_table_fact">
+          <columnGrants column="_column_fact_value"/>
+        </tableGrants>
+      </databaseSchemaGrants>
+    </accessCatalogGrants>
+  </roma:AccessRole>
   <roma:AccessRole id="_accessRole_all" name="roleAll">
     <accessCatalogGrants catalogAccess="all">
       <cubeGrants cubeAccess="all" cube="_cube_main"/>
@@ -118,16 +128,6 @@ This files represent the complete definition of the catalog.
         <tableGrants tableAccess="custom" table="_table_fact">
           <columnGrants columnAccess="all" column="_column_fact_value"/>
           <columnGrants columnAccess="all" column="_column_fact_key"/>
-        </tableGrants>
-      </databaseSchemaGrants>
-    </accessCatalogGrants>
-  </roma:AccessRole>
-  <roma:AccessRole id="_accessRole_none" name="roleNone">
-    <accessCatalogGrants catalogAccess="all">
-      <cubeGrants cubeAccess="all" cube="_cube_main"/>
-      <databaseSchemaGrants databaseSchemaAccess="custom" databaseSchema="_databaseSchema_ColumnGrand">
-        <tableGrants tableAccess="custom" table="_table_fact">
-          <columnGrants column="_column_fact_value"/>
         </tableGrants>
       </databaseSchemaGrants>
     </accessCatalogGrants>

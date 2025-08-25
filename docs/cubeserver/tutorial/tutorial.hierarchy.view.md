@@ -13,10 +13,11 @@ SqlView represents a virtual table defined by SQL query expressions rather than 
 ## Database Schema
 
 The cube defined in this example is based on a two tables and and SqlView that stores all the data.
-The phisical table is named `Fact` uses for Cube1 and contains two columns: `DIM_KEY` and `VALUE`.
-The KEY column serves as a discriminator, while the `VALUE` column contains the measurements to be aggregated.
-The phisical table is named `HT` uses for Hierarchy and contains 3 columns: `KEY`, `VALUE`,`NAME` .
-SqlView represents a virtual table defined by SQL query expressions rather than physical database tables.
+
+- The phisical table is named `Fact` uses for Cube1 and contains two columns: `DIM_KEY` and `VALUE`.
+    The `KEY` column serves as a discriminator, while the `VALUE` column contains the measurements to be aggregated.
+- The phisical table is named `HT` uses for Hierarchy and contains 3 columns: `KEY`, `VALUE`,`NAME` .
+- SqlView represents a virtual table defined by SQL query expressions rather than physical database tables.
 
 
 ```xml
@@ -47,7 +48,7 @@ as it directly references the physical table `Fact`.
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## HT_VIEW
 
-The bridge between the cube and SqlView HT_VIEW.
+The bridge between the cube and SqlView `HT_VIEW`.
 
 
 ```xml
