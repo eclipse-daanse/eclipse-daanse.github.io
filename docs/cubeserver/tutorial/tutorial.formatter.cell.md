@@ -4,10 +4,7 @@ group: Formatter
 kind: TUTORIAL
 number: 2.11.1
 ---
-A minimal cube with CellFormatter with class name
-
-
-# Minimal Cube With Measures CellFormatter
+# Daanse Tutorial - Formatter Cell
 
 Data cube with measures CellFormatter.
 

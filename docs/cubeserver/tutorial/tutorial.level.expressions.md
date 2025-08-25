@@ -4,10 +4,7 @@ group: Level
 kind: TUTORIAL
 number: 2.14.1
 ---
-A basic OLAP catalog with a level with expressions
-
-
-# Minimal Cube with level with expressions
+# Daanse Tutorial - Level Expressions
 
 Minimal Cube with levels with SQL expressions as column
 Cube have two levels Level1, Level2 with NameColumn, CaptionColumn, OrdinalColumn as SQL expression

@@ -4,7 +4,7 @@ group: Measure
 kind: TUTORIAL
 number: 2.2.7
 ---
-# Multiple Percentile Aggragator Measures
+# Daanse Tutorial - Cube Measure Aggregator Percentile
 
 Data cubes have percentile measures.
 

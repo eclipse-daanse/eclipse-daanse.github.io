@@ -4,7 +4,7 @@ group: Database
 kind: TUTORIAL
 number: 1.3.2
 ---
-# Special Table -  SqlView
+# Daanse Tutorial - Database SQL View
 
 The SqlView Table is a special Table that is used to reference columns of an SQL Query. The differenxe to the ViewTable is that the SqlView Table is not a view in the Database, but it holds the SQLStatement inside the mapping.
 

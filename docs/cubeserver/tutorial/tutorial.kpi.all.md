@@ -4,10 +4,7 @@ group: Kpi
 kind: TUTORIAL
 number: 2.7.2
 ---
-A minimal cube with Kpi with all kpi properties
-
-
-# Kpi with all parameters
+# Daanse Tutorial - KPI All
 
 This tutorial is an introduction to the concept of KPIs in data cubes.
 

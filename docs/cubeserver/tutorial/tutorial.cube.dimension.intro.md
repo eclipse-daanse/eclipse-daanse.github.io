@@ -4,7 +4,7 @@ group: Dimension
 kind: TUTORIAL
 number: 2.3.1
 ---
-# Dimension - Introduction
+# Daanse Tutorial - Cube Dimension Intro
 
 beside the Measures a cube can contain dimensions. Dimensions are used to slice, dice and piveaut the data in the cube. They can be used group the data, filter the data,or to provide additional context for the data. Dimensions consist of one or multiple Hierarchies. Hierarchies consist of one or multiple Levels. Each level can have one or multiple Properties. Properties are used to provide additional context for the data. They can be used to display additional information about the data in the cube, such as descriptions, labels, or other attributes.
 

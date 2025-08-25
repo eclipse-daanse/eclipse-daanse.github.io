@@ -4,11 +4,7 @@ group: Level
 kind: TUTORIAL
 number: 2.14.4
 ---
-A basic OLAP schema with a level with property Level has attribute HideMemberIf.IF_BLANK_NAME
-Catalog has two cubes with one level with HideMemberIf atribut and with multiple levels
-
-
-# Minimal Cube with Hidden Members with IfBlankName
+# Daanse Tutorial - Level If Blank Name
 
 A basic OLAP schema with a level with property Level has attribute HideMemberIf.IF_BLANK_NAME
 Catalog has two cubes with one level with HideMemberIf atribut and with multiple levels
@@ -53,17 +49,6 @@ as it directly references the physical table `Fact`.
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
-## Query Level1
-
-The bridge between the cube and the database is the query element. In this case, it is a TableQuery,
-as it directly references the physical table `Level_1`.
-
-
-```xml
-<roma:TableQuery  id="_queryLevel1" table="_level_1"/>
-
-```
-*<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Query Level2
 
 The bridge between the cube and the database is the query element. In this case, it is a TableQuery,
@@ -72,6 +57,17 @@ as it directly references the physical table `Level_2_NULL`.
 
 ```xml
 <roma:TableQuery  id="_queryLevel2Null" table="_level_2_null"/>
+
+```
+*<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
+## Query Level1
+
+The bridge between the cube and the database is the query element. In this case, it is a TableQuery,
+as it directly references the physical table `Level_1`.
+
+
+```xml
+<roma:TableQuery  id="_queryLevel1" table="_level_1"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -191,15 +187,15 @@ This files represent the complete definition of the catalog.
       <columns xsi:type="roma:PhysicalColumn" id="_level_1_name" name="NAME"/>
     </tables>
   </roma:DatabaseSchema>
-  <roma:TableQuery id="_queryLevel1" table="_level_1"/>
   <roma:TableQuery id="_queryFact" table="_table_fact"/>
   <roma:TableQuery id="_queryLevel2Null" table="_level_2_null"/>
+  <roma:TableQuery id="_queryLevel1" table="_level_1"/>
   <roma:JoinQuery id="_queryJoin">
     <left key="_level_2_null_l1_key" query="_queryLevel2Null"/>
     <right key="_level_1_key" query="_queryLevel1"/>
   </roma:JoinQuery>
-  <roma:Level id="_h1Level1" name="Level1" column="_level_1_key" nameColumn="_level_1_name"/>
   <roma:Level id="_h1Level2" name="Level2" column="_level_2_null_key" hideMemberIf="IfBlankName" nameColumn="_level_2_null_name"/>
+  <roma:Level id="_h1Level1" name="Level1" column="_level_1_key" nameColumn="_level_1_name"/>
   <roma:StandardDimension id="_dimensionmembershiddenifblankname" name="DimensionMembersHiddenIfBlankName" hierarchies="_hierarchy1_1"/>
   <roma:PhysicalCube id="_hiddenmembersifblankname" name="HiddenMembersIfBlankName" query="_queryFact">
     <dimensionConnectors foreignKey="_column_fact_dim_key" dimension="_dimensionmembershiddenifblankname" overrideDimensionName="DimensionMembersHiddenIfBlankName" id="_dc_dimensionMembersHiddenIfBlankName"/>

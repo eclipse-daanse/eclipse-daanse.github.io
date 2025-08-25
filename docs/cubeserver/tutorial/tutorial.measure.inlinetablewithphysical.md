@@ -4,12 +4,7 @@ group: Measure
 kind: TUTORIAL
 number: 2.12.3
 ---
-A minimal cube based on an inline table and phisical table
-with levels with phisical and inline tables
-
-
-
-# Minimal Cube With Phisical and Inline Tables
+# Daanse Tutorial - Measure Inline Table With Physical
 
 Data cube combines Physical and InlineTable.
 InlineTable represents a table with data embedded directly in the schema definition rather than referencing external database tables.
@@ -232,8 +227,8 @@ This files represent the complete definition of the catalog.
     <left key="_col_town_country_key" query="_query_town"/>
     <right key="_col_country_KEY" query="_query_country"/>
   </roma:JoinQuery>
-  <roma:Level id="_level_town" name="Town" column="_col_town_key" nameColumn="_col_level_name"/>
   <roma:Level id="_level_country" name="Country" column="_col_country_KEY" nameColumn="_col_country_NAME"/>
+  <roma:Level id="_level_town" name="Town" column="_col_town_key" nameColumn="_col_level_name"/>
   <roma:StandardDimension id="_dim_town" name="Dimension" hierarchies="_hierarchy"/>
   <roma:PhysicalCube id="_cube" name="CubeTwoLevelsInlineAndPhysicalTable" query="_query_fact">
     <dimensionConnectors foreignKey="_col_Fact_KEY" dimension="_dim_town" id="_dc_town"/>

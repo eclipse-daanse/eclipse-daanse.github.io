@@ -4,7 +4,7 @@ group: Database
 kind: TUTORIAL
 number: 1.3.3
 ---
-# Special Table -  Inline Table
+# Daanse Tutorial - Database Inline Table
 
 The Inline Table is a special Table that is used to hold the data in the mapping. The Inline Table is not a table in the Database, but because it holds the data it can act as a Table. The Server must create at runtime Inline Statements of this Table.
 

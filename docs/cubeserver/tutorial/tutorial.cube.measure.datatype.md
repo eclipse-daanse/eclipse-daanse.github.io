@@ -4,7 +4,7 @@ group: Measure
 kind: TUTORIAL
 number: 2.2.3
 ---
-# Measures Formats
+# Daanse Tutorial - Cube Measure Datatype
 
 Measures are based on the Columns that store the date of the measurements. The datatype of the column in the database must not match the datatype that schould be used for calculating the Measures value.
 

@@ -4,7 +4,7 @@ group: Measure
 kind: TUTORIAL
 number: 2.2.4
 ---
-# Measures Formats
+# Daanse Tutorial - Cube Measure Format
 
 Depending on the measure, it may be necessary to format its values appropriately.
 

@@ -4,16 +4,7 @@ group: Access
 kind: TUTORIAL
 number: 2.4.4
 ---
-# Cube1
-
-Cube with with CatalogGrant.
-roleAll role                   : use CatalogGrant access all; (access cube1)
-roleNone role                  : use CatalogGrant access none; (no access cube1)
-roleAllDimWithCubeGrand role   : use CatalogGrant access all_dimensions; CubeGrant cube1 access all; cube2 access none (access cube1)
-roleAllDimWithoutCubeGrand role: use CatalogGrant access all_dimensions without cube grant (As result is 'no access'. For access need CubeGrant with custom or all);
-
-
-# Cube with roles access catalog
+# Daanse Tutorial - Access Catalog Grant
 
 This tutorial discusses roles with CatalogGrant.
 
@@ -172,20 +163,20 @@ This files represent the complete definition of the catalog.
       <measures xsi:type="roma:SumMeasure" id="_measure_sum" name="Measure1" column="_column_fact_value"/>
     </measureGroups>
   </roma:PhysicalCube>
-  <roma:AccessRole id="_accessRole_none" name="roleNone">
-    <accessCatalogGrants/>
-  </roma:AccessRole>
-  <roma:AccessRole id="_accessRole_allDimWithCubeGrand" name="roleAllDimWithCubeGrand">
-    <accessCatalogGrants catalogAccess="all_dimensions">
-      <cubeGrants cubeAccess="all" cube="_cube_main"/>
-    </accessCatalogGrants>
-  </roma:AccessRole>
   <roma:AccessRole id="_accessRole_all" name="roleAll">
     <accessCatalogGrants catalogAccess="all"/>
+  </roma:AccessRole>
+  <roma:AccessRole id="_accessRole_none" name="roleNone">
+    <accessCatalogGrants/>
   </roma:AccessRole>
   <roma:AccessRole id="_accessRole_allDimWithoutCubeGrand" name="roleAllDimWithoutCubeGrand">
     <accessCatalogGrants catalogAccess="all_dimensions">
       <databaseSchemaGrants databaseSchemaAccess="all" databaseSchema="_databaseSchema_CatalogGrand"/>
+    </accessCatalogGrants>
+  </roma:AccessRole>
+  <roma:AccessRole id="_accessRole_allDimWithCubeGrand" name="roleAllDimWithCubeGrand">
+    <accessCatalogGrants catalogAccess="all_dimensions">
+      <cubeGrants cubeAccess="all" cube="_cube_main"/>
     </accessCatalogGrants>
   </roma:AccessRole>
 </xmi:XMI>

@@ -4,7 +4,7 @@ group: Measure
 kind: TUTORIAL
 number: 2.2.7
 ---
-# Multiple NTH Value Aggragator Measures
+# Daanse Tutorial - Cube Measure Aggregator Nth
 
 Data cubes have NTH measures.
 

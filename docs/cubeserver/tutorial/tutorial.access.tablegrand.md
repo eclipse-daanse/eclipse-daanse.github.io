@@ -4,13 +4,7 @@ group: Access
 kind: TUTORIAL
 number: 2.4.2
 ---
-Cube with examples of roles with TableGrant
-roleAll    role: use TableGrant access all; (access all database all tables)
-roleNone   role: use TableGrant access none; (no access to database tables)
-roleCustom role: use TableGrant access custom; (access to database table Fact)
-
-
-# Cube with role access table
+# Daanse Tutorial - Access Table Grant
 
 This tutorial discusses roles with TableGrant.
 
@@ -113,19 +107,19 @@ This files represent the complete definition of the catalog.
       <measures xsi:type="roma:SumMeasure" id="_measure_Measure1" name="Measure1" column="_column_fact_value"/>
     </measureGroups>
   </roma:PhysicalCube>
-  <roma:AccessRole id="_accessRole_roleNone" name="roleNone">
-    <accessCatalogGrants catalogAccess="all">
-      <cubeGrants cubeAccess="all" cube="_cube_Cube1"/>
-      <databaseSchemaGrants databaseSchemaAccess="custom" databaseSchema="_databaseSchema_TableGrand">
-        <tableGrants table="_table_fact"/>
-      </databaseSchemaGrants>
-    </accessCatalogGrants>
-  </roma:AccessRole>
   <roma:AccessRole id="_accessRole_roleAll" name="roleAll">
     <accessCatalogGrants catalogAccess="all">
       <cubeGrants cubeAccess="all" cube="_cube_Cube1"/>
       <databaseSchemaGrants databaseSchemaAccess="custom" databaseSchema="_databaseSchema_TableGrand">
         <tableGrants tableAccess="all" table="_table_fact"/>
+      </databaseSchemaGrants>
+    </accessCatalogGrants>
+  </roma:AccessRole>
+  <roma:AccessRole id="_accessRole_roleNone" name="roleNone">
+    <accessCatalogGrants catalogAccess="all">
+      <cubeGrants cubeAccess="all" cube="_cube_Cube1"/>
+      <databaseSchemaGrants databaseSchemaAccess="custom" databaseSchema="_databaseSchema_TableGrand">
+        <tableGrants table="_table_fact"/>
       </databaseSchemaGrants>
     </accessCatalogGrants>
   </roma:AccessRole>

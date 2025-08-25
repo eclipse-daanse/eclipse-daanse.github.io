@@ -4,7 +4,7 @@ group: Cube
 kind: TUTORIAL
 number: 2.3.6
 ---
-# Cube - CalculatedMembers with different colors
+# Daanse Tutorial - Cube Calculated Member Color
 
 This tutorial discusses Calculated Members and Measures with diferent colors.
 
@@ -70,8 +70,9 @@ The dimension is defined with the one hierarchy. The hierarchy is used in the cu
 This calculated member have BACK_COLOR in format string. It show posibility to have different colors incal culated member
 
 
+
 ```xml
-<roma:CalculatedMember  id="_calculatedMember_calculatedMember1" name="Calculated Member 1" displayFolder="folder" formula="[Measures].[Measure-Sum] / [Measures].[Measure-Count]" parent="[theDimension].[theHierarchy].[All theHierarchys]" hierarchy="roma:ExplicitHierarchy _hierarchy_theHierarchy"/>
+<roma:CalculatedMember  id="_calculatedMember_calculatedMember2" name="Calculated Member 2" displayFolder="folder" formula="[Measures].[Measure-Sum] / [Measures].[Measure-Count]"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -80,9 +81,8 @@ This calculated member have BACK_COLOR in format string. It show posibility to h
 This calculated member have BACK_COLOR in format string. It show posibility to have different colors incal culated member
 
 
-
 ```xml
-<roma:CalculatedMember  id="_calculatedMember_calculatedMember2" name="Calculated Member 2" displayFolder="folder" formula="[Measures].[Measure-Sum] / [Measures].[Measure-Count]"/>
+<roma:CalculatedMember  id="_calculatedMember_calculatedMember1" name="Calculated Member 1" displayFolder="folder" formula="[Measures].[Measure-Sum] / [Measures].[Measure-Count]" parent="[theDimension].[theHierarchy].[All theHierarchys]" hierarchy="roma:ExplicitHierarchy _hierarchy_theHierarchy"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*

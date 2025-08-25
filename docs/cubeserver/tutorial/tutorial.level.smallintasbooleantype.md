@@ -4,14 +4,7 @@ group: Level
 kind: TUTORIAL
 number: 2.14.2
 ---
-cube with level which have "boolean" type. But in database we have "smallInt"
-In this case both query is work
-SELECT NON EMPTY [Dimension].[HierarchyWithHasAll].[Measure].members on COLUMNS FROM [Cube] WHERE [Level].[true]
-and
-SELECT NON EMPTY [Dimension].[HierarchyWithHasAll].[Measure].members on COLUMNS FROM [Cube] WHERE [Level].[1]
-
-
-# Minimal Cube with level with smallInt boolan type
+# Daanse Tutorial - Level Small Int As Boolean Type
 
 Minimal Cube with level with smallInt column as boolan type
 Cube have level which use smallInt column and have boolean ColumnType

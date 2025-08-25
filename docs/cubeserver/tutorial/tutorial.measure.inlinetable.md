@@ -4,10 +4,7 @@ group: Measure
 kind: TUTORIAL
 number: 2.12.2
 ---
-A minimal cube based on an inline table
-
-
-# Minimal Cube With Inline Table
+# Daanse Tutorial - Measure Inline Table
 
 Data cube with InlineTable.
 InlineTable represents a table with data embedded directly in the schema definition rather than referencing external database tables.

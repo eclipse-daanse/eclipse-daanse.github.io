@@ -4,11 +4,7 @@ group: Kpi
 kind: TUTORIAL
 number: 2.7.4
 ---
-A basic OLAP schema with virtual cube which have reference to Cube1, Cube2 and with KPI
-
-
-
-# Cube with virtual cube with kpi
+# Daanse Tutorial - KPI Virtual Cube
 
 This tutorial is an introduction to the concept of KPIs in data cubes.
 
@@ -115,16 +111,16 @@ This files represent the complete definition of the catalog.
   <roma:TableQuery id="_table_factQuery" table="_table_fact"/>
   <roma:Level id="_level2" name="Level2" column="_column_fact_key"/>
   <roma:StandardDimension id="_dimension1" name="Dimension1" hierarchies="_hierarchywithouthasall"/>
-  <roma:PhysicalCube id="_cube1" name="Cube1" query="_table_factQuery">
-    <dimensionConnectors dimension="_dimension1" overrideDimensionName="Cube1Dimension1" id="_dc_cube1Dimension1"/>
-    <measureGroups>
-      <measures xsi:type="roma:SumMeasure" id="_measurecube1" name="MeasureCube1" column="_column_fact_value"/>
-    </measureGroups>
-  </roma:PhysicalCube>
   <roma:PhysicalCube id="_cube2" name="Cube2" query="_table_factQuery">
     <dimensionConnectors dimension="_dimension1" overrideDimensionName="Cube2Dimension1" id="_dc_cube2Dimension1"/>
     <measureGroups>
       <measures xsi:type="roma:SumMeasure" id="_measurecube2" name="MeasureCube2" column="_column_fact_value"/>
+    </measureGroups>
+  </roma:PhysicalCube>
+  <roma:PhysicalCube id="_cube1" name="Cube1" query="_table_factQuery">
+    <dimensionConnectors dimension="_dimension1" overrideDimensionName="Cube1Dimension1" id="_dc_cube1Dimension1"/>
+    <measureGroups>
+      <measures xsi:type="roma:SumMeasure" id="_measurecube1" name="MeasureCube1" column="_column_fact_value"/>
     </measureGroups>
   </roma:PhysicalCube>
   <roma:VirtualCube id="_cube1cube2kpi" name="Cube1Cube2Kpi" defaultMeasure="_measurecube1" dimensionConnectors="_dc_cube1Dimension1 _dc_cube2Dimension1" referencedMeasures="_measurecube1 _measurecube2">

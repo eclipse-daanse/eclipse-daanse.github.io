@@ -4,9 +4,7 @@ group: Aggregation
 kind: TUTORIAL
 number: 2.8.1
 ---
-
-
-# Cube with table reference with AggExclude
+# Daanse Tutorial - Aggregation Agg Exclude
 
 This tutorial discusses TableQuery with AggregationExclude.
 AggregationExclude defines exclusion rules that prevent specific tables from being used as aggregation tables,

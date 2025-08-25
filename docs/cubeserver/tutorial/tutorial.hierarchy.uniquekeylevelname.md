@@ -4,24 +4,7 @@ group: Hierarchy
 kind: TUTORIAL
 number: 2.16.3
 ---
-    A basic OLAP schema with a level with with functional dependency optimizations
-
-    In some circumstances, it may be possible to optimize performance by taking advantage of known
-    functional dependencies in the data being processed. Such dependencies are typically the result
-    of business rules associated with the systems producing the data, and often cannot be inferred
-    just by looking at the data itself.
-Functional dependencies are declared using the dependsOnLevelValue attribute of the
-`<Property>` element and the uniqueKeyLevelName attribute of the `<Hierarchy>` element.
-The dependsOnLevelValue attribute of a member property is used to indicate that the value of the
-member property is functionally dependent on the value of the `<Level>` in which the member property
-is defined. In other words, for a given value of the level, the value of the property is invariant.
-The uniqueKeyLevelName attribute of a `<Hierarchy>` is used to indicate that the given level
-(if any) taken together with all higher levels in the hierarchy acts as a unique alternate key,
-ensuring that for any unique combination of those level values, there is exactly one combination
-of values for all levels below it.
-
-
-# Minimal Cube with hierarchy with functional dependency optimizations
+# Daanse Tutorial - Hierarchy Unique Key Level Name
 
 Catalog with Minimal Cube with Parent Child Hierarchy
 
@@ -207,19 +190,19 @@ This files represent the complete definition of the catalog.
     </tables>
   </roma:DatabaseSchema>
   <roma:TableQuery id="_query_fact" table="_table_automotiveDim"/>
-  <roma:Level id="_level_make" name="Make" column="_column_automotiveDim_makeId" nameColumn="_column_automotiveDim_make"/>
   <roma:Level id="_level_manufacturingPlant" name="ManufacturingPlant" column="_column_automotiveDim_plantId" nameColumn="_column_automotiveDim_plant">
     <memberProperties id="_memberProperty_state" name="State" column="_column_automotiveDim_plantStateId" dependsOnLevelValue="true" propertyType="Numeric"/>
     <memberProperties id="_memberProperty_city" name="City" column="_column_automotiveDim_plantCityId" dependsOnLevelValue="true" propertyType="Numeric"/>
   </roma:Level>
-  <roma:Level id="_level_licensePlateNum" name="LicensePlateNum" column="_column_automotiveDim_licenseId">
-    <memberProperties id="_memberProperty_licenseState" name="State" column="_column_automotiveDim_licenseStateId" dependsOnLevelValue="true" propertyType="Numeric"/>
-  </roma:Level>
-  <roma:Level id="_level_model" name="Model" column="_column_automotiveDim_modelId" nameColumn="_column_automotiveDim_model"/>
   <roma:Level id="_level_vehicleIdentificationNumber" name="Vehicle Identification Number" column="_column_automotiveDim_vehicleId">
     <memberProperties id="_memberProperty_color" name="Color" column="_column_automotiveDim_colorId" dependsOnLevelValue="true" propertyType="Numeric"/>
     <memberProperties id="_memberProperty_trim" name="Trim" column="_column_automotiveDim_trimId" dependsOnLevelValue="true" propertyType="Numeric"/>
   </roma:Level>
+  <roma:Level id="_level_model" name="Model" column="_column_automotiveDim_modelId" nameColumn="_column_automotiveDim_model"/>
+  <roma:Level id="_level_licensePlateNum" name="LicensePlateNum" column="_column_automotiveDim_licenseId">
+    <memberProperties id="_memberProperty_licenseState" name="State" column="_column_automotiveDim_licenseStateId" dependsOnLevelValue="true" propertyType="Numeric"/>
+  </roma:Level>
+  <roma:Level id="_level_make" name="Make" column="_column_automotiveDim_makeId" nameColumn="_column_automotiveDim_make"/>
   <roma:StandardDimension id="_dimension_automotive" name="Automotive" hierarchies="_hierarchy_automotive"/>
   <roma:PhysicalCube id="_cube_cube" name="Cube" query="_query_fact">
     <dimensionConnectors dimension="_dimension_automotive" overrideDimensionName="Automotive" id="_dimensionConnector_automotive"/>

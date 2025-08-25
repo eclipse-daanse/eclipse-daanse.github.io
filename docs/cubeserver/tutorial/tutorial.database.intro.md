@@ -4,7 +4,7 @@ group: Database
 kind: TUTORIAL
 number: 1.1
 ---
-# Introduction into DataBase
+# Daanse Tutorial - Database Intro
 
 The foundation of all data analysis is the data to be analyzed.
 In this case, it is stored in a relational database.

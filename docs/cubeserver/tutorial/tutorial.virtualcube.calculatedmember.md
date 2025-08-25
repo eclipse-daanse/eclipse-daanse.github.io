@@ -4,10 +4,7 @@ group: VirtualCube
 kind: TUTORIAL
 number: 2.15.3
 ---
-A basic OLAP schema with virtual cube which have reference to Cube1, Cube2 with CalculatedMember
-
-
-# Schema with virtual cube with calculatedMember
+# Daanse Tutorial - Virtual Cube Calculated Member
 
 Cube with virtual cube with dimension references from other cubes and with calculatedMember
 A virtual cube that combines measures and dimensions from multiple physical cubes into a unified analytical view.

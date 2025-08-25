@@ -4,7 +4,7 @@ group: Kpi
 kind: TUTORIAL
 number: 2.7.1
 ---
-# Kpi - Introduction
+# Daanse Tutorial - KPI Intro
 
 This tutorial is an introduction to the concept of KPIs in data cubes.
 

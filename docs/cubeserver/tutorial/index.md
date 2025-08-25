@@ -129,6 +129,14 @@ A recommended reading order is provided below to help you build your understandi
 
 [Access Member Grant](./tutorial.access.membergrand.md)
 
+[Writeback Inline Table](./tutorial.writeback.inlinetable.md)
+
+[Writeback Table](./tutorial.writeback.table.md)
+
+[Writeback View](./tutorial.writeback.view.md)
+
+[Writeback Without Dimension](./tutorial.writeback.withoutdimension.md)
+
 [Member Identifier](./tutorial.member.identifier.md)
 
 [KPI Intro](./tutorial.kpi.intro.md)
@@ -150,11 +158,3 @@ A recommended reading order is provided below to help you build your understandi
 [Dimension Optimisation With Level Attribute](./tutorial.dimension.optimisationwithlevelattribute.md)
 
 [Daanse Example - Schulwesen](./complex.school.md)
-
-[Writeback_without_dimension](./tutorial.writebackwithoutdimension.md)
-
-[tutorial_for_writeback_with_fact_view](./tutorial.writebackview.md)
-
-[tutorial_for_writeback](./tutorial.writebacktable.md)
-
-[tutorial_for_writeback_with_fact_InlineTable](./tutorial.writebackinlinetable.md)

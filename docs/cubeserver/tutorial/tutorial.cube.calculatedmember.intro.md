@@ -4,7 +4,7 @@ group: Member
 kind: TUTORIAL
 number: 2.3.6
 ---
-# Cube - CalculatedMembers Intro
+# Daanse Tutorial - Cube Calculated Member Intro
 
 This tutorial discusses Calculated Members, which allow you to define members in the measure or dimension area of a cube without storing them directly in the database. Instead, these members are computed on the fly, often based on the values of other members or measures. This is particularly useful for creating derived measures or dimension members that are not present in the underlying data source.
 

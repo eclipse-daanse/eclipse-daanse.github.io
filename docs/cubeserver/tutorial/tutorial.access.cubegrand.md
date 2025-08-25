@@ -4,12 +4,7 @@ group: Access
 kind: TUTORIAL
 number: 2.4.5
 ---
-Cube with examples of roles with SchemaGrant all_dimensions
-Cube1 - all access
-Cube2 - no access
-
-
-# Cube with role CubeGrant cube1 access only
+# Daanse Tutorial - Access Cube Grant
 
 This tutorial discusses roles with with CubeGrant.
 

@@ -4,7 +4,7 @@ group: Hierarchy
 kind: TUTORIAL
 number: 2.3.3.1
 ---
-# Hierarchy - Query - 1 Join
+# Daanse Tutorial - Cube Hierarchy Query Join Base
 
 If the database structure follows the Third Normal Form (3NF), hierarchies in a cube are not stored in a single table but are distributed across multiple tables.
 
@@ -174,9 +174,9 @@ This files represent the complete definition of the catalog.
       <columns xsi:type="roma:PhysicalColumn" id="_column_country_name" name="NAME"/>
     </tables>
   </roma:DatabaseSchema>
-  <roma:TableQuery id="_query_town" table="_table_town"/>
   <roma:TableQuery id="_query_fact" table="_table_fact"/>
   <roma:TableQuery id="_query_country" table="_table_country"/>
+  <roma:TableQuery id="_query_town" table="_table_town"/>
   <roma:JoinQuery id="_query_townToCountry">
     <left key="_column_town_id" query="_query_town"/>
     <right key="_column_country_id" query="_query_country"/>

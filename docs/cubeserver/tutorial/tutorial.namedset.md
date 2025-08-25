@@ -4,18 +4,15 @@ group: Namedset
 kind: TUTORIAL
 number: 2.8.1
 ---
-Cube with NamedSet.
-
-
-NamedSet use Dimension1 and Dimension2 in formula. By this reason it connected to Cube. NamedSet have folder
+NamedSet use only Dimension1 in formula. By this reason it connected to Dimension1.
 
 NamedSet use Dimension1 and Dimension2 in formula. By this reason it connected to Cube.
 
 NamedSet use only Dimension1 in formula. By this reason it connected to Dimension1. NamedSet have folder
 
-NamedSet use only Dimension1 in formula. By this reason it connected to Dimension1.
+NamedSet use Dimension1 and Dimension2 in formula. By this reason it connected to Cube. NamedSet have folder
 
-# catalog with Cube with NamedSets
+# Daanse Tutorial - Namedset All
 
 This tutorial discusses NamedSets.
 

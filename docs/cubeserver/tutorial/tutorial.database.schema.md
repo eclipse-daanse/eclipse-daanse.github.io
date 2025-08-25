@@ -4,7 +4,7 @@ group: Database
 kind: TUTORIAL
 number: 1.3
 ---
-# Introduction into DataBase Schemas
+# Daanse Tutorial - Database Schema
 
 The purpose of database schemas is to organize tables into logical groups.
 
