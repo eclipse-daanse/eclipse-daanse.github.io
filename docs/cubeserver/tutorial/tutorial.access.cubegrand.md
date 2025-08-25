@@ -131,16 +131,16 @@ This files represent the complete definition of the catalog.
   <roma:TableQuery id="_query_factQuery" table="_table_fact"/>
   <roma:Level id="_level_Level1" name="Level1" column="_column_fact_key"/>
   <roma:StandardDimension id="_dimension_Dimension1" name="Dimension1" hierarchies="_hierarchy_Hierarchy1"/>
+  <roma:PhysicalCube id="_cube_Cube2" name="Cube2" query="_query_factQuery">
+    <dimensionConnectors foreignKey="_column_fact_key" dimension="_dimension_Dimension1" overrideDimensionName="Dimension1" id="_dimensionConnector_dimension1"/>
+    <measureGroups/>
+  </roma:PhysicalCube>
   <roma:PhysicalCube id="_cube_Cube1" name="Cube1" query="_query_factQuery">
     <dimensionConnectors foreignKey="_column_fact_key" dimension="_dimension_Dimension1" overrideDimensionName="Dimension1" id="_dimensionConnector_dimension11"/>
     <dimensionConnectors foreignKey="_column_fact_key" dimension="_dimension_Dimension1" overrideDimensionName="Dimension2" id="_dimensionConnector_dimension12"/>
     <measureGroups>
       <measures xsi:type="roma:SumMeasure" id="_measure_Measure1" name="Measure1" column="_column_fact_value"/>
     </measureGroups>
-  </roma:PhysicalCube>
-  <roma:PhysicalCube id="_cube_Cube2" name="Cube2" query="_query_factQuery">
-    <dimensionConnectors foreignKey="_column_fact_key" dimension="_dimension_Dimension1" overrideDimensionName="Dimension1" id="_dimensionConnector_dimension1"/>
-    <measureGroups/>
   </roma:PhysicalCube>
   <roma:AccessRole id="_accessRole_role1" name="role1">
     <accessCatalogGrants catalogAccess="all_dimensions">

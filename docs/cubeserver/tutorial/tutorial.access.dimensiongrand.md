@@ -8,13 +8,13 @@ number: 2.4.6
 
 This tutorial discusses roles with DimensionGrant.
 
-role1 role:   use DimensionGrant access to Dimension1 and not access to Dimension2 of cube1
+`role1` role:   use DimensionGrant access to `Dimension1` and not access to `Dimension2` of `cube1`
 
 
 
 ## Database Schema
 
-The Database Schema contains the Fact table with two columns: KEY and VALUE. The KEY column is used as the discriminator in the the Level and Hierarchy definitions.
+The Database Schema contains the `Fact` table with two columns: KEY and VALUE. The KEY column is used as the discriminator in the the Level and Hierarchy definitions.
 
 
 ```xml
@@ -29,7 +29,7 @@ The Database Schema contains the Fact table with two columns: KEY and VALUE. The
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Query
 
-The Query is a simple TableQuery that selects all columns from the Fact table to use in in the hierarchy and in the cube for the measures.
+The Query is a simple TableQuery that selects all columns from the `Fact` table to use in in the hierarchy and in the cube for the measures.
 
 
 ```xml
@@ -85,7 +85,7 @@ The cube1 is defines by the DimensionConnector1 and the DimensionConnector2  and
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Role1
 
-The role1 use CatalogGrant access all_dimensions; CubeGrant cube1 access all; cube2 access none (access cube1)
+The `role1` use CatalogGrant access `all_dimensions`; CubeGrant cube1 access `all`; cube2 access `none` (access cube1)
 
 
 ```xml
@@ -119,10 +119,10 @@ This files represent the complete definition of the catalog.
     </tables>
   </roma:DatabaseSchema>
   <roma:TableQuery id="_query_factQuery" table="_table_fact"/>
-  <roma:Level id="_level_Level1" name="Level1" column="_column_fact_key"/>
   <roma:Level id="_level_Level2" name="Level2" column="_column_fact_key"/>
-  <roma:StandardDimension id="_dimension_Dimension1" name="Dimension1" hierarchies="_hierarchy_Hierarchy1"/>
+  <roma:Level id="_level_Level1" name="Level1" column="_column_fact_key"/>
   <roma:StandardDimension id="_dimension_Dimension2" name="Dimension2" hierarchies="_hierarchy_Hierarchy2"/>
+  <roma:StandardDimension id="_dimension_Dimension1" name="Dimension1" hierarchies="_hierarchy_Hierarchy1"/>
   <roma:PhysicalCube id="_cube_Cube1" name="Cube1" query="_query_factQuery">
     <dimensionConnectors foreignKey="_column_fact_key" dimension="_dimension_Dimension1" overrideDimensionName="Dimension1" id="_dimensionConnector_dimension1"/>
     <dimensionConnectors foreignKey="_column_fact_key" dimension="_dimension_Dimension2" overrideDimensionName="Dimension2" id="_dimensionConnector_dimension2"/>

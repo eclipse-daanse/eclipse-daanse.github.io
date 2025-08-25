@@ -8,13 +8,13 @@ number: 2.4.3
 
 This tutorial discusses roles with ColumnGrant.
 
-roleAll    role: use TableGrant access all; (access all database all tables all columns)
-roleNone   role: use TableGrant access none; (no access to database columns)
+roleAll    role: use TableGrant access all; (access all database all tables all columns)<br />
+roleNone   role: use TableGrant access none; (no access to database columns)<br />
 
 
 ## Database Schema
 
-The Database Schema contains the Fact table with two columns: KEY and VALUE. The KEY column is used as the discriminator in the the Level and Hierarchy definitions.
+The Database Schema contains the `Fact` table with two columns: `KEY` and `VALUE`. The `KEY` column is used as the discriminator in the the Level and Hierarchy definitions.
 
 
 ```xml
@@ -29,7 +29,7 @@ The Database Schema contains the Fact table with two columns: KEY and VALUE. The
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Query
 
-The Query is a simple TableQuery that selects all columns from the Fact table to use in in the hierarchy and in the cube for the measures.
+The Query is a simple TableQuery that selects all columns from the `Fact` table to use in in the hierarchy and in the cube for the measures.
 
 
 ```xml
@@ -39,7 +39,7 @@ The Query is a simple TableQuery that selects all columns from the Fact table to
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Cube1 with access all
 
-The cube1 is defines by the DimensionConnector1 and the DimensionConnector2  and the MeasureGroup with measure with aggregation sum.
+The `cube1` is defines by the DimensionConnector1 and the DimensionConnector2  and the MeasureGroup with measure with aggregation sum.
 
 
 ```xml
@@ -53,7 +53,7 @@ The cube1 is defines by the DimensionConnector1 and the DimensionConnector2  and
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## roleAll
 
-The roleAll use TableGrant access all; (access all tables columns)
+The `roleAll` use TableGrant access `all`; (access all tables columns)
 
 
 ```xml
@@ -73,7 +73,7 @@ The roleAll use TableGrant access all; (access all tables columns)
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## roleNone
 
-The roleNone use ColumnGrant access none; (no access to all tables columns)
+The `roleNone` use ColumnGrant access `none`; (no access to all tables columns)
 
 
 ```xml
@@ -111,16 +111,6 @@ This files represent the complete definition of the catalog.
       <measures xsi:type="roma:SumMeasure" id="_measure_sum" name="Measure1" column="_column_fact_value"/>
     </measureGroups>
   </roma:PhysicalCube>
-  <roma:AccessRole id="_accessRole_none" name="roleNone">
-    <accessCatalogGrants catalogAccess="all">
-      <cubeGrants cubeAccess="all" cube="_cube_main"/>
-      <databaseSchemaGrants databaseSchemaAccess="custom" databaseSchema="_databaseSchema_ColumnGrand">
-        <tableGrants tableAccess="custom" table="_table_fact">
-          <columnGrants column="_column_fact_value"/>
-        </tableGrants>
-      </databaseSchemaGrants>
-    </accessCatalogGrants>
-  </roma:AccessRole>
   <roma:AccessRole id="_accessRole_all" name="roleAll">
     <accessCatalogGrants catalogAccess="all">
       <cubeGrants cubeAccess="all" cube="_cube_main"/>
@@ -128,6 +118,16 @@ This files represent the complete definition of the catalog.
         <tableGrants tableAccess="custom" table="_table_fact">
           <columnGrants columnAccess="all" column="_column_fact_value"/>
           <columnGrants columnAccess="all" column="_column_fact_key"/>
+        </tableGrants>
+      </databaseSchemaGrants>
+    </accessCatalogGrants>
+  </roma:AccessRole>
+  <roma:AccessRole id="_accessRole_none" name="roleNone">
+    <accessCatalogGrants catalogAccess="all">
+      <cubeGrants cubeAccess="all" cube="_cube_main"/>
+      <databaseSchemaGrants databaseSchemaAccess="custom" databaseSchema="_databaseSchema_ColumnGrand">
+        <tableGrants tableAccess="custom" table="_table_fact">
+          <columnGrants column="_column_fact_value"/>
         </tableGrants>
       </databaseSchemaGrants>
     </accessCatalogGrants>

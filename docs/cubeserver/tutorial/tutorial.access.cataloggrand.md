@@ -8,15 +8,15 @@ number: 2.4.4
 
 This tutorial discusses roles with CatalogGrant.
 
-roleAll role                   : use CatalogGrant access all; (access cube1)
-roleNone role                  : use CatalogGrant access none; (no access cube1)
-roleAllDimWithCubeGrand role   : use CatalogGrant access all_dimensions; CubeGrant cube1 access all; cube2 access none (access cube1)
-roleAllDimWithoutCubeGrand role: use CatalogGrant access all_dimensions without cube grant (As result is 'no access'. For access need CubeGrant with custom or all);
+`roleAll` role                   : use CatalogGrant access `all`; (access `cube1`)<br />
+`roleNone` role                  : use CatalogGrant access `none`; (no access `cube1`)<br />
+`roleAllDimWithCubeGrand` role   : use CatalogGrant access `all_dimensions`; CubeGrant `cube1` access all; `cube2` access none (access `cube1`)<br />
+`roleAllDimWithoutCubeGrand` role: use CatalogGrant access `all_dimensions` without cube grant (As result is 'no access'. For access need CubeGrant with `custom` or `all`)<br />;
 
 
 ## Database Schema
 
-The Database Schema contains the Fact table with two columns: KEY and VALUE. The KEY column is used as the discriminator in the the Level and Hierarchy definitions.
+The Database Schema contains the `Fact` table with two columns: `KEY` and `VALUE`. The `KEY` column is used as the discriminator in the the Level and Hierarchy definitions.
 
 
 ```xml
@@ -31,7 +31,7 @@ The Database Schema contains the Fact table with two columns: KEY and VALUE. The
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Query
 
-The Query is a simple TableQuery that selects all columns from the Fact table to use in in the hierarchy and in the cube for the measures.
+The Query is a simple TableQuery that selects all columns from the `Fact` table to use in in the hierarchy and in the cube for the measures.
 
 
 ```xml
@@ -41,7 +41,7 @@ The Query is a simple TableQuery that selects all columns from the Fact table to
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Level1
 
-This Example uses one simple Level1 bases on the KEY column.
+This Example uses one simple Level1 bases on the `KEY` column.
 
 
 ```xml
@@ -87,7 +87,7 @@ The cube1 is defines by the DimensionConnector1 and the DimensionConnector2  and
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## roleAll
 
-The roleAll use CatalogGrant access all; (access cube1)
+The roleAll use CatalogGrant access `all`; (access `cube1`)
 
 
 ```xml
@@ -99,7 +99,7 @@ The roleAll use CatalogGrant access all; (access cube1)
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## roleNone
 
-The roleNone use CatalogGrant access none; (no access cube1)
+The `roleNone` use CatalogGrant access `none`; (no access `cube1`)
 
 
 ```xml
@@ -111,7 +111,7 @@ The roleNone use CatalogGrant access none; (no access cube1)
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## roleAllDimWithCubeGrand
 
-The roleAll use CatalogGrant access all_dimensions; CubeGrant access all; (access cube1)
+The `roleAllDimWithCubeGrand` use CatalogGrant access `all_dimensions`; CubeGrant access `all`; (access `cube1`)
 
 
 ```xml
@@ -125,7 +125,7 @@ The roleAll use CatalogGrant access all_dimensions; CubeGrant access all; (acces
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## roleAllDimWithoutCubeGrand
 
-The roleAll use CatalogGrant access all_dimensions without CubeGrant; (no access cube1)
+The `roleAllDimWithoutCubeGrand` use CatalogGrant access `all_dimensions` without CubeGrant; (no access `cube1`)
 
 
 ```xml
@@ -163,11 +163,11 @@ This files represent the complete definition of the catalog.
       <measures xsi:type="roma:SumMeasure" id="_measure_sum" name="Measure1" column="_column_fact_value"/>
     </measureGroups>
   </roma:PhysicalCube>
-  <roma:AccessRole id="_accessRole_all" name="roleAll">
-    <accessCatalogGrants catalogAccess="all"/>
-  </roma:AccessRole>
   <roma:AccessRole id="_accessRole_none" name="roleNone">
     <accessCatalogGrants/>
+  </roma:AccessRole>
+  <roma:AccessRole id="_accessRole_all" name="roleAll">
+    <accessCatalogGrants catalogAccess="all"/>
   </roma:AccessRole>
   <roma:AccessRole id="_accessRole_allDimWithoutCubeGrand" name="roleAllDimWithoutCubeGrand">
     <accessCatalogGrants catalogAccess="all_dimensions">
