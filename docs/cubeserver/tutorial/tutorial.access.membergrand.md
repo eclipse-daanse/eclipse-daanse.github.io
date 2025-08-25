@@ -8,18 +8,21 @@ number: 2.4.8
 
 This tutorial discusses role with MemberGrant
 
-role1 role: with member grants [Dimension1].[A] -all, [Dimension1].[B] -none, [Dimension1].[C] -none;
+role1 role: with member grants <br />
+[Dimension1].[A] -all,<br />
+[Dimension1].[B] -none,<br />
+[Dimension1].[C] -none;<br />
 (Cube1 - access to 'A' only)
 
-Rollup policy: (Full. Partial. Hidden.)
-Full. The total for that member includes all children. This is the default policy if you don't specify the rollupPolicy attribute.
-Partial. The total for that member includes only accessible children.
-Hidden. If any of the children are inaccessible, the total is hidden.
+Rollup policy: (Full. Partial. Hidden.)<br />
+Full. The total for that member includes all children. This is the default policy if you don't specify the rollupPolicy attribute.<br />
+Partial. The total for that member includes only accessible children.<br />
+Hidden. If any of the children are inaccessible, the total is hidden.<br />
 
 
 ## Database Schema
 
-The Database Schema contains the Fact table with two columns: KEY and VALUE. The KEY column is used as the discriminator in the the Level and Hierarchy definitions.
+The Database Schema contains the `Fact` table with two columns: `KEY` and `VALUE`. The `KEY` column is used as the discriminator in the the Level and Hierarchy definitions.
 
 
 ```xml
@@ -34,7 +37,7 @@ The Database Schema contains the Fact table with two columns: KEY and VALUE. The
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Query
 
-The Query is a simple TableQuery that selects all columns from the Fact table to use in in the hierarchy and in the cube for the measures.
+The Query is a simple TableQuery that selects all columns from the `Fact` table to use in in the hierarchy and in the cube for the measures.
 
 
 ```xml
@@ -44,7 +47,7 @@ The Query is a simple TableQuery that selects all columns from the Fact table to
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Level1
 
-This Example uses one simple Level1 bases on the KEY column.
+This Example uses one simple Level1 bases on the `KEY` column.
 
 
 ```xml
@@ -90,8 +93,11 @@ The cube1 is defines by the DimensionConnector1 and the DimensionConnector2  and
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Role1
 
-The role1 use CatalogGrant access all; CubeGrant cube1 access all; dimensionGrant dimension1 access all;
-hierarchyGrant hierarchy1 access custom with member grants [Dimension1].[A] -all, [Dimension1].[B] -none, [Dimension1].[C] -none;
+The `role1` use CatalogGrant access `all`; CubeGrant cube1 access `all`; dimensionGrant dimension1 access `all`;
+hierarchyGrant hierarchy1 access custom with member grants<br />
+[Dimension1].[A] -all,<br />
+[Dimension1].[B] -none,<br />
+[Dimension1].[C] -none;<br />
 (Cube1 - access to "A" Cube2 - no access)
 
 

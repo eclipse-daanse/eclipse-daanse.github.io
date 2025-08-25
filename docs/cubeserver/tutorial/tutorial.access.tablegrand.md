@@ -8,14 +8,14 @@ number: 2.4.2
 
 This tutorial discusses roles with TableGrant.
 
-roleAll    role: use TableGrant access all; (access all database all tables)
-roleNone   role: use TableGrant access none; (no access to database tables)
-roleCustom role: use TableGrant access custom; (access to database table Fact)
+`roleAll`    role: use TableGrant access `all`; (access all database all tables)<br />
+`roleNone`   role: use TableGrant access `none`; (no access to database tables)<br />
+`roleCustom` role: use TableGrant access `custom`; (access to database table Fact)<br />
 
 
 ## Database Schema
 
-The Database Schema contains the Fact table with two columns: KEY and VALUE. The KEY column is used as the discriminator in the the Level and Hierarchy definitions.
+The Database Schema contains the `Fact` table with two columns: `KEY` and `VALUE`. The `KEY` column is used as the discriminator in the the Level and Hierarchy definitions.
 
 
 ```xml
@@ -30,7 +30,7 @@ The Database Schema contains the Fact table with two columns: KEY and VALUE. The
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Query
 
-The Query is a simple TableQuery that selects all columns from the Fact table to use in in the hierarchy and in the cube for the measures.
+The Query is a simple TableQuery that selects all columns from the `Fact` table to use in in the hierarchy and in the cube for the measures.
 
 
 ```xml
@@ -54,7 +54,7 @@ The cube1 is defines by the DimensionConnector1 and the DimensionConnector2  and
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## roleAll
 
-The roleAll use TableGrant access all; (access all tables)
+The `roleAll` use TableGrant access `all`; (access all tables)
 
 
 ```xml
@@ -71,7 +71,7 @@ The roleAll use TableGrant access all; (access all tables)
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## roleNone
 
-The roleNone use TableGrant access none; (no access to all tables)
+The `roleNone` use TableGrant access `none`; (no access to all tables)
 
 
 ```xml

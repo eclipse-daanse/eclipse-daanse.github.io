@@ -6,22 +6,15 @@ number: 2.4.1
 ---
 # Daanse Tutorial - Access Database Schema Grant
 
-Cube with examples of roles with SchemaGrant all_dimensions
-Cube1 - all access
-Cube2 - no access
-
-
-# Cube with role access database schema
-
 This tutorial discusses roles with with DatabaseSchemaGrant.
 
-roleAll role : use DatabaseSchemaGrant access all; (access all database)
-roleNone role: use CatalogGrant access none; (no access to database)
+`roleAll` role : use DatabaseSchemaGrant access `all`; (access all database)<br />
+`roleNone` role: use CatalogGrant access `none`; (no access to database)<br />
 
 
 ## Database Schema
 
-The Database Schema contains the Fact table with two columns: KEY and VALUE. The KEY column is used as the discriminator in the the Level and Hierarchy definitions.
+The Database Schema contains the `Fact` table with two columns: `KEY` and `VALUE`. The `KEY` column is used as the discriminator in the the Level and Hierarchy definitions.
 
 
 ```xml
@@ -60,7 +53,7 @@ The cube1 is defines by the DimensionConnector1 and the DimensionConnector2  and
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## roleAll
 
-The roleAll use DatabaseSchemaGrant access all; (access all database)
+The `roleAll` use DatabaseSchemaGrant access `all`; (access all database)
 
 
 ```xml
@@ -75,7 +68,7 @@ The roleAll use DatabaseSchemaGrant access all; (access all database)
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## roleNone
 
-The roleNone use DatabaseSchemaGrant access none; (no access to database)
+The `roleNone` use DatabaseSchemaGrant access `none`; (no access to database)
 
 
 ```xml

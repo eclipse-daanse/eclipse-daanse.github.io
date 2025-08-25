@@ -8,12 +8,12 @@ number: 2.4.7
 
 This tutorial discusses role with HierarchyGrant
 
-role1 role:   use HierarchyGrant hierarchy1 access all hierarchy2 access none;
+`role1` role:   use HierarchyGrant hierarchy1 access `all` hierarchy2 access `none`;
 
 
 ## Database Schema
 
-The Database Schema contains the Fact table with two columns: KEY and VALUE. The KEY column is used as the discriminator in the the Level and Hierarchy definitions.
+The Database Schema contains the `Fact` table with two columns: `KEY` and `VALUE`. The `KEY` column is used as the discriminator in the the Level and Hierarchy definitions.
 
 
 ```xml
@@ -28,7 +28,7 @@ The Database Schema contains the Fact table with two columns: KEY and VALUE. The
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Query
 
-The Query is a simple TableQuery that selects all columns from the Fact table to use in in the hierarchy and in the cube for the measures.
+The Query is a simple TableQuery that selects all columns from the `Fact` table to use in in the hierarchy and in the cube for the measures.
 
 
 ```xml
@@ -83,8 +83,11 @@ The cube1 is defines by the DimensionConnector1 and the MeasureGroup with measur
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Role1
 
-The role1 use CatalogGrant access all; CubeGrant cube1 access all; dimensionGrant dimension1 access all;
-hierarchyGrant hierarchy1 access custom with member grants [Dimension1].[A] -all, [Dimension1].[B] -none, [Dimension1].[C] -none;
+The `role1` use CatalogGrant access `all`; CubeGrant cube1 access `all`; dimensionGrant dimension1 access `all`;
+hierarchyGrant hierarchy1 access custom with member grants<br />
+[Dimension1].[A] -all,<br />
+[Dimension1].[B] -none,<br />
+[Dimension1].[C] -none;<br />
 (Cube1 - access to "A" Cube2 - no access)
 
 
@@ -109,8 +112,8 @@ This files represent the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:ExplicitHierarchy id="_hierarchy_Hierarchy1" name="Hierarchy1" hasAll="false" primaryKey="_column_fact_key" query="_query_factQuery" levels="_level_Level1"/>
   <roma:ExplicitHierarchy id="_hierarchy_Hierarchy2" name="Hierarchy1" hasAll="false" primaryKey="_column_fact_key" query="_query_factQuery" levels="_level_Level2"/>
+  <roma:ExplicitHierarchy id="_hierarchy_Hierarchy1" name="Hierarchy1" hasAll="false" primaryKey="_column_fact_key" query="_query_factQuery" levels="_level_Level1"/>
   <roma:Catalog description="Access control with hierarchy-level grants" name="Daanse Tutorial - Access Hierarchy Grant" cubes="_cube_Cube1" accessRoles="_accessRole_role1" dbschemas="_databaseSchema_HierarchyGrand"/>
   <roma:DatabaseSchema id="_databaseSchema_HierarchyGrand">
     <tables xsi:type="roma:PhysicalTable" id="_table_fact" name="Fact">
