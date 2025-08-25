@@ -4,7 +4,7 @@ group: Database
 kind: TUTORIAL
 number: 1.2.2
 ---
-# Introduction into SqlExpressionColumn
+# Daanse Tutorial - Database Expression Column
 
 A table’s data consists not only of physical columns that store values but also of another type: the SqlExpressionColumn. This type of column is created dynamically using an SQL expression. The SQL expression is a string executed by the database system to generate the column on demand. Unlike physical columns, the SqlExpressionColumn is not stored in the database but is computed in real time whenever it is requested.
 

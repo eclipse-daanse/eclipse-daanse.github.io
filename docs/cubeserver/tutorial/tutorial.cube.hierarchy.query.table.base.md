@@ -4,7 +4,7 @@ group: Hierarchy
 kind: TUTORIAL
 number: 2.3.2.1
 ---
-# Hierarchy - Query - seperate Tables, Fact and Dimension
+# Daanse Tutorial - Cube Hierarchy Query Table Base
 
 Very often, the data of a cube is not stored in a single table, but in multiple tables. In this case, it must be defined one query for the Facts to store the values that be aggregated for the measures and one for the Levels. This example shows how this must be defined.
 
@@ -115,8 +115,8 @@ This files represent the complete definition of the catalog.
       <columns xsi:type="roma:PhysicalColumn" id="_column_town_name" name="NAME"/>
     </tables>
   </roma:DatabaseSchema>
-  <roma:TableQuery id="_query_fact" table="_table_fact"/>
   <roma:TableQuery id="_query_town" table="_table_town"/>
+  <roma:TableQuery id="_query_fact" table="_table_fact"/>
   <roma:Level id="_level_town" name="Town" column="_column_town_id" nameColumn="_column_town_name"/>
   <roma:StandardDimension id="_dimension_town" name="Town" hierarchies="_hierarchy_townHierarchy"/>
   <roma:PhysicalCube id="_cube_queryLinkedTables" name="Cube Query linked Tables" query="_query_fact">

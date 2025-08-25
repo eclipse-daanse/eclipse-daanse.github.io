@@ -4,7 +4,7 @@ group: Database
 kind: TUTORIAL
 number: 1.3.1
 ---
-# Tables and TableTypes
+# Daanse Tutorial - Database Table
 
 There are several Tables Types. The most common are PhysicalTable, ViewTable, and SystemTable. All of this, and thre upcoming table typed can be used to build cubes on.
 

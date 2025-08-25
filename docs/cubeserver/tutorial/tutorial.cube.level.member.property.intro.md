@@ -4,7 +4,7 @@ group: Member
 kind: TUTORIAL
 number: 2.3.5.1
 ---
-# Level - MemberProperties Intro
+# Daanse Tutorial - Cube Level Member Property Intro
 
 This Tutorial is about MemberProperties. MemberProperties are attributes of a hierarchy level’s members. They provide additional details about each member, such as a description or any other related value. The only requirement for defining a MemberProperty is that a corresponding column exists to store the property’s value.
 

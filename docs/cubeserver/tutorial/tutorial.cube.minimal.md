@@ -4,7 +4,7 @@ group: Cube
 kind: TUTORIAL
 number: 2.1
 ---
-# Introduction into Cubes
+# Daanse Tutorial - Cube Minimal
 
 Data cubes are the most important objects in OLAP. Cubes provide access to data related to a specific topic, which corresponds to the cube's name. Within the catalog, each data cube must have a unique name.
 

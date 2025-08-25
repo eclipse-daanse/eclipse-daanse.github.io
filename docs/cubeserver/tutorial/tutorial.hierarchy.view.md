@@ -4,10 +4,7 @@ group: Hierarchy
 kind: TUTORIAL
 number: 2.16.2
 ---
-Catalog of a minimal cube with hierarchy with SQL view reference.
-
-
-# Catalog of a minimal cube with hierarchy with SQL view reference
+# Daanse Tutorial - Hierarchy View
 
 Cube with hierarchy which use SQL query. This example shows combine phisical table as fact and SqlView for hierarchy
 SqlView represents a virtual table defined by SQL query expressions rather than physical database tables.

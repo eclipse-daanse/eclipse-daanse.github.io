@@ -4,7 +4,7 @@ group: Database
 kind: TUTORIAL
 number: 1.2.1
 ---
-# Introduction into Columns
+# Daanse Tutorial - Database Column
 
 The data of a table are seperated into columns. Each column that should be used, must explicitly defines. Columns that are not relevant for the analysis can be left out.
 

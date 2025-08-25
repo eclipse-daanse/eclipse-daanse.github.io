@@ -4,10 +4,7 @@ group: Parent Child
 kind: TUTORIAL
 number: 2.17.2
 ---
-
-
-
-# Catalog with Cube with Parent Child Hierarchy with ParentChildLink
+# Daanse Tutorial - Parent Child Link
 
 Catalog with Minimal Cube with Parent Child Hierarchy
 Parent Child Hierarchy is self-referencing hierarchy where members can have parent-child relationships within the same table,

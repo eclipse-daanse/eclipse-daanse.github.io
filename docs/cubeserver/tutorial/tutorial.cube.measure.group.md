@@ -4,7 +4,7 @@ group: Measure
 kind: TUTORIAL
 number: 2.2.5
 ---
-# Cube - Measures and MeasureGroup
+# Daanse Tutorial - Cube Measure Group
 
 In cases where you need a better overview of all measures, want to provide additional context for a `Measure`, or need to organize a list of measures, you can use a `MeasureGroup`.
 

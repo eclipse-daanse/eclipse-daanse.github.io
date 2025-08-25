@@ -4,12 +4,7 @@ group: Access
 kind: TUTORIAL
 number: 2.4.6
 ---
-Cube with examples of roles with DimensionGrant
-Cube1 - Dimension1 all access
-Cube1 - Dimension2 no access
-
-
-# Cube with role with DimensionGtant
+# Daanse Tutorial - Access Dimension Grant
 
 This tutorial discusses roles with DimensionGrant.
 
@@ -114,8 +109,8 @@ This files represent the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:ExplicitHierarchy id="_hierarchy_Hierarchy1" name="Hierarchy1" hasAll="false" primaryKey="_column_fact_key" query="_query_factQuery" levels="_level_Level1"/>
   <roma:ExplicitHierarchy id="_hierarchy_Hierarchy2" name="Hierarchy2" hasAll="false" primaryKey="_column_fact_key" query="_query_factQuery" levels="_level_Level2"/>
+  <roma:ExplicitHierarchy id="_hierarchy_Hierarchy1" name="Hierarchy1" hasAll="false" primaryKey="_column_fact_key" query="_query_factQuery" levels="_level_Level1"/>
   <roma:Catalog description="Access control with dimension-level grants" name="Daanse Tutorial - Access Dimension Grant" cubes="_cube_Cube1" accessRoles="_accessRole_role1" dbschemas="_databaseSchema_DimensionGrand"/>
   <roma:DatabaseSchema id="_databaseSchema_DimensionGrand">
     <tables xsi:type="roma:PhysicalTable" id="_table_fact" name="Fact">

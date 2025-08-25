@@ -4,12 +4,7 @@ group: Hierarchy
 kind: TUTORIAL
 number: 2.16.1
 ---
-A basic OLAP schema with a level with reference with inner table
-
-
-Catalog with schema with hierarchy with table reference with inner table
-
-# Catalog with schema with hierarchy with table reference with inner table
+# Daanse Tutorial - Hierarchy Inline Table
 
 Cube with hierarchy which use inner table. This example shows combine phisical table as fact and Inline table for hierarchy
 Inline table represents a table with data embedded directly in the schema

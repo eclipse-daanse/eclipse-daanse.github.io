@@ -9,9 +9,7 @@ a huge number of rows: a million or more. An aggregate table is essentially a pr
 summary of the data in the fact table.
 
 
-catalog with schema with aggregate tables
-
-# Cube with aggregate tables
+# Daanse Tutorial - Aggregation Aggregate Tables
 
 This tutorial discusses TableQuery with AggregationExclude.
 AggregationExclude defines exclusion rules that prevent specific tables from being used as aggregation tables,
@@ -201,11 +199,11 @@ This files represent the complete definition of the catalog.
     <tables xsi:type="roma:PhysicalTable" id="_table_agg_c_14_sales_fact_1997" name="AGG_C_14_SALES_FACT_1997"/>
     <tables xsi:type="roma:PhysicalTable" id="_table_agg_lc_100_sales_fact_1997" name="AGG_LC_100_SALES_FACT_1997"/>
   </roma:DatabaseSchema>
+  <roma:TableQuery id="_query_productClassQuery" table="_table_product_class"/>
   <roma:TableQuery id="_query_salesFact1997Query" aggregationTables="_aggregationName_AGG_C_SPECIAL_SALES_FACT_1997" table="_table_sales_fact_1997">
     <aggregationExcludes name="AGG_C_14_SALES_FACT_1997"/>
     <aggregationExcludes name="AGG_LC_100_SALES_FACT_1997"/>
   </roma:TableQuery>
-  <roma:TableQuery id="_query_productClassQuery" table="_table_product_class"/>
   <roma:TableQuery id="_query_productQuery" table="_table_product"/>
   <roma:JoinQuery id="_joinQuery_productClassProduct">
     <left key="_column_product_product_class_id" query="_query_productQuery"/>

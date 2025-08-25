@@ -4,7 +4,7 @@ group: Measure
 kind: TUTORIAL
 number: 2.2.1
 ---
-# Multiple Measures and Aggragators
+# Daanse Tutorial - Cube Measure Aggregator Base
 
 Data cubes can also have multiple measures when different aggregations are required for a column.
 

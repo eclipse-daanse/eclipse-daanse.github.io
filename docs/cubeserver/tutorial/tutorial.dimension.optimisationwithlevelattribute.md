@@ -10,7 +10,7 @@ Level attribute is name of the level to join to
 If not specified joins to the lowest level of the dimension
 
 
-# Catalog with Cube with two dimension connectors with level_attribute
+# Daanse Tutorial - Dimension Optimisation With Level Attribute
 
 A basic OLAP schema with two Dimension Connectors with level attribute
 Level attribute in DimensionConnector uses for optimize sql inner join
@@ -57,16 +57,6 @@ The Query is a simple TableQuery that selects all columns from the Fact table to
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
-## HxL2Query
-
-The Query is a simple TableQuery that selects all columns from the Hx_L2 table to use in the hierarchy join.
-
-
-```xml
-<roma:TableQuery  id="_hxl2query" table="_hx_l2"/>
-
-```
-*<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## H1L1Query
 
 The Query is a simple TableQuery that selects all columns from the H1_L1 table to use in the hierarchy join.
@@ -74,6 +64,16 @@ The Query is a simple TableQuery that selects all columns from the H1_L1 table t
 
 ```xml
 <roma:TableQuery  id="_h1l1query" table="_h1_l1"/>
+
+```
+*<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
+## HxL2Query
+
+The Query is a simple TableQuery that selects all columns from the Hx_L2 table to use in the hierarchy join.
+
+
+```xml
+<roma:TableQuery  id="_hxl2query" table="_hx_l2"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -183,14 +183,14 @@ This files represent the complete definition of the catalog.
     </tables>
   </roma:DatabaseSchema>
   <roma:TableQuery id="_table_factQuery" table="_table_fact"/>
-  <roma:TableQuery id="_hxl2query" table="_hx_l2"/>
   <roma:TableQuery id="_h1l1query" table="_h1_l1"/>
+  <roma:TableQuery id="_hxl2query" table="_hx_l2"/>
   <roma:JoinQuery id="_joinQuery">
     <left key="_hx_l2_h1l1_key" query="_hxl2query"/>
     <right key="_h1_l1_key" query="_h1l1query"/>
   </roma:JoinQuery>
-  <roma:Level id="_h1_level1" name="H1_Level1" column="_h1_l1_key" nameColumn="_h1_l1_name"/>
   <roma:Level id="_h1_level2" name="H1_Level2" column="_hx_l2_key" nameColumn="_hx_l2_name"/>
+  <roma:Level id="_h1_level1" name="H1_Level1" column="_h1_l1_key" nameColumn="_h1_l1_name"/>
   <roma:StandardDimension id="_diml1" name="Diml1" hierarchies="_hierarchy1"/>
   <roma:PhysicalCube id="_cube" name="Cube" query="_table_factQuery">
     <dimensionConnectors foreignKey="_column_fact_dim_key" dimension="_diml1" overrideDimensionName="Dim1" level="_h1_level2" id="_dc_dim1"/>

@@ -4,7 +4,7 @@ group: Cube
 kind: TUTORIAL
 number: 2.3.6
 ---
-# Cube - logic functions
+# Daanse Tutorial - Function Logic
 
 This tutorial discusses Calculated Members with logic functions.
 

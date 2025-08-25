@@ -4,10 +4,7 @@ group: Actions
 kind: TUTORIAL
 number: 2.10.1
 ---
-Schema of a minimal cube with DrillThroughAction
-
-
-# Minimal Cube with DrillThroughAction
+# Daanse Tutorial - Action Drillthrough
 
 This tutorial discusses DrillThroughAction.
 DrillThroughAction feature is enabling users to seamlessly transition from  analytical summaries
@@ -48,13 +45,13 @@ The KEY column of Fact table is used as the discriminator in the the dimension.
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
-## H1L1Query
+## H2L1Query
 
-The Query is a simple TableQuery that selects all columns from the H1_L1 table table.
+The Query is a simple TableQuery that selects all columns from the H2_L1 table table.
 
 
 ```xml
-<roma:TableQuery  id="_query_H1L1Query" table="_table_h1_l1"/>
+<roma:TableQuery  id="_query_H2L1Query" table="_table_h2_l1"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -68,29 +65,13 @@ The Query is a simple TableQuery that selects all columns from the Fact table to
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
-## H2L1Query
+## H1L1Query
 
-The Query is a simple TableQuery that selects all columns from the H2_L1 table table.
-
-
-```xml
-<roma:TableQuery  id="_query_H2L1Query" table="_table_h2_l1"/>
-
-```
-*<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
-## join1
-
-The JoinQuery specifies which TableQueries should be joined. It also defines the columns in each table that are used for the join:
-
-- In the lower-level table (HX_L2), the join uses the foreign key H1L1_KEY.
-- In the upper-level table (H1_L1), the join uses the primary key KEY.
+The Query is a simple TableQuery that selects all columns from the H1_L1 table table.
 
 
 ```xml
-<roma:JoinQuery  id="_joinQuery_join1">
-  <left key="_column_hx_l2_h1l1_key" query="_query_HxL2Query"/>
-  <right key="_column_h1_l1_key" query="_query_H1L1Query"/>
-</roma:JoinQuery>
+<roma:TableQuery  id="_query_H1L1Query" table="_table_h1_l1"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -110,6 +91,22 @@ The JoinQuery specifies which TableQueries should be joined. It also defines the
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
+## join1
+
+The JoinQuery specifies which TableQueries should be joined. It also defines the columns in each table that are used for the join:
+
+- In the lower-level table (HX_L2), the join uses the foreign key H1L1_KEY.
+- In the upper-level table (H1_L1), the join uses the primary key KEY.
+
+
+```xml
+<roma:JoinQuery  id="_joinQuery_join1">
+  <left key="_column_hx_l2_h1l1_key" query="_query_HxL2Query"/>
+  <right key="_column_h1_l1_key" query="_query_H1L1Query"/>
+</roma:JoinQuery>
+
+```
+*<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## HxL2Query
 
 The Query is a simple TableQuery that selects all columns from the HX_L2 table table.
@@ -117,16 +114,6 @@ The Query is a simple TableQuery that selects all columns from the HX_L2 table t
 
 ```xml
 <roma:TableQuery  id="_query_HxL2Query" table="_table_hx_l2"/>
-
-```
-*<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
-## Level2
-
-This Example uses H1_Level2 level bases on the KEY column as kew and NAME column as name from HX_L2 table.
-
-
-```xml
-<roma:Level  id="_level_H1_Level2" name="H1_Level2" column="_column_hx_l2_key" nameColumn="_column_hx_l2_name"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -147,6 +134,16 @@ This Example uses H1_Level1 level bases on the KEY column as kew and NAME column
 
 ```xml
 <roma:Level  id="_level_H1_Level1" name="H1_Level1" column="_column_h1_l1_key" nameColumn="_column_h1_l1_name"/>
+
+```
+*<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
+## Level2
+
+This Example uses H1_Level2 level bases on the KEY column as kew and NAME column as name from HX_L2 table.
+
+
+```xml
+<roma:Level  id="_level_H1_Level2" name="H1_Level2" column="_column_hx_l2_key" nameColumn="_column_hx_l2_name"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -268,21 +265,21 @@ This files represent the complete definition of the catalog.
       <columns xsi:type="roma:PhysicalColumn" id="_column_hx_l2_h2l1_key" name="H2L1_KEY" type="Integer"/>
     </tables>
   </roma:DatabaseSchema>
-  <roma:TableQuery id="_query_H1L1Query" table="_table_h1_l1"/>
-  <roma:TableQuery id="_query_factQuery" table="_table_fact"/>
-  <roma:TableQuery id="_query_H2L1Query" table="_table_h2_l1"/>
   <roma:TableQuery id="_query_HxL2Query" table="_table_hx_l2"/>
-  <roma:JoinQuery id="_joinQuery_join1">
-    <left key="_column_hx_l2_h1l1_key" query="_query_HxL2Query"/>
-    <right key="_column_h1_l1_key" query="_query_H1L1Query"/>
-  </roma:JoinQuery>
+  <roma:TableQuery id="_query_H2L1Query" table="_table_h2_l1"/>
+  <roma:TableQuery id="_query_factQuery" table="_table_fact"/>
+  <roma:TableQuery id="_query_H1L1Query" table="_table_h1_l1"/>
   <roma:JoinQuery id="_joinQuery_join2">
     <left key="_column_hx_l2_h2l1_key" query="_query_HxL2Query"/>
     <right key="_column_h2_l1_key" query="_query_H2L1Query"/>
   </roma:JoinQuery>
-  <roma:Level id="_level_H1_Level2" name="H1_Level2" column="_column_hx_l2_key" nameColumn="_column_hx_l2_name"/>
+  <roma:JoinQuery id="_joinQuery_join1">
+    <left key="_column_hx_l2_h1l1_key" query="_query_HxL2Query"/>
+    <right key="_column_h1_l1_key" query="_query_H1L1Query"/>
+  </roma:JoinQuery>
   <roma:Level id="_level_H2_Level2" name="H2_Level2" column="_column_hx_l2_key" nameColumn="_column_hx_l2_name"/>
   <roma:Level id="_level_H1_Level1" name="H1_Level1" column="_column_h1_l1_key" nameColumn="_column_h1_l1_name"/>
+  <roma:Level id="_level_H1_Level2" name="H1_Level2" column="_column_hx_l2_key" nameColumn="_column_hx_l2_name"/>
   <roma:Level id="_level_H2_Level1" name="H2_Level1" column="_column_h2_l1_key" nameColumn="_column_h2_l1_name"/>
   <roma:StandardDimension id="_dimension_Dimension1" name="Dimension1" hierarchies="_hierarchy_Hierarchy1 _hierarchy_Hierarchy2"/>
   <roma:PhysicalCube id="_cube_Cube" name="Cube" query="_query_factQuery">

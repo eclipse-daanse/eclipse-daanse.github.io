@@ -4,7 +4,7 @@ group: Hierarchy
 kind: TUTORIAL
 number: 2.3.4
 ---
-# Hierarchy - Level - HasAll
+# Daanse Tutorial - Cube Hierarchy Has All
 
 In a hierarchy, the top level can sometimes be a special case. Typically, levels are created using a Level object, along with a reference to a column and a query on the hierarchy. However, there are situations where no dedicated column or table entry exists for the top level. For example if you want to represent a grand total. In such cases, you can generate a generic top level that serves as a final aggregation for all members of the level below.
 

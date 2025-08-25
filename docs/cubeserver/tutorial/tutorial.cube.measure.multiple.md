@@ -4,7 +4,7 @@ group: Measure
 kind: TUTORIAL
 number: 2.2.2
 ---
-# Multiple Measures
+# Daanse Tutorial - Cube Measure Multiple
 
 Data cubes can have multiple measures to provide different data related to the cube's topic. This is particularly useful when aggregating different data columns within the same cube.
 

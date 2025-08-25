@@ -4,10 +4,7 @@ group: Measure
 kind: TUTORIAL
 number: 2.12.1
 ---
-A mininmal cube with a simple measure with SQLExpressionColumn.
-
-
-# Minimal Cube With SQLExpressionColumn
+# Daanse Tutorial - Measure Expression
 
 Data cube with measure Expression.
 

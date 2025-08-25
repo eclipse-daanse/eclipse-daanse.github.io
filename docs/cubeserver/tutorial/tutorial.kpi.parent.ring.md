@@ -4,7 +4,7 @@ group: Kpi
 kind: TUTORIAL
 number: 2.7.3
 ---
-# Kpi - Introduction
+# Daanse Tutorial - KPI Parent Ring
 
 This tutorial is an introduction to the concept of KPIs in data cubes with parent KPI.
 

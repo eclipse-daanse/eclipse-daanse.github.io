@@ -4,10 +4,7 @@ group: VirtualCube
 kind: TUTORIAL
 number: 2.15.1
 ---
-Virtual cube example with measures.
-
-
-# Minimal Virtual Cubes With Measures
+# Daanse Tutorial - Virtual Cube Minimal
 
 Minimal Virtual Cubes With Measures.
 A virtual cube that combines measures and dimensions from multiple physical cubes into a unified analytical view.
@@ -143,8 +140,8 @@ This files represent the complete definition of the catalog.
       <columns xsi:type="roma:PhysicalColumn" id="_c2_fact_value" name="VALUE" type="Integer"/>
     </tables>
   </roma:DatabaseSchema>
-  <roma:TableQuery id="_c2TableQuery" table="_c2_fact"/>
   <roma:TableQuery id="_c1TableQuery" table="_c1_fact"/>
+  <roma:TableQuery id="_c2TableQuery" table="_c2_fact"/>
   <roma:PhysicalCube id="_cube1" name="Cube1" query="_c1TableQuery">
     <measureGroups>
       <measures xsi:type="roma:SumMeasure" id="_c1-measure-sum" name="C1-Measure-Sum" column="_c1_fact_value"/>

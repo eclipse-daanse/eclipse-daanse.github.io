@@ -4,7 +4,7 @@ group: Hierarchy
 kind: TUTORIAL
 number: 2.3.2.2
 ---
-# Hierarchy - Query - 1 Table, 2 Levels
+# Daanse Tutorial - Cube Hierarchy Query Table Multilevel Multitable
 
             In some cases, a table for a lower-level entity also contains additional information for a higher-level entity. This often happens when no dedicated columns exist for the higher-level entity and the database designer decides that fully applying Third Normal Form (3NF) would involve more work than it seems to be worth, or they wish to optimize lookup speed. Although we strongly recommend using 3NF wherever possible, this tutorial demonstrates how to handle a scenario in which two levels share the same table.
 
@@ -133,10 +133,10 @@ This files represent the complete definition of the catalog.
       <columns xsi:type="roma:PhysicalColumn" id="_column_town_country" name="COUNTRY"/>
     </tables>
   </roma:DatabaseSchema>
-  <roma:TableQuery id="_query_fact" table="_table_fact"/>
   <roma:TableQuery id="_query_town" table="_table_town"/>
-  <roma:Level id="_level_country" name="Country" column="_column_town_country"/>
+  <roma:TableQuery id="_query_fact" table="_table_fact"/>
   <roma:Level id="_level_town" name="Town" column="_column_town_id" nameColumn="_column_town_name"/>
+  <roma:Level id="_level_country" name="Country" column="_column_town_country"/>
   <roma:StandardDimension id="_dimension_town" name="Town" hierarchies="_hierarchy_townHierarchy"/>
   <roma:PhysicalCube id="_cube_queryLinkedTables" name="Cube Query linked Tables" query="_query_fact">
     <dimensionConnectors foreignKey="_column_fact_townId" dimension="_dimension_town" id="_dimensionConnector_town"/>

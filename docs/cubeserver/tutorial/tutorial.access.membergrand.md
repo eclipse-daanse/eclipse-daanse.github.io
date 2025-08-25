@@ -4,11 +4,7 @@ group: Access
 kind: TUTORIAL
 number: 2.4.8
 ---
-Cube with examples of roles with MemberGrant
-Cube1 - access to 'A'
-
-
-# Cube with access MemberGrant
+# Daanse Tutorial - Access Member Grant
 
 This tutorial discusses role with MemberGrant
 

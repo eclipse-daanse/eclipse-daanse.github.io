@@ -23,7 +23,7 @@ TimeWeeks   Level is a week
 TimeDays    Level represents days
 
 
-# catalog with Cube with Time Dimensions
+# Daanse Tutorial - Dimension Time Dimension
 
 This tutorial discusses NamedSets.
 
@@ -183,10 +183,10 @@ This files represent the complete definition of the catalog.
   </roma:DatabaseSchema>
   <roma:TableQuery id="_query_fact" table="_table_fact"/>
   <roma:Level id="_level_week" name="Week" column="_column_fact_weekInMonth" type="TimeWeeks"/>
-  <roma:Level id="_level_day" name="Day" column="_column_fact_dayInMonth" type="TimeDays"/>
-  <roma:Level id="_level_quarters" name="Quarters" column="_column_fact_qtrName" type="TimeQuarters" ordinalColumn="_column_fact_qtrId"/>
-  <roma:Level id="_level_years" name="Years" column="_column_fact_yearId" type="TimeYears" uniqueMembers="true"/>
   <roma:Level id="_level_months" name="Months" column="_column_fact_monthName" type="TimeMonths" ordinalColumn="_column_fact_monthId"/>
+  <roma:Level id="_level_years" name="Years" column="_column_fact_yearId" type="TimeYears" uniqueMembers="true"/>
+  <roma:Level id="_level_quarters" name="Quarters" column="_column_fact_qtrName" type="TimeQuarters" ordinalColumn="_column_fact_qtrId"/>
+  <roma:Level id="_level_day" name="Day" column="_column_fact_dayInMonth" type="TimeDays"/>
   <roma:TimeDimension id="_dimension_time" name="Time" hierarchies="_hierarchy_time"/>
   <roma:PhysicalCube id="_cube_timeDimension" name="CubeTimeDimension" query="_query_fact">
     <dimensionConnectors dimension="_dimension_time" overrideDimensionName="Time" id="_dimensionConnector_time"/>
