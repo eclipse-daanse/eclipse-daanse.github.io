@@ -46,7 +46,7 @@ defineConfig({
     
     sidebar: {
       '/cubeserver/concept': generateSidebar('../cubeserver/concept'),
-      '/cubeserver/setup':  generateSidebar('../cubeserver/setup'),
+      '/cubeserver/setup':  generateSidebar('../cubeserver/setup','/cubeserver/setup'),
       '/cubeserver/tutorial':  generateSidebar('../cubeserver/tutorial','/cubeserver/tutorial'),
       '/cubeserver/model':  generateSidebar('../cubeserver/model','/cubeserver/model'),
 
