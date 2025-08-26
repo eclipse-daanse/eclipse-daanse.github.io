@@ -1,6 +1,6 @@
 ---
-title: Playground Application
-group: Application
+title: Playground
+group: Applications
 ---
 # Eclipse Daanse Playground Application
 

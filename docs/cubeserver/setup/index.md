@@ -5,7 +5,9 @@ This section provides an overview of how to set up and deploy the system in diff
 The setup is organized into the following key areas:
 
 ## [Probe](./app_probe.md)
-The right tool for getting to know the OLAP server for development, tutorials, testing and mocking. References tutorials in the [../tutorial](https://daanse.org/cubeserver/tutorial/) folder.
+The right tool for getting to know the OLAP server for development, tutorials, testing and mocking. References tutorials in the [Tutorial](https://daanse.org/cubeserver/tutorial/) folder. 
+
+If you're not sure what to do, choose this one! ✅
 
 ## [Pivot](./app_pivot.md)
 Pivot is under construction. It is the foundation for every production Daanse OLAP server.

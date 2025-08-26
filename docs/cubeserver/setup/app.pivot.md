@@ -1,6 +1,6 @@
 ---
-title: Pivot Application
-group: Application
+title: Pivot
+group: Applications
 ---
 # Eclipse Daanse Pivor Application
 
