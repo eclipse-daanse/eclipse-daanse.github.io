@@ -4,16 +4,12 @@ This section provides an overview of how to set up and deploy the system in diff
 
 The setup is organized into the following key areas:
 
-***This section will be updated soon.***
+## [Probe](./app_probe.md)
+The right tool for getting to know the OLAP server for development, tutorials, testing and mocking. References tutorials in the [../tutorial](https://daanse.org/cubeserver/tutorial/) folder.
 
-# Docker
-Instructions for running the application in containerized environments using prebuilt or custom images.
+## [Pivot](./app_pivot.md)
+Pivot is under construction. It is the foundation for every production Daanse OLAP server.
 
-# Kubernetes / Pods
-Guidance for deploying the system as services and pods in a Kubernetes cluster, including best practices for scaling and networking.
+## [Playground](./app_playground.md)
+A comprehensive development tool containing all dialects, data sources, web consoles, and helper components for creating and configuring pivot servers. Available only through the git repository due to security considerations.
 
-# Java Features
-Overview of Java-specific capabilities such as system properties, module configurations, and JVM tuning.
-
-# Fully Configurable Bundle Setup
-Steps to assemble and configure a complete modular setup tailored to your specific use case – from component selection to integration options.
