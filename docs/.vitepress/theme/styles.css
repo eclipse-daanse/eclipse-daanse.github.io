@@ -57,3 +57,20 @@ h3 {
 code {
   background: #f
 }
+
+/* Mermaid diagram zoom styles */
+.mermaid {
+  overflow: visible;
+  cursor: grab;
+  user-select: none;
+}
+
+.mermaid:active {
+  cursor: grabbing;
+}
+
+.mermaid svg {
+  max-width: 100%;
+  height: auto;
+  transition: transform 0.2s ease;
+}

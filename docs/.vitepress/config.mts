@@ -22,6 +22,10 @@ defineConfig({
     wrap: true
   },
 
+  head: [
+    ['script', { src: 'https://unpkg.com/panzoom@9.4.0/dist/panzoom.min.js' }]
+  ],
+
   title: "Eclipse Daanse",
   description: "Data Analysis Services",
   base: "/",
