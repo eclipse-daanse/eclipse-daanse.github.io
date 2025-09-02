@@ -1,9 +1,17 @@
 import DefaultTheme from 'vitepress/theme'
 import { onMounted } from 'vue'
 import './styles.css'
+import VueZoomable from 'vue-zoomable'
+import 'vue-zoomable/dist/style.css'
+import MermaidZoom from "./components/MermaidZoom.vue";
 
 export default {
   extends: DefaultTheme,
+  enhanceApp({ app }) {
+    // Komponente global registrieren
+    app.component('VueZoomable', VueZoomable)
+    app.component('MermaidZoom', MermaidZoom)
+  },
   setup() {
     onMounted(() => {
       // Wait for Mermaid diagrams to be rendered

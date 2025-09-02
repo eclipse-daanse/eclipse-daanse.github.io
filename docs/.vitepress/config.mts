@@ -22,9 +22,9 @@ defineConfig({
     wrap: true
   },
 
-  head: [
-    ['script', { src: 'https://unpkg.com/panzoom@9.4.0/dist/panzoom.min.js' }]
-  ],
+  //head: [
+  //  ['script', { src: 'https://unpkg.com/panzoom@9.4.0/dist/panzoom.min.js' }]
+  //],
 
   title: "Eclipse Daanse",
   description: "Data Analysis Services",
@@ -47,7 +47,7 @@ defineConfig({
     },
     // https://vitepress.dev/reference/default-theme-config
     nav: nav(),
-    
+
     sidebar: {
       '/cubeserver/concept': generateSidebar('../cubeserver/concept'),
       '/cubeserver/setup':  generateSidebar('../cubeserver/setup','/cubeserver/setup'),
