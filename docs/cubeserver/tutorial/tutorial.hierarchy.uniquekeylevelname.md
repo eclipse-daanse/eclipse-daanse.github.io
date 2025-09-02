@@ -167,7 +167,6 @@ This files represent the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:ExplicitHierarchy id="_hierarchy_automotive" primaryKey="_column_automotiveDim_autoDimId" uniqueKeyLevelName="Vehicle Identification Number" query="_query_fact" levels="_level_make _level_model _level_manufacturingPlant _level_vehicleIdentificationNumber _level_licensePlateNum"/>
   <roma:Catalog description="Hierarchy with unique key level name optimizations" name="Daanse Tutorial - Hierarchy Unique Key Level Name" cubes="_cube_cube" dbschemas="_databaseSchema_main"/>
   <roma:DatabaseSchema id="_databaseSchema_main">
     <tables xsi:type="roma:PhysicalTable" id="_table_automotiveDim" name="AUTOMOTIVE_DIM">
@@ -190,19 +189,20 @@ This files represent the complete definition of the catalog.
     </tables>
   </roma:DatabaseSchema>
   <roma:TableQuery id="_query_fact" table="_table_automotiveDim"/>
+  <roma:Level id="_level_licensePlateNum" name="LicensePlateNum" column="_column_automotiveDim_licenseId">
+    <memberProperties id="_memberProperty_licenseState" name="State" column="_column_automotiveDim_licenseStateId" dependsOnLevelValue="true" propertyType="Numeric"/>
+  </roma:Level>
+  <roma:Level id="_level_make" name="Make" column="_column_automotiveDim_makeId" nameColumn="_column_automotiveDim_make"/>
   <roma:Level id="_level_manufacturingPlant" name="ManufacturingPlant" column="_column_automotiveDim_plantId" nameColumn="_column_automotiveDim_plant">
     <memberProperties id="_memberProperty_state" name="State" column="_column_automotiveDim_plantStateId" dependsOnLevelValue="true" propertyType="Numeric"/>
     <memberProperties id="_memberProperty_city" name="City" column="_column_automotiveDim_plantCityId" dependsOnLevelValue="true" propertyType="Numeric"/>
   </roma:Level>
   <roma:Level id="_level_model" name="Model" column="_column_automotiveDim_modelId" nameColumn="_column_automotiveDim_model"/>
-  <roma:Level id="_level_licensePlateNum" name="LicensePlateNum" column="_column_automotiveDim_licenseId">
-    <memberProperties id="_memberProperty_licenseState" name="State" column="_column_automotiveDim_licenseStateId" dependsOnLevelValue="true" propertyType="Numeric"/>
-  </roma:Level>
   <roma:Level id="_level_vehicleIdentificationNumber" name="Vehicle Identification Number" column="_column_automotiveDim_vehicleId">
     <memberProperties id="_memberProperty_color" name="Color" column="_column_automotiveDim_colorId" dependsOnLevelValue="true" propertyType="Numeric"/>
     <memberProperties id="_memberProperty_trim" name="Trim" column="_column_automotiveDim_trimId" dependsOnLevelValue="true" propertyType="Numeric"/>
   </roma:Level>
-  <roma:Level id="_level_make" name="Make" column="_column_automotiveDim_makeId" nameColumn="_column_automotiveDim_make"/>
+  <roma:ExplicitHierarchy id="_hierarchy_automotive" primaryKey="_column_automotiveDim_autoDimId" uniqueKeyLevelName="Vehicle Identification Number" query="_query_fact" levels="_level_make _level_model _level_manufacturingPlant _level_vehicleIdentificationNumber _level_licensePlateNum"/>
   <roma:StandardDimension id="_dimension_automotive" name="Automotive" hierarchies="_hierarchy_automotive"/>
   <roma:PhysicalCube id="_cube_cube" name="Cube" query="_query_fact">
     <dimensionConnectors dimension="_dimension_automotive" overrideDimensionName="Automotive" id="_dimensionConnector_automotive"/>

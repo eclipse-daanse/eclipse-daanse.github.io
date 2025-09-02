@@ -157,7 +157,6 @@ This files represent the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:ExplicitHierarchy id="_hierarchy_townHierarchy" name="TownHierarchy" primaryKey="_column_town_id" query="_query_townToCountry" levels="_level_town _level_country"/>
   <roma:Catalog description="Basic hierarchy with joined tables" name="Daanse Tutorial - Cube Hierarchy Query Join Base" cubes="_cube_queryLinkedTables" dbschemas="_databaseSchema_main"/>
   <roma:DatabaseSchema id="_databaseSchema_main">
     <tables xsi:type="roma:PhysicalTable" id="_table_fact" name="Fact">
@@ -174,15 +173,16 @@ This files represent the complete definition of the catalog.
       <columns xsi:type="roma:PhysicalColumn" id="_column_country_name" name="NAME"/>
     </tables>
   </roma:DatabaseSchema>
+  <roma:TableQuery id="_query_country" table="_table_country"/>
   <roma:TableQuery id="_query_fact" table="_table_fact"/>
   <roma:TableQuery id="_query_town" table="_table_town"/>
-  <roma:TableQuery id="_query_country" table="_table_country"/>
   <roma:JoinQuery id="_query_townToCountry">
     <left key="_column_town_id" query="_query_town"/>
     <right key="_column_country_id" query="_query_country"/>
   </roma:JoinQuery>
   <roma:Level id="_level_country" name="County" column="_column_country_id" nameColumn="_column_country_name"/>
   <roma:Level id="_level_town" name="Town" column="_column_town_id" nameColumn="_column_town_name"/>
+  <roma:ExplicitHierarchy id="_hierarchy_townHierarchy" name="TownHierarchy" primaryKey="_column_town_id" query="_query_townToCountry" levels="_level_town _level_country"/>
   <roma:StandardDimension id="_dimension_town" name="Town" hierarchies="_hierarchy_townHierarchy"/>
   <roma:PhysicalCube id="_cube_queryLinkedTables" name="Cube Query linked Tables" query="_query_fact">
     <dimensionConnectors foreignKey="_column_fact_townId" dimension="_dimension_town" id="_dimensionConnector_town"/>

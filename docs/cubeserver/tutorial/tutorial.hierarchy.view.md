@@ -118,7 +118,7 @@ In this example uses cube with fact table Fact as data. This example shows combi
 
 ```xml
 <roma:PhysicalCube   id="_cube_cube" name="Cube" query="_query_fact">
-  <dimensionConnectors dimension="roma:StandardDimension _dimension_dimension" overrideDimensionName="Dimension" id="_dimensionConnector_dimension"/>
+  <dimensionConnectors foreignKey="roma:PhysicalColumn _column_fact_dimKey" dimension="roma:StandardDimension _dimension_dimension" overrideDimensionName="Dimension" id="_dimensionConnector_dimension"/>
   <measureGroups>
     <measures xsi:type="roma:SumMeasure" id="_measure_measure1" name="Measure1" column="_column_fact_value"/>
   </measureGroups>
@@ -134,7 +134,6 @@ This files represent the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:ExplicitHierarchy id="_hierarchy_hierarchy" name="Hierarchy" primaryKey="_column_view_key" query="_query_htViewSelect" levels="_level_level1"/>
   <roma:Catalog description="Hierarchy with SQL view references" name="Daanse Tutorial - Hierarchy View" cubes="_cube_cube" dbschemas="_databaseSchema_view"/>
   <roma:DatabaseSchema id="_databaseSchema_view">
     <tables xsi:type="roma:PhysicalTable" id="_table_fact" name="Fact">
@@ -160,9 +159,10 @@ This files represent the complete definition of the catalog.
   </roma:SqlSelectQuery>
   <roma:TableQuery id="_query_fact" table="_table_fact"/>
   <roma:Level id="_level_level1" name="Level1" column="_column_view_key" nameColumn="_column_view_name"/>
+  <roma:ExplicitHierarchy id="_hierarchy_hierarchy" name="Hierarchy" primaryKey="_column_view_key" query="_query_htViewSelect" levels="_level_level1"/>
   <roma:StandardDimension id="_dimension_dimension" name="Dimension" hierarchies="_hierarchy_hierarchy"/>
   <roma:PhysicalCube id="_cube_cube" name="Cube" query="_query_fact">
-    <dimensionConnectors dimension="_dimension_dimension" overrideDimensionName="Dimension" id="_dimensionConnector_dimension"/>
+    <dimensionConnectors foreignKey="_column_fact_dimKey" dimension="_dimension_dimension" overrideDimensionName="Dimension" id="_dimensionConnector_dimension"/>
     <measureGroups>
       <measures xsi:type="roma:SumMeasure" id="_measure_measure1" name="Measure1" column="_column_fact_value"/>
     </measureGroups>

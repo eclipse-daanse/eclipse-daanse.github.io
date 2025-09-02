@@ -104,7 +104,6 @@ This files represent the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:ParentChildHierarchy id="_hierarchy_parentChild" name="Hierarchy" allMemberName="All" primaryKey="_column_parent_name" query="_query_parentFact" nullParentValue="all" parentColumn="_column_parent_parent" parentAsLeafEnable="true" parentAsLeafNameFormat="parent %s" level="_level_name"/>
   <roma:Catalog description="Parent-child hierarchy with parent as leaf enabled" name="Daanse Tutorial - Parent Child Parent As Leaf" cubes="_cube_parentAsLeaf" dbschemas="_databaseSchema_parentAsLeaf"/>
   <roma:DatabaseSchema id="_databaseSchema_parentAsLeaf">
     <tables xsi:type="roma:PhysicalTable" id="_table_parent" name="Parent">
@@ -115,6 +114,7 @@ This files represent the complete definition of the catalog.
   </roma:DatabaseSchema>
   <roma:TableQuery id="_query_parentFact" table="_table_parent"/>
   <roma:Level id="_level_name" name="Name" column="_column_parent_name" nameColumn="_column_parent_name" uniqueMembers="true"/>
+  <roma:ParentChildHierarchy id="_hierarchy_parentChild" name="Hierarchy" allMemberName="All" primaryKey="_column_parent_name" query="_query_parentFact" nullParentValue="all" parentColumn="_column_parent_parent" parentAsLeafEnable="true" parentAsLeafNameFormat="parent %s" level="_level_name"/>
   <roma:StandardDimension id="_dimension_parentChild" name="Dimension" hierarchies="_hierarchy_parentChild"/>
   <roma:PhysicalCube id="_cube_parentAsLeaf" name="Cube" query="_query_parentFact">
     <dimensionConnectors foreignKey="_column_parent_name" dimension="_dimension_parentChild" overrideDimensionName="Dimension" id="_dimensionConnector_parentChild"/>

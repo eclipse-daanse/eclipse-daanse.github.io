@@ -56,14 +56,14 @@ as it directly references the physical table `Fact_Multiple`.
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
-## Query Level3
+## Query Level1
 
 The bridge between the cube and the database is the query element. In this case, it is a TableQuery,
-as it directly references the physical table `Level_3_Multiple`.
+as it directly references the physical table `Level_1_Multiple`.
 
 
 ```xml
-<roma:TableQuery  id="_queryLevel3Multiple" table="_level_3_multiple"/>
+<roma:TableQuery  id="_queryLevel1Multiple" table="_level_1_multiple"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -78,30 +78,14 @@ as it directly references the physical table `Level_2_Multiple`.
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
-## Query Level1
+## Query Level3
 
 The bridge between the cube and the database is the query element. In this case, it is a TableQuery,
-as it directly references the physical table `Level_1_Multiple`.
+as it directly references the physical table `Level_3_Multiple`.
 
 
 ```xml
-<roma:TableQuery  id="_queryLevel1Multiple" table="_level_1_multiple"/>
-
-```
-*<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
-## Query Join Right
-
-The JoinQuery specifies which TableQueries should be joined. It also defines the columns in each table that are used for the join:
-
-- In the lower-level table (Level_2_Multiple), the join uses the foreign key L1_KEY.
-- In the upper-level table (Level_1_Multiple), the join uses the primary key KEY.
-
-
-```xml
-<roma:JoinQuery  id="_queryJoinRight">
-  <left key="_level_2_multiple_l1_key" query="_queryLevel2Multiple"/>
-  <right key="_level_1_multiple_key" query="_queryLevel1Multiple"/>
-</roma:JoinQuery>
+<roma:TableQuery  id="_queryLevel3Multiple" table="_level_3_multiple"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -117,6 +101,22 @@ The JoinQuery specifies which TableQueries should be joined. It also defines the
 <roma:JoinQuery  id="_queryJoin2">
   <left key="_level_3_multiple_l2_key" query="_queryLevel3Multiple"/>
   <right key="_level_2_multiple_key" query="_queryJoinRight"/>
+</roma:JoinQuery>
+
+```
+*<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
+## Query Join Right
+
+The JoinQuery specifies which TableQueries should be joined. It also defines the columns in each table that are used for the join:
+
+- In the lower-level table (Level_2_Multiple), the join uses the foreign key L1_KEY.
+- In the upper-level table (Level_1_Multiple), the join uses the primary key KEY.
+
+
+```xml
+<roma:JoinQuery  id="_queryJoinRight">
+  <left key="_level_2_multiple_l1_key" query="_queryLevel2Multiple"/>
+  <right key="_level_1_multiple_key" query="_queryLevel1Multiple"/>
 </roma:JoinQuery>
 
 ```
@@ -155,21 +155,6 @@ the column that contains the name of the level.
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
-## Level3
-
-The Level uses the column attribute to specify the primary key `KEY` from `Level_3_Multiple`.
-Additionally, it defines the nameColumn `NAME` from `Level_3_Multiple` attribute  to specify
-the column that contains the name of the level.
-Level has  attribute HideMemberIf.IF_PARENTS_NAME
-Hide members whose name matches their parent member's name.
-Eliminates redundant display where child members have identical names to their parents in the hierarchy.
-
-
-```xml
-<roma:Level  id="_h2Level3" name="Level3" column="_level_3_multiple_key" hideMemberIf="IfBlankName" nameColumn="_level_3_multiple_name"/>
-
-```
-*<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Level2
 
 The Level uses the column attribute to specify the primary key `KEY` from `Level_2_Multiple`.
@@ -182,6 +167,21 @@ Eliminates redundant display where child members have identical names to their p
 
 ```xml
 <roma:Level  id="_h2Level2" name="Level2" column="_level_2_multiple_key" hideMemberIf="IfBlankName" nameColumn="_level_2_multiple_name"/>
+
+```
+*<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
+## Level3
+
+The Level uses the column attribute to specify the primary key `KEY` from `Level_3_Multiple`.
+Additionally, it defines the nameColumn `NAME` from `Level_3_Multiple` attribute  to specify
+the column that contains the name of the level.
+Level has  attribute HideMemberIf.IF_PARENTS_NAME
+Hide members whose name matches their parent member's name.
+Eliminates redundant display where child members have identical names to their parents in the hierarchy.
+
+
+```xml
+<roma:Level  id="_h2Level3" name="Level3" column="_level_3_multiple_key" hideMemberIf="IfBlankName" nameColumn="_level_3_multiple_name"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -218,7 +218,6 @@ This files represent the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:ExplicitHierarchy id="_hierarchy1_2" name="Hierarchy1" primaryKey="_level_3_multiple_key" query="_queryJoin2" levels="_h2Level1 _h2Level2 _h2Level3"/>
   <roma:Catalog description="Multiple levels handling blank names" name="Daanse Tutorial - Level If Blank Name Multiple" cubes="_hiddenmembersmultiplelevels" dbschemas="_databaseSchema_ifblanknamemultiple"/>
   <roma:DatabaseSchema id="_databaseSchema_ifblanknamemultiple">
     <tables xsi:type="roma:PhysicalTable" id="_table_fact_Multiple" name="Fact_Multiple">
@@ -241,20 +240,21 @@ This files represent the complete definition of the catalog.
     </tables>
   </roma:DatabaseSchema>
   <roma:TableQuery id="_queryFact" table="_table_fact_Multiple"/>
-  <roma:TableQuery id="_queryLevel3Multiple" table="_level_3_multiple"/>
-  <roma:TableQuery id="_queryLevel2Multiple" table="_level_2_multiple"/>
   <roma:TableQuery id="_queryLevel1Multiple" table="_level_1_multiple"/>
-  <roma:JoinQuery id="_queryJoinRight">
-    <left key="_level_2_multiple_l1_key" query="_queryLevel2Multiple"/>
-    <right key="_level_1_multiple_key" query="_queryLevel1Multiple"/>
-  </roma:JoinQuery>
+  <roma:TableQuery id="_queryLevel2Multiple" table="_level_2_multiple"/>
+  <roma:TableQuery id="_queryLevel3Multiple" table="_level_3_multiple"/>
   <roma:JoinQuery id="_queryJoin2">
     <left key="_level_3_multiple_l2_key" query="_queryLevel3Multiple"/>
     <right key="_level_2_multiple_key" query="_queryJoinRight"/>
   </roma:JoinQuery>
+  <roma:JoinQuery id="_queryJoinRight">
+    <left key="_level_2_multiple_l1_key" query="_queryLevel2Multiple"/>
+    <right key="_level_1_multiple_key" query="_queryLevel1Multiple"/>
+  </roma:JoinQuery>
   <roma:Level id="_h2Level1" name="Level1" column="_level_1_multiple_key" nameColumn="_level_1_multiple_name"/>
-  <roma:Level id="_h2Level3" name="Level3" column="_level_3_multiple_key" hideMemberIf="IfBlankName" nameColumn="_level_3_multiple_name"/>
   <roma:Level id="_h2Level2" name="Level2" column="_level_2_multiple_key" hideMemberIf="IfBlankName" nameColumn="_level_2_multiple_name"/>
+  <roma:Level id="_h2Level3" name="Level3" column="_level_3_multiple_key" hideMemberIf="IfBlankName" nameColumn="_level_3_multiple_name"/>
+  <roma:ExplicitHierarchy id="_hierarchy1_2" name="Hierarchy1" primaryKey="_level_3_multiple_key" query="_queryJoin2" levels="_h2Level1 _h2Level2 _h2Level3"/>
   <roma:StandardDimension id="_dimensionmembershiddenmultiplelevels" name="DimensionMembersHiddenMultipleLevels" hierarchies="_hierarchy1_2"/>
   <roma:PhysicalCube id="_hiddenmembersmultiplelevels" name="HiddenMembersMultipleLevels" query="_queryFact">
     <dimensionConnectors foreignKey="_column_factmultiple_dim_key" dimension="_dimensionmembershiddenmultiplelevels" overrideDimensionName="DimensionMembersHiddenMultipleLevels" id="_dc_dimensionMembersHiddenMultipleLevels"/>

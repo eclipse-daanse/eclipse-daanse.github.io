@@ -117,13 +117,13 @@ The Query is a simple TableQuery that selects all columns from the `HX_L2` table
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
-## Level4
+## Level1
 
-This Example uses H2_Level2 level bases on the KEY column as kew and NAME column as name from HX_L2 table.
+This Example uses H1_Level1 level bases on the `KEY` column as kew and `NAME` column as name from `H1_L1` table.
 
 
 ```xml
-<roma:Level  id="_level_H2_Level2" name="H2_Level2" column="_column_hx_l2_key" nameColumn="_column_hx_l2_name"/>
+<roma:Level  id="_level_H1_Level1" name="H1_Level1" column="_column_h1_l1_key" nameColumn="_column_h1_l1_name"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -147,13 +147,13 @@ This Example uses H2_Level1 level bases on the KEY column as kew and NAME column
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
-## Level1
+## Level4
 
-This Example uses H1_Level1 level bases on the `KEY` column as kew and `NAME` column as name from `H1_L1` table.
+This Example uses H2_Level2 level bases on the KEY column as kew and NAME column as name from HX_L2 table.
 
 
 ```xml
-<roma:Level  id="_level_H1_Level1" name="H1_Level1" column="_column_h1_l1_key" nameColumn="_column_h1_l1_name"/>
+<roma:Level  id="_level_H2_Level2" name="H2_Level2" column="_column_hx_l2_key" nameColumn="_column_hx_l2_name"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -177,16 +177,6 @@ The Hierarchy1 is defined with the hasAll property set to false and the two leve
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
-## DrillthroughH2L1
-
-DrillThroughAttribute have reference to H2_Level1 level from Hierarchy2; H2_L1 table KEY and NAME column
-
-
-```xml
-<roma:DrillThroughAction  id="_drillThroughAction_DrillthroughH2L1" name="DrillthroughH2L1" drillThroughMeasure="roma:SumMeasure _measure_Measure1"/>
-
-```
-*<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## DrillthroughH1L1
 
 Specialized action that enables users to drill through from aggregated analytical views to the underlying
@@ -200,6 +190,16 @@ DrillThroughAttribute have reference to H1_Level1 level from Hierarchy1; H1_L1 t
 
 ```xml
 <roma:DrillThroughAction  id="_drillThroughAction_DrillthroughH1L1" name="DrillthroughH1L1" drillThroughMeasure="roma:SumMeasure _measure_Measure1" default="true"/>
+
+```
+*<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
+## DrillthroughH2L1
+
+DrillThroughAttribute have reference to H2_Level1 level from Hierarchy2; H2_L1 table KEY and NAME column
+
+
+```xml
+<roma:DrillThroughAction  id="_drillThroughAction_DrillthroughH2L1" name="DrillthroughH2L1" drillThroughMeasure="roma:SumMeasure _measure_Measure1"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -242,8 +242,6 @@ This files represent the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:ExplicitHierarchy id="_hierarchy_Hierarchy1" name="Hierarchy1" primaryKey="_column_hx_l2_key" query="_joinQuery_join1" levels="_level_H1_Level1 _level_H1_Level2"/>
-  <roma:ExplicitHierarchy id="_hierarchy_Hierarchy2" name="Hierarchy2" primaryKey="_column_hx_l2_key" query="_joinQuery_join2" levels="_level_H2_Level1 _level_H2_Level2"/>
   <roma:Catalog description="Drill-through action configuration" name="Daanse Tutorial - Action Drillthrough" cubes="_cube_Cube" dbschemas="_databaseSchema_DrillThrough"/>
   <roma:DatabaseSchema id="_databaseSchema_DrillThrough">
     <tables xsi:type="roma:PhysicalTable" id="_table_fact" name="Fact">
@@ -277,10 +275,12 @@ This files represent the complete definition of the catalog.
     <left key="_column_hx_l2_h2l1_key" query="_query_HxL2Query"/>
     <right key="_column_h2_l1_key" query="_query_H2L1Query"/>
   </roma:JoinQuery>
-  <roma:Level id="_level_H2_Level2" name="H2_Level2" column="_column_hx_l2_key" nameColumn="_column_hx_l2_name"/>
+  <roma:Level id="_level_H1_Level1" name="H1_Level1" column="_column_h1_l1_key" nameColumn="_column_h1_l1_name"/>
   <roma:Level id="_level_H1_Level2" name="H1_Level2" column="_column_hx_l2_key" nameColumn="_column_hx_l2_name"/>
   <roma:Level id="_level_H2_Level1" name="H2_Level1" column="_column_h2_l1_key" nameColumn="_column_h2_l1_name"/>
-  <roma:Level id="_level_H1_Level1" name="H1_Level1" column="_column_h1_l1_key" nameColumn="_column_h1_l1_name"/>
+  <roma:Level id="_level_H2_Level2" name="H2_Level2" column="_column_hx_l2_key" nameColumn="_column_hx_l2_name"/>
+  <roma:ExplicitHierarchy id="_hierarchy_Hierarchy1" name="Hierarchy1" primaryKey="_column_hx_l2_key" query="_joinQuery_join1" levels="_level_H1_Level1 _level_H1_Level2"/>
+  <roma:ExplicitHierarchy id="_hierarchy_Hierarchy2" name="Hierarchy2" primaryKey="_column_hx_l2_key" query="_joinQuery_join2" levels="_level_H2_Level1 _level_H2_Level2"/>
   <roma:StandardDimension id="_dimension_Dimension1" name="Dimension1" hierarchies="_hierarchy_Hierarchy1 _hierarchy_Hierarchy2"/>
   <roma:PhysicalCube id="_cube_Cube" name="Cube" query="_query_factQuery">
     <dimensionConnectors foreignKey="_column_fact_key" dimension="_dimension_Dimension1" overrideDimensionName="Dimension1" id="_dimensionConnector_dimension1"/>

@@ -72,7 +72,6 @@ This files represent the complete definition of the catalog.
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
   <roma:OrderedColumn column="_col_value"/>
-  <roma:ExplicitHierarchy id="_hierarchy_Hierarchy" name="Hierarchy" hasAll="false" primaryKey="_col_id" query="_query" levels="_level"/>
   <roma:Catalog description="Nth value aggregation functions" name="Daanse Tutorial - Cube Measure Aggregator Nth" cubes="_cube" dbschemas="_databaseSchema"/>
   <roma:DatabaseSchema id="_databaseSchema">
     <tables xsi:type="roma:PhysicalTable" id="_tab" name="Fact">
@@ -83,6 +82,7 @@ This files represent the complete definition of the catalog.
   </roma:DatabaseSchema>
   <roma:TableQuery id="_query" table="_tab"/>
   <roma:Level id="_level" name="Value" column="_col_value"/>
+  <roma:ExplicitHierarchy id="_hierarchy_Hierarchy" name="Hierarchy" hasAll="false" primaryKey="_col_id" query="_query" levels="_level"/>
   <roma:StandardDimension id="_diml" name="Diml" hierarchies="_hierarchy_Hierarchy"/>
   <roma:PhysicalCube id="_cube" name="MeasuresAggregatorsCube" query="_query">
     <dimensionConnectors foreignKey="_col_id" dimension="_diml" overrideDimensionName="Dim" id="_dc_dim"/>

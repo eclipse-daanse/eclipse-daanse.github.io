@@ -169,8 +169,7 @@ This files represent the complete definition of the catalog.
     <aggregationMeasures column="_column_agg_c_special_sales_fact_1997_store_cost_sum" name="[Measures].[Store Cost]"/>
     <aggregationLevels column="_column_product_class_product_famile" name="[Product].[Product Family].[Product Family]"/>
   </roma:AggregationName>
-  <roma:ExplicitHierarchy id="_hierarchy_Product_Family_Hierarchy" name="Product Family" displayFolder="Details" primaryKey="_column_product_product_id" query="_joinQuery_productClassProduct" levels="_level_Product_Family_Level"/>
-  <roma:Catalog description="Aggregate table optimization techniques" name="Daanse Tutorial - Aggregation Aggregate Tables" cubes="_cube_Sales"/>
+  <roma:Catalog description="Aggregate table optimization techniques" name="Daanse Tutorial - Aggregation Aggregate Tables" cubes="_cube_Sales" dbschemas="_databaseSchema_AggregateTables"/>
   <roma:DatabaseSchema id="_databaseSchema_AggregateTables">
     <tables xsi:type="roma:PhysicalTable" id="_table_sales_fact_1997" name="SALES_FACT_1997">
       <columns xsi:type="roma:PhysicalColumn" id="_column_sales_fact_1997_product_id" name="PRODUCT_ID" type="Integer"/>
@@ -195,16 +194,17 @@ This files represent the complete definition of the catalog.
     <tables xsi:type="roma:PhysicalTable" id="_table_agg_lc_100_sales_fact_1997" name="AGG_LC_100_SALES_FACT_1997"/>
   </roma:DatabaseSchema>
   <roma:TableQuery id="_query_productClassQuery" table="_table_product_class"/>
+  <roma:TableQuery id="_query_productQuery" table="_table_product"/>
   <roma:TableQuery id="_query_salesFact1997Query" aggregationTables="_aggregationName_AGG_C_SPECIAL_SALES_FACT_1997" table="_table_sales_fact_1997">
     <aggregationExcludes name="AGG_C_14_SALES_FACT_1997"/>
     <aggregationExcludes name="AGG_LC_100_SALES_FACT_1997"/>
   </roma:TableQuery>
-  <roma:TableQuery id="_query_productQuery" table="_table_product"/>
   <roma:JoinQuery id="_joinQuery_productClassProduct">
     <left key="_column_product_product_class_id" query="_query_productQuery"/>
     <right key="_column_product_class_product_class_id" query="_query_productClassQuery"/>
   </roma:JoinQuery>
   <roma:Level id="_level_Product_Family_Level" name="Product Family" column="_column_product_class_product_famile"/>
+  <roma:ExplicitHierarchy id="_hierarchy_Product_Family_Hierarchy" name="Product Family" displayFolder="Details" primaryKey="_column_product_product_id" query="_joinQuery_productClassProduct" levels="_level_Product_Family_Level"/>
   <roma:StandardDimension id="_dimension_ProductDimension" name="Product" hierarchies="_hierarchy_Product_Family_Hierarchy"/>
   <roma:PhysicalCube id="_cube_Sales" name="Sales" query="_query_salesFact1997Query">
     <dimensionConnectors foreignKey="_column_sales_fact_1997_product_id" dimension="_dimension_ProductDimension" overrideDimensionName="Product" id="_dimensionConnector_product"/>

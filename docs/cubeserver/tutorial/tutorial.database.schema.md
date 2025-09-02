@@ -47,14 +47,14 @@ This files represent the complete definition of the catalog.
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
   <roma:Catalog id="_catalog_databaseSchema" description="Database schema configuration and organization" name="Daanse Tutorial - Database Schema" dbschemas="_databaseSchema_default _databaseSchema_foo"/>
-  <roma:DatabaseSchema id="_databaseSchema_foo" description="theDescription" name="foo">
-    <tables xsi:type="roma:PhysicalTable" id="_table_theTable" name="theTable">
-      <columns xsi:type="roma:PhysicalColumn" id="_column_theTable_theColumn" name="theColumn"/>
-    </tables>
-  </roma:DatabaseSchema>
   <roma:DatabaseSchema id="_databaseSchema_default">
     <tables xsi:type="roma:PhysicalTable" id="_table_theTableDefault" name="theTable">
       <columns xsi:type="roma:PhysicalColumn" id="_column_theTableDefault_theColumn" name="theColumn"/>
+    </tables>
+  </roma:DatabaseSchema>
+  <roma:DatabaseSchema id="_databaseSchema_foo" description="theDescription" name="foo">
+    <tables xsi:type="roma:PhysicalTable" id="_table_theTable" name="theTable">
+      <columns xsi:type="roma:PhysicalColumn" id="_column_theTable_theColumn" name="theColumn"/>
     </tables>
   </roma:DatabaseSchema>
 </xmi:XMI>

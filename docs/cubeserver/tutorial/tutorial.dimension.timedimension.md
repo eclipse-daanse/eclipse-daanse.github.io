@@ -147,7 +147,6 @@ This files represent the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:ExplicitHierarchy id="_hierarchy_time" allMemberName="All Years" primaryKey="_column_fact_dateKey" query="_query_fact" levels="_level_years _level_quarters _level_months _level_week _level_day"/>
   <roma:Catalog description="Time dimension configuration" name="Daanse Tutorial - Dimension Time Dimension" cubes="_cube_timeDimension" dbschemas="_databaseSchema_timeDimension"/>
   <roma:DatabaseSchema id="_databaseSchema_timeDimension">
     <tables xsi:type="roma:PhysicalTable" id="_table_fact" name="Fact">
@@ -163,11 +162,12 @@ This files represent the complete definition of the catalog.
     </tables>
   </roma:DatabaseSchema>
   <roma:TableQuery id="_query_fact" table="_table_fact"/>
-  <roma:Level id="_level_quarters" name="Quarters" column="_column_fact_qtrName" type="TimeQuarters" ordinalColumn="_column_fact_qtrId"/>
   <roma:Level id="_level_day" name="Day" column="_column_fact_dayInMonth" type="TimeDays"/>
+  <roma:Level id="_level_months" name="Months" column="_column_fact_monthName" type="TimeMonths" ordinalColumn="_column_fact_monthId"/>
+  <roma:Level id="_level_quarters" name="Quarters" column="_column_fact_qtrName" type="TimeQuarters" ordinalColumn="_column_fact_qtrId"/>
   <roma:Level id="_level_week" name="Week" column="_column_fact_weekInMonth" type="TimeWeeks"/>
   <roma:Level id="_level_years" name="Years" column="_column_fact_yearId" type="TimeYears" uniqueMembers="true"/>
-  <roma:Level id="_level_months" name="Months" column="_column_fact_monthName" type="TimeMonths" ordinalColumn="_column_fact_monthId"/>
+  <roma:ExplicitHierarchy id="_hierarchy_time" allMemberName="All Years" primaryKey="_column_fact_dateKey" query="_query_fact" levels="_level_years _level_quarters _level_months _level_week _level_day"/>
   <roma:TimeDimension id="_dimension_time" name="Time" hierarchies="_hierarchy_time"/>
   <roma:PhysicalCube id="_cube_timeDimension" name="CubeTimeDimension" query="_query_fact">
     <dimensionConnectors dimension="_dimension_time" overrideDimensionName="Time" id="_dimensionConnector_time"/>
