@@ -82,30 +82,20 @@ Use containers for production deployments, isolated environments, and easy distr
 ```bash
 # Docker
 docker run --name probe \
-  -v ~/temp/probe:/app/catalog/:ro,Z \
+  -v ~/temp/probe/catalog:/app/catalog/:ro,Z \
+  -v ~/temp/probe/output:/app/output/,Z \
   -p 8095:8080 \
   -d eclipsedaanse/probe:snapshot
 ```
 
-#### Container Parameters Explained
+##### Container Parameters Explained
 
 - `--name probe`: Container name
-- `-v ~/temp/probe:/app/catalog/:ro,Z`: Mount local catalog directory (read-only with SELinux context)
+- `-v ~/temp/probe/catalog:/app/catalog/:ro,Z`: Mount local catalog directory (read-only with SELinux context)
+- `-v ~/temp/probe/output:/app/output/,Z` mount the output folder e.g. for documnetation
 - `-p 8095:8080`: Map host port 8095 to container port 8080
 - `-d`: Run in detached mode
 - `eclipsedaanse/probe:snapshot`: Container image
-
-#### Direct Container Commands
-
-**Basic Usage:**
-
-```bash
-# Run with custom catalog and log persistence
-docker run --name probe-dev \
-  -v $(pwd)/custom-catalogs:/app/catalog/:ro,Z \
-  -p 8095:8080 \
-  eclipsedaanse/probe:snapshot
-```
 
 
 #### Docker Compose
@@ -129,6 +119,11 @@ services:
         bind:
           selinux: Z
       - type: bind
+        source: ~/temp/probe/output
+        target: /app/output/
+        bind:
+          selinux: Z
+      - type: bind
         source: ./logs
         target: /app/log/
         bind:
@@ -144,13 +139,13 @@ networks:
 ```
 
 **Start services**
-```
+```text
 docker-compose -f compose/docker-compose.yml up -d
 ```
 
 ## Directory Structure
 
-```
+```text
 /app/
 ├── daanse.probe.jar          # Main application JAR
 ├── start                     # Startup script
@@ -158,6 +153,7 @@ docker-compose -f compose/docker-compose.yml up -d
 ├── catalog/                 # Data catalogs and mappings
 │   ├── */data/             # CSV data files
 │   └── */mapping/          # XMI catalog definitions
+├── output/                 # Output folder e.g.documentation
 └── log/                    # Application logs
 ```
 
@@ -169,7 +165,7 @@ The `/app/catalog/` directory is the core of the Eclipse Daanse Probe system. It
 
 Each catalog is organized in its own subdirectory with the following structure:
 
-```
+```text
 catalog/
 ├── my-catalog/                    # Catalog name (directory)
 │   ├── mapping/
@@ -224,7 +220,7 @@ VARCHAR,INTEGER,DECIMAL           # Line 2: Data types
 Here's a complete example of the `tutorial.cube.minimal` catalog:
 
 #### Directory Structure
-```
+```text
 tutorial.cube.minimal/
 ├── mapping/
 │   └── catalog.xmi
@@ -282,7 +278,7 @@ This creates:
 
 For catalogs with multiple schemas like `tutorial.database.schema`:
 
-```
+```text
 tutorial.database.schema/
 ├── mapping/
 │   └── catalog.xmi
@@ -327,13 +323,11 @@ To create your own catalog:
 - **File Deletions**: Remove catalogs or data files
 
 
-
 #### Development Workflow
 1. **Mount catalog directory** with write access (remove `:ro` flag for development):
    ```bash
    # Docker/Podman - Development mode
-   podman run -v ~/temp/probe/catalog:/app/catalog/:Z -p 8095:8080 eclipsedaanse/probe:snapshot
-   docker run -v ~/temp/probe/catalog:/app/catalog/:Z -p 8095:8080 eclipsedaanse/probe:snapshot
+   podman run -v ~/temp/probe/catalog:/app/catalog/:Z -v ~/temp/probe/output:/app/output/:Z -p 8095:8080 eclipsedaanse/probe:snapshot
    ```
 
 2. **Edit catalogs** using any text editor or IDE
@@ -346,7 +340,9 @@ To create your own catalog:
    # Watch for catalog reload messages
    ```
 
-4. **Test changes immediately** - no restart needed
+4. **Verify Documentation** - verify the docs in `output/documentation` folder
+
+5. **Test changes immediately** - no restart needed, connect via odc file in `output/odc`
 
 
 ### Best Practices
@@ -412,21 +408,21 @@ For testing catalog security and access control, you can specify **roles directl
 #### Examples
 
 1. **Basic User**:
-   ```
+   ```text
    Username: demo
    Password: (empty)
    Result: Default access rights
    ```
 
 2. **Single Role Testing**:
-   ```
+   ```text
    Username: testuser|manager
    Password: (empty)  
    Result: Access with "manager" role permissions
    ```
 
 3. **Multiple Roles Testing**:
-   ```
+   ```text
    Username: admin|sales|finance|reporting
    Password: (empty)
    Result: Combined permissions from all specified roles
