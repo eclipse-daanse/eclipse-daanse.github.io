@@ -52,8 +52,8 @@ Cube `C` is defined a `FACTWB` WritebackTable configuration with two WritebackMe
 ```xml
 <roma:PhysicalCube   id="_physicalCube_C" name="C" query="_tableQuery_FactQuery">
   <writebackTable name="FACTWB">
-    <writebackMeasure column="_column_fact_val" name="WbMeasure1"/>
-    <writebackMeasure column="_column_fact_val1" name="WbMeasure2"/>
+    <writebackMeasure column="_column_fact_val" name="Measure1"/>
+    <writebackMeasure column="_column_fact_val1" name="Measure2"/>
   </writebackTable>
   <measureGroups>
     <measures xsi:type="roma:SumMeasure" id="_sumMeasure_Measure1" name="Measure1" column="_column_fact_val"/>
@@ -89,8 +89,8 @@ This files represent the complete definition of the catalog.
   <roma:TableQuery id="_tableQuery_FactQuery" table="_table_fact"/>
   <roma:PhysicalCube id="_physicalCube_C" name="C" query="_tableQuery_FactQuery">
     <writebackTable name="FACTWB">
-      <writebackMeasure column="_column_fact_val" name="WbMeasure1"/>
-      <writebackMeasure column="_column_fact_val1" name="WbMeasure2"/>
+      <writebackMeasure column="_column_fact_val" name="Measure1"/>
+      <writebackMeasure column="_column_fact_val1" name="Measure2"/>
     </writebackTable>
     <measureGroups>
       <measures xsi:type="roma:SumMeasure" id="_sumMeasure_Measure1" name="Measure1" column="_column_fact_val"/>

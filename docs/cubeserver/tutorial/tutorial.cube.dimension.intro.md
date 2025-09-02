@@ -95,7 +95,6 @@ This files represent the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:ExplicitHierarchy id="_hierarchy_theHierarchy" name="theHierarchy" primaryKey="_column_fact_key" query="_query_fact" levels="_level_theLevel"/>
   <roma:Catalog id="_catalog_dimensionIntro" description="Introduction to cube dimensions" name="Daanse Tutorial - Cube Dimension Intro" cubes="_cube_cubeWithSimpleDimension" dbschemas="_databaseSchema_dimensionIntro"/>
   <roma:DatabaseSchema id="_databaseSchema_dimensionIntro">
     <tables xsi:type="roma:PhysicalTable" id="_table_fact" name="Fact">
@@ -105,6 +104,7 @@ This files represent the complete definition of the catalog.
   </roma:DatabaseSchema>
   <roma:TableQuery id="_query_fact" table="_table_fact"/>
   <roma:Level id="_level_theLevel" name="theLevel" column="_column_fact_key"/>
+  <roma:ExplicitHierarchy id="_hierarchy_theHierarchy" name="theHierarchy" primaryKey="_column_fact_key" query="_query_fact" levels="_level_theLevel"/>
   <roma:StandardDimension id="_dimension_theDimension" name="theDimension" hierarchies="_hierarchy_theHierarchy"/>
   <roma:PhysicalCube id="_cube_cubeWithSimpleDimension" name="CubeWithSimpleDimension" query="_query_fact">
     <dimensionConnectors dimension="_dimension_theDimension" id="_dimensionConnector_theDimension"/>

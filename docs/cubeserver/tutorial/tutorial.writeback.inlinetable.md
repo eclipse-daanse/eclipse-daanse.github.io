@@ -182,7 +182,6 @@ This files represent the complete definition of the catalog.
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
   <roma:InlineTableQuery id="_table_factQuery" alias="FACT" table="_fact"/>
-  <roma:ExplicitHierarchy id="_hierarchywithhasall" name="HierarchyWithHasAll" primaryKey="_l1_l2" query="_join" levels="_l1level _level_L2Level"/>
   <roma:Catalog description="Inline table writeback functionality" name="Daanse Tutorial - Writeback Inline Table" cubes="_c" dbschemas="_databaseSchema_WritebackInlineTable"/>
   <roma:DatabaseSchema id="_databaseSchema_WritebackInlineTable">
     <tables xsi:type="roma:InlineTable" id="_fact" name="FACT">
@@ -230,14 +229,15 @@ This files represent the complete definition of the catalog.
       <columns xsi:type="roma:PhysicalColumn" id="_column_factwb_user" name="USER" columnSize="100"/>
     </tables>
   </roma:DatabaseSchema>
-  <roma:TableQuery id="_l2TableQuery" table="_l2"/>
   <roma:TableQuery id="_l1TableQuery" table="_l1"/>
+  <roma:TableQuery id="_l2TableQuery" table="_l2"/>
   <roma:JoinQuery id="_join">
     <left key="_l1_l2" query="_l1TableQuery"/>
     <right key="_l2_l2" query="_l2TableQuery"/>
   </roma:JoinQuery>
   <roma:Level id="_l1level" name="L1" column="_l1_l1"/>
   <roma:Level id="_level_L2Level" name="L2" column="_l2_l2"/>
+  <roma:ExplicitHierarchy id="_hierarchywithhasall" name="HierarchyWithHasAll" primaryKey="_l1_l2" query="_join" levels="_l1level _level_L2Level"/>
   <roma:StandardDimension id="_dimension" name="Dimension" hierarchies="_hierarchywithhasall"/>
   <roma:PhysicalCube id="_c" name="C" query="_table_factQuery">
     <dimensionConnectors foreignKey="_table_fact_L2" dimension="_dimension" overrideDimensionName="D1" id="_d1"/>

@@ -63,7 +63,7 @@ The bridge between the cube and InlineTable `HT`.
 
 
 ```xml
-<roma:InlineTableQuery  id="_inlineTableQuery" alias="HT" table="/3/@tables.1"/>
+<roma:InlineTableQuery  id="_inlineTableQuery" alias="HT" table="/2/@tables.1"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -135,8 +135,7 @@ This files represent the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:ExplicitHierarchy id="_hierarchy1" name="Hierarchy1" primaryKey="_ht_key" query="_inlineTableQuery" levels="_level1"/>
-  <roma:InlineTableQuery id="_inlineTableQuery" alias="HT" table="/3/@tables.1"/>
+  <roma:InlineTableQuery id="_inlineTableQuery" alias="HT" table="/2/@tables.1"/>
   <roma:Catalog description="Hierarchy with inline table data" name="Daanse Tutorial - Hierarchy Inline Table" cubes="_cube" dbschemas="_databaseSchema_inlinetable"/>
   <roma:DatabaseSchema id="_databaseSchema_inlinetable">
     <tables xsi:type="roma:PhysicalTable" id="_table_fact" name="Fact">
@@ -161,6 +160,7 @@ This files represent the complete definition of the catalog.
   </roma:DatabaseSchema>
   <roma:TableQuery id="_query" table="_table_fact"/>
   <roma:Level id="_level1" name="Level1" column="_ht_key" nameColumn="_ht_name"/>
+  <roma:ExplicitHierarchy id="_hierarchy1" name="Hierarchy1" primaryKey="_ht_key" query="_inlineTableQuery" levels="_level1"/>
   <roma:StandardDimension id="_dimension1" name="Dimension1" hierarchies="_hierarchy1"/>
   <roma:PhysicalCube id="_cube" name="Cube" query="_query">
     <dimensionConnectors foreignKey="_column_fact_dim_key" dimension="_dimension1" overrideDimensionName="Dimension1" id="_dc_dimension1"/>

@@ -103,7 +103,6 @@ This files represent the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:ExplicitHierarchy id="_hierarchy_hierarchy" name="Hierarchy" primaryKey="_column_fact_key1" query="_query_fact" levels="_level_level1 _level_level2"/>
   <roma:Catalog description="Member identifier configurations" name="Daanse Tutorial - Member Identifier" cubes="_cube_cube" dbschemas="_databaseSchema_main"/>
   <roma:DatabaseSchema id="_databaseSchema_main">
     <tables xsi:type="roma:PhysicalTable" id="_table_fact" name="Fact">
@@ -115,6 +114,7 @@ This files represent the complete definition of the catalog.
   <roma:TableQuery id="_query_fact" table="_table_fact"/>
   <roma:Level id="_level_level1" name="level1" column="_column_fact_key1"/>
   <roma:Level id="_level_level2" name="level2" column="_column_fact_key2"/>
+  <roma:ExplicitHierarchy id="_hierarchy_hierarchy" name="Hierarchy" primaryKey="_column_fact_key1" query="_query_fact" levels="_level_level1 _level_level2"/>
   <roma:StandardDimension id="_dimension_dimension" name="Dimension" hierarchies="_hierarchy_hierarchy"/>
   <roma:PhysicalCube id="_cube_cube" name="Cube" query="_query_fact">
     <dimensionConnectors foreignKey="_column_fact_key1" dimension="_dimension_dimension" id="_dimensionConnector_dimension"/>

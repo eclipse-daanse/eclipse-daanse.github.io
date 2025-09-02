@@ -142,8 +142,8 @@ The cube also contains a `FACTWB` WritebackTable configuration with a WritebackA
   <dimensionConnectors foreignKey="roma:PhysicalColumn _l1_l2" dimension="roma:StandardDimension _dimension" overrideDimensionName="D1" id="_d1"/>
   <writebackTable name="FACTWB">
     <writebackAttribute column="_column_fact_l2" dimensionConnector="_d1"/>
-    <writebackMeasure column="_column_fact_val" name="WbMeasure1"/>
-    <writebackMeasure column="_column_fact_val1" name="WbMeasure2"/>
+    <writebackMeasure column="_column_fact_val" name="Measure1"/>
+    <writebackMeasure column="_column_fact_val1" name="Measure2"/>
   </writebackTable>
   <measureGroups>
     <measures xsi:type="roma:SumMeasure" id="_measure1" name="Measure1" column="_column_fact_val"/>
@@ -161,7 +161,6 @@ This files represent the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:ExplicitHierarchy id="_hierarchywithhasall" name="HierarchyWithHasAll" primaryKey="_l1_l2" query="_joinQuery" levels="_l1level _l2level"/>
   <roma:Catalog description="View-based writeback functionality" name="Daanse Tutorial - Writeback View" cubes="_c" dbschemas="_databaseSchema_WritebackView"/>
   <roma:DatabaseSchema id="_databaseSchema_WritebackView">
     <tables xsi:type="roma:PhysicalTable" id="_l1" name="L1">
@@ -198,13 +197,14 @@ This files represent the complete definition of the catalog.
   </roma:JoinQuery>
   <roma:Level id="_l1level" name="L1" column="_l1_l1"/>
   <roma:Level id="_l2level" name="L2" column="_l2_l2"/>
+  <roma:ExplicitHierarchy id="_hierarchywithhasall" name="HierarchyWithHasAll" primaryKey="_l1_l2" query="_joinQuery" levels="_l1level _l2level"/>
   <roma:StandardDimension id="_dimension" name="Dimension" hierarchies="_hierarchywithhasall"/>
   <roma:PhysicalCube id="_c" name="C" query="_query_factQuery">
     <dimensionConnectors foreignKey="_l1_l2" dimension="_dimension" overrideDimensionName="D1" id="_d1"/>
     <writebackTable name="FACTWB">
       <writebackAttribute column="_column_fact_l2" dimensionConnector="_d1"/>
-      <writebackMeasure column="_column_fact_val" name="WbMeasure1"/>
-      <writebackMeasure column="_column_fact_val1" name="WbMeasure2"/>
+      <writebackMeasure column="_column_fact_val" name="Measure1"/>
+      <writebackMeasure column="_column_fact_val1" name="Measure2"/>
     </writebackTable>
     <measureGroups>
       <measures xsi:type="roma:SumMeasure" id="_measure1" name="Measure1" column="_column_fact_val"/>

@@ -158,7 +158,6 @@ This files represent the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:ExplicitHierarchy id="_hierarchy1" name="Hierarchy1" primaryKey="_hx_l2_key" query="_joinQuery" levels="_h1_level1 _h1_level2"/>
   <roma:Catalog description="Dimension optimization with level attributes" name="Daanse Tutorial - Dimension Optimisation With Level Attribute" cubes="_cube" dbschemas="_databaseSchema_optimisationwithlevelattribute"/>
   <roma:DatabaseSchema id="_databaseSchema_optimisationwithlevelattribute">
     <tables xsi:type="roma:PhysicalTable" id="_table_fact" name="Fact">
@@ -185,6 +184,7 @@ This files represent the complete definition of the catalog.
   </roma:JoinQuery>
   <roma:Level id="_h1_level1" name="H1_Level1" column="_h1_l1_key" nameColumn="_h1_l1_name"/>
   <roma:Level id="_h1_level2" name="H1_Level2" column="_hx_l2_key" nameColumn="_hx_l2_name"/>
+  <roma:ExplicitHierarchy id="_hierarchy1" name="Hierarchy1" primaryKey="_hx_l2_key" query="_joinQuery" levels="_h1_level1 _h1_level2"/>
   <roma:StandardDimension id="_diml1" name="Diml1" hierarchies="_hierarchy1"/>
   <roma:PhysicalCube id="_cube" name="Cube" query="_table_factQuery">
     <dimensionConnectors foreignKey="_column_fact_dim_key" dimension="_diml1" overrideDimensionName="Dim1" level="_h1_level2" id="_dc_dim1"/>

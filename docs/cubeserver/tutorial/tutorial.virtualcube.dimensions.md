@@ -110,7 +110,6 @@ This files represent the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:ExplicitHierarchy id="_hierarchywithouthasall" name="HierarchyWithoutHasAll" hasAll="false" primaryKey="_column_fact_key" query="_table_factQuery" levels="_level"/>
   <roma:Catalog description="Dimension configuration in virtual cubes" name="Daanse Tutorial - Virtual Cube Dimensions" cubes="_cube1 _cube2 _cube1cube2" dbschemas="_databaseSchema_dimensions"/>
   <roma:DatabaseSchema id="_databaseSchema_dimensions">
     <tables xsi:type="roma:PhysicalTable" id="_table_fact" name="Fact">
@@ -120,17 +119,18 @@ This files represent the complete definition of the catalog.
   </roma:DatabaseSchema>
   <roma:TableQuery id="_table_factQuery" table="_table_fact"/>
   <roma:Level id="_level" name="Level" column="_column_fact_key"/>
+  <roma:ExplicitHierarchy id="_hierarchywithouthasall" name="HierarchyWithoutHasAll" hasAll="false" primaryKey="_column_fact_key" query="_table_factQuery" levels="_level"/>
   <roma:StandardDimension id="_dimension1" name="Dimension1" hierarchies="_hierarchywithouthasall"/>
-  <roma:PhysicalCube id="_cube2" name="Cube2" query="_table_factQuery">
-    <dimensionConnectors foreignKey="_column_fact_key" dimension="_dimension1" overrideDimensionName="Cube2Dimension1" id="_dc_cube2Dimension1"/>
-    <measureGroups>
-      <measures xsi:type="roma:SumMeasure" id="_measurecube2" name="MeasureCube2" column="_column_fact_value"/>
-    </measureGroups>
-  </roma:PhysicalCube>
   <roma:PhysicalCube id="_cube1" name="Cube1" query="_table_factQuery">
     <dimensionConnectors foreignKey="_column_fact_key" dimension="_dimension1" overrideDimensionName="Cube1Dimension1" id="_dc_cube1Dimension1"/>
     <measureGroups>
       <measures xsi:type="roma:SumMeasure" id="_measurecube1" name="MeasureCube1" column="_column_fact_value"/>
+    </measureGroups>
+  </roma:PhysicalCube>
+  <roma:PhysicalCube id="_cube2" name="Cube2" query="_table_factQuery">
+    <dimensionConnectors foreignKey="_column_fact_key" dimension="_dimension1" overrideDimensionName="Cube2Dimension1" id="_dc_cube2Dimension1"/>
+    <measureGroups>
+      <measures xsi:type="roma:SumMeasure" id="_measurecube2" name="MeasureCube2" column="_column_fact_value"/>
     </measureGroups>
   </roma:PhysicalCube>
   <roma:VirtualCube id="_cube1cube2" name="Cube1Cube2" defaultMeasure="_measurecube1" dimensionConnectors="_dc_cube1Dimension1 _dc_cube2Dimension1" referencedMeasures="_measurecube1 _measurecube2"/>

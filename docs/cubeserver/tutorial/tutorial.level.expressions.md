@@ -145,7 +145,6 @@ This files represent the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:ExplicitHierarchy id="_hierarchywithhasall" name="HierarchyWithHasAll" primaryKey="_column_fact_key" query="_table_factQuery" levels="_level1 _level2"/>
   <roma:Catalog description="Level with expression-based definitions" name="Daanse Tutorial - Level Expressions" cubes="_cube" dbschemas="_databaseSchema_LevelExpressions"/>
   <roma:DatabaseSchema id="_databaseSchema_LevelExpressions">
     <tables xsi:type="roma:PhysicalTable" id="_table_fact" name="Fact">
@@ -183,8 +182,9 @@ This files represent the complete definition of the catalog.
     </tables>
   </roma:DatabaseSchema>
   <roma:TableQuery id="_table_factQuery" table="_table_fact"/>
-  <roma:Level id="_level2" name="Level2" captionColumn="_captionExpression" column="_keyExpression" ordinalColumn="_ordinalExpression"/>
   <roma:Level id="_level1" name="Level1" column="_column_fact_key" nameColumn="_nameExpression"/>
+  <roma:Level id="_level2" name="Level2" captionColumn="_captionExpression" column="_keyExpression" ordinalColumn="_ordinalExpression"/>
+  <roma:ExplicitHierarchy id="_hierarchywithhasall" name="HierarchyWithHasAll" primaryKey="_column_fact_key" query="_table_factQuery" levels="_level1 _level2"/>
   <roma:StandardDimension id="_dimension" name="Dimension" hierarchies="_hierarchywithhasall"/>
   <roma:PhysicalCube id="_cube" name="Cube" query="_table_factQuery">
     <dimensionConnectors dimension="_dimension" overrideDimensionName="Dimension" id="_dc_dimension"/>

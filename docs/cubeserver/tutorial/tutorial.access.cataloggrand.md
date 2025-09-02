@@ -145,7 +145,6 @@ This files represent the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:ExplicitHierarchy id="_hierarchy_main" name="Hierarchy1" hasAll="false" primaryKey="_column_fact_key" query="_query_fact" levels="_level_key"/>
   <roma:Catalog description="Demonstrates access control with catalog grants and roles" name="Daanse Tutorial - Access Catalog Grant" cubes="_cube_main" accessRoles="_accessRole_all _accessRole_none _accessRole_allDimWithCubeGrand _accessRole_allDimWithoutCubeGrand" dbschemas="_databaseSchema_CatalogGrand"/>
   <roma:DatabaseSchema id="_databaseSchema_CatalogGrand">
     <tables xsi:type="roma:PhysicalTable" id="_table_fact" name="Fact">
@@ -155,6 +154,7 @@ This files represent the complete definition of the catalog.
   </roma:DatabaseSchema>
   <roma:TableQuery id="_query_fact" table="_table_fact"/>
   <roma:Level id="_level_key" name="Level1" column="_column_fact_key"/>
+  <roma:ExplicitHierarchy id="_hierarchy_main" name="Hierarchy1" hasAll="false" primaryKey="_column_fact_key" query="_query_fact" levels="_level_key"/>
   <roma:StandardDimension id="_dimension_main" name="Dimension1" hierarchies="_hierarchy_main"/>
   <roma:PhysicalCube id="_cube_main" name="Cube1" query="_query_fact">
     <dimensionConnectors foreignKey="_column_fact_key" dimension="_dimension_main" overrideDimensionName="Dimension1" id="_dimensionConnector_main"/>
@@ -163,21 +163,21 @@ This files represent the complete definition of the catalog.
       <measures xsi:type="roma:SumMeasure" id="_measure_sum" name="Measure1" column="_column_fact_value"/>
     </measureGroups>
   </roma:PhysicalCube>
+  <roma:AccessRole id="_accessRole_all" name="roleAll">
+    <accessCatalogGrants catalogAccess="all"/>
+  </roma:AccessRole>
   <roma:AccessRole id="_accessRole_allDimWithCubeGrand" name="roleAllDimWithCubeGrand">
     <accessCatalogGrants catalogAccess="all_dimensions">
       <cubeGrants cubeAccess="all" cube="_cube_main"/>
     </accessCatalogGrants>
   </roma:AccessRole>
-  <roma:AccessRole id="_accessRole_all" name="roleAll">
-    <accessCatalogGrants catalogAccess="all"/>
-  </roma:AccessRole>
-  <roma:AccessRole id="_accessRole_none" name="roleNone">
-    <accessCatalogGrants/>
-  </roma:AccessRole>
   <roma:AccessRole id="_accessRole_allDimWithoutCubeGrand" name="roleAllDimWithoutCubeGrand">
     <accessCatalogGrants catalogAccess="all_dimensions">
       <databaseSchemaGrants databaseSchemaAccess="all" databaseSchema="_databaseSchema_CatalogGrand"/>
     </accessCatalogGrants>
+  </roma:AccessRole>
+  <roma:AccessRole id="_accessRole_none" name="roleNone">
+    <accessCatalogGrants/>
   </roma:AccessRole>
 </xmi:XMI>
 

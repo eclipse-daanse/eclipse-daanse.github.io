@@ -104,7 +104,6 @@ This files represent the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:ParentChildHierarchy id="_hierarchy" name="Hierarchy" allMemberName="All" primaryKey="_parent_name" query="_table_factQuery" nullParentValue="all" parentColumn="_parent_parent" level="_level_name"/>
   <roma:Catalog description="Parent-child hierarchy with null parent values" name="Daanse Tutorial - Parent Child Null Parent" cubes="_cube" dbschemas="_databaseSchema"/>
   <roma:DatabaseSchema id="_databaseSchema">
     <tables xsi:type="roma:PhysicalTable" id="_table_parent" name="Parent">
@@ -115,6 +114,7 @@ This files represent the complete definition of the catalog.
   </roma:DatabaseSchema>
   <roma:TableQuery id="_table_factQuery" table="_table_parent"/>
   <roma:Level id="_level_name" name="Name" column="_parent_name" nameColumn="_parent_name" uniqueMembers="true"/>
+  <roma:ParentChildHierarchy id="_hierarchy" name="Hierarchy" allMemberName="All" primaryKey="_parent_name" query="_table_factQuery" nullParentValue="all" parentColumn="_parent_parent" level="_level_name"/>
   <roma:StandardDimension id="_dimension" name="Dimension" hierarchies="_hierarchy"/>
   <roma:PhysicalCube id="_cube" name="Cube" query="_table_factQuery">
     <dimensionConnectors foreignKey="_parent_name" dimension="_dimension" overrideDimensionName="Dimension" id="_dc_dimension"/>

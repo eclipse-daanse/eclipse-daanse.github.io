@@ -112,7 +112,6 @@ This files represent the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:ExplicitHierarchy id="_hierarchy_theHierarchy" name="theHierarchy" primaryKey="_column_fact_key" query="_query_fact" levels="_level_theLevel"/>
   <roma:Catalog description="Introduction to calculated members in cubes" name="Daanse Tutorial - Cube Calculated Member Intro" cubes="_cube_calculatedMemberCube" dbschemas="_databaseSchema_calculatedMemberIntro"/>
   <roma:DatabaseSchema id="_databaseSchema_calculatedMemberIntro">
     <tables xsi:type="roma:PhysicalTable" id="_table_fact" name="Fact">
@@ -122,6 +121,7 @@ This files represent the complete definition of the catalog.
   </roma:DatabaseSchema>
   <roma:TableQuery id="_query_fact" table="_table_fact"/>
   <roma:Level id="_level_theLevel" name="theLevel" column="_column_fact_key"/>
+  <roma:ExplicitHierarchy id="_hierarchy_theHierarchy" name="theHierarchy" primaryKey="_column_fact_key" query="_query_fact" levels="_level_theLevel"/>
   <roma:StandardDimension id="_dimension_theDimension" name="theDimension" hierarchies="_hierarchy_theHierarchy"/>
   <roma:PhysicalCube id="_cube_calculatedMemberCube" name="Cube CalculatedMember" query="_query_fact">
     <calculatedMembers id="_calculatedMember_calculatedMember1" name="Calculated Member 1" formula="[Measures].[Measure1-Sum] / [Measures].[Measure2-Count]"/>

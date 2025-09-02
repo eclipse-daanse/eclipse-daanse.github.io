@@ -4,13 +4,13 @@ group: Namedset
 kind: TUTORIAL
 number: 2.8.1
 ---
-NamedSet use only Dimension1 in formula. By this reason it connected to Dimension1.
+NamedSet use Dimension1 and Dimension2 in formula. By this reason it connected to Cube. NamedSet have folder
 
 NamedSet use Dimension1 and Dimension2 in formula. By this reason it connected to Cube.
 
 NamedSet use only Dimension1 in formula. By this reason it connected to Dimension1. NamedSet have folder
 
-NamedSet use Dimension1 and Dimension2 in formula. By this reason it connected to Cube. NamedSet have folder
+NamedSet use only Dimension1 in formula. By this reason it connected to Dimension1.
 
 # Daanse Tutorial - Namedset All
 
@@ -145,7 +145,6 @@ This files represent the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:ExplicitHierarchy id="_hierarchy_dimension" name="Hierarchy" primaryKey="_column_fact_key" query="_query_fact" levels="_level_dimension"/>
   <roma:Catalog description="Named set configurations" name="Daanse Tutorial - Namedset All" cubes="_cube_namedSet" dbschemas="_databaseSchema_namedSet"/>
   <roma:DatabaseSchema id="_databaseSchema_namedSet">
     <tables xsi:type="roma:PhysicalTable" id="_table_fact" name="Fact">
@@ -155,6 +154,7 @@ This files represent the complete definition of the catalog.
   </roma:DatabaseSchema>
   <roma:TableQuery id="_query_fact" table="_table_fact"/>
   <roma:Level id="_level_dimension" name="Level2" column="_column_fact_key"/>
+  <roma:ExplicitHierarchy id="_hierarchy_dimension" name="Hierarchy" primaryKey="_column_fact_key" query="_query_fact" levels="_level_dimension"/>
   <roma:StandardDimension id="_dimension_first" name="Dimension1" hierarchies="_hierarchy_dimension"/>
   <roma:PhysicalCube id="_cube_namedSet" name="Cube" query="_query_fact">
     <namedSets id="_namedSet_withFolderDimension1" name="NsWithFolderDimension1" displayFolder="Folder1" formula="TopCount([Dimension1].[Level2].MEMBERS, 5, [Measures].[Measure1])"/>
