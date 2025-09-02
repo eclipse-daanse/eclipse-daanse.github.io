@@ -52,8 +52,6 @@ classDiagram
       + name : EString
   }
 
-    Annotation <|-- IAnnotation : inherit
-
 
 
   class AbstractElement {
@@ -63,10 +61,7 @@ classDiagram
   }
     AbstractElement --> Annotation : annotations
 
-    AbstractElement <|-- IAbstractElement : inherit
-
     AbstractElement <|-- DocumentedElement : inherit
-
 
 
   class Catalog {
@@ -79,10 +74,7 @@ classDiagram
     Catalog --> AccessRole : defaultAccessRole
     Catalog --> DatabaseSchema : dbschemas
 
-    Catalog <|-- ICatalog : inherit
-
     Catalog <|-- AbstractElement : inherit
-
 
 
   class Cube {
@@ -96,9 +88,6 @@ classDiagram
 
     Cube <|-- AbstractElement : inherit
 
-    Cube <|-- ICube : inherit
-
-
 
   class PhysicalCube {
       + cache : Boolean
@@ -111,9 +100,6 @@ classDiagram
 
     PhysicalCube <|-- Cube : inherit
 
-    PhysicalCube <|-- IPhysicalCube : inherit
-
-
 
   class VirtualCube {
   }
@@ -124,16 +110,11 @@ classDiagram
 
     VirtualCube <|-- Cube : inherit
 
-    VirtualCube <|-- IVirtualCube : inherit
-
-
 
   class CubeConnector {
       + ignoreUnrelatedDimensions : Boolean
   }
     CubeConnector --> Cube : cube
-
-    CubeConnector <|-- ICubeConnector : inherit
 
 
 
@@ -142,8 +123,6 @@ classDiagram
   }
     MeasureGroup --> BaseMeasure : measures
     MeasureGroup --> PhysicalCube : physicalCube
-
-    MeasureGroup <|-- IMeasureGroup : inherit
 
 
 
@@ -155,65 +134,44 @@ classDiagram
     Member --> CalculatedMemberProperty : calculatedMemberProperties
     Member --> CellFormatter : cellFormatter
 
-    Member <|-- IMember : inherit
-
     Member <|-- AbstractElement : inherit
-
 
 
   class MinMeasure {
   }
 
-    MinMeasure <|-- IMinMeasure : inherit
-
     MinMeasure <|-- ColumnBaseMeasure : inherit
-
 
 
   class MaxMeasure {
   }
 
-    MaxMeasure <|-- IMaxMeasure : inherit
-
     MaxMeasure <|-- ColumnBaseMeasure : inherit
-
 
 
   class SumMeasure {
   }
 
-    SumMeasure <|-- ISumMeasure : inherit
-
     SumMeasure <|-- ColumnBaseMeasure : inherit
-
 
 
   class AvgMeasure {
   }
 
-    AvgMeasure <|-- IAvgMeasure : inherit
-
     AvgMeasure <|-- ColumnBaseMeasure : inherit
-
 
 
   class NoneMeasure {
   }
 
-    NoneMeasure <|-- INoneMeasure : inherit
-
     NoneMeasure <|-- SQLExpressionBaseMeasure : inherit
-
 
 
   class CountMeasure {
       + distinct : Boolean
   }
 
-    CountMeasure <|-- ICountMeasure : inherit
-
     CountMeasure <|-- ColumnBaseMeasure : inherit
-
 
 
   class TextAggMeasure {
@@ -224,10 +182,7 @@ classDiagram
   }
     TextAggMeasure --> OrderedColumn : orderByColumns
 
-    TextAggMeasure <|-- ITextAggMeasure : inherit
-
     TextAggMeasure <|-- ColumnBaseMeasure : inherit
-
 
 
   class BitAggMeasure {
@@ -235,10 +190,7 @@ classDiagram
       + not : Boolean
   }
 
-    BitAggMeasure <|-- IBitAggMeasure : inherit
-
     BitAggMeasure <|-- ColumnBaseMeasure : inherit
-
 
 
   class PercentileMeasure {
@@ -247,10 +199,7 @@ classDiagram
   }
     PercentileMeasure --> OrderedColumn : column
 
-    PercentileMeasure <|-- IPercentileMeasure : inherit
-
     PercentileMeasure <|-- BaseMeasure : inherit
-
 
 
   class NthAggMeasure {
@@ -259,10 +208,7 @@ classDiagram
   }
     NthAggMeasure --> OrderedColumn : orderByColumns
 
-    NthAggMeasure <|-- INthAggMeasure : inherit
-
     NthAggMeasure <|-- ColumnBaseMeasure : inherit
-
 
 
   class CustomMeasure {
@@ -271,30 +217,21 @@ classDiagram
   }
     CustomMeasure --> Column : columns
 
-    CustomMeasure <|-- ICustomMeasure : inherit
-
     CustomMeasure <|-- BaseMeasure : inherit
-
 
 
   class SQLExpressionBaseMeasure {
   }
     SQLExpressionBaseMeasure --> SQLExpressionColumn : column
 
-    SQLExpressionBaseMeasure <|-- ISqlExpressionBaseMeasure : inherit
-
     SQLExpressionBaseMeasure <|-- BaseMeasure : inherit
-
 
 
   class ColumnBaseMeasure {
   }
     ColumnBaseMeasure --> Column : column
 
-    ColumnBaseMeasure <|-- IColumnBaseMeasure : inherit
-
     ColumnBaseMeasure <|-- BaseMeasure : inherit
-
 
 
   class BaseMeasure {
@@ -304,10 +241,7 @@ classDiagram
   }
     BaseMeasure --> MeasureGroup : measureGroup
 
-    BaseMeasure <|-- IBaseMeasure : inherit
-
     BaseMeasure <|-- Member : inherit
-
 
 
   class Kpi {
@@ -327,9 +261,6 @@ classDiagram
 
     Kpi <|-- AbstractElement : inherit
 
-    Kpi <|-- IKpi : inherit
-
-
 
   class NamedSet {
       + displayFolder : EString
@@ -337,9 +268,6 @@ classDiagram
   }
 
     NamedSet <|-- AbstractElement : inherit
-
-    NamedSet <|-- INamedSet : inherit
-
 
 
   class Dimension {
@@ -350,9 +278,6 @@ classDiagram
     Dimension --> Hierarchy : defaultHierarchy
 
     Dimension <|-- AbstractElement : inherit
-
-    Dimension <|-- IDimension : inherit
-
 
 
   class DimensionConnector {
@@ -366,8 +291,6 @@ classDiagram
     DimensionConnector --> Level : level
     DimensionConnector --> PhysicalCube : physicalCube
 
-    DimensionConnector <|-- IDimensionConnector : inherit
-
 
 
   class TimeDimension {
@@ -375,17 +298,11 @@ classDiagram
 
     TimeDimension <|-- Dimension : inherit
 
-    TimeDimension <|-- ITimeDimension : inherit
-
-
 
   class StandardDimension {
   }
 
     StandardDimension <|-- Dimension : inherit
-
-    StandardDimension <|-- IStandardDimension : inherit
-
 
 
   class Hierarchy {
@@ -406,9 +323,6 @@ classDiagram
 
     Hierarchy <|-- AbstractElement : inherit
 
-    Hierarchy <|-- IHierarchy : inherit
-
-
 
   class Level {
       + approxRowCount : EString
@@ -425,10 +339,7 @@ classDiagram
     Level --> Column : nameColumn
     Level --> Column : ordinalColumn
 
-    Level <|-- ILevel : inherit
-
     Level <|-- AbstractElement : inherit
-
 
 
   class ExplicitHierarchy {
@@ -436,11 +347,7 @@ classDiagram
     ExplicitHierarchy --> Level : levels
 
     ExplicitHierarchy <|-- AbstractElement : inherit
-
-    ExplicitHierarchy <|-- IExplicitHierarchy : inherit
-
     ExplicitHierarchy <|-- Hierarchy : inherit
-
 
 
   class ParentChildHierarchy {
@@ -453,11 +360,7 @@ classDiagram
     ParentChildHierarchy --> Level : level
 
     ParentChildHierarchy <|-- AbstractElement : inherit
-
-    ParentChildHierarchy <|-- IParentChildHierarchy : inherit
-
     ParentChildHierarchy <|-- Hierarchy : inherit
-
 
 
   class MemberProperty {
@@ -469,9 +372,6 @@ classDiagram
 
     MemberProperty <|-- AbstractElement : inherit
 
-    MemberProperty <|-- IMemberProperty : inherit
-
-
 
   class CalculatedMember {
       + formula : Formula
@@ -480,10 +380,7 @@ classDiagram
     CalculatedMember --> Hierarchy : hierarchy
     CalculatedMember --> PhysicalCube : physicalCube
 
-    CalculatedMember <|-- ICalculatedMember : inherit
-
     CalculatedMember <|-- Member : inherit
-
 
 
   class CalculatedMemberProperty {
@@ -493,17 +390,12 @@ classDiagram
 
     CalculatedMemberProperty <|-- AbstractElement : inherit
 
-    CalculatedMemberProperty <|-- ICalculatedMemberProperty : inherit
-
-
 
   class ParentChildLink {
   }
     ParentChildLink --> TableQuery : table
     ParentChildLink --> Column : childColumn
     ParentChildLink --> Column : parentColumn
-
-    ParentChildLink <|-- IParentChildLink : inherit
 
 
 
@@ -513,18 +405,12 @@ classDiagram
 
     RelationalQuery <|-- Query : inherit
 
-    RelationalQuery <|-- IRelationalQuery : inherit
-
-
 
   class InlineTableQuery {
   }
     InlineTableQuery --> InlineTable : table
 
     InlineTableQuery <|-- RelationalQuery : inherit
-
-    InlineTableQuery <|-- IInlineTableQuery : inherit
-
 
 
   class JoinQuery {
@@ -534,17 +420,12 @@ classDiagram
 
     JoinQuery <|-- Query : inherit
 
-    JoinQuery <|-- IJoinQuery : inherit
-
-
 
   class JoinedQueryElement {
       + alias : EString
   }
     JoinedQueryElement --> Column : key
     JoinedQueryElement --> Query : query
-
-    JoinedQueryElement <|-- IJoinedQueryElement : inherit
 
 
 
@@ -558,16 +439,11 @@ classDiagram
 
     TableQuery <|-- RelationalQuery : inherit
 
-    TableQuery <|-- ITableQuery : inherit
-
-
 
   class TableQueryOptimizationHint {
       + value : EString
       + type : EString
   }
-
-    TableQueryOptimizationHint <|-- ITableQueryOptimizationHint : inherit
 
 
 
@@ -577,16 +453,11 @@ classDiagram
 
     SqlSelectQuery <|-- RelationalQuery : inherit
 
-    SqlSelectQuery <|-- ISqlSelectQuery : inherit
-
-
 
   class MemberReaderParameter {
       + name : EString
       + value : EString
   }
-
-    MemberReaderParameter <|-- IMemberReaderParameter : inherit
 
 
 
@@ -598,8 +469,6 @@ classDiagram
   }
     Translation --> Annotation : annotations
 
-    Translation <|-- ITranslation : inherit
-
 
 
 
@@ -609,35 +478,25 @@ classDiagram
 
     Formatter <|-- AbstractElement : inherit
 
-    Formatter <|-- IFormatter : inherit
-
-
 
   class CellFormatter {
   }
 
     CellFormatter <|-- Formatter : inherit
 
-    CellFormatter <|-- ICellFormatter : inherit
-
-
 
   class MemberFormatter {
   }
 
     MemberFormatter <|-- Formatter : inherit
-
     MemberFormatter <|-- IMemberFormatter : inherit
-
 
 
   class MemberPropertyFormatter {
   }
 
     MemberPropertyFormatter <|-- Formatter : inherit
-
     MemberPropertyFormatter <|-- IMemberPropertyFormatter : inherit
-
 
 
   class Parameter {
@@ -648,17 +507,12 @@ classDiagram
       + dataType : ColumnInternalDataType
   }
 
-    Parameter <|-- IParameter : inherit
-
 
 
   class Action {
   }
 
     Action <|-- AbstractElement : inherit
-
-    Action <|-- IAction : inherit
-
 
 
   class DrillThroughAction {
@@ -669,9 +523,6 @@ classDiagram
 
     DrillThroughAction <|-- Action : inherit
 
-    DrillThroughAction <|-- IDrillThroughAction : inherit
-
-
 
   class DrillThroughAttribute {
       + property : EString
@@ -680,8 +531,6 @@ classDiagram
     DrillThroughAttribute --> Hierarchy : hierarchy
     DrillThroughAttribute --> Level : level
 
-    DrillThroughAttribute <|-- IDrillThroughAttribute : inherit
-
 
 
   class WritebackAttribute {
@@ -689,16 +538,12 @@ classDiagram
     WritebackAttribute --> Column : column
     WritebackAttribute --> DimensionConnector : dimensionConnector
 
-    WritebackAttribute <|-- IWritebackAttribute : inherit
-
 
 
   class WritebackMeasure {
       + name : EString
   }
     WritebackMeasure --> Column : column
-
-    WritebackMeasure <|-- IWritebackMeasure : inherit
 
 
 
@@ -709,8 +554,6 @@ classDiagram
     WritebackTable --> WritebackAttribute : writebackAttribute
     WritebackTable --> WritebackMeasure : writebackMeasure
 
-    WritebackTable <|-- IWritebackTable : inherit
-
 
 
   class AggregationExclude {
@@ -720,16 +563,12 @@ classDiagram
       + id : EString
   }
 
-    AggregationExclude <|-- IAggregationExclude : inherit
-
 
 
   class AggregationForeignKey {
   }
     AggregationForeignKey --> Column : aggregationColumn
     AggregationForeignKey --> Column : factColumn
-
-    AggregationForeignKey <|-- IAggregationForeignKey : inherit
 
 
 
@@ -743,16 +582,12 @@ classDiagram
     AggregationLevel --> Column : nameColumn
     AggregationLevel --> Column : ordinalColumn
 
-    AggregationLevel <|-- IAggregationLevel : inherit
-
 
 
   class AggregationLevelProperty {
       + name : EString
   }
     AggregationLevelProperty --> Column : column
-
-    AggregationLevelProperty <|-- IAggregationLevelProperty : inherit
 
 
 
@@ -762,16 +597,12 @@ classDiagram
   }
     AggregationMeasure --> Column : column
 
-    AggregationMeasure <|-- IAggregationMeasure : inherit
-
 
 
   class AggregationMeasureFactCount {
   }
     AggregationMeasureFactCount --> Column : column
     AggregationMeasureFactCount --> Column : factColumn
-
-    AggregationMeasureFactCount <|-- IAggregationMeasureFactCount : inherit
 
 
 
@@ -786,8 +617,6 @@ classDiagram
     AggregationTable --> AggregationLevel : aggregationLevels
     AggregationTable --> AggregationMeasureFactCount : aggregationMeasureFactCounts
 
-    AggregationTable <|-- IAggregationTable : inherit
-
 
 
   class AggregationName {
@@ -797,9 +626,6 @@ classDiagram
 
     AggregationName <|-- AggregationTable : inherit
 
-    AggregationName <|-- IAggregationName : inherit
-
-
 
   class AggregationPattern {
       + pattern : EString
@@ -808,15 +634,10 @@ classDiagram
 
     AggregationPattern <|-- AggregationTable : inherit
 
-    AggregationPattern <|-- IAggregationPattern : inherit
-
-
 
   class AggregationColumnName {
   }
     AggregationColumnName --> Column : column
-
-    AggregationColumnName <|-- IAggregationColumnName : inherit
 
 
 
@@ -827,8 +648,6 @@ classDiagram
     AccessCubeGrant --> AccessHierarchyGrant : hierarchyGrants
     AccessCubeGrant --> Cube : cube
 
-    AccessCubeGrant <|-- IAccessCubeGrant : inherit
-
 
 
   class AccessDatabaseSchemaGrant {
@@ -836,8 +655,6 @@ classDiagram
   }
     AccessDatabaseSchemaGrant --> AccessTableGrant : tableGrants
     AccessDatabaseSchemaGrant --> DatabaseSchema : databaseSchema
-
-    AccessDatabaseSchemaGrant <|-- IAccessDatabaseSchemaGrant : inherit
 
 
 
@@ -847,8 +664,6 @@ classDiagram
     AccessTableGrant --> AccessColumnGrant : columnGrants
     AccessTableGrant --> Table : table
 
-    AccessTableGrant <|-- IAccessTableGrant : inherit
-
 
 
   class AccessColumnGrant {
@@ -856,16 +671,12 @@ classDiagram
   }
     AccessColumnGrant --> Column : column
 
-    AccessColumnGrant <|-- IAccessColumnGrant : inherit
-
 
 
   class AccessDimensionGrant {
       + dimensionAccess : DimensionAccess
   }
     AccessDimensionGrant --> Dimension : dimension
-
-    AccessDimensionGrant <|-- IAccessDimensionGrant : inherit
 
 
 
@@ -878,16 +689,12 @@ classDiagram
     AccessHierarchyGrant --> Level : bottomLevel
     AccessHierarchyGrant --> Level : topLevel
 
-    AccessHierarchyGrant <|-- IAccessHierarchyGrant : inherit
-
 
 
   class AccessMemberGrant {
       + memberAccess : MemberAccess
       + member : EString
   }
-
-    AccessMemberGrant <|-- IAccessMemberGrant : inherit
 
 
 
@@ -898,17 +705,12 @@ classDiagram
 
     AccessRole <|-- AbstractElement : inherit
 
-    AccessRole <|-- IAccessRole : inherit
-
-
 
   class AccessCatalogGrant {
       + catalogAccess : CatalogAccess
   }
     AccessCatalogGrant --> AccessCubeGrant : cubeGrants
     AccessCatalogGrant --> AccessDatabaseSchemaGrant : databaseSchemaGrants
-
-    AccessCatalogGrant <|-- IAccessCatalogGrant : inherit
 
 
 
@@ -917,20 +719,14 @@ classDiagram
     DatabaseCatalog --> DatabaseSchema : schemas
     DatabaseCatalog --> Link : links
 
-    DatabaseCatalog <|-- IDatabaseCatalog : inherit
-
     DatabaseCatalog <|-- AbstractElement : inherit
-
 
 
   class DatabaseSchema {
   }
     DatabaseSchema --> Table : tables
 
-    DatabaseSchema <|-- IDatabaseSchema : inherit
-
     DatabaseSchema <|-- AbstractElement : inherit
-
 
 
   class Table {
@@ -938,45 +734,31 @@ classDiagram
     Table --> Column : columns
     Table --> DatabaseSchema : schema
 
-    Table <|-- ITable : inherit
-
     Table <|-- AbstractElement : inherit
-
 
 
   class PhysicalTable {
   }
 
-    PhysicalTable <|-- IPhysicalTable : inherit
-
     PhysicalTable <|-- Table : inherit
-
 
 
   class SystemTable {
   }
 
-    SystemTable <|-- ISystemTable : inherit
-
     SystemTable <|-- Table : inherit
-
 
 
   class ViewTable {
   }
 
-    ViewTable <|-- IViewTable : inherit
-
     ViewTable <|-- Table : inherit
-
 
 
   class OrderedColumn {
       + ascend : Boolean
   }
     OrderedColumn --> Column : column
-
-    OrderedColumn <|-- IOrderedColumn : inherit
 
 
 
@@ -992,10 +774,7 @@ classDiagram
     Column --> Link : primaryLinks
     Column --> Link : foreignLinks
 
-    Column <|-- IColumn : inherit
-
     Column <|-- AbstractElement : inherit
-
 
 
   class PhysicalColumn {
@@ -1003,18 +782,12 @@ classDiagram
 
     PhysicalColumn <|-- Column : inherit
 
-    PhysicalColumn <|-- IPhysicalColumn : inherit
-
-
 
   class SQLExpressionColumn {
   }
     SQLExpressionColumn --> SqlStatement : sqls
 
-    SQLExpressionColumn <|-- ISQLExpressionColumn : inherit
-
     SQLExpressionColumn <|-- Column : inherit
-
 
 
   class Query {
@@ -1022,10 +795,7 @@ classDiagram
   }
     Query --> Documentation : documentation
 
-    Query <|-- IQuery : inherit
-
     Query <|-- DocumentedElement : inherit
-
 
 
   class Link {
@@ -1033,25 +803,18 @@ classDiagram
     Link --> Column : primaryKey
     Link --> Column : foreignKey
 
-    Link <|-- ILink : inherit
-
 
 
   class InlineTable {
   }
     InlineTable --> Row : rows
 
-    InlineTable <|-- IInlineTable : inherit
-
     InlineTable <|-- Table : inherit
-
 
 
   class Row {
   }
     Row --> RowValue : rowValues
-
-    Row <|-- IRow : inherit
 
 
 
@@ -1060,8 +823,6 @@ classDiagram
   }
     RowValue --> Column : column
 
-    RowValue <|-- IRowValue : inherit
-
 
 
   class SqlStatement {
@@ -1069,18 +830,13 @@ classDiagram
       + sql : EString
   }
 
-    SqlStatement <|-- ISqlStatement : inherit
-
 
 
   class SqlView {
   }
     SqlView --> SqlStatement : sqlStatements
 
-    SqlView <|-- ISqlView : inherit
-
     SqlView <|-- Table : inherit
-
 
 
 
@@ -1218,6 +974,7 @@ classDiagram
 
 </MermaidZoom>
 </ClientOnly>
+
 
 ### All Classes and Enums
 
