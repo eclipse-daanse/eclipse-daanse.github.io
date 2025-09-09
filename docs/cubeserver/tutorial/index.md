@@ -13,6 +13,8 @@ The Tutorials in the `unstructured` section agre bare Mapping descriptions and e
 
 A recommended reading order is provided below to help you build your understanding progressively and systematically.
 
+Download the full [Tutorial-Package](./zip/all-tutorials.zip) as zip.
+
 
 
 [Database Intro](./tutorial.database.intro.md)
@@ -105,8 +107,6 @@ A recommended reading order is provided below to help you build your understandi
 
 [Cube Hierarchy Has All](./tutorial.cube.hierarchy.hasall.md)
 
-[Cube Level Member Property Intro](./tutorial.cube.level.member.property.intro.md)
-
 [Function Logic](./tutorial.function.logic.md)
 
 [Cube Calculated Member Intro](./tutorial.cube.calculatedmember.intro.md)
@@ -127,6 +127,8 @@ A recommended reading order is provided below to help you build your understandi
 
 [Access Hierarchy Grant](./tutorial.access.hierarchygrand.md)
 
+[Access With Default Role](./tutorial.access.defaultrole.md)
+
 [Access Member Grant](./tutorial.access.membergrand.md)
 
 [Writeback Inline Table](./tutorial.writeback.inlinetable.md)
@@ -138,6 +140,10 @@ A recommended reading order is provided below to help you build your understandi
 [Writeback Without Dimension](./tutorial.writeback.withoutdimension.md)
 
 [Member Identifier](./tutorial.member.identifier.md)
+
+[Cube Level Member Property Intro](./tutorial.member.property.intro.md)
+
+[Member Properties with Geographic Data](./tutorial.member.property.geo.md)
 
 [KPI Intro](./tutorial.kpi.intro.md)
 
@@ -156,5 +162,13 @@ A recommended reading order is provided below to help you build your understandi
 [Dimension Time Dimension](./tutorial.dimension.timedimension.md)
 
 [Dimension Optimisation With Level Attribute](./tutorial.dimension.optimisationwithlevelattribute.md)
+
+[FoodMart](./complex.foodmart.md)
+
+[SteelWheels](./complex.steelwheels.md)
+
+[ExpressiveNames](./complex.expressivenames.md)
+
+[Bevölkerung](./complex.population.jena.md)
 
 [Daanse Example - Schulwesen](./complex.school.md)

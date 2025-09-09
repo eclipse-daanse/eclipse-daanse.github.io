@@ -61,7 +61,7 @@ The Hierarchy1 is defined with the hasAll property set to false and the one leve
 
 
 ```xml
-<roma:ExplicitHierarchy  id="_hierarchy_Hierarchy1" name="Hierarchy1" hasAll="false" primaryKey="_column_fact_key" query="_query_factQuery" levels="_level_Level1"/>
+<roma:ExplicitHierarchy  id="_hierarchy_Hierarchy1" name="Hierarchy1" primaryKey="_column_fact_key" query="_query_factQuery" levels="_level_Level1"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -103,13 +103,14 @@ hierarchyGrant hierarchy1 access custom with member grants<br />
 
 ```xml
 <roma:AccessRole  id="_accessRole_role1" name="role1">
-  <accessCatalogGrants catalogAccess="custom">
+  <accessCatalogGrants catalogAccess="all">
     <cubeGrants cubeAccess="custom" cube="roma:PhysicalCube _cube_Cube1">
       <dimensionGrants dimensionAccess="all" dimension="roma:StandardDimension _dimension_Dimension1"/>
+      <hierarchyGrants hierarchyAccess="all"/>
       <hierarchyGrants hierarchyAccess="custom" hierarchy="roma:ExplicitHierarchy _hierarchy_Hierarchy1" bottomLevel="_level_Level1" topLevel="_level_Level1">
-        <memberGrants memberAccess="all" member="[Dimension1].[A]"/>
-        <memberGrants member="[Dimension1].[B]"/>
-        <memberGrants member="[Dimension1].[C]"/>
+        <memberGrants memberAccess="all" member="[Dimension1].[Hierarchy1].[A]"/>
+        <memberGrants member="[Dimension1].[Hierarchy1].[B]"/>
+        <memberGrants member="[Dimension1].[Hierarchy1].[C]"/>
       </hierarchyGrants>
     </cubeGrants>
     <databaseSchemaGrants databaseSchemaAccess="all" databaseSchema="_databaseSchema_MemberGrand"/>
@@ -135,7 +136,7 @@ This files represent the complete definition of the catalog.
   </roma:DatabaseSchema>
   <roma:TableQuery id="_query_factQuery" table="_table_fact"/>
   <roma:Level id="_level_Level1" name="Level1" column="_column_fact_key"/>
-  <roma:ExplicitHierarchy id="_hierarchy_Hierarchy1" name="Hierarchy1" hasAll="false" primaryKey="_column_fact_key" query="_query_factQuery" levels="_level_Level1"/>
+  <roma:ExplicitHierarchy id="_hierarchy_Hierarchy1" name="Hierarchy1" primaryKey="_column_fact_key" query="_query_factQuery" levels="_level_Level1"/>
   <roma:StandardDimension id="_dimension_Dimension1" name="Dimension1" hierarchies="_hierarchy_Hierarchy1"/>
   <roma:PhysicalCube id="_cube_Cube1" name="Cube1" query="_query_factQuery">
     <dimensionConnectors foreignKey="_column_fact_key" dimension="_dimension_Dimension1" overrideDimensionName="Dimension1" id="_dimensionConnector_dimension11"/>
@@ -145,13 +146,14 @@ This files represent the complete definition of the catalog.
     </measureGroups>
   </roma:PhysicalCube>
   <roma:AccessRole id="_accessRole_role1" name="role1">
-    <accessCatalogGrants catalogAccess="custom">
+    <accessCatalogGrants catalogAccess="all">
       <cubeGrants cubeAccess="custom" cube="_cube_Cube1">
         <dimensionGrants dimensionAccess="all" dimension="_dimension_Dimension1"/>
+        <hierarchyGrants hierarchyAccess="all"/>
         <hierarchyGrants hierarchyAccess="custom" hierarchy="_hierarchy_Hierarchy1" bottomLevel="_level_Level1" topLevel="_level_Level1">
-          <memberGrants memberAccess="all" member="[Dimension1].[A]"/>
-          <memberGrants member="[Dimension1].[B]"/>
-          <memberGrants member="[Dimension1].[C]"/>
+          <memberGrants memberAccess="all" member="[Dimension1].[Hierarchy1].[A]"/>
+          <memberGrants member="[Dimension1].[Hierarchy1].[B]"/>
+          <memberGrants member="[Dimension1].[Hierarchy1].[C]"/>
         </hierarchyGrants>
       </cubeGrants>
       <databaseSchemaGrants databaseSchemaAccess="all" databaseSchema="_databaseSchema_MemberGrand"/>

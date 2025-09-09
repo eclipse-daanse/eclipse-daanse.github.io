@@ -2,7 +2,7 @@
 title: Cube Level Member Property Intro
 group: Member
 kind: TUTORIAL
-number: 2.3.5.1
+number: 2.6.2.1
 ---
 # Daanse Tutorial - Cube Level Member Property Intro
 
@@ -148,4 +148,4 @@ This files represent the complete definition of the catalog.
 ## Tutorial Zip
 This files contaisn the data-tables as csv and the mapping as xmi file.
 
-<a href="./zip/tutorial.cube.level.member.property.intro.zip" download>Download Zip File</a>
+<a href="./zip/tutorial.member.property.intro.zip" download>Download Zip File</a>

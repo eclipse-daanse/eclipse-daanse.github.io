@@ -53,7 +53,7 @@ The Hierarchy1 is defined with the hasAll property set to false and the one `lev
 
 
 ```xml
-<roma:ExplicitHierarchy  id="_hierarchy_Hierarchy1" name="Hierarchy1" hasAll="false" primaryKey="_column_fact_key" query="_query_factQuery" levels="_level_Level1"/>
+<roma:ExplicitHierarchy  id="_hierarchy_Hierarchy1" name="Hierarchy1" primaryKey="_column_fact_key" query="_query_factQuery" levels="_level_Level1"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -92,8 +92,10 @@ The `role1` use CatalogGrant access `all_dimensions`; CubeGrant `cube1` access `
 <roma:AccessRole  id="_accessRole_role1" name="role1">
   <accessCatalogGrants catalogAccess="custom">
     <cubeGrants cubeAccess="custom" cube="roma:PhysicalCube _cube_Cube1">
+      <dimensionGrants dimensionAccess="all"/>
       <dimensionGrants dimensionAccess="all" dimension="roma:StandardDimension _dimension_Dimension1"/>
       <dimensionGrants dimension="roma:StandardDimension _dimension_Dimension2"/>
+      <hierarchyGrants hierarchyAccess="all"/>
     </cubeGrants>
     <databaseSchemaGrants databaseSchemaAccess="all" databaseSchema="_databaseSchema_DimensionGrand"/>
   </accessCatalogGrants>
@@ -119,8 +121,8 @@ This files represent the complete definition of the catalog.
   <roma:TableQuery id="_query_factQuery" table="_table_fact"/>
   <roma:Level id="_level_Level1" name="Level1" column="_column_fact_key"/>
   <roma:Level id="_level_Level2" name="Level2" column="_column_fact_key"/>
-  <roma:ExplicitHierarchy id="_hierarchy_Hierarchy1" name="Hierarchy1" hasAll="false" primaryKey="_column_fact_key" query="_query_factQuery" levels="_level_Level1"/>
-  <roma:ExplicitHierarchy id="_hierarchy_Hierarchy2" name="Hierarchy2" hasAll="false" primaryKey="_column_fact_key" query="_query_factQuery" levels="_level_Level2"/>
+  <roma:ExplicitHierarchy id="_hierarchy_Hierarchy1" name="Hierarchy1" primaryKey="_column_fact_key" query="_query_factQuery" levels="_level_Level1"/>
+  <roma:ExplicitHierarchy id="_hierarchy_Hierarchy2" name="Hierarchy2" primaryKey="_column_fact_key" query="_query_factQuery" levels="_level_Level2"/>
   <roma:StandardDimension id="_dimension_Dimension1" name="Dimension1" hierarchies="_hierarchy_Hierarchy1"/>
   <roma:StandardDimension id="_dimension_Dimension2" name="Dimension2" hierarchies="_hierarchy_Hierarchy2"/>
   <roma:PhysicalCube id="_cube_Cube1" name="Cube1" query="_query_factQuery">
@@ -133,8 +135,10 @@ This files represent the complete definition of the catalog.
   <roma:AccessRole id="_accessRole_role1" name="role1">
     <accessCatalogGrants catalogAccess="custom">
       <cubeGrants cubeAccess="custom" cube="_cube_Cube1">
+        <dimensionGrants dimensionAccess="all"/>
         <dimensionGrants dimensionAccess="all" dimension="_dimension_Dimension1"/>
         <dimensionGrants dimension="_dimension_Dimension2"/>
+        <hierarchyGrants hierarchyAccess="all"/>
       </cubeGrants>
       <databaseSchemaGrants databaseSchemaAccess="all" databaseSchema="_databaseSchema_DimensionGrand"/>
     </accessCatalogGrants>
