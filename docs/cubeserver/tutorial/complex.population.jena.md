@@ -18,7 +18,7 @@ Er ermöglicht Analysen nach Stadtteilen, Altersgruppen, Geschlecht und Zeitverl
 
 
 ```xml
-<roma:PhysicalCube  id="_cube_bevoelkerung" name="Bev&#xf6;lkerung" query="/2"/>
+<roma:PhysicalCube  id="_cube_bevoelkerung" name="Bev&#xf6;lkerung" query="_query_fact"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -125,20 +125,20 @@ This files represent the complete definition of the catalog.
       <columns xsi:type="roma:PhysicalColumn" id="_column_agegroups_h9_order" name="H9_Order" type="Integer"/>
     </tables>
   </roma:DatabaseSchema>
-  <roma:TableQuery table="_table_einwohner"/>
   <roma:TableQuery id="_query_agegroups" table="_table_agegroups"/>
+  <roma:TableQuery id="_query_fact" table="_table_einwohner"/>
   <roma:TableQuery id="_query_gender" table="_table_gender"/>
   <roma:TableQuery id="_query_plraum" table="_table_plraum"/>
   <roma:TableQuery id="_query_statbez" table="_table_statbez"/>
   <roma:TableQuery id="_query_town" table="_table_town"/>
   <roma:TableQuery id="_query_year" table="_table_year"/>
-  <roma:JoinQuery>
-    <left key="_column_statbez_plraum" query="_query_statbez"/>
-    <right key="_column_plraum_gid" query="/10"/>
-  </roma:JoinQuery>
-  <roma:JoinQuery>
+  <roma:JoinQuery id="_joinquery_plraum_town">
     <left key="_column_plraum_townid" query="_query_plraum"/>
     <right key="_column_town_id" query="_query_town"/>
+  </roma:JoinQuery>
+  <roma:JoinQuery id="_joinquery_stadt_planungsraum_statbezirk">
+    <left key="_column_statbez_plraum" query="_query_statbez"/>
+    <right key="_column_plraum_gid" query="_joinquery_plraum_town"/>
   </roma:JoinQuery>
   <roma:Level id="_level_alter_10jahre" name="Alter 10" column="_column_agegroups_age"/>
   <roma:Level id="_level_alter_einzeljahrgaenge" name="Alter" column="_column_agegroups_age"/>
@@ -169,12 +169,12 @@ This files represent the complete definition of the catalog.
   <roma:ExplicitHierarchy id="_hierarchy_altersgruppen_standard" name="Altersgruppen (Standard)" allMemberName="Alle Altersgruppen" primaryKey="_column_agegroups_age" query="_query_agegroups" levels="_level_altersgruppe_standard _level_alter_standard"/>
   <roma:ExplicitHierarchy id="_hierarchy_geschlecht" name="Geschlecht (m/w/d)" allMemberName="Alle Geschlechter" primaryKey="_column_gender_key" query="_query_gender" levels="_level_geschlecht"/>
   <roma:ExplicitHierarchy id="_hierarchy_jahr" name="Jahr" defaultMember="2023" hasAll="false" primaryKey="_column_year_year" query="_query_year" levels="_level_jahr"/>
-  <roma:ExplicitHierarchy id="_hierarchy_stadt_planungsraum_statbezirk" name="Stadt - Planungsraum - statistischer Bezirk" allMemberName="Alle Gebiete" primaryKey="_column_statbez_gid" query="/9" levels="_level_stadt _level_planungsraum _level_statistischer_bezirk"/>
+  <roma:ExplicitHierarchy id="_hierarchy_stadt_planungsraum_statbezirk" name="Stadt - Planungsraum - statistischer Bezirk" allMemberName="Alle Gebiete" primaryKey="_column_statbez_gid" query="_joinquery_stadt_planungsraum_statbezirk" levels="_level_stadt _level_planungsraum _level_statistischer_bezirk"/>
   <roma:StandardDimension id="_dimension_alter" name="Alter" hierarchies="_hierarchy_alter_einzeljahrgaenge _hierarchy_altersgruppen_standard _hierarchy_altersgruppen_kinder _hierarchy_altersgruppen_rki_h7 _hierarchy_altersgruppen_rki_h8 _hierarchy_altersgruppen_10jahre"/>
   <roma:StandardDimension id="_dimension_geschlecht" name="Geschlecht" hierarchies="_hierarchy_geschlecht"/>
   <roma:StandardDimension id="_dimension_statistischer_bezirk" name="statistischer Bezirk" hierarchies="_hierarchy_stadt_planungsraum_statbezirk"/>
   <roma:TimeDimension id="_dimension_jahr" name="Jahr" hierarchies="_hierarchy_jahr"/>
-  <roma:PhysicalCube id="_cube_bevoelkerung" name="Bevölkerung" query="/2">
+  <roma:PhysicalCube id="_cube_bevoelkerung" name="Bevölkerung" query="_query_fact">
     <dimensionConnectors foreignKey="_column_einwohner_jahr" dimension="_dimension_jahr" overrideDimensionName="Jahr" id="_connector_jahr"/>
     <dimensionConnectors foreignKey="_column_einwohner_statbez" dimension="_dimension_statistischer_bezirk" overrideDimensionName="statistischer Bezirk" id="_connector_statistischer_bezirk"/>
     <dimensionConnectors foreignKey="_column_einwohner_ker_gesch" dimension="_dimension_geschlecht" overrideDimensionName="Geschlecht" id="_connector_geschlecht"/>
