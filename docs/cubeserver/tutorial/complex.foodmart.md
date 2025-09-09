@@ -1,8 +1,8 @@
 ---
 title: FoodMart
-group: 
+group: Full Examples
 kind: COMPLEX
-number: 3
+number: 99.1.4
 ---
 # FoodMart Database
 
@@ -17,7 +17,7 @@ It includes measures for unit sales, store sales, and store cost, along with dim
 
 
 ```xml
-<roma:PhysicalCube  id="_cube_sales" name="Sales" query="/10"/>
+<roma:PhysicalCube  id="_cube_sales" name="Sales" query="/11"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -198,17 +198,17 @@ This files represent the complete definition of the catalog.
       <columns xsi:type="roma:PhysicalColumn" id="_column_productClass_productFamily" name="product_family"/>
     </tables>
   </roma:DatabaseSchema>
-  <roma:TableQuery table="_table_salary"/>
-  <roma:TableQuery table="_table_employee"/>
-  <roma:TableQuery table="_table_department"/>
-  <roma:TableQuery table="_table_inventoryFact1997"/>
-  <roma:TableQuery table="_table_product"/>
-  <roma:TableQuery table="_table_timeByDay"/>
-  <roma:TableQuery table="_table_position"/>
-  <roma:TableQuery table="_table_store"/>
-  <roma:TableQuery table="_table_salesFact1997"/>
   <roma:TableQuery table="_table_customer"/>
+  <roma:TableQuery table="_table_position"/>
+  <roma:TableQuery table="_table_timeByDay"/>
+  <roma:TableQuery table="_table_product"/>
+  <roma:TableQuery table="_table_employee"/>
+  <roma:TableQuery table="_table_inventoryFact1997"/>
+  <roma:TableQuery table="_table_department"/>
   <roma:TableQuery table="_table_warehouse"/>
+  <roma:TableQuery table="_table_salary"/>
+  <roma:TableQuery table="_table_salesFact1997"/>
+  <roma:TableQuery table="_table_store"/>
   <roma:Level id="_level_customer_city" name="City" column="_column_customer_city"/>
   <roma:Level id="_level_customer_country" name="Country" column="_column_customer_country"/>
   <roma:Level id="_level_customer_education" name="Education Level" column="_column_customer_education"/>
@@ -239,17 +239,17 @@ This files represent the complete definition of the catalog.
   <roma:Level id="_level_warehouse_country" name="Country" column="_column_warehouse_warehouseCountry"/>
   <roma:Level id="_level_warehouse_name" name="Warehouse Name" column="_column_warehouse_warehouseName"/>
   <roma:Level id="_level_warehouse_state" name="State Province" column="_column_warehouse_warehouseStateProvince"/>
-  <roma:ExplicitHierarchy id="_hierarchy_customer_gender" name="Gender" allMemberName="All Gender" query="/11" levels="_level_customer_gender"/>
-  <roma:ExplicitHierarchy id="_hierarchy_customer_geography" name="Geography" allMemberName="All Customers" query="/11" levels="_level_customer_country _level_customer_stateProvince _level_customer_city _level_customer_name"/>
-  <roma:ExplicitHierarchy id="_hierarchy_customers_education" name="Customers Education" allMemberName="All Education Levels" query="/11" levels="_level_customer_education"/>
-  <roma:ExplicitHierarchy id="_hierarchy_customers_marital" name="Customers Marital Status" allMemberName="All Marital Statuses" query="/11" levels="_level_customer_marital_status"/>
-  <roma:ExplicitHierarchy id="_hierarchy_department" name="Department" allMemberName="All Departments" query="/4" levels="_level_department_description"/>
-  <roma:ExplicitHierarchy id="_hierarchy_employee" name="Employee" allMemberName="All Employees" query="/3" levels="_level_employee_management_role _level_employee_position _level_employee_department _level_employee_full_name"/>
-  <roma:ExplicitHierarchy id="_hierarchy_position" name="Position" allMemberName="All Positions" query="/8" levels="_level_position_title"/>
-  <roma:ExplicitHierarchy id="_hierarchy_product" name="Product Hierarchy" allMemberName="All Products" query="/6" levels="_level_product_family _level_product_department _level_product_category _level_product_subcategory _level_product_brand _level_product_name"/>
-  <roma:ExplicitHierarchy id="_hierarchy_store" name="Store Hierarchy" allMemberName="All Stores" query="/9" levels="_level_store_country _level_store_state _level_store_city _level_store_name"/>
-  <roma:ExplicitHierarchy id="_hierarchy_time" name="Time Hierarchy" allMemberName="All Years" query="/7" levels="_level_time_year _level_time_quarter _level_time_month"/>
-  <roma:ExplicitHierarchy id="_hierarchy_warehouse" name="Warehouse" allMemberName="All Warehouses" query="/12" levels="_level_warehouse_country _level_warehouse_state _level_warehouse_city _level_warehouse_name"/>
+  <roma:ExplicitHierarchy id="_hierarchy_customer_gender" name="Gender" allMemberName="All Gender" query="/2" levels="_level_customer_gender"/>
+  <roma:ExplicitHierarchy id="_hierarchy_customer_geography" name="Geography" allMemberName="All Customers" query="/2" levels="_level_customer_country _level_customer_stateProvince _level_customer_city _level_customer_name"/>
+  <roma:ExplicitHierarchy id="_hierarchy_customers_education" name="Customers Education" allMemberName="All Education Levels" query="/2" levels="_level_customer_education"/>
+  <roma:ExplicitHierarchy id="_hierarchy_customers_marital" name="Customers Marital Status" allMemberName="All Marital Statuses" query="/2" levels="_level_customer_marital_status"/>
+  <roma:ExplicitHierarchy id="_hierarchy_department" name="Department" allMemberName="All Departments" query="/8" levels="_level_department_description"/>
+  <roma:ExplicitHierarchy id="_hierarchy_employee" name="Employee" allMemberName="All Employees" query="/6" levels="_level_employee_management_role _level_employee_position _level_employee_department _level_employee_full_name"/>
+  <roma:ExplicitHierarchy id="_hierarchy_position" name="Position" allMemberName="All Positions" query="/3" levels="_level_position_title"/>
+  <roma:ExplicitHierarchy id="_hierarchy_product" name="Product Hierarchy" allMemberName="All Products" query="/5" levels="_level_product_family _level_product_department _level_product_category _level_product_subcategory _level_product_brand _level_product_name"/>
+  <roma:ExplicitHierarchy id="_hierarchy_store" name="Store Hierarchy" allMemberName="All Stores" query="/12" levels="_level_store_country _level_store_state _level_store_city _level_store_name"/>
+  <roma:ExplicitHierarchy id="_hierarchy_time" name="Time Hierarchy" allMemberName="All Years" query="/4" levels="_level_time_year _level_time_quarter _level_time_month"/>
+  <roma:ExplicitHierarchy id="_hierarchy_warehouse" name="Warehouse" allMemberName="All Warehouses" query="/9" levels="_level_warehouse_country _level_warehouse_state _level_warehouse_city _level_warehouse_name"/>
   <roma:StandardDimension id="_dimension_customers" name="Customers" hierarchies="_hierarchy_customer_geography _hierarchy_customer_gender _hierarchy_customers_education _hierarchy_customers_marital"/>
   <roma:StandardDimension id="_dimension_department" name="Department" hierarchies="_hierarchy_department"/>
   <roma:StandardDimension id="_dimension_employee" name="Employee" hierarchies="_hierarchy_employee"/>
@@ -258,7 +258,7 @@ This files represent the complete definition of the catalog.
   <roma:StandardDimension id="_dimension_store" name="Store" hierarchies="_hierarchy_store"/>
   <roma:StandardDimension id="_dimension_time" name="Time" hierarchies="_hierarchy_time"/>
   <roma:StandardDimension id="_dimension_warehouse" name="Warehouse" hierarchies="_hierarchy_warehouse"/>
-  <roma:PhysicalCube id="_cube_hr" name="HR" query="/2">
+  <roma:PhysicalCube id="_cube_hr" name="HR" query="/10">
     <calculatedMembers id="_calculated_member_employee_salary" name="Employee Salary" formatString="$#,##0.00" formula="([Employees].currentmember.datamember, [Measures].[Org Salary])"/>
     <calculatedMembers id="_calculated_member_avg_salary" name="Avg Salary" formatString="$#,##0.00" formula="[Measures].[Org Salary]/[Measures].[Number of Employees]"/>
     <dimensionConnectors foreignKey="_column_salary_payDate" dimension="_dimension_time" id="_connector_hr_time"/>
@@ -272,7 +272,7 @@ This files represent the complete definition of the catalog.
       <measures xsi:type="roma:CountMeasure" id="_measure_numberOfEmployees" name="Number of Employees" formatString="#,###"/>
     </measureGroups>
   </roma:PhysicalCube>
-  <roma:PhysicalCube id="_cube_sales" name="Sales" query="/10">
+  <roma:PhysicalCube id="_cube_sales" name="Sales" query="/11">
     <calculatedMembers id="_calculated_member_profit" name="Profit" formatString="$#,##0.00" formula="[Measures].[Store Sales] - [Measures].[Store Cost]"/>
     <calculatedMembers id="_calculated_member_profit_last_period" name="Profit last Period" formatString="$#,##0.00" formula="COALESCEEMPTY((Measures.[Profit], [Time].[Time].PREVMEMBER), Measures.[Profit])"/>
     <calculatedMembers id="_calculated_member_profit_growth" name="Profit Growth" formatString="0.0%" formula="([Measures].[Profit] - [Measures].[Profit last Period]) / [Measures].[Profit last Period]"/>
@@ -287,7 +287,7 @@ This files represent the complete definition of the catalog.
       <measures xsi:type="roma:CountMeasure" id="_measure_salesCount" name="Sales Count" formatString="#,###"/>
     </measureGroups>
   </roma:PhysicalCube>
-  <roma:PhysicalCube id="_cube_store" name="Store" query="/9">
+  <roma:PhysicalCube id="_cube_store" name="Store" query="/12">
     <dimensionConnectors dimension="_dimension_store" id="_connector_store_store"/>
     <dimensionConnectors dimension="_dimension_store" id="_connector_store_has_coffee_bar"/>
     <measureGroups>
@@ -295,7 +295,7 @@ This files represent the complete definition of the catalog.
       <measures xsi:type="roma:SumMeasure" id="_measure_grocerySqft" name="Grocery Sqft" formatString="#,###" column="_column_store_grocerySqft"/>
     </measureGroups>
   </roma:PhysicalCube>
-  <roma:PhysicalCube id="_cube_warehouse" name="Warehouse" query="/5">
+  <roma:PhysicalCube id="_cube_warehouse" name="Warehouse" query="/7">
     <calculatedMembers id="_calculated_member_average_warehouse_sale" name="Average Warehouse Sale" formatString="$#,##0.00" formula="[Measures].[Warehouse Sales] / [Measures].[Warehouse Cost]"/>
     <dimensionConnectors foreignKey="_column_inventoryFact_timeId" dimension="_dimension_time" id="_connector_warehouse_time"/>
     <dimensionConnectors foreignKey="_column_inventoryFact_storeInvoice" dimension="_dimension_store" id="_connector_warehouse_store"/>

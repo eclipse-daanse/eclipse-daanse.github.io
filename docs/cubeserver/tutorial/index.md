@@ -163,12 +163,12 @@ Download the full [Tutorial-Package](./zip/all-tutorials.zip) as zip.
 
 [Dimension Optimisation With Level Attribute](./tutorial.dimension.optimisationwithlevelattribute.md)
 
-[FoodMart](./complex.foodmart.md)
-
-[SteelWheels](./complex.steelwheels.md)
+[Daanse Example - Schulwesen](./complex.school.md)
 
 [ExpressiveNames](./complex.expressivenames.md)
 
 [Bevölkerung](./complex.population.jena.md)
 
-[Daanse Example - Schulwesen](./complex.school.md)
+[FoodMart](./complex.foodmart.md)
+
+[SteelWheels](./complex.steelwheels.md)
