@@ -1,8 +1,8 @@
 ---
 title: SteelWheels
-group: 
+group: Full Examples
 kind: COMPLEX
-number: 4
+number: 99.1.5
 ---
 # SteelWheels Database
 
@@ -18,7 +18,7 @@ It provides analysis capabilities across customer markets, product categories, a
 
 
 ```xml
-<roma:PhysicalCube  id="_cube_steelwheelssales" name="SteelWheelsSales" query="/3"/>
+<roma:PhysicalCube  id="_cube_steelwheelssales" name="SteelWheelsSales" query="/6"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -126,12 +126,12 @@ This files represent the complete definition of the catalog.
       <columns xsi:type="roma:PhysicalColumn" id="_column_time_monthid" name="MONTH_ID" type="Integer"/>
     </tables>
   </roma:DatabaseSchema>
-  <roma:TableQuery table="_table_time"/>
   <roma:TableQuery table="_table_orderfact"/>
   <roma:TableQuery table="_table_customerWTer"/>
   <roma:TableQuery table="_table_products"/>
-  <roma:TableQuery table="_table_customerWTer"/>
+  <roma:TableQuery table="_table_time"/>
   <roma:TableQuery table="_table_orderfact"/>
+  <roma:TableQuery table="_table_customerWTer"/>
   <roma:Level id="_level_customers_customer" name="Customer" column="_column_customer_customername"/>
   <roma:Level id="_level_markets_city" name="City" column="_column_customer_city"/>
   <roma:Level id="_level_markets_country" name="Country" column="_column_customer_country"/>
@@ -144,17 +144,17 @@ This files represent the complete definition of the catalog.
   <roma:Level id="_level_time_months" name="Months" column="_column_time_monthname"/>
   <roma:Level id="_level_time_quarters" name="Quarters" column="_column_time_qtrname"/>
   <roma:Level id="_level_time_years" name="Years" column="_column_time_yearid"/>
-  <roma:ExplicitHierarchy id="_hierarchy_customers" name="Customers Hierarchy" allMemberName="All Customers" query="/4" levels="_level_customers_customer"/>
-  <roma:ExplicitHierarchy id="_hierarchy_markets" name="Markets Hierarchy" allMemberName="All Markets" query="/6" levels="_level_markets_territory _level_markets_country _level_markets_state _level_markets_city"/>
-  <roma:ExplicitHierarchy id="_hierarchy_orderstatus" name="Order Status Hierarchy" allMemberName="All Status Types" query="/7" levels="_level_orderstatus_type"/>
-  <roma:ExplicitHierarchy id="_hierarchy_product" name="Product Hierarchy" allMemberName="All Products" query="/5" levels="_level_product_line _level_product_vendor _level_product_product"/>
-  <roma:ExplicitHierarchy id="_hierarchy_time" name="Time Hierarchy" allMemberName="All Years" query="/2" levels="_level_time_years _level_time_quarters _level_time_months"/>
+  <roma:ExplicitHierarchy id="_hierarchy_customers" name="Customers Hierarchy" allMemberName="All Customers" query="/3" levels="_level_customers_customer"/>
+  <roma:ExplicitHierarchy id="_hierarchy_markets" name="Markets Hierarchy" allMemberName="All Markets" query="/7" levels="_level_markets_territory _level_markets_country _level_markets_state _level_markets_city"/>
+  <roma:ExplicitHierarchy id="_hierarchy_orderstatus" name="Order Status Hierarchy" allMemberName="All Status Types" query="/2" levels="_level_orderstatus_type"/>
+  <roma:ExplicitHierarchy id="_hierarchy_product" name="Product Hierarchy" allMemberName="All Products" query="/4" levels="_level_product_line _level_product_vendor _level_product_product"/>
+  <roma:ExplicitHierarchy id="_hierarchy_time" name="Time Hierarchy" allMemberName="All Years" query="/5" levels="_level_time_years _level_time_quarters _level_time_months"/>
   <roma:StandardDimension id="_dimension_customers" name="Customers" hierarchies="_hierarchy_customers"/>
   <roma:StandardDimension id="_dimension_markets" name="Markets" hierarchies="_hierarchy_markets"/>
   <roma:StandardDimension id="_dimension_orderstatus" name="Order Status" hierarchies="_hierarchy_orderstatus"/>
   <roma:StandardDimension id="_dimension_product" name="Product" hierarchies="_hierarchy_product"/>
   <roma:TimeDimension id="_dimension_time" name="Time" hierarchies="_hierarchy_time"/>
-  <roma:PhysicalCube id="_cube_steelwheelssales" name="SteelWheelsSales" query="/3">
+  <roma:PhysicalCube id="_cube_steelwheelssales" name="SteelWheelsSales" query="/6">
     <dimensionConnectors foreignKey="_column_orderfact_customernumber" dimension="_dimension_markets" overrideDimensionName="Markets" id="_connector_markets"/>
     <dimensionConnectors foreignKey="_column_orderfact_customernumber" dimension="_dimension_customers" overrideDimensionName="Customers" id="_connector_customers"/>
     <dimensionConnectors foreignKey="_column_orderfact_productcode" dimension="_dimension_product" overrideDimensionName="Product" id="_connector_product"/>

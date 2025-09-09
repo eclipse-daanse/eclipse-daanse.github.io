@@ -1,8 +1,8 @@
 ---
 title: ExpressiveNames
-group: 
+group: Full Examples
 kind: COMPLEX
-number: 4
+number: 99.1.2
 ---
 # ExpressiveNames Database
 
@@ -13,7 +13,7 @@ Sample catalog demonstrating complex hierarchies and naming patterns
 Cube with multiple dimensions and complex hierarchies
 
 ```xml
-<roma:PhysicalCube  description="Test Cube" name="Cube1" query="/5"/>
+<roma:PhysicalCube  description="Test Cube" name="Cube1" query="/9"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -86,51 +86,51 @@ This files represent the complete definition of the catalog.
     </tables>
   </roma:DatabaseSchema>
   <roma:PhysicalColumn name="D2H2L1"/>
-  <roma:TableQuery table="/1/@tables.8"/>
-  <roma:TableQuery table="/1/@tables.1"/>
-  <roma:TableQuery table="/1/@tables.0"/>
+  <roma:TableQuery table="/1/@tables.3"/>
+  <roma:TableQuery table="/1/@tables.2"/>
   <roma:TableQuery table="/1/@tables.9"/>
   <roma:TableQuery table="/1/@tables.7"/>
-  <roma:TableQuery table="/1/@tables.2"/>
-  <roma:TableQuery table="/1/@tables.4"/>
-  <roma:TableQuery table="/1/@tables.3"/>
   <roma:TableQuery table="/1/@tables.6"/>
+  <roma:TableQuery table="/1/@tables.8"/>
+  <roma:TableQuery table="/1/@tables.0"/>
+  <roma:TableQuery table="/1/@tables.4"/>
   <roma:TableQuery table="/1/@tables.5"/>
+  <roma:TableQuery table="/1/@tables.1"/>
   <roma:JoinQuery>
-    <left key="/1/@tables.8/@columns.1" query="/3"/>
-    <right key="/1/@tables.9/@columns.0" query="/6"/>
+    <left key="/1/@tables.7/@columns.1" query="/6"/>
+    <right key="/1/@tables.8/@columns.0" query="/14"/>
   </roma:JoinQuery>
   <roma:JoinQuery>
-    <left key="/1/@tables.5/@columns.2" query="/12"/>
-    <right key="/1/@tables.6/@columns.0" query="/11"/>
+    <left key="/1/@tables.8/@columns.1" query="/8"/>
+    <right key="/1/@tables.9/@columns.0" query="/5"/>
   </roma:JoinQuery>
   <roma:JoinQuery>
-    <left key="/1/@tables.7/@columns.1" query="/7"/>
-    <right key="/1/@tables.8/@columns.0" query="/13"/>
+    <left key="/1/@tables.5/@columns.2" query="/11"/>
+    <right key="/1/@tables.6/@columns.0" query="/7"/>
   </roma:JoinQuery>
-  <roma:Level description="Level 1 Hierarchy3 Dimension 3" name="D3H3L1" column="/1/@tables.9/@columns.0" nameColumn="/1/@tables.9/@columns.1" ordinalColumn="/1/@tables.9/@columns.2"/>
-  <roma:Level description="Level 1 Hierarchy1 Dimension 3" name="D3H1L1" column="/1/@tables.4/@columns.0" nameColumn="/1/@tables.4/@columns.1" ordinalColumn="/1/@tables.4/@columns.2"/>
-  <roma:Level description="Level 2 Dimension 3" name="D2H2L2" column="/1/@tables.3/@columns.0" nameColumn="/1/@tables.3/@columns.1" ordinalColumn="/1/@tables.3/@columns.3"/>
-  <roma:Level description="Level 2 Hierarchy2 Dimension 3" name="D3H2L2" column="/1/@tables.5/@columns.0" nameColumn="/1/@tables.5/@columns.3" ordinalColumn="/1/@tables.5/@columns.4"/>
-  <roma:Level description="Level 1 Hierarchy2 Dimension 3" name="D3H2L1" column="/1/@tables.6/@columns.0" nameColumn="/1/@tables.6/@columns.1" ordinalColumn="/1/@tables.6/@columns.2"/>
   <roma:Level description="Level 1 Hierarchy 1 Dimension 2" name="D2H1L1" column="/1/@tables.2/@columns.0" nameColumn="/1/@tables.2/@columns.1" ordinalColumn="/1/@tables.2/@columns.2"/>
-  <roma:Level description="Level 2 Hierarchy 2 Dimension 2" name="D2H2L1" column="/2" nameColumn="/1/@tables.3/@columns.2" ordinalColumn="/1/@tables.3/@columns.4"/>
-  <roma:Level description="Level 1 Dimension 1 Hierarchy1" name="D1H1L1" column="/1/@tables.1/@columns.0" nameColumn="/1/@tables.1/@columns.1" ordinalColumn="/1/@tables.1/@columns.2"/>
   <roma:Level description="Level 3 Hierarchy3 Dimension 3" name="D3H3L3" column="/1/@tables.7/@columns.0" nameColumn="/1/@tables.7/@columns.2" ordinalColumn="/1/@tables.7/@columns.3"/>
+  <roma:Level description="Level 2 Hierarchy2 Dimension 3" name="D3H2L2" column="/1/@tables.5/@columns.0" nameColumn="/1/@tables.5/@columns.3" ordinalColumn="/1/@tables.5/@columns.4"/>
+  <roma:Level description="Level 2 Dimension 3" name="D2H2L2" column="/1/@tables.3/@columns.0" nameColumn="/1/@tables.3/@columns.1" ordinalColumn="/1/@tables.3/@columns.3"/>
+  <roma:Level description="Level 1 Hierarchy2 Dimension 3" name="D3H2L1" column="/1/@tables.6/@columns.0" nameColumn="/1/@tables.6/@columns.1" ordinalColumn="/1/@tables.6/@columns.2"/>
   <roma:Level description="Level 2 Hierarchy3 Dimension 3" name="D3H3L2" column="/1/@tables.8/@columns.0" nameColumn="/1/@tables.8/@columns.2" ordinalColumn="/1/@tables.8/@columns.3"/>
-  <roma:ExplicitHierarchy description="Hierarchy 2 Dimension 3" name="D3H2" primaryKey="/1/@tables.5/@columns.0" query="/14" levels="/20 /19"/>
-  <roma:ExplicitHierarchy description="Hierarchy 1 Dimension 2" name="D2H1" primaryKey="/1/@tables.2/@columns.0" query="/8" levels="/21"/>
-  <roma:ExplicitHierarchy description="Hierarchy 1 Dimension 3" name="D3H3" primaryKey="/1/@tables.7/@columns.0" query="/15" levels="/16 /25 /24"/>
-  <roma:ExplicitHierarchy description="Hierarchy 1 Dimension 1" name="D1H1" primaryKey="/1/@tables.1/@columns.0" query="/4" levels="/23"/>
-  <roma:ExplicitHierarchy description="Hierarchy 2 Dimension 2" name="D2H2" primaryKey="/1/@tables.3/@columns.0" query="/10" levels="/22 /18"/>
-  <roma:ExplicitHierarchy description="Hierarchy 1 Dimension 3" name="D3H1" primaryKey="/1/@tables.4/@columns.0" query="/9" levels="/17"/>
-  <roma:StandardDimension description="Hierarchy 1 Dimension 1" name="Dimension1" hierarchies="/29"/>
-  <roma:StandardDimension name="Dimension3" hierarchies="/31 /26 /28"/>
-  <roma:StandardDimension name="Dimension2" hierarchies="/27 /30"/>
-  <roma:PhysicalCube description="Test Cube" name="Cube1" query="/5">
-    <dimensionConnectors foreignKey="/1/@tables.0/@columns.0" dimension="/32" overrideDimensionName="Dimension1"/>
-    <dimensionConnectors foreignKey="/1/@tables.0/@columns.1" dimension="/34" overrideDimensionName="Dimension2"/>
-    <dimensionConnectors foreignKey="/1/@tables.0/@columns.2" dimension="/33" overrideDimensionName="Dimension3"/>
+  <roma:Level description="Level 1 Hierarchy1 Dimension 3" name="D3H1L1" column="/1/@tables.4/@columns.0" nameColumn="/1/@tables.4/@columns.1" ordinalColumn="/1/@tables.4/@columns.2"/>
+  <roma:Level description="Level 1 Dimension 1 Hierarchy1" name="D1H1L1" column="/1/@tables.1/@columns.0" nameColumn="/1/@tables.1/@columns.1" ordinalColumn="/1/@tables.1/@columns.2"/>
+  <roma:Level description="Level 2 Hierarchy 2 Dimension 2" name="D2H2L1" column="/2" nameColumn="/1/@tables.3/@columns.2" ordinalColumn="/1/@tables.3/@columns.4"/>
+  <roma:Level description="Level 1 Hierarchy3 Dimension 3" name="D3H3L1" column="/1/@tables.9/@columns.0" nameColumn="/1/@tables.9/@columns.1" ordinalColumn="/1/@tables.9/@columns.2"/>
+  <roma:ExplicitHierarchy description="Hierarchy 1 Dimension 2" name="D2H1" primaryKey="/1/@tables.2/@columns.0" query="/4" levels="/16"/>
+  <roma:ExplicitHierarchy description="Hierarchy 2 Dimension 2" name="D2H2" primaryKey="/1/@tables.3/@columns.0" query="/3" levels="/24 /19"/>
+  <roma:ExplicitHierarchy description="Hierarchy 1 Dimension 1" name="D1H1" primaryKey="/1/@tables.1/@columns.0" query="/12" levels="/23"/>
+  <roma:ExplicitHierarchy description="Hierarchy 1 Dimension 3" name="D3H3" primaryKey="/1/@tables.7/@columns.0" query="/13" levels="/25 /21 /17"/>
+  <roma:ExplicitHierarchy description="Hierarchy 1 Dimension 3" name="D3H1" primaryKey="/1/@tables.4/@columns.0" query="/10" levels="/22"/>
+  <roma:ExplicitHierarchy description="Hierarchy 2 Dimension 3" name="D3H2" primaryKey="/1/@tables.5/@columns.0" query="/15" levels="/20 /18"/>
+  <roma:StandardDimension name="Dimension3" hierarchies="/30 /31 /29"/>
+  <roma:StandardDimension name="Dimension2" hierarchies="/26 /27"/>
+  <roma:StandardDimension description="Hierarchy 1 Dimension 1" name="Dimension1" hierarchies="/28"/>
+  <roma:PhysicalCube description="Test Cube" name="Cube1" query="/9">
+    <dimensionConnectors foreignKey="/1/@tables.0/@columns.0" dimension="/34" overrideDimensionName="Dimension1"/>
+    <dimensionConnectors foreignKey="/1/@tables.0/@columns.1" dimension="/33" overrideDimensionName="Dimension2"/>
+    <dimensionConnectors foreignKey="/1/@tables.0/@columns.2" dimension="/32" overrideDimensionName="Dimension3"/>
     <measureGroups>
       <measures xsi:type="roma:SumMeasure" name="Measure1" formatString="Standard" column="/1/@tables.0/@columns.3"/>
     </measureGroups>
