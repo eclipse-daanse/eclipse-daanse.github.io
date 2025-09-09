@@ -1,14 +1,20 @@
 ---
-title: Access Hierarchy Grant
+title: Access With Default Role
 group: Access
 kind: TUTORIAL
 number: 2.4.7
 ---
-# Daanse Tutorial - Access Hierarchy Grant
+# Daanse Tutorial - Access With Default Role
 
 This tutorial discusses role with HierarchyGrant
 
 - `role1` role:   use HierarchyGrant hierarchy1 access `all` hierarchy2 access `none`;
+Catalog has property default access role - role1;
+This role that should be applied by default when users connect without explicit role assignment.
+This provides a baseline security policy for the catalog, typically configured to allow basic read access
+to public data while restricting sensitive information. If not specified, Daanse does not assign a built-in default role,
+and access will be denied unless a role is explicitly provided.
+This setting is particularly useful for public reporting scenarios, shared dashboards, or development environments where default read access is desirable.
 
 
 ## Database Schema
@@ -114,7 +120,7 @@ This files represent the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:Catalog description="Access control with hierarchy-level grants" name="Daanse Tutorial - Access Hierarchy Grant" cubes="_cube_Cube1" accessRoles="_accessRole_role1" dbschemas="_databaseSchema_HierarchyGrand"/>
+  <roma:Catalog description="Access control with default role" name="Daanse Tutorial - Access With Default Role" cubes="_cube_Cube1" accessRoles="_accessRole_role1" defaultAccessRole="_accessRole_role1" dbschemas="_databaseSchema_HierarchyGrand"/>
   <roma:DatabaseSchema id="_databaseSchema_HierarchyGrand">
     <tables xsi:type="roma:PhysicalTable" id="_table_fact" name="Fact">
       <columns xsi:type="roma:PhysicalColumn" id="_column_fact_key" name="KEY"/>
@@ -153,4 +159,4 @@ This files represent the complete definition of the catalog.
 ## Tutorial Zip
 This files contaisn the data-tables as csv and the mapping as xmi file.
 
-<a href="./zip/tutorial.access.hierarchygrand.zip" download>Download Zip File</a>
+<a href="./zip/tutorial.access.defaultrole.zip" download>Download Zip File</a>
