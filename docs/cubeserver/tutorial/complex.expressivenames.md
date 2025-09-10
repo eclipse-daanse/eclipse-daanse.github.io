@@ -26,7 +26,7 @@ This files represent the complete definition of the catalog.
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
   <roma:Catalog id="_catalog_expressivenames" description="ExpressiveNames Sample Database - EMF Version" name="ExpressiveNames" cubes="_cube_cube1" dbschemas="_databaseschema_expressivenames"/>
-  <roma:DatabaseSchema id="_databaseschema_expressivenames" name="ExpressiveNames">
+  <roma:DatabaseSchema id="_databaseschema_expressivenames">
     <tables xsi:type="roma:PhysicalTable" id="_table_cube1fact" name="Cube1Fact">
       <columns xsi:type="roma:PhysicalColumn" id="_column_d1_cube1fact" name="D1"/>
       <columns xsi:type="roma:PhysicalColumn" id="_column_d2_cube1fact" name="D2"/>
