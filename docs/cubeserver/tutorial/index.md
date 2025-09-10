@@ -169,6 +169,4 @@ Download the full [Tutorial-Package](./zip/all-tutorials.zip) as zip.
 
 [Bevölkerung](./complex.population.jena.md)
 
-[FoodMart](./complex.foodmart.md)
-
-[SteelWheels](./complex.steelwheels.md)
+[Parcel Delivery Service](./complex.parcel.md)
