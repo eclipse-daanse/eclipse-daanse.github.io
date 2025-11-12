@@ -106,6 +106,7 @@ Abstract base class for all cube types in the OLAP model. A cube represents a mu
 
 - Catalog[🔗](./class-Catalog) → cubes
 - CubeConnector[🔗](./class-CubeConnector) → cube
+- CalculatedMember[🔗](./class-CalculatedMember) → cube
 - AccessCubeGrant[🔗](./class-AccessCubeGrant) → cube
 
 ## ClassDiagramm

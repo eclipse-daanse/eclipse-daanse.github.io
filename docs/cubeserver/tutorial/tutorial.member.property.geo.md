@@ -90,7 +90,7 @@ This allows complex geographic shapes to be associated with each member for mapp
 
 
 ```xml
-<roma:MemberProperty  id="_memberProperty_location" name="Location" column="_column_member_location"/>
+<roma:MemberProperty  id="_memberProperty_location" name="Location" column="_column_member_location" propertyType="String"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -120,7 +120,7 @@ The Description member property provides additional contextual information about
 
 
 ```xml
-<roma:MemberProperty  id="_memberProperty_description" name="Description" column="_column_member_description"/>
+<roma:MemberProperty  id="_memberProperty_description" name="Description" column="_column_member_description" propertyType="String"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -202,10 +202,10 @@ This files represent the complete definition of the catalog.
     <right key="_column_member_id" query="_query_member"/>
   </roma:JoinQuery>
   <roma:Level id="_level_location" name="Location" column="_column_member_id" nameColumn="_column_member_name">
-    <memberProperties id="_memberProperty_location" name="Location" column="_column_member_location"/>
+    <memberProperties id="_memberProperty_location" name="Location" column="_column_member_location" propertyType="String"/>
     <memberProperties id="_memberProperty_latitude" name="Latitude" column="_column_member_latitude" propertyType="Numeric"/>
     <memberProperties id="_memberProperty_longitude" name="Longitude" column="_column_member_longitude" propertyType="Numeric"/>
-    <memberProperties id="_memberProperty_description" name="Description" column="_column_member_description"/>
+    <memberProperties id="_memberProperty_description" name="Description" column="_column_member_description" propertyType="String"/>
   </roma:Level>
   <roma:ExplicitHierarchy id="_hierarchy_location" name="LocationHierarchy" primaryKey="_column_member_id" query="_query_factToMember" levels="_level_location"/>
   <roma:StandardDimension id="_dimension_location" name="Location" hierarchies="_hierarchy_location"/>

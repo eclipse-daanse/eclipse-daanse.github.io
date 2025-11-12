@@ -54,7 +54,7 @@ The MemberProperty with a name `Capital`, the `propertyType` attribute `String`,
 
 
 ```xml
-<roma:MemberProperty  id="_memberProperty_capital" name="Capital" column="_column_town_capital"/>
+<roma:MemberProperty  id="_memberProperty_capital" name="Capital" column="_column_town_capital" propertyType="String"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -129,7 +129,7 @@ This files represent the complete definition of the catalog.
   <roma:TableQuery id="_query_fact" table="_table_fact"/>
   <roma:TableQuery id="_query_town" table="_table_town"/>
   <roma:Level id="_level_town" name="Town" column="_column_town_id" nameColumn="_column_town_name">
-    <memberProperties id="_memberProperty_capital" name="Capital" column="_column_town_capital"/>
+    <memberProperties id="_memberProperty_capital" name="Capital" column="_column_town_capital" propertyType="String"/>
   </roma:Level>
   <roma:ExplicitHierarchy id="_hierarchy_townHierarchy" name="TownHierarchy" primaryKey="_column_town_id" query="_query_town" levels="_level_town"/>
   <roma:StandardDimension id="_dimension_town" name="Town" hierarchies="_hierarchy_townHierarchy"/>

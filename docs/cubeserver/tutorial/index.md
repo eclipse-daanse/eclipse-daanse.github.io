@@ -53,6 +53,8 @@ Download the full [Tutorial-Package](./zip/all-tutorials.zip) as zip.
 
 [Level If Blank Name](./tutorial.level.ifblankname.md)
 
+[Level with not unique members](./tutorial.level.unique.md)
+
 [Virtual Cube Minimal](./tutorial.virtualcube.min.md)
 
 [Virtual Cube Dimensions](./tutorial.virtualcube.dimensions.md)
@@ -169,4 +171,4 @@ Download the full [Tutorial-Package](./zip/all-tutorials.zip) as zip.
 
 [Bevölkerung](./complex.population.jena.md)
 
-[Parcel Delivery Service](./complex.parcel.md)
+[FoodMart](./complex.foodmart.md)

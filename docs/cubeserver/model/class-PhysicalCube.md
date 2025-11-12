@@ -106,7 +106,6 @@ A concrete cube implementation that maps directly to one or more fact tables in 
 
 - MeasureGroup[🔗](./class-MeasureGroup) → physicalCube
 - DimensionConnector[🔗](./class-DimensionConnector) → physicalCube
-- CalculatedMember[🔗](./class-CalculatedMember) → physicalCube
 
 ## ClassDiagramm
 
