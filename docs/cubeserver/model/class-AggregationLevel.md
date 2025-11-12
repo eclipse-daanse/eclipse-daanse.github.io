@@ -29,7 +29,7 @@ Maps a dimension level to a column in an aggregation table, defining how dimensi
       <td>1</td>
     </tr>
     <tr>
-      <td colspan="5"><em>Boolean flag indicating whether this aggregation level represents a collapsed hierarchy level. When true, intermediate hierarchy levels are omitted in the aggregation table, allowing queries to roll up directly to higher levels without requiring intermediate level data.</em></td>
+      <td colspan="5"><em>Boolean flag indicating whether this aggregation level represents a collapsed hierarchy level. When true, intermediate hierarchy levels are omitted in the aggregation table, allowing queries to roll up directly to higher levels without requiring intermediate level data. Default value is true.</em></td>
     </tr>
     <tr>
       <td><strong>name</strong></td>

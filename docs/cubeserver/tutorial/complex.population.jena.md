@@ -152,14 +152,14 @@ This files represent the complete definition of the catalog.
   <roma:Level id="_level_jahr" name="Jahr" column="_column_year_year" type="TimeYears" ordinalColumn="_column_year_ordinal"/>
   <roma:Level id="_level_planungsraum" name="Planungsraum" column="_column_plraum_gid" nameColumn="_column_plraum_plraum" columnType="Integer">
     <memberProperties id="_property_plraum_uuid" name="uuid" column="_column_plraum_uuid"/>
-    <memberProperties id="_property_plraum_geojson" name="GeoJson" column="_column_plraum_geojson"/>
+    <memberProperties id="_property_plraum_geojson" name="GeoJson" column="_column_plraum_geojson" propertyType="String"/>
   </roma:Level>
   <roma:Level id="_level_stadt" name="Stadt" column="_column_town_name">
-    <memberProperties id="_property_town_geojson" name="GeoJson" column="_column_town_geojson"/>
+    <memberProperties id="_property_town_geojson" name="GeoJson" column="_column_town_geojson" propertyType="String"/>
   </roma:Level>
   <roma:Level id="_level_statistischer_bezirk" name="Statistischer Bezirk" column="_column_statbez_gid" nameColumn="_column_statbez_statbez_name" columnType="Integer">
     <memberProperties id="_property_statbez_uuid" name="uuid" column="_column_statbez_uuid"/>
-    <memberProperties id="_property_statbez_geojson" name="GeoJson" column="_column_statbez_geojson"/>
+    <memberProperties id="_property_statbez_geojson" name="GeoJson" column="_column_statbez_geojson" propertyType="String"/>
   </roma:Level>
   <roma:ExplicitHierarchy id="_hierarchy_alter_einzeljahrgaenge" name="Alter (Einzeljahrgänge)" allMemberName="Alle Altersgruppen" primaryKey="_column_agegroups_age" query="_query_agegroups" levels="_level_alter_einzeljahrgaenge"/>
   <roma:ExplicitHierarchy id="_hierarchy_altersgruppen_10jahre" name="Altersgruppen (10-Jahres-Gruppen)" allMemberName="Alle Altersgruppen" primaryKey="_column_agegroups_age" query="_query_agegroups" levels="_level_alter_10jahre"/>

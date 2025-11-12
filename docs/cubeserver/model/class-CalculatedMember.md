@@ -68,14 +68,14 @@ Represents sophisticated computed members that are dynamically calculated using 
       <td colspan="5"><em>Reference to the Hierarchy within which this calculated member should be positioned, establishing the dimensional context that determines the member's analytical scope, navigational placement, and integration with existing hierarchical structures. The hierarchy reference defines the analytical domain where the calculated member will be available for selection, filtering, and navigation operations, ensuring that computed members integrate seamlessly with dimensional browsing, member selection, and hierarchical drill-down capabilities provided by OLAP client applications and business intelligence tools.</em></td>
     </tr>
     <tr>
-      <td><strong>physicalCube</strong></td>
-      <td>PhysicalCube<a href="./class-PhysicalCube">🔗</a></td>
+      <td><strong>cube</strong></td>
+      <td>Cube<a href="./class-Cube">🔗</a></td>
       <td>1</td>
       <td>1</td>
       <td>false</td>
     </tr>
     <tr>
-      <td colspan="5"><em>Required reference to the PhysicalCube that contains and manages this calculated member, establishing the analytical context and data scope within which the calculated member operates and ensuring proper integration with the cube's dimensional structure, measure definitions, and query processing capabilities. The physical cube reference defines the analytical environment where the calculated member can access fact data, reference other measures and members, and participate in multidimensional analysis operations including slicing, dicing, drilling, and pivoting across the cube's dimensional space.</em></td>
+      <td colspan="5"><em>Required reference to the Cube that contains and manages this calculated member, establishing the analytical context and data scope within which the calculated member operates and ensuring proper integration with the cube's dimensional structure, measure definitions, and query processing capabilities. The cube reference defines the analytical environment where the calculated member can access fact data, reference other measures and members, and participate in multidimensional analysis operations including slicing, dicing, drilling, and pivoting across the cube's dimensional space.</em></td>
     </tr>
   </tbody>
 </table>
@@ -98,6 +98,6 @@ classDiagram
 
   Member <|-- CalculatedMember
   CalculatedMember --> Hierarchy : hierarchy
-  CalculatedMember --> PhysicalCube : physicalCube
+  CalculatedMember --> Cube : cube
 
 ```

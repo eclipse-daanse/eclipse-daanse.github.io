@@ -58,7 +58,7 @@ CalculatedMember uses MeasureCube1 from Cube1 and MeasureCube2 from Cube2 in for
 
 
 ```xml
-<roma:CalculatedMember  id="_cm_Sum_Cub" name="Sum_Cub" formula="[Measures].[MeasureCube1] + [Measures].[MeasureCube2]" hierarchy="roma:ExplicitHierarchy _hierarchy_HierarchyWithoutHasAll"/>
+<roma:CalculatedMember  id="_cm_Sum_Cub1" name="Sum_Cub1" formula="[Measures].[MeasureCube1] + [Measures].[MeasureCube1]"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -79,6 +79,7 @@ In this example uses cube with fact table `Fact` as data.
 
 ```xml
 <roma:PhysicalCube   id="_cube1" name="Cube1" query="_table_factQuery">
+  <calculatedMembers id="_cm_Sum_Cub1" name="Sum_Cub1" formula="[Measures].[MeasureCube1] + [Measures].[MeasureCube1]"/>
   <dimensionConnectors foreignKey="roma:PhysicalColumn _column_fact_key" dimension="roma:StandardDimension _dimension1" overrideDimensionName="Cube1Dimension1" id="_dc_cube1Dimension1"/>
   <measureGroups>
     <measures xsi:type="roma:SumMeasure" id="_measurecube1" name="MeasureCube1" column="_column_fact_value"/>
@@ -94,6 +95,7 @@ In this example uses cube with fact table `Fact` as data.
 
 ```xml
 <roma:PhysicalCube   id="_cube1" name="Cube1" query="_table_factQuery">
+  <calculatedMembers id="_cm_Sum_Cub1" name="Sum_Cub1" formula="[Measures].[MeasureCube1] + [Measures].[MeasureCube1]"/>
   <dimensionConnectors foreignKey="roma:PhysicalColumn _column_fact_key" dimension="roma:StandardDimension _dimension1" overrideDimensionName="Cube1Dimension1" id="_dc_cube1Dimension1"/>
   <measureGroups>
     <measures xsi:type="roma:SumMeasure" id="_measurecube1" name="MeasureCube1" column="_column_fact_value"/>
@@ -109,7 +111,7 @@ Also virtual cube has references to dimensions from Cube1 and Cube2
 
 
 ```xml
-<roma:VirtualCube  id="_cube1cube2" name="Cube1Cube2" dimensionConnectors="_dc_cube1Dimension1 _dc_cube2Dimension1" referencedMeasures="roma:SumMeasure _measurecube1 roma:SumMeasure _measurecube2">
+<roma:VirtualCube  id="_cube1cube2" name="Cube1Cube2" dimensionConnectors="_dc_cube1Dimension1 _dc_cube2Dimension1" referencedCalculatedMembers="_cm_Sum_Cub1 _cm_Sum_Cub2" referencedMeasures="roma:SumMeasure _measurecube1 roma:SumMeasure _measurecube2">
   <calculatedMembers id="_cm_Sum_Cub" name="Sum_Cub" formula="[Measures].[MeasureCube1] + [Measures].[MeasureCube2]" hierarchy="roma:ExplicitHierarchy _hierarchy_HierarchyWithoutHasAll"/>
 </roma:VirtualCube>
 
@@ -135,18 +137,20 @@ This files represent the complete definition of the catalog.
   <roma:ExplicitHierarchy id="_hierarchy_HierarchyWithoutHasAll" name="HierarchyWithoutHasAll" hasAll="false" primaryKey="_column_fact_key" query="_table_factQuery" levels="_level"/>
   <roma:StandardDimension id="_dimension1" name="Dimension1" hierarchies="_hierarchy_HierarchyWithoutHasAll"/>
   <roma:PhysicalCube id="_cube1" name="Cube1" query="_table_factQuery">
+    <calculatedMembers id="_cm_Sum_Cub1" name="Sum_Cub1" formula="[Measures].[MeasureCube1] + [Measures].[MeasureCube1]"/>
     <dimensionConnectors foreignKey="_column_fact_key" dimension="_dimension1" overrideDimensionName="Cube1Dimension1" id="_dc_cube1Dimension1"/>
     <measureGroups>
       <measures xsi:type="roma:SumMeasure" id="_measurecube1" name="MeasureCube1" column="_column_fact_value"/>
     </measureGroups>
   </roma:PhysicalCube>
   <roma:PhysicalCube id="_cube2" name="Cube2" query="_table_factQuery">
+    <calculatedMembers id="_cm_Sum_Cub2" name="Sum_Cub2" formula="[Measures].[MeasureCube2] + [Measures].[MeasureCube2]"/>
     <dimensionConnectors foreignKey="_column_fact_key" dimension="_dimension1" overrideDimensionName="Cube2Dimension1" id="_dc_cube2Dimension1"/>
     <measureGroups>
       <measures xsi:type="roma:SumMeasure" id="_measurecube2" name="MeasureCube2" column="_column_fact_value"/>
     </measureGroups>
   </roma:PhysicalCube>
-  <roma:VirtualCube id="_cube1cube2" name="Cube1Cube2" dimensionConnectors="_dc_cube1Dimension1 _dc_cube2Dimension1" referencedMeasures="_measurecube1 _measurecube2">
+  <roma:VirtualCube id="_cube1cube2" name="Cube1Cube2" dimensionConnectors="_dc_cube1Dimension1 _dc_cube2Dimension1" referencedCalculatedMembers="_cm_Sum_Cub1 _cm_Sum_Cub2" referencedMeasures="_measurecube1 _measurecube2">
     <calculatedMembers id="_cm_Sum_Cub" name="Sum_Cub" formula="[Measures].[MeasureCube1] + [Measures].[MeasureCube2]" hierarchy="_hierarchy_HierarchyWithoutHasAll"/>
   </roma:VirtualCube>
 </xmi:XMI>

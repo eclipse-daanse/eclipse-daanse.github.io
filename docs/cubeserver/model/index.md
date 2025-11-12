@@ -378,7 +378,7 @@ classDiagram
       + parent : EString
   }
     CalculatedMember --> Hierarchy : hierarchy
-    CalculatedMember --> PhysicalCube : physicalCube
+    CalculatedMember --> Cube : cube
 
     CalculatedMember <|-- Member : inherit
 
