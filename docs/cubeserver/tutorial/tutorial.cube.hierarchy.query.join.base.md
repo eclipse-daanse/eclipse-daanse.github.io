@@ -1,10 +1,10 @@
 ---
-title: Cube Hierarchy Query Join Base
+title: Hierarchy Query Join Base
 group: Hierarchy
 kind: TUTORIAL
 number: 2.3.3.1
 ---
-# Daanse Tutorial - Cube Hierarchy Query Join Base
+# Daanse Tutorial - Hierarchy Query Join Base
 
 If the database structure follows the Third Normal Form (3NF), hierarchies in a cube are not stored in a single table but are distributed across multiple tables.
 
@@ -157,7 +157,7 @@ This files represent the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:Catalog description="Basic hierarchy with joined tables" name="Daanse Tutorial - Cube Hierarchy Query Join Base" cubes="_cube_queryLinkedTables" dbschemas="_databaseSchema_main"/>
+  <roma:Catalog description="Basic hierarchy with joined tables" name="Daanse Tutorial - Hierarchy Query Join Base" cubes="_cube_queryLinkedTables" dbschemas="_databaseSchema_main"/>
   <roma:DatabaseSchema id="_databaseSchema_main">
     <tables xsi:type="roma:PhysicalTable" id="_table_fact" name="Fact">
       <columns xsi:type="roma:PhysicalColumn" id="_column_fact_townId" name="TOWN_ID" type="Integer"/>

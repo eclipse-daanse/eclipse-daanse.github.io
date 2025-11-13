@@ -1,10 +1,10 @@
 ---
-title: Cube Measure Datatype
+title: Measure Datatype
 group: Measure
 kind: TUTORIAL
 number: 2.2.3
 ---
-# Daanse Tutorial - Cube Measure Datatype
+# Daanse Tutorial - Measure Datatype
 
 Measures are based on the Columns that store the date of the measurements. The datatype of the column in the database must not match the datatype that schould be used for calculating the Measures value.
 
@@ -72,7 +72,7 @@ This files represent the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:Catalog id="_catalog_measureDatatypes" description="Measure data types" name="Daanse Tutorial - Cube Measure Datatype" cubes="_cube_measuresDatatypeCube" dbschemas="_databaseSchema_measureDatatype"/>
+  <roma:Catalog id="_catalog_measureDatatypes" description="Measure data types" name="Daanse Tutorial - Measure Datatype" cubes="_cube_measuresDatatypeCube" dbschemas="_databaseSchema_measureDatatype"/>
   <roma:DatabaseSchema id="_databaseSchema_measureDatatype">
     <tables xsi:type="roma:PhysicalTable" id="_table_fact" name="Fact">
       <columns xsi:type="roma:PhysicalColumn" id="_column_fact_key" name="KEY"/>

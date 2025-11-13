@@ -1,10 +1,10 @@
 ---
-title: Hierarchy Inline Table
+title: Inline Table
 group: Hierarchy
 kind: TUTORIAL
 number: 2.16.1
 ---
-# Daanse Tutorial - Hierarchy Inline Table
+# Daanse Tutorial - Inline Table
 
 Cube with hierarchy which use inner table. This example shows combine phisical table as fact and Inline table for hierarchy
 Inline table represents a table with data embedded directly in the schema
@@ -136,7 +136,7 @@ This files represent the complete definition of the catalog.
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
   <roma:InlineTableQuery id="_inlineTableQuery" alias="HT" table="/2/@tables.1"/>
-  <roma:Catalog description="Hierarchy with inline table data" name="Daanse Tutorial - Hierarchy Inline Table" cubes="_cube" dbschemas="_databaseSchema_inlinetable"/>
+  <roma:Catalog description="Hierarchy with inline table data" name="Daanse Tutorial - Inline Table" cubes="_cube" dbschemas="_databaseSchema_inlinetable"/>
   <roma:DatabaseSchema id="_databaseSchema_inlinetable">
     <tables xsi:type="roma:PhysicalTable" id="_table_fact" name="Fact">
       <columns xsi:type="roma:PhysicalColumn" id="_column_fact_dim_key" name="DIM_KEY"/>

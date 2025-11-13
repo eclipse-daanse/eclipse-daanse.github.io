@@ -1,10 +1,10 @@
 ---
-title: Cube Level Member Property Intro
+title: Level Member Property Intro
 group: Member
 kind: TUTORIAL
 number: 2.6.2.1
 ---
-# Daanse Tutorial - Cube Level Member Property Intro
+# Daanse Tutorial -Level Member Property Intro
 
 This Tutorial is about MemberProperties. MemberProperties are attributes of a hierarchy level’s members. They provide additional details about each member, such as a description or any other related value. The only requirement for defining a MemberProperty is that a corresponding column exists to store the property’s value.
 
@@ -114,7 +114,7 @@ This files represent the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:Catalog description="Introduction to member properties" name="Daanse Tutorial - Cube Level Member Property Intro" cubes="_cube_queryLinkedTables" dbschemas="_databaseSchema_main"/>
+  <roma:Catalog description="Introduction to member properties" name="Daanse Tutorial - Level Member Property Intro" cubes="_cube_queryLinkedTables" dbschemas="_databaseSchema_main"/>
   <roma:DatabaseSchema id="_databaseSchema_main">
     <tables xsi:type="roma:PhysicalTable" id="_table_fact" name="Fact">
       <columns xsi:type="roma:PhysicalColumn" id="_column_fact_townId" name="TOWN_ID" type="Integer"/>

@@ -1,10 +1,10 @@
 ---
-title: Cube Hierarchy Query Table Base
+title: Hierarchy Query Table Base
 group: Hierarchy
 kind: TUTORIAL
 number: 2.3.2.1
 ---
-# Daanse Tutorial - Cube Hierarchy Query Table Base
+# Daanse Tutorial - Hierarchy Query Table Base
 
 Very often, the data of a cube is not stored in a single table, but in multiple tables. In this case, it must be defined one query for the Facts to store the values that be aggregated for the measures and one for the Levels. This example shows how this must be defined.
 
@@ -103,7 +103,7 @@ This files represent the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:Catalog description="Basic hierarchy with table queries" name="Daanse Tutorial - Cube Hierarchy Query Table Base" cubes="_cube_queryLinkedTables" dbschemas="_databaseSchema_main"/>
+  <roma:Catalog description="Basic hierarchy with table queries" name="Daanse Tutorial - Hierarchy Query Table Base" cubes="_cube_queryLinkedTables" dbschemas="_databaseSchema_main"/>
   <roma:DatabaseSchema id="_databaseSchema_main">
     <tables xsi:type="roma:PhysicalTable" id="_table_fact" name="Fact">
       <columns xsi:type="roma:PhysicalColumn" id="_column_fact_townId" name="TOWN_ID" type="Integer"/>

@@ -1,10 +1,10 @@
 ---
-title: Cube Measure Group
+title: Measure Group
 group: Measure
 kind: TUTORIAL
 number: 2.2.5
 ---
-# Daanse Tutorial - Cube Measure Group
+# Daanse Tutorial - Measure Group
 
 In cases where you need a better overview of all measures, want to provide additional context for a `Measure`, or need to organize a list of measures, you can use a `MeasureGroup`.
 
@@ -60,7 +60,7 @@ This files represent the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:Catalog id="_catalog_measureMeasureGroups" description="Measure group organization" name="Daanse Tutorial - Cube Measure Group" cubes="_cube_measureGroupCube" dbschemas="_databaseSchema_measureGroup"/>
+  <roma:Catalog id="_catalog_measureMeasureGroups" description="Measure group organization" name="Daanse Tutorial - Measure Group" cubes="_cube_measureGroupCube" dbschemas="_databaseSchema_measureGroup"/>
   <roma:DatabaseSchema id="_databaseSchema_measureGroup">
     <tables xsi:type="roma:PhysicalTable" id="_table_fact" name="Fact">
       <columns xsi:type="roma:PhysicalColumn" id="_column_fact_key" name="KEY"/>

@@ -1,10 +1,10 @@
 ---
-title: Cube Measure Aggregator Base
+title: Measure Aggregator Base
 group: Measure
 kind: TUTORIAL
 number: 2.2.1
 ---
-# Daanse Tutorial - Cube Measure Aggregator Base
+# Daanse Tutorial - Measure Aggregator Base
 
 Data cubes can also have multiple measures when different aggregations are required for a column.
 
@@ -63,7 +63,7 @@ This files represent the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:Catalog id="_catalog_measureBasicAggregators" description="Basic measure aggregation functions" name="Daanse Tutorial - Cube Measure Aggregator Base" cubes="_cube_measuresAggregatorsCube" dbschemas="_databaseSchema_measureAggregatorBase"/>
+  <roma:Catalog id="_catalog_measureBasicAggregators" description="Basic measure aggregation functions" name="Daanse Tutorial - Measure Aggregator Base" cubes="_cube_measuresAggregatorsCube" dbschemas="_databaseSchema_measureAggregatorBase"/>
   <roma:DatabaseSchema id="_databaseSchema_measureAggregatorBase">
     <tables xsi:type="roma:PhysicalTable" id="_table_fact" name="Fact">
       <columns xsi:type="roma:PhysicalColumn" id="_column_fact_key" name="KEY"/>

@@ -1,10 +1,10 @@
 ---
-title: Cube Calculated Member Intro
+title: Calculated Member Intro
 group: Member
 kind: TUTORIAL
 number: 2.3.6
 ---
-# Daanse Tutorial - Cube Calculated Member Intro
+# Daanse Tutorial - Calculated Member Intro
 
 This tutorial discusses Calculated Members, which allow you to define members in the measure or dimension area of a cube without storing them directly in the database. Instead, these members are computed on the fly, often based on the values of other members or measures. This is particularly useful for creating derived measures or dimension members that are not present in the underlying data source.
 
@@ -112,7 +112,7 @@ This files represent the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:Catalog description="Introduction to calculated members in cubes" name="Daanse Tutorial - Cube Calculated Member Intro" cubes="_cube_calculatedMemberCube" dbschemas="_databaseSchema_calculatedMemberIntro"/>
+  <roma:Catalog description="Introduction to calculated members in cubes" name="Daanse Tutorial - Calculated Member Intro" cubes="_cube_calculatedMemberCube" dbschemas="_databaseSchema_calculatedMemberIntro"/>
   <roma:DatabaseSchema id="_databaseSchema_calculatedMemberIntro">
     <tables xsi:type="roma:PhysicalTable" id="_table_fact" name="Fact">
       <columns xsi:type="roma:PhysicalColumn" id="_column_fact_key" name="KEY"/>

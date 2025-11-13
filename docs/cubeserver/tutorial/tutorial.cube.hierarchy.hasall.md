@@ -1,10 +1,10 @@
 ---
-title: Cube Hierarchy Has All
+title: Hierarchy Has All
 group: Hierarchy
 kind: TUTORIAL
 number: 2.3.4
 ---
-# Daanse Tutorial - Cube Hierarchy Has All
+# Daanse Tutorial - Hierarchy Has All
 
 In a hierarchy, the top level can sometimes be a special case. Typically, levels are created using a Level object, along with a reference to a column and a query on the hierarchy. However, there are situations where no dedicated column or table entry exists for the top level. For example if you want to represent a grand total. In such cases, you can generate a generic top level that serves as a final aggregation for all members of the level below.
 
@@ -121,7 +121,7 @@ This files represent the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:Catalog description="Hierarchy with all-member configuration" name="Daanse Tutorial - Cube Hierarchy Has All" cubes="_cube" dbschemas="_databaseschema"/>
+  <roma:Catalog description="Hierarchy with all-member configuration" name="Daanse Tutorial - Hierarchy Has All" cubes="_cube" dbschemas="_databaseschema"/>
   <roma:DatabaseSchema id="_databaseschema">
     <tables xsi:type="roma:PhysicalTable" id="_table" name="Fact">
       <columns xsi:type="roma:PhysicalColumn" id="_col_fact_key" name="KEY"/>
