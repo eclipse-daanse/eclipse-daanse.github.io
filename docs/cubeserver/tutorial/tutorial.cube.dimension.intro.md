@@ -1,10 +1,10 @@
 ---
-title: Cube Dimension Intro
+title: Dimension Intro
 group: Dimension
 kind: TUTORIAL
 number: 2.3.1
 ---
-# Daanse Tutorial - Cube Dimension Intro
+# Daanse Tutorial - Dimension Intro
 
 beside the Measures a cube can contain dimensions. Dimensions are used to slice, dice and piveaut the data in the cube. They can be used group the data, filter the data,or to provide additional context for the data. Dimensions consist of one or multiple Hierarchies. Hierarchies consist of one or multiple Levels. Each level can have one or multiple Properties. Properties are used to provide additional context for the data. They can be used to display additional information about the data in the cube, such as descriptions, labels, or other attributes.
 
@@ -95,7 +95,7 @@ This files represent the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:Catalog id="_catalog_dimensionIntro" description="Introduction to cube dimensions" name="Daanse Tutorial - Cube Dimension Intro" cubes="_cube_cubeWithSimpleDimension" dbschemas="_databaseSchema_dimensionIntro"/>
+  <roma:Catalog id="_catalog_dimensionIntro" description="Introduction to cube dimensions" name="Daanse Tutorial - Dimension Intro" cubes="_cube_cubeWithSimpleDimension" dbschemas="_databaseSchema_dimensionIntro"/>
   <roma:DatabaseSchema id="_databaseSchema_dimensionIntro">
     <tables xsi:type="roma:PhysicalTable" id="_table_fact" name="Fact">
       <columns xsi:type="roma:PhysicalColumn" id="_column_fact_key" name="KEY"/>

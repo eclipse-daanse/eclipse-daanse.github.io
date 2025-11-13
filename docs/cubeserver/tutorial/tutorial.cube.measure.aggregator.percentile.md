@@ -1,10 +1,10 @@
 ---
-title: Cube Measure Aggregator Percentile
+title: Measure Aggregator Percentile
 group: Measure
 kind: TUTORIAL
 number: 2.2.7
 ---
-# Daanse Tutorial - Cube Measure Aggregator Percentile
+# Daanse Tutorial - Measure Aggregator Percentile
 
 Data cubes have percentile measures.
 
@@ -77,7 +77,7 @@ This files represent the complete definition of the catalog.
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
   <roma:OrderedColumn column="_col"/>
-  <roma:Catalog description="Percentile aggregation functions" name="Daanse Tutorial - Cube Measure Aggregator Percentile" cubes="_cube" dbschemas="_databaseSchema"/>
+  <roma:Catalog description="Percentile aggregation functions" name="Daanse Tutorial - Measure Aggregator Percentile" cubes="_cube" dbschemas="_databaseSchema"/>
   <roma:DatabaseSchema id="_databaseSchema">
     <tables xsi:type="roma:PhysicalTable" id="_tab" name="Fact">
       <columns xsi:type="roma:PhysicalColumn" id="_col_key" name="KEY"/>

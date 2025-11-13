@@ -1,10 +1,10 @@
 ---
-title: Cube Measure Aggregator Text Agg
+title: Measure Aggregator Text Agg
 group: Measure
 kind: TUTORIAL
 number: 2.2.8
 ---
-# Daanse Tutorial - Cube Measure Aggregator Text Agg
+# Daanse Tutorial - Measure Aggregator Text Agg
 
 Data cubes have multiple measures when different aggregations are required for a column.
 
@@ -69,7 +69,7 @@ This files represent the complete definition of the catalog.
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
   <roma:OrderedColumn column="_column_fact_comment"/>
-  <roma:Catalog description="Text aggregation functions" name="Daanse Tutorial - Cube Measure Aggregator Text Agg" cubes="_cube_measuresTextAggregators" dbschemas="_databaseSchema_main"/>
+  <roma:Catalog description="Text aggregation functions" name="Daanse Tutorial - Measure Aggregator Text Agg" cubes="_cube_measuresTextAggregators" dbschemas="_databaseSchema_main"/>
   <roma:DatabaseSchema id="_databaseSchema_main">
     <tables xsi:type="roma:PhysicalTable" id="_table_fact" name="Fact">
       <columns xsi:type="roma:PhysicalColumn" id="_column_fact_key" name="KEY"/>

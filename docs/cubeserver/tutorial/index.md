@@ -63,11 +63,11 @@ Download the full [Tutorial-Package](./zip/all-tutorials.zip) as zip.
 
 [Virtual Cube Unvisible Reference Cubes](./tutorial.virtualcube.unvisiblereferencecubes.md)
 
-[Hierarchy Inline Table](./tutorial.hierarchy.inlinetable.md)
+[Inline Table](./tutorial.hierarchy.inlinetable.md)
 
 [Hierarchy View](./tutorial.hierarchy.view.md)
 
-[Hierarchy Unique Key Level Name](./tutorial.hierarchy.uniquekeylevelname.md)
+[Unique Key Level Name](./tutorial.hierarchy.uniquekeylevelname.md)
 
 [Parent Child Minimal](./tutorial.parentchild.minimal.md)
 
@@ -77,41 +77,41 @@ Download the full [Tutorial-Package](./zip/all-tutorials.zip) as zip.
 
 [Parent Child Parent As Leaf](./tutorial.parentchild.parentasleaf.md)
 
-[Cube Measure Aggregator Base](./tutorial.cube.measure.aggregator.base.md)
+[Measure Aggregator Base](./tutorial.cube.measure.aggregator.base.md)
 
-[Cube Measure Multiple](./tutorial.cube.measure.multiple.md)
+[Measure Multiple](./tutorial.cube.measure.multiple.md)
 
-[Cube Measure Datatype](./tutorial.cube.measure.datatype.md)
+[Measure Datatype](./tutorial.cube.measure.datatype.md)
 
-[Cube Measure Format](./tutorial.cube.measure.format.md)
+[Measure Format](./tutorial.cube.measure.format.md)
 
-[Cube Measure Group](./tutorial.cube.measure.group.md)
+[Measure Group](./tutorial.cube.measure.group.md)
 
-[Cube Measure Aggregator Bit](./tutorial.cube.measure.aggregator.bit.md)
+[Measure Aggregator Bit](./tutorial.cube.measure.aggregator.bit.md)
 
-[Cube Measure Aggregator Percentile](./tutorial.cube.measure.aggregator.percentile.md)
+[Measure Aggregator Percentile](./tutorial.cube.measure.aggregator.percentile.md)
 
-[Cube Measure Aggregator Nth](./tutorial.cube.measure.aggregator.nth.md)
+[Measure Aggregator Nth](./tutorial.cube.measure.aggregator.nth.md)
 
-[Cube Measure Aggregator Text Agg](./tutorial.cube.measure.aggregator.textagg.md)
+[Measure Aggregator Text Agg](./tutorial.cube.measure.aggregator.textagg.md)
 
-[Cube Dimension Intro](./tutorial.cube.dimension.intro.md)
+[Dimension Intro](./tutorial.cube.dimension.intro.md)
 
-[Cube Hierarchy Query Table Base](./tutorial.cube.hierarchy.query.table.base.md)
+[Hierarchy Query Table Base](./tutorial.cube.hierarchy.query.table.base.md)
 
-[Cube Hierarchy Query Table Multilevel Multitable](./tutorial.cube.hierarchy.query.table.multilevel.multitable.md)
+[Hierarchy Query Table Multilevel Multitable](./tutorial.cube.hierarchy.query.table.multilevel.multitable.md)
 
-[Cube Hierarchy Query Table Multilevel Singletable](./tutorial.cube.hierarchy.query.table.multilevel.singletable.md)
+[Hierarchy Query Table Multilevel Singletable](./tutorial.cube.hierarchy.query.table.multilevel.singletable.md)
 
-[Cube Hierarchy Query Join Base](./tutorial.cube.hierarchy.query.join.base.md)
+[Hierarchy Query Join Base](./tutorial.cube.hierarchy.query.join.base.md)
 
-[Cube Hierarchy Query Join Multi](./tutorial.cube.hierarchy.query.join.multi.md)
+[Hierarchy Query Join Multi](./tutorial.cube.hierarchy.query.join.multi.md)
 
-[Cube Hierarchy Has All](./tutorial.cube.hierarchy.hasall.md)
+[Hierarchy Has All](./tutorial.cube.hierarchy.hasall.md)
 
 [Function Logic](./tutorial.function.logic.md)
 
-[Cube Calculated Member Intro](./tutorial.cube.calculatedmember.intro.md)
+[Calculated Member Intro](./tutorial.cube.calculatedmember.intro.md)
 
 [Cube Calculated Member Color](./tutorial.cube.calculatedmember.color.md)
 
@@ -143,7 +143,7 @@ Download the full [Tutorial-Package](./zip/all-tutorials.zip) as zip.
 
 [Member Identifier](./tutorial.member.identifier.md)
 
-[Cube Level Member Property Intro](./tutorial.member.property.intro.md)
+[Level Member Property Intro](./tutorial.member.property.intro.md)
 
 [Member Properties with Geographic Data](./tutorial.member.property.geo.md)
 

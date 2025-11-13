@@ -1,10 +1,10 @@
 ---
-title: Hierarchy Unique Key Level Name
+title: Unique Key Level Name
 group: Hierarchy
 kind: TUTORIAL
 number: 2.16.3
 ---
-# Daanse Tutorial - Hierarchy Unique Key Level Name
+# Daanse Tutorial - Unique Key Level Name
 
 Catalog with Minimal Cube with Parent Child Hierarchy
 
@@ -167,7 +167,7 @@ This files represent the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:Catalog description="Hierarchy with unique key level name optimizations" name="Daanse Tutorial - Hierarchy Unique Key Level Name" cubes="_cube_cube" dbschemas="_databaseSchema_main"/>
+  <roma:Catalog description="Hierarchy with unique key level name optimizations" name="Daanse Tutorial - Unique Key Level Name" cubes="_cube_cube" dbschemas="_databaseSchema_main"/>
   <roma:DatabaseSchema id="_databaseSchema_main">
     <tables xsi:type="roma:PhysicalTable" id="_table_automotiveDim" name="AUTOMOTIVE_DIM">
       <columns xsi:type="roma:PhysicalColumn" id="_column_automotiveDim_autoDimId" name="AUTO_DIM_ID" type="Integer"/>

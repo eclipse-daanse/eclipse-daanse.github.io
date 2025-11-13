@@ -1,10 +1,10 @@
 ---
-title: Cube Hierarchy Query Table Multilevel Singletable
+title: Hierarchy Query Table Multilevel Singletable
 group: Hierarchy
 kind: TUTORIAL
 number: 2.3.2.3
 ---
-# Daanse Tutorial - Cube Hierarchy Query Table Multilevel Singletable
+# Daanse Tutorial - Hierarchy Query Table Multilevel Singletable
 
 In some cases, all data are stored in one table, the fact as well as multiple levels. This Tutorial shows how to handle this case.
 
@@ -102,7 +102,7 @@ This files represent the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:Catalog description="Multi-level hierarchy in single table" name="Daanse Tutorial - Cube Hierarchy Query Table Multilevel Singletable" cubes="_cube_queryLinkedTables" dbschemas="_databaseSchema_main"/>
+  <roma:Catalog description="Multi-level hierarchy in single table" name="Daanse Tutorial - Hierarchy Query Table Multilevel Singletable" cubes="_cube_queryLinkedTables" dbschemas="_databaseSchema_main"/>
   <roma:DatabaseSchema id="_databaseSchema_main">
     <tables xsi:type="roma:PhysicalTable" id="_table_fact" name="Fact">
       <columns xsi:type="roma:PhysicalColumn" id="_column_fact_key" name="KEY"/>
