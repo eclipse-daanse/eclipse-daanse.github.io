@@ -6,7 +6,6 @@ group: Class
 # MeasureGroup<a name="class-measuregroup"></a>
 
 A logical container that organizes related measures within a physical cube, providing grouping for measures that share common characteristics, business context, or data sources. MeasureGroup serves as both an organizational and metadata management mechanism, enabling better structure for complex cubes with many measures. For example, a sales cube might have separate measure groups for 'Revenue Metrics' (containing sales amounts, discounts, taxes) and 'Volume Metrics' (containing quantities, units, counts). Each measure group belongs to exactly one physical cube and contains one or more measures that are processed and displayed together in OLAP clients and XMLA metadata. A MeasureGroup is typically based on a single fact table in the data warehouse, ensuring that all its measures share the same granularity and relationship to dimensions. This alignment simplifies processing, querying, and maintenance.
-## Extends
 
 ## Attributes
 

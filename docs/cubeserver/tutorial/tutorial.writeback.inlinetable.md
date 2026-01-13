@@ -151,7 +151,7 @@ The dimension is defined with the one hierarchy.
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
-## Cubec C 
+## Cubec C
 
 Cube C is defined by DimensionConnector D1 and a MeasureGroup containing two measures using SUM aggregation.
 The cube also contains a FACTWB WritebackTable configuration with a WritebackAttribute mapped to the VAL column from the fact table, along with two WritebackMeasures: Measure1 and Measure2.
@@ -181,7 +181,6 @@ This files represent the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:InlineTableQuery id="_table_factQuery" alias="FACT" table="_fact"/>
   <roma:Catalog description="Inline table writeback functionality" name="Daanse Tutorial - Writeback Inline Table" cubes="_c" dbschemas="_databaseSchema_WritebackInlineTable"/>
   <roma:DatabaseSchema id="_databaseSchema_WritebackInlineTable">
     <tables xsi:type="roma:InlineTable" id="_fact" name="FACT">
@@ -231,6 +230,7 @@ This files represent the complete definition of the catalog.
   </roma:DatabaseSchema>
   <roma:TableQuery id="_l1TableQuery" table="_l1"/>
   <roma:TableQuery id="_l2TableQuery" table="_l2"/>
+  <roma:InlineTableQuery id="_table_factQuery" alias="FACT" table="_fact"/>
   <roma:JoinQuery id="_join">
     <left key="_l1_l2" query="_l1TableQuery"/>
     <right key="_l2_l2" query="_l2TableQuery"/>

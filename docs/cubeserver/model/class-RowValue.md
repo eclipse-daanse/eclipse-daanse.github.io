@@ -6,7 +6,6 @@ group: Class
 # RowValue<a name="class-rowvalue"></a>
 
 Represents a single column value within a row of an InlineTable. RowValue pairs a column reference with its data value, providing the basic unit for embedding tabular data in OLAP schema definitions.
-## Extends
 
 ## Attributes
 

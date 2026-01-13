@@ -6,7 +6,6 @@ group: Class
 # DrillThroughAttribute<a name="class-drillthroughattribute"></a>
 
 Defines a dimensional attribute or member property that should be included in drill-through result sets, providing sophisticated control over the contextual information that accompanies detailed transactional data when users drill through from aggregated analytical views. DrillThroughAttribute enables rich drill-through experiences where users can access not only the underlying fact data but also relevant dimensional context that provides business meaning and analytical insight into the detailed results.
-## Extends
 
 ## Attributes
 

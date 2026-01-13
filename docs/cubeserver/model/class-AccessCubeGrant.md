@@ -6,7 +6,6 @@ group: Class
 # AccessCubeGrant<a name="class-accesscubegrant"></a>
 
 Defines cube-level security permissions that control access to a specific OLAP cube and provide the foundation for more granular dimension, hierarchy, and member-level access controls within that analytical context. AccessCubeGrant operates as the primary business-domain security boundary, since cubes typically represent complete analytical subjects such as Sales Analysis, Financial Reporting, or Operations Management that align with organizational responsibilities and business processes.
-## Extends
 
 ## Attributes
 

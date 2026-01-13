@@ -6,7 +6,6 @@ group: Class
 # AggregationTable<a name="class-aggregationtable"></a>
 
 Abstract base class for pre-computed aggregation tables that dramatically improve OLAP query performance by storing pre-calculated summary data at various levels of granularity. Aggregation tables contain rolled-up measures and dimension keys that enable the OLAP engine to answer analytical queries from summary data rather than scanning millions of fact table rows.
-## Extends
 
 ## Attributes
 

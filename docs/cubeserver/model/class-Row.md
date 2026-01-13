@@ -6,7 +6,6 @@ group: Class
 # Row<a name="class-row"></a>
 
 Represents a single data row within an InlineTable, containing a collection of column values. Row provides the structure for embedding tabular data directly in the OLAP schema definition.
-## Extends
 
 ## Attributes
 

@@ -7,7 +7,7 @@ group: Class
 
 Specialized formatter for controlling how dimensional members are displayed in hierarchical browsers, filter lists, axis labels, and other dimensional navigation interfaces, enabling sophisticated member presentation that can include custom naming schemes, contextual information, visual indicators, and hierarchical styling that enhances dimensional navigation and member selection experiences.
 ## Extends
-- Formatter [🔗](./class-Formatter)- IMemberFormatter [🔗](./class-IMemberFormatter)
+- Formatter [🔗](./class-Formatter)
 ## Attributes
 
 <table>
@@ -53,6 +53,6 @@ classDiagram
   class MemberFormatter {
   }
 
-  Formatter <|-- MemberFormatter  IMemberFormatter <|-- MemberFormatter
+  Formatter <|-- MemberFormatter
 
 ```

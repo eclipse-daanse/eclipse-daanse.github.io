@@ -6,7 +6,6 @@ group: Class
 # AggregationMeasureFactCount<a name="class-aggregationmeasurefactcount"></a>
 
 Defines the fact count measure in an aggregation table that tracks the number of fact table rows contributing to each aggregated row. The fact count is essential for computing accurate averages, weighted calculations, and other statistical operations that require knowledge of the underlying data density.
-## Extends
 
 ## Attributes
 

@@ -6,7 +6,6 @@ group: Class
 # WritebackAttribute<a name="class-writebackattribute"></a>
 
 Defines a dimensional attribute that participates in writeback operations, enabling sophisticated data modification scenarios where users can update dimensional context information alongside measure values through interactive OLAP applications. WritebackAttribute represents a critical component of advanced business intelligence systems that support collaborative planning, budgeting, forecasting, and other scenarios where analytical applications must enable direct data modification rather than read-only consumption.
-## Extends
 
 ## Attributes
 

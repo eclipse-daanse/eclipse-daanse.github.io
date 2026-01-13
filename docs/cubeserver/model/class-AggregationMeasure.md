@@ -6,7 +6,6 @@ group: Class
 # AggregationMeasure<a name="class-aggregationmeasure"></a>
 
 Maps a cube measure to a column in an aggregation table that contains pre-computed aggregated values for that measure. AggregationMeasure is central to the performance optimization provided by aggregation tables, enabling the OLAP engine to substitute pre-calculated summary values for expensive fact table aggregations. Each mapping defines the relationship between a logical measure (such as Sales Amount, Quantity Sold, or Profit Margin) and the physical column in the aggregation table that stores the corresponding aggregated values. The mapping includes critical information about rollup behavior, specifying how aggregated values can be further combined when rolling up to higher levels of granularity. This supports complex aggregation scenarios including additive measures that use SUM rollup, semi-additive measures that require special handling across time dimensions, non-additive measures like ratios that need weighted averaging, and distinct count measures that have strict rollup requirements to maintain accuracy.
-## Extends
 
 ## Attributes
 

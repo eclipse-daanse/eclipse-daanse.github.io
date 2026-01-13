@@ -6,7 +6,6 @@ group: Class
 # MemberReaderParameter<a name="class-memberreaderparameter"></a>
 
 Defines configuration parameters that are passed to custom MemberReader implementations to control specialized member loading behavior, caching strategies, performance optimization, and integration with external data sources or business logic systems. MemberReaderParameter represents a flexible configuration mechanism that enables sophisticated customization of how dimensional members are loaded, cached, and presented within OLAP hierarchies, supporting advanced scenarios where standard member loading approaches are insufficient for complex business requirements, performance constraints, or integration needs.
-## Extends
 
 ## Attributes
 

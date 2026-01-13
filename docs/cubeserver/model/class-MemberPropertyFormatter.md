@@ -7,7 +7,7 @@ group: Class
 
 Specialized formatter for controlling the presentation of member properties in dimensional browsers, tooltip displays, drill-through results, and other contexts where additional member attributes need to be presented in user-friendly, contextually appropriate formats.
 ## Extends
-- Formatter [🔗](./class-Formatter)- IMemberPropertyFormatter [🔗](./class-IMemberPropertyFormatter)
+- Formatter [🔗](./class-Formatter)
 ## Attributes
 
 <table>
@@ -53,6 +53,6 @@ classDiagram
   class MemberPropertyFormatter {
   }
 
-  Formatter <|-- MemberPropertyFormatter  IMemberPropertyFormatter <|-- MemberPropertyFormatter
+  Formatter <|-- MemberPropertyFormatter
 
 ```

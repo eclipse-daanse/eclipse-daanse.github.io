@@ -14,7 +14,7 @@ Unlike formats such as JSON or YAML, XMI is a model-oriented serialization desig
 
 Use this section to explore how the individual elements of your model are defined and how they interconnect — both structurally and semantically.
 
-## Package: rolapmapping
+## Package: model
 URI: `https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping`
 Prefix: `roma`
 
@@ -489,14 +489,12 @@ classDiagram
   }
 
     MemberFormatter <|-- Formatter : inherit
-    MemberFormatter <|-- IMemberFormatter : inherit
 
 
   class MemberPropertyFormatter {
   }
 
     MemberPropertyFormatter <|-- Formatter : inherit
-    MemberPropertyFormatter <|-- IMemberPropertyFormatter : inherit
 
 
   class Parameter {
@@ -854,122 +852,6 @@ classDiagram
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  class IMemberPropertyFormatter {
-  }
-
-
-
-  class IMemberFormatter {
-  }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ```
 
 </MermaidZoom>
@@ -1074,8 +956,6 @@ classDiagram
 - [Class RowValue](./class-RowValue.md)
 - [Class SqlStatement](./class-SqlStatement.md)
 - [Class SqlView](./class-SqlView.md)
-- [Class IMemberPropertyFormatter](./class-IMemberPropertyFormatter.md)
-- [Class IMemberFormatter](./class-IMemberFormatter.md)
 
 
 - [Enum CatalogAccess](./enum-CatalogAccess.md)

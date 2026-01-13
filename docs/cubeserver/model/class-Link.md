@@ -6,7 +6,6 @@ group: Class
 # Link<a name="class-link"></a>
 
 Defines a foreign key relationship between two database tables, establishing referential integrity constraints that are essential for dimensional modeling in OLAP systems. Links connect fact tables to dimension tables, enabling proper join relationships for star and snowflake schema implementations.
-## Extends
 
 ## Attributes
 

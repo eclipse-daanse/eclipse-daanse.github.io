@@ -6,7 +6,6 @@ group: Class
 # WritebackTable<a name="class-writebacktable"></a>
 
 Defines the physical database table structure that receives modified analytical data when users perform writeback operations. Maps cube measures and dimensional attributes to specific database columns where user modifications are persisted. Required for cubes that support data modification through OLAP interfaces. Integrates with WritebackUtil for SQL generation and allocation policy processing.
-## Extends
 
 ## Attributes
 

@@ -6,7 +6,6 @@ group: Class
 # WritebackMeasure<a name="class-writebackmeasure"></a>
 
 Defines a measure that participates in writeback operations, enabling sophisticated collaborative planning, budgeting, forecasting, and analytical data modification scenarios where business users can directly update measure values through OLAP client applications and have those changes automatically persisted to designated database tables.
-## Extends
 
 ## Attributes
 

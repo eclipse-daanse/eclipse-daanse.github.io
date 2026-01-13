@@ -6,7 +6,6 @@ group: Class
 # AggregationLevel<a name="class-aggregationlevel"></a>
 
 Maps a dimension level to a column in an aggregation table, defining how dimensional data is represented in pre-computed aggregation structures. AggregationLevel is fundamental to the aggregation matching algorithm, enabling the OLAP engine to determine whether a specific aggregation table contains the appropriate dimensional granularity to satisfy query requirements. Each mapping specifies the relationship between a logical dimension level (such as Product Category, Time Month, or Customer Region) and the physical column in the aggregation table that stores the corresponding dimension key values.
-## Extends
 
 ## Attributes
 

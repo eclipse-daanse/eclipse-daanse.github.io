@@ -6,7 +6,6 @@ group: Class
 # AccessDimensionGrant<a name="class-accessdimensiongrant"></a>
 
 Defines dimension-level security permissions that control access to specific dimensions within a cube, providing targeted control over dimensional navigation and member visibility.
-## Extends
 
 ## Attributes
 

@@ -6,7 +6,6 @@ group: Class
 # CubeConnector<a name="class-cubeconnector"></a>
 
 A connector that defines how a physical cube is integrated into a virtual cube, specifying the configuration for data aggregation, dimensional handling, and cross-cube analysis rules. CubeConnector serves as the bridge between virtual cubes and their constituent physical cubes, providing fine-grained control over how multiple cubes are combined into unified analytical views. Each connector references a specific physical cube and defines policies for handling dimensional inconsistencies, measure integration, and query processing behavior. This enables virtual cubes to aggregate data from heterogeneous physical cubes while maintaining analytical coherence and performance optimization.
-## Extends
 
 ## Attributes
 
