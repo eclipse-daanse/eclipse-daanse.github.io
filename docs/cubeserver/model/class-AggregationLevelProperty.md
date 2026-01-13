@@ -6,7 +6,6 @@ group: Class
 # AggregationLevelProperty<a name="class-aggregationlevelproperty"></a>
 
 Maps a level property to its corresponding column in an aggregation table, enabling access to dimensional member properties in aggregated queries. Level properties provide additional descriptive information about dimension members beyond their keys and names, such as member descriptions, custom attributes, or categorization data.
-## Extends
 
 ## Attributes
 

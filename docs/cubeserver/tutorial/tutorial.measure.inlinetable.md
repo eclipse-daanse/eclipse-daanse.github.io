@@ -74,7 +74,6 @@ This files represent the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:InlineTableQuery id="_query_fact" alias="Fact" table="_table_fact"/>
   <roma:Catalog description="Measure with inline table data" name="Daanse Tutorial - Measure Inline Table" cubes="_cube" dbschemas="_databaseSchema_inlinetable"/>
   <roma:DatabaseSchema id="_databaseSchema_inlinetable">
     <tables xsi:type="roma:InlineTable" id="_table_fact" name="Fact">
@@ -86,6 +85,7 @@ This files represent the complete definition of the catalog.
       </rows>
     </tables>
   </roma:DatabaseSchema>
+  <roma:InlineTableQuery id="_query_fact" alias="Fact" table="_table_fact"/>
   <roma:PhysicalCube id="_cube" name="Cube" query="_query_fact">
     <measureGroups>
       <measures xsi:type="roma:SumMeasure" id="_measure-sum" name="Measure-Sum" column="_column_fact_value"/>

@@ -6,7 +6,6 @@ group: Class
 # Translation<a name="class-translation"></a>
 
 Provides comprehensive internationalization and localization support for OLAP metadata elements, enabling multi-language deployments where analytical content can be presented in different languages based on user preferences, regional requirements, or organizational policies. Translation represents a fundamental component of the OLAP globalization framework, supporting complex multinational enterprise scenarios where the same analytical model must serve users who speak different languages and operate within different cultural contexts.
-## Extends
 
 ## Attributes
 

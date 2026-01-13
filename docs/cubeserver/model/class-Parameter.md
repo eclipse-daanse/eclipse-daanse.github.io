@@ -6,7 +6,6 @@ group: Class
 # Parameter<a name="class-parameter"></a>
 
 Defines a parameterized input mechanism that enables dynamic, user-driven customization of analytical queries, calculated members, and other OLAP expressions, providing sophisticated capabilities for creating flexible, interactive analytical applications that can adapt to user preferences and changing business requirements.
-## Extends
 
 ## Attributes
 

@@ -6,7 +6,6 @@ group: Class
 # AggregationExclude<a name="class-aggregationexclude"></a>
 
 Defines exclusion rules that prevent specific tables from being used as aggregation tables, even if they would otherwise match aggregation patterns or be considered suitable for aggregation optimization. AggregationExclude is essential for maintaining aggregation accuracy and system reliability by providing explicit control over which tables should be avoided during aggregation table discovery and selection.
-## Extends
 
 ## Attributes
 

@@ -126,7 +126,7 @@ The dimension is defined with the one hierarchy.
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
-## Cubec C 
+## Cubec C
 
 Cube `C` is defined by DimensionConnector `D1` and a MeasureGroup containing two measures using `SUM` aggregation.
 The cube also contains a `FACTWB` WritebackTable configuration with a WritebackAttribute mapped to the `VAL` column from the fact table, along with two WritebackMeasures: Measure1 and Measure2.

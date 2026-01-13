@@ -6,7 +6,6 @@ group: Class
 # TableQueryOptimizationHint<a name="class-tablequeryoptimizationhint"></a>
 
 Provides database-specific optimization hints that can be embedded in generated SQL queries to influence query execution plans, performance characteristics, and resource utilization patterns for optimal analytical query performance.
-## Extends
 
 ## Attributes
 

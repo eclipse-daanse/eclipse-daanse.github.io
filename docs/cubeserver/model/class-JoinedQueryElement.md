@@ -6,7 +6,6 @@ group: Class
 # JoinedQueryElement<a name="class-joinedqueryelement"></a>
 
 Represents one side of a JOIN operation, encapsulating the query source, join key column, and optional table alias needed for proper SQL JOIN generation. JoinedQueryElement serves as the fundamental building block for composing complex multi-table queries in OLAP dimensional modeling, enabling the connection of normalized dimension tables, fact tables, and lookup tables through foreign key relationships. Each element specifies exactly how its query participates in the JOIN operation, including which column serves as the join key and what alias should be used in the generated SQL to avoid naming conflicts and ensure query clarity.
-## Extends
 
 ## Attributes
 

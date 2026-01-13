@@ -183,8 +183,6 @@ This files represent the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:InlineTableQuery id="_query_country" alias="COUNTRY" table="_tab_COUNTRY"/>
-  <roma:InlineTableQuery id="_query_fact" alias="Fact" table="_tab_FACT"/>
   <roma:Catalog description="Measure with inline table and physical table" name="Daanse Tutorial - Measure Inline Table With Physical" cubes="_cube" dbschemas="_databaseSchema_inlinetablewithphysical"/>
   <roma:DatabaseSchema id="_databaseSchema_inlinetablewithphysical">
     <tables xsi:type="roma:PhysicalTable" id="_tab_TOWN_Physical" name="TOWN">
@@ -222,6 +220,8 @@ This files represent the complete definition of the catalog.
     </tables>
   </roma:DatabaseSchema>
   <roma:TableQuery id="_query_town" table="_tab_TOWN_Physical"/>
+  <roma:InlineTableQuery id="_query_country" alias="COUNTRY" table="_tab_COUNTRY"/>
+  <roma:InlineTableQuery id="_query_fact" alias="Fact" table="_tab_FACT"/>
   <roma:JoinQuery id="_query_hierarchy">
     <left key="_col_town_country_key" query="_query_town"/>
     <right key="_col_country_KEY" query="_query_country"/>

@@ -6,7 +6,6 @@ group: Class
 # AccessMemberGrant<a name="class-accessmembergrant"></a>
 
 Implements the most granular level of OLAP security control by defining access permissions for individual members within dimensional hierarchies, enabling precise business-driven security policies that reflect real-world organizational boundaries, customer relationships, geographic territories, product ownership, and regulatory restrictions.
-## Extends
 
 ## Attributes
 

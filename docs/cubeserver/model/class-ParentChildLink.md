@@ -6,7 +6,6 @@ group: Class
 # ParentChildLink<a name="class-parentchildlink"></a>
 
 Defines closure table configuration for parent-child hierarchies that dramatically improves query performance by pre-computing and storing all ancestor-descendant relationships in a separate table structure, enabling efficient recursive queries and aggregations without requiring complex recursive SQL operations.
-## Extends
 
 ## Attributes
 

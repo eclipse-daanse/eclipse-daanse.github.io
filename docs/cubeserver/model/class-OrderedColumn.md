@@ -6,7 +6,6 @@ group: Class
 # OrderedColumn<a name="class-orderedcolumn"></a>
 
 Represents a column with specific ordering information used in queries and result sets. OrderedColumn is typically used in OLAP contexts where explicit column ordering is required for query processing or result presentation.
-## Extends
 
 ## Attributes
 

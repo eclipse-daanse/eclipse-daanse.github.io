@@ -6,7 +6,6 @@ group: Class
 # DimensionConnector<a name="class-dimensionconnector"></a>
 
 Connects a cube to a dimension, establishing the relationship between fact table and dimensional data through foreign key references and enabling dimensional analysis within the cube's multidimensional space.
-## Extends
 
 ## Attributes
 

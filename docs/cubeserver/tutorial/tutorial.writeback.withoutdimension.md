@@ -44,7 +44,7 @@ The FactQuery is a simple InlineTableQuery that selects all columns from the Fac
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
-## Cubec C 
+## Cubec C
 
 Cube `C` is defined a `FACTWB` WritebackTable configuration with two WritebackMeasures: WbMeasure1 and WbMeasure2.
 

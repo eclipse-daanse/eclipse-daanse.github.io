@@ -1881,8 +1881,8 @@ This files represent the complete definition of the catalog.
   <roma:Level id="_level_product_subcategory" name="Product Subcategory" column="_column_productClass_productSubcategory"/>
   <roma:Level id="_level_promotion_media" name="Media Type" column="_column_promotion_mediaType" uniqueMembers="true"/>
   <roma:Level id="_level_promotion_name" name="Promotion Name" column="_column_promotion_promotionName" uniqueMembers="true"/>
-  <roma:Level id="_level_regged_store_city" name="City" column="_column_store_ragged_store_city" hideMemberIf="IfBlankName"/>
   <roma:Level id="_level_regged_store_city" name="Store City" column="_column_store_ragged_store_city" hideMemberIf="IfBlankName"/>
+  <roma:Level id="_level_regged_store_city" name="City" column="_column_store_ragged_store_city" hideMemberIf="IfBlankName"/>
   <roma:Level id="_level_regged_store_country" name="Store Country" column="_column_store_ragged_store_country"/>
   <roma:Level id="_level_regged_store_country" name="Country" column="_column_store_ragged_store_country" uniqueMembers="true"/>
   <roma:Level id="_level_regged_store_name" name="Store Name" column="_column_store_ragged_store_name" uniqueMembers="true">

@@ -6,7 +6,6 @@ group: Class
 # AccessTableGrant<a name="class-accesstablegrant"></a>
 
 Defines table-level security permissions that control access to specific database tables and their columns, providing fine-grained data governance at the physical storage level.
-## Extends
 
 ## Attributes
 

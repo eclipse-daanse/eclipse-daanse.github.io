@@ -6,7 +6,6 @@ group: Class
 # AggregationColumnName<a name="class-aggregationcolumnname"></a>
 
 Specifies the column that stores fact count data in an aggregation table, enabling ROLAP engines to determine the number of base fact table rows that were aggregated into each summary row.
-## Extends
 
 ## Attributes
 

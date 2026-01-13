@@ -6,7 +6,6 @@ group: Class
 # Annotation<a name="class-annotation"></a>
 
 Represents a custom annotation that can be attached to any AbstractElement to provide additional metadata, configuration hints, or processing instructions. Annotations enable extensibility of the OLAP schema without modifying the core model, allowing for vendor-specific extensions, optimization hints, caching directives, or integration parameters. These are commonly used for custom aggregation rules, display formatting, security policies, or ETL processing instructions.
-## Extends
 
 ## Attributes
 

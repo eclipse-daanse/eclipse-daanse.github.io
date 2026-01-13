@@ -6,7 +6,6 @@ group: Class
 # AccessDatabaseSchemaGrant<a name="class-accessdatabaseschemagrant"></a>
 
 Extends the OLAP security model to the database level by controlling access to database schemas, tables, and columns that underlie the OLAP analytical structures, providing comprehensive data governance that enforces security policies regardless of how data is accessed.
-## Extends
 
 ## Attributes
 
