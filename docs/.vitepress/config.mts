@@ -56,7 +56,7 @@ defineConfig({
 
       '/board/concept':  generateSidebar('../board/concept'),
       '/board/setup':  generateSidebar('../board/setup'),
-      '/board/tutorial':  generateSidebar('../board/tutorial'),
+      '/board/tutorial':  [],
       '/board/model':  generateSidebar('../board/model')
 
     },
