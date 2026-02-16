@@ -17,6 +17,7 @@ Defines table-level security permissions that control access to specific databas
       <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
+      <th>Default</th>
     </tr>
   </thead>
   <tbody>
@@ -26,9 +27,10 @@ Defines table-level security permissions that control access to specific databas
       <td><em>TableAccess<a href="./enum-TableAccess">🔗</a></em></td>
       <td>1</td>
       <td>1</td>
+      <td></td>
     </tr>
     <tr>
-      <td colspan="5"><em>Specifies the access level for the table using TableAccess enumeration values, controlling whether role members can view or modify table data.</em></td>
+      <td colspan="6"><em>Specifies the access level for the table using TableAccess enumeration values, controlling whether role members can view or modify table data.</em></td>
     </tr>
   </tbody>
 </table>

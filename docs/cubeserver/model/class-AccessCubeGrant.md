@@ -17,6 +17,7 @@ Defines cube-level security permissions that control access to a specific OLAP c
       <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
+      <th>Default</th>
     </tr>
   </thead>
   <tbody>
@@ -26,9 +27,10 @@ Defines cube-level security permissions that control access to a specific OLAP c
       <td><em>CubeAccess<a href="./enum-CubeAccess">🔗</a></em></td>
       <td>1</td>
       <td>1</td>
+      <td></td>
     </tr>
     <tr>
-      <td colspan="5"><em>Specifies the access level for the cube using the CubeAccess enumeration values (all, none, custom), determining whether role members can view cube data and structure.</em></td>
+      <td colspan="6"><em>Specifies the access level for the cube using the CubeAccess enumeration values (all, none, custom), determining whether role members can view cube data and structure.</em></td>
     </tr>
   </tbody>
 </table>

@@ -17,6 +17,7 @@ Defines dimension-level security permissions that control access to specific dim
       <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
+      <th>Default</th>
     </tr>
   </thead>
   <tbody>
@@ -26,9 +27,10 @@ Defines dimension-level security permissions that control access to specific dim
       <td><em>DimensionAccess<a href="./enum-DimensionAccess">🔗</a></em></td>
       <td>1</td>
       <td>1</td>
+      <td></td>
     </tr>
     <tr>
-      <td colspan="5"><em>Specifies the access level for the dimension using DimensionAccess enumeration values, controlling whether role members can view and navigate the dimension.</em></td>
+      <td colspan="6"><em>Specifies the access level for the dimension using DimensionAccess enumeration values, controlling whether role members can view and navigate the dimension.</em></td>
     </tr>
   </tbody>
 </table>

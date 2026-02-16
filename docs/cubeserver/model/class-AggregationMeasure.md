@@ -17,6 +17,7 @@ Maps a cube measure to a column in an aggregation table that contains pre-comput
       <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
+      <th>Default</th>
     </tr>
   </thead>
   <tbody>
@@ -26,9 +27,10 @@ Maps a cube measure to a column in an aggregation table that contains pre-comput
       <td><em>EString</em></td>
       <td>1</td>
       <td>1</td>
+      <td></td>
     </tr>
     <tr>
-      <td colspan="5"><em>Name of the cube measure that this aggregation measure mapping represents, typically specified in MDX notation such as '[Measures].[Sales Amount]' or '[Measures].[Unit Sales]'. This name must exactly match the measure name defined in the cube's measure group to ensure proper correlation between the logical measure definition and the aggregated data stored in the aggregation table. The name serves as the key for the aggregation matching algorithm to determine whether this aggregation table contains pre-computed values for measures required by a query, enabling the OLAP engine to substitute aggregation table access for fact table aggregation operations.</em></td>
+      <td colspan="6"><em>Name of the cube measure that this aggregation measure mapping represents, typically specified in MDX notation such as '[Measures].[Sales Amount]' or '[Measures].[Unit Sales]'. This name must exactly match the measure name defined in the cube's measure group to ensure proper correlation between the logical measure definition and the aggregated data stored in the aggregation table. The name serves as the key for the aggregation matching algorithm to determine whether this aggregation table contains pre-computed values for measures required by a query, enabling the OLAP engine to substitute aggregation table access for fact table aggregation operations.</em></td>
     </tr>
     <tr>
       <td><strong>rollupType</strong></td>
@@ -36,9 +38,10 @@ Maps a cube measure to a column in an aggregation table that contains pre-comput
       <td><em>EString</em></td>
       <td>0</td>
       <td>1</td>
+      <td></td>
     </tr>
     <tr>
-      <td colspan="5"><em>Specifies the aggregation function that should be used when rolling up this measure to higher levels of granularity, determining how pre-aggregated values can be further combined when the aggregation table contains more detailed data than required by a query. Common rollup types include 'Sum' for additive measures like sales amounts and quantities, 'Avg' for measures that should be averaged when rolled up, 'Min' and 'Max' for measures where extreme values are meaningful, and 'Count' for counting measures. The rollup type must be compatible with the measure's semantic meaning and the aggregation function originally used to create the aggregated values. Special handling is required for distinct count measures and complex calculated measures that may not support standard rollup operations.</em></td>
+      <td colspan="6"><em>Specifies the aggregation function that should be used when rolling up this measure to higher levels of granularity, determining how pre-aggregated values can be further combined when the aggregation table contains more detailed data than required by a query. Common rollup types include 'Sum' for additive measures like sales amounts and quantities, 'Avg' for measures that should be averaged when rolled up, 'Min' and 'Max' for measures where extreme values are meaningful, and 'Count' for counting measures. The rollup type must be compatible with the measure's semantic meaning and the aggregation function originally used to create the aggregated values. Special handling is required for distinct count measures and complex calculated measures that may not support standard rollup operations.</em></td>
     </tr>
   </tbody>
 </table>

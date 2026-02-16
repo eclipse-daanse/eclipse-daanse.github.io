@@ -18,6 +18,7 @@ Abstract base class for all cube types in the OLAP model. A cube represents a mu
       <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
+      <th>Default</th>
     </tr>
   </thead>
   <tbody>
@@ -27,9 +28,10 @@ Abstract base class for all cube types in the OLAP model. A cube represents a mu
       <td><em>Boolean</em></td>
       <td>0</td>
       <td>1</td>
+      <td>true</td>
     </tr>
     <tr>
-      <td colspan="5"><em>Boolean flag that controls whether this cube is active and available for queries. When set to false, the cube is excluded from XMLA metadata discovery, cannot be queried, and does not appear in client tool cube lists. This provides a way to temporarily disable cubes during maintenance, development, or data loading without removing them from the schema. Disabled cubes remain in the model for administrative purposes but are not accessible to end users.</em></td>
+      <td colspan="6"><em>Boolean flag that controls whether this cube is active and available for queries. When set to false, the cube is excluded from XMLA metadata discovery, cannot be queried, and does not appear in client tool cube lists. This provides a way to temporarily disable cubes during maintenance, development, or data loading without removing them from the schema. Disabled cubes remain in the model for administrative purposes but are not accessible to end users.</em></td>
     </tr>
     <tr>
       <td><strong>visible</strong></td>
@@ -37,9 +39,10 @@ Abstract base class for all cube types in the OLAP model. A cube represents a mu
       <td><em>Boolean</em></td>
       <td>0</td>
       <td>1</td>
+      <td>true</td>
     </tr>
     <tr>
-      <td colspan="5"><em>Boolean flag that controls whether this cube appears in client tool listings and XMLA metadata discovery. Unlike the enabled flag, invisible cubes can still be queried if the cube name is known, but they don't appear in browse lists or cube explorers. This is useful for creating internal or system cubes, staging cubes for development, or providing advanced cubes only to power users who know the cube names explicitly.</em></td>
+      <td colspan="6"><em>Boolean flag that controls whether this cube appears in client tool listings and XMLA metadata discovery. Unlike the enabled flag, invisible cubes can still be queried if the cube name is known, but they don't appear in browse lists or cube explorers. This is useful for creating internal or system cubes, staging cubes for development, or providing advanced cubes only to power users who know the cube names explicitly.</em></td>
     </tr>
   </tbody>
 </table>

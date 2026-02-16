@@ -17,6 +17,7 @@ Maps a dimension level to a column in an aggregation table, defining how dimensi
       <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
+      <th>Default</th>
     </tr>
   </thead>
   <tbody>
@@ -26,9 +27,10 @@ Maps a dimension level to a column in an aggregation table, defining how dimensi
       <td><em>Boolean</em></td>
       <td>0</td>
       <td>1</td>
+      <td>true</td>
     </tr>
     <tr>
-      <td colspan="5"><em>Boolean flag indicating whether this aggregation level represents a collapsed hierarchy level. When true, intermediate hierarchy levels are omitted in the aggregation table, allowing queries to roll up directly to higher levels without requiring intermediate level data. Default value is true.</em></td>
+      <td colspan="6"><em>Boolean flag indicating whether this aggregation level represents a collapsed hierarchy level. When true, intermediate hierarchy levels are omitted in the aggregation table, allowing queries to roll up directly to higher levels without requiring intermediate level data. Default value is true.</em></td>
     </tr>
     <tr>
       <td><strong>name</strong></td>
@@ -36,9 +38,10 @@ Maps a dimension level to a column in an aggregation table, defining how dimensi
       <td><em>EString</em></td>
       <td>1</td>
       <td>1</td>
+      <td></td>
     </tr>
     <tr>
-      <td colspan="5"><em>Required name identifier for the dimension level that this aggregation level represents. This name must correspond to a level defined in the cube schema, enabling the aggregation matching algorithm to identify appropriate aggregations for queries involving this level.</em></td>
+      <td colspan="6"><em>Required name identifier for the dimension level that this aggregation level represents. This name must correspond to a level defined in the cube schema, enabling the aggregation matching algorithm to identify appropriate aggregations for queries involving this level.</em></td>
     </tr>
   </tbody>
 </table>

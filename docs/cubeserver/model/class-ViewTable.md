@@ -18,6 +18,7 @@ Represents a database view that provides a logical table interface over underlyi
       <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
+      <th>Default</th>
     </tr>
   </thead>
   <tbody>

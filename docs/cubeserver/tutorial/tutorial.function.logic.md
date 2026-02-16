@@ -27,7 +27,7 @@ The Database Schema contains the `Fact` table with three columns: `KEY` and `VAL
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Query
 
-The Query is a simple TableQuery that selects all columns from the Fact table to use in in the hierarchy and in the cube for the measures.
+The Query is a simple TableQuery that selects all columns from the Fact table to use in the hierarchy and in the cube for the measures.
 
 
 ```xml
@@ -47,7 +47,7 @@ This calculated member with `IIF` function.
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Cube - logic functions
 
-The cube is defines the calculated members with logic functions.
+The cube defines the calculated members with logic functions.
 
 
 ```xml
@@ -76,7 +76,7 @@ The cube is defines the calculated members with logic functions.
 
 ## Definition
 
-This files represent the complete definition of the catalog.
+This file represents the complete definition of the catalog.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -115,6 +115,6 @@ This files represent the complete definition of the catalog.
 
 
 ## Tutorial Zip
-This files contaisn the data-tables as csv and the mapping as xmi file.
+This file contains the data-tables as csv and the mapping as xmi file.
 
 <a href="./zip/tutorial.function.logic.zip" download>Download Zip File</a>

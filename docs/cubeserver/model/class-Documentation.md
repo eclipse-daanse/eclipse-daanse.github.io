@@ -17,6 +17,7 @@ group: Class
       <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
+      <th>Default</th>
     </tr>
   </thead>
   <tbody>
@@ -26,9 +27,10 @@ group: Class
       <td><em>EString</em></td>
       <td>1</td>
       <td>1</td>
+      <td></td>
     </tr>
     <tr>
-      <td colspan="5"><em></em></td>
+      <td colspan="6"><em></em></td>
     </tr>
     <tr>
       <td><strong>value</strong></td>
@@ -36,9 +38,10 @@ group: Class
       <td><em>EString</em></td>
       <td>1</td>
       <td>1</td>
+      <td></td>
     </tr>
     <tr>
-      <td colspan="5"><em></em></td>
+      <td colspan="6"><em></em></td>
     </tr>
     <tr>
       <td><strong>orderMajor</strong></td>
@@ -46,9 +49,10 @@ group: Class
       <td><em>EInt</em></td>
       <td>0</td>
       <td>1</td>
+      <td></td>
     </tr>
     <tr>
-      <td colspan="5"><em></em></td>
+      <td colspan="6"><em></em></td>
     </tr>
     <tr>
       <td><strong>orderMinor</strong></td>
@@ -56,9 +60,10 @@ group: Class
       <td><em>EInt</em></td>
       <td>0</td>
       <td>1</td>
+      <td></td>
     </tr>
     <tr>
-      <td colspan="5"><em></em></td>
+      <td colspan="6"><em></em></td>
     </tr>
     <tr>
       <td><strong>orderMicro</strong></td>
@@ -66,9 +71,10 @@ group: Class
       <td><em>EInt</em></td>
       <td>0</td>
       <td>1</td>
+      <td></td>
     </tr>
     <tr>
-      <td colspan="5"><em></em></td>
+      <td colspan="6"><em></em></td>
     </tr>
     <tr>
       <td><strong>showContainer</strong></td>
@@ -76,9 +82,10 @@ group: Class
       <td><em>EBoolean</em></td>
       <td>0</td>
       <td>1</td>
+      <td></td>
     </tr>
     <tr>
-      <td colspan="5"><em></em></td>
+      <td colspan="6"><em></em></td>
     </tr>
     <tr>
       <td><strong>showContainments</strong></td>
@@ -86,9 +93,10 @@ group: Class
       <td><em>EInt</em></td>
       <td>0</td>
       <td>1</td>
+      <td></td>
     </tr>
     <tr>
-      <td colspan="5"><em></em></td>
+      <td colspan="6"><em></em></td>
     </tr>
   </tbody>
 </table>

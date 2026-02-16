@@ -17,6 +17,7 @@ Represents a single column value within a row of an InlineTable. RowValue pairs 
       <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
+      <th>Default</th>
     </tr>
   </thead>
   <tbody>
@@ -26,9 +27,10 @@ Represents a single column value within a row of an InlineTable. RowValue pairs 
       <td><em>EString</em></td>
       <td>0</td>
       <td>1</td>
+      <td></td>
     </tr>
     <tr>
-      <td colspan="5"><em>The actual data value for this column in string format. Values are converted to appropriate data types based on the column definition when processed by the OLAP engine.</em></td>
+      <td colspan="6"><em>The actual data value for this column in string format. Values are converted to appropriate data types based on the column definition when processed by the OLAP engine.</em></td>
     </tr>
   </tbody>
 </table>

@@ -11,7 +11,7 @@ The Inline Table is a special Table that is used to hold the data in the mapping
 
 ## InlineTable, Row and RowValue
 
-The InlineTable is a virtual table. The table and data does not exist in the datbase and will not be inserted. The inlinetable stores the data in the Row and RowValue elements completely in its definition. The RowValue elements are used to store the values of the columns. The Row element is used to store the values. the RowValue can store the atomic data and the reference to the columns. The InlineTable can have multiple Rows and columns. Inline tables should only be used exceptionally.
+The InlineTable is a virtual table. The table and data does not exist in the database and will not be inserted. The inlinetable stores the data in the Row and RowValue elements completely in its definition. The RowValue elements are used to store the values of the columns. The Row element is used to store the values. the RowValue can store the atomic data and the reference to the columns. The InlineTable can have multiple Rows and columns. Inline tables should only be used exceptionally.
 
 
 ```xml
@@ -33,7 +33,7 @@ The InlineTable is a virtual table. The table and data does not exist in the dat
 
 ## Definition
 
-This files represent the complete definition of the catalog.
+This file represents the complete definition of the catalog.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -60,6 +60,6 @@ This files represent the complete definition of the catalog.
 
 
 ## Tutorial Zip
-This files contaisn the data-tables as csv and the mapping as xmi file.
+This file contains the data-tables as csv and the mapping as xmi file.
 
 <a href="./zip/tutorial.database.inlinetable.zip" download>Download Zip File</a>

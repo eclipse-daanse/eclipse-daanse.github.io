@@ -18,6 +18,7 @@ A virtual cube that combines measures and dimensions from multiple physical cube
       <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
+      <th>Default</th>
     </tr>
   </thead>
   <tbody>

@@ -17,6 +17,7 @@ Connects a cube to a dimension, establishing the relationship between fact table
       <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
+      <th>Default</th>
     </tr>
   </thead>
   <tbody>
@@ -26,9 +27,10 @@ Connects a cube to a dimension, establishing the relationship between fact table
       <td><em>EString</em></td>
       <td>0</td>
       <td>1</td>
+      <td></td>
     </tr>
     <tr>
-      <td colspan="5"><em>Optional prefix that can be applied to this dimension when used in specific contexts or cubes. The usage prefix allows for dimension name customization and disambiguation when the same dimensional concept is used multiple times within a single analytical context, enabling scenarios like 'Ship Date' and 'Order Date' dimensions that share the same underlying time dimension structure.</em></td>
+      <td colspan="6"><em>Optional prefix that can be applied to this dimension when used in specific contexts or cubes. The usage prefix allows for dimension name customization and disambiguation when the same dimensional concept is used multiple times within a single analytical context, enabling scenarios like 'Ship Date' and 'Order Date' dimensions that share the same underlying time dimension structure.</em></td>
     </tr>
     <tr>
       <td><strong>visible</strong></td>
@@ -36,9 +38,10 @@ Connects a cube to a dimension, establishing the relationship between fact table
       <td><em>Boolean</em></td>
       <td>0</td>
       <td>1</td>
+      <td>true</td>
     </tr>
     <tr>
-      <td colspan="5"><em>Boolean flag controlling whether this dimension appears in client tool dimension lists, XMLA metadata discovery, and cube browsers. When false, the dimension becomes hidden from normal user interfaces but remains accessible through direct MDX references.</em></td>
+      <td colspan="6"><em>Boolean flag controlling whether this dimension appears in client tool dimension lists, XMLA metadata discovery, and cube browsers. When false, the dimension becomes hidden from normal user interfaces but remains accessible through direct MDX references.</em></td>
     </tr>
     <tr>
       <td><strong>overrideDimensionName</strong></td>
@@ -46,9 +49,10 @@ Connects a cube to a dimension, establishing the relationship between fact table
       <td><em>EString</em></td>
       <td>0</td>
       <td>1</td>
+      <td></td>
     </tr>
     <tr>
-      <td colspan="5"><em>Optional custom name for this dimension as it appears in this specific cube context. When specified, this name overrides the dimension's default name for display purposes in this cube, allowing the same dimension to appear with different names in different cubes for contextual clarity.</em></td>
+      <td colspan="6"><em>Optional custom name for this dimension as it appears in this specific cube context. When specified, this name overrides the dimension's default name for display purposes in this cube, allowing the same dimension to appear with different names in different cubes for contextual clarity.</em></td>
     </tr>
     <tr>
       <td><strong>id</strong></td>
@@ -56,9 +60,10 @@ Connects a cube to a dimension, establishing the relationship between fact table
       <td><em>EString</em></td>
       <td>1</td>
       <td>1</td>
+      <td></td>
     </tr>
     <tr>
-      <td colspan="5"><em>Unique identifier for this DimensionConnector within the scope of its containing cube, serving as the primary key for this connector instance and enabling precise referencing in MDX queries, XMLA metadata, client applications, and system administration tools. The ID must be unique within all dimension connectors for a specific cube and should follow consistent naming conventions that support analytical application development and maintenance.</em></td>
+      <td colspan="6"><em>Unique identifier for this DimensionConnector within the scope of its containing cube, serving as the primary key for this connector instance and enabling precise referencing in MDX queries, XMLA metadata, client applications, and system administration tools. The ID must be unique within all dimension connectors for a specific cube and should follow consistent naming conventions that support analytical application development and maintenance.</em></td>
     </tr>
   </tbody>
 </table>

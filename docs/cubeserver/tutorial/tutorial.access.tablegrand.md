@@ -15,7 +15,7 @@ This tutorial discusses roles with TableGrant.
 
 ## Database Schema
 
-The Database Schema contains the `Fact` table with two columns: `KEY` and `VALUE`. The `KEY` column is used as the discriminator in the the Level and Hierarchy definitions.
+The Database Schema contains the `Fact` table with two columns: `KEY` and `VALUE`. The `KEY` column is used as the discriminator in the Level and Hierarchy definitions.
 
 
 ```xml
@@ -30,7 +30,7 @@ The Database Schema contains the `Fact` table with two columns: `KEY` and `VALUE
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Query
 
-The Query is a simple TableQuery that selects all columns from the `Fact` table to use in in the hierarchy and in the cube for the measures.
+The Query is a simple TableQuery that selects all columns from the `Fact` table to use in the hierarchy and in the cube for the measures.
 
 
 ```xml
@@ -40,7 +40,7 @@ The Query is a simple TableQuery that selects all columns from the `Fact` table 
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Cube1 with access all
 
-The cube1 is defines by the DimensionConnector1 and the DimensionConnector2  and the MeasureGroup with measure with aggregation sum.
+The cube1 is defined by the DimensionConnector1 and the DimensionConnector2  and the MeasureGroup with measure with aggregation sum.
 
 
 ```xml
@@ -89,7 +89,7 @@ The `roleNone` use TableGrant access `none`; (no access to all tables)
 
 ## Definition
 
-This files represent the complete definition of the catalog.
+This file represents the complete definition of the catalog.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -130,6 +130,6 @@ This files represent the complete definition of the catalog.
 
 
 ## Tutorial Zip
-This files contaisn the data-tables as csv and the mapping as xmi file.
+This file contains the data-tables as csv and the mapping as xmi file.
 
 <a href="./zip/tutorial.access.tablegrand.zip" download>Download Zip File</a>

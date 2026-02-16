@@ -18,6 +18,7 @@ Concrete aggregation table implementation that uses regular expression patterns 
       <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
+      <th>Default</th>
     </tr>
   </thead>
   <tbody>
@@ -27,9 +28,10 @@ Concrete aggregation table implementation that uses regular expression patterns 
       <td><em>EString</em></td>
       <td>1</td>
       <td>1</td>
+      <td></td>
     </tr>
     <tr>
-      <td colspan="5"><em>Regular expression pattern that defines the naming convention for aggregation tables that should be automatically discovered and utilized by this aggregation configuration. The pattern is matched against database table names during aggregation table discovery, enabling the OLAP engine to dynamically identify and incorporate new aggregation tables without manual configuration changes. Patterns should be designed to accurately identify aggregation tables while avoiding false matches with fact tables, dimension tables, or other non-aggregation database objects. Common patterns include prefixes like 'AGG_.*', suffixes like '.*_SUMMARY', or more complex expressions that encode aggregation level information within table names. The pattern matching respects the ignorecase setting inherited from the parent AggregationTable for case-sensitive or case-insensitive matching behavior.</em></td>
+      <td colspan="6"><em>Regular expression pattern that defines the naming convention for aggregation tables that should be automatically discovered and utilized by this aggregation configuration. The pattern is matched against database table names during aggregation table discovery, enabling the OLAP engine to dynamically identify and incorporate new aggregation tables without manual configuration changes. Patterns should be designed to accurately identify aggregation tables while avoiding false matches with fact tables, dimension tables, or other non-aggregation database objects. Common patterns include prefixes like 'AGG_.*', suffixes like '.*_SUMMARY', or more complex expressions that encode aggregation level information within table names. The pattern matching respects the ignorecase setting inherited from the parent AggregationTable for case-sensitive or case-insensitive matching behavior.</em></td>
     </tr>
   </tbody>
 </table>

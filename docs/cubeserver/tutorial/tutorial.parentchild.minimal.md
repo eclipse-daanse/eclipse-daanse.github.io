@@ -56,7 +56,7 @@ The Query is a simple TableQuery that selects all columns from the `Hier_One_Top
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Level
 
-This Example uses Level1 level bases on the KEY column and name column `NAME` of table `Hier_One_Top_Member`.
+This Example uses Level1 level based on the KEY column and name column `NAME` of table `Hier_One_Top_Member`.
 
 
 ```xml
@@ -93,7 +93,7 @@ The time dimension is defined with the one hierarchy.
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Cube
 
-The cube with with Parent Child Hierarchy.
+The cube with Parent Child Hierarchy.
 
 
 ```xml
@@ -109,7 +109,7 @@ The cube with with Parent Child Hierarchy.
 
 ## Definition
 
-This files represent the complete definition of the catalog.
+This file represents the complete definition of the catalog.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -144,6 +144,6 @@ This files represent the complete definition of the catalog.
 
 
 ## Tutorial Zip
-This files contaisn the data-tables as csv and the mapping as xmi file.
+This file contains the data-tables as csv and the mapping as xmi file.
 
 <a href="./zip/tutorial.parentchild.minimal.zip" download>Download Zip File</a>

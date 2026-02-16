@@ -17,6 +17,7 @@ Maps a level property to its corresponding column in an aggregation table, enabl
       <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
+      <th>Default</th>
     </tr>
   </thead>
   <tbody>
@@ -26,9 +27,10 @@ Maps a level property to its corresponding column in an aggregation table, enabl
       <td><em>EString</em></td>
       <td>1</td>
       <td>1</td>
+      <td></td>
     </tr>
     <tr>
-      <td colspan="5"><em>Required name identifier for the level property that this aggregation level property represents. This name must correspond to a property defined in the level schema, enabling proper property access in aggregated queries.</em></td>
+      <td colspan="6"><em>Required name identifier for the level property that this aggregation level property represents. This name must correspond to a property defined in the level schema, enabling proper property access in aggregated queries.</em></td>
     </tr>
   </tbody>
 </table>

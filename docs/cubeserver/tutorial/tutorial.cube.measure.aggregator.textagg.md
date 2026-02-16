@@ -31,6 +31,18 @@ The cube defined in this example is based on a single table that stores all the 
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
+## Ordered Column
+
+Represents a column with specific ordering information used in queries and result sets.
+OrderedColumn is typically used in OLAP contexts where explicit column ordering is required for query processing or result presentation.
+OrderedColumn uses ascending by default.
+
+
+```xml
+<roma:OrderedColumn  id="_ordered_column_col_fact_value" column="_column_fact_comment"/>
+
+```
+*<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Query
 
 This example uses a TableQuery, as it directly references the physical table `Fact`.
@@ -54,7 +66,7 @@ In this example, multiple measures are defined. All measures reference the `VALU
   <dimensionConnectors foreignKey="roma:PhysicalColumn _column_fact_year" dimension="roma:TimeDimension _dimension_time" id="_dimensionConnector_time"/>
   <measureGroups>
     <measures xsi:type="roma:SumMeasure" id="_measure_sumValue" name="Sum of Value" column="_column_fact_value"/>
-    <measures xsi:type="roma:TextAggMeasure" id="_measure_comment" name="Comment" column="roma:SQLExpressionColumn _sqlExpressionColumn_userComment" orderByColumns="/0" separator=", "/>
+    <measures xsi:type="roma:TextAggMeasure" id="_measure_comment" name="Comment" column="roma:SQLExpressionColumn _sqlExpressionColumn_userComment" orderByColumns="_ordered_column_col_fact_value" separator=", "/>
   </measureGroups>
 </roma:PhysicalCube>
 
@@ -63,12 +75,12 @@ In this example, multiple measures are defined. All measures reference the `VALU
 
 ## Definition
 
-This files represent the complete definition of the catalog.
+This file represents the complete definition of the catalog.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:OrderedColumn column="_column_fact_comment"/>
+  <roma:OrderedColumn id="_ordered_column_col_fact_value" column="_column_fact_comment"/>
   <roma:Catalog description="Text aggregation functions" name="Daanse Tutorial - Measure Aggregator Text Agg" cubes="_cube_measuresTextAggregators" dbschemas="_databaseSchema_main"/>
   <roma:DatabaseSchema id="_databaseSchema_main">
     <tables xsi:type="roma:PhysicalTable" id="_table_fact" name="Fact">
@@ -104,7 +116,7 @@ This files represent the complete definition of the catalog.
     <dimensionConnectors foreignKey="_column_fact_year" dimension="_dimension_time" id="_dimensionConnector_time"/>
     <measureGroups>
       <measures xsi:type="roma:SumMeasure" id="_measure_sumValue" name="Sum of Value" column="_column_fact_value"/>
-      <measures xsi:type="roma:TextAggMeasure" id="_measure_comment" name="Comment" column="_sqlExpressionColumn_userComment" orderByColumns="/0" separator=", "/>
+      <measures xsi:type="roma:TextAggMeasure" id="_measure_comment" name="Comment" column="_sqlExpressionColumn_userComment" orderByColumns="_ordered_column_col_fact_value" separator=", "/>
     </measureGroups>
   </roma:PhysicalCube>
 </xmi:XMI>
@@ -114,6 +126,6 @@ This files represent the complete definition of the catalog.
 
 
 ## Tutorial Zip
-This files contaisn the data-tables as csv and the mapping as xmi file.
+This file contains the data-tables as csv and the mapping as xmi file.
 
 <a href="./zip/tutorial.cube.measure.aggregator.textagg.zip" download>Download Zip File</a>

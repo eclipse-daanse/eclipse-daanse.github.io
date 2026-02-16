@@ -18,6 +18,7 @@ Defines a database schema containing tables and their structural relationships. 
       <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
+      <th>Default</th>
     </tr>
   </thead>
   <tbody>

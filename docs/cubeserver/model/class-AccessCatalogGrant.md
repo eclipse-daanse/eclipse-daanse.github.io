@@ -17,6 +17,7 @@ Represents a catalog-level security grant that defines the foundational access p
       <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
+      <th>Default</th>
     </tr>
   </thead>
   <tbody>
@@ -26,9 +27,10 @@ Represents a catalog-level security grant that defines the foundational access p
       <td><em>CatalogAccess<a href="./enum-CatalogAccess">🔗</a></em></td>
       <td>1</td>
       <td>1</td>
+      <td></td>
     </tr>
     <tr>
-      <td colspan="5"><em>Enumerated value that specifies the level of access this role has to the catalog and all its contained resources, serving as the primary access control decision point for catalog-level operations. The access level determines the overall scope of permissions and influences how sub-grants are evaluated and applied. When set to ALL, the role receives complete unrestricted access to the entire catalog including all cubes, dimensions, hierarchies, members, and database objects, effectively granting administrative privileges for the catalog scope. When set to NONE, the role is completely denied access to the catalog and all its contents, preventing any interaction with catalog resources regardless of any sub-grants that might be defined. When set to ALL_DIMENSIONS, the role receives access to shared dimensions and their metadata but is denied access to cubes and fact data, enabling metadata browsing and dimension exploration scenarios without exposing sensitive measure data. When set to CUSTOM, the role's access is determined by the explicit cubeGrants and databaseSchemaGrants collections, enabling fine-grained security policies where specific permissions are granted only for explicitly authorized resources. The CUSTOM setting is most commonly used in enterprise scenarios where complex security requirements necessitate selective access to different parts of the catalog based on business roles, organizational hierarchies, regulatory requirements, or multi-tenant isolation needs.</em></td>
+      <td colspan="6"><em>Enumerated value that specifies the level of access this role has to the catalog and all its contained resources, serving as the primary access control decision point for catalog-level operations. The access level determines the overall scope of permissions and influences how sub-grants are evaluated and applied. When set to ALL, the role receives complete unrestricted access to the entire catalog including all cubes, dimensions, hierarchies, members, and database objects, effectively granting administrative privileges for the catalog scope. When set to NONE, the role is completely denied access to the catalog and all its contents, preventing any interaction with catalog resources regardless of any sub-grants that might be defined. When set to ALL_DIMENSIONS, the role receives access to shared dimensions and their metadata but is denied access to cubes and fact data, enabling metadata browsing and dimension exploration scenarios without exposing sensitive measure data. When set to CUSTOM, the role's access is determined by the explicit cubeGrants and databaseSchemaGrants collections, enabling fine-grained security policies where specific permissions are granted only for explicitly authorized resources. The CUSTOM setting is most commonly used in enterprise scenarios where complex security requirements necessitate selective access to different parts of the catalog based on business roles, organizational hierarchies, regulatory requirements, or multi-tenant isolation needs.</em></td>
     </tr>
   </tbody>
 </table>

@@ -17,6 +17,7 @@ Defines the physical database table structure that receives modified analytical 
       <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
+      <th>Default</th>
     </tr>
   </thead>
   <tbody>
@@ -26,9 +27,10 @@ Defines the physical database table structure that receives modified analytical 
       <td><em>EString</em></td>
       <td>1</td>
       <td>1</td>
+      <td></td>
     </tr>
     <tr>
-      <td colspan="5"><em>Database table name where writeback data is stored. Used by WritebackUtil.commit() to generate SQL INSERT statements. Must contain columns matching the WritebackMeasure and WritebackAttribute definitions plus system columns (ID, USER).</em></td>
+      <td colspan="6"><em>Database table name where writeback data is stored. Used by WritebackUtil.commit() to generate SQL INSERT statements. Must contain columns matching the WritebackMeasure and WritebackAttribute definitions plus system columns (ID, USER).</em></td>
     </tr>
     <tr>
       <td><strong>schema</strong></td>
@@ -36,9 +38,10 @@ Defines the physical database table structure that receives modified analytical 
       <td><em>EString</em></td>
       <td>0</td>
       <td>1</td>
+      <td></td>
     </tr>
     <tr>
-      <td colspan="5"><em>Optional database schema name qualifying the writeback table. When specified, used to construct fully qualified table names in SQL statements. Supports database environments requiring schema-based table organization.</em></td>
+      <td colspan="6"><em>Optional database schema name qualifying the writeback table. When specified, used to construct fully qualified table names in SQL statements. Supports database environments requiring schema-based table organization.</em></td>
     </tr>
   </tbody>
 </table>

@@ -18,6 +18,7 @@ A flexible measure that allows custom aggregation implementations through config
       <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
+      <th>Default</th>
     </tr>
   </thead>
   <tbody>
@@ -27,9 +28,10 @@ A flexible measure that allows custom aggregation implementations through config
       <td><em>EString</em></td>
       <td>0</td>
       <td>1</td>
+      <td></td>
     </tr>
     <tr>
-      <td colspan="5"><em>Template string that defines the custom aggregation logic or SQL expression pattern. The template can contain placeholders that are replaced with actual column references and property values at runtime. This enables dynamic SQL generation, custom function calls, or complex expressions that adapt to different database dialects and business requirements while maintaining a consistent measure definition.</em></td>
+      <td colspan="6"><em>Template string that defines the custom aggregation logic or SQL expression pattern. The template can contain placeholders that are replaced with actual column references and property values at runtime. This enables dynamic SQL generation, custom function calls, or complex expressions that adapt to different database dialects and business requirements while maintaining a consistent measure definition.</em></td>
     </tr>
     <tr>
       <td><strong>properties</strong></td>
@@ -37,9 +39,10 @@ A flexible measure that allows custom aggregation implementations through config
       <td><em>EString</em></td>
       <td>1</td>
       <td>&infin;</td>
+      <td></td>
     </tr>
     <tr>
-      <td colspan="5"><em>Collection of custom property values that parameterize the measure template and provide configuration for the custom aggregation logic. Properties can include constants, configuration values, or dynamic parameters that modify the behavior of the custom measure. At least one property must be defined to configure the custom aggregation appropriately for the specific business requirements.</em></td>
+      <td colspan="6"><em>Collection of custom property values that parameterize the measure template and provide configuration for the custom aggregation logic. Properties can include constants, configuration values, or dynamic parameters that modify the behavior of the custom measure. At least one property must be defined to configure the custom aggregation appropriately for the specific business requirements.</em></td>
     </tr>
   </tbody>
 </table>

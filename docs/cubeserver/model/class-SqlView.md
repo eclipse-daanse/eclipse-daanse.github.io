@@ -18,6 +18,7 @@ Represents a virtual table defined by SQL query expressions rather than physical
       <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
+      <th>Default</th>
     </tr>
   </thead>
   <tbody>

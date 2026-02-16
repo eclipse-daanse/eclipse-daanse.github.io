@@ -18,6 +18,7 @@ A concrete cube implementation that maps directly to one or more fact tables in 
       <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
+      <th>Default</th>
     </tr>
   </thead>
   <tbody>
@@ -27,9 +28,10 @@ A concrete cube implementation that maps directly to one or more fact tables in 
       <td><em>Boolean</em></td>
       <td>0</td>
       <td>1</td>
+      <td>true</td>
     </tr>
     <tr>
-      <td colspan="5"><em>Boolean flag that controls whether query results and calculated values for this cube should be cached by the OLAP engine. When enabled (default), the system caches query results, aggregated values, and member data to improve performance for subsequent queries. Disabling cache may be useful for cubes with rapidly changing data or during development and testing phases where fresh data is always required.</em></td>
+      <td colspan="6"><em>Boolean flag that controls whether query results and calculated values for this cube should be cached by the OLAP engine. When enabled (default), the system caches query results, aggregated values, and member data to improve performance for subsequent queries. Disabling cache may be useful for cubes with rapidly changing data or during development and testing phases where fresh data is always required.</em></td>
     </tr>
   </tbody>
 </table>

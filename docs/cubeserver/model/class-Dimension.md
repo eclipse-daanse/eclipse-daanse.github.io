@@ -18,6 +18,7 @@ Abstract foundational class for all dimensional structures in OLAP modeling, rep
       <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
+      <th>Default</th>
     </tr>
   </thead>
   <tbody>
@@ -27,9 +28,10 @@ Abstract foundational class for all dimensional structures in OLAP modeling, rep
       <td><em>EString</em></td>
       <td>0</td>
       <td>1</td>
+      <td></td>
     </tr>
     <tr>
-      <td colspan="5"><em>Optional prefix that can be applied to this dimension when used in specific contexts or cubes. The usage prefix allows for dimension name customization and disambiguation when the same dimensional concept is used multiple times within a single analytical context. This enables scenarios like having both 'Ship Date' and 'Order Date' dimensions that share the same underlying time dimension structure but have different contextual meanings and display names.</em></td>
+      <td colspan="6"><em>Optional prefix that can be applied to this dimension when used in specific contexts or cubes. The usage prefix allows for dimension name customization and disambiguation when the same dimensional concept is used multiple times within a single analytical context. This enables scenarios like having both 'Ship Date' and 'Order Date' dimensions that share the same underlying time dimension structure but have different contextual meanings and display names.</em></td>
     </tr>
     <tr>
       <td><strong>visible</strong></td>
@@ -37,9 +39,10 @@ Abstract foundational class for all dimensional structures in OLAP modeling, rep
       <td><em>Boolean</em></td>
       <td>0</td>
       <td>1</td>
+      <td>true</td>
     </tr>
     <tr>
-      <td colspan="5"><em>Boolean flag controlling whether this dimension appears in client tool dimension lists, XMLA metadata discovery, and cube browsers. When set to false, the dimension becomes hidden from normal user interfaces but remains fully accessible through direct references in MDX queries. This is useful for creating internal system dimensions, intermediate calculation dimensions, or advanced dimensions intended only for power users who know the dimension names explicitly.</em></td>
+      <td colspan="6"><em>Boolean flag controlling whether this dimension appears in client tool dimension lists, XMLA metadata discovery, and cube browsers. When set to false, the dimension becomes hidden from normal user interfaces but remains fully accessible through direct references in MDX queries. This is useful for creating internal system dimensions, intermediate calculation dimensions, or advanced dimensions intended only for power users who know the dimension names explicitly.</em></td>
     </tr>
   </tbody>
 </table>

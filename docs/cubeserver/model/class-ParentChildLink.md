@@ -17,6 +17,7 @@ Defines closure table configuration for parent-child hierarchies that dramatical
       <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
+      <th>Default</th>
     </tr>
   </thead>
   <tbody>

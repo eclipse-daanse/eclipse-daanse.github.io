@@ -17,6 +17,7 @@ Defines a foreign key relationship between two database tables, establishing ref
       <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
+      <th>Default</th>
     </tr>
   </thead>
   <tbody>

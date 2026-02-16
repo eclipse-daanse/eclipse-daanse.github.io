@@ -18,6 +18,7 @@ A specialized measure that concatenates text values from the referenced column a
       <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
+      <th>Default</th>
     </tr>
   </thead>
   <tbody>
@@ -27,9 +28,10 @@ A specialized measure that concatenates text values from the referenced column a
       <td><em>EString</em></td>
       <td>0</td>
       <td>1</td>
+      <td></td>
     </tr>
     <tr>
-      <td colspan="5"><em>String value used to separate individual text values when concatenating them into the final result. Common separators include ', ' (comma-space), '; ' (semicolon-space), ' | ' (pipe), or newline characters. If not specified, values are concatenated without separation. The separator choice should match the intended use case and display requirements for the aggregated text.</em></td>
+      <td colspan="6"><em>String value used to separate individual text values when concatenating them into the final result. Common separators include ', ' (comma-space), '; ' (semicolon-space), ' | ' (pipe), or newline characters. If not specified, values are concatenated without separation. The separator choice should match the intended use case and display requirements for the aggregated text.</em></td>
     </tr>
     <tr>
       <td><strong>distinct</strong></td>
@@ -37,9 +39,10 @@ A specialized measure that concatenates text values from the referenced column a
       <td><em>Boolean</em></td>
       <td>0</td>
       <td>1</td>
+      <td>true</td>
     </tr>
     <tr>
-      <td colspan="5"><em>Boolean flag that controls whether duplicate text values are included in the concatenation. When set to true (default), only unique text values are included in the result, preventing repetitive text in the aggregated output. When false, all values including duplicates are concatenated, which may be useful for frequency-based text analysis or when repetition provides meaningful information.</em></td>
+      <td colspan="6"><em>Boolean flag that controls whether duplicate text values are included in the concatenation. When set to true (default), only unique text values are included in the result, preventing repetitive text in the aggregated output. When false, all values including duplicates are concatenated, which may be useful for frequency-based text analysis or when repetition provides meaningful information.</em></td>
     </tr>
     <tr>
       <td><strong>coalesce</strong></td>
@@ -47,9 +50,10 @@ A specialized measure that concatenates text values from the referenced column a
       <td><em>EString</em></td>
       <td>0</td>
       <td>1</td>
+      <td></td>
     </tr>
     <tr>
-      <td colspan="5"><em>Default text value to use when encountering null or empty values during concatenation. This prevents null values from creating gaps or unexpected results in the aggregated text. Common coalesce values include '[Empty]', 'N/A', or empty string. If not specified, null values are simply ignored during the concatenation process.</em></td>
+      <td colspan="6"><em>Default text value to use when encountering null or empty values during concatenation. This prevents null values from creating gaps or unexpected results in the aggregated text. Common coalesce values include '[Empty]', 'N/A', or empty string. If not specified, null values are simply ignored during the concatenation process.</em></td>
     </tr>
     <tr>
       <td><strong>onOverflowTruncate</strong></td>
@@ -57,9 +61,10 @@ A specialized measure that concatenates text values from the referenced column a
       <td><em>EString</em></td>
       <td>0</td>
       <td>1</td>
+      <td></td>
     </tr>
     <tr>
-      <td colspan="5"><em>Behavior specification for handling text concatenation results that exceed database column size limits or application constraints. This attribute defines how the system should respond when the aggregated text becomes too long, such as truncating at a specific length, adding ellipsis, or applying other overflow handling strategies to maintain data integrity and display consistency.</em></td>
+      <td colspan="6"><em>Behavior specification for handling text concatenation results that exceed database column size limits or application constraints. This attribute defines how the system should respond when the aggregated text becomes too long, such as truncating at a specific length, adding ellipsis, or applying other overflow handling strategies to maintain data integrity and display consistency.</em></td>
     </tr>
   </tbody>
 </table>

@@ -54,14 +54,20 @@ classDiagram
 
 
 
-  class AbstractElement {
+  class IdElement {
       + id : EString
+  }
+
+    IdElement <|-- DocumentedElement : inherit
+
+
+  class AbstractElement {
       + description : EString
       + name : EString
   }
     AbstractElement --> Annotation : annotations
 
-    AbstractElement <|-- DocumentedElement : inherit
+    AbstractElement <|-- IdElement : inherit
 
 
   class Catalog {
@@ -758,6 +764,7 @@ classDiagram
   }
     OrderedColumn --> Column : column
 
+    OrderedColumn <|-- IdElement : inherit
 
 
   class Column {
@@ -864,6 +871,7 @@ classDiagram
 - [Class Documentation](./class-Documentation.md)
 - [Class DocumentedElement](./class-DocumentedElement.md)
 - [Class Annotation](./class-Annotation.md)
+- [Class IdElement](./class-IdElement.md)
 - [Class AbstractElement](./class-AbstractElement.md)
 - [Class Catalog](./class-Catalog.md)
 - [Class Cube](./class-Cube.md)

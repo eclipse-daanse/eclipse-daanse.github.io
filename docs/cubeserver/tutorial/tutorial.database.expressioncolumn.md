@@ -24,7 +24,7 @@ The dialects attribute of an SqlStatement specifies the target database system. 
 
 ## Definition
 
-This files represent the complete definition of the catalog.
+This file represents the complete definition of the catalog.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -34,11 +34,14 @@ This files represent the complete definition of the catalog.
     <tables xsi:type="roma:PhysicalTable" id="_table_tableWithExpressionColumn" name="TableWithExpressionColumn">
       <columns xsi:type="roma:PhysicalColumn" id="_column_tableWithExpressionColumn_column1" name="column1"/>
       <columns xsi:type="roma:SQLExpressionColumn" id="_column_tableWithExpressionColumn_sqlExpressionColumn" name="SqlExpressionColumn">
-        <sqls sql="column1 + column1">
+        <sqls sql="SUBSTRING(column1,1,3)">
           <dialects>generic</dialects>
           <dialects>mysql</dialects>
         </sqls>
-        <sqls sql="column1 + column1 + column1">
+        <sqls sql="SUBSTR(column1,1,3)">
+          <dialects>oracle</dialects>
+        </sqls>
+        <sqls sql="substring(column1, 1, 3)">
           <dialects>h2</dialects>
         </sqls>
       </columns>
@@ -51,6 +54,6 @@ This files represent the complete definition of the catalog.
 
 
 ## Tutorial Zip
-This files contaisn the data-tables as csv and the mapping as xmi file.
+This file contains the data-tables as csv and the mapping as xmi file.
 
 <a href="./zip/tutorial.database.expressioncolumn.zip" download>Download Zip File</a>

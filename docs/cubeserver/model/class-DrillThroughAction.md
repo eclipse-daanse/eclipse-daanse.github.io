@@ -18,6 +18,7 @@ Specialized action that enables users to drill through from aggregated analytica
       <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
+      <th>Default</th>
     </tr>
   </thead>
   <tbody>
@@ -27,9 +28,10 @@ Specialized action that enables users to drill through from aggregated analytica
       <td><em>Boolean</em></td>
       <td>0</td>
       <td>1</td>
+      <td>false</td>
     </tr>
     <tr>
-      <td colspan="5"><em>Boolean flag indicating whether this drill-through action serves as the default drill-through operation for the associated analytical context, automatically invoked when users perform standard drill-through gestures without explicitly selecting a specific drill-through action. The default setting enables intuitive user experiences where common drill-through operations are immediately accessible through standard user interface interactions such as double-clicking on measure values, right-click context menus, or dedicated drill-through buttons, while still allowing multiple specialized drill-through actions to be available for advanced scenarios.</em></td>
+      <td colspan="6"><em>Boolean flag indicating whether this drill-through action serves as the default drill-through operation for the associated analytical context, automatically invoked when users perform standard drill-through gestures without explicitly selecting a specific drill-through action. The default setting enables intuitive user experiences where common drill-through operations are immediately accessible through standard user interface interactions such as double-clicking on measure values, right-click context menus, or dedicated drill-through buttons, while still allowing multiple specialized drill-through actions to be available for advanced scenarios.</em></td>
     </tr>
   </tbody>
 </table>

@@ -17,6 +17,7 @@ A connector that defines how a physical cube is integrated into a virtual cube, 
       <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
+      <th>Default</th>
     </tr>
   </thead>
   <tbody>
@@ -26,9 +27,10 @@ A connector that defines how a physical cube is integrated into a virtual cube, 
       <td><em>Boolean</em></td>
       <td>0</td>
       <td>1</td>
+      <td>false</td>
     </tr>
     <tr>
-      <td colspan="5"><em>Boolean flag that controls how the OLAP engine handles dimensions that don't exist in this physical cube when processing queries in the virtual cube context. When set to true, the virtual cube ignores dimensions that are not present in this referenced physical cube, allowing queries to proceed even if they reference dimensions not available in all constituent cubes. This enables flexible virtual cube designs where physical cubes have different dimensional structures. When false (default), the virtual cube enforces strict dimensional consistency, potentially failing queries that reference dimensions not present in all referenced cubes. This setting is crucial for cross-cube analysis scenarios and affects MDX query validation, aggregation processing, and XMLA metadata exposure.</em></td>
+      <td colspan="6"><em>Boolean flag that controls how the OLAP engine handles dimensions that don't exist in this physical cube when processing queries in the virtual cube context. When set to true, the virtual cube ignores dimensions that are not present in this referenced physical cube, allowing queries to proceed even if they reference dimensions not available in all constituent cubes. This enables flexible virtual cube designs where physical cubes have different dimensional structures. When false (default), the virtual cube enforces strict dimensional consistency, potentially failing queries that reference dimensions not present in all referenced cubes. This setting is crucial for cross-cube analysis scenarios and affects MDX query validation, aggregation processing, and XMLA metadata exposure.</em></td>
     </tr>
   </tbody>
 </table>

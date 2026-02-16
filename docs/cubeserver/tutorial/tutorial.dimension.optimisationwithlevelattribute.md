@@ -90,7 +90,7 @@ The JoinQuery specifies which TableQueries should be joined. It also defines the
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## H1_Level1
 
-This Example uses `H1_Level1` level bases on the `KEY` column and name column `NAME` of table `H1_L1`.
+This Example uses `H1_Level1` level based on the `KEY` column and name column `NAME` of table `H1_L1`.
 
 
 ```xml
@@ -100,7 +100,7 @@ This Example uses `H1_Level1` level bases on the `KEY` column and name column `N
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## H1_Level2
 
-This Example uses `H1_Level2` level bases on the `KEY` column and name column `NAME` of table `HX_L2`.
+This Example uses `H1_Level2` level based on the `KEY` column and name column `NAME` of table `HX_L2`.
 
 
 ```xml
@@ -153,7 +153,7 @@ If not specified joins to the lowest level of the dimension
 
 ## Definition
 
-This files represent the complete definition of the catalog.
+This file represents the complete definition of the catalog.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -200,6 +200,6 @@ This files represent the complete definition of the catalog.
 
 
 ## Tutorial Zip
-This files contaisn the data-tables as csv and the mapping as xmi file.
+This file contains the data-tables as csv and the mapping as xmi file.
 
 <a href="./zip/tutorial.dimension.optimisationwithlevelattribute.zip" download>Download Zip File</a>

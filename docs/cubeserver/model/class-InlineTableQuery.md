@@ -18,6 +18,7 @@ Provides access to in-memory tabular data that is embedded directly within the O
       <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
+      <th>Default</th>
     </tr>
   </thead>
   <tbody>

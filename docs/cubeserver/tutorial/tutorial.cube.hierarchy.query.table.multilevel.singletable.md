@@ -37,7 +37,7 @@ The TableQuery for the Levels and the Measure.
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Level
 
-The level of the `Town` used the `column` attribute to define the column that holds the name, wich is also the key Column.
+The level of the `Town` used the `column` attribute to define the column that holds the name, which is also the key Column.
 
 
 ```xml
@@ -47,7 +47,7 @@ The level of the `Town` used the `column` attribute to define the column that ho
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Level
 
-The level  of the `Country` used the `column` attribute to define the column that holds the name, wich is also the key Column.
+The level  of the `Country` used the `column` attribute to define the column that holds the name, which is also the key Column.
 
 
 ```xml
@@ -97,7 +97,7 @@ To connect the dimension to the cube, a DimensionConnector is used. The dimensio
 
 ## Definition
 
-This files represent the complete definition of the catalog.
+This file represents the complete definition of the catalog.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -128,6 +128,6 @@ This files represent the complete definition of the catalog.
 
 
 ## Tutorial Zip
-This files contaisn the data-tables as csv and the mapping as xmi file.
+This file contains the data-tables as csv and the mapping as xmi file.
 
 <a href="./zip/tutorial.cube.hierarchy.query.table.multilevel.singletable.zip" download>Download Zip File</a>

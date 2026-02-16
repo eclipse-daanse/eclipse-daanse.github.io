@@ -18,6 +18,7 @@ Hierarchy with explicitly defined levels organized in a fixed, predetermined str
       <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
+      <th>Default</th>
     </tr>
   </thead>
   <tbody>

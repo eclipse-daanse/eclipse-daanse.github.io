@@ -18,6 +18,7 @@ Defines an additional attribute that can be associated with dimension members to
       <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
+      <th>Default</th>
     </tr>
   </thead>
   <tbody>
@@ -27,9 +28,10 @@ Defines an additional attribute that can be associated with dimension members to
       <td><em>Boolean</em></td>
       <td>0</td>
       <td>1</td>
+      <td></td>
     </tr>
     <tr>
-      <td colspan="5"><em>Boolean flag indicating whether this property value is functionally dependent on the level member key, meaning that each unique member key determines exactly one property value. When true, this optimization hint allows the OLAP engine to exclude the property column from GROUP BY clauses in generated SQL, improving query performance by reducing the number of grouping columns. This flag should only be set to true when there is a guaranteed one-to-one relationship between the level key and property value, such as when the property comes from the same table as the level key or from a properly normalized lookup table.</em></td>
+      <td colspan="6"><em>Boolean flag indicating whether this property value is functionally dependent on the level member key, meaning that each unique member key determines exactly one property value. When true, this optimization hint allows the OLAP engine to exclude the property column from GROUP BY clauses in generated SQL, improving query performance by reducing the number of grouping columns. This flag should only be set to true when there is a guaranteed one-to-one relationship between the level key and property value, such as when the property comes from the same table as the level key or from a properly normalized lookup table.</em></td>
     </tr>
     <tr>
       <td><strong>propertyType</strong></td>
@@ -37,9 +39,10 @@ Defines an additional attribute that can be associated with dimension members to
       <td><em>ColumnInternalDataType<a href="./enum-ColumnInternalDataType">🔗</a></em></td>
       <td>0</td>
       <td>1</td>
+      <td></td>
     </tr>
     <tr>
-      <td colspan="5"><em>Data type of the property values, essential for proper SQL generation, comparison operations, sorting behavior, and display formatting. Supported types include STRING for text values, INTEGER and NUMERIC for numerical data, BOOLEAN for true/false values, DATE/TIME/TIMESTAMP for temporal data, and other specialized types. The property type determines how values are compared in filters, how they are formatted for display, what aggregation functions are applicable, and how they are serialized in XMLA responses and MDX query results.</em></td>
+      <td colspan="6"><em>Data type of the property values, essential for proper SQL generation, comparison operations, sorting behavior, and display formatting. Supported types include STRING for text values, INTEGER and NUMERIC for numerical data, BOOLEAN for true/false values, DATE/TIME/TIMESTAMP for temporal data, and other specialized types. The property type determines how values are compared in filters, how they are formatted for display, what aggregation functions are applicable, and how they are serialized in XMLA responses and MDX query results.</em></td>
     </tr>
   </tbody>
 </table>

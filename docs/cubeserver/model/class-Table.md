@@ -18,6 +18,7 @@ Abstract base class for database tables that serve as data sources for OLAP oper
       <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
+      <th>Default</th>
     </tr>
   </thead>
   <tbody>

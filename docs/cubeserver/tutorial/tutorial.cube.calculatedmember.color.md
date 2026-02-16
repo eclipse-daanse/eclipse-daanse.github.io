@@ -6,13 +6,13 @@ number: 2.3.6
 ---
 # Daanse Tutorial - Cube Calculated Member Color
 
-This tutorial discusses Calculated Members and Measures with diferent colors.
+This tutorial discusses Calculated Members and Measures with different colors.
 
 
 
 ## Database Schema
 
-The Database Schema contains the `Fact` table with three columns: `KEY` and `VALUE` and `VALUE_NUMERIC`. The `KEY` column is used as the discriminator in the the Level and Hierarchy definitions.
+The Database Schema contains the `Fact` table with three columns: `KEY` and `VALUE` and `VALUE_NUMERIC`. The `KEY` column is used as the discriminator in the Level and Hierarchy definitions.
 
 
 ```xml
@@ -27,7 +27,7 @@ The Database Schema contains the `Fact` table with three columns: `KEY` and `VAL
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Query
 
-The Query is a simple TableQuery that selects all columns from the `Fact` table to use in in the hierarchy and in the cube for the measures.
+The Query is a simple TableQuery that selects all columns from the `Fact` table to use in the hierarchy and in the cube for the measures.
 
 
 ```xml
@@ -37,7 +37,7 @@ The Query is a simple TableQuery that selects all columns from the `Fact` table 
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Level
 
-This Example uses one simple `Level` bases on the `KEY` column.
+This Example uses one simple `Level` based on the `KEY` column.
 
 
 ```xml
@@ -67,7 +67,7 @@ The dimension is defined with the one hierarchy. The hierarchy is used in the cu
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Calculated Member in Measure with different colors properties
 
-This calculated member have `BACK_COLOR` in format string. It show posibility to have different colors incal culated member
+This calculated member has `BACK_COLOR` in format string. It show possibility to have different colors in calculated member
 
 
 ```xml
@@ -77,7 +77,7 @@ This calculated member have `BACK_COLOR` in format string. It show posibility to
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Calculated Member in Measure with different colors properties
 
-This calculated member have `BACK_COLOR` in format string. It show posibility to have different colors incal culated member
+This calculated member has `BACK_COLOR` in format string. It show possibility to have different colors in calculated member
 
 
 
@@ -88,7 +88,7 @@ This calculated member have `BACK_COLOR` in format string. It show posibility to
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Cube and DimensionConnector and Measure
 
-The cube is defines by the DimensionConnector and the MeasureGroup and most importantly the calculated members.
+The cube is defined by the DimensionConnector and the MeasureGroup and most importantly the calculated members.
 
 
 ```xml
@@ -111,7 +111,7 @@ The cube is defines by the DimensionConnector and the MeasureGroup and most impo
 
 ## Definition
 
-This files represent the complete definition of the catalog.
+This file represents the complete definition of the catalog.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -147,6 +147,6 @@ This files represent the complete definition of the catalog.
 
 
 ## Tutorial Zip
-This files contaisn the data-tables as csv and the mapping as xmi file.
+This file contains the data-tables as csv and the mapping as xmi file.
 
 <a href="./zip/tutorial.cube.calculatedmember.color.zip" download>Download Zip File</a>

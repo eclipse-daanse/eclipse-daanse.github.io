@@ -18,6 +18,7 @@ Defines a comprehensive role-based access control (RBAC) entity that encapsulate
       <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
+      <th>Default</th>
     </tr>
   </thead>
   <tbody>

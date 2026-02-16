@@ -17,6 +17,7 @@ Abstract base class for pre-computed aggregation tables that dramatically improv
       <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
+      <th>Default</th>
     </tr>
   </thead>
   <tbody>
@@ -26,9 +27,10 @@ Abstract base class for pre-computed aggregation tables that dramatically improv
       <td><em>Boolean</em></td>
       <td>0</td>
       <td>1</td>
+      <td></td>
     </tr>
     <tr>
-      <td colspan="5"><em>Boolean flag that controls whether string comparisons during aggregation table matching and name resolution should be case-sensitive or case-insensitive. When set to true, the aggregation matching algorithm will treat table names, column names, and string-based identifiers in a case-insensitive manner, which is particularly useful in environments with inconsistent naming conventions or when working with databases that have varying case sensitivity behaviors. This setting affects how aggregation patterns match table names, how column mappings are resolved, and how the OLAP engine correlates aggregation table elements with fact table and cube definitions. Case-insensitive matching can improve robustness in heterogeneous environments but should be used carefully to avoid ambiguous matches.</em></td>
+      <td colspan="6"><em>Boolean flag that controls whether string comparisons during aggregation table matching and name resolution should be case-sensitive or case-insensitive. When set to true, the aggregation matching algorithm will treat table names, column names, and string-based identifiers in a case-insensitive manner, which is particularly useful in environments with inconsistent naming conventions or when working with databases that have varying case sensitivity behaviors. This setting affects how aggregation patterns match table names, how column mappings are resolved, and how the OLAP engine correlates aggregation table elements with fact table and cube definitions. Case-insensitive matching can improve robustness in heterogeneous environments but should be used carefully to avoid ambiguous matches.</em></td>
     </tr>
     <tr>
       <td><strong>id</strong></td>
@@ -36,9 +38,10 @@ Abstract base class for pre-computed aggregation tables that dramatically improv
       <td><em>EString</em></td>
       <td>1</td>
       <td>1</td>
+      <td></td>
     </tr>
     <tr>
-      <td colspan="5"><em>Unique identifier for this aggregation table within the catalog scope, serving as the primary key for referencing this aggregation definition from other OLAP model elements and internal system operations. The ID is used by the aggregation matching algorithm to track which aggregations have been evaluated, by logging and debugging systems to identify specific aggregation tables in performance analysis, and by administrative tools for aggregation management and monitoring. A well-chosen ID should be descriptive enough to identify the aggregation's purpose and scope while remaining concise for system efficiency, such as 'ProductMonthlySales' or 'CustomerRegionSummary'.</em></td>
+      <td colspan="6"><em>Unique identifier for this aggregation table within the catalog scope, serving as the primary key for referencing this aggregation definition from other OLAP model elements and internal system operations. The ID is used by the aggregation matching algorithm to track which aggregations have been evaluated, by logging and debugging systems to identify specific aggregation tables in performance analysis, and by administrative tools for aggregation management and monitoring. A well-chosen ID should be descriptive enough to identify the aggregation's purpose and scope while remaining concise for system efficiency, such as 'ProductMonthlySales' or 'CustomerRegionSummary'.</em></td>
     </tr>
   </tbody>
 </table>

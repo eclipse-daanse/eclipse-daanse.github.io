@@ -29,7 +29,7 @@ A table `Fact` with a Column `VALUE` to have a reference for the Measure.
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## KPI - value only
 
-This KPI is defined solely by its value expression, which in this example references the following measure: `[Measures].[Measure1-Sum]`"
+This KPI is defined solely by its value expression, which in this example references the following measure: `[Measures].[Measure1-Sum]`
 
 
 ```xml
@@ -77,7 +77,7 @@ This cube holds references to the KPI, and does not use any dimensions.
 
 ## Definition
 
-This files represent the complete definition of the catalog.
+This file represents the complete definition of the catalog.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -104,6 +104,6 @@ This files represent the complete definition of the catalog.
 
 
 ## Tutorial Zip
-This files contaisn the data-tables as csv and the mapping as xmi file.
+This file contains the data-tables as csv and the mapping as xmi file.
 
 <a href="./zip/tutorial.kpi.intro.zip" download>Download Zip File</a>

@@ -17,6 +17,7 @@ Provides sophisticated hierarchy-level access control that enables fine-grained 
       <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
+      <th>Default</th>
     </tr>
   </thead>
   <tbody>
@@ -26,9 +27,10 @@ Provides sophisticated hierarchy-level access control that enables fine-grained 
       <td><em>HierarchyAccess<a href="./enum-HierarchyAccess">🔗</a></em></td>
       <td>1</td>
       <td>1</td>
+      <td></td>
     </tr>
     <tr>
-      <td colspan="5"><em>Specifies the access level for the hierarchy using HierarchyAccess enumeration values, controlling overall hierarchy visibility and navigation permissions.</em></td>
+      <td colspan="6"><em>Specifies the access level for the hierarchy using HierarchyAccess enumeration values, controlling overall hierarchy visibility and navigation permissions.</em></td>
     </tr>
     <tr>
       <td><strong>rollupPolicy</strong></td>
@@ -36,9 +38,10 @@ Provides sophisticated hierarchy-level access control that enables fine-grained 
       <td><em>RollupPolicy<a href="./enum-RollupPolicy">🔗</a></em></td>
       <td>1</td>
       <td>1</td>
+      <td></td>
     </tr>
     <tr>
-      <td colspan="5"><em>Defines how aggregate values are calculated when some hierarchy members are inaccessible, ensuring data consistency and security in partial access scenarios.</em></td>
+      <td colspan="6"><em>Defines how aggregate values are calculated when some hierarchy members are inaccessible, ensuring data consistency and security in partial access scenarios.</em></td>
     </tr>
   </tbody>
 </table>
