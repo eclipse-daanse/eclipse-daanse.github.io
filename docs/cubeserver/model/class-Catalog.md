@@ -18,6 +18,7 @@ The root container of an OLAP schema that defines a complete analytical database
       <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
+      <th>Default</th>
     </tr>
   </thead>
   <tbody>
@@ -27,9 +28,10 @@ The root container of an OLAP schema that defines a complete analytical database
       <td><em>EString</em></td>
       <td>0</td>
       <td>1</td>
+      <td></td>
     </tr>
     <tr>
-      <td colspan="5"><em>Optional custom name for the measures dimension that appears in MDX queries and XMLA metadata. By default, the measures dimension is named 'Measures', but this can be customized for localization or business terminology preferences. The measures dimension is a special system dimension that contains all the measures (metrics) available for analysis in each cube. This name appears in MDX syntax like [CustomMeasuresName].[Sales Amount] and in client tool dimension lists.</em></td>
+      <td colspan="6"><em>Optional custom name for the measures dimension that appears in MDX queries and XMLA metadata. By default, the measures dimension is named 'Measures', but this can be customized for localization or business terminology preferences. The measures dimension is a special system dimension that contains all the measures (metrics) available for analysis in each cube. This name appears in MDX syntax like [CustomMeasuresName].[Sales Amount] and in client tool dimension lists.</em></td>
     </tr>
   </tbody>
 </table>

@@ -18,6 +18,7 @@ Abstract base class for all data source queries in the OLAP mapping system, prov
       <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
+      <th>Default</th>
     </tr>
   </thead>
   <tbody>
@@ -27,9 +28,10 @@ Abstract base class for all data source queries in the OLAP mapping system, prov
       <td><em>EString</em></td>
       <td>1</td>
       <td>1</td>
+      <td></td>
     </tr>
     <tr>
-      <td colspan="5"><em>Unique identifier for this query within the catalog scope, used for referencing the query from other OLAP model elements such as cube definitions, hierarchy specifications, and level mappings. The ID enables query reuse across multiple dimensional contexts and supports modular data access design patterns where complex queries can be defined once and referenced multiple times throughout the analytical model.</em></td>
+      <td colspan="6"><em>Unique identifier for this query within the catalog scope, used for referencing the query from other OLAP model elements such as cube definitions, hierarchy specifications, and level mappings. The ID enables query reuse across multiple dimensional contexts and supports modular data access design patterns where complex queries can be defined once and referenced multiple times throughout the analytical model.</em></td>
     </tr>
   </tbody>
 </table>

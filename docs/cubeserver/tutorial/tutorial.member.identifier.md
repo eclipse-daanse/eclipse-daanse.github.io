@@ -6,12 +6,12 @@ number: 2.6.1
 ---
 # Daanse Tutorial - Member Identifier
 
-In some cases, all data are stored in one table, the fact as well as multiple levels. This Tutorial shows how to handle this case with diferent casses of data.
+In some cases, all data are stored in one table, the fact as well as multiple levels. This Tutorial shows how to handle this case with different cases of data.
 
 
 ## Database Schema
 
-The cube defined in this example is based on only one tables with diferent casses of data
+The cube defined in this example is based on only one tables with different cases of data
 space, space first, space last, separate line, long with over 100 12345678....   , äüö, some russian latter, some french letters, @€
 
 
@@ -38,7 +38,7 @@ The TableQuery for the Levels and the Measure.
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Level1
 
-The level of the level1 used the `column` attribute to define the column that holds the name, wich is also the key Column.
+The level of the level1 used the `column` attribute to define the column that holds the name, which is also the key Column.
 
 
 ```xml
@@ -48,7 +48,7 @@ The level of the level1 used the `column` attribute to define the column that ho
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Level2
 
-The level  of the level2 used the `column` attribute to define the column that holds the name, wich is also the key Column.
+The level  of the level2 used the `column` attribute to define the column that holds the name, which is also the key Column.
 
 
 ```xml
@@ -98,7 +98,7 @@ To connect the dimension to the cube, a DimensionConnector is used.
 
 ## Definition
 
-This files represent the complete definition of the catalog.
+This file represents the complete definition of the catalog.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -129,6 +129,6 @@ This files represent the complete definition of the catalog.
 
 
 ## Tutorial Zip
-This files contaisn the data-tables as csv and the mapping as xmi file.
+This file contains the data-tables as csv and the mapping as xmi file.
 
 <a href="./zip/tutorial.member.identifier.zip" download>Download Zip File</a>

@@ -18,6 +18,7 @@ Abstract base class for interactive actions that provide sophisticated user enga
       <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
+      <th>Default</th>
     </tr>
   </thead>
   <tbody>

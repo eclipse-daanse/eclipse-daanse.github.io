@@ -12,7 +12,7 @@ This tutorial discusses Calculated Members, which allow you to define members in
 
 ## Database Schema
 
-The Database Schema contains the `Fact` table with three columns: `KEY` and `VALUE` and `VALUE_NUMERIC`. The `KEY` column is used as the discriminator in the the Level and Hierarchy definitions.
+The Database Schema contains the `Fact` table with three columns: `KEY` and `VALUE` and `VALUE_NUMERIC`. The `KEY` column is used as the discriminator in the Level and Hierarchy definitions.
 
 
 ```xml
@@ -27,7 +27,7 @@ The Database Schema contains the `Fact` table with three columns: `KEY` and `VAL
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Query
 
-The Query is a simple TableQuery that selects all columns from the Fact table to use in in the hierarchy and in the cube for the measures.
+The Query is a simple TableQuery that selects all columns from the Fact table to use in the hierarchy and in the cube for the measures.
 
 
 ```xml
@@ -37,7 +37,7 @@ The Query is a simple TableQuery that selects all columns from the Fact table to
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Level
 
-This Example uses one simple Level bases on the `KEY` column.
+This Example uses one simple Level based on the `KEY` column.
 
 
 ```xml
@@ -67,7 +67,7 @@ The dimension is defined with the one hierarchy. The hierarchy is used in the cu
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Calculated Member in Measure
 
-This calculated member only coes a calculation with both of the existing Measures. The Forula holds the calculation instruction. The Formula Expression is a MDX expression.
+This calculated member only does a calculation with both of the existing Measures. The Formula holds the calculation instruction. The Formula Expression is a MDX expression.
 
 
 ```xml
@@ -77,7 +77,7 @@ This calculated member only coes a calculation with both of the existing Measure
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Calculated Member in Dimension
 
-This calculated member has also a Formula. Additionaly it references the Hierarchy where it should be addes and a Parent Expression that defins unter wich Element it should be added. The Parent Expression is a MDX expression.
+This calculated member has also a Formula. Additionaly it references the Hierarchy where it should be added and a Parent Expression that defines under which Element it should be added. The Parent Expression is a MDX expression.
 
 
 
@@ -88,7 +88,7 @@ This calculated member has also a Formula. Additionaly it references the Hierarc
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Cube and DimensionConnector and Measure
 
-The cube is defines by the DimensionConnector and the MeasureGroup and most importantly the calculated members.
+The cube is defined by the DimensionConnector and the MeasureGroup and most importantly the calculated members.
 
 
 ```xml
@@ -107,7 +107,7 @@ The cube is defines by the DimensionConnector and the MeasureGroup and most impo
 
 ## Definition
 
-This files represent the complete definition of the catalog.
+This file represents the complete definition of the catalog.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -139,6 +139,6 @@ This files represent the complete definition of the catalog.
 
 
 ## Tutorial Zip
-This files contaisn the data-tables as csv and the mapping as xmi file.
+This file contains the data-tables as csv and the mapping as xmi file.
 
 <a href="./zip/tutorial.cube.calculatedmember.intro.zip" download>Download Zip File</a>

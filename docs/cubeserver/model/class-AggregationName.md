@@ -18,6 +18,7 @@ Concrete aggregation table implementation that explicitly specifies a named data
       <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
+      <th>Default</th>
     </tr>
   </thead>
   <tbody>
@@ -27,9 +28,10 @@ Concrete aggregation table implementation that explicitly specifies a named data
       <td><em>EString</em></td>
       <td>0</td>
       <td>1</td>
+      <td></td>
     </tr>
     <tr>
-      <td colspan="5"><em>Approximate number of rows contained in this aggregation table, providing a size hint that helps the OLAP engine's cost-based optimizer make intelligent decisions about aggregation table selection and query execution strategies. This estimate is used for comparing the relative costs of different aggregation options, predicting memory requirements for caching aggregation data, and determining whether using an aggregation table is likely to be more efficient than scanning the fact table. The value can be specified as a numeric string and should be updated periodically to reflect changes in aggregation table size as underlying data grows. Accurate row count estimates are particularly important in environments with multiple overlapping aggregation tables where the optimizer must choose the most efficient option.</em></td>
+      <td colspan="6"><em>Approximate number of rows contained in this aggregation table, providing a size hint that helps the OLAP engine's cost-based optimizer make intelligent decisions about aggregation table selection and query execution strategies. This estimate is used for comparing the relative costs of different aggregation options, predicting memory requirements for caching aggregation data, and determining whether using an aggregation table is likely to be more efficient than scanning the fact table. The value can be specified as a numeric string and should be updated periodically to reflect changes in aggregation table size as underlying data grows. Accurate row count estimates are particularly important in environments with multiple overlapping aggregation tables where the optimizer must choose the most efficient option.</em></td>
     </tr>
   </tbody>
 </table>

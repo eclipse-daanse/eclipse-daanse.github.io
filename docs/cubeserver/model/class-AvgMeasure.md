@@ -18,6 +18,7 @@ A measure that calculates the arithmetic mean (average) of all values from the r
       <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
+      <th>Default</th>
     </tr>
   </thead>
   <tbody>

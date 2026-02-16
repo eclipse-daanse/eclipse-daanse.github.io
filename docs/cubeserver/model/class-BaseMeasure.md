@@ -18,6 +18,7 @@ Abstract base class for all measure types in the OLAP model, representing quanti
       <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
+      <th>Default</th>
     </tr>
   </thead>
   <tbody>
@@ -27,9 +28,10 @@ Abstract base class for all measure types in the OLAP model, representing quanti
       <td><em>EString</em></td>
       <td>0</td>
       <td>1</td>
+      <td></td>
     </tr>
     <tr>
-      <td colspan="5"><em>Background color specification for this measure when displayed in OLAP clients and reporting tools. The color value should follow standard color notation (e.g., hex colors like '#FF0000', RGB values, or color names). This visual formatting helps users quickly identify and differentiate measures in pivot tables, charts, and other analytical displays, particularly useful for highlighting important KPIs or categorizing related measures.</em></td>
+      <td colspan="6"><em>Background color specification for this measure when displayed in OLAP clients and reporting tools. The color value should follow standard color notation (e.g., hex colors like '#FF0000', RGB values, or color names). This visual formatting helps users quickly identify and differentiate measures in pivot tables, charts, and other analytical displays, particularly useful for highlighting important KPIs or categorizing related measures.</em></td>
     </tr>
     <tr>
       <td><strong>dataType</strong></td>
@@ -37,9 +39,10 @@ Abstract base class for all measure types in the OLAP model, representing quanti
       <td><em>ColumnInternalDataType<a href="./enum-ColumnInternalDataType">🔗</a></em></td>
       <td>0</td>
       <td>1</td>
+      <td></td>
     </tr>
     <tr>
-      <td colspan="5"><em>Data type specification for this measure that determines how values are processed, stored, and displayed. The data type affects aggregation behavior, formatting options, and client tool integration. Common types include INTEGER for counts, NUMERIC for monetary amounts, DECIMAL for precise calculations, and DOUBLE for statistical measures. This information is used by the OLAP engine for type validation, optimization, and proper value handling across different database systems.</em></td>
+      <td colspan="6"><em>Data type specification for this measure that determines how values are processed, stored, and displayed. The data type affects aggregation behavior, formatting options, and client tool integration. Common types include INTEGER for counts, NUMERIC for monetary amounts, DECIMAL for precise calculations, and DOUBLE for statistical measures. This information is used by the OLAP engine for type validation, optimization, and proper value handling across different database systems.</em></td>
     </tr>
     <tr>
       <td><strong>formatter</strong></td>
@@ -47,9 +50,10 @@ Abstract base class for all measure types in the OLAP model, representing quanti
       <td><em>EString</em></td>
       <td>0</td>
       <td>1</td>
+      <td></td>
     </tr>
     <tr>
-      <td colspan="5"><em>Formatter specification that controls how this measure's values are displayed in client applications. The formatter can reference predefined format patterns, custom formatting functions, or specific formatting rules. This ensures consistent presentation of measure values across different analytical tools and reports, handling aspects like decimal places, currency symbols, percentage notation, and locale-specific formatting.</em></td>
+      <td colspan="6"><em>Formatter specification that controls how this measure's values are displayed in client applications. The formatter can reference predefined format patterns, custom formatting functions, or specific formatting rules. This ensures consistent presentation of measure values across different analytical tools and reports, handling aspects like decimal places, currency symbols, percentage notation, and locale-specific formatting.</em></td>
     </tr>
   </tbody>
 </table>

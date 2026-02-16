@@ -18,6 +18,7 @@ Abstract base class for database columns that define data structure and metadata
       <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
+      <th>Default</th>
     </tr>
   </thead>
   <tbody>
@@ -27,9 +28,10 @@ Abstract base class for database columns that define data structure and metadata
       <td><em>ColumnType<a href="./enum-ColumnType">🔗</a></em></td>
       <td>0</td>
       <td>1</td>
+      <td>Varchar</td>
     </tr>
     <tr>
-      <td colspan="5"><em>Data type of the column specifying the kind of data stored. Column type determines how data is processed in OLAP operations and dimensional mappings. Defaults to Varchar.</em></td>
+      <td colspan="6"><em>Data type of the column specifying the kind of data stored. Column type determines how data is processed in OLAP operations and dimensional mappings. Defaults to Varchar.</em></td>
     </tr>
     <tr>
       <td><strong>columnSize</strong></td>
@@ -37,9 +39,10 @@ Abstract base class for database columns that define data structure and metadata
       <td><em>EIntegerObject</em></td>
       <td>0</td>
       <td>1</td>
+      <td></td>
     </tr>
     <tr>
-      <td colspan="5"><em>Maximum size or length of data that can be stored in this column. For character types, specifies maximum character count; for numeric types, specifies precision.</em></td>
+      <td colspan="6"><em>Maximum size or length of data that can be stored in this column. For character types, specifies maximum character count; for numeric types, specifies precision.</em></td>
     </tr>
     <tr>
       <td><strong>decimalDigits</strong></td>
@@ -47,9 +50,10 @@ Abstract base class for database columns that define data structure and metadata
       <td><em>EIntegerObject</em></td>
       <td>0</td>
       <td>1</td>
+      <td></td>
     </tr>
     <tr>
-      <td colspan="5"><em>Number of digits to the right of the decimal point for numeric columns. Specifies the scale for decimal and numeric data types used in measure calculations.</em></td>
+      <td colspan="6"><em>Number of digits to the right of the decimal point for numeric columns. Specifies the scale for decimal and numeric data types used in measure calculations.</em></td>
     </tr>
     <tr>
       <td><strong>charOctetLength</strong></td>
@@ -57,9 +61,10 @@ Abstract base class for database columns that define data structure and metadata
       <td><em>EIntegerObject</em></td>
       <td>0</td>
       <td>1</td>
+      <td></td>
     </tr>
     <tr>
-      <td colspan="5"><em>Maximum length in bytes for character data types. Specifies the storage space required for variable-length character columns in the database.</em></td>
+      <td colspan="6"><em>Maximum length in bytes for character data types. Specifies the storage space required for variable-length character columns in the database.</em></td>
     </tr>
     <tr>
       <td><strong>numPrecRadix</strong></td>
@@ -67,9 +72,10 @@ Abstract base class for database columns that define data structure and metadata
       <td><em>EIntegerObject</em></td>
       <td>0</td>
       <td>1</td>
+      <td></td>
     </tr>
     <tr>
-      <td colspan="5"><em>Radix for numeric precision, typically 10 for decimal or 2 for binary numeric types. Defines the base for interpreting the precision value of numeric columns.</em></td>
+      <td colspan="6"><em>Radix for numeric precision, typically 10 for decimal or 2 for binary numeric types. Defines the base for interpreting the precision value of numeric columns.</em></td>
     </tr>
     <tr>
       <td><strong>nullable</strong></td>
@@ -77,9 +83,10 @@ Abstract base class for database columns that define data structure and metadata
       <td><em>EBooleanObject</em></td>
       <td>0</td>
       <td>1</td>
+      <td></td>
     </tr>
     <tr>
-      <td colspan="5"><em>Boolean flag indicating whether the column can contain null values. Critical for OLAP operations as null handling affects aggregation calculations and dimensional member processing.</em></td>
+      <td colspan="6"><em>Boolean flag indicating whether the column can contain null values. Critical for OLAP operations as null handling affects aggregation calculations and dimensional member processing.</em></td>
     </tr>
   </tbody>
 </table>

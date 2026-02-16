@@ -17,6 +17,7 @@ Provides the most granular level of database security control by defining access
       <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
+      <th>Default</th>
     </tr>
   </thead>
   <tbody>
@@ -26,9 +27,10 @@ Provides the most granular level of database security control by defining access
       <td><em>ColumnAccess<a href="./enum-ColumnAccess">🔗</a></em></td>
       <td>1</td>
       <td>1</td>
+      <td></td>
     </tr>
     <tr>
-      <td colspan="5"><em>Specifies the access level for the column using ColumnAccess enumeration values, providing the finest-grained control over data access at the individual column level.</em></td>
+      <td colspan="6"><em>Specifies the access level for the column using ColumnAccess enumeration values, providing the finest-grained control over data access at the individual column level.</em></td>
     </tr>
   </tbody>
 </table>

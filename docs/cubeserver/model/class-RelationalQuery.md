@@ -18,6 +18,7 @@ Abstract base class for queries that produce relational result sets suitable for
       <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
+      <th>Default</th>
     </tr>
   </thead>
   <tbody>
@@ -27,9 +28,10 @@ Abstract base class for queries that produce relational result sets suitable for
       <td><em>EString</em></td>
       <td>0</td>
       <td>1</td>
+      <td></td>
     </tr>
     <tr>
-      <td colspan="5"><em>Optional SQL table alias for this query when used in joins or complex SQL statements. The alias provides a short, unique identifier that can be referenced in column expressions, WHERE clauses, and join conditions, enabling clear and unambiguous SQL generation especially when the same table appears multiple times in a query or when working with long table names. When not specified, the OLAP engine may generate automatic aliases based on the query ID or table name to ensure SQL correctness.</em></td>
+      <td colspan="6"><em>Optional SQL table alias for this query when used in joins or complex SQL statements. The alias provides a short, unique identifier that can be referenced in column expressions, WHERE clauses, and join conditions, enabling clear and unambiguous SQL generation especially when the same table appears multiple times in a query or when working with long table names. When not specified, the OLAP engine may generate automatic aliases based on the query ID or table name to ensure SQL correctness.</em></td>
     </tr>
   </tbody>
 </table>

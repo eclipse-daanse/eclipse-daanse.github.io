@@ -18,6 +18,7 @@ Represents a physical column that exists in the database table structure. Physic
       <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
+      <th>Default</th>
     </tr>
   </thead>
   <tbody>

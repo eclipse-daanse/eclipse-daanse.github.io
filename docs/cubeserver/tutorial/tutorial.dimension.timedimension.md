@@ -39,7 +39,7 @@ The `DATE_KEY` column is used as the discriminator in the Hierarchy definitions.
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Query
 
-The Query is a simple TableQuery that selects all columns from the Fact table to use in in the hierarchy and in the cube for the measures.
+The Query is a simple TableQuery that selects all columns from the Fact table to use in the hierarchy and in the cube for the measures.
 
 
 ```xml
@@ -49,7 +49,7 @@ The Query is a simple TableQuery that selects all columns from the Fact table to
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## LevelYears
 
-This Example uses Years level bases on the YEAR_ID column and has TIME_YEARS type.
+This Example uses Years level based on the YEAR_ID column and has TIME_YEARS type.
 
 
 ```xml
@@ -59,7 +59,7 @@ This Example uses Years level bases on the YEAR_ID column and has TIME_YEARS typ
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## LevelQuarters
 
-This Example uses Quarters level bases on the QTR_ID column and has TIME_QUARTERS type with name column QTR_NAME.
+This Example uses Quarters level based on the QTR_ID column and has TIME_QUARTERS type with name column QTR_NAME.
 
 
 ```xml
@@ -69,7 +69,7 @@ This Example uses Quarters level bases on the QTR_ID column and has TIME_QUARTER
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## LevelMonths
 
-This Example uses Months level bases on the MONTH_ID column and has TIME_MONTHS type with name column MONTH_NAME.
+This Example uses Months level based on the MONTH_ID column and has TIME_MONTHS type with name column MONTH_NAME.
 
 
 ```xml
@@ -79,7 +79,7 @@ This Example uses Months level bases on the MONTH_ID column and has TIME_MONTHS 
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## LevelWeek
 
-This Example uses Week level bases on the MONTH_ID column and has TIME_WEEKS type.
+This Example uses Week level based on the MONTH_ID column and has TIME_WEEKS type.
 
 
 ```xml
@@ -89,7 +89,7 @@ This Example uses Week level bases on the MONTH_ID column and has TIME_WEEKS typ
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## LevelDay
 
-This Example uses Week level bases on the MONTH_ID column and has TIME_DAYS type.
+This Example uses Week level based on the MONTH_ID column and has TIME_DAYS type.
 
 
 ```xml
@@ -142,7 +142,7 @@ Time cube have TimeDimension. The role of a level in a time dimension is indicat
 
 ## Definition
 
-This files represent the complete definition of the catalog.
+This file represents the complete definition of the catalog.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -182,6 +182,6 @@ This files represent the complete definition of the catalog.
 
 
 ## Tutorial Zip
-This files contaisn the data-tables as csv and the mapping as xmi file.
+This file contains the data-tables as csv and the mapping as xmi file.
 
 <a href="./zip/tutorial.dimension.timedimension.zip" download>Download Zip File</a>

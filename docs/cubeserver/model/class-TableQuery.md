@@ -18,6 +18,7 @@ Represents a direct query against a physical database table, providing the most 
       <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
+      <th>Default</th>
     </tr>
   </thead>
   <tbody>

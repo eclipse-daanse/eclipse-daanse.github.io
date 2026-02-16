@@ -14,7 +14,7 @@ This tutorial discusses roles with DimensionGrant.
 
 ## Database Schema
 
-The Database Schema contains the `Fact` table with two columns: `KEY` and `VALUE`. The `KEY` column is used as the discriminator in the the Level and Hierarchy definitions.
+The Database Schema contains the `Fact` table with two columns: `KEY` and `VALUE`. The `KEY` column is used as the discriminator in the Level and Hierarchy definitions.
 
 
 ```xml
@@ -29,7 +29,7 @@ The Database Schema contains the `Fact` table with two columns: `KEY` and `VALUE
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Query
 
-The Query is a simple TableQuery that selects all columns from the `Fact` table to use in in the hierarchy and in the cube for the measures.
+The Query is a simple TableQuery that selects all columns from the `Fact` table to use in the hierarchy and in the cube for the measures.
 
 
 ```xml
@@ -39,7 +39,7 @@ The Query is a simple TableQuery that selects all columns from the `Fact` table 
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Level1
 
-This Example uses one simple Level1 bases on the `KEY` column.
+This Example uses one simple Level1 based on the `KEY` column.
 
 
 ```xml
@@ -69,7 +69,7 @@ The `dimension1` is defined with the one `hierarchy1`.
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Cube1 with access all
 
-The `cube1` is defines by the DimensionConnector1 and the DimensionConnector2  and the MeasureGroup with measure with aggregation sum.
+The `cube1` is defined by the DimensionConnector1 and the DimensionConnector2  and the MeasureGroup with measure with aggregation sum.
 
 
 ```xml
@@ -106,7 +106,7 @@ The `role1` use CatalogGrant access `all_dimensions`; CubeGrant `cube1` access `
 
 ## Definition
 
-This files represent the complete definition of the catalog.
+This file represents the complete definition of the catalog.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -150,6 +150,6 @@ This files represent the complete definition of the catalog.
 
 
 ## Tutorial Zip
-This files contaisn the data-tables as csv and the mapping as xmi file.
+This file contains the data-tables as csv and the mapping as xmi file.
 
 <a href="./zip/tutorial.access.dimensiongrand.zip" download>Download Zip File</a>

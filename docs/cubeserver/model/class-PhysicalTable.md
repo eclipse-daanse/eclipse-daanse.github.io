@@ -18,6 +18,7 @@ Represents a physical database table that exists in the database system. Physica
       <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
+      <th>Default</th>
     </tr>
   </thead>
   <tbody>

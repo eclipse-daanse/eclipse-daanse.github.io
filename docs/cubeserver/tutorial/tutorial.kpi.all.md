@@ -73,7 +73,7 @@ Cube have two measures (Measure1-Sum, Measure2-Count) and 4 CalculatedMembers (C
 
 ## Definition
 
-This files represent the complete definition of the catalog.
+This file represents the complete definition of the catalog.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -105,6 +105,6 @@ This files represent the complete definition of the catalog.
 
 
 ## Tutorial Zip
-This files contaisn the data-tables as csv and the mapping as xmi file.
+This file contains the data-tables as csv and the mapping as xmi file.
 
 <a href="./zip/tutorial.kpi.all.zip" download>Download Zip File</a>

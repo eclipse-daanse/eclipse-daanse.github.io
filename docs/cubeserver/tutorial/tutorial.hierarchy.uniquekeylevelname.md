@@ -78,7 +78,7 @@ of values for all levels below it.
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Make
 
-This Example uses 'Make' level bases on the `MAKE_ID` column as key and name column `MAKE` of table `AUTOMOTIVE_DIM`.
+This Example uses 'Make' level based on the `MAKE_ID` column as key and name column `MAKE` of table `AUTOMOTIVE_DIM`.
 
 
 ```xml
@@ -88,7 +88,7 @@ This Example uses 'Make' level bases on the `MAKE_ID` column as key and name col
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Model
 
-This Example uses 'Model' level bases on the `MODEL_ID` column as key and name column `MODEL` of table `AUTOMOTIVE_DIM`.
+This Example uses 'Model' level based on the `MODEL_ID` column as key and name column `MODEL` of table `AUTOMOTIVE_DIM`.
 
 
 ```xml
@@ -98,7 +98,7 @@ This Example uses 'Model' level bases on the `MODEL_ID` column as key and name c
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## ManufacturingPlant
 
-This Example uses 'ManufacturingPlant' level bases on the `PLANT_ID` column as key and name column `PLANT` of table `AUTOMOTIVE_DIM`.
+This Example uses 'ManufacturingPlant' level based on the `PLANT_ID` column as key and name column `PLANT` of table `AUTOMOTIVE_DIM`.
 
 
 ```xml
@@ -111,7 +111,7 @@ This Example uses 'ManufacturingPlant' level bases on the `PLANT_ID` column as k
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Vehicle Identification Number
 
-This Example uses 'Vehicle Identification Number' level bases on the `VEHICLE_ID` column as key of table `AUTOMOTIVE_DIM`.
+This Example uses 'Vehicle Identification Number' level based on the `VEHICLE_ID` column as key of table `AUTOMOTIVE_DIM`.
 
 
 ```xml
@@ -124,7 +124,7 @@ This Example uses 'Vehicle Identification Number' level bases on the `VEHICLE_ID
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## LicensePlateNum
 
-This Example uses 'LicensePlateNum' level bases on the `LICENSE_ID` column as key and name column `LICENSE` of table `AUTOMOTIVE_DIM`.
+This Example uses 'LicensePlateNum' level based on the `LICENSE_ID` column as key and name column `LICENSE` of table `AUTOMOTIVE_DIM`.
 
 
 ```xml
@@ -162,7 +162,7 @@ The cube with hierarchy with functional dependency optimizations.
 
 ## Definition
 
-This files represent the complete definition of the catalog.
+This file represents the complete definition of the catalog.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -217,6 +217,6 @@ This files represent the complete definition of the catalog.
 
 
 ## Tutorial Zip
-This files contaisn the data-tables as csv and the mapping as xmi file.
+This file contains the data-tables as csv and the mapping as xmi file.
 
 <a href="./zip/tutorial.hierarchy.uniquekeylevelname.zip" download>Download Zip File</a>

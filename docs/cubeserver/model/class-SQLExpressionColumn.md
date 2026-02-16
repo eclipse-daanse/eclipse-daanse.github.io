@@ -18,6 +18,7 @@ Represents a virtual column defined by SQL expressions rather than physical tabl
       <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
+      <th>Default</th>
     </tr>
   </thead>
   <tbody>

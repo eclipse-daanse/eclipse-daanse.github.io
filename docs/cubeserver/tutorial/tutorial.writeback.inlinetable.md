@@ -12,7 +12,7 @@ This tutorial discusses writeback with fact as InlineTable.
 ## Database Schema
 
 The Database Schema contains the
-- InlineTable `FACT` with 3 columns `VAL`, `VAL1`, `L2`. The `L2` column is used as the discriminator in the the Level and Hierarchy definitions
+- InlineTable `FACT` with 3 columns `VAL`, `VAL1`, `L2`. The `L2` column is used as the discriminator in the Level and Hierarchy definitions
 - `L1` table with two columns: `L1` and `L2`.
 - `L2` table with one column: `L2`.
 - `FACTWB` table with 4 columns: `VAL`, `VAL1`, `ID`, `USER`.
@@ -113,7 +113,7 @@ The join is a simple JoinedQuery that unites l1TableQuery and l2TableQuery by `L
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## L1
 
-This Example uses one simple `L1` level bases on the `L1` column. `L2` column to use for connection to level `L2`
+This Example uses one simple `L1` level based on the `L1` column. `L2` column to use for connection to level `L2`
 
 
 ```xml
@@ -123,7 +123,7 @@ This Example uses one simple `L1` level bases on the `L1` column. `L2` column to
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## L2
 
-This Example uses one simple `L2` level bases on the `L2` column. `L2` column to use for connection to level `L1`
+This Example uses one simple `L2` level based on the `L2` column. `L2` column to use for connection to level `L1`
 
 
 ```xml
@@ -133,7 +133,7 @@ This Example uses one simple `L2` level bases on the `L2` column. `L2` column to
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## HierarchyWithHasAll
 
-The Hierarchy is defined with the hasAll property set to truefalse and the two levels.
+The Hierarchy is defined with the hasAll property set to true and the two levels.
 
 
 ```xml
@@ -176,7 +176,7 @@ The cube also contains a FACTWB WritebackTable configuration with a WritebackAtt
 
 ## Definition
 
-This files represent the complete definition of the catalog.
+This file represents the complete definition of the catalog.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -258,6 +258,6 @@ This files represent the complete definition of the catalog.
 
 
 ## Tutorial Zip
-This files contaisn the data-tables as csv and the mapping as xmi file.
+This file contains the data-tables as csv and the mapping as xmi file.
 
 <a href="./zip/tutorial.writeback.inlinetable.zip" download>Download Zip File</a>

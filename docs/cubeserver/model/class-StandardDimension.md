@@ -18,6 +18,7 @@ General-purpose dimension for non-temporal analytical axes such as Geography, Pr
       <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
+      <th>Default</th>
     </tr>
   </thead>
   <tbody>

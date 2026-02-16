@@ -18,6 +18,7 @@ A measure that calculates the maximum value from the referenced column across th
       <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
+      <th>Default</th>
     </tr>
   </thead>
   <tbody>

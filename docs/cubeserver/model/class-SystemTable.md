@@ -18,6 +18,7 @@ Represents a database system table that contains metadata or administrative info
       <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
+      <th>Default</th>
     </tr>
   </thead>
   <tbody>

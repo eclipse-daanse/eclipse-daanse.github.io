@@ -7,7 +7,7 @@ number: 2.10.1
 # Daanse Tutorial - Action Drillthrough
 
 This tutorial discusses DrillThroughAction.
-DrillThroughAction feature is enabling users to seamlessly transition from  analytical summaries
+DrillThroughAction feature enables users to seamlessly transition from analytical summaries
 to detailed operational data without losing analytical context or requiring technical
 knowledge of underlying data structures.
 
@@ -18,7 +18,7 @@ The Database Schema contains the `Fact` table with two columns: `KEY` and `VALUE
 - `H1_L1` table with two columns: `KEY` and `NAME`.<br />
 - `H2_L1` table with two columns: `KEY` and `NAME`.<br />
 - `HX_L2` table with 4 columns: `KEY`, `NAME`, `H1L1_KEY`, `H2L1_KEY`.<br />
-The `KEY` column of `Fact` table is used as the discriminator in the the dimension.
+The `KEY` column of `Fact` table is used as the discriminator in the dimension.
 
 
 ```xml
@@ -47,7 +47,7 @@ The `KEY` column of `Fact` table is used as the discriminator in the the dimensi
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Query
 
-The Query is a simple TableQuery that selects all columns from the `Fact` table to use in in the hierarchy and in the cube for the measures.
+The Query is a simple TableQuery that selects all columns from the `Fact` table to use in the hierarchy and in the cube for the measures.
 
 
 ```xml
@@ -57,7 +57,7 @@ The Query is a simple TableQuery that selects all columns from the `Fact` table 
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## H1L1Query
 
-The Query is a simple TableQuery that selects all columns from the `H1_L1` table table.
+The Query is a simple TableQuery that selects all columns from the `H1_L1` table.
 
 
 ```xml
@@ -67,7 +67,7 @@ The Query is a simple TableQuery that selects all columns from the `H1_L1` table
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## H2L1Query
 
-The Query is a simple TableQuery that selects all columns from the `H2_L1` table table.
+The Query is a simple TableQuery that selects all columns from the `H2_L1` table.
 
 
 ```xml
@@ -109,7 +109,7 @@ The JoinQuery specifies which TableQueries should be joined. It also defines the
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## HxL2Query
 
-The Query is a simple TableQuery that selects all columns from the `HX_L2` table table.
+The Query is a simple TableQuery that selects all columns from the `HX_L2` table.
 
 
 ```xml
@@ -119,7 +119,7 @@ The Query is a simple TableQuery that selects all columns from the `HX_L2` table
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Level1
 
-This Example uses H1_Level1 level bases on the `KEY` column as kew and `NAME` column as name from `H1_L1` table.
+This Example uses H1_Level1 level based on the `KEY` column as key and `NAME` column as name from `H1_L1` table.
 
 
 ```xml
@@ -129,7 +129,7 @@ This Example uses H1_Level1 level bases on the `KEY` column as kew and `NAME` co
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Level2
 
-This Example uses H1_Level2 level bases on the KEY column as kew and NAME column as name from HX_L2 table.
+This Example uses H1_Level2 level based on the KEY column as key and NAME column as name from HX_L2 table.
 
 
 ```xml
@@ -139,7 +139,7 @@ This Example uses H1_Level2 level bases on the KEY column as kew and NAME column
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Level3
 
-This Example uses H2_Level1 level bases on the KEY column as kew and NAME column as name from H2_L1 table.
+This Example uses H2_Level1 level based on the KEY column as key and NAME column as name from H2_L1 table.
 
 
 ```xml
@@ -149,7 +149,7 @@ This Example uses H2_Level1 level bases on the KEY column as kew and NAME column
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Level4
 
-This Example uses H2_Level2 level bases on the KEY column as kew and NAME column as name from HX_L2 table.
+This Example uses H2_Level2 level based on the KEY column as key and NAME column as name from HX_L2 table.
 
 
 ```xml
@@ -185,7 +185,7 @@ for data exploration, validation, and detailed investigation of analytical resul
 Collection of DrillThroughAttribute objects that specify which dimensional attributes and descriptive columns
 should be included in drill-through result sets
 
-DrillThroughAttribute have reference to H1_Level1 level from Hierarchy1; H1_L1 table KEY and NAME column
+DrillThroughAttributes have reference to H1_Level1 level from Hierarchy1; H1_L1 table KEY and NAME column
 
 
 ```xml
@@ -195,7 +195,7 @@ DrillThroughAttribute have reference to H1_Level1 level from Hierarchy1; H1_L1 t
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## DrillthroughH2L1
 
-DrillThroughAttribute have reference to H2_Level1 level from Hierarchy2; H2_L1 table KEY and NAME column
+DrillThroughAttributes have reference to H2_Level1 level from Hierarchy2; H2_L1 table KEY and NAME column
 
 
 ```xml
@@ -237,7 +237,7 @@ The cube with DrillThroughAction
 
 ## Definition
 
-This files represent the complete definition of the catalog.
+This file represents the complete definition of the catalog.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -301,6 +301,6 @@ This files represent the complete definition of the catalog.
 
 
 ## Tutorial Zip
-This files contaisn the data-tables as csv and the mapping as xmi file.
+This file contains the data-tables as csv and the mapping as xmi file.
 
 <a href="./zip/tutorial.action.drillthrough.zip" download>Download Zip File</a>

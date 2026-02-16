@@ -18,6 +18,7 @@ Abstract base class for sophisticated display formatting components that control
       <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
+      <th>Default</th>
     </tr>
   </thead>
   <tbody>
@@ -27,9 +28,10 @@ Abstract base class for sophisticated display formatting components that control
       <td><em>EString</em></td>
       <td>0</td>
       <td>1</td>
+      <td></td>
     </tr>
     <tr>
-      <td colspan="5"><em>Reference identifier that enables sharing and reuse of formatter definitions across multiple OLAP elements, supporting efficient formatter management and consistent presentation styling throughout analytical applications.</em></td>
+      <td colspan="6"><em>Reference identifier that enables sharing and reuse of formatter definitions across multiple OLAP elements, supporting efficient formatter management and consistent presentation styling throughout analytical applications.</em></td>
     </tr>
   </tbody>
 </table>

@@ -17,6 +17,7 @@ Represents a single data row within an InlineTable, containing a collection of c
       <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
+      <th>Default</th>
     </tr>
   </thead>
   <tbody>

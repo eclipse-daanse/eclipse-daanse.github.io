@@ -6,7 +6,8 @@ group: Class
 # OrderedColumn<a name="class-orderedcolumn"></a>
 
 Represents a column with specific ordering information used in queries and result sets. OrderedColumn is typically used in OLAP contexts where explicit column ordering is required for query processing or result presentation.
-
+## Extends
+- IdElement [🔗](./class-IdElement)
 ## Attributes
 
 <table>
@@ -17,6 +18,7 @@ Represents a column with specific ordering information used in queries and resul
       <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
+      <th>Default</th>
     </tr>
   </thead>
   <tbody>
@@ -26,9 +28,10 @@ Represents a column with specific ordering information used in queries and resul
       <td><em>Boolean</em></td>
       <td>0</td>
       <td>1</td>
+      <td>true</td>
     </tr>
     <tr>
-      <td colspan="5"><em>Boolean flag indicating sort direction. When true, sort in ascending order; when false, sort in descending order. Defaults to true for ascending sort.</em></td>
+      <td colspan="6"><em>Boolean flag indicating sort direction. When true, sort in ascending order; when false, sort in descending order. Defaults to true for ascending sort.</em></td>
     </tr>
   </tbody>
 </table>
@@ -75,7 +78,7 @@ classDiagram
     + ascend : Boolean
   }
 
-
+  IdElement <|-- OrderedColumn
   OrderedColumn --> Column : column
 
 ```

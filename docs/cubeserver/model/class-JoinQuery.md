@@ -18,6 +18,7 @@ Represents a JOIN operation between two queries, enabling the combination of dat
       <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
+      <th>Default</th>
     </tr>
   </thead>
   <tbody>

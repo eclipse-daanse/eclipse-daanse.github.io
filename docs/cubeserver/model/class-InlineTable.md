@@ -18,6 +18,7 @@ Represents a table with data embedded directly in the schema definition rather t
       <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
+      <th>Default</th>
     </tr>
   </thead>
   <tbody>

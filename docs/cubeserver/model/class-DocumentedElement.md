@@ -17,6 +17,7 @@ Abstract base class that provides documentation capabilities to all modeling ele
       <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
+      <th>Default</th>
     </tr>
   </thead>
   <tbody>

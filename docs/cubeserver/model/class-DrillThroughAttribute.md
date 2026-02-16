@@ -17,6 +17,7 @@ Defines a dimensional attribute or member property that should be included in dr
       <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
+      <th>Default</th>
     </tr>
   </thead>
   <tbody>
@@ -26,9 +27,10 @@ Defines a dimensional attribute or member property that should be included in dr
       <td><em>EString</em></td>
       <td>0</td>
       <td>1</td>
+      <td></td>
     </tr>
     <tr>
-      <td colspan="5"><em>Name of the specific member property within the associated dimension or hierarchy that should be included in drill-through result sets, enabling precise selection of individual attribute values that provide meaningful business context for detailed data analysis. The property specification allows drill-through results to include specific member characteristics such as descriptive names, business codes, category classifications, or other dimensional attributes that help users understand and interpret the underlying transactional data within its proper business context.</em></td>
+      <td colspan="6"><em>Name of the specific member property within the associated dimension or hierarchy that should be included in drill-through result sets, enabling precise selection of individual attribute values that provide meaningful business context for detailed data analysis. The property specification allows drill-through results to include specific member characteristics such as descriptive names, business codes, category classifications, or other dimensional attributes that help users understand and interpret the underlying transactional data within its proper business context.</em></td>
     </tr>
   </tbody>
 </table>

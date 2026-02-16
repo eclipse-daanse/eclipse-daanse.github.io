@@ -18,6 +18,7 @@ Specialized formatter for controlling the presentation of cell values in analyti
       <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
+      <th>Default</th>
     </tr>
   </thead>
   <tbody>

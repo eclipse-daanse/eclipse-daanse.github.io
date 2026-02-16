@@ -16,7 +16,7 @@ This tutorial discusses NamedSets.
 
 ## Database Schema
 
-The Database Schema contains the Fact table with two columns: KEY and VALUE. The KEY column is used as the discriminator in the the Level and Hierarchy definitions.
+The Database Schema contains the Fact table with two columns: KEY and VALUE. The KEY column is used as the discriminator in the Level and Hierarchy definitions.
 
 
 ```xml
@@ -31,7 +31,7 @@ The Database Schema contains the Fact table with two columns: KEY and VALUE. The
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Query
 
-The Query is a simple TableQuery that selects all columns from the Fact table to use in in the hierarchy and in the cube for the measures.
+The Query is a simple TableQuery that selects all columns from the Fact table to use in the hierarchy and in the cube for the measures.
 
 
 ```xml
@@ -41,7 +41,7 @@ The Query is a simple TableQuery that selects all columns from the Fact table to
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Level1
 
-This Example uses one simple Level1 bases on the KEY column.
+This Example uses one simple Level1 based on the KEY column.
 
 
 ```xml
@@ -111,7 +111,7 @@ NamedSet use Dimension1 and Dimension2 in formula. By this reason it connected t
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Cube with NamedSets
 
-The cube1 is defines by the DimensionConnector  and the MeasureGroup with measure with aggregation sum.
+The cube1 is defined by the DimensionConnector  and the MeasureGroup with measure with aggregation sum.
 
 
 ```xml
@@ -132,7 +132,7 @@ The cube1 is defines by the DimensionConnector  and the MeasureGroup with measur
 
 ## Definition
 
-This files represent the complete definition of the catalog.
+This file represents the complete definition of the catalog.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -166,6 +166,6 @@ This files represent the complete definition of the catalog.
 
 
 ## Tutorial Zip
-This files contaisn the data-tables as csv and the mapping as xmi file.
+This file contains the data-tables as csv and the mapping as xmi file.
 
 <a href="./zip/tutorial.namedset.zip" download>Download Zip File</a>

@@ -18,6 +18,7 @@ Abstract base class for measures that derive their values from direct column ref
       <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
+      <th>Default</th>
     </tr>
   </thead>
   <tbody>

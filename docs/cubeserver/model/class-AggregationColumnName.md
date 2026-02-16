@@ -17,6 +17,7 @@ Specifies the column that stores fact count data in an aggregation table, enabli
       <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
+      <th>Default</th>
     </tr>
   </thead>
   <tbody>

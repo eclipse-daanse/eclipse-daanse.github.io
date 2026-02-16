@@ -18,6 +18,7 @@ Specialized formatter for controlling how dimensional members are displayed in h
       <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
+      <th>Default</th>
     </tr>
   </thead>
   <tbody>

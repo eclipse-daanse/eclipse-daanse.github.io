@@ -18,6 +18,7 @@ A measure that calculates the sum of all values from the referenced column acros
       <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
+      <th>Default</th>
     </tr>
   </thead>
   <tbody>

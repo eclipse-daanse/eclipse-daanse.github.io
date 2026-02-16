@@ -18,6 +18,7 @@ Abstract base class representing a member in the OLAP multidimensional model. A 
       <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
+      <th>Default</th>
     </tr>
   </thead>
   <tbody>
@@ -27,9 +28,10 @@ Abstract base class representing a member in the OLAP multidimensional model. A 
       <td><em>EString</em></td>
       <td>0</td>
       <td>1</td>
+      <td></td>
     </tr>
     <tr>
-      <td colspan="5"><em>Optional folder path that organizes this member within client tool hierarchies and measure lists. Display folders create logical groupings in OLAP client interfaces, helping users navigate large numbers of measures and calculated members. For example, 'Financial\\Profitability' or 'Operations\\Quality Metrics'. The folder structure appears in tools like Excel pivot tables and cube browsers.</em></td>
+      <td colspan="6"><em>Optional folder path that organizes this member within client tool hierarchies and measure lists. Display folders create logical groupings in OLAP client interfaces, helping users navigate large numbers of measures and calculated members. For example, 'Financial\\Profitability' or 'Operations\\Quality Metrics'. The folder structure appears in tools like Excel pivot tables and cube browsers.</em></td>
     </tr>
     <tr>
       <td><strong>visible</strong></td>
@@ -37,9 +39,10 @@ Abstract base class representing a member in the OLAP multidimensional model. A 
       <td><em>Boolean</em></td>
       <td>0</td>
       <td>1</td>
+      <td>true</td>
     </tr>
     <tr>
-      <td colspan="5"><em>Boolean flag controlling whether this member appears in client tool member lists, XMLA metadata discovery, and cube browsers. When set to false, the member becomes hidden from normal user interfaces but remains accessible through direct references in MDX queries. This is useful for creating internal system members, intermediate calculation steps, or advanced members intended only for power users who know the member names explicitly.</em></td>
+      <td colspan="6"><em>Boolean flag controlling whether this member appears in client tool member lists, XMLA metadata discovery, and cube browsers. When set to false, the member becomes hidden from normal user interfaces but remains accessible through direct references in MDX queries. This is useful for creating internal system members, intermediate calculation steps, or advanced members intended only for power users who know the member names explicitly.</em></td>
     </tr>
     <tr>
       <td><strong>formatString</strong></td>
@@ -47,9 +50,10 @@ Abstract base class representing a member in the OLAP multidimensional model. A 
       <td><em>EString</em></td>
       <td>0</td>
       <td>1</td>
+      <td></td>
     </tr>
     <tr>
-      <td colspan="5"><em>Format string that defines how values for this member should be displayed in client applications. Uses standard formatting syntax for numbers, currencies, dates, and percentages (e.g., '#,##0.00', '$#,##0', 'yyyy-MM-dd', '0.0%'). This formatting is applied consistently across all OLAP clients and XMLA-compliant tools, ensuring uniform data presentation regardless of the client application being used.</em></td>
+      <td colspan="6"><em>Format string that defines how values for this member should be displayed in client applications. Uses standard formatting syntax for numbers, currencies, dates, and percentages (e.g., '#,##0.00', '$#,##0', 'yyyy-MM-dd', '0.0%'). This formatting is applied consistently across all OLAP clients and XMLA-compliant tools, ensuring uniform data presentation regardless of the client application being used.</em></td>
     </tr>
   </tbody>
 </table>

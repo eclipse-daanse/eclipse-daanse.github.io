@@ -18,6 +18,7 @@ Represents a group of members in a hierarchy, all at the same depth and sharing 
       <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
+      <th>Default</th>
     </tr>
   </thead>
   <tbody>
@@ -27,9 +28,10 @@ Represents a group of members in a hierarchy, all at the same depth and sharing 
       <td><em>EString</em></td>
       <td>0</td>
       <td>1</td>
+      <td></td>
     </tr>
     <tr>
-      <td colspan="5"><em>Approximate number of members expected at this level, used for query optimization and performance tuning. This hint helps the OLAP engine choose appropriate caching strategies, index usage, and memory allocation for efficient member loading and query execution.</em></td>
+      <td colspan="6"><em>Approximate number of members expected at this level, used for query optimization and performance tuning. This hint helps the OLAP engine choose appropriate caching strategies, index usage, and memory allocation for efficient member loading and query execution.</em></td>
     </tr>
     <tr>
       <td><strong>hideMemberIf</strong></td>
@@ -37,9 +39,10 @@ Represents a group of members in a hierarchy, all at the same depth and sharing 
       <td><em>HideMemberIf<a href="./enum-HideMemberIf">🔗</a></em></td>
       <td>0</td>
       <td>1</td>
+      <td></td>
     </tr>
     <tr>
-      <td colspan="5"><em>Condition for hiding members from client tools and queries, useful for handling ragged hierarchies and data quality issues. Options include NEVER (all members visible), IF_BLANK_NAME (hide members with null/empty names), and IF_PARENTS_NAME (hide members whose name matches their parent's name).</em></td>
+      <td colspan="6"><em>Condition for hiding members from client tools and queries, useful for handling ragged hierarchies and data quality issues. Options include NEVER (all members visible), IF_BLANK_NAME (hide members with null/empty names), and IF_PARENTS_NAME (hide members whose name matches their parent's name).</em></td>
     </tr>
     <tr>
       <td><strong>type</strong></td>
@@ -47,9 +50,10 @@ Represents a group of members in a hierarchy, all at the same depth and sharing 
       <td><em>LevelDefinition<a href="./enum-LevelDefinition">🔗</a></em></td>
       <td>0</td>
       <td>1</td>
+      <td></td>
     </tr>
     <tr>
-      <td colspan="5"><em>Semantic type of this level indicating its role in business analysis. Types include temporal levels (TIME_YEARS, TIME_MONTHS, TIME_DAYS), geographic levels (GEO_COUNTRY, GEO_STATE, GEO_CITY), business levels (CUSTOMER, PRODUCT, ACCOUNT), and general REGULAR type. This metadata enables specialized behavior, validation, and client tool integration.</em></td>
+      <td colspan="6"><em>Semantic type of this level indicating its role in business analysis. Types include temporal levels (TIME_YEARS, TIME_MONTHS, TIME_DAYS), geographic levels (GEO_COUNTRY, GEO_STATE, GEO_CITY), business levels (CUSTOMER, PRODUCT, ACCOUNT), and general REGULAR type. This metadata enables specialized behavior, validation, and client tool integration.</em></td>
     </tr>
     <tr>
       <td><strong>columnType</strong></td>
@@ -57,9 +61,10 @@ Represents a group of members in a hierarchy, all at the same depth and sharing 
       <td><em>ColumnInternalDataType<a href="./enum-ColumnInternalDataType">🔗</a></em></td>
       <td>0</td>
       <td>1</td>
+      <td></td>
     </tr>
     <tr>
-      <td colspan="5"><em>Data type of the primary column values, used for appropriate SQL generation, comparison operations, and display formatting. Supported types include STRING, INTEGER, NUMERIC, BOOLEAN, DATE, and others. This type information ensures proper handling of member keys in queries and aggregations.</em></td>
+      <td colspan="6"><em>Data type of the primary column values, used for appropriate SQL generation, comparison operations, and display formatting. Supported types include STRING, INTEGER, NUMERIC, BOOLEAN, DATE, and others. This type information ensures proper handling of member keys in queries and aggregations.</em></td>
     </tr>
     <tr>
       <td><strong>uniqueMembers</strong></td>
@@ -67,9 +72,10 @@ Represents a group of members in a hierarchy, all at the same depth and sharing 
       <td><em>Boolean</em></td>
       <td>0</td>
       <td>1</td>
+      <td></td>
     </tr>
     <tr>
-      <td colspan="5"><em>Boolean flag indicating whether member names are globally unique across the entire hierarchy or only unique within their parent context. When true, enables query optimizations and simplified member referencing. Required for parent-child hierarchies where name uniqueness cannot be guaranteed within parent scope.</em></td>
+      <td colspan="6"><em>Boolean flag indicating whether member names are globally unique across the entire hierarchy or only unique within their parent context. When true, enables query optimizations and simplified member referencing. Required for parent-child hierarchies where name uniqueness cannot be guaranteed within parent scope.</em></td>
     </tr>
     <tr>
       <td><strong>visible</strong></td>
@@ -77,9 +83,10 @@ Represents a group of members in a hierarchy, all at the same depth and sharing 
       <td><em>Boolean</em></td>
       <td>0</td>
       <td>1</td>
+      <td>true</td>
     </tr>
     <tr>
-      <td colspan="5"><em>Controls whether this level appears in client tool level browsers, dimension trees, and metadata discovery. When false, the level becomes hidden from normal user interfaces but remains accessible for programmatic queries and advanced users who know the level name explicitly.</em></td>
+      <td colspan="6"><em>Controls whether this level appears in client tool level browsers, dimension trees, and metadata discovery. When false, the level becomes hidden from normal user interfaces but remains accessible for programmatic queries and advanced users who know the level name explicitly.</em></td>
     </tr>
   </tbody>
 </table>

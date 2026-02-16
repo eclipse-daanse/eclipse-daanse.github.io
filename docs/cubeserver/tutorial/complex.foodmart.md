@@ -1403,21 +1403,21 @@ Measure Unit Sales use sales_fact_1997 table unit_sales column with sum aggregat
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
-## Store Sales
-
-Measure Store Sales use sales_fact_1997 table store_sales column with sum aggregation. with MEMBER_ORDINAL property
-
-```xml
-<roma:SumMeasure  name="Store Sales" column="_column_salesFact_storeSales"/>
-
-```
-*<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Store Cost
 
 Measure Store Cost use sales_fact_1997 table store_cost column with sum aggregation. with MEMBER_ORDINAL property
 
 ```xml
 <roma:SumMeasure  name="Store Cost" formatString=",###.00" column="_column_salesFact_storeCost"/>
+
+```
+*<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
+## Store Sales
+
+Measure Store Sales use sales_fact_1997 table store_sales column with sum aggregation. with MEMBER_ORDINAL property
+
+```xml
+<roma:SumMeasure  name="Store Sales" column="_column_salesFact_storeSales"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -1465,7 +1465,7 @@ The `No HR Cube` use CatalogGrant access all except Cube HR. CubeGrant has HR cu
 
 ## Definition
 
-This files represent the complete definition of the catalog.
+This file represents the complete definition of the catalog.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -1881,10 +1881,10 @@ This files represent the complete definition of the catalog.
   <roma:Level id="_level_product_subcategory" name="Product Subcategory" column="_column_productClass_productSubcategory"/>
   <roma:Level id="_level_promotion_media" name="Media Type" column="_column_promotion_mediaType" uniqueMembers="true"/>
   <roma:Level id="_level_promotion_name" name="Promotion Name" column="_column_promotion_promotionName" uniqueMembers="true"/>
-  <roma:Level id="_level_regged_store_city" name="Store City" column="_column_store_ragged_store_city" hideMemberIf="IfBlankName"/>
   <roma:Level id="_level_regged_store_city" name="City" column="_column_store_ragged_store_city" hideMemberIf="IfBlankName"/>
-  <roma:Level id="_level_regged_store_country" name="Store Country" column="_column_store_ragged_store_country"/>
+  <roma:Level id="_level_regged_store_city" name="Store City" column="_column_store_ragged_store_city" hideMemberIf="IfBlankName"/>
   <roma:Level id="_level_regged_store_country" name="Country" column="_column_store_ragged_store_country" uniqueMembers="true"/>
+  <roma:Level id="_level_regged_store_country" name="Store Country" column="_column_store_ragged_store_country"/>
   <roma:Level id="_level_regged_store_name" name="Store Name" column="_column_store_ragged_store_name" uniqueMembers="true">
     <memberProperties id="_memberProperty_storeRagged_storeType" name="Store Type" column="_column_store_ragged_store_type"/>
     <memberProperties id="_memberProperty_storeRagged_storeManager" name="Store Manager" column="_column_store_ragged_store_manager"/>
@@ -1895,8 +1895,8 @@ This files represent the complete definition of the catalog.
     <memberProperties id="_memberProperty_storeRagged_hasCoffeeBar" name="Has coffee bar" column="_column_store_ragged_coffee_bar"/>
     <memberProperties id="_memberProperty_storeRagged_streetAddress" name="Street address" column="_column_store_ragged_store_street_address"/>
   </roma:Level>
-  <roma:Level id="_level_regged_store_state" name="State" column="_column_store_ragged_store_state" hideMemberIf="IfParentsName" uniqueMembers="true"/>
   <roma:Level id="_level_regged_store_state" name="Store State" column="_column_store_ragged_store_state" hideMemberIf="IfParentsName" uniqueMembers="true"/>
+  <roma:Level id="_level_regged_store_state" name="State" column="_column_store_ragged_store_state" hideMemberIf="IfParentsName" uniqueMembers="true"/>
   <roma:Level id="_level_state_province" name="State Province" column="_column_customer_stateProvince" uniqueMembers="true"/>
   <roma:Level id="_level_store_city" name="Store City" column="_column_store_storeCity"/>
   <roma:Level id="_level_store_country" name="Store Country" column="_column_store_storeCountry" uniqueMembers="true"/>
@@ -2151,6 +2151,6 @@ This files represent the complete definition of the catalog.
 
 
 ## Tutorial Zip
-This files contaisn the data-tables as csv and the mapping as xmi file.
+This file contains the data-tables as csv and the mapping as xmi file.
 
 <a href="./zip/complex.foodmart.zip" download>Download Zip File</a>

@@ -38,7 +38,7 @@ This example uses a TableQuery, as it directly references the physical table `Fa
 ## CellFormatter
 
         Specialized formatter for controlling the presentation of cell values in analytical grids.
-        Cell formatter use reference to class formatter mondrian.rolap.format.CellFormatterImpl implemented CellFormatter interface
+        Cell formatters use a reference to a class formatter like mondrian.rolap.format.CellFormatterImpl implementing the CellFormatter interface
 
 
 ```xml
@@ -48,7 +48,7 @@ This example uses a TableQuery, as it directly references the physical table `Fa
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Measure1
 
-        Measure with CellFormatter. measure reference the `VALUE` column and use the following `SUM` aggregation function.
+        Measure with CellFormatter. The measure references the `VALUE` column and uses the `SUM` aggregation function.
 
 
 ```xml
@@ -58,7 +58,7 @@ This example uses a TableQuery, as it directly references the physical table `Fa
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Cube with Measures CellFormatter
 
-In this example, measure with CellFormatter. measure reference the `VALUE` column and use the following `SUM` aggregation function.
+In this example, the measure has a CellFormatter. The measure references the `VALUE` column and uses the `SUM` aggregation function.
 
 
 ```xml
@@ -73,7 +73,7 @@ In this example, measure with CellFormatter. measure reference the `VALUE` colum
 
 ## Definition
 
-This files represent the complete definition of the catalog.
+This file represents the complete definition of the catalog.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -99,6 +99,6 @@ This files represent the complete definition of the catalog.
 
 
 ## Tutorial Zip
-This files contaisn the data-tables as csv and the mapping as xmi file.
+This file contains the data-tables as csv and the mapping as xmi file.
 
 <a href="./zip/tutorial.formatter.cell.zip" download>Download Zip File</a>

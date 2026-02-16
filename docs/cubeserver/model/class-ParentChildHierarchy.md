@@ -18,6 +18,7 @@ Self-referencing hierarchy where members can have parent-child relationships wit
       <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
+      <th>Default</th>
     </tr>
   </thead>
   <tbody>
@@ -27,9 +28,10 @@ Self-referencing hierarchy where members can have parent-child relationships wit
       <td><em>EString</em></td>
       <td>0</td>
       <td>1</td>
+      <td></td>
     </tr>
     <tr>
-      <td colspan="5"><em>String value in the parent column that indicates root-level members (those without parents). Common values include '0', 'NULL', or empty string. This value identifies which members serve as the top-level roots of the hierarchy tree structure.</em></td>
+      <td colspan="6"><em>String value in the parent column that indicates root-level members (those without parents). Common values include '0', 'NULL', or empty string. This value identifies which members serve as the top-level roots of the hierarchy tree structure.</em></td>
     </tr>
     <tr>
       <td><strong>parentAsLeafEnable</strong></td>
@@ -37,9 +39,10 @@ Self-referencing hierarchy where members can have parent-child relationships wit
       <td><em>Boolean</em></td>
       <td>0</td>
       <td>1</td>
+      <td>false</td>
     </tr>
     <tr>
-      <td colspan="5"><em>Boolean flag that allows intermediate parent members to also appear as leaf members, enabling scenarios where the same entity functions both as a container and as a data point. When true, parents can have their own measures and participate in aggregations at multiple levels. Commonly used in account hierarchies where summary accounts also contain direct transactions.</em></td>
+      <td colspan="6"><em>Boolean flag that allows intermediate parent members to also appear as leaf members, enabling scenarios where the same entity functions both as a container and as a data point. When true, parents can have their own measures and participate in aggregations at multiple levels. Commonly used in account hierarchies where summary accounts also contain direct transactions.</em></td>
     </tr>
     <tr>
       <td><strong>parentAsLeafNameFormat</strong></td>
@@ -47,9 +50,10 @@ Self-referencing hierarchy where members can have parent-child relationships wit
       <td><em>EString</em></td>
       <td>0</td>
       <td>1</td>
+      <td></td>
     </tr>
     <tr>
-      <td colspan="5"><em>Format string for naming parent members when they appear as leaf nodes (used when parentAsLeafEnable=true). The format uses {0} as a placeholder for the original member name. Default format is '{0} (parent)' which creates names like 'Sales Manager (parent)' to distinguish the parent role from child member names.</em></td>
+      <td colspan="6"><em>Format string for naming parent members when they appear as leaf nodes (used when parentAsLeafEnable=true). The format uses {0} as a placeholder for the original member name. Default format is '{0} (parent)' which creates names like 'Sales Manager (parent)' to distinguish the parent role from child member names.</em></td>
     </tr>
   </tbody>
 </table>

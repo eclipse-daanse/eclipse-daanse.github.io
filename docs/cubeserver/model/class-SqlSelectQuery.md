@@ -18,6 +18,7 @@ Wraps custom SQL SELECT statements as query sources, enabling the integration of
       <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
+      <th>Default</th>
     </tr>
   </thead>
   <tbody>

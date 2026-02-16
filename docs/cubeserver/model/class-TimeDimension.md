@@ -18,6 +18,7 @@ Specialized dimension for temporal analysis, providing built-in support for time
       <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
+      <th>Default</th>
     </tr>
   </thead>
   <tbody>

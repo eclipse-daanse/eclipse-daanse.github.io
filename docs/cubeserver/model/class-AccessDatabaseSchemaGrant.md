@@ -17,6 +17,7 @@ Extends the OLAP security model to the database level by controlling access to d
       <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
+      <th>Default</th>
     </tr>
   </thead>
   <tbody>
@@ -26,9 +27,10 @@ Extends the OLAP security model to the database level by controlling access to d
       <td><em>DatabaseSchemaAccess<a href="./enum-DatabaseSchemaAccess">🔗</a></em></td>
       <td>1</td>
       <td>1</td>
+      <td></td>
     </tr>
     <tr>
-      <td colspan="5"><em>Defines the access level for the database schema using DatabaseSchemaAccess enumeration values, controlling whether role members can interact with schema structures.</em></td>
+      <td colspan="6"><em>Defines the access level for the database schema using DatabaseSchemaAccess enumeration values, controlling whether role members can interact with schema structures.</em></td>
     </tr>
   </tbody>
 </table>

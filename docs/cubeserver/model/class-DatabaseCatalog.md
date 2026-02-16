@@ -18,6 +18,7 @@ Represents a database catalog that organizes database schemas and external data 
       <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
+      <th>Default</th>
     </tr>
   </thead>
   <tbody>

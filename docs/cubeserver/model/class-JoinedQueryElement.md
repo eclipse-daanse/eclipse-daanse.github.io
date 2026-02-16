@@ -17,6 +17,7 @@ Represents one side of a JOIN operation, encapsulating the query source, join ke
       <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
+      <th>Default</th>
     </tr>
   </thead>
   <tbody>
@@ -26,9 +27,10 @@ Represents one side of a JOIN operation, encapsulating the query source, join ke
       <td><em>EString</em></td>
       <td>0</td>
       <td>1</td>
+      <td></td>
     </tr>
     <tr>
-      <td colspan="5"><em>Optional SQL table alias for this query element when used in JOIN operations. The alias provides a unique, short identifier that can be referenced in column expressions, WHERE clauses, and nested join conditions, preventing naming conflicts when the same table appears multiple times in complex queries or when working with long table names. If not specified, the OLAP engine may generate automatic aliases based on query IDs or table names to ensure SQL correctness and readability.</em></td>
+      <td colspan="6"><em>Optional SQL table alias for this query element when used in JOIN operations. The alias provides a unique, short identifier that can be referenced in column expressions, WHERE clauses, and nested join conditions, preventing naming conflicts when the same table appears multiple times in complex queries or when working with long table names. If not specified, the OLAP engine may generate automatic aliases based on query IDs or table names to ensure SQL correctness and readability.</em></td>
     </tr>
   </tbody>
 </table>

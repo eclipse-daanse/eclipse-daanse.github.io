@@ -18,6 +18,7 @@ An advanced statistical measure that calculates percentile values from the refer
       <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
+      <th>Default</th>
     </tr>
   </thead>
   <tbody>
@@ -27,9 +28,10 @@ An advanced statistical measure that calculates percentile values from the refer
       <td><em>PercentType<a href="./enum-PercentType">🔗</a></em></td>
       <td>0</td>
       <td>1</td>
+      <td></td>
     </tr>
     <tr>
-      <td colspan="5"><em>Specifies the type of percentile calculation to perform. 'DISC' (discrete) returns an actual value from the dataset that corresponds to the percentile position, while 'CONT' (continuous) may interpolate between values to provide a more precise percentile result. The choice affects the precision and interpretation of percentile results, with discrete being more appropriate for categorical data and continuous for numerical analysis.</em></td>
+      <td colspan="6"><em>Specifies the type of percentile calculation to perform. 'DISC' (discrete) returns an actual value from the dataset that corresponds to the percentile position, while 'CONT' (continuous) may interpolate between values to provide a more precise percentile result. The choice affects the precision and interpretation of percentile results, with discrete being more appropriate for categorical data and continuous for numerical analysis.</em></td>
     </tr>
     <tr>
       <td><strong>percentile</strong></td>
@@ -37,9 +39,10 @@ An advanced statistical measure that calculates percentile values from the refer
       <td><em>Double</em></td>
       <td>0</td>
       <td>1</td>
+      <td>1.0</td>
     </tr>
     <tr>
-      <td colspan="5"><em>Double value between 0.0 and 1.0 that specifies which percentile to calculate. Common values include 0.25 (25th percentile/first quartile), 0.5 (50th percentile/median), 0.75 (75th percentile/third quartile), 0.9 (90th percentile), and 0.95 (95th percentile). The default value of 1.0 represents the maximum value (100th percentile). This value determines the specific point in the data distribution that the measure will return.</em></td>
+      <td colspan="6"><em>Double value between 0.0 and 1.0 that specifies which percentile to calculate. Common values include 0.25 (25th percentile/first quartile), 0.5 (50th percentile/median), 0.75 (75th percentile/third quartile), 0.9 (90th percentile), and 0.95 (95th percentile). The default value of 1.0 represents the maximum value (100th percentile). This value determines the specific point in the data distribution that the measure will return.</em></td>
     </tr>
   </tbody>
 </table>

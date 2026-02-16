@@ -17,6 +17,7 @@ Defines column relationships between aggregation tables and fact tables that ena
       <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
+      <th>Default</th>
     </tr>
   </thead>
   <tbody>

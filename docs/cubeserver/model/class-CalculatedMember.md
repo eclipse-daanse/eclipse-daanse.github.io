@@ -18,6 +18,7 @@ Represents sophisticated computed members that are dynamically calculated using 
       <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
+      <th>Default</th>
     </tr>
   </thead>
   <tbody>
@@ -27,9 +28,10 @@ Represents sophisticated computed members that are dynamically calculated using 
       <td><em>Formula</em></td>
       <td>0</td>
       <td>1</td>
+      <td></td>
     </tr>
     <tr>
-      <td colspan="5"><em>MDX expression that defines the calculation logic for this computed member, encapsulating sophisticated business rules, mathematical formulations, and analytical computations that determine the member's value based on other measures, members, and dimensional context. The formula serves as the computational heart of the calculated member, enabling complex analytical scenarios including financial ratio calculations that combine multiple measures with mathematical operations, time-based calculations that implement period-over-period comparisons and trend analysis, conditional logic that applies different calculation rules based on dimensional attributes or member properties, and cross-dimensional calculations that aggregate or transform data across multiple analytical perspectives.</em></td>
+      <td colspan="6"><em>MDX expression that defines the calculation logic for this computed member, encapsulating sophisticated business rules, mathematical formulations, and analytical computations that determine the member's value based on other measures, members, and dimensional context. The formula serves as the computational heart of the calculated member, enabling complex analytical scenarios including financial ratio calculations that combine multiple measures with mathematical operations, time-based calculations that implement period-over-period comparisons and trend analysis, conditional logic that applies different calculation rules based on dimensional attributes or member properties, and cross-dimensional calculations that aggregate or transform data across multiple analytical perspectives.</em></td>
     </tr>
     <tr>
       <td><strong>parent</strong></td>
@@ -37,9 +39,10 @@ Represents sophisticated computed members that are dynamically calculated using 
       <td><em>EString</em></td>
       <td>0</td>
       <td>1</td>
+      <td></td>
     </tr>
     <tr>
-      <td colspan="5"><em>MDX expression that identifies the parent member within the dimensional hierarchy where this calculated member should be positioned, establishing the hierarchical context and navigational placement that determines how the calculated member appears in dimensional browsers, OLAP client tools, and analytical applications. The parent specification enables sophisticated calculated member organization where computed members can be logically grouped with related dimensional concepts, positioned at appropriate hierarchical levels for intuitive user navigation, and integrated seamlessly with existing dimensional structures to provide cohesive analytical experiences.</em></td>
+      <td colspan="6"><em>MDX expression that identifies the parent member within the dimensional hierarchy where this calculated member should be positioned, establishing the hierarchical context and navigational placement that determines how the calculated member appears in dimensional browsers, OLAP client tools, and analytical applications. The parent specification enables sophisticated calculated member organization where computed members can be logically grouped with related dimensional concepts, positioned at appropriate hierarchical levels for intuitive user navigation, and integrated seamlessly with existing dimensional structures to provide cohesive analytical experiences.</em></td>
     </tr>
   </tbody>
 </table>

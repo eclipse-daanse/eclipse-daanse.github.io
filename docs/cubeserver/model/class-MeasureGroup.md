@@ -17,6 +17,7 @@ A logical container that organizes related measures within a physical cube, prov
       <th>Type</th>
       <th>Lower</th>
       <th>Upper</th>
+      <th>Default</th>
     </tr>
   </thead>
   <tbody>
@@ -26,9 +27,10 @@ A logical container that organizes related measures within a physical cube, prov
       <td><em>EString</em></td>
       <td>0</td>
       <td>1</td>
+      <td></td>
     </tr>
     <tr>
-      <td colspan="5"><em>Display name for this measure group that appears in OLAP clients, cube browsers, and metadata discovery. The name should clearly indicate the business purpose or theme of the grouped measures, such as 'Sales Metrics', 'Financial KPIs', or 'Inventory Measures'. This name helps users understand the logical organization of measures and appears in XMLA metadata and client tool measure lists.</em></td>
+      <td colspan="6"><em>Display name for this measure group that appears in OLAP clients, cube browsers, and metadata discovery. The name should clearly indicate the business purpose or theme of the grouped measures, such as 'Sales Metrics', 'Financial KPIs', or 'Inventory Measures'. This name helps users understand the logical organization of measures and appears in XMLA metadata and client tool measure lists.</em></td>
     </tr>
   </tbody>
 </table>
