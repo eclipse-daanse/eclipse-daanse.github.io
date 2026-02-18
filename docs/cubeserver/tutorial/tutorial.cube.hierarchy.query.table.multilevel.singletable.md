@@ -2,7 +2,7 @@
 title: Hierarchy Query Table Multilevel Singletable
 group: Hierarchy
 kind: TUTORIAL
-number: 2.3.2.3
+number: 2.03.02.03
 ---
 # Daanse Tutorial - Hierarchy Query Table Multilevel Singletable
 

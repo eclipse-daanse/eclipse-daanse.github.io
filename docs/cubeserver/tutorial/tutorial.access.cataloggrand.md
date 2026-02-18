@@ -2,7 +2,7 @@
 title: Access Catalog Grant
 group: Access
 kind: TUTORIAL
-number: 2.4.4
+number: 2.04.04
 ---
 # Daanse Tutorial - Access Catalog Grant
 

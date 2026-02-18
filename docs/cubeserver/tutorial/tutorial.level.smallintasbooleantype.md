@@ -2,7 +2,7 @@
 title: Level Small Int As Boolean Type
 group: Level
 kind: TUTORIAL
-number: 2.14.2
+number: 2.14.02
 ---
 # Daanse Tutorial - Level Small Int As Boolean Type
 

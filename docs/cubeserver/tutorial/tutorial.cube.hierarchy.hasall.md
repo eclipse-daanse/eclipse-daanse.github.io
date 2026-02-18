@@ -2,7 +2,7 @@
 title: Hierarchy Has All
 group: Hierarchy
 kind: TUTORIAL
-number: 2.3.4
+number: 2.03.04
 ---
 # Daanse Tutorial - Hierarchy Has All
 

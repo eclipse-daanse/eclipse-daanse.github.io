@@ -2,7 +2,7 @@
 title: KPI Virtual Cube
 group: Kpi
 kind: TUTORIAL
-number: 2.7.4
+number: 2.07.04
 ---
 # Daanse Tutorial - KPI Virtual Cube
 

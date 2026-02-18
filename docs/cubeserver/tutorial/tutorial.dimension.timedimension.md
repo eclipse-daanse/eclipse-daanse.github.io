@@ -2,7 +2,7 @@
 title: Dimension Time Dimension
 group: Dimension
 kind: TUTORIAL
-number: 2.9.1
+number: 2.09.01
 ---
 # Daanse Tutorial - Dimension Time Dimension
 
@@ -63,7 +63,7 @@ This Example uses Quarters level based on the QTR_ID column and has TIME_QUARTER
 
 
 ```xml
-<roma:Level  id="_level_quarters" name="Quarters" column="_column_fact_qtrName" type="TimeQuarters" ordinalColumn="roma:PhysicalColumn _column_fact_qtrId"/>
+<roma:Level  id="_level_quarters" name="Quarters" column="_column_fact_qtrName" type="TimeQuarters" ordinalColumn="_ordered_column_fact_qtrId"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -73,7 +73,7 @@ This Example uses Months level based on the MONTH_ID column and has TIME_MONTHS 
 
 
 ```xml
-<roma:Level  id="_level_months" name="Months" column="_column_fact_monthName" type="TimeMonths" ordinalColumn="roma:PhysicalColumn _column_fact_monthId"/>
+<roma:Level  id="_level_months" name="Months" column="_column_fact_monthName" type="TimeMonths" ordinalColumn="_ordered_column_fact_monthId"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -147,6 +147,8 @@ This file represents the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
+  <roma:OrderedColumn id="_ordered_column_fact_monthId" column="_column_fact_monthId"/>
+  <roma:OrderedColumn id="_ordered_column_fact_qtrId" column="_column_fact_qtrId"/>
   <roma:Catalog description="Time dimension configuration" name="Daanse Tutorial - Dimension Time Dimension" cubes="_cube_timeDimension" dbschemas="_databaseSchema_timeDimension"/>
   <roma:DatabaseSchema id="_databaseSchema_timeDimension">
     <tables xsi:type="roma:PhysicalTable" id="_table_fact" name="Fact">
@@ -163,8 +165,8 @@ This file represents the complete definition of the catalog.
   </roma:DatabaseSchema>
   <roma:TableQuery id="_query_fact" table="_table_fact"/>
   <roma:Level id="_level_day" name="Day" column="_column_fact_dayInMonth" type="TimeDays"/>
-  <roma:Level id="_level_months" name="Months" column="_column_fact_monthName" type="TimeMonths" ordinalColumn="_column_fact_monthId"/>
-  <roma:Level id="_level_quarters" name="Quarters" column="_column_fact_qtrName" type="TimeQuarters" ordinalColumn="_column_fact_qtrId"/>
+  <roma:Level id="_level_months" name="Months" column="_column_fact_monthName" type="TimeMonths" ordinalColumn="_ordered_column_fact_monthId"/>
+  <roma:Level id="_level_quarters" name="Quarters" column="_column_fact_qtrName" type="TimeQuarters" ordinalColumn="_ordered_column_fact_qtrId"/>
   <roma:Level id="_level_week" name="Week" column="_column_fact_weekInMonth" type="TimeWeeks"/>
   <roma:Level id="_level_years" name="Years" column="_column_fact_yearId" type="TimeYears" uniqueMembers="true"/>
   <roma:ExplicitHierarchy id="_hierarchy_time" allMemberName="All Years" primaryKey="_column_fact_dateKey" query="_query_fact" levels="_level_years _level_quarters _level_months _level_week _level_day"/>

@@ -2,7 +2,7 @@
 title: Measure Aggregator Bit
 group: Measure
 kind: TUTORIAL
-number: 2.2.6
+number: 2.02.06
 ---
 # Multiple Measures with Bit Aggragators
 

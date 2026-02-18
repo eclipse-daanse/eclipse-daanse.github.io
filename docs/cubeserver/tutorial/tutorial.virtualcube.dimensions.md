@@ -2,7 +2,7 @@
 title: Virtual Cube Dimensions
 group: VirtualCube
 kind: TUTORIAL
-number: 2.15.2
+number: 2.15.02
 ---
 # Daanse Tutorial - Virtual Cube Dimensions
 

@@ -2,7 +2,7 @@
 title: KPI All
 group: Kpi
 kind: TUTORIAL
-number: 2.7.2
+number: 2.07.02
 ---
 # Daanse Tutorial - KPI All
 

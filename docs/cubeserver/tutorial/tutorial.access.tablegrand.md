@@ -2,7 +2,7 @@
 title: Access Table Grant
 group: Access
 kind: TUTORIAL
-number: 2.4.2
+number: 2.04.02
 ---
 # Daanse Tutorial - Access Table Grant
 

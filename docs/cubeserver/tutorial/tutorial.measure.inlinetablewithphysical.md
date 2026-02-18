@@ -2,7 +2,7 @@
 title: Measure Inline Table With Physical
 group: Measure
 kind: TUTORIAL
-number: 2.12.3
+number: 2.12.03
 ---
 # Daanse Tutorial - Measure Inline Table With Physical
 

@@ -2,7 +2,7 @@
 title: Measure Datatype
 group: Measure
 kind: TUTORIAL
-number: 2.2.3
+number: 2.02.03
 ---
 # Daanse Tutorial - Measure Datatype
 

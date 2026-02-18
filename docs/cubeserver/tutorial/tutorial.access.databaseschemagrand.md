@@ -2,7 +2,7 @@
 title: Access Database Schema Grant
 group: Access
 kind: TUTORIAL
-number: 2.4.1
+number: 2.04.01
 ---
 # Daanse Tutorial - Access Database Schema Grant
 

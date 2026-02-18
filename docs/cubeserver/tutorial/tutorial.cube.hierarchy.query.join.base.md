@@ -2,7 +2,7 @@
 title: Hierarchy Query Join Base
 group: Hierarchy
 kind: TUTORIAL
-number: 2.3.3.1
+number: 2.03.03.01
 ---
 # Daanse Tutorial - Hierarchy Query Join Base
 
@@ -74,7 +74,7 @@ The JoinQuery specifies which TableQueries should be joined. It also defines the
 
 ```xml
 <roma:JoinQuery  id="_query_townToCountry">
-  <left key="_column_town_id" query="_query_town"/>
+  <left key="_column_town_countryId" query="_query_town"/>
   <right key="_column_country_id" query="_query_country"/>
 </roma:JoinQuery>
 
@@ -177,7 +177,7 @@ This file represents the complete definition of the catalog.
   <roma:TableQuery id="_query_fact" table="_table_fact"/>
   <roma:TableQuery id="_query_town" table="_table_town"/>
   <roma:JoinQuery id="_query_townToCountry">
-    <left key="_column_town_id" query="_query_town"/>
+    <left key="_column_town_countryId" query="_query_town"/>
     <right key="_column_country_id" query="_query_country"/>
   </roma:JoinQuery>
   <roma:Level id="_level_country" name="County" column="_column_country_id" nameColumn="_column_country_name"/>

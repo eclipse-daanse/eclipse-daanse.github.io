@@ -2,7 +2,7 @@
 title: Aggregation Aggregate Tables
 group: Aggregation
 kind: TUTORIAL
-number: 2.8.2
+number: 2.08.02
 ---
 # Daanse Tutorial - Aggregation Aggregate Tables
 

@@ -343,7 +343,7 @@ classDiagram
     Level --> Column : captionColumn
     Level --> Column : column
     Level --> Column : nameColumn
-    Level --> Column : ordinalColumn
+    Level --> OrderedColumn : ordinalColumn
 
     Level <|-- AbstractElement : inherit
 

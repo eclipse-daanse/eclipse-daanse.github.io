@@ -2,7 +2,7 @@
 title: Hierarchy Query Table Base
 group: Hierarchy
 kind: TUTORIAL
-number: 2.3.2.1
+number: 2.03.02.01
 ---
 # Daanse Tutorial - Hierarchy Query Table Base
 

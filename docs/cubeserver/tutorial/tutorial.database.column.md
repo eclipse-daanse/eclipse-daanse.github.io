@@ -2,11 +2,11 @@
 title: Database Column
 group: Database
 kind: TUTORIAL
-number: 1.2.1
+number: 1.02.01
 ---
 # Daanse Tutorial - Database Column
 
-The data of a table are seperated into columns. Each column that should be used, must explicitly defines. Columns that are not relevant for the analysis can be left out.
+The data of a table are seperated into columns. Each column that should be used, must be explicitly defined. Columns that are not relevant for the analysis can be left out.
 
 
 ## Common column fields

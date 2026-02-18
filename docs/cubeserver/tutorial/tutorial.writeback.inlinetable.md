@@ -2,7 +2,7 @@
 title: Writeback Inline Table
 group: Writeback
 kind: TUTORIAL
-number: 2.5.1
+number: 2.05.01
 ---
 # Daanse Tutorial - Writeback Inline Table
 

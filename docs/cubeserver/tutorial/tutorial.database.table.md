@@ -2,7 +2,7 @@
 title: Database Table
 group: Database
 kind: TUTORIAL
-number: 1.3.1
+number: 1.03.01
 ---
 # Daanse Tutorial - Database Table
 

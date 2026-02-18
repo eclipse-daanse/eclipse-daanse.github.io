@@ -2,7 +2,7 @@
 title: Measure Group
 group: Measure
 kind: TUTORIAL
-number: 2.2.5
+number: 2.02.05
 ---
 # Daanse Tutorial - Measure Group
 

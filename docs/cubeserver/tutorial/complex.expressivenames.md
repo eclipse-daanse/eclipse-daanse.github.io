@@ -25,6 +25,16 @@ This file represents the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
+  <roma:OrderedColumn id="_ordered_column_d1h1l1_ordinal_d1h1l1table" column="_column_d1h1l1_ordinal_d1h1l1table"/>
+  <roma:OrderedColumn id="_ordered_column_d2h1l1_ordinal_d2h1l1table" column="_column_d2h1l1_ordinal_d2h1l1table"/>
+  <roma:OrderedColumn id="_ordered_column_d2h2l1_ordinal_d2h2l2table" column="_column_d2h2l1_ordinal_d2h2l2table"/>
+  <roma:OrderedColumn id="_ordered_column_d2h2l2_ordinal_d2h2l2table" column="_column_d2h2l2_ordinal_d2h2l2table"/>
+  <roma:OrderedColumn id="_ordered_column_d3h1l1_ordinal_d3h1l1table" column="_column_d3h1l1_ordinal_d3h1l1table"/>
+  <roma:OrderedColumn id="_ordered_column_d3h2l1_ordinal_d3h2l1table" column="_column_d3h2l1_ordinal_d3h2l1table"/>
+  <roma:OrderedColumn id="_ordered_column_d3h2l2_ordinal_d3h2l2table" column="_column_d3h2l2_ordinal_d3h2l2table"/>
+  <roma:OrderedColumn id="_ordered_column_d3h3l1_ordinal_d3h3l1table" column="_column_d3h3l1_ordinal_d3h3l1table"/>
+  <roma:OrderedColumn id="_ordered_column_d3h3l3_ordinal_d3h3l2table" column="_column_d3h3l2_ordinal_d3h3l2table"/>
+  <roma:OrderedColumn id="_ordered_column_d3h3l3_ordinal_d3h3l3table" column="_column_d1h1l1_ordinal_d1h1l1table"/>
   <roma:Catalog id="_catalog_expressivenames" description="ExpressiveNames Sample Database - EMF Version" name="ExpressiveNames" cubes="_cube_cube1" dbschemas="_databaseschema_expressivenames"/>
   <roma:DatabaseSchema id="_databaseschema_expressivenames">
     <tables xsi:type="roma:PhysicalTable" id="_table_cube1fact" name="Cube1Fact">
@@ -108,16 +118,16 @@ This file represents the complete definition of the catalog.
     <left key="_column_d3h3l1_id_d3h3l2table" query="_query_d3h3l2table"/>
     <right key="_column_d3h3l1_d3h3l1table" query="_query_d3h3l1table"/>
   </roma:JoinQuery>
-  <roma:Level id="_level_d1h1l1" description="Level 1 Dimension 1 Hierarchy1" name="D1H1L1" column="_column_d1h1l1_d1h1l1table" nameColumn="_column_d1h1l1_name_d1h1l1table" ordinalColumn="_column_d1h1l1_ordinal_d1h1l1table"/>
-  <roma:Level id="_level_d2h1l1" description="Level 1 Hierarchy 1 Dimension 2" name="D2H1L1" column="_column_d2h1l1_d2h1l1table" nameColumn="_column_d2h1l1_name_d2h1l1table" ordinalColumn="_column_d2h1l1_ordinal_d2h1l1table"/>
-  <roma:Level id="_level_d2h2l1" description="Level 2 Hierarchy 2 Dimension 2" name="D2H2L1" column="_column_d2h2l1_d2h2l2table" nameColumn="_column_d2h2l1_name_d2h2l2table" ordinalColumn="_column_d2h2l1_ordinal_d2h2l2table"/>
-  <roma:Level id="_level_d2h2l2" description="Level 2 Dimension 3" name="D2H2L2" column="_column_d2h2l2_d2h2l2table" nameColumn="_column_d2h2l2_name_d2h2l2table" ordinalColumn="_column_d2h2l2_ordinal_d2h2l2table"/>
-  <roma:Level id="_level_d3h1l1" description="Level 1 Hierarchy1 Dimension 3" name="D3H1L1" column="_column_d3h1l1_d3h1l1table" nameColumn="_column_d3h1l1_name_d3h1l1table" ordinalColumn="_column_d3h1l1_ordinal_d3h1l1table"/>
-  <roma:Level id="_level_d3h2l1" description="Level 1 Hierarchy2 Dimension 3" name="D3H2L1" column="_column_d3h2l1_d3h2l1table" nameColumn="_column_d3h2l1_name_d3h2l1table" ordinalColumn="_column_d3h2l1_ordinal_d3h2l1table"/>
-  <roma:Level id="_level_d3h2l2" description="Level 2 Hierarchy2 Dimension 3" name="D3H2L2" column="_column_d3h2l2_d3h2l2table" nameColumn="_column_d3h2l2_name_d3h2l2table" ordinalColumn="_column_d3h2l2_ordinal_d3h2l2table"/>
-  <roma:Level id="_level_d3h3l1" description="Level 1 Hierarchy3 Dimension 3" name="D3H3L1" column="_column_d3h3l1_d3h3l1table" nameColumn="_column_d3h3l1_name_d3h3l1table" ordinalColumn="_column_d3h3l1_ordinal_d3h3l1table"/>
-  <roma:Level id="_level_d3h3l2" description="Level 2 Hierarchy3 Dimension 3" name="D3H3L2" column="_column_d3h3l2_d3h3l2table" nameColumn="_column_d3h3l2_name_d3h3l2table" ordinalColumn="_column_d3h3l2_ordinal_d3h3l2table"/>
-  <roma:Level id="_level_d3h3l3" description="Level 3 Hierarchy3 Dimension 3" name="D3H3L3" column="_column_d3h3l3_d3h3l3table" nameColumn="_column_d3h3l3_name_d3h3l3table" ordinalColumn="_column_d3h3l3_ordinal_d3h3l3table"/>
+  <roma:Level id="_level_d1h1l1" description="Level 1 Dimension 1 Hierarchy1" name="D1H1L1" column="_column_d1h1l1_d1h1l1table" nameColumn="_column_d1h1l1_name_d1h1l1table" ordinalColumn="_ordered_column_d1h1l1_ordinal_d1h1l1table"/>
+  <roma:Level id="_level_d2h1l1" description="Level 1 Hierarchy 1 Dimension 2" name="D2H1L1" column="_column_d2h1l1_d2h1l1table" nameColumn="_column_d2h1l1_name_d2h1l1table" ordinalColumn="_ordered_column_d2h1l1_ordinal_d2h1l1table"/>
+  <roma:Level id="_level_d2h2l1" description="Level 2 Hierarchy 2 Dimension 2" name="D2H2L1" column="_column_d2h2l1_d2h2l2table" nameColumn="_column_d2h2l1_name_d2h2l2table" ordinalColumn="_ordered_column_d2h2l1_ordinal_d2h2l2table"/>
+  <roma:Level id="_level_d2h2l2" description="Level 2 Dimension 3" name="D2H2L2" column="_column_d2h2l2_d2h2l2table" nameColumn="_column_d2h2l2_name_d2h2l2table" ordinalColumn="_ordered_column_d2h2l2_ordinal_d2h2l2table"/>
+  <roma:Level id="_level_d3h1l1" description="Level 1 Hierarchy1 Dimension 3" name="D3H1L1" column="_column_d3h1l1_d3h1l1table" nameColumn="_column_d3h1l1_name_d3h1l1table" ordinalColumn="_ordered_column_d3h1l1_ordinal_d3h1l1table"/>
+  <roma:Level id="_level_d3h2l1" description="Level 1 Hierarchy2 Dimension 3" name="D3H2L1" column="_column_d3h2l1_d3h2l1table" nameColumn="_column_d3h2l1_name_d3h2l1table" ordinalColumn="_ordered_column_d3h2l1_ordinal_d3h2l1table"/>
+  <roma:Level id="_level_d3h2l2" description="Level 2 Hierarchy2 Dimension 3" name="D3H2L2" column="_column_d3h2l2_d3h2l2table" nameColumn="_column_d3h2l2_name_d3h2l2table" ordinalColumn="_ordered_column_d3h2l2_ordinal_d3h2l2table"/>
+  <roma:Level id="_level_d3h3l1" description="Level 1 Hierarchy3 Dimension 3" name="D3H3L1" column="_column_d3h3l1_d3h3l1table" nameColumn="_column_d3h3l1_name_d3h3l1table" ordinalColumn="_ordered_column_d3h3l1_ordinal_d3h3l1table"/>
+  <roma:Level id="_level_d3h3l2" description="Level 2 Hierarchy3 Dimension 3" name="D3H3L2" column="_column_d3h3l2_d3h3l2table" nameColumn="_column_d3h3l2_name_d3h3l2table" ordinalColumn="_ordered_column_d3h3l3_ordinal_d3h3l2table"/>
+  <roma:Level id="_level_d3h3l3" description="Level 3 Hierarchy3 Dimension 3" name="D3H3L3" column="_column_d3h3l3_d3h3l3table" nameColumn="_column_d3h3l3_name_d3h3l3table" ordinalColumn="_ordered_column_d3h3l3_ordinal_d3h3l3table"/>
   <roma:ExplicitHierarchy id="_hierarchy_d1h1" description="Hierarchy 1 Dimension 1" name="D1H1" primaryKey="_column_d1h1l1_d1h1l1table" query="_query_d1h1l1table" levels="_level_d1h1l1"/>
   <roma:ExplicitHierarchy id="_hierarchy_d2h1" description="Hierarchy 1 Dimension 2" name="D2H1" primaryKey="_column_d2h1l1_d2h1l1table" query="_query_d2h1l1table" levels="_level_d2h1l1"/>
   <roma:ExplicitHierarchy id="_hierarchy_d2h2" description="Hierarchy 2 Dimension 2" name="D2H2" primaryKey="_column_d2h2l2_d2h2l2table" query="_query_d2h2l2table" levels="_level_d2h2l1 _level_d2h2l2"/>

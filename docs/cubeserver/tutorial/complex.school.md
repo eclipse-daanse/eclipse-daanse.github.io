@@ -12,6 +12,8 @@ This file represents the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
+  <roma:OrderedColumn id="_ordered_col_schul_jahr_order" column="_col_schul_jahr_order"/>
+  <roma:OrderedColumn id="_ordered_col_schule_schul_nummer" column="_col_schule_schul_nummer"/>
   <roma:Catalog id="_catalog_schulwesen" name="Daanse Example - Schulwesen" cubes="_cube_schulen_institutionen _cube_paedagogisches_personal _cube_schueler_innen" dbschemas="_databaseschema"/>
   <roma:DatabaseSchema id="_databaseschema">
     <tables xsi:type="roma:PhysicalTable" id="_tab_schule" name="schule">
@@ -196,10 +198,10 @@ This file represents the complete definition of the catalog.
   <roma:Level id="_level_migrationshintergrund" name="Migrationshintergrund" column="_col_migrations_hintergrund_id" nameColumn="_col_migrations_hintergrund_migrations_hintergrund"/>
   <roma:Level id="_level_schulabschluss" name="Schulabschlüsse" column="_col_schul_abschluss_id" nameColumn="_col_schul_abschluss_schulabschluss"/>
   <roma:Level id="_level_schulart" name="Schulart" column="_col_schul_art_id" nameColumn="_col_schul_art_schulart_name"/>
-  <roma:Level id="_level_schule_art" name="Schule" column="_col_schule_id" nameColumn="_col_schule_schul_name" ordinalColumn="_col_schule_schul_nummer"/>
-  <roma:Level id="_level_schule_basic" name="Schule" column="_col_schule_id" nameColumn="_col_schule_schul_name" ordinalColumn="_col_schule_schul_nummer"/>
-  <roma:Level id="_level_schule_traegerschaft" name="Schule" column="_col_schule_id" nameColumn="_col_schule_schul_name" ordinalColumn="_col_schule_schul_nummer"/>
-  <roma:Level id="_level_schuljahr" name="Schuljahr" column="_col_schul_jahr_id" nameColumn="_col_schul_jahr_schul_jahr" ordinalColumn="_col_schul_jahr_order"/>
+  <roma:Level id="_level_schule_art" name="Schule" column="_col_schule_id" nameColumn="_col_schule_schul_name" ordinalColumn="_ordered_col_schule_schul_nummer"/>
+  <roma:Level id="_level_schule_basic" name="Schule" column="_col_schule_id" nameColumn="_col_schule_schul_name" ordinalColumn="_ordered_col_schule_schul_nummer"/>
+  <roma:Level id="_level_schule_traegerschaft" name="Schule" column="_col_schule_id" nameColumn="_col_schule_schul_name" ordinalColumn="_ordered_col_schule_schul_nummer"/>
+  <roma:Level id="_level_schuljahr" name="Schuljahr" column="_col_schul_jahr_id" nameColumn="_col_schul_jahr_schul_jahr" ordinalColumn="_ordered_col_schul_jahr_order"/>
   <roma:Level id="_level_schulkategorie" name="Schulkategorie" column="_col_schul_kategorie_id" nameColumn="_col_schul_kategorie_schul_kategorie_name"/>
   <roma:Level id="_level_traeger" name="Schulträger" column="_col_traeger_id" nameColumn="_col_traeger_traeger_name"/>
   <roma:Level id="_level_traeger_art" name="Schulträger-Art" column="_col_traeger_art_id" nameColumn="_col_traeger_art_traeger_art"/>

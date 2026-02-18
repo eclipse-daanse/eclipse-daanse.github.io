@@ -2,7 +2,7 @@
 title: Access Member Grant
 group: Access
 kind: TUTORIAL
-number: 2.4.8
+number: 2.04.08
 ---
 # Daanse Tutorial - Access Member Grant
 

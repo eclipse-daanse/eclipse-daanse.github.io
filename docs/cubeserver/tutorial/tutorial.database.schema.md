@@ -2,7 +2,7 @@
 title: Database Schema
 group: Database
 kind: TUTORIAL
-number: 1.3
+number: 1.03
 ---
 # Daanse Tutorial - Database Schema
 

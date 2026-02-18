@@ -2,7 +2,7 @@
 title: Database Intro
 group: Database
 kind: TUTORIAL
-number: 1.1
+number: 1.01
 ---
 # Daanse Tutorial - Database Intro
 
@@ -24,7 +24,7 @@ The catalog is the primary object in a Daanse server. It serves as a logical gro
 
 A catalog can be structured into databaseSchemas to logically group tables. The same table name can exist in multiple schemas.
 
-In Daanse, we represent the database schema, where the data is stored, as a DatabaseSchema element.
+In Daanse, we represent an existing database schema, where the data is stored, as a DatabaseSchema element.
 
 
 ```xml

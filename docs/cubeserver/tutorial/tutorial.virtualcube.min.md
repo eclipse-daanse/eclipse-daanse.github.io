@@ -2,7 +2,7 @@
 title: Virtual Cube Minimal
 group: VirtualCube
 kind: TUTORIAL
-number: 2.15.1
+number: 2.15.01
 ---
 # Daanse Tutorial - Virtual Cube Minimal
 

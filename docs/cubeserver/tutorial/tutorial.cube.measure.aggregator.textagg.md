@@ -2,7 +2,7 @@
 title: Measure Aggregator Text Agg
 group: Measure
 kind: TUTORIAL
-number: 2.2.8
+number: 2.02.08
 ---
 # Daanse Tutorial - Measure Aggregator Text Agg
 

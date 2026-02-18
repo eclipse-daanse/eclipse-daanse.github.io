@@ -2,7 +2,7 @@
 title: Dimension Intro
 group: Dimension
 kind: TUTORIAL
-number: 2.3.1
+number: 2.03.01
 ---
 # Daanse Tutorial - Dimension Intro
 

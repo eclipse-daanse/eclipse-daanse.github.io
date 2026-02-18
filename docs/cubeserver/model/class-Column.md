@@ -148,7 +148,6 @@ Abstract base class for database columns that define data structure and metadata
 - Level[🔗](./class-Level) → captionColumn
 - Level[🔗](./class-Level) → column
 - Level[🔗](./class-Level) → nameColumn
-- Level[🔗](./class-Level) → ordinalColumn
 - ParentChildHierarchy[🔗](./class-ParentChildHierarchy) → parentColumn
 - MemberProperty[🔗](./class-MemberProperty) → column
 - ParentChildLink[🔗](./class-ParentChildLink) → childColumn

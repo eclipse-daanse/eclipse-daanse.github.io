@@ -2,7 +2,7 @@
 title: Formatter Cell
 group: Formatter
 kind: TUTORIAL
-number: 2.11.1
+number: 2.11.01
 ---
 # Daanse Tutorial - Formatter Cell
 

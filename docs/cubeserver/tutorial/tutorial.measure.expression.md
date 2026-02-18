@@ -2,7 +2,7 @@
 title: Measure Expression
 group: Measure
 kind: TUTORIAL
-number: 2.12.1
+number: 2.12.01
 ---
 # Daanse Tutorial - Measure Expression
 

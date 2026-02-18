@@ -2,7 +2,7 @@
 title: Access Dimension Grant
 group: Access
 kind: TUTORIAL
-number: 2.4.6
+number: 2.04.06
 ---
 # Daanse Tutorial - Access Dimension Grant
 

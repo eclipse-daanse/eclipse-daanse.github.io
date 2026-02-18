@@ -2,7 +2,7 @@
 title: Database SQL View
 group: Database
 kind: TUTORIAL
-number: 1.3.2
+number: 1.03.02
 ---
 # Daanse Tutorial - Database SQL View
 

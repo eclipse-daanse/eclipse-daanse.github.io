@@ -2,7 +2,7 @@
 title: Measure Inline Table
 group: Measure
 kind: TUTORIAL
-number: 2.12.2
+number: 2.12.02
 ---
 # Daanse Tutorial - Measure Inline Table
 
