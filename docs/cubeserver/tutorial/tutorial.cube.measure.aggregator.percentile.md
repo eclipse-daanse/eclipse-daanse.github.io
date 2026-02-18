@@ -2,7 +2,7 @@
 title: Measure Aggregator Percentile
 group: Measure
 kind: TUTORIAL
-number: 2.2.7
+number: 2.02.07
 ---
 # Daanse Tutorial - Measure Aggregator Percentile
 

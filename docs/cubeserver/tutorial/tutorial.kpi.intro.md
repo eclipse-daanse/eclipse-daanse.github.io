@@ -2,7 +2,7 @@
 title: KPI Intro
 group: Kpi
 kind: TUTORIAL
-number: 2.7.1
+number: 2.07.01
 ---
 # Daanse Tutorial - KPI Intro
 

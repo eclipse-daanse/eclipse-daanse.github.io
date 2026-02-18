@@ -2,7 +2,7 @@
 title: Measure Format
 group: Measure
 kind: TUTORIAL
-number: 2.2.4
+number: 2.02.04
 ---
 # Daanse Tutorial - Measure Format
 

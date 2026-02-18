@@ -2,7 +2,7 @@
 title: Measure Aggregator Base
 group: Measure
 kind: TUTORIAL
-number: 2.2.1
+number: 2.02.01
 ---
 # Daanse Tutorial - Measure Aggregator Base
 

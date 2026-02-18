@@ -2,7 +2,7 @@
 title: Inline Table
 group: Hierarchy
 kind: TUTORIAL
-number: 2.16.1
+number: 2.16.01
 ---
 # Daanse Tutorial - Inline Table
 

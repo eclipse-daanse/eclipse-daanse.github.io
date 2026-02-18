@@ -2,15 +2,15 @@
 title: Hierarchy Query Join Multi
 group: Hierarchy
 kind: TUTORIAL
-number: 2.3.3.2
+number: 2.03.03.02
 ---
 # Daanse Tutorial - Hierarchy Query Join Multi
 
 If the database structure follows the Third Normal Form (3NF), hierarchies in a cube are not stored in a single table but are distributed across multiple tables.
 
-For example, consider a Geographical hierarchy with the levels Town and Country and Continent. If each entity is stored in a separate table, with a primary-foreign key relationship linking them, a query must be defined that incorporates both tables and specifies how the levels are joined.
-In This case, the query must include a join between the Town and Country tables, as well as a join between the Country Join and Continent tables.
-The following example demonstrates how to define such a query.
+For example, consider a Geographical hierarchy with the levels Town and Country and Continent. If each entity is stored in a separate table, with a primary-foreign key relationship linking them,
+a query must be defined that incorporates both tables and specifies how the levels are joined. In This case, the query must include a join between the Continent and Country tables,
+as well as a join between the Country Join and Town tables. The following example demonstrates how to define such a query.
 
 
 ## Database Schema
@@ -70,18 +70,19 @@ The TableQuery for the Country level directly references the physical Country ta
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
-## Query - Join Town to Country
+## Query - Join Country to Continent
 
 The JoinQuery specifies which TableQueries should be joined. It also defines the columns in each table that are used for the join:
 
-- In the lower-level table (`Town`), the join uses the foreign key.
-- In the upper-level table (`Country`), the join uses the primary key.
+- In the lower-level table (Country), the join uses the foreign key.
+- In the upper-level table (Continent), the join uses the primary key.
+
 
 
 ```xml
-<roma:JoinQuery  id="_query_townToCountry">
-  <left key="_column_town_countryId" query="_query_town"/>
-  <right key="_column_country_id" query="_query_countryToContinent"/>
+<roma:JoinQuery  id="_query_countryToContinent">
+  <left key="_column_country_continentId" query="_query_country"/>
+  <right key="_column_continent_id" query="_query_continent"/>
 </roma:JoinQuery>
 
 ```
@@ -96,13 +97,17 @@ The TableQuery for the Continent level directly references the physical Continen
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
-## Query - Join Town-Country-Join to Continent
+## Query - Join Town to Country-Continent-Join
 
-The JoinQuery specifies which Queries should be joined. It also defines the columns in each table that are used for the join:
+The JoinQuery specifies which Queries should be joined.
+It also defines the columns in each table that are used for the join:
 
-In this vase we join a TableQuery with a JoinQuery.
-- In the lower-level it is the JoinQuery (Town-Country), the join uses the foreign key.
-- In the upper-level it is the TableQuery (Continent), the join uses the primary key.
+In this case we join a TableQuery with a JoinQuery.
+- In the lower-level it is the TableQuery (Town), the join uses the foreign key.
+- In the upper-level it is the JoinQuery (Country-Continent), the join uses the primary key.
+
+Please note that within a JoinQuery, another JoinQuery may only be used on the right side of the join.
+
 
 
 ```xml

@@ -2,7 +2,7 @@
 title: Calculated Member Intro
 group: Member
 kind: TUTORIAL
-number: 2.3.6
+number: 2.03.06
 ---
 # Daanse Tutorial - Calculated Member Intro
 

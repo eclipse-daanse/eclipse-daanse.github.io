@@ -41,72 +41,6 @@ Download the full [Tutorial-Package](./zip/all-tutorials.zip) as zip.
 [Cube Minimal](./tutorial.cube.minimal.md)
 
 
-[Action Drillthrough](./tutorial.action.drillthrough.md)
-
-
-[Formatter Cell](./tutorial.formatter.cell.md)
-
-
-[Measure Expression](./tutorial.measure.expression.md)
-
-
-[Measure Inline Table](./tutorial.measure.inlinetable.md)
-
-
-[Measure Inline Table With Physical](./tutorial.measure.inlinetablewithphysical.md)
-
-
-[Level Expressions](./tutorial.level.expressions.md)
-
-
-[Level Small Int As Boolean Type](./tutorial.level.smallintasbooleantype.md)
-
-
-[Level If Parents Name](./tutorial.level.ifparentsname.md)
-
-
-[Level If Blank Name Multiple](./tutorial.level.ifblanknamemultiple.md)
-
-
-[Level If Blank Name](./tutorial.level.ifblankname.md)
-
-
-[Level with not unique members](./tutorial.level.unique.md)
-
-
-[Virtual Cube Minimal](./tutorial.virtualcube.min.md)
-
-
-[Virtual Cube Dimensions](./tutorial.virtualcube.dimensions.md)
-
-
-[Virtual Cube Calculated Member](./tutorial.virtualcube.calculatedmember.md)
-
-
-[Virtual Cube Unvisible Reference Cubes](./tutorial.virtualcube.unvisiblereferencecubes.md)
-
-
-[Inline Table](./tutorial.hierarchy.inlinetable.md)
-
-
-[Hierarchy View](./tutorial.hierarchy.view.md)
-
-
-[Unique Key Level Name](./tutorial.hierarchy.uniquekeylevelname.md)
-
-
-[Parent Child Minimal](./tutorial.parentchild.minimal.md)
-
-
-[Parent Child Null Parent](./tutorial.parentchild.nullparent.md)
-
-
-[Parent Child Link](./tutorial.parentchild.link.md)
-
-
-[Parent Child Parent As Leaf](./tutorial.parentchild.parentasleaf.md)
-
-
 [Measure Aggregator Base](./tutorial.cube.measure.aggregator.base.md)
 
 
@@ -237,6 +171,72 @@ Download the full [Tutorial-Package](./zip/all-tutorials.zip) as zip.
 
 
 [Dimension Optimisation With Level Attribute](./tutorial.dimension.optimisationwithlevelattribute.md)
+
+
+[Action Drillthrough](./tutorial.action.drillthrough.md)
+
+
+[Formatter Cell](./tutorial.formatter.cell.md)
+
+
+[Measure Expression](./tutorial.measure.expression.md)
+
+
+[Measure Inline Table](./tutorial.measure.inlinetable.md)
+
+
+[Measure Inline Table With Physical](./tutorial.measure.inlinetablewithphysical.md)
+
+
+[Level Expressions](./tutorial.level.expressions.md)
+
+
+[Level Small Int As Boolean Type](./tutorial.level.smallintasbooleantype.md)
+
+
+[Level If Parents Name](./tutorial.level.ifparentsname.md)
+
+
+[Level If Blank Name Multiple](./tutorial.level.ifblanknamemultiple.md)
+
+
+[Level If Blank Name](./tutorial.level.ifblankname.md)
+
+
+[Level with not unique members](./tutorial.level.unique.md)
+
+
+[Virtual Cube Minimal](./tutorial.virtualcube.min.md)
+
+
+[Virtual Cube Dimensions](./tutorial.virtualcube.dimensions.md)
+
+
+[Virtual Cube Calculated Member](./tutorial.virtualcube.calculatedmember.md)
+
+
+[Virtual Cube Unvisible Reference Cubes](./tutorial.virtualcube.unvisiblereferencecubes.md)
+
+
+[Inline Table](./tutorial.hierarchy.inlinetable.md)
+
+
+[Hierarchy View](./tutorial.hierarchy.view.md)
+
+
+[Unique Key Level Name](./tutorial.hierarchy.uniquekeylevelname.md)
+
+
+[Parent Child Minimal](./tutorial.parentchild.minimal.md)
+
+
+[Parent Child Null Parent](./tutorial.parentchild.nullparent.md)
+
+
+[Parent Child Link](./tutorial.parentchild.link.md)
+
+
+[Parent Child Parent As Leaf](./tutorial.parentchild.parentasleaf.md)
 
 
 [Daanse Example - Schulwesen](./complex.school.md)

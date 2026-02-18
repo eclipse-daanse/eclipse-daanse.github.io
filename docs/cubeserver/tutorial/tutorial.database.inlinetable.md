@@ -2,7 +2,7 @@
 title: Database Inline Table
 group: Database
 kind: TUTORIAL
-number: 1.3.3
+number: 1.03.03
 ---
 # Daanse Tutorial - Database Inline Table
 

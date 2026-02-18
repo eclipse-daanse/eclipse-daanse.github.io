@@ -2,7 +2,7 @@
 title: Database Expression Column
 group: Database
 kind: TUTORIAL
-number: 1.2.2
+number: 1.02.02
 ---
 # Daanse Tutorial - Database Expression Column
 

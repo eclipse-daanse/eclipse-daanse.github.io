@@ -2,7 +2,7 @@
 title: KPI Parent Ring
 group: Kpi
 kind: TUTORIAL
-number: 2.7.3
+number: 2.07.03
 ---
 # Daanse Tutorial - KPI Parent Ring
 

@@ -156,7 +156,7 @@ Represents a group of members in a hierarchy, all at the same depth and sharing 
     </tr>
     <tr>
       <td><strong>ordinalColumn</strong></td>
-      <td>Column<a href="./class-Column">🔗</a></td>
+      <td>OrderedColumn<a href="./class-OrderedColumn">🔗</a></td>
       <td>0</td>
       <td>1</td>
       <td>false</td>
@@ -197,6 +197,6 @@ classDiagram
   Level --> Column : captionColumn
   Level --> Column : column
   Level --> Column : nameColumn
-  Level --> Column : ordinalColumn
+  Level --> OrderedColumn : ordinalColumn
 
 ```

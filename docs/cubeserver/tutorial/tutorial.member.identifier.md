@@ -2,7 +2,7 @@
 title: Member Identifier
 group: Member
 kind: TUTORIAL
-number: 2.6.1
+number: 2.06.01
 ---
 # Daanse Tutorial - Member Identifier
 

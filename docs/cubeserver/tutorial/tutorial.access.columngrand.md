@@ -2,7 +2,7 @@
 title: Access Column Grant
 group: Access
 kind: TUTORIAL
-number: 2.4.3
+number: 2.04.03
 ---
 # Daanse Tutorial - Access Column Grant
 

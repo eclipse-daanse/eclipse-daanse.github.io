@@ -2,7 +2,7 @@
 title: Hierarchy View
 group: Hierarchy
 kind: TUTORIAL
-number: 2.16.2
+number: 2.16.02
 ---
 # Daanse Tutorial - Hierarchy View
 

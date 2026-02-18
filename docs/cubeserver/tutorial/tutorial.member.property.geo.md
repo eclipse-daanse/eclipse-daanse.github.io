@@ -2,7 +2,7 @@
 title: Member Properties with Geographic Data
 group: Member
 kind: TUTORIAL
-number: 2.6.2.2
+number: 2.06.02.02
 ---
 # Daanse Tutorial - Member Properties with Geographic Data
 
@@ -20,11 +20,11 @@ The cube is based on two tables: `Fact` and `Member`.
 
 - The `Fact` table contains measures (VALUES) and references to the `Member` table via MEMBER_ID
 - The `Member` table holds the member details including:
-  - ID (primary key)
-  - NAME (member display name)
-  - LOCATION (GeoJSON representation of the geographic area)
-  - LATITUDE and LONGITUDE (numeric coordinates)
-  - DESCRIPTION (additional member information)
+    - ID (primary key)
+    - NAME (member display name)
+    - LOCATION (GeoJSON representation of the geographic area)
+    - LATITUDE and LONGITUDE (numeric coordinates)
+    - DESCRIPTION (additional member information)
 
 This normalized structure allows rich member properties while maintaining efficient fact table storage.
 

@@ -69,6 +69,7 @@ Represents a column with specific ordering information used in queries and resul
 - TextAggMeasure[🔗](./class-TextAggMeasure) → orderByColumns
 - PercentileMeasure[🔗](./class-PercentileMeasure) → column
 - NthAggMeasure[🔗](./class-NthAggMeasure) → orderByColumns
+- Level[🔗](./class-Level) → ordinalColumn
 
 ## ClassDiagramm
 

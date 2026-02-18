@@ -2,7 +2,7 @@
 title: Virtual Cube Calculated Member
 group: VirtualCube
 kind: TUTORIAL
-number: 2.15.3
+number: 2.15.03
 ---
 # Daanse Tutorial - Virtual Cube Calculated Member
 

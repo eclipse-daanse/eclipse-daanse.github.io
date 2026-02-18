@@ -2,7 +2,7 @@
 title: Level Member Property Intro
 group: Member
 kind: TUTORIAL
-number: 2.6.2.1
+number: 2.06.02.01
 ---
 # Daanse Tutorial -Level Member Property Intro
 

@@ -2,7 +2,7 @@
 title: Access Cube Grant
 group: Access
 kind: TUTORIAL
-number: 2.4.5
+number: 2.04.05
 ---
 # Daanse Tutorial - Access Cube Grant
 

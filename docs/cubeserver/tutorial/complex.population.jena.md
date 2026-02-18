@@ -74,6 +74,9 @@ This file represents the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
+  <roma:OrderedColumn id="_ordered_column_agegroups_h1_order" column="_column_agegroups_h1_order"/>
+  <roma:OrderedColumn id="_ordered_column_agegroups_h2_order" column="_column_agegroups_h2_order"/>
+  <roma:OrderedColumn id="_ordered_column_year_ordinal" column="_column_year_ordinal"/>
   <roma:Catalog id="_catalog_population_jena" description="Bevölkerungsstatistik Jena - EMF Version" name="Bevölkerung" cubes="_cube_bevoelkerung" dbschemas="_databaseSchema_population_jena"/>
   <roma:DatabaseSchema id="_databaseSchema_population_jena">
     <tables xsi:type="roma:PhysicalTable" id="_table_einwohner" name="einwohner">
@@ -146,10 +149,10 @@ This file represents the complete definition of the catalog.
   <roma:Level id="_level_alter_rki_h7" name="Alter H7" column="_column_agegroups_age"/>
   <roma:Level id="_level_alter_rki_h8" name="Alter H8" column="_column_agegroups_age"/>
   <roma:Level id="_level_alter_standard" name="Alter Standard" column="_column_agegroups_age"/>
-  <roma:Level id="_level_altersgruppe_kinder" name="Altersgruppe" column="_column_agegroups_h2" ordinalColumn="_column_agegroups_h2_order"/>
-  <roma:Level id="_level_altersgruppe_standard" name="Altersgruppe" column="_column_agegroups_h1" ordinalColumn="_column_agegroups_h1_order"/>
+  <roma:Level id="_level_altersgruppe_kinder" name="Altersgruppe" column="_column_agegroups_h2" ordinalColumn="_ordered_column_agegroups_h2_order"/>
+  <roma:Level id="_level_altersgruppe_standard" name="Altersgruppe" column="_column_agegroups_h1" ordinalColumn="_ordered_column_agegroups_h1_order"/>
   <roma:Level id="_level_geschlecht" name="Geschlecht" column="_column_gender_key" nameColumn="_column_gender_name"/>
-  <roma:Level id="_level_jahr" name="Jahr" column="_column_year_year" type="TimeYears" ordinalColumn="_column_year_ordinal"/>
+  <roma:Level id="_level_jahr" name="Jahr" column="_column_year_year" type="TimeYears" ordinalColumn="_ordered_column_year_ordinal"/>
   <roma:Level id="_level_planungsraum" name="Planungsraum" column="_column_plraum_gid" nameColumn="_column_plraum_plraum" columnType="Integer">
     <memberProperties id="_property_plraum_uuid" name="uuid" column="_column_plraum_uuid"/>
     <memberProperties id="_property_plraum_geojson" name="GeoJson" column="_column_plraum_geojson" propertyType="String"/>

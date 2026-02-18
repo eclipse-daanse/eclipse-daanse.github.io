@@ -2,7 +2,7 @@
 title: Cube Calculated Member Color
 group: Cube
 kind: TUTORIAL
-number: 2.3.6
+number: 2.03.06
 ---
 # Daanse Tutorial - Cube Calculated Member Color
 
