@@ -478,7 +478,7 @@ For testing catalog security and access control, you can specify **roles directl
 ## Support
 
 For issues and feature requests:
-- Eclipse Daanse Project: [Eclipse Foundation](https://www.eclipse.org/daanse/)
+- Eclipse Daanse Project: [Eclipse Foundation](https://projects.eclipse.org/projects/technology.daanse)
 - GitHub Issues: Report bugs and feature requests
 - Documentation: Check the projects Readme Files and (daanse.org)
 
