@@ -100,14 +100,14 @@ Maps a dimension level to a column in an aggregation table, defining how dimensi
       <td colspan="5"><em>Optional reference to the column in the aggregation table that contains member name values for this level. Name columns provide alternative identification for dimension members beyond the primary key column.</em></td>
     </tr>
     <tr>
-      <td><strong>ordinalColumn</strong></td>
+      <td><strong>ordinalColumns</strong></td>
       <td>Column<a href="./class-Column">🔗</a></td>
-      <td>0</td>
       <td>1</td>
+      <td>&infin;</td>
       <td>false</td>
     </tr>
     <tr>
-      <td colspan="5"><em>Optional reference to the column in the aggregation table that contains ordinal values for level members. Ordinal columns provide explicit sort ordering for dimension members, enabling consistent member ordering in analytical results and user interfaces.</em></td>
+      <td colspan="5"><em>Optional reference to the columns in the aggregation table that contains ordinal values for level members. Ordinal columns provide explicit sort ordering for dimension members, enabling consistent member ordering in analytical results and user interfaces.</em></td>
     </tr>
   </tbody>
 </table>
@@ -132,6 +132,6 @@ classDiagram
   AggregationLevel --> Column : captionColumn
   AggregationLevel --> Column : column
   AggregationLevel --> Column : nameColumn
-  AggregationLevel --> Column : ordinalColumn
+  AggregationLevel --> Column : ordinalColumns
 
 ```

@@ -23,12 +23,12 @@ Represents a column with specific ordering information used in queries and resul
   </thead>
   <tbody>
     <tr>
-      <td><strong>ascend</strong></td>
+      <td><strong>direction</strong></td>
       <td>false</td>
-      <td><em>Boolean</em></td>
+      <td><em>SortingDirection<a href="./enum-SortingDirection">🔗</a></em></td>
       <td>0</td>
       <td>1</td>
-      <td>true</td>
+      <td>Asc</td>
     </tr>
     <tr>
       <td colspan="6"><em>Boolean flag indicating sort direction. When true, sort in ascending order; when false, sort in descending order. Defaults to true for ascending sort.</em></td>
@@ -69,14 +69,14 @@ Represents a column with specific ordering information used in queries and resul
 - TextAggMeasure[🔗](./class-TextAggMeasure) → orderByColumns
 - PercentileMeasure[🔗](./class-PercentileMeasure) → column
 - NthAggMeasure[🔗](./class-NthAggMeasure) → orderByColumns
-- Level[🔗](./class-Level) → ordinalColumn
+- Level[🔗](./class-Level) → ordinalColumns
 
 ## ClassDiagramm
 
 ```mermaid
 classDiagram
   class OrderedColumn {
-    + ascend : Boolean
+    + direction : SortingDirection
   }
 
   IdElement <|-- OrderedColumn

@@ -198,10 +198,10 @@ This file represents the complete definition of the catalog.
   <roma:Level id="_level_migrationshintergrund" name="Migrationshintergrund" column="_col_migrations_hintergrund_id" nameColumn="_col_migrations_hintergrund_migrations_hintergrund"/>
   <roma:Level id="_level_schulabschluss" name="Schulabschlüsse" column="_col_schul_abschluss_id" nameColumn="_col_schul_abschluss_schulabschluss"/>
   <roma:Level id="_level_schulart" name="Schulart" column="_col_schul_art_id" nameColumn="_col_schul_art_schulart_name"/>
-  <roma:Level id="_level_schule_art" name="Schule" column="_col_schule_id" nameColumn="_col_schule_schul_name" ordinalColumn="_ordered_col_schule_schul_nummer"/>
-  <roma:Level id="_level_schule_basic" name="Schule" column="_col_schule_id" nameColumn="_col_schule_schul_name" ordinalColumn="_ordered_col_schule_schul_nummer"/>
-  <roma:Level id="_level_schule_traegerschaft" name="Schule" column="_col_schule_id" nameColumn="_col_schule_schul_name" ordinalColumn="_ordered_col_schule_schul_nummer"/>
-  <roma:Level id="_level_schuljahr" name="Schuljahr" column="_col_schul_jahr_id" nameColumn="_col_schul_jahr_schul_jahr" ordinalColumn="_ordered_col_schul_jahr_order"/>
+  <roma:Level id="_level_schule_art" name="Schule" column="_col_schule_id" nameColumn="_col_schule_schul_name" ordinalColumns="_ordered_col_schule_schul_nummer"/>
+  <roma:Level id="_level_schule_basic" name="Schule" column="_col_schule_id" nameColumn="_col_schule_schul_name" ordinalColumns="_ordered_col_schule_schul_nummer"/>
+  <roma:Level id="_level_schule_traegerschaft" name="Schule" column="_col_schule_id" nameColumn="_col_schule_schul_name" ordinalColumns="_ordered_col_schule_schul_nummer"/>
+  <roma:Level id="_level_schuljahr" name="Schuljahr" column="_col_schul_jahr_id" nameColumn="_col_schul_jahr_schul_jahr" ordinalColumns="_ordered_col_schul_jahr_order"/>
   <roma:Level id="_level_schulkategorie" name="Schulkategorie" column="_col_schul_kategorie_id" nameColumn="_col_schul_kategorie_schul_kategorie_name"/>
   <roma:Level id="_level_traeger" name="Schulträger" column="_col_traeger_id" nameColumn="_col_traeger_traeger_name"/>
   <roma:Level id="_level_traeger_art" name="Schulträger-Art" column="_col_traeger_art_id" nameColumn="_col_traeger_art_traeger_art"/>

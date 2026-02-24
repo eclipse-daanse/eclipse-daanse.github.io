@@ -343,7 +343,7 @@ classDiagram
     Level --> Column : captionColumn
     Level --> Column : column
     Level --> Column : nameColumn
-    Level --> OrderedColumn : ordinalColumn
+    Level --> OrderedColumn : ordinalColumns
 
     Level <|-- AbstractElement : inherit
 
@@ -584,7 +584,7 @@ classDiagram
     AggregationLevel --> Column : captionColumn
     AggregationLevel --> Column : column
     AggregationLevel --> Column : nameColumn
-    AggregationLevel --> Column : ordinalColumn
+    AggregationLevel --> Column : ordinalColumns
 
 
 
@@ -760,7 +760,7 @@ classDiagram
 
 
   class OrderedColumn {
-      + ascend : Boolean
+      + direction : SortingDirection
   }
     OrderedColumn --> Column : column
 
@@ -842,6 +842,7 @@ classDiagram
     SqlView --> SqlStatement : sqlStatements
 
     SqlView <|-- Table : inherit
+
 
 
 
@@ -981,5 +982,6 @@ classDiagram
 - [Enum BitAggType](./enum-BitAggType.md)
 - [Enum PercentType](./enum-PercentType.md)
 - [Enum LevelDefinition](./enum-LevelDefinition.md)
+- [Enum SortingDirection](./enum-SortingDirection.md)
 
 

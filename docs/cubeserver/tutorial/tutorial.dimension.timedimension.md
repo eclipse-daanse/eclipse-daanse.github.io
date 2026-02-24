@@ -63,7 +63,7 @@ This Example uses Quarters level based on the QTR_ID column and has TIME_QUARTER
 
 
 ```xml
-<roma:Level  id="_level_quarters" name="Quarters" column="_column_fact_qtrName" type="TimeQuarters" ordinalColumn="_ordered_column_fact_qtrId"/>
+<roma:Level  id="_level_quarters" name="Quarters" column="_column_fact_qtrName" type="TimeQuarters" ordinalColumns="_ordered_column_fact_qtrId"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -73,7 +73,7 @@ This Example uses Months level based on the MONTH_ID column and has TIME_MONTHS 
 
 
 ```xml
-<roma:Level  id="_level_months" name="Months" column="_column_fact_monthName" type="TimeMonths" ordinalColumn="_ordered_column_fact_monthId"/>
+<roma:Level  id="_level_months" name="Months" column="_column_fact_monthName" type="TimeMonths" ordinalColumns="_ordered_column_fact_monthId"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -165,8 +165,8 @@ This file represents the complete definition of the catalog.
   </roma:DatabaseSchema>
   <roma:TableQuery id="_query_fact" table="_table_fact"/>
   <roma:Level id="_level_day" name="Day" column="_column_fact_dayInMonth" type="TimeDays"/>
-  <roma:Level id="_level_months" name="Months" column="_column_fact_monthName" type="TimeMonths" ordinalColumn="_ordered_column_fact_monthId"/>
-  <roma:Level id="_level_quarters" name="Quarters" column="_column_fact_qtrName" type="TimeQuarters" ordinalColumn="_ordered_column_fact_qtrId"/>
+  <roma:Level id="_level_months" name="Months" column="_column_fact_monthName" type="TimeMonths" ordinalColumns="_ordered_column_fact_monthId"/>
+  <roma:Level id="_level_quarters" name="Quarters" column="_column_fact_qtrName" type="TimeQuarters" ordinalColumns="_ordered_column_fact_qtrId"/>
   <roma:Level id="_level_week" name="Week" column="_column_fact_weekInMonth" type="TimeWeeks"/>
   <roma:Level id="_level_years" name="Years" column="_column_fact_yearId" type="TimeYears" uniqueMembers="true"/>
   <roma:ExplicitHierarchy id="_hierarchy_time" allMemberName="All Years" primaryKey="_column_fact_dateKey" query="_query_fact" levels="_level_years _level_quarters _level_months _level_week _level_day"/>
