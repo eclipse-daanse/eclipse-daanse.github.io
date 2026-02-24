@@ -84,7 +84,7 @@ Also it defines the OrdinalColumn attribute to specify the column that contains 
 
 
 ```xml
-<roma:Level  id="_level2" name="Level2" captionColumn="roma:SQLExpressionColumn _captionExpression" column="roma:SQLExpressionColumn _keyExpression" ordinalColumn="_ordined_column_Expression"/>
+<roma:Level  id="_level2" name="Level2" captionColumn="roma:SQLExpressionColumn _captionExpression" column="roma:SQLExpressionColumn _keyExpression" ordinalColumns="_ordined_column_Expression"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -184,7 +184,7 @@ This file represents the complete definition of the catalog.
   </roma:DatabaseSchema>
   <roma:TableQuery id="_table_factQuery" table="_table_fact"/>
   <roma:Level id="_level1" name="Level1" column="_column_fact_key" nameColumn="_nameExpression"/>
-  <roma:Level id="_level2" name="Level2" captionColumn="_captionExpression" column="_keyExpression" ordinalColumn="_ordined_column_Expression"/>
+  <roma:Level id="_level2" name="Level2" captionColumn="_captionExpression" column="_keyExpression" ordinalColumns="_ordined_column_Expression"/>
   <roma:ExplicitHierarchy id="_hierarchywithhasall" name="HierarchyWithHasAll" primaryKey="_column_fact_key" query="_table_factQuery" levels="_level1 _level2"/>
   <roma:StandardDimension id="_dimension" name="Dimension" hierarchies="_hierarchywithhasall"/>
   <roma:PhysicalCube id="_cube" name="Cube" query="_table_factQuery">

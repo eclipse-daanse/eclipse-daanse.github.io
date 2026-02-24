@@ -155,14 +155,14 @@ Represents a group of members in a hierarchy, all at the same depth and sharing 
       <td colspan="5"><em>Optional column providing human-readable names for level members. When specified, this column supplies the display names used in client tools and reports, while the main column serves as the key. If not specified, the main column value is used for both key and display purposes.</em></td>
     </tr>
     <tr>
-      <td><strong>ordinalColumn</strong></td>
+      <td><strong>ordinalColumns</strong></td>
       <td>OrderedColumn<a href="./class-OrderedColumn">🔗</a></td>
-      <td>0</td>
       <td>1</td>
+      <td>&infin;</td>
       <td>false</td>
     </tr>
     <tr>
-      <td colspan="5"><em>Optional column providing sort order values for level members, overriding alphabetical sorting based on names. This enables custom member ordering such as chronological sequences, business hierarchies, or priority-based arrangements that don't follow natural string sorting.</em></td>
+      <td colspan="5"><em>Optional columns providing sort order values for level members, overriding alphabetical sorting based on names. This enables custom member ordering such as chronological sequences, business hierarchies, or priority-based arrangements that don't follow natural string sorting.</em></td>
     </tr>
   </tbody>
 </table>
@@ -197,6 +197,6 @@ classDiagram
   Level --> Column : captionColumn
   Level --> Column : column
   Level --> Column : nameColumn
-  Level --> OrderedColumn : ordinalColumn
+  Level --> OrderedColumn : ordinalColumns
 
 ```

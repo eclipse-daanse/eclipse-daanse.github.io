@@ -160,7 +160,7 @@ Abstract base class for database columns that define data structure and metadata
 - AggregationLevel[🔗](./class-AggregationLevel) → captionColumn
 - AggregationLevel[🔗](./class-AggregationLevel) → column
 - AggregationLevel[🔗](./class-AggregationLevel) → nameColumn
-- AggregationLevel[🔗](./class-AggregationLevel) → ordinalColumn
+- AggregationLevel[🔗](./class-AggregationLevel) → ordinalColumns
 - AggregationLevelProperty[🔗](./class-AggregationLevelProperty) → column
 - AggregationMeasure[🔗](./class-AggregationMeasure) → column
 - AggregationMeasureFactCount[🔗](./class-AggregationMeasureFactCount) → column
