@@ -6,14 +6,21 @@ number: 2.03.02.02
 ---
 # Daanse Tutorial - Hierarchy Query Table Multilevel Multitable
 
-            In some cases, a table for a lower-level entity also contains additional information for a higher-level entity. This often happens when no dedicated columns exist for the higher-level entity and the database designer decides that fully applying Third Normal Form (3NF) would involve more work than it seems to be worth, or they wish to optimize lookup speed. Although we strongly recommend using 3NF wherever possible, this tutorial demonstrates how to handle a scenario in which two levels share the same table.
+    In some cases, a table for a lower-level entity also contains additional information for a higher-level entity.
+This often happens when no dedicated columns exist for the higher-level entity and the database designer decides
+that fully applying Third Normal Form (3NF) would involve more work than it seems to be worth, or they wish to
+optimize lookup speed. Although we strongly recommend using 3NF wherever possible, this tutorial demonstrates
+how to handle a scenario in which two levels share the same table.
 
-In this example, besides storing the town `ID` and town `NAME`, our table also includes information about the `COUNTRY` in a separate column.
+In this example, besides storing the town `ID` and town `NAME`, our table also includes information about the
+`COUNTRY` in a separate column.
 
 
 ## Database Schema
 
-The cube defined in this example is based on two tables. `Fact` and `Town`. The `Fact` table contains a measures and a reference to the `Town` table. The `Fact` table is linked with its `ID` column to the `Town` table by the `TOWN_ID` column. The Town table has the `ID`, `NAME` and `COUNTRY`.
+The cube defined in this example is based on two tables. `Fact` and `Town`. The `Fact` table contains a
+measures and a reference to the `Town` table. The `Fact` table is linked with its `ID` column to the `Town`
+table by the `TOWN_ID` column. The Town table has the `ID`, `NAME` and `COUNTRY`.
 
 
 ```xml
@@ -53,8 +60,8 @@ The TableQuery for the Level, as it directly references the physical table `Fact
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Level
 
-The level  of the `Town` used the `column` attribute to define the primary key column and the `nameColumn` attribute.
-
+The level  of the `Town` used the `column` attribute to define the primary key column and the `nameColumn`
+attribute.
 
 
 
@@ -65,7 +72,8 @@ The level  of the `Town` used the `column` attribute to define the primary key c
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Level
 
-The level  of the `Country` used the `column` attribute to define the primary key column on the `Country` table of the `Town` table.
+The level  of the `Country` used the `column` attribute to define the primary key column on the `Country`
+table of the `Town` table.
 
 
 ```xml
@@ -75,7 +83,9 @@ The level  of the `Country` used the `column` attribute to define the primary ke
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Hierarchy
 
-This Hierarchy contains both defined levels. The `primaryKey` attribute defines the column that contains the primary key of the hierarchy. The `query` attribute references to the query that will be used to retrieve the data for the hierarchy.
+This Hierarchy contains both defined levels. The `primaryKey` attribute defines the column that contains
+the primary key of the hierarchy. The `query` attribute references to the query that will be used to
+retrieve the data for the hierarchy.
 
 The order of the Levels in the hierarchy is important, as it determines the drill-down path for the hierarchy.
 
@@ -99,7 +109,8 @@ The Dimension has only one hierarchy.
 
 The cube contains only one Measure in a unnamed MeasureGroup and references to the Dimension.
 
-To connect the dimension to the cube, a DimensionConnector is used. The dimension has set the attribute `foreignKey` to define the column that contains the foreign key of the dimension in the fact table.
+To connect the dimension to the cube, a DimensionConnector is used. The dimension has set the attribute
+`foreignKey` to define the column that contains the foreign key of the dimension in the fact table.
 
 
 ```xml
