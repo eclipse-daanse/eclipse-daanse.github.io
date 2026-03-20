@@ -43,7 +43,7 @@ The level of the `Town` used the `column` attribute to define the column that ho
 
 
 ```xml
-<roma:Level  id="_level_town" name="Town" column="_column_fact_key" ordinalColumns="_ordered_column_town"/>
+<roma:Level  id="_level_town" name="Town" column="_column_fact_key"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -53,7 +53,7 @@ The level  of the `Country` used the `column` attribute to define the column tha
 
 
 ```xml
-<roma:Level  id="_level_country" name="Country" column="_column_fact_country" ordinalColumns="_ordered_column_country"/>
+<roma:Level  id="_level_country" name="Country" column="_column_fact_country"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -67,13 +67,13 @@ OrderedColumn for level country. OrderedColumn use ascending sorting by country 
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
-## Ordered Column Country
+## Ordered Column Town
 
 OrderedColumn for level town. OrderedColumn use ascending sorting by town name
 
 
 ```xml
-<roma:OrderedColumn  id="_ordered_column_country" column="_column_fact_country"/>
+<roma:OrderedColumn  id="_ordered_column_town" column="_column_fact_key" direction="Desc"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -85,7 +85,7 @@ The order of the Levels in the hierarchy is important, as it determines the dril
 
 
 ```xml
-<roma:ExplicitHierarchy  id="_hierarchy_townHierarchy" name="TownHierarchy" primaryKey="_column_fact_key" query="_query_fact" levels="_level_country _level_town"/>
+<roma:ExplicitHierarchy  id="_hierarchy_countryHierarchy" name="CountryHierarchy" primaryKey="_column_fact_key" query="_query_fact" levels="_level_country _level_town"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -95,7 +95,7 @@ The Dimension has only one hierarchy.
 
 
 ```xml
-<roma:StandardDimension  id="_dimension_country" name="Country" hierarchies="roma:ExplicitHierarchy _hierarchy_townHierarchy"/>
+<roma:StandardDimension  id="_dimension_country" name="Country" hierarchies="roma:ExplicitHierarchy _hierarchy_countryHierarchy"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -124,8 +124,6 @@ This file represents the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:OrderedColumn id="_ordered_column_country" column="_column_fact_country"/>
-  <roma:OrderedColumn id="_ordered_column_town" column="_column_fact_key" direction="Desc"/>
   <roma:Catalog description="Levels with ordinal columns" name="Daanse Tutorial - Levels with ordinal columns" cubes="_cube_with_ordinal_columns" dbschemas="_databaseSchema_main"/>
   <roma:DatabaseSchema id="_databaseSchema_main">
     <tables xsi:type="roma:PhysicalTable" id="_table_fact" name="Fact">
@@ -135,10 +133,14 @@ This file represents the complete definition of the catalog.
     </tables>
   </roma:DatabaseSchema>
   <roma:TableQuery id="_query_fact" table="_table_fact"/>
-  <roma:Level id="_level_country" name="Country" column="_column_fact_country" ordinalColumns="_ordered_column_country"/>
-  <roma:Level id="_level_town" name="Town" column="_column_fact_key" ordinalColumns="_ordered_column_town"/>
-  <roma:ExplicitHierarchy id="_hierarchy_townHierarchy" name="TownHierarchy" primaryKey="_column_fact_key" query="_query_fact" levels="_level_country _level_town"/>
-  <roma:StandardDimension id="_dimension_country" name="Country" hierarchies="_hierarchy_townHierarchy"/>
+  <roma:Level id="_level_country" name="Country" column="_column_fact_country">
+    <ordinalColumns id="_ordered_column_country" column="_column_fact_country"/>
+  </roma:Level>
+  <roma:Level id="_level_town" name="Town" column="_column_fact_key">
+    <ordinalColumns id="_ordered_column_town" column="_column_fact_key" direction="Desc"/>
+  </roma:Level>
+  <roma:ExplicitHierarchy id="_hierarchy_countryHierarchy" name="CountryHierarchy" primaryKey="_column_fact_key" query="_query_fact" levels="_level_country _level_town"/>
+  <roma:StandardDimension id="_dimension_country" name="Country" hierarchies="_hierarchy_countryHierarchy"/>
   <roma:PhysicalCube id="_cube_with_ordinal_columns" name="Cube with ordinal columns" query="_query_fact">
     <dimensionConnectors foreignKey="_column_fact_country" dimension="_dimension_country" id="_dimensionConnector_country"/>
     <measureGroups>
