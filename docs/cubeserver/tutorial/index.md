@@ -206,6 +206,9 @@ Download the full [Tutorial-Package](./zip/all-tutorials.zip) as zip.
 [Level with not unique members](./tutorial.level.unique.md)
 
 
+[Levels with ordinal columns](./tutorial.level.ordinalcolumns.md)
+
+
 [Virtual Cube Minimal](./tutorial.virtualcube.min.md)
 
 
