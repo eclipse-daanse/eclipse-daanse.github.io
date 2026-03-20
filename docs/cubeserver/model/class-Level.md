@@ -157,9 +157,9 @@ Represents a group of members in a hierarchy, all at the same depth and sharing 
     <tr>
       <td><strong>ordinalColumns</strong></td>
       <td>OrderedColumn<a href="./class-OrderedColumn">🔗</a></td>
-      <td>1</td>
+      <td>0</td>
       <td>&infin;</td>
-      <td>false</td>
+      <td>true</td>
     </tr>
     <tr>
       <td colspan="5"><em>Optional columns providing sort order values for level members, overriding alphabetical sorting based on names. This enables custom member ordering such as chronological sequences, business hierarchies, or priority-based arrangements that don't follow natural string sorting.</em></td>
