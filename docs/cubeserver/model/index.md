@@ -764,7 +764,7 @@ classDiagram
   }
     OrderedColumn --> Column : column
 
-    OrderedColumn <|-- IdElement : inherit
+    OrderedColumn <|-- DocumentedElement : inherit
 
 
   class Column {

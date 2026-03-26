@@ -184,7 +184,7 @@ This file represents the complete definition of the catalog.
   <roma:TableQuery id="_table_factQuery" table="_table_fact"/>
   <roma:Level id="_level1" name="Level1" column="_column_fact_key" nameColumn="_nameExpression"/>
   <roma:Level id="_level2" name="Level2" captionColumn="_captionExpression" column="_keyExpression">
-    <ordinalColumns id="_ordined_column_Expression" column="_ordinalExpression"/>
+    <ordinalColumns column="_ordinalExpression"/>
   </roma:Level>
   <roma:ExplicitHierarchy id="_hierarchywithhasall" name="HierarchyWithHasAll" primaryKey="_column_fact_key" query="_table_factQuery" levels="_level1 _level2"/>
   <roma:StandardDimension id="_dimension" name="Dimension" hierarchies="_hierarchywithhasall"/>

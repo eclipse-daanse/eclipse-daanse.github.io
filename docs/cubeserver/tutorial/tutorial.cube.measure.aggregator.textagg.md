@@ -39,7 +39,7 @@ OrderedColumn uses ascending by default.
 
 
 ```xml
-<roma:OrderedColumn  id="_ordered_column_col_fact_value" column="_column_fact_comment"/>
+<roma:OrderedColumn  column="_column_fact_comment"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -66,7 +66,7 @@ In this example, multiple measures are defined. All measures reference the `VALU
   <dimensionConnectors foreignKey="roma:PhysicalColumn _column_fact_year" dimension="roma:TimeDimension _dimension_time" id="_dimensionConnector_time"/>
   <measureGroups>
     <measures xsi:type="roma:SumMeasure" id="_measure_sumValue" name="Sum of Value" column="_column_fact_value"/>
-    <measures xsi:type="roma:TextAggMeasure" id="_measure_comment" name="Comment" column="roma:SQLExpressionColumn _sqlExpressionColumn_userComment" orderByColumns="_ordered_column_col_fact_value" separator=", "/>
+    <measures xsi:type="roma:TextAggMeasure" id="_measure_comment" name="Comment" column="roma:SQLExpressionColumn _sqlExpressionColumn_userComment" orderByColumns="/0" separator=", "/>
   </measureGroups>
 </roma:PhysicalCube>
 
@@ -80,7 +80,7 @@ This file represents the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:OrderedColumn id="_ordered_column_col_fact_value" column="_column_fact_comment"/>
+  <roma:OrderedColumn column="_column_fact_comment"/>
   <roma:Catalog description="Text aggregation functions" name="Daanse Tutorial - Measure Aggregator Text Agg" cubes="_cube_measuresTextAggregators" dbschemas="_databaseSchema_main"/>
   <roma:DatabaseSchema id="_databaseSchema_main">
     <tables xsi:type="roma:PhysicalTable" id="_table_fact" name="Fact">
@@ -116,7 +116,7 @@ This file represents the complete definition of the catalog.
     <dimensionConnectors foreignKey="_column_fact_year" dimension="_dimension_time" id="_dimensionConnector_time"/>
     <measureGroups>
       <measures xsi:type="roma:SumMeasure" id="_measure_sumValue" name="Sum of Value" column="_column_fact_value"/>
-      <measures xsi:type="roma:TextAggMeasure" id="_measure_comment" name="Comment" column="_sqlExpressionColumn_userComment" orderByColumns="_ordered_column_col_fact_value" separator=", "/>
+      <measures xsi:type="roma:TextAggMeasure" id="_measure_comment" name="Comment" column="_sqlExpressionColumn_userComment" orderByColumns="/0" separator=", "/>
     </measureGroups>
   </roma:PhysicalCube>
 </xmi:XMI>

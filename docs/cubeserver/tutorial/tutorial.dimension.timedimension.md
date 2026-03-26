@@ -164,10 +164,10 @@ This file represents the complete definition of the catalog.
   <roma:TableQuery id="_query_fact" table="_table_fact"/>
   <roma:Level id="_level_day" name="Day" column="_column_fact_dayInMonth" type="TimeDays"/>
   <roma:Level id="_level_months" name="Months" column="_column_fact_monthName" type="TimeMonths">
-    <ordinalColumns id="_ordered_column_fact_monthId" column="_column_fact_monthId"/>
+    <ordinalColumns column="_column_fact_monthId"/>
   </roma:Level>
   <roma:Level id="_level_quarters" name="Quarters" column="_column_fact_qtrName" type="TimeQuarters">
-    <ordinalColumns id="_ordered_column_fact_qtrId" column="_column_fact_qtrId"/>
+    <ordinalColumns column="_column_fact_qtrId"/>
   </roma:Level>
   <roma:Level id="_level_week" name="Week" column="_column_fact_weekInMonth" type="TimeWeeks"/>
   <roma:Level id="_level_years" name="Years" column="_column_fact_yearId" type="TimeYears" uniqueMembers="true"/>
