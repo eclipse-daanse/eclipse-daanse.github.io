@@ -1865,7 +1865,7 @@ This file represents the complete definition of the catalog.
   <roma:Level id="_level_gender" name="Gender" column="_column_customer_gender" uniqueMembers="true"/>
   <roma:Level id="_level_hr_management_role" name="Management Role" column="_column_employee_managementRole"/>
   <roma:Level id="_level_hr_position_title" name="Position Title" column="_column_employee_positionTitle">
-    <ordinalColumns id="_ordered_column_employee_positionId" column="_column_employee_positionId"/>
+    <ordinalColumns column="_column_employee_positionId"/>
   </roma:Level>
   <roma:Level id="_level_marital_status" name="Marital Status" approxRowCount="111" column="_column_customer_maritalStatus" uniqueMembers="true"/>
   <roma:Level id="_level_name" name="Name" column="_column_customer_customerId" nameColumn="_sqlExpressionColumn_name" columnType="Numeric" uniqueMembers="true">
@@ -1873,7 +1873,7 @@ This file represents the complete definition of the catalog.
     <memberProperties id="_memberProperty_name_maritalStatus" name="Marital Status" column="_column_customer_maritalStatus"/>
     <memberProperties id="_memberProperty_name_education" name="Education" column="_column_customer_education"/>
     <memberProperties id="_memberProperty_name_yearlyIncome" name="Yearly Income" column="_column_customer_yearlyIncome"/>
-    <ordinalColumns id="_ordered_sqlExpressionColumn_name_order" column="_sqlExpressionColumn_name_order"/>
+    <ordinalColumns column="_sqlExpressionColumn_name_order"/>
   </roma:Level>
   <roma:Level id="_level_pay_type" name="Pay Type" column="_column_position_payType" uniqueMembers="true"/>
   <roma:Level id="_level_product_brand" name="Brand Name" column="_column_product_brandName"/>
@@ -1884,8 +1884,8 @@ This file represents the complete definition of the catalog.
   <roma:Level id="_level_product_subcategory" name="Product Subcategory" column="_column_productClass_productSubcategory"/>
   <roma:Level id="_level_promotion_media" name="Media Type" column="_column_promotion_mediaType" uniqueMembers="true"/>
   <roma:Level id="_level_promotion_name" name="Promotion Name" column="_column_promotion_promotionName" uniqueMembers="true"/>
-  <roma:Level id="_level_regged_store_city" name="City" column="_column_store_ragged_store_city" hideMemberIf="IfBlankName"/>
   <roma:Level id="_level_regged_store_city" name="Store City" column="_column_store_ragged_store_city" hideMemberIf="IfBlankName"/>
+  <roma:Level id="_level_regged_store_city" name="City" column="_column_store_ragged_store_city" hideMemberIf="IfBlankName"/>
   <roma:Level id="_level_regged_store_country" name="Country" column="_column_store_ragged_store_country" uniqueMembers="true"/>
   <roma:Level id="_level_regged_store_country" name="Store Country" column="_column_store_ragged_store_country"/>
   <roma:Level id="_level_regged_store_name" name="Store Name" column="_column_store_ragged_store_name" uniqueMembers="true">

@@ -63,7 +63,7 @@ OrderedColumn for level country. OrderedColumn use ascending sorting by country 
 
 
 ```xml
-<roma:OrderedColumn  id="_ordered_column_country" column="_column_fact_country"/>
+<roma:OrderedColumn  column="_column_fact_country"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -73,7 +73,7 @@ OrderedColumn for level town. OrderedColumn use ascending sorting by town name
 
 
 ```xml
-<roma:OrderedColumn  id="_ordered_column_town" column="_column_fact_key" direction="Desc"/>
+<roma:OrderedColumn  column="_column_fact_key" direction="Desc"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -134,10 +134,10 @@ This file represents the complete definition of the catalog.
   </roma:DatabaseSchema>
   <roma:TableQuery id="_query_fact" table="_table_fact"/>
   <roma:Level id="_level_country" name="Country" column="_column_fact_country">
-    <ordinalColumns id="_ordered_column_country" column="_column_fact_country"/>
+    <ordinalColumns column="_column_fact_country"/>
   </roma:Level>
   <roma:Level id="_level_town" name="Town" column="_column_fact_key">
-    <ordinalColumns id="_ordered_column_town" column="_column_fact_key" direction="Desc"/>
+    <ordinalColumns column="_column_fact_key" direction="Desc"/>
   </roma:Level>
   <roma:ExplicitHierarchy id="_hierarchy_countryHierarchy" name="CountryHierarchy" primaryKey="_column_fact_key" query="_query_fact" levels="_level_country _level_town"/>
   <roma:StandardDimension id="_dimension_country" name="Country" hierarchies="_hierarchy_countryHierarchy"/>

@@ -197,16 +197,16 @@ This file represents the complete definition of the catalog.
   <roma:Level id="_level_schulabschluss" name="Schulabschlüsse" column="_col_schul_abschluss_id" nameColumn="_col_schul_abschluss_schulabschluss"/>
   <roma:Level id="_level_schulart" name="Schulart" column="_col_schul_art_id" nameColumn="_col_schul_art_schulart_name"/>
   <roma:Level id="_level_schule_art" name="Schule" column="_col_schule_id" nameColumn="_col_schule_schul_name">
-    <ordinalColumns id="_ordered_col_schule_schul_nummer3" column="_col_schule_schul_nummer"/>
+    <ordinalColumns column="_col_schule_schul_nummer"/>
   </roma:Level>
   <roma:Level id="_level_schule_basic" name="Schule" column="_col_schule_id" nameColumn="_col_schule_schul_name">
-    <ordinalColumns id="_ordered_col_schule_schul_nummer1" column="_col_schule_schul_nummer"/>
+    <ordinalColumns column="_col_schule_schul_nummer"/>
   </roma:Level>
   <roma:Level id="_level_schule_traegerschaft" name="Schule" column="_col_schule_id" nameColumn="_col_schule_schul_name">
-    <ordinalColumns id="_ordered_col_schule_schul_nummer2" column="_col_schule_schul_nummer"/>
+    <ordinalColumns column="_col_schule_schul_nummer"/>
   </roma:Level>
   <roma:Level id="_level_schuljahr" name="Schuljahr" column="_col_schul_jahr_id" nameColumn="_col_schul_jahr_schul_jahr">
-    <ordinalColumns id="_ordered_col_schul_jahr_order" column="_col_schul_jahr_order"/>
+    <ordinalColumns column="_col_schul_jahr_order"/>
   </roma:Level>
   <roma:Level id="_level_schulkategorie" name="Schulkategorie" column="_col_schul_kategorie_id" nameColumn="_col_schul_kategorie_schul_kategorie_name"/>
   <roma:Level id="_level_traeger" name="Schulträger" column="_col_traeger_id" nameColumn="_col_traeger_traeger_name"/>
