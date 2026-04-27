@@ -15,12 +15,12 @@ The cube defined in this example is based on a single table that stores all the 
 
 
 ```xml
-<roma:DatabaseSchema   id="_databaseSchema_measureAggregatorBase">
-  <tables xsi:type="roma:PhysicalTable" id="_table_fact" name="Fact">
-    <columns xsi:type="roma:PhysicalColumn" id="_column_fact_key" name="KEY"/>
-    <columns xsi:type="roma:PhysicalColumn" id="_column_fact_value" name="VALUE" type="Integer"/>
-  </tables>
-</roma:DatabaseSchema>
+<relational:Schema xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmi:id="_schema">
+  <ownedElement xsi:type="relational:Table" xmi:id="_table_fact" name="Fact">
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_key" name="KEY"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE"/>
+  </ownedElement>
+</relational:Schema>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -30,28 +30,13 @@ This example uses a TableQuery, as it directly references the physical table `Fa
 
 
 ```xml
-<roma:TableQuery  id="_query_fact" table="_table_fact"/>
-
-```
-*<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
-## Cube, MeasureGroup and Measure
-
-In this example, multiple measures are defined. All measures reference the `VALUE` column and use the following aggregation functions:
-- SUM – Calculates the sum of the values.
-- MIN – Retrieves the minimum value.
-- MAX – Retrieves the maximum value.
-- AVG – Computes the average of the values.
-
-
-```xml
-<roma:PhysicalCube   id="_cube_measuresAggregatorsCube" name="MeasuresAggregatorsCube" query="_query_fact">
-  <measureGroups>
-    <measures xsi:type="roma:SumMeasure" id="_measure_sumOfValue" name="Sum of Value" column="_column_fact_value"/>
-    <measures xsi:type="roma:MaxMeasure" id="_measure_maxOfValue" name="Max of Value" column="_column_fact_value"/>
-    <measures xsi:type="roma:MinMeasure" id="_measure_minOfValue" name="Min of Value" column="_column_fact_value"/>
-    <measures xsi:type="roma:AvgMeasure" id="_measure_avgOfValue" name="Avg of Value" column="_column_fact_value"/>
-  </measureGroups>
-</roma:PhysicalCube>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
+  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
+  <relational:Table xmi:id="_table_fact" name="Fact">
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_key" name="KEY"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE"/>
+  </relational:Table>
+</xmi:XMI>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -62,23 +47,25 @@ This file represents the complete definition of the catalog.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:Catalog id="_catalog_measureBasicAggregators" description="Basic measure aggregation functions" name="Daanse Tutorial - Measure Aggregator Base" cubes="_cube_measuresAggregatorsCube" dbschemas="_databaseSchema_measureAggregatorBase"/>
-  <roma:DatabaseSchema id="_databaseSchema_measureAggregatorBase">
-    <tables xsi:type="roma:PhysicalTable" id="_table_fact" name="Fact">
-      <columns xsi:type="roma:PhysicalColumn" id="_column_fact_key" name="KEY"/>
-      <columns xsi:type="roma:PhysicalColumn" id="_column_fact_value" name="VALUE" type="Integer"/>
-    </tables>
-  </roma:DatabaseSchema>
-  <roma:TableQuery id="_query_fact" table="_table_fact"/>
-  <roma:PhysicalCube id="_cube_measuresAggregatorsCube" name="MeasuresAggregatorsCube" query="_query_fact">
-    <measureGroups>
-      <measures xsi:type="roma:SumMeasure" id="_measure_sumOfValue" name="Sum of Value" column="_column_fact_value"/>
-      <measures xsi:type="roma:MaxMeasure" id="_measure_maxOfValue" name="Max of Value" column="_column_fact_value"/>
-      <measures xsi:type="roma:MinMeasure" id="_measure_minOfValue" name="Min of Value" column="_column_fact_value"/>
-      <measures xsi:type="roma:AvgMeasure" id="_measure_avgOfValue" name="Avg of Value" column="_column_fact_value"/>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapcat="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/catalog" xmlns:rolapcube="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube" xmlns:rolapmeas="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube/measure" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
+  <relational:SQLSimpleType xmi:id="_sqlsimpletype_character_varying" name="CHARACTER VARYING" structuralFeature="_column_fact_key" typeNumber="12"/>
+  <relational:SQLSimpleType xmi:id="_sqlsimpletype_integer" name="INTEGER" structuralFeature="_column_fact_value" typeNumber="4"/>
+  <rolapcat:Catalog xmi:id="_catalog_measurebasicaggregators" id="_catalog_measureBasicAggregators" description="Basic measure aggregation functions" name="Daanse Tutorial - Measure Aggregator Base" cubes="_physicalcube_measuresaggregatorscube" dbschemas="_schema"/>
+  <relational:Schema xmi:id="_schema">
+    <ownedElement xsi:type="relational:Table" xmi:id="_table_fact" name="Fact">
+      <feature xsi:type="relational:Column" xmi:id="_column_fact_key" name="KEY" type="_sqlsimpletype_character_varying"/>
+      <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE" type="_sqlsimpletype_integer"/>
+    </ownedElement>
+  </relational:Schema>
+  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
+  <rolapcube:PhysicalCube xmi:id="_physicalcube_measuresaggregatorscube" name="MeasuresAggregatorsCube" query="_tablesource_fact">
+    <measureGroups xmi:id="_measuregroup">
+      <measures xsi:type="rolapmeas:SumMeasure" xmi:id="_summeasure_sum_of_value" name="Sum of Value" column="_column_fact_value"/>
+      <measures xsi:type="rolapmeas:MaxMeasure" xmi:id="_maxmeasure_max_of_value" name="Max of Value" column="_column_fact_value"/>
+      <measures xsi:type="rolapmeas:MinMeasure" xmi:id="_minmeasure_min_of_value" name="Min of Value" column="_column_fact_value"/>
+      <measures xsi:type="rolapmeas:AvgMeasure" xmi:id="_avgmeasure_avg_of_value" name="Avg of Value" column="_column_fact_value"/>
     </measureGroups>
-  </roma:PhysicalCube>
+  </rolapcube:PhysicalCube>
 </xmi:XMI>
 
 ```

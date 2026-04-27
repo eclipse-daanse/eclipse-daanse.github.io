@@ -23,12 +23,12 @@ The `KEY` column serves as a discriminator, while the `VALUE` column contains th
 
 
 ```xml
-<roma:DatabaseSchema   id="_databaseSchema_unvisiblereferencecubes">
-  <tables xsi:type="roma:PhysicalTable" id="_table_fact" name="Fact">
-    <columns xsi:type="roma:PhysicalColumn" id="_column_fact_key" name="KEY"/>
-    <columns xsi:type="roma:PhysicalColumn" id="_column_fact_value" name="VALUE" type="Integer"/>
-  </tables>
-</roma:DatabaseSchema>
+<relational:Schema xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmi:id="_schema">
+  <ownedElement xsi:type="relational:Table" xmi:id="_table_fact" name="Fact">
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_key" name="KEY"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE"/>
+  </ownedElement>
+</relational:Schema>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -39,7 +39,13 @@ as it directly references the physical table `Fact`.
 
 
 ```xml
-<roma:TableQuery  id="_query_fact" table="_table_fact"/>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
+  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
+  <relational:Table xmi:id="_table_fact" name="Fact">
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_key" name="KEY"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE"/>
+  </relational:Table>
+</xmi:XMI>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -49,7 +55,9 @@ Measure use `C1_Fact` table VALUE column with sum aggregation in Cube1.
 
 
 ```xml
-<roma:SumMeasure  id="_measure_MeasureCube1" name="MeasureCube1" column="_column_fact_value"/>
+<rolapmeas:SumMeasure xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:rolapmeas="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube/measure" xmi:id="_summeasure_measurecube1" name="MeasureCube1">
+  <column href="_column_fact_value"/>
+</rolapmeas:SumMeasure>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -59,7 +67,9 @@ Measure use `Fact` table `VALUE` column with sum aggregation in Cube2.
 
 
 ```xml
-<roma:SumMeasure  id="_measure_MeasureCube2" name="MeasureCube2" column="_column_fact_value"/>
+<rolapmeas:SumMeasure xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:rolapmeas="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube/measure" xmi:id="_summeasure_measurecube2" name="MeasureCube2">
+  <column href="_column_fact_value"/>
+</rolapmeas:SumMeasure>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -70,12 +80,22 @@ Cube1 is un visible in client side.
 
 
 ```xml
-<roma:PhysicalCube   id="_cube_cube1" name="Cube1" visible="false" query="_query_fact">
-  <dimensionConnectors dimension="roma:StandardDimension _dimension_Dimension1" overrideDimensionName="Cube1Dimension1" id="_dc_cube1Dimension1"/>
-  <measureGroups>
-    <measures xsi:type="roma:SumMeasure" id="_measure_MeasureCube1" name="MeasureCube1" column="_column_fact_value"/>
-  </measureGroups>
-</roma:PhysicalCube>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapcube="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube" xmlns:rolapdim="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapmeas="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube/measure" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
+  <rolapcube:PhysicalCube xmi:id="_physicalcube_cube1" name="Cube1" visible="false" query="_tablesource_fact">
+    <dimensionConnectors xmi:id="_dimensionconnector_cube1dimension1" dimension="_standarddimension_dimension1" overrideDimensionName="Cube1Dimension1"/>
+    <measureGroups xmi:id="_measuregroup">
+      <measures xsi:type="rolapmeas:SumMeasure" xmi:id="_summeasure_measurecube1" name="MeasureCube1" column="_column_fact_value"/>
+    </measureGroups>
+  </rolapcube:PhysicalCube>
+  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
+  <rolaplev:Level xmi:id="_level_level2" name="Level2" column="_column_fact_key"/>
+  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_hierarchywithhasall" name="HierarchyWithHasAll" hasAll="false" primaryKey="_column_fact_key" query="_tablesource_fact" levels="_level_level2"/>
+  <rolapdim:StandardDimension xmi:id="_standarddimension_dimension1" name="Dimension1" hierarchies="_explicithierarchy_hierarchywithhasall"/>
+  <relational:Table xmi:id="_table_fact" name="Fact">
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_key" name="KEY"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE"/>
+  </relational:Table>
+</xmi:XMI>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -86,12 +106,22 @@ Cube2 is un visible in client side.
 
 
 ```xml
-<roma:PhysicalCube   id="_cube_cube1" name="Cube1" visible="false" query="_query_fact">
-  <dimensionConnectors dimension="roma:StandardDimension _dimension_Dimension1" overrideDimensionName="Cube1Dimension1" id="_dc_cube1Dimension1"/>
-  <measureGroups>
-    <measures xsi:type="roma:SumMeasure" id="_measure_MeasureCube1" name="MeasureCube1" column="_column_fact_value"/>
-  </measureGroups>
-</roma:PhysicalCube>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapcube="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube" xmlns:rolapdim="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapmeas="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube/measure" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
+  <rolapcube:PhysicalCube xmi:id="_physicalcube_cube1" name="Cube1" visible="false" query="_tablesource_fact">
+    <dimensionConnectors xmi:id="_dimensionconnector_cube1dimension1" dimension="_standarddimension_dimension1" overrideDimensionName="Cube1Dimension1"/>
+    <measureGroups xmi:id="_measuregroup">
+      <measures xsi:type="rolapmeas:SumMeasure" xmi:id="_summeasure_measurecube1" name="MeasureCube1" column="_column_fact_value"/>
+    </measureGroups>
+  </rolapcube:PhysicalCube>
+  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
+  <rolaplev:Level xmi:id="_level_level2" name="Level2" column="_column_fact_key"/>
+  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_hierarchywithhasall" name="HierarchyWithHasAll" hasAll="false" primaryKey="_column_fact_key" query="_tablesource_fact" levels="_level_level2"/>
+  <rolapdim:StandardDimension xmi:id="_standarddimension_dimension1" name="Dimension1" hierarchies="_explicithierarchy_hierarchywithhasall"/>
+  <relational:Table xmi:id="_table_fact" name="Fact">
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_key" name="KEY"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE"/>
+  </relational:Table>
+</xmi:XMI>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -103,7 +133,13 @@ Cube1 and Cube2 are un visible in client side.
 
 
 ```xml
-<roma:VirtualCube  id="_virtualCube_Cube1Cube2" name="Cube1Cube2" defaultMeasure="roma:SumMeasure _measure_MeasureCube1" dimensionConnectors="_dc_cube1Dimension1 _dc_cube2Dimension1" referencedMeasures="roma:SumMeasure _measure_MeasureCube1 roma:SumMeasure _measure_MeasureCube2"/>
+<rolapcube:VirtualCube xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:rolapcube="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube" xmlns:rolapmeas="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube/measure" xmi:id="_virtualcube_cube1cube2" name="Cube1Cube2">
+  <defaultMeasure xsi:type="rolapmeas:SumMeasure" href="_summeasure_measurecube1"/>
+  <dimensionConnectors href="_dimensionconnector_cube1dimension1"/>
+  <dimensionConnectors href="_dimensionconnector_cube2dimension1"/>
+  <referencedMeasures xsi:type="rolapmeas:SumMeasure" href="_summeasure_measurecube1"/>
+  <referencedMeasures xsi:type="rolapmeas:SumMeasure" href="_summeasure_measurecube2"/>
+</rolapcube:VirtualCube>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -114,31 +150,33 @@ This file represents the complete definition of the catalog.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:Catalog description="Virtual cubes with invisible reference cubes" name="Daanse Tutorial - Virtual Cube Unvisible Reference Cubes" cubes="_cube_cube1 _cube_cube2 _virtualCube_Cube1Cube2" dbschemas="_databaseSchema_unvisiblereferencecubes"/>
-  <roma:DatabaseSchema id="_databaseSchema_unvisiblereferencecubes">
-    <tables xsi:type="roma:PhysicalTable" id="_table_fact" name="Fact">
-      <columns xsi:type="roma:PhysicalColumn" id="_column_fact_key" name="KEY"/>
-      <columns xsi:type="roma:PhysicalColumn" id="_column_fact_value" name="VALUE" type="Integer"/>
-    </tables>
-  </roma:DatabaseSchema>
-  <roma:TableQuery id="_query_fact" table="_table_fact"/>
-  <roma:Level id="_level_Level2" name="Level2" column="_column_fact_key"/>
-  <roma:ExplicitHierarchy id="_hierarchy_HierarchyWithHasAll" name="HierarchyWithHasAll" hasAll="false" primaryKey="_column_fact_key" query="_query_fact" levels="_level_Level2"/>
-  <roma:StandardDimension id="_dimension_Dimension1" name="Dimension1" hierarchies="_hierarchy_HierarchyWithHasAll"/>
-  <roma:PhysicalCube id="_cube_cube1" name="Cube1" visible="false" query="_query_fact">
-    <dimensionConnectors dimension="_dimension_Dimension1" overrideDimensionName="Cube1Dimension1" id="_dc_cube1Dimension1"/>
-    <measureGroups>
-      <measures xsi:type="roma:SumMeasure" id="_measure_MeasureCube1" name="MeasureCube1" column="_column_fact_value"/>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapcat="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/catalog" xmlns:rolapcube="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube" xmlns:rolapdim="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapmeas="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube/measure" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
+  <relational:SQLSimpleType xmi:id="_sqlsimpletype_character_varying" name="CHARACTER VARYING" structuralFeature="_column_fact_key" typeNumber="12"/>
+  <relational:SQLSimpleType xmi:id="_sqlsimpletype_integer" name="INTEGER" structuralFeature="_column_fact_value" typeNumber="4"/>
+  <rolapcat:Catalog xmi:id="_catalog_virtual_cube_unvisible_reference_cubes" description="Virtual cubes with invisible reference cubes" name="Daanse Tutorial - Virtual Cube Unvisible Reference Cubes" cubes="_physicalcube_cube1 _physicalcube_cube2 _virtualcube_cube1cube2" dbschemas="_schema"/>
+  <relational:Schema xmi:id="_schema">
+    <ownedElement xsi:type="relational:Table" xmi:id="_table_fact" name="Fact">
+      <feature xsi:type="relational:Column" xmi:id="_column_fact_key" name="KEY" type="_sqlsimpletype_character_varying"/>
+      <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE" type="_sqlsimpletype_integer"/>
+    </ownedElement>
+  </relational:Schema>
+  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
+  <rolaplev:Level xmi:id="_level_level2" name="Level2" column="_column_fact_key"/>
+  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_hierarchywithhasall" name="HierarchyWithHasAll" hasAll="false" primaryKey="_column_fact_key" query="_tablesource_fact" levels="_level_level2"/>
+  <rolapdim:StandardDimension xmi:id="_standarddimension_dimension1" name="Dimension1" hierarchies="_explicithierarchy_hierarchywithhasall"/>
+  <rolapcube:PhysicalCube xmi:id="_physicalcube_cube2" name="Cube2" visible="false" query="_tablesource_fact">
+    <dimensionConnectors xmi:id="_dimensionconnector_cube2dimension1" dimension="_standarddimension_dimension1" overrideDimensionName="Cube2Dimension1"/>
+    <measureGroups xmi:id="_measuregroup_1">
+      <measures xsi:type="rolapmeas:SumMeasure" xmi:id="_summeasure_measurecube2" name="MeasureCube2" column="_column_fact_value"/>
     </measureGroups>
-  </roma:PhysicalCube>
-  <roma:PhysicalCube id="_cube_cube2" name="Cube2" visible="false" query="_query_fact">
-    <dimensionConnectors dimension="_dimension_Dimension1" overrideDimensionName="Cube2Dimension1" id="_dc_cube2Dimension1"/>
-    <measureGroups>
-      <measures xsi:type="roma:SumMeasure" id="_measure_MeasureCube2" name="MeasureCube2" column="_column_fact_value"/>
+  </rolapcube:PhysicalCube>
+  <rolapcube:PhysicalCube xmi:id="_physicalcube_cube1" name="Cube1" visible="false" query="_tablesource_fact">
+    <dimensionConnectors xmi:id="_dimensionconnector_cube1dimension1" dimension="_standarddimension_dimension1" overrideDimensionName="Cube1Dimension1"/>
+    <measureGroups xmi:id="_measuregroup">
+      <measures xsi:type="rolapmeas:SumMeasure" xmi:id="_summeasure_measurecube1" name="MeasureCube1" column="_column_fact_value"/>
     </measureGroups>
-  </roma:PhysicalCube>
-  <roma:VirtualCube id="_virtualCube_Cube1Cube2" name="Cube1Cube2" defaultMeasure="_measure_MeasureCube1" dimensionConnectors="_dc_cube1Dimension1 _dc_cube2Dimension1" referencedMeasures="_measure_MeasureCube1 _measure_MeasureCube2"/>
+  </rolapcube:PhysicalCube>
+  <rolapcube:VirtualCube xmi:id="_virtualcube_cube1cube2" name="Cube1Cube2" defaultMeasure="_summeasure_measurecube1" dimensionConnectors="_dimensionconnector_cube1dimension1 _dimensionconnector_cube2dimension1" referencedMeasures="_summeasure_measurecube1 _summeasure_measurecube2"/>
 </xmi:XMI>
 
 ```

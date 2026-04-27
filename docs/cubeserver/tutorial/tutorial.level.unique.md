@@ -18,14 +18,14 @@ The `KEY` column serves as a discriminator, while the `VALUE` column contains th
 
 
 ```xml
-<roma:DatabaseSchema   id="_databaseSchema_unique">
-  <tables xsi:type="roma:PhysicalTable" id="_table_fact" name="Fact">
-    <columns xsi:type="roma:PhysicalColumn" id="_column_fact_key" name="KEY" type="Integer"/>
-    <columns xsi:type="roma:PhysicalColumn" id="_column_fact_building" name="BUILDING" type="Integer"/>
-    <columns xsi:type="roma:PhysicalColumn" id="_column_fact_room" name="ROOM" type="Integer"/>
-    <columns xsi:type="roma:PhysicalColumn" id="_column_fact_value" name="VALUE" type="Integer"/>
-  </tables>
-</roma:DatabaseSchema>
+<relational:Schema xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmi:id="_schema">
+  <ownedElement xsi:type="relational:Table" xmi:id="_table_fact" name="Fact">
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_key" name="KEY"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_building" name="BUILDING"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_room" name="ROOM"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE"/>
+  </ownedElement>
+</relational:Schema>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -36,7 +36,15 @@ as it directly references the physical table `Fact`.
 
 
 ```xml
-<roma:TableQuery  id="_queryFact" table="_table_fact"/>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
+  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
+  <relational:Table xmi:id="_table_fact" name="Fact">
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_key" name="KEY"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_building" name="BUILDING"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_room" name="ROOM"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE"/>
+  </relational:Table>
+</xmi:XMI>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -46,7 +54,19 @@ The Dimension has only one hierarchy.
 
 
 ```xml
-<roma:StandardDimension  id="_dimension" name="Dimension" hierarchies="roma:ExplicitHierarchy _hierarchy"/>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapdim="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
+  <rolapdim:StandardDimension xmi:id="_standarddimension_dimension" name="Dimension" hierarchies="_explicithierarchy_hierarchy"/>
+  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
+  <rolaplev:Level xmi:id="_level_room" name="Room" column="_column_fact_room" nameColumn="_column_fact_room"/>
+  <rolaplev:Level xmi:id="_level_building" name="Building" column="_column_fact_building" nameColumn="_column_fact_building" uniqueMembers="true"/>
+  <relational:Table xmi:id="_table_fact" name="Fact">
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_key" name="KEY"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_building" name="BUILDING"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_room" name="ROOM"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE"/>
+  </relational:Table>
+  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_hierarchy" name="Hierarchy" primaryKey="_column_fact_key" query="_tablesource_fact" levels="_level_building _level_room"/>
+</xmi:XMI>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -58,7 +78,18 @@ This hierarchy consists two levels Building and Room.
 
 
 ```xml
-<roma:ExplicitHierarchy  id="_hierarchy" name="Hierarchy" primaryKey="_column_fact_key" query="_queryFact" levels="_level_building _level_room"/>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
+  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_hierarchy" name="Hierarchy" primaryKey="_column_fact_key" query="_tablesource_fact" levels="_level_building _level_room"/>
+  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
+  <rolaplev:Level xmi:id="_level_room" name="Room" column="_column_fact_room" nameColumn="_column_fact_room"/>
+  <rolaplev:Level xmi:id="_level_building" name="Building" column="_column_fact_building" nameColumn="_column_fact_building" uniqueMembers="true"/>
+  <relational:Table xmi:id="_table_fact" name="Fact">
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_key" name="KEY"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_building" name="BUILDING"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_room" name="ROOM"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE"/>
+  </relational:Table>
+</xmi:XMI>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -69,7 +100,10 @@ The Level uses the column attribute to specify the primary key `BUILDING` from `
 
 
 ```xml
-<roma:Level  id="_level_building" name="Building" column="_column_fact_building" nameColumn="_column_fact_building" uniqueMembers="true"/>
+<rolaplev:Level xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmi:id="_level_building" name="Building" uniqueMembers="true">
+  <column href="_column_fact_building"/>
+  <nameColumn href="_column_fact_building"/>
+</rolaplev:Level>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -80,7 +114,10 @@ The Level uses the column attribute to specify the primary key `ROOM` from `Fact
 
 
 ```xml
-<roma:Level  id="_level_room" name="Room" column="_column_fact_room" nameColumn="_column_fact_room"/>
+<rolaplev:Level xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmi:id="_level_room" name="Room">
+  <column href="_column_fact_room"/>
+  <nameColumn href="_column_fact_room"/>
+</rolaplev:Level>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -90,7 +127,9 @@ The Level uses the column attribute to specify the primary key `ROOM` from `Fact
 
 
 ```xml
-<roma:SumMeasure  id="_measure" name="Measure" column="_column_fact_value"/>
+<rolapmeas:SumMeasure xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:rolapmeas="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube/measure" xmi:id="_summeasure_measure" name="Measure">
+  <column href="_column_fact_value"/>
+</rolapmeas:SumMeasure>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -100,12 +139,25 @@ In this example uses cube with fact table Fact as data.
 
 
 ```xml
-<roma:PhysicalCube   id="_cube" name="NotUniqueLevelsMembers" query="_queryFact">
-  <dimensionConnectors foreignKey="roma:PhysicalColumn _column_fact_key" dimension="roma:StandardDimension _dimension" overrideDimensionName="Dimension" id="_dc_dimension"/>
-  <measureGroups>
-    <measures xsi:type="roma:SumMeasure" id="_measure" name="Measure" column="_column_fact_value"/>
-  </measureGroups>
-</roma:PhysicalCube>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapcube="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube" xmlns:rolapdim="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapmeas="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube/measure" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
+  <rolapcube:PhysicalCube xmi:id="_physicalcube_notuniquelevelsmembers" name="NotUniqueLevelsMembers" query="_tablesource_fact">
+    <dimensionConnectors xmi:id="_dimensionconnector_dimension" foreignKey="_column_fact_key" dimension="_standarddimension_dimension" overrideDimensionName="Dimension"/>
+    <measureGroups xmi:id="_measuregroup">
+      <measures xsi:type="rolapmeas:SumMeasure" xmi:id="_summeasure_measure" name="Measure" column="_column_fact_value"/>
+    </measureGroups>
+  </rolapcube:PhysicalCube>
+  <rolapdim:StandardDimension xmi:id="_standarddimension_dimension" name="Dimension" hierarchies="_explicithierarchy_hierarchy"/>
+  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
+  <rolaplev:Level xmi:id="_level_room" name="Room" column="_column_fact_room" nameColumn="_column_fact_room"/>
+  <rolaplev:Level xmi:id="_level_building" name="Building" column="_column_fact_building" nameColumn="_column_fact_building" uniqueMembers="true"/>
+  <relational:Table xmi:id="_table_fact" name="Fact">
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_key" name="KEY"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_building" name="BUILDING"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_room" name="ROOM"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE"/>
+  </relational:Table>
+  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_hierarchy" name="Hierarchy" primaryKey="_column_fact_key" query="_tablesource_fact" levels="_level_building _level_room"/>
+</xmi:XMI>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -116,27 +168,28 @@ This file represents the complete definition of the catalog.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:Catalog description="Level handling blank names" name="Daanse Tutorial - Level with not unique members" cubes="_cube" dbschemas="_databaseSchema_unique"/>
-  <roma:DatabaseSchema id="_databaseSchema_unique">
-    <tables xsi:type="roma:PhysicalTable" id="_table_fact" name="Fact">
-      <columns xsi:type="roma:PhysicalColumn" id="_column_fact_key" name="KEY" type="Integer"/>
-      <columns xsi:type="roma:PhysicalColumn" id="_column_fact_building" name="BUILDING" type="Integer"/>
-      <columns xsi:type="roma:PhysicalColumn" id="_column_fact_room" name="ROOM" type="Integer"/>
-      <columns xsi:type="roma:PhysicalColumn" id="_column_fact_value" name="VALUE" type="Integer"/>
-    </tables>
-  </roma:DatabaseSchema>
-  <roma:TableQuery id="_queryFact" table="_table_fact"/>
-  <roma:Level id="_level_building" name="Building" column="_column_fact_building" nameColumn="_column_fact_building" uniqueMembers="true"/>
-  <roma:Level id="_level_room" name="Room" column="_column_fact_room" nameColumn="_column_fact_room"/>
-  <roma:ExplicitHierarchy id="_hierarchy" name="Hierarchy" primaryKey="_column_fact_key" query="_queryFact" levels="_level_building _level_room"/>
-  <roma:StandardDimension id="_dimension" name="Dimension" hierarchies="_hierarchy"/>
-  <roma:PhysicalCube id="_cube" name="NotUniqueLevelsMembers" query="_queryFact">
-    <dimensionConnectors foreignKey="_column_fact_key" dimension="_dimension" overrideDimensionName="Dimension" id="_dc_dimension"/>
-    <measureGroups>
-      <measures xsi:type="roma:SumMeasure" id="_measure" name="Measure" column="_column_fact_value"/>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapcat="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/catalog" xmlns:rolapcube="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube" xmlns:rolapdim="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapmeas="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube/measure" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
+  <relational:SQLSimpleType xmi:id="_sqlsimpletype_integer" name="INTEGER" structuralFeature="_column_fact_building _column_fact_room _column_fact_key _column_fact_value" typeNumber="4"/>
+  <rolapcat:Catalog xmi:id="_catalog_level_with_not_unique_members" description="Level handling blank names" name="Daanse Tutorial - Level with not unique members" cubes="_physicalcube_notuniquelevelsmembers" dbschemas="_schema"/>
+  <relational:Schema xmi:id="_schema">
+    <ownedElement xsi:type="relational:Table" xmi:id="_table_fact" name="Fact">
+      <feature xsi:type="relational:Column" xmi:id="_column_fact_key" name="KEY" type="_sqlsimpletype_integer"/>
+      <feature xsi:type="relational:Column" xmi:id="_column_fact_building" name="BUILDING" type="_sqlsimpletype_integer"/>
+      <feature xsi:type="relational:Column" xmi:id="_column_fact_room" name="ROOM" type="_sqlsimpletype_integer"/>
+      <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE" type="_sqlsimpletype_integer"/>
+    </ownedElement>
+  </relational:Schema>
+  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
+  <rolaplev:Level xmi:id="_level_room" name="Room" column="_column_fact_room" nameColumn="_column_fact_room"/>
+  <rolaplev:Level xmi:id="_level_building" name="Building" column="_column_fact_building" nameColumn="_column_fact_building" uniqueMembers="true"/>
+  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_hierarchy" name="Hierarchy" primaryKey="_column_fact_key" query="_tablesource_fact" levels="_level_building _level_room"/>
+  <rolapdim:StandardDimension xmi:id="_standarddimension_dimension" name="Dimension" hierarchies="_explicithierarchy_hierarchy"/>
+  <rolapcube:PhysicalCube xmi:id="_physicalcube_notuniquelevelsmembers" name="NotUniqueLevelsMembers" query="_tablesource_fact">
+    <dimensionConnectors xmi:id="_dimensionconnector_dimension" foreignKey="_column_fact_key" dimension="_standarddimension_dimension" overrideDimensionName="Dimension"/>
+    <measureGroups xmi:id="_measuregroup">
+      <measures xsi:type="rolapmeas:SumMeasure" xmi:id="_summeasure_measure" name="Measure" column="_column_fact_value"/>
     </measureGroups>
-  </roma:PhysicalCube>
+  </rolapcube:PhysicalCube>
 </xmi:XMI>
 
 ```

@@ -15,19 +15,42 @@ The cube defined in this example is based on a single table that stores all the 
 
 
 ```xml
-<roma:DatabaseSchema   id="_databaseSchema_main">
-  <tables xsi:type="roma:PhysicalTable" id="_table_fact" name="Fact">
-    <columns xsi:type="roma:PhysicalColumn" id="_column_fact_key" name="KEY"/>
-    <columns xsi:type="roma:PhysicalColumn" id="_column_fact_value" name="VALUE" type="Integer"/>
-    <columns xsi:type="roma:PhysicalColumn" id="_column_fact_country" name="COUNTRY"/>
-    <columns xsi:type="roma:PhysicalColumn" id="_column_fact_continent" name="CONTINENT"/>
-    <columns xsi:type="roma:PhysicalColumn" id="_column_fact_year" name="YEAR" type="Integer"/>
-    <columns xsi:type="roma:PhysicalColumn" id="_column_fact_month" name="MONTH" type="Integer"/>
-    <columns xsi:type="roma:PhysicalColumn" id="_column_fact_monthName" name="MONTH_NAME"/>
-    <columns xsi:type="roma:PhysicalColumn" id="_column_fact_user" name="USER"/>
-    <columns xsi:type="roma:PhysicalColumn" id="_column_fact_comment" name="COMMENT"/>
-  </tables>
-</roma:DatabaseSchema>
+<relational:Schema xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmi:id="_schema">
+  <ownedElement xsi:type="relational:Table" xmi:id="_table_fact" name="Fact">
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_key" name="KEY"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_country" name="COUNTRY"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_continent" name="CONTINENT"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_year" name="YEAR"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_month" name="MONTH"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_month_name" name="MONTH_NAME"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_user" name="USER"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_comment" name="COMMENT"/>
+  </ownedElement>
+</relational:Schema>
+
+```
+*<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
+## Query
+
+This example uses a TableQuery, as it directly references the physical table `Fact`.
+
+
+```xml
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
+  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
+  <relational:Table xmi:id="_table_fact" name="Fact">
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_key" name="KEY"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_country" name="COUNTRY"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_continent" name="CONTINENT"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_year" name="YEAR"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_month" name="MONTH"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_month_name" name="MONTH_NAME"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_user" name="USER"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_comment" name="COMMENT"/>
+  </relational:Table>
+</xmi:XMI>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -39,36 +62,9 @@ OrderedColumn uses ascending by default.
 
 
 ```xml
-<roma:OrderedColumn  column="_column_fact_comment"/>
-
-```
-*<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
-## Query
-
-This example uses a TableQuery, as it directly references the physical table `Fact`.
-
-
-```xml
-<roma:TableQuery  id="_query_fact" table="_table_fact"/>
-
-```
-*<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
-## Cube, MeasureGroup and Measure with Text Aggregator
-
-In this example, multiple measures are defined. All measures reference the `VALUE` column and use the following aggregation functions:
-- SUM – Calculates the sum of the values.
-- TextAgg – Text aggregation
-
-
-```xml
-<roma:PhysicalCube   id="_cube_measuresTextAggregators" name="MeasuresTextAggregatorsCube" query="_query_fact">
-  <dimensionConnectors foreignKey="roma:PhysicalColumn _column_fact_country" dimension="roma:StandardDimension _dimension_town" id="_dimensionConnector_town"/>
-  <dimensionConnectors foreignKey="roma:PhysicalColumn _column_fact_year" dimension="roma:TimeDimension _dimension_time" id="_dimensionConnector_time"/>
-  <measureGroups>
-    <measures xsi:type="roma:SumMeasure" id="_measure_sumValue" name="Sum of Value" column="_column_fact_value"/>
-    <measures xsi:type="roma:TextAggMeasure" id="_measure_comment" name="Comment" column="roma:SQLExpressionColumn _sqlExpressionColumn_userComment" orderByColumns="/0" separator=", "/>
-  </measureGroups>
-</roma:PhysicalCube>
+<rolaprel:OrderedColumn xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:rolaprel="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/relational" xmi:id="_orderedcolumn_comment">
+  <column href="_column_fact_comment"/>
+</rolaprel:OrderedColumn>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -79,46 +75,48 @@ This file represents the complete definition of the catalog.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:OrderedColumn column="_column_fact_comment"/>
-  <roma:Catalog description="Text aggregation functions" name="Daanse Tutorial - Measure Aggregator Text Agg" cubes="_cube_measuresTextAggregators" dbschemas="_databaseSchema_main"/>
-  <roma:DatabaseSchema id="_databaseSchema_main">
-    <tables xsi:type="roma:PhysicalTable" id="_table_fact" name="Fact">
-      <columns xsi:type="roma:PhysicalColumn" id="_column_fact_key" name="KEY"/>
-      <columns xsi:type="roma:PhysicalColumn" id="_column_fact_value" name="VALUE" type="Integer"/>
-      <columns xsi:type="roma:PhysicalColumn" id="_column_fact_country" name="COUNTRY"/>
-      <columns xsi:type="roma:PhysicalColumn" id="_column_fact_continent" name="CONTINENT"/>
-      <columns xsi:type="roma:PhysicalColumn" id="_column_fact_year" name="YEAR" type="Integer"/>
-      <columns xsi:type="roma:PhysicalColumn" id="_column_fact_month" name="MONTH" type="Integer"/>
-      <columns xsi:type="roma:PhysicalColumn" id="_column_fact_monthName" name="MONTH_NAME"/>
-      <columns xsi:type="roma:PhysicalColumn" id="_column_fact_user" name="USER"/>
-      <columns xsi:type="roma:PhysicalColumn" id="_column_fact_comment" name="COMMENT"/>
-    </tables>
-  </roma:DatabaseSchema>
-  <roma:SQLExpressionColumn id="_sqlExpressionColumn_userComment" name="sql_expression">
-    <sqls sql="CONCAT(&quot;Fact&quot;.&quot;USER&quot;, ' : ',  &quot;Fact&quot;.&quot;COMMENT&quot;)">
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapcat="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/catalog" xmlns:rolapcube="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube" xmlns:rolapdim="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapmeas="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube/measure" xmlns:rolaprel="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/relational" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
+  <relational:SQLSimpleType xmi:id="_sqlsimpletype_character_varying" name="CHARACTER VARYING" structuralFeature="_column_fact_country _column_fact_user _column_fact_comment _column_fact_key _column_fact_continent _column_fact_month_name" typeNumber="12"/>
+  <relational:SQLSimpleType xmi:id="_sqlsimpletype_integer" name="INTEGER" structuralFeature="_column_fact_year _column_fact_value _column_fact_month" typeNumber="4"/>
+  <rolaprel:OrderedColumn xmi:id="_orderedcolumn_comment" column="_column_fact_comment"/>
+  <rolapcat:Catalog xmi:id="_catalog_measure_aggregator_text_agg" description="Text aggregation functions" name="Daanse Tutorial - Measure Aggregator Text Agg" cubes="_physicalcube_measurestextaggregatorscube" dbschemas="_schema"/>
+  <relational:Schema xmi:id="_schema">
+    <ownedElement xsi:type="relational:Table" xmi:id="_table_fact" name="Fact">
+      <feature xsi:type="relational:Column" xmi:id="_column_fact_key" name="KEY" type="_sqlsimpletype_character_varying"/>
+      <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE" type="_sqlsimpletype_integer"/>
+      <feature xsi:type="relational:Column" xmi:id="_column_fact_country" name="COUNTRY" type="_sqlsimpletype_character_varying"/>
+      <feature xsi:type="relational:Column" xmi:id="_column_fact_continent" name="CONTINENT" type="_sqlsimpletype_character_varying"/>
+      <feature xsi:type="relational:Column" xmi:id="_column_fact_year" name="YEAR" type="_sqlsimpletype_integer"/>
+      <feature xsi:type="relational:Column" xmi:id="_column_fact_month" name="MONTH" type="_sqlsimpletype_integer"/>
+      <feature xsi:type="relational:Column" xmi:id="_column_fact_month_name" name="MONTH_NAME" type="_sqlsimpletype_character_varying"/>
+      <feature xsi:type="relational:Column" xmi:id="_column_fact_user" name="USER" type="_sqlsimpletype_character_varying"/>
+      <feature xsi:type="relational:Column" xmi:id="_column_fact_comment" name="COMMENT" type="_sqlsimpletype_character_varying"/>
+    </ownedElement>
+  </relational:Schema>
+  <rolaprel:ExpressionColumn xmi:id="_expressioncolumn_sql_expression" name="sql_expression">
+    <sqls xmi:id="_sqlstatement" sql="CONCAT(&quot;Fact&quot;.&quot;USER&quot;, ' : ',  &quot;Fact&quot;.&quot;COMMENT&quot;)">
       <dialects>generic</dialects>
       <dialects>h2</dialects>
     </sqls>
-  </roma:SQLExpressionColumn>
-  <roma:TableQuery id="_query_fact" table="_table_fact"/>
-  <roma:Level id="_level_continent" name="Continent" column="_column_fact_continent"/>
-  <roma:Level id="_level_country" name="Country" column="_column_fact_country"/>
-  <roma:Level id="_level_month" name="Month" column="_column_fact_month" type="TimeMonths" nameColumn="_column_fact_monthName"/>
-  <roma:Level id="_level_town" name="Town" column="_column_fact_key"/>
-  <roma:Level id="_level_year" name="Year" column="_column_fact_year" type="TimeYears"/>
-  <roma:ExplicitHierarchy id="_hierarchy_timeHierarchy" name="TimeHierarchy" primaryKey="_column_fact_key" query="_query_fact" levels="_level_year _level_month"/>
-  <roma:ExplicitHierarchy id="_hierarchy_townHierarchy" name="TownHierarchy" primaryKey="_column_fact_key" query="_query_fact" levels="_level_continent _level_country _level_town"/>
-  <roma:StandardDimension id="_dimension_town" name="Town" hierarchies="_hierarchy_townHierarchy"/>
-  <roma:TimeDimension id="_dimension_time" name="Time" hierarchies="_hierarchy_timeHierarchy"/>
-  <roma:PhysicalCube id="_cube_measuresTextAggregators" name="MeasuresTextAggregatorsCube" query="_query_fact">
-    <dimensionConnectors foreignKey="_column_fact_country" dimension="_dimension_town" id="_dimensionConnector_town"/>
-    <dimensionConnectors foreignKey="_column_fact_year" dimension="_dimension_time" id="_dimensionConnector_time"/>
-    <measureGroups>
-      <measures xsi:type="roma:SumMeasure" id="_measure_sumValue" name="Sum of Value" column="_column_fact_value"/>
-      <measures xsi:type="roma:TextAggMeasure" id="_measure_comment" name="Comment" column="_sqlExpressionColumn_userComment" orderByColumns="/0" separator=", "/>
+  </rolaprel:ExpressionColumn>
+  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
+  <rolaplev:Level xmi:id="_level_continent" name="Continent" column="_column_fact_continent"/>
+  <rolaplev:Level xmi:id="_level_town" name="Town" column="_column_fact_key"/>
+  <rolaplev:Level xmi:id="_level_country" name="Country" column="_column_fact_country"/>
+  <rolaplev:Level xmi:id="_level_month" name="Month" column="_column_fact_month" type="TimeMonths" nameColumn="_column_fact_month_name"/>
+  <rolaplev:Level xmi:id="_level_year" name="Year" column="_column_fact_year" type="TimeYears"/>
+  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_timehierarchy" name="TimeHierarchy" primaryKey="_column_fact_key" query="_tablesource_fact" levels="_level_year _level_month"/>
+  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_townhierarchy" name="TownHierarchy" primaryKey="_column_fact_key" query="_tablesource_fact" levels="_level_continent _level_country _level_town"/>
+  <rolapdim:StandardDimension xmi:id="_standarddimension_town" name="Town" hierarchies="_explicithierarchy_townhierarchy"/>
+  <rolapdim:TimeDimension xmi:id="_timedimension_time" name="Time" hierarchies="_explicithierarchy_timehierarchy"/>
+  <rolapcube:PhysicalCube xmi:id="_physicalcube_measurestextaggregatorscube" name="MeasuresTextAggregatorsCube" query="_tablesource_fact">
+    <dimensionConnectors xmi:id="_dimensionconnector_town" foreignKey="_column_fact_country" dimension="_standarddimension_town"/>
+    <dimensionConnectors xmi:id="_dimensionconnector_time" foreignKey="_column_fact_year" dimension="_timedimension_time"/>
+    <measureGroups xmi:id="_measuregroup">
+      <measures xsi:type="rolapmeas:SumMeasure" xmi:id="_summeasure_sum_of_value" name="Sum of Value" column="_column_fact_value"/>
+      <measures xsi:type="rolapmeas:TextAggMeasure" xmi:id="_textaggmeasure_comment" name="Comment" column="_expressioncolumn_sql_expression" orderByColumns="_orderedcolumn_comment" separator=", "/>
     </measureGroups>
-  </roma:PhysicalCube>
+  </rolapcube:PhysicalCube>
 </xmi:XMI>
 
 ```

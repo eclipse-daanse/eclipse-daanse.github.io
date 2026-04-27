@@ -6,7 +6,7 @@ number: 2.08.01
 ---
 # Daanse Tutorial - Aggregation Agg Exclude
 
-This tutorial discusses TableQuery with AggregationExclude.
+This tutorial discusses TableSource with AggregationExclude.
 AggregationExclude defines exclusion rules that prevent specific tables from being used as aggregation tables,
 even if they would otherwise match aggregation patterns or be considered suitable for aggregation optimization.
 AggregationExclude is essential for maintaining aggregation accuracy and system reliability by providing explicit
@@ -20,16 +20,16 @@ The `KEY` column serves as a discriminator, while the `VALUE` column contains th
 
 
 ```xml
-<roma:DatabaseSchema   id="_databaseSchema_AggExclude">
-  <tables xsi:type="roma:PhysicalTable" id="_table_fact" name="Fact">
-    <columns xsi:type="roma:PhysicalColumn" id="_column_fact_key" name="KEY"/>
-    <columns xsi:type="roma:PhysicalColumn" id="_column_fact_value" name="VALUE" type="Integer"/>
-  </tables>
-  <tables xsi:type="roma:PhysicalTable" id="_table_agg_01_Fact" name="agg_01_Fact">
-    <columns xsi:type="roma:PhysicalColumn" id="_column_agg_01_fact_key" name="KEY"/>
-    <columns xsi:type="roma:PhysicalColumn" id="_column_agg_01_Fact_VALUE_count" name="KEY"/>
-  </tables>
-</roma:DatabaseSchema>
+<relational:Schema xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmi:id="_schema">
+  <ownedElement xsi:type="relational:Table" xmi:id="_table_fact" name="Fact">
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_key" name="KEY"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE"/>
+  </ownedElement>
+  <ownedElement xsi:type="relational:Table" xmi:id="_table_agg_01_fact" name="agg_01_Fact">
+    <feature xsi:type="relational:Column" xmi:id="_column_agg_01_fact_key" name="KEY"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_agg_01_fact_key_1" name="KEY"/>
+  </ownedElement>
+</relational:Schema>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -40,26 +40,15 @@ The query element is not visible to users accessing the cube through the XMLA AP
 
 
 ```xml
-<roma:TableQuery  id="_query_factQuery" table="_table_fact">
-  <aggregationExcludes name="agg_01_Fact" id="_aggregationExclude_agg_01_Fact"/>
-</roma:TableQuery>
-
-```
-*<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
-## Cube, MeasureGroup and Measure
-
-The cube is the element visible to users in analysis tools. A cube is based on elements such as measures, dimensions, hierarchies, KPIs, and named sets.
-In this case, we only define measures, which are the minimal required elements. The other elements are optional. To link a measure to the cube, we use the `MeasureGroup` element.
-The `MeasureGroup` is useful for organizing multiple measures into logical groups. Measures are used to define the data that should be aggregated.
-In this example, the measure is named Measure-Sum and references the `VALUE` column in the Fact table. The measure is aggregated using summation.
-
-
-```xml
-<roma:PhysicalCube   id="_cube_Cube" name="Cube" query="_query_factQuery">
-  <measureGroups>
-    <measures xsi:type="roma:SumMeasure" id="_measure_Measure" name="Measure" column="_column_fact_value"/>
-  </measureGroups>
-</roma:PhysicalCube>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
+  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact">
+    <aggregationExcludes xmi:id="_aggregationexclude_agg_01_fact" name="agg_01_Fact"/>
+  </rolapsrc:TableSource>
+  <relational:Table xmi:id="_table_fact" name="Fact">
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_key" name="KEY"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE"/>
+  </relational:Table>
+</xmi:XMI>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -70,26 +59,28 @@ This file represents the complete definition of the catalog.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:Catalog description="Aggregate exclusion patterns" name="Daanse Tutorial - Aggregation Agg Exclude" cubes="_cube_Cube" dbschemas="_databaseSchema_AggExclude"/>
-  <roma:DatabaseSchema id="_databaseSchema_AggExclude">
-    <tables xsi:type="roma:PhysicalTable" id="_table_fact" name="Fact">
-      <columns xsi:type="roma:PhysicalColumn" id="_column_fact_key" name="KEY"/>
-      <columns xsi:type="roma:PhysicalColumn" id="_column_fact_value" name="VALUE" type="Integer"/>
-    </tables>
-    <tables xsi:type="roma:PhysicalTable" id="_table_agg_01_Fact" name="agg_01_Fact">
-      <columns xsi:type="roma:PhysicalColumn" id="_column_agg_01_fact_key" name="KEY"/>
-      <columns xsi:type="roma:PhysicalColumn" id="_column_agg_01_Fact_VALUE_count" name="KEY"/>
-    </tables>
-  </roma:DatabaseSchema>
-  <roma:TableQuery id="_query_factQuery" table="_table_fact">
-    <aggregationExcludes name="agg_01_Fact" id="_aggregationExclude_agg_01_Fact"/>
-  </roma:TableQuery>
-  <roma:PhysicalCube id="_cube_Cube" name="Cube" query="_query_factQuery">
-    <measureGroups>
-      <measures xsi:type="roma:SumMeasure" id="_measure_Measure" name="Measure" column="_column_fact_value"/>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapcat="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/catalog" xmlns:rolapcube="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube" xmlns:rolapmeas="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube/measure" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
+  <relational:SQLSimpleType xmi:id="_sqlsimpletype_integer" name="INTEGER" structuralFeature="_column_fact_value" typeNumber="4"/>
+  <relational:SQLSimpleType xmi:id="_sqlsimpletype_character_varying" name="CHARACTER VARYING" structuralFeature="_column_fact_key _column_agg_01_fact_key _column_agg_01_fact_key_1" typeNumber="12"/>
+  <rolapcat:Catalog xmi:id="_catalog_aggregation_agg_exclude" description="Aggregate exclusion patterns" name="Daanse Tutorial - Aggregation Agg Exclude" cubes="_physicalcube_cube" dbschemas="_schema"/>
+  <relational:Schema xmi:id="_schema">
+    <ownedElement xsi:type="relational:Table" xmi:id="_table_fact" name="Fact">
+      <feature xsi:type="relational:Column" xmi:id="_column_fact_key" name="KEY" type="_sqlsimpletype_character_varying"/>
+      <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE" type="_sqlsimpletype_integer"/>
+    </ownedElement>
+    <ownedElement xsi:type="relational:Table" xmi:id="_table_agg_01_fact" name="agg_01_Fact">
+      <feature xsi:type="relational:Column" xmi:id="_column_agg_01_fact_key_1" name="KEY" type="_sqlsimpletype_character_varying"/>
+      <feature xsi:type="relational:Column" xmi:id="_column_agg_01_fact_key" name="KEY" type="_sqlsimpletype_character_varying"/>
+    </ownedElement>
+  </relational:Schema>
+  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact">
+    <aggregationExcludes xmi:id="_aggregationexclude_agg_01_fact" name="agg_01_Fact"/>
+  </rolapsrc:TableSource>
+  <rolapcube:PhysicalCube xmi:id="_physicalcube_cube" name="Cube" query="_tablesource_fact">
+    <measureGroups xmi:id="_measuregroup">
+      <measures xsi:type="rolapmeas:SumMeasure" xmi:id="_summeasure_measure" name="Measure" column="_column_fact_value"/>
     </measureGroups>
-  </roma:PhysicalCube>
+  </rolapcube:PhysicalCube>
 </xmi:XMI>
 
 ```

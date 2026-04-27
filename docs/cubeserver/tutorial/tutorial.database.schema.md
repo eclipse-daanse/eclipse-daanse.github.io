@@ -17,7 +17,7 @@ The name of a database schema is optional and can be left empty. In such cases, 
 
 
 ```xml
-<roma:DatabaseSchema  id="_databaseSchema_default"/>
+<relational:Schema xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmi:id="_schema"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -27,14 +27,17 @@ It is more secure to explicitly define the schema using the `name` attribute. To
 
 
 ```xml
-<roma:DatabaseSchema  id="_databaseSchema_foo" description="theDescription" name="foo"/>
+<relational:Schema xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmi:id="_schema_foo" name="foo"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 Schema can be refernced in the catalog. You can see this by checking the `dbSchema attribute` in the catalog.
 
 ```xml
-<roma:Catalog  id="_catalog_databaseSchema" description="Database schema configuration and organization" name="Daanse Tutorial - Database Schema" dbschemas="_databaseSchema_default _databaseSchema_foo"/>
+<rolapcat:Catalog xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:rolapcat="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/catalog" xmi:id="_catalog_databaseschema" id="_catalog_databaseSchema" description="Database schema configuration and organization" name="Daanse Tutorial - Database Schema">
+  <dbschemas href="_schema"/>
+  <dbschemas href="_schema_foo"/>
+</rolapcat:Catalog>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -45,18 +48,19 @@ This file represents the complete definition of the catalog.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:Catalog id="_catalog_databaseSchema" description="Database schema configuration and organization" name="Daanse Tutorial - Database Schema" dbschemas="_databaseSchema_default _databaseSchema_foo"/>
-  <roma:DatabaseSchema id="_databaseSchema_default">
-    <tables xsi:type="roma:PhysicalTable" id="_table_theTableDefault" name="theTable">
-      <columns xsi:type="roma:PhysicalColumn" id="_column_theTableDefault_theColumn" name="theColumn"/>
-    </tables>
-  </roma:DatabaseSchema>
-  <roma:DatabaseSchema id="_databaseSchema_foo" description="theDescription" name="foo">
-    <tables xsi:type="roma:PhysicalTable" id="_table_theTable" name="theTable">
-      <columns xsi:type="roma:PhysicalColumn" id="_column_theTable_theColumn" name="theColumn"/>
-    </tables>
-  </roma:DatabaseSchema>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapcat="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/catalog">
+  <relational:SQLSimpleType xmi:id="_sqlsimpletype_character_varying" name="CHARACTER VARYING" structuralFeature="_column_thetable_thecolumn _column_foo_thetable_thecolumn" typeNumber="12"/>
+  <rolapcat:Catalog xmi:id="_catalog_databaseschema" id="_catalog_databaseSchema" description="Database schema configuration and organization" name="Daanse Tutorial - Database Schema" dbschemas="_schema _schema_foo"/>
+  <relational:Schema xmi:id="_schema_foo" name="foo">
+    <ownedElement xsi:type="relational:Table" xmi:id="_table_thetable_1" name="theTable">
+      <feature xsi:type="relational:Column" xmi:id="_column_foo_thetable_thecolumn" name="theColumn" type="_sqlsimpletype_character_varying"/>
+    </ownedElement>
+  </relational:Schema>
+  <relational:Schema xmi:id="_schema">
+    <ownedElement xsi:type="relational:Table" xmi:id="_table_thetable" name="theTable">
+      <feature xsi:type="relational:Column" xmi:id="_column_thetable_thecolumn" name="theColumn" type="_sqlsimpletype_character_varying"/>
+    </ownedElement>
+  </relational:Schema>
 </xmi:XMI>
 
 ```

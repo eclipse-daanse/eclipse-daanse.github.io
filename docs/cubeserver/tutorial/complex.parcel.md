@@ -18,7 +18,28 @@ Enables analysis by dimensions, addresses, parcel types, and delivery characteri
 
 
 ```xml
-<roma:PhysicalCube  id="_cube_parcels" name="Parcels" query="_query_parcels"/>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapcube="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
+  <rolapcube:PhysicalCube xmi:id="_physicalcube_parcels" name="Parcels" query="_tablesource_parcels"/>
+  <relational:Table xmi:id="_table_parcels" name="parcels">
+    <feature xsi:type="relational:Column" xmi:id="_column_parcels_parcel_id" name="parcel_id"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parcels_width" name="width"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parcels_depth" name="depth"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parcels_height" name="height"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parcels_type_id" name="type_id"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parcels_defect_id" name="defect_id"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parcels_deliverable" name="deliverable"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parcels_customs" name="customs"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parcels_return_status" name="return_status"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parcels_sender_id" name="sender_id"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parcels_receiver_id" name="receiver_id"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parcels_drop_off_id" name="drop_off_id"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parcels_delivery_id" name="delivery_id"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parcels_postage" name="postage"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parcels_insurance_value" name="insurance_value"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parcels_weight" name="weight"/>
+  </relational:Table>
+  <rolapsrc:TableSource xmi:id="_tablesource_parcels" table="_table_parcels"/>
+</xmi:XMI>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -29,7 +50,30 @@ for logistics optimization and capacity planning.
 
 
 ```xml
-<roma:StandardDimension  id="_dimension_width" name="Width" hierarchies="roma:ExplicitHierarchy _hierarchy_width"/>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapdim="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
+  <rolapdim:StandardDimension xmi:id="_standarddimension_width" name="Width" hierarchies="_explicithierarchy_width"/>
+  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_width" name="Width" allMemberName="All Widths" primaryKey="_column_parcels_width" query="_tablesource_parcels" levels="_level_width"/>
+  <relational:Table xmi:id="_table_parcels" name="parcels">
+    <feature xsi:type="relational:Column" xmi:id="_column_parcels_parcel_id" name="parcel_id"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parcels_width" name="width"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parcels_depth" name="depth"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parcels_height" name="height"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parcels_type_id" name="type_id"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parcels_defect_id" name="defect_id"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parcels_deliverable" name="deliverable"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parcels_customs" name="customs"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parcels_return_status" name="return_status"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parcels_sender_id" name="sender_id"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parcels_receiver_id" name="receiver_id"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parcels_drop_off_id" name="drop_off_id"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parcels_delivery_id" name="delivery_id"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parcels_postage" name="postage"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parcels_insurance_value" name="insurance_value"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parcels_weight" name="weight"/>
+  </relational:Table>
+  <rolapsrc:TableSource xmi:id="_tablesource_parcels" table="_table_parcels"/>
+  <rolaplev:Level xmi:id="_level_width" name="Width" column="_column_parcels_width"/>
+</xmi:XMI>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -40,7 +84,30 @@ for logistics optimization and capacity planning.
 
 
 ```xml
-<roma:StandardDimension  id="_dimension_depth" name="Depth" hierarchies="roma:ExplicitHierarchy _hierarchy_depth"/>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapdim="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
+  <rolapdim:StandardDimension xmi:id="_standarddimension_depth" name="Depth" hierarchies="_explicithierarchy_depth"/>
+  <relational:Table xmi:id="_table_parcels" name="parcels">
+    <feature xsi:type="relational:Column" xmi:id="_column_parcels_parcel_id" name="parcel_id"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parcels_width" name="width"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parcels_depth" name="depth"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parcels_height" name="height"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parcels_type_id" name="type_id"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parcels_defect_id" name="defect_id"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parcels_deliverable" name="deliverable"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parcels_customs" name="customs"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parcels_return_status" name="return_status"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parcels_sender_id" name="sender_id"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parcels_receiver_id" name="receiver_id"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parcels_drop_off_id" name="drop_off_id"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parcels_delivery_id" name="delivery_id"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parcels_postage" name="postage"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parcels_insurance_value" name="insurance_value"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parcels_weight" name="weight"/>
+  </relational:Table>
+  <rolapsrc:TableSource xmi:id="_tablesource_parcels" table="_table_parcels"/>
+  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_depth" name="Depth" allMemberName="All Depths" primaryKey="_column_parcels_depth" query="_tablesource_parcels" levels="_level_depth"/>
+  <rolaplev:Level xmi:id="_level_depth" name="Depth" column="_column_parcels_depth"/>
+</xmi:XMI>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -51,7 +118,30 @@ for logistics optimization and capacity planning.
 
 
 ```xml
-<roma:StandardDimension  id="_dimension_height" name="Height" hierarchies="roma:ExplicitHierarchy _hierarchy_height"/>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapdim="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
+  <rolapdim:StandardDimension xmi:id="_standarddimension_height" name="Height" hierarchies="_explicithierarchy_height"/>
+  <rolaplev:Level xmi:id="_level_height" name="Height" column="_column_parcels_height"/>
+  <rolapsrc:TableSource xmi:id="_tablesource_parcels" table="_table_parcels"/>
+  <relational:Table xmi:id="_table_parcels" name="parcels">
+    <feature xsi:type="relational:Column" xmi:id="_column_parcels_parcel_id" name="parcel_id"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parcels_width" name="width"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parcels_depth" name="depth"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parcels_height" name="height"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parcels_type_id" name="type_id"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parcels_defect_id" name="defect_id"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parcels_deliverable" name="deliverable"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parcels_customs" name="customs"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parcels_return_status" name="return_status"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parcels_sender_id" name="sender_id"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parcels_receiver_id" name="receiver_id"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parcels_drop_off_id" name="drop_off_id"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parcels_delivery_id" name="delivery_id"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parcels_postage" name="postage"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parcels_insurance_value" name="insurance_value"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parcels_weight" name="weight"/>
+  </relational:Table>
+  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_height" name="Height" allMemberName="All Heights" primaryKey="_column_parcels_height" query="_tablesource_parcels" levels="_level_height"/>
+</xmi:XMI>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -62,7 +152,16 @@ for service-specific performance analysis.
 
 
 ```xml
-<roma:StandardDimension  id="_dimension_parcel_type" name="Parcel Type" hierarchies="roma:ExplicitHierarchy _hierarchy_parcel_type"/>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapdim="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
+  <rolapdim:StandardDimension xmi:id="_standarddimension_parcel_type" name="Parcel Type" hierarchies="_explicithierarchy_parcel_type"/>
+  <rolapsrc:TableSource xmi:id="_tablesource_parcel_types" table="_table_parcel_types"/>
+  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_parcel_type" name="Parcel Type" allMemberName="All Types" primaryKey="_column_parcel_types_type_id" query="_tablesource_parcel_types" levels="_level_parcel_type"/>
+  <rolaplev:Level xmi:id="_level_parcel_type" name="Parcel Type" column="_column_parcel_types_type_id" nameColumn="_column_parcel_types_type_name"/>
+  <relational:Table xmi:id="_table_parcel_types" name="parcel_types">
+    <feature xsi:type="relational:Column" xmi:id="_column_parcel_types_type_id" name="type_id"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parcel_types_type_name" name="type_name"/>
+  </relational:Table>
+</xmi:XMI>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -73,7 +172,16 @@ for quality control and insurance claim analysis.
 
 
 ```xml
-<roma:StandardDimension  id="_dimension_defect" name="Defect" hierarchies="roma:ExplicitHierarchy _hierarchy_defect"/>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapdim="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
+  <rolapdim:StandardDimension xmi:id="_standarddimension_defect" name="Defect" hierarchies="_explicithierarchy_defect"/>
+  <rolapsrc:TableSource xmi:id="_tablesource_defects" table="_table_defects"/>
+  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_defect" name="Defect" allMemberName="All Defects" primaryKey="_column_defects_defect_id" query="_tablesource_defects" levels="_level_defect"/>
+  <relational:Table xmi:id="_table_defects" name="defects">
+    <feature xsi:type="relational:Column" xmi:id="_column_defects_defect_id" name="defect_id"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_defects_defect_name" name="defect_name"/>
+  </relational:Table>
+  <rolaplev:Level xmi:id="_level_defect" name="Defect" column="_column_defects_defect_id" nameColumn="_column_defects_defect_name"/>
+</xmi:XMI>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -84,7 +192,30 @@ customs requirements, and return status for operational insights.
 
 
 ```xml
-<roma:StandardDimension  id="_dimension_deliverable" name="Deliverable" hierarchies="roma:ExplicitHierarchy _hierarchy_deliverable"/>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapdim="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
+  <rolapdim:StandardDimension xmi:id="_standarddimension_deliverable" name="Deliverable" hierarchies="_explicithierarchy_deliverable"/>
+  <relational:Table xmi:id="_table_parcels" name="parcels">
+    <feature xsi:type="relational:Column" xmi:id="_column_parcels_parcel_id" name="parcel_id"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parcels_width" name="width"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parcels_depth" name="depth"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parcels_height" name="height"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parcels_type_id" name="type_id"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parcels_defect_id" name="defect_id"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parcels_deliverable" name="deliverable"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parcels_customs" name="customs"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parcels_return_status" name="return_status"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parcels_sender_id" name="sender_id"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parcels_receiver_id" name="receiver_id"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parcels_drop_off_id" name="drop_off_id"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parcels_delivery_id" name="delivery_id"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parcels_postage" name="postage"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parcels_insurance_value" name="insurance_value"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parcels_weight" name="weight"/>
+  </relational:Table>
+  <rolapsrc:TableSource xmi:id="_tablesource_parcels" table="_table_parcels"/>
+  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_deliverable" name="Deliverable" allMemberName="All Deliverable" primaryKey="_column_parcels_deliverable" query="_tablesource_parcels" levels="_level_deliverable"/>
+  <rolaplev:Level xmi:id="_level_deliverable" name="Deliverable" column="_column_parcels_deliverable"/>
+</xmi:XMI>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -95,7 +226,30 @@ customs requirements, and return status for operational insights.
 
 
 ```xml
-<roma:StandardDimension  id="_dimension_customs" name="Customs" hierarchies="roma:ExplicitHierarchy _hierarchy_customs"/>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapdim="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
+  <rolapdim:StandardDimension xmi:id="_standarddimension_customs" name="Customs" hierarchies="_explicithierarchy_customs"/>
+  <rolaplev:Level xmi:id="_level_customs" name="Customs" column="_column_parcels_customs"/>
+  <rolapsrc:TableSource xmi:id="_tablesource_parcels" table="_table_parcels"/>
+  <relational:Table xmi:id="_table_parcels" name="parcels">
+    <feature xsi:type="relational:Column" xmi:id="_column_parcels_parcel_id" name="parcel_id"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parcels_width" name="width"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parcels_depth" name="depth"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parcels_height" name="height"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parcels_type_id" name="type_id"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parcels_defect_id" name="defect_id"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parcels_deliverable" name="deliverable"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parcels_customs" name="customs"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parcels_return_status" name="return_status"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parcels_sender_id" name="sender_id"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parcels_receiver_id" name="receiver_id"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parcels_drop_off_id" name="drop_off_id"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parcels_delivery_id" name="delivery_id"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parcels_postage" name="postage"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parcels_insurance_value" name="insurance_value"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parcels_weight" name="weight"/>
+  </relational:Table>
+  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_customs" name="Customs" allMemberName="All Customs" primaryKey="_column_parcels_customs" query="_tablesource_parcels" levels="_level_customs"/>
+</xmi:XMI>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -106,7 +260,30 @@ customs requirements, and return status for operational insights.
 
 
 ```xml
-<roma:StandardDimension  id="_dimension_return" name="Return" hierarchies="roma:ExplicitHierarchy _hierarchy_return"/>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapdim="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
+  <rolapdim:StandardDimension xmi:id="_standarddimension_return" name="Return" hierarchies="_explicithierarchy_return"/>
+  <relational:Table xmi:id="_table_parcels" name="parcels">
+    <feature xsi:type="relational:Column" xmi:id="_column_parcels_parcel_id" name="parcel_id"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parcels_width" name="width"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parcels_depth" name="depth"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parcels_height" name="height"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parcels_type_id" name="type_id"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parcels_defect_id" name="defect_id"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parcels_deliverable" name="deliverable"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parcels_customs" name="customs"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parcels_return_status" name="return_status"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parcels_sender_id" name="sender_id"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parcels_receiver_id" name="receiver_id"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parcels_drop_off_id" name="drop_off_id"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parcels_delivery_id" name="delivery_id"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parcels_postage" name="postage"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parcels_insurance_value" name="insurance_value"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parcels_weight" name="weight"/>
+  </relational:Table>
+  <rolapsrc:TableSource xmi:id="_tablesource_parcels" table="_table_parcels"/>
+  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_return" name="Return" allMemberName="All Return" primaryKey="_column_parcels_return_status" query="_tablesource_parcels" levels="_level_return"/>
+  <rolaplev:Level xmi:id="_level_return" name="Return" column="_column_parcels_return_status"/>
+</xmi:XMI>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -117,7 +294,24 @@ to street level for delivery routing and regional performance tracking.
 
 
 ```xml
-<roma:StandardDimension  id="_dimension_sender_address" name="Sender Address" hierarchies="roma:ExplicitHierarchy _hierarchy_address"/>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapdim="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
+  <rolapdim:StandardDimension xmi:id="_standarddimension_sender_address" name="Sender Address" hierarchies="_explicithierarchy_geographic_address"/>
+  <rolaplev:Level xmi:id="_level_country" name="Country" column="_column_addresses_country"/>
+  <rolaplev:Level xmi:id="_level_city" name="City" column="_column_addresses_city"/>
+  <rolaplev:Level xmi:id="_level_street" name="Street" column="_column_addresses_street"/>
+  <relational:Table xmi:id="_table_addresses" name="addresses">
+    <feature xsi:type="relational:Column" xmi:id="_column_addresses_address_id" name="address_id"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_addresses_continent" name="continent"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_addresses_country" name="country"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_addresses_city" name="city"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_addresses_postal_code" name="postal_code"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_addresses_street" name="street"/>
+  </relational:Table>
+  <rolaplev:Level xmi:id="_level_postal_code" name="Postal Code" column="_column_addresses_postal_code"/>
+  <rolapsrc:TableSource xmi:id="_tablesource_addresses" table="_table_addresses"/>
+  <rolaplev:Level xmi:id="_level_continent" name="Continent" column="_column_addresses_continent"/>
+  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_geographic_address" name="Geographic Address" allMemberName="All Addresses" primaryKey="_column_addresses_address_id" query="_tablesource_addresses" levels="_level_continent _level_country _level_city _level_postal_code _level_street"/>
+</xmi:XMI>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -128,7 +322,24 @@ to street level for delivery routing and regional performance tracking.
 
 
 ```xml
-<roma:StandardDimension  id="_dimension_receiver_address" name="Receiver Address" hierarchies="roma:ExplicitHierarchy _hierarchy_address"/>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapdim="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
+  <rolapdim:StandardDimension xmi:id="_standarddimension_receiver_address" name="Receiver Address" hierarchies="_explicithierarchy_geographic_address"/>
+  <rolaplev:Level xmi:id="_level_country" name="Country" column="_column_addresses_country"/>
+  <rolaplev:Level xmi:id="_level_city" name="City" column="_column_addresses_city"/>
+  <rolaplev:Level xmi:id="_level_street" name="Street" column="_column_addresses_street"/>
+  <relational:Table xmi:id="_table_addresses" name="addresses">
+    <feature xsi:type="relational:Column" xmi:id="_column_addresses_address_id" name="address_id"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_addresses_continent" name="continent"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_addresses_country" name="country"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_addresses_city" name="city"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_addresses_postal_code" name="postal_code"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_addresses_street" name="street"/>
+  </relational:Table>
+  <rolaplev:Level xmi:id="_level_postal_code" name="Postal Code" column="_column_addresses_postal_code"/>
+  <rolapsrc:TableSource xmi:id="_tablesource_addresses" table="_table_addresses"/>
+  <rolaplev:Level xmi:id="_level_continent" name="Continent" column="_column_addresses_continent"/>
+  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_geographic_address" name="Geographic Address" allMemberName="All Addresses" primaryKey="_column_addresses_address_id" query="_tablesource_addresses" levels="_level_continent _level_country _level_city _level_postal_code _level_street"/>
+</xmi:XMI>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -139,7 +350,24 @@ to street level for delivery routing and regional performance tracking.
 
 
 ```xml
-<roma:StandardDimension  id="_dimension_drop_off_address" name="Drop Off Address" hierarchies="roma:ExplicitHierarchy _hierarchy_address"/>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapdim="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
+  <rolapdim:StandardDimension xmi:id="_standarddimension_drop_off_address" name="Drop Off Address" hierarchies="_explicithierarchy_geographic_address"/>
+  <rolaplev:Level xmi:id="_level_country" name="Country" column="_column_addresses_country"/>
+  <rolaplev:Level xmi:id="_level_city" name="City" column="_column_addresses_city"/>
+  <rolaplev:Level xmi:id="_level_street" name="Street" column="_column_addresses_street"/>
+  <relational:Table xmi:id="_table_addresses" name="addresses">
+    <feature xsi:type="relational:Column" xmi:id="_column_addresses_address_id" name="address_id"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_addresses_continent" name="continent"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_addresses_country" name="country"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_addresses_city" name="city"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_addresses_postal_code" name="postal_code"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_addresses_street" name="street"/>
+  </relational:Table>
+  <rolaplev:Level xmi:id="_level_postal_code" name="Postal Code" column="_column_addresses_postal_code"/>
+  <rolapsrc:TableSource xmi:id="_tablesource_addresses" table="_table_addresses"/>
+  <rolaplev:Level xmi:id="_level_continent" name="Continent" column="_column_addresses_continent"/>
+  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_geographic_address" name="Geographic Address" allMemberName="All Addresses" primaryKey="_column_addresses_address_id" query="_tablesource_addresses" levels="_level_continent _level_country _level_city _level_postal_code _level_street"/>
+</xmi:XMI>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -150,7 +378,24 @@ to street level for delivery routing and regional performance tracking.
 
 
 ```xml
-<roma:StandardDimension  id="_dimension_delivery_address" name="Delivery Address" hierarchies="roma:ExplicitHierarchy _hierarchy_address"/>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapdim="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
+  <rolapdim:StandardDimension xmi:id="_standarddimension_delivery_address" name="Delivery Address" hierarchies="_explicithierarchy_geographic_address"/>
+  <rolaplev:Level xmi:id="_level_country" name="Country" column="_column_addresses_country"/>
+  <rolaplev:Level xmi:id="_level_city" name="City" column="_column_addresses_city"/>
+  <rolaplev:Level xmi:id="_level_street" name="Street" column="_column_addresses_street"/>
+  <relational:Table xmi:id="_table_addresses" name="addresses">
+    <feature xsi:type="relational:Column" xmi:id="_column_addresses_address_id" name="address_id"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_addresses_continent" name="continent"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_addresses_country" name="country"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_addresses_city" name="city"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_addresses_postal_code" name="postal_code"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_addresses_street" name="street"/>
+  </relational:Table>
+  <rolaplev:Level xmi:id="_level_postal_code" name="Postal Code" column="_column_addresses_postal_code"/>
+  <rolapsrc:TableSource xmi:id="_tablesource_addresses" table="_table_addresses"/>
+  <rolaplev:Level xmi:id="_level_continent" name="Continent" column="_column_addresses_continent"/>
+  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_geographic_address" name="Geographic Address" allMemberName="All Addresses" primaryKey="_column_addresses_address_id" query="_tablesource_addresses" levels="_level_continent _level_country _level_city _level_postal_code _level_street"/>
+</xmi:XMI>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -161,104 +406,107 @@ This file represents the complete definition of the catalog.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:Catalog id="_catalog_parcel" description="Parcel delivery service logistics database - EMF Version" name="Parcel Delivery Service" cubes="_cube_parcels" dbschemas="_databaseSchema_parcel"/>
-  <roma:DatabaseSchema id="_databaseSchema_parcel">
-    <tables xsi:type="roma:PhysicalTable" id="_table_parcels" name="parcels">
-      <columns xsi:type="roma:PhysicalColumn" id="_column_parcels_parcel_id" name="parcel_id" type="Integer"/>
-      <columns xsi:type="roma:PhysicalColumn" id="_column_parcels_width" name="width" type="Decimal"/>
-      <columns xsi:type="roma:PhysicalColumn" id="_column_parcels_depth" name="depth" type="Decimal"/>
-      <columns xsi:type="roma:PhysicalColumn" id="_column_parcels_height" name="height" type="Decimal"/>
-      <columns xsi:type="roma:PhysicalColumn" id="_column_parcels_type_id" name="type_id" type="Integer"/>
-      <columns xsi:type="roma:PhysicalColumn" id="_column_parcels_defect_id" name="defect_id" type="Integer"/>
-      <columns xsi:type="roma:PhysicalColumn" id="_column_parcels_deliverable" name="deliverable"/>
-      <columns xsi:type="roma:PhysicalColumn" id="_column_parcels_customs" name="customs"/>
-      <columns xsi:type="roma:PhysicalColumn" id="_column_parcels_return" name="return_status"/>
-      <columns xsi:type="roma:PhysicalColumn" id="_column_parcels_sender_id" name="sender_id" type="Integer"/>
-      <columns xsi:type="roma:PhysicalColumn" id="_column_parcels_receiver_id" name="receiver_id" type="Integer"/>
-      <columns xsi:type="roma:PhysicalColumn" id="_column_parcels_drop_off_id" name="drop_off_id" type="Integer"/>
-      <columns xsi:type="roma:PhysicalColumn" id="_column_parcels_delivery_id" name="delivery_id" type="Integer"/>
-      <columns xsi:type="roma:PhysicalColumn" id="_column_parcels_postage" name="postage" type="Decimal"/>
-      <columns xsi:type="roma:PhysicalColumn" id="_column_parcels_insurance_value" name="insurance_value" type="Decimal"/>
-      <columns xsi:type="roma:PhysicalColumn" id="_column_parcels_weight" name="weight" type="Decimal"/>
-    </tables>
-    <tables xsi:type="roma:PhysicalTable" id="_table_parcel_types" name="parcel_types">
-      <columns xsi:type="roma:PhysicalColumn" id="_column_type_type_id" name="type_id" type="Integer"/>
-      <columns xsi:type="roma:PhysicalColumn" id="_column_type_type_name" name="type_name"/>
-    </tables>
-    <tables xsi:type="roma:PhysicalTable" id="_table_defects" name="defects">
-      <columns xsi:type="roma:PhysicalColumn" id="_column_defect_defect_id" name="defect_id" type="Integer"/>
-      <columns xsi:type="roma:PhysicalColumn" id="_column_defect_defect_name" name="defect_name"/>
-    </tables>
-    <tables xsi:type="roma:PhysicalTable" id="_table_addresses" name="addresses">
-      <columns xsi:type="roma:PhysicalColumn" id="_column_address_address_id" name="address_id" type="Integer"/>
-      <columns xsi:type="roma:PhysicalColumn" id="_column_address_continent" name="continent"/>
-      <columns xsi:type="roma:PhysicalColumn" id="_column_address_country" name="country"/>
-      <columns xsi:type="roma:PhysicalColumn" id="_column_address_city" name="city"/>
-      <columns xsi:type="roma:PhysicalColumn" id="_column_address_postal_code" name="postal_code"/>
-      <columns xsi:type="roma:PhysicalColumn" id="_column_address_street" name="street"/>
-    </tables>
-  </roma:DatabaseSchema>
-  <roma:TableQuery id="_query_addresses" table="_table_addresses"/>
-  <roma:TableQuery id="_query_defects" table="_table_defects"/>
-  <roma:TableQuery id="_query_parcel_types" table="_table_parcel_types"/>
-  <roma:TableQuery id="_query_parcels" table="_table_parcels"/>
-  <roma:Level id="_level_city" name="City" column="_column_address_city"/>
-  <roma:Level id="_level_continent" name="Continent" column="_column_address_continent"/>
-  <roma:Level id="_level_country" name="Country" column="_column_address_country"/>
-  <roma:Level id="_level_customs" name="Customs" column="_column_parcels_customs"/>
-  <roma:Level id="_level_defect" name="Defect" column="_column_defect_defect_id" nameColumn="_column_defect_defect_name"/>
-  <roma:Level id="_level_deliverable" name="Deliverable" column="_column_parcels_deliverable"/>
-  <roma:Level id="_level_depth" name="Depth" column="_column_parcels_depth"/>
-  <roma:Level id="_level_height" name="Height" column="_column_parcels_height"/>
-  <roma:Level id="_level_parcel_type" name="Parcel Type" column="_column_type_type_id" nameColumn="_column_type_type_name"/>
-  <roma:Level id="_level_postal_code" name="Postal Code" column="_column_address_postal_code"/>
-  <roma:Level id="_level_return" name="Return" column="_column_parcels_return"/>
-  <roma:Level id="_level_street" name="Street" column="_column_address_street"/>
-  <roma:Level id="_level_width" name="Width" column="_column_parcels_width"/>
-  <roma:ExplicitHierarchy id="_hierarchy_address" name="Geographic Address" allMemberName="All Addresses" primaryKey="_column_address_address_id" query="_query_addresses" levels="_level_continent _level_country _level_city _level_postal_code _level_street"/>
-  <roma:ExplicitHierarchy id="_hierarchy_customs" name="Customs" allMemberName="All Customs" primaryKey="_column_parcels_customs" query="_query_parcels" levels="_level_customs"/>
-  <roma:ExplicitHierarchy id="_hierarchy_defect" name="Defect" allMemberName="All Defects" primaryKey="_column_defect_defect_id" query="_query_defects" levels="_level_defect"/>
-  <roma:ExplicitHierarchy id="_hierarchy_deliverable" name="Deliverable" allMemberName="All Deliverable" primaryKey="_column_parcels_deliverable" query="_query_parcels" levels="_level_deliverable"/>
-  <roma:ExplicitHierarchy id="_hierarchy_depth" name="Depth" allMemberName="All Depths" primaryKey="_column_parcels_depth" query="_query_parcels" levels="_level_depth"/>
-  <roma:ExplicitHierarchy id="_hierarchy_height" name="Height" allMemberName="All Heights" primaryKey="_column_parcels_height" query="_query_parcels" levels="_level_height"/>
-  <roma:ExplicitHierarchy id="_hierarchy_parcel_type" name="Parcel Type" allMemberName="All Types" primaryKey="_column_type_type_id" query="_query_parcel_types" levels="_level_parcel_type"/>
-  <roma:ExplicitHierarchy id="_hierarchy_return" name="Return" allMemberName="All Return" primaryKey="_column_parcels_return" query="_query_parcels" levels="_level_return"/>
-  <roma:ExplicitHierarchy id="_hierarchy_width" name="Width" allMemberName="All Widths" primaryKey="_column_parcels_width" query="_query_parcels" levels="_level_width"/>
-  <roma:StandardDimension id="_dimension_customs" name="Customs" hierarchies="_hierarchy_customs"/>
-  <roma:StandardDimension id="_dimension_defect" name="Defect" hierarchies="_hierarchy_defect"/>
-  <roma:StandardDimension id="_dimension_deliverable" name="Deliverable" hierarchies="_hierarchy_deliverable"/>
-  <roma:StandardDimension id="_dimension_delivery_address" name="Delivery Address" hierarchies="_hierarchy_address"/>
-  <roma:StandardDimension id="_dimension_depth" name="Depth" hierarchies="_hierarchy_depth"/>
-  <roma:StandardDimension id="_dimension_drop_off_address" name="Drop Off Address" hierarchies="_hierarchy_address"/>
-  <roma:StandardDimension id="_dimension_height" name="Height" hierarchies="_hierarchy_height"/>
-  <roma:StandardDimension id="_dimension_parcel_type" name="Parcel Type" hierarchies="_hierarchy_parcel_type"/>
-  <roma:StandardDimension id="_dimension_receiver_address" name="Receiver Address" hierarchies="_hierarchy_address"/>
-  <roma:StandardDimension id="_dimension_return" name="Return" hierarchies="_hierarchy_return"/>
-  <roma:StandardDimension id="_dimension_sender_address" name="Sender Address" hierarchies="_hierarchy_address"/>
-  <roma:StandardDimension id="_dimension_width" name="Width" hierarchies="_hierarchy_width"/>
-  <roma:PhysicalCube id="_cube_parcels" name="Parcels" query="_query_parcels">
-    <dimensionConnectors foreignKey="_column_parcels_width" dimension="_dimension_width" overrideDimensionName="Width" id="_connector_width"/>
-    <dimensionConnectors foreignKey="_column_parcels_depth" dimension="_dimension_depth" overrideDimensionName="Depth" id="_connector_depth"/>
-    <dimensionConnectors foreignKey="_column_parcels_height" dimension="_dimension_height" overrideDimensionName="Height" id="_connector_height"/>
-    <dimensionConnectors foreignKey="_column_parcels_type_id" dimension="_dimension_parcel_type" overrideDimensionName="Parcel Type" id="_connector_parcel_type"/>
-    <dimensionConnectors foreignKey="_column_parcels_defect_id" dimension="_dimension_defect" overrideDimensionName="Defect" id="_connector_defect"/>
-    <dimensionConnectors foreignKey="_column_parcels_deliverable" dimension="_dimension_deliverable" overrideDimensionName="Deliverable" id="_connector_deliverable"/>
-    <dimensionConnectors foreignKey="_column_parcels_customs" dimension="_dimension_customs" overrideDimensionName="Customs" id="_connector_customs"/>
-    <dimensionConnectors foreignKey="_column_parcels_return" dimension="_dimension_return" overrideDimensionName="Return" id="_connector_return"/>
-    <dimensionConnectors foreignKey="_column_parcels_sender_id" dimension="_dimension_sender_address" overrideDimensionName="Sender Address" id="_connector_sender_address"/>
-    <dimensionConnectors foreignKey="_column_parcels_receiver_id" dimension="_dimension_receiver_address" overrideDimensionName="Receiver Address" id="_connector_receiver_address"/>
-    <dimensionConnectors foreignKey="_column_parcels_drop_off_id" dimension="_dimension_drop_off_address" overrideDimensionName="Drop Off Address" id="_connector_drop_off_address"/>
-    <dimensionConnectors foreignKey="_column_parcels_delivery_id" dimension="_dimension_delivery_address" overrideDimensionName="Delivery Address" id="_connector_delivery_address"/>
-    <measureGroups>
-      <measures xsi:type="roma:CountMeasure" id="_measure_parcel_count" name="Parcel Count" formatString="#,###" column="_column_parcels_parcel_id"/>
-      <measures xsi:type="roma:SumMeasure" id="_measure_postage_sum" name="Postage Sum" formatString="#,##0.00" column="_column_parcels_postage"/>
-      <measures xsi:type="roma:SumMeasure" id="_measure_insurance_value_sum" name="Insurance Value Sum" formatString="#,##0.00" column="_column_parcels_insurance_value"/>
-      <measures xsi:type="roma:MinMeasure" id="_measure_weight_min" name="Weight Min" formatString="#,##0.00" column="_column_parcels_weight"/>
-      <measures xsi:type="roma:MaxMeasure" id="_measure_weight_max" name="Weight Max" formatString="#,##0.00" column="_column_parcels_weight"/>
-      <measures xsi:type="roma:AvgMeasure" id="_measure_weight_avg" name="Weight Avg" formatString="#,##0.00" column="_column_parcels_weight"/>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapcat="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/catalog" xmlns:rolapcube="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube" xmlns:rolapdim="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapmeas="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube/measure" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
+  <relational:SQLSimpleType xmi:id="_sqlsimpletype_decimal" name="DECIMAL" structuralFeature="_column_parcels_weight _column_parcels_postage _column_parcels_width _column_parcels_height _column_parcels_depth _column_parcels_insurance_value" typeNumber="3" numericPrecision="18" numericPrecisionRadix="10" numericScale="4"/>
+  <relational:SQLSimpleType xmi:id="_sqlsimpletype_integer" name="INTEGER" structuralFeature="_column_parcels_type_id _column_defects_defect_id _column_parcels_parcel_id _column_parcels_receiver_id _column_parcels_defect_id _column_parcel_types_type_id _column_parcels_sender_id _column_parcels_drop_off_id _column_parcels_delivery_id _column_addresses_address_id" typeNumber="4"/>
+  <relational:SQLSimpleType xmi:id="_sqlsimpletype_character_varying" name="CHARACTER VARYING" structuralFeature="_column_addresses_city _column_parcels_customs _column_addresses_postal_code _column_parcel_types_type_name _column_parcels_return_status _column_defects_defect_name _column_addresses_street _column_addresses_continent _column_addresses_country _column_parcels_deliverable" typeNumber="12"/>
+  <rolapcat:Catalog xmi:id="_catalog_parcel_delivery_service" name="Parcel Delivery Service" cubes="_physicalcube_parcels" dbschemas="_schema"/>
+  <relational:Schema xmi:id="_schema">
+    <ownedElement xsi:type="relational:Table" xmi:id="_table_parcels" name="parcels">
+      <feature xsi:type="relational:Column" xmi:id="_column_parcels_parcel_id" name="parcel_id" type="_sqlsimpletype_integer"/>
+      <feature xsi:type="relational:Column" xmi:id="_column_parcels_width" name="width" type="_sqlsimpletype_decimal"/>
+      <feature xsi:type="relational:Column" xmi:id="_column_parcels_depth" name="depth" type="_sqlsimpletype_decimal"/>
+      <feature xsi:type="relational:Column" xmi:id="_column_parcels_height" name="height" type="_sqlsimpletype_decimal"/>
+      <feature xsi:type="relational:Column" xmi:id="_column_parcels_type_id" name="type_id" type="_sqlsimpletype_integer"/>
+      <feature xsi:type="relational:Column" xmi:id="_column_parcels_defect_id" name="defect_id" type="_sqlsimpletype_integer"/>
+      <feature xsi:type="relational:Column" xmi:id="_column_parcels_deliverable" name="deliverable" type="_sqlsimpletype_character_varying"/>
+      <feature xsi:type="relational:Column" xmi:id="_column_parcels_customs" name="customs" type="_sqlsimpletype_character_varying"/>
+      <feature xsi:type="relational:Column" xmi:id="_column_parcels_return_status" name="return_status" type="_sqlsimpletype_character_varying"/>
+      <feature xsi:type="relational:Column" xmi:id="_column_parcels_sender_id" name="sender_id" type="_sqlsimpletype_integer"/>
+      <feature xsi:type="relational:Column" xmi:id="_column_parcels_receiver_id" name="receiver_id" type="_sqlsimpletype_integer"/>
+      <feature xsi:type="relational:Column" xmi:id="_column_parcels_drop_off_id" name="drop_off_id" type="_sqlsimpletype_integer"/>
+      <feature xsi:type="relational:Column" xmi:id="_column_parcels_delivery_id" name="delivery_id" type="_sqlsimpletype_integer"/>
+      <feature xsi:type="relational:Column" xmi:id="_column_parcels_postage" name="postage" type="_sqlsimpletype_decimal"/>
+      <feature xsi:type="relational:Column" xmi:id="_column_parcels_insurance_value" name="insurance_value" type="_sqlsimpletype_decimal"/>
+      <feature xsi:type="relational:Column" xmi:id="_column_parcels_weight" name="weight" type="_sqlsimpletype_decimal"/>
+    </ownedElement>
+    <ownedElement xsi:type="relational:Table" xmi:id="_table_parcel_types" name="parcel_types">
+      <feature xsi:type="relational:Column" xmi:id="_column_parcel_types_type_id" name="type_id" type="_sqlsimpletype_integer"/>
+      <feature xsi:type="relational:Column" xmi:id="_column_parcel_types_type_name" name="type_name" type="_sqlsimpletype_character_varying"/>
+    </ownedElement>
+    <ownedElement xsi:type="relational:Table" xmi:id="_table_defects" name="defects">
+      <feature xsi:type="relational:Column" xmi:id="_column_defects_defect_id" name="defect_id" type="_sqlsimpletype_integer"/>
+      <feature xsi:type="relational:Column" xmi:id="_column_defects_defect_name" name="defect_name" type="_sqlsimpletype_character_varying"/>
+    </ownedElement>
+    <ownedElement xsi:type="relational:Table" xmi:id="_table_addresses" name="addresses">
+      <feature xsi:type="relational:Column" xmi:id="_column_addresses_address_id" name="address_id" type="_sqlsimpletype_integer"/>
+      <feature xsi:type="relational:Column" xmi:id="_column_addresses_continent" name="continent" type="_sqlsimpletype_character_varying"/>
+      <feature xsi:type="relational:Column" xmi:id="_column_addresses_country" name="country" type="_sqlsimpletype_character_varying"/>
+      <feature xsi:type="relational:Column" xmi:id="_column_addresses_city" name="city" type="_sqlsimpletype_character_varying"/>
+      <feature xsi:type="relational:Column" xmi:id="_column_addresses_postal_code" name="postal_code" type="_sqlsimpletype_character_varying"/>
+      <feature xsi:type="relational:Column" xmi:id="_column_addresses_street" name="street" type="_sqlsimpletype_character_varying"/>
+    </ownedElement>
+  </relational:Schema>
+  <rolapsrc:TableSource xmi:id="_tablesource_parcel_types" table="_table_parcel_types"/>
+  <rolapsrc:TableSource xmi:id="_tablesource_defects" table="_table_defects"/>
+  <rolapsrc:TableSource xmi:id="_tablesource_parcels" table="_table_parcels"/>
+  <rolapsrc:TableSource xmi:id="_tablesource_addresses" table="_table_addresses"/>
+  <rolaplev:Level xmi:id="_level_return" name="Return" column="_column_parcels_return_status"/>
+  <rolaplev:Level xmi:id="_level_street" name="Street" column="_column_addresses_street"/>
+  <rolaplev:Level xmi:id="_level_width" name="Width" column="_column_parcels_width"/>
+  <rolaplev:Level xmi:id="_level_country" name="Country" column="_column_addresses_country"/>
+  <rolaplev:Level xmi:id="_level_continent" name="Continent" column="_column_addresses_continent"/>
+  <rolaplev:Level xmi:id="_level_postal_code" name="Postal Code" column="_column_addresses_postal_code"/>
+  <rolaplev:Level xmi:id="_level_city" name="City" column="_column_addresses_city"/>
+  <rolaplev:Level xmi:id="_level_deliverable" name="Deliverable" column="_column_parcels_deliverable"/>
+  <rolaplev:Level xmi:id="_level_customs" name="Customs" column="_column_parcels_customs"/>
+  <rolaplev:Level xmi:id="_level_defect" name="Defect" column="_column_defects_defect_id" nameColumn="_column_defects_defect_name"/>
+  <rolaplev:Level xmi:id="_level_height" name="Height" column="_column_parcels_height"/>
+  <rolaplev:Level xmi:id="_level_parcel_type" name="Parcel Type" column="_column_parcel_types_type_id" nameColumn="_column_parcel_types_type_name"/>
+  <rolaplev:Level xmi:id="_level_depth" name="Depth" column="_column_parcels_depth"/>
+  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_defect" name="Defect" allMemberName="All Defects" primaryKey="_column_defects_defect_id" query="_tablesource_defects" levels="_level_defect"/>
+  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_height" name="Height" allMemberName="All Heights" primaryKey="_column_parcels_height" query="_tablesource_parcels" levels="_level_height"/>
+  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_customs" name="Customs" allMemberName="All Customs" primaryKey="_column_parcels_customs" query="_tablesource_parcels" levels="_level_customs"/>
+  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_geographic_address" name="Geographic Address" allMemberName="All Addresses" primaryKey="_column_addresses_address_id" query="_tablesource_addresses" levels="_level_continent _level_country _level_city _level_postal_code _level_street"/>
+  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_return" name="Return" allMemberName="All Return" primaryKey="_column_parcels_return_status" query="_tablesource_parcels" levels="_level_return"/>
+  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_deliverable" name="Deliverable" allMemberName="All Deliverable" primaryKey="_column_parcels_deliverable" query="_tablesource_parcels" levels="_level_deliverable"/>
+  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_depth" name="Depth" allMemberName="All Depths" primaryKey="_column_parcels_depth" query="_tablesource_parcels" levels="_level_depth"/>
+  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_parcel_type" name="Parcel Type" allMemberName="All Types" primaryKey="_column_parcel_types_type_id" query="_tablesource_parcel_types" levels="_level_parcel_type"/>
+  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_width" name="Width" allMemberName="All Widths" primaryKey="_column_parcels_width" query="_tablesource_parcels" levels="_level_width"/>
+  <rolapdim:StandardDimension xmi:id="_standarddimension_width" name="Width" hierarchies="_explicithierarchy_width"/>
+  <rolapdim:StandardDimension xmi:id="_standarddimension_depth" name="Depth" hierarchies="_explicithierarchy_depth"/>
+  <rolapdim:StandardDimension xmi:id="_standarddimension_delivery_address" name="Delivery Address" hierarchies="_explicithierarchy_geographic_address"/>
+  <rolapdim:StandardDimension xmi:id="_standarddimension_defect" name="Defect" hierarchies="_explicithierarchy_defect"/>
+  <rolapdim:StandardDimension xmi:id="_standarddimension_drop_off_address" name="Drop Off Address" hierarchies="_explicithierarchy_geographic_address"/>
+  <rolapdim:StandardDimension xmi:id="_standarddimension_height" name="Height" hierarchies="_explicithierarchy_height"/>
+  <rolapdim:StandardDimension xmi:id="_standarddimension_parcel_type" name="Parcel Type" hierarchies="_explicithierarchy_parcel_type"/>
+  <rolapdim:StandardDimension xmi:id="_standarddimension_customs" name="Customs" hierarchies="_explicithierarchy_customs"/>
+  <rolapdim:StandardDimension xmi:id="_standarddimension_receiver_address" name="Receiver Address" hierarchies="_explicithierarchy_geographic_address"/>
+  <rolapdim:StandardDimension xmi:id="_standarddimension_deliverable" name="Deliverable" hierarchies="_explicithierarchy_deliverable"/>
+  <rolapdim:StandardDimension xmi:id="_standarddimension_return" name="Return" hierarchies="_explicithierarchy_return"/>
+  <rolapdim:StandardDimension xmi:id="_standarddimension_sender_address" name="Sender Address" hierarchies="_explicithierarchy_geographic_address"/>
+  <rolapcube:PhysicalCube xmi:id="_physicalcube_parcels" name="Parcels" query="_tablesource_parcels">
+    <dimensionConnectors xmi:id="_dimensionconnector_width" foreignKey="_column_parcels_width" dimension="_standarddimension_width" overrideDimensionName="Width"/>
+    <dimensionConnectors xmi:id="_dimensionconnector_depth" foreignKey="_column_parcels_depth" dimension="_standarddimension_depth" overrideDimensionName="Depth"/>
+    <dimensionConnectors xmi:id="_dimensionconnector_height" foreignKey="_column_parcels_height" dimension="_standarddimension_height" overrideDimensionName="Height"/>
+    <dimensionConnectors xmi:id="_dimensionconnector_parcel_type" foreignKey="_column_parcels_type_id" dimension="_standarddimension_parcel_type" overrideDimensionName="Parcel Type"/>
+    <dimensionConnectors xmi:id="_dimensionconnector_defect" foreignKey="_column_parcels_defect_id" dimension="_standarddimension_defect" overrideDimensionName="Defect"/>
+    <dimensionConnectors xmi:id="_dimensionconnector_deliverable" foreignKey="_column_parcels_deliverable" dimension="_standarddimension_deliverable" overrideDimensionName="Deliverable"/>
+    <dimensionConnectors xmi:id="_dimensionconnector_customs" foreignKey="_column_parcels_customs" dimension="_standarddimension_customs" overrideDimensionName="Customs"/>
+    <dimensionConnectors xmi:id="_dimensionconnector_return" foreignKey="_column_parcels_return_status" dimension="_standarddimension_return" overrideDimensionName="Return"/>
+    <dimensionConnectors xmi:id="_dimensionconnector_sender_address" foreignKey="_column_parcels_sender_id" dimension="_standarddimension_sender_address" overrideDimensionName="Sender Address"/>
+    <dimensionConnectors xmi:id="_dimensionconnector_receiver_address" foreignKey="_column_parcels_receiver_id" dimension="_standarddimension_receiver_address" overrideDimensionName="Receiver Address"/>
+    <dimensionConnectors xmi:id="_dimensionconnector_drop_off_address" foreignKey="_column_parcels_drop_off_id" dimension="_standarddimension_drop_off_address" overrideDimensionName="Drop Off Address"/>
+    <dimensionConnectors xmi:id="_dimensionconnector_delivery_address" foreignKey="_column_parcels_delivery_id" dimension="_standarddimension_delivery_address" overrideDimensionName="Delivery Address"/>
+    <measureGroups xmi:id="_measuregroup">
+      <measures xsi:type="rolapmeas:CountMeasure" xmi:id="_countmeasure_parcel_count" name="Parcel Count" formatString="#,###" column="_column_parcels_parcel_id"/>
+      <measures xsi:type="rolapmeas:SumMeasure" xmi:id="_summeasure_postage_sum" name="Postage Sum" formatString="#,##0.00" column="_column_parcels_postage"/>
+      <measures xsi:type="rolapmeas:SumMeasure" xmi:id="_summeasure_insurance_value_sum" name="Insurance Value Sum" formatString="#,##0.00" column="_column_parcels_insurance_value"/>
+      <measures xsi:type="rolapmeas:MinMeasure" xmi:id="_minmeasure_weight_min" name="Weight Min" formatString="#,##0.00" column="_column_parcels_weight"/>
+      <measures xsi:type="rolapmeas:MaxMeasure" xmi:id="_maxmeasure_weight_max" name="Weight Max" formatString="#,##0.00" column="_column_parcels_weight"/>
+      <measures xsi:type="rolapmeas:AvgMeasure" xmi:id="_avgmeasure_weight_avg" name="Weight Avg" formatString="#,##0.00" column="_column_parcels_weight"/>
     </measureGroups>
-  </roma:PhysicalCube>
+  </rolapcube:PhysicalCube>
 </xmi:XMI>
 
 ```

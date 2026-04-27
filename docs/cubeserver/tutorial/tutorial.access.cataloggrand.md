@@ -20,22 +20,28 @@ The Database Schema contains the `Fact` table with two columns: `KEY` and `VALUE
 
 
 ```xml
-<roma:DatabaseSchema   id="_databaseSchema_CatalogGrand">
-  <tables xsi:type="roma:PhysicalTable" id="_table_fact" name="Fact">
-    <columns xsi:type="roma:PhysicalColumn" id="_column_fact_key" name="KEY"/>
-    <columns xsi:type="roma:PhysicalColumn" id="_column_fact_value" name="VALUE" type="Integer"/>
-  </tables>
-</roma:DatabaseSchema>
+<relational:Schema xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmi:id="_schema">
+  <ownedElement xsi:type="relational:Table" xmi:id="_table_fact" name="Fact">
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_key" name="KEY"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE"/>
+  </ownedElement>
+</relational:Schema>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Query
 
-The Query is a simple TableQuery that selects all columns from the `Fact` table to use in the hierarchy and in the cube for the measures.
+The Query is a simple TableSource that selects all columns from the `Fact` table to use in the hierarchy and in the cube for the measures.
 
 
 ```xml
-<roma:TableQuery  id="_query_fact" table="_table_fact"/>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
+  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
+  <relational:Table xmi:id="_table_fact" name="Fact">
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_key" name="KEY"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE"/>
+  </relational:Table>
+</xmi:XMI>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -45,7 +51,9 @@ This Example uses one simple Level1 based on the `KEY` column.
 
 
 ```xml
-<roma:Level  id="_level_key" name="Level1" column="_column_fact_key"/>
+<rolaplev:Level xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmi:id="_level_level1" name="Level1">
+  <column href="_column_fact_key"/>
+</rolaplev:Level>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -55,7 +63,15 @@ The Hierarchy1 is defined with the hasAll property set to false and the one leve
 
 
 ```xml
-<roma:ExplicitHierarchy  id="_hierarchy_main" name="Hierarchy1" hasAll="false" primaryKey="_column_fact_key" query="_query_fact" levels="_level_key"/>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
+  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_hierarchy1" name="Hierarchy1" hasAll="false" primaryKey="_column_fact_key" query="_tablesource_fact" levels="_level_level1"/>
+  <rolaplev:Level xmi:id="_level_level1" name="Level1" column="_column_fact_key"/>
+  <relational:Table xmi:id="_table_fact" name="Fact">
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_key" name="KEY"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE"/>
+  </relational:Table>
+  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
+</xmi:XMI>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -65,7 +81,16 @@ The dimension1 is defined with the one hierarchy1.
 
 
 ```xml
-<roma:StandardDimension  id="_dimension_main" name="Dimension1" hierarchies="roma:ExplicitHierarchy _hierarchy_main"/>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapdim="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
+  <rolapdim:StandardDimension xmi:id="_standarddimension_dimension1" name="Dimension1" hierarchies="_explicithierarchy_hierarchy1"/>
+  <rolaplev:Level xmi:id="_level_level1" name="Level1" column="_column_fact_key"/>
+  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_hierarchy1" name="Hierarchy1" hasAll="false" primaryKey="_column_fact_key" query="_tablesource_fact" levels="_level_level1"/>
+  <relational:Table xmi:id="_table_fact" name="Fact">
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_key" name="KEY"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE"/>
+  </relational:Table>
+  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
+</xmi:XMI>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -75,13 +100,23 @@ The cube1 is defined by the DimensionConnector1 and the DimensionConnector2  and
 
 
 ```xml
-<roma:PhysicalCube   id="_cube_main" name="Cube1" query="_query_fact">
-  <dimensionConnectors foreignKey="roma:PhysicalColumn _column_fact_key" dimension="roma:StandardDimension _dimension_main" overrideDimensionName="Dimension1" id="_dimensionConnector_main"/>
-  <dimensionConnectors foreignKey="roma:PhysicalColumn _column_fact_key" dimension="roma:StandardDimension _dimension_main" overrideDimensionName="Dimension2" id="_dimensionConnector_secondary"/>
-  <measureGroups>
-    <measures xsi:type="roma:SumMeasure" id="_measure_sum" name="Measure1" column="_column_fact_value"/>
-  </measureGroups>
-</roma:PhysicalCube>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapcube="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube" xmlns:rolapdim="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapmeas="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube/measure" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
+  <rolapcube:PhysicalCube xmi:id="_physicalcube_cube1" name="Cube1" query="_tablesource_fact">
+    <dimensionConnectors xmi:id="_dimensionconnector_dimension1" foreignKey="_column_fact_key" dimension="_standarddimension_dimension1" overrideDimensionName="Dimension1"/>
+    <dimensionConnectors xmi:id="_dimensionconnector_dimension2" foreignKey="_column_fact_key" dimension="_standarddimension_dimension1" overrideDimensionName="Dimension2"/>
+    <measureGroups xmi:id="_measuregroup">
+      <measures xsi:type="rolapmeas:SumMeasure" xmi:id="_summeasure_measure1" name="Measure1" column="_column_fact_value"/>
+    </measureGroups>
+  </rolapcube:PhysicalCube>
+  <rolaplev:Level xmi:id="_level_level1" name="Level1" column="_column_fact_key"/>
+  <rolapdim:StandardDimension xmi:id="_standarddimension_dimension1" name="Dimension1" hierarchies="_explicithierarchy_hierarchy1"/>
+  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_hierarchy1" name="Hierarchy1" hasAll="false" primaryKey="_column_fact_key" query="_tablesource_fact" levels="_level_level1"/>
+  <relational:Table xmi:id="_table_fact" name="Fact">
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_key" name="KEY"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE"/>
+  </relational:Table>
+  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
+</xmi:XMI>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -91,9 +126,9 @@ The roleAll use CatalogGrant access `all`; (access `cube1`)
 
 
 ```xml
-<roma:AccessRole  id="_accessRole_all" name="roleAll">
-  <accessCatalogGrants catalogAccess="all"/>
-</roma:AccessRole>
+<rolapcacc:AccessRole xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:rolapcacc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/access/common" xmi:id="_accessrole_roleall" name="roleAll">
+  <accessCatalogGrants xmi:id="_accesscataloggrant" catalogAccess="all"/>
+</rolapcacc:AccessRole>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -103,9 +138,9 @@ The `roleNone` use CatalogGrant access `none`; (no access `cube1`)
 
 
 ```xml
-<roma:AccessRole  id="_accessRole_none" name="roleNone">
-  <accessCatalogGrants/>
-</roma:AccessRole>
+<rolapcacc:AccessRole xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:rolapcacc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/access/common" xmi:id="_accessrole_rolenone" name="roleNone">
+  <accessCatalogGrants xmi:id="_accesscataloggrant"/>
+</rolapcacc:AccessRole>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -115,11 +150,13 @@ The `roleAllDimWithCubeGrand` use CatalogGrant access `all_dimensions`; CubeGran
 
 
 ```xml
-<roma:AccessRole  id="_accessRole_allDimWithCubeGrand" name="roleAllDimWithCubeGrand">
-  <accessCatalogGrants catalogAccess="all_dimensions">
-    <cubeGrants cubeAccess="all" cube="roma:PhysicalCube _cube_main"/>
+<rolapcacc:AccessRole xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:rolapcacc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/access/common" xmlns:rolapcube="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube" xmi:id="_accessrole_rolealldimwithcubegrand" name="roleAllDimWithCubeGrand">
+  <accessCatalogGrants xmi:id="_accesscataloggrant" catalogAccess="all_dimensions">
+    <cubeGrants xmi:id="_accesscubegrant_cube1" cubeAccess="all">
+      <cube xsi:type="rolapcube:PhysicalCube" href="_physicalcube_cube1"/>
+    </cubeGrants>
   </accessCatalogGrants>
-</roma:AccessRole>
+</rolapcacc:AccessRole>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -129,11 +166,13 @@ The `roleAllDimWithoutCubeGrand` use CatalogGrant access `all_dimensions` withou
 
 
 ```xml
-<roma:AccessRole  id="_accessRole_allDimWithoutCubeGrand" name="roleAllDimWithoutCubeGrand">
-  <accessCatalogGrants catalogAccess="all_dimensions">
-    <databaseSchemaGrants databaseSchemaAccess="all" databaseSchema="_databaseSchema_CatalogGrand"/>
+<rolapcacc:AccessRole xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:rolapcacc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/access/common" xmi:id="_accessrole_rolealldimwithoutcubegrand" name="roleAllDimWithoutCubeGrand">
+  <accessCatalogGrants xmi:id="_accesscataloggrant" catalogAccess="all_dimensions">
+    <databaseSchemaGrants xmi:id="_accessdatabaseschemagrant" databaseSchemaAccess="all">
+      <databaseSchema href="_schema"/>
+    </databaseSchemaGrants>
   </accessCatalogGrants>
-</roma:AccessRole>
+</rolapcacc:AccessRole>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -144,41 +183,43 @@ This file represents the complete definition of the catalog.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:Catalog description="Demonstrates access control with catalog grants and roles" name="Daanse Tutorial - Access Catalog Grant" cubes="_cube_main" accessRoles="_accessRole_all _accessRole_none _accessRole_allDimWithCubeGrand _accessRole_allDimWithoutCubeGrand" dbschemas="_databaseSchema_CatalogGrand"/>
-  <roma:DatabaseSchema id="_databaseSchema_CatalogGrand">
-    <tables xsi:type="roma:PhysicalTable" id="_table_fact" name="Fact">
-      <columns xsi:type="roma:PhysicalColumn" id="_column_fact_key" name="KEY"/>
-      <columns xsi:type="roma:PhysicalColumn" id="_column_fact_value" name="VALUE" type="Integer"/>
-    </tables>
-  </roma:DatabaseSchema>
-  <roma:TableQuery id="_query_fact" table="_table_fact"/>
-  <roma:Level id="_level_key" name="Level1" column="_column_fact_key"/>
-  <roma:ExplicitHierarchy id="_hierarchy_main" name="Hierarchy1" hasAll="false" primaryKey="_column_fact_key" query="_query_fact" levels="_level_key"/>
-  <roma:StandardDimension id="_dimension_main" name="Dimension1" hierarchies="_hierarchy_main"/>
-  <roma:PhysicalCube id="_cube_main" name="Cube1" query="_query_fact">
-    <dimensionConnectors foreignKey="_column_fact_key" dimension="_dimension_main" overrideDimensionName="Dimension1" id="_dimensionConnector_main"/>
-    <dimensionConnectors foreignKey="_column_fact_key" dimension="_dimension_main" overrideDimensionName="Dimension2" id="_dimensionConnector_secondary"/>
-    <measureGroups>
-      <measures xsi:type="roma:SumMeasure" id="_measure_sum" name="Measure1" column="_column_fact_value"/>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapcacc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/access/common" xmlns:rolapcat="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/catalog" xmlns:rolapcube="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube" xmlns:rolapdim="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapmeas="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube/measure" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
+  <relational:SQLSimpleType xmi:id="_sqlsimpletype_character_varying" name="CHARACTER VARYING" structuralFeature="_column_fact_key" typeNumber="12"/>
+  <relational:SQLSimpleType xmi:id="_sqlsimpletype_integer" name="INTEGER" structuralFeature="_column_fact_value" typeNumber="4"/>
+  <rolapcat:Catalog xmi:id="_catalog_access_catalog_grant" description="Demonstrates access control with catalog grants and roles" name="Daanse Tutorial - Access Catalog Grant" cubes="_physicalcube_cube1" accessRoles="_accessrole_roleall _accessrole_rolenone _accessrole_rolealldimwithcubegrand _accessrole_rolealldimwithoutcubegrand" dbschemas="_schema"/>
+  <relational:Schema xmi:id="_schema">
+    <ownedElement xsi:type="relational:Table" xmi:id="_table_fact" name="Fact">
+      <feature xsi:type="relational:Column" xmi:id="_column_fact_key" name="KEY" type="_sqlsimpletype_character_varying"/>
+      <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE" type="_sqlsimpletype_integer"/>
+    </ownedElement>
+  </relational:Schema>
+  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
+  <rolaplev:Level xmi:id="_level_level1" name="Level1" column="_column_fact_key"/>
+  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_hierarchy1" name="Hierarchy1" hasAll="false" primaryKey="_column_fact_key" query="_tablesource_fact" levels="_level_level1"/>
+  <rolapdim:StandardDimension xmi:id="_standarddimension_dimension1" name="Dimension1" hierarchies="_explicithierarchy_hierarchy1"/>
+  <rolapcube:PhysicalCube xmi:id="_physicalcube_cube1" name="Cube1" query="_tablesource_fact">
+    <dimensionConnectors xmi:id="_dimensionconnector_dimension1" foreignKey="_column_fact_key" dimension="_standarddimension_dimension1" overrideDimensionName="Dimension1"/>
+    <dimensionConnectors xmi:id="_dimensionconnector_dimension2" foreignKey="_column_fact_key" dimension="_standarddimension_dimension1" overrideDimensionName="Dimension2"/>
+    <measureGroups xmi:id="_measuregroup">
+      <measures xsi:type="rolapmeas:SumMeasure" xmi:id="_summeasure_measure1" name="Measure1" column="_column_fact_value"/>
     </measureGroups>
-  </roma:PhysicalCube>
-  <roma:AccessRole id="_accessRole_all" name="roleAll">
-    <accessCatalogGrants catalogAccess="all"/>
-  </roma:AccessRole>
-  <roma:AccessRole id="_accessRole_allDimWithCubeGrand" name="roleAllDimWithCubeGrand">
-    <accessCatalogGrants catalogAccess="all_dimensions">
-      <cubeGrants cubeAccess="all" cube="_cube_main"/>
+  </rolapcube:PhysicalCube>
+  <rolapcacc:AccessRole xmi:id="_accessrole_rolealldimwithcubegrand" name="roleAllDimWithCubeGrand">
+    <accessCatalogGrants xmi:id="_accesscataloggrant_3" catalogAccess="all_dimensions">
+      <cubeGrants xmi:id="_accesscubegrant_cube1" cubeAccess="all" cube="_physicalcube_cube1"/>
     </accessCatalogGrants>
-  </roma:AccessRole>
-  <roma:AccessRole id="_accessRole_allDimWithoutCubeGrand" name="roleAllDimWithoutCubeGrand">
-    <accessCatalogGrants catalogAccess="all_dimensions">
-      <databaseSchemaGrants databaseSchemaAccess="all" databaseSchema="_databaseSchema_CatalogGrand"/>
+  </rolapcacc:AccessRole>
+  <rolapcacc:AccessRole xmi:id="_accessrole_rolenone" name="roleNone">
+    <accessCatalogGrants xmi:id="_accesscataloggrant"/>
+  </rolapcacc:AccessRole>
+  <rolapcacc:AccessRole xmi:id="_accessrole_rolealldimwithoutcubegrand" name="roleAllDimWithoutCubeGrand">
+    <accessCatalogGrants xmi:id="_accesscataloggrant_1" catalogAccess="all_dimensions">
+      <databaseSchemaGrants xmi:id="_accessdatabaseschemagrant" databaseSchemaAccess="all" databaseSchema="_schema"/>
     </accessCatalogGrants>
-  </roma:AccessRole>
-  <roma:AccessRole id="_accessRole_none" name="roleNone">
-    <accessCatalogGrants/>
-  </roma:AccessRole>
+  </rolapcacc:AccessRole>
+  <rolapcacc:AccessRole xmi:id="_accessrole_roleall" name="roleAll">
+    <accessCatalogGrants xmi:id="_accesscataloggrant_2" catalogAccess="all"/>
+  </rolapcacc:AccessRole>
 </xmi:XMI>
 
 ```

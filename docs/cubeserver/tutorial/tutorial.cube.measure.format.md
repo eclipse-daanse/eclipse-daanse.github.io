@@ -15,12 +15,12 @@ The cube defined in this example is based on a single table that stores all the 
 
 
 ```xml
-<roma:DatabaseSchema   id="_databaseSchema_measureFormat">
-  <tables xsi:type="roma:PhysicalTable" id="_table_fact" name="Fact">
-    <columns xsi:type="roma:PhysicalColumn" id="_column_fact_key" name="KEY"/>
-    <columns xsi:type="roma:PhysicalColumn" id="_column_fact_value" name="VALUE" type="Integer"/>
-  </tables>
-</roma:DatabaseSchema>
+<relational:Schema xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmi:id="_schema">
+  <ownedElement xsi:type="relational:Table" xmi:id="_table_fact" name="Fact">
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_key" name="KEY"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE"/>
+  </ownedElement>
+</relational:Schema>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -30,7 +30,13 @@ This example uses a TableQuery, as it directly references the physical table `Fa
 
 
 ```xml
-<roma:TableQuery  id="_query_fact" table="_table_fact"/>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
+  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
+  <relational:Table xmi:id="_table_fact" name="Fact">
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_key" name="KEY"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE"/>
+  </relational:Table>
+</xmi:XMI>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -43,13 +49,20 @@ In this example, multiple measures are defined. All measures reference the `VALU
 
 
 ```xml
-<roma:PhysicalCube   id="_cube_measuresFormatCube" name="MeasuresFormatCube" query="_query_fact">
-  <measureGroups>
-    <measures xsi:type="roma:SumMeasure" id="_measure_formatTwoDecimals" name="Format ,##0.00" formatString=",##0.00" column="_column_fact_value"/>
-    <measures xsi:type="roma:SumMeasure" id="_measure_formatNoDecimals" name="Format ,##0" formatString=",##0" column="_column_fact_value"/>
-    <measures xsi:type="roma:SumMeasure" id="_measure_formatOneDecimal" name="Format ,##0." formatString=",##0." column="_column_fact_value"/>
-  </measureGroups>
-</roma:PhysicalCube>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapcube="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube" xmlns:rolapmeas="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube/measure" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
+  <rolapcube:PhysicalCube xmi:id="_physicalcube_measuresformatcube" name="MeasuresFormatCube" query="_tablesource_fact">
+    <measureGroups xmi:id="_measuregroup">
+      <measures xsi:type="rolapmeas:SumMeasure" xmi:id="_summeasure_format_0_00" name="Format ,##0.00" formatString=",##0.00" column="_column_fact_value"/>
+      <measures xsi:type="rolapmeas:SumMeasure" xmi:id="_summeasure_format_0" name="Format ,##0" formatString=",##0" column="_column_fact_value"/>
+      <measures xsi:type="rolapmeas:SumMeasure" xmi:id="_summeasure_format_0_1" name="Format ,##0." formatString=",##0." column="_column_fact_value"/>
+    </measureGroups>
+  </rolapcube:PhysicalCube>
+  <relational:Table xmi:id="_table_fact" name="Fact">
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_key" name="KEY"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE"/>
+  </relational:Table>
+  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
+</xmi:XMI>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -95,22 +108,24 @@ This file represents the complete definition of the catalog.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:Catalog id="_catalog_measureFormats" description="Measure formatting options" name="Daanse Tutorial - Measure Format" cubes="_cube_measuresFormatCube" dbschemas="_databaseSchema_measureFormat"/>
-  <roma:DatabaseSchema id="_databaseSchema_measureFormat">
-    <tables xsi:type="roma:PhysicalTable" id="_table_fact" name="Fact">
-      <columns xsi:type="roma:PhysicalColumn" id="_column_fact_key" name="KEY"/>
-      <columns xsi:type="roma:PhysicalColumn" id="_column_fact_value" name="VALUE" type="Integer"/>
-    </tables>
-  </roma:DatabaseSchema>
-  <roma:TableQuery id="_query_fact" table="_table_fact"/>
-  <roma:PhysicalCube id="_cube_measuresFormatCube" name="MeasuresFormatCube" query="_query_fact">
-    <measureGroups>
-      <measures xsi:type="roma:SumMeasure" id="_measure_formatTwoDecimals" name="Format #,##0.00" formatString="#,##0.00" column="_column_fact_value"/>
-      <measures xsi:type="roma:SumMeasure" id="_measure_formatNoDecimals" name="Format #,##0" formatString="#,##0" column="_column_fact_value"/>
-      <measures xsi:type="roma:SumMeasure" id="_measure_formatOneDecimal" name="Format #,##0." formatString="#,##0." column="_column_fact_value"/>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapcat="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/catalog" xmlns:rolapcube="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube" xmlns:rolapmeas="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube/measure" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
+  <relational:SQLSimpleType xmi:id="_sqlsimpletype_integer" name="INTEGER" structuralFeature="_column_fact_value" typeNumber="4"/>
+  <relational:SQLSimpleType xmi:id="_sqlsimpletype_character_varying" name="CHARACTER VARYING" structuralFeature="_column_fact_key" typeNumber="12"/>
+  <rolapcat:Catalog xmi:id="_catalog_measureformats" id="_catalog_measureFormats" description="Measure formatting options" name="Daanse Tutorial - Measure Format" cubes="_physicalcube_measuresformatcube" dbschemas="_schema"/>
+  <relational:Schema xmi:id="_schema">
+    <ownedElement xsi:type="relational:Table" xmi:id="_table_fact" name="Fact">
+      <feature xsi:type="relational:Column" xmi:id="_column_fact_key" name="KEY" type="_sqlsimpletype_character_varying"/>
+      <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE" type="_sqlsimpletype_integer"/>
+    </ownedElement>
+  </relational:Schema>
+  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
+  <rolapcube:PhysicalCube xmi:id="_physicalcube_measuresformatcube" name="MeasuresFormatCube" query="_tablesource_fact">
+    <measureGroups xmi:id="_measuregroup">
+      <measures xsi:type="rolapmeas:SumMeasure" xmi:id="_summeasure_format_0_00" name="Format #,##0.00" formatString="#,##0.00" column="_column_fact_value"/>
+      <measures xsi:type="rolapmeas:SumMeasure" xmi:id="_summeasure_format_0" name="Format #,##0" formatString="#,##0" column="_column_fact_value"/>
+      <measures xsi:type="rolapmeas:SumMeasure" xmi:id="_summeasure_format_0_1" name="Format #,##0." formatString="#,##0." column="_column_fact_value"/>
     </measureGroups>
-  </roma:PhysicalCube>
+  </rolapcube:PhysicalCube>
 </xmi:XMI>
 
 ```

@@ -17,7 +17,7 @@ The dialects attribute of an SqlStatement specifies the target database system. 
 
 
 ```xml
-<roma:SQLExpressionColumn  id="_column_tableWithExpressionColumn_sqlExpressionColumn" name="SqlExpressionColumn"/>
+<rolaprel:ExpressionColumn xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:rolaprel="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/relational" xmi:id="_expressioncolumn_sqlexpressioncolumn" name="SqlExpressionColumn"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -28,25 +28,25 @@ This file represents the complete definition of the catalog.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:Catalog id="_catalog_databaseSqlExpressionColumn" description="SQL expression columns and computed fields" name="Daanse Tutorial - Database Expression Column" dbschemas="_databaseSchema_expressionColumn"/>
-  <roma:DatabaseSchema id="_databaseSchema_expressionColumn">
-    <tables xsi:type="roma:PhysicalTable" id="_table_tableWithExpressionColumn" name="TableWithExpressionColumn">
-      <columns xsi:type="roma:PhysicalColumn" id="_column_tableWithExpressionColumn_column1" name="column1"/>
-      <columns xsi:type="roma:SQLExpressionColumn" id="_column_tableWithExpressionColumn_sqlExpressionColumn" name="SqlExpressionColumn">
-        <sqls sql="SUBSTRING(column1,1,3)">
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapcat="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/catalog" xmlns:rolaprel="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/relational">
+  <rolapcat:Catalog xmi:id="_catalog_databasesqlexpressioncolumn" id="_catalog_databaseSqlExpressionColumn" description="SQL expression columns and computed fields" name="Daanse Tutorial - Database Expression Column" dbschemas="_schema"/>
+  <relational:Schema xmi:id="_schema">
+    <ownedElement xsi:type="relational:Table" xmi:id="_table_tablewithexpressioncolumn" name="TableWithExpressionColumn">
+      <feature xsi:type="relational:Column" xmi:id="_column_tablewithexpressioncolumn_column1" name="column1"/>
+      <feature xsi:type="rolaprel:ExpressionColumn" xmi:id="_expressioncolumn_sqlexpressioncolumn" name="SqlExpressionColumn">
+        <sqls xmi:id="_sqlstatement_1" sql="SUBSTRING(column1,1,3)">
           <dialects>generic</dialects>
           <dialects>mysql</dialects>
         </sqls>
-        <sqls sql="SUBSTR(column1,1,3)">
+        <sqls xmi:id="_sqlstatement_2" sql="SUBSTR(column1,1,3)">
           <dialects>oracle</dialects>
         </sqls>
-        <sqls sql="substring(column1, 1, 3)">
+        <sqls xmi:id="_sqlstatement" sql="substring(column1, 1, 3)">
           <dialects>h2</dialects>
         </sqls>
-      </columns>
-    </tables>
-  </roma:DatabaseSchema>
+      </feature>
+    </ownedElement>
+  </relational:Schema>
 </xmi:XMI>
 
 ```
