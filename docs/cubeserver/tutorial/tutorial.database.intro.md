@@ -16,7 +16,9 @@ The catalog is the primary object in a Daanse server. It serves as a logical gro
 
 
 ```xml
-<roma:Catalog  id="_catalog_databaseIntro" description="Basic introduction to database schema configuration" name="Daanse Tutorial - Database Intro" dbschemas="_databaseSchema_intro"/>
+<rolapcat:Catalog xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:rolapcat="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/catalog" xmi:id="_catalog_databaseintro" id="_catalog_databaseIntro" description="Basic introduction to database schema configuration" name="Daanse Tutorial - Database Intro">
+  <dbschemas href="_schema_intro"/>
+</rolapcat:Catalog>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -28,7 +30,7 @@ In Daanse, we represent an existing database schema, where the data is stored, a
 
 
 ```xml
-<roma:DatabaseSchema  id="_databaseSchema_intro"/>
+<relational:Schema xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmi:id="_schema_intro" name="intro"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -40,7 +42,7 @@ The most common type we use is the physical table. The tables defined in a schem
 
 
 ```xml
-<roma:PhysicalTable  id="_table_tableOne" name="TableOne"/>
+<relational:Table xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmi:id="_table_tableone" name="TableOne"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -52,7 +54,7 @@ The columns defined in a table do not have to match all columns in the actual da
 
 
 ```xml
-<roma:PhysicalColumn  id="_column_tableOne_columnOne" name="ColumnOne"/>
+<relational:Column xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmi:id="_column_columnone" name="ColumnOne"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -63,13 +65,14 @@ This file represents the complete definition of the catalog.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:Catalog id="_catalog_databaseIntro" description="Basic introduction to database schema configuration" name="Daanse Tutorial - Database Intro" dbschemas="_databaseSchema_intro"/>
-  <roma:DatabaseSchema id="_databaseSchema_intro">
-    <tables xsi:type="roma:PhysicalTable" id="_table_tableOne" name="TableOne">
-      <columns xsi:type="roma:PhysicalColumn" id="_column_tableOne_columnOne" name="ColumnOne"/>
-    </tables>
-  </roma:DatabaseSchema>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapcat="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/catalog">
+  <relational:SQLSimpleType xmi:id="_sqlsimpletype_character_varying" name="CHARACTER VARYING" structuralFeature="_column_intro_tableone_columnone" typeNumber="12" characterMaximumLength="255"/>
+  <rolapcat:Catalog xmi:id="_catalog_databaseintro" id="_catalog_databaseIntro" description="Basic introduction to database schema configuration" name="Daanse Tutorial - Database Intro" dbschemas="_schema_intro"/>
+  <relational:Schema xmi:id="_schema_intro" name="intro">
+    <ownedElement xsi:type="relational:Table" xmi:id="_table_tableone" name="TableOne">
+      <feature xsi:type="relational:Column" xmi:id="_column_intro_tableone_columnone" name="ColumnOne" type="_sqlsimpletype_character_varying"/>
+    </ownedElement>
+  </relational:Schema>
 </xmi:XMI>
 
 ```

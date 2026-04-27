@@ -15,12 +15,28 @@ The cube defined in this example is based on a single table that stores all the 
 
 
 ```xml
-<roma:DatabaseSchema   id="_databaseSchema">
-  <tables xsi:type="roma:PhysicalTable" id="_tab" name="Fact">
-    <columns xsi:type="roma:PhysicalColumn" id="_col_key" name="KEY"/>
-    <columns xsi:type="roma:PhysicalColumn" id="_col" name="VALUE" type="Integer"/>
-  </tables>
-</roma:DatabaseSchema>
+<relational:Schema xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmi:id="_schema">
+  <ownedElement xsi:type="relational:Table" xmi:id="_table_fact" name="Fact">
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_key" name="KEY"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE"/>
+  </ownedElement>
+</relational:Schema>
+
+```
+*<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
+## Query
+
+This example uses a TableQuery, as it directly references the physical table `Fact`.
+
+
+```xml
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
+  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
+  <relational:Table xmi:id="_table_fact" name="Fact">
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_key" name="KEY"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE"/>
+  </relational:Table>
+</xmi:XMI>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -32,51 +48,9 @@ OrderedColumn uses ascending by default.
 
 
 ```xml
-<roma:OrderedColumn  column="_col"/>
-
-```
-*<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
-## Query
-
-This example uses a TableQuery, as it directly references the physical table `Fact`.
-
-
-```xml
-<roma:TableQuery  id="_query" table="_tab"/>
-
-```
-*<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
-## Cube, MeasureGroup and Multiple Percentile Aggragator Measures
-
-In this example, multiple measures are defined. All measures reference the `VALUE` column and use the following aggregation functions:
-- Percentile disc 0.25 – Percentile 'disc' 0.25.
-- Percentile cont 0.25 – Percentile 'cont' 0.25.
-- Percentile disc 0.42 – Percentile 'disc' 0.42.
-- Percentile cont 0.42 – Percentile 'cont' 0.42.
-- Percentile disc 0.5 – Percentile 'disc' 0.5.
-- Percentile cont 0.5 – Percentile 'cont' 0.5.
-- Percentile disc 0.75 – Percentile 'disc' 0.75.
-- Percentile cont 0.75 – Percentile 'cont' 0.75.
-- Percentile disc 1.0 – Percentile 'disc' 1.00.
-- Percentile cont 1.0 – Percentile 'cont' 1.00.
-
-
-```xml
-<roma:PhysicalCube   id="_cube" name="MeasuresAggregatorsCube" query="_query">
-  <dimensionConnectors foreignKey="roma:PhysicalColumn _col_key" dimension="roma:StandardDimension _diml" overrideDimensionName="Dim" id="_dc_dim"/>
-  <measureGroups>
-    <measures xsi:type="roma:PercentileMeasure" id="_measure1" name="Percentile disc 0.25" column="/0" percentile="0.25"/>
-    <measures xsi:type="roma:PercentileMeasure" id="_measure2" name="Percentile cont 0.25" column="/0" percentType="cont" percentile="0.25"/>
-    <measures xsi:type="roma:PercentileMeasure" id="_measure3" name="Percentile disc 0.42" column="/0" percentile="0.42"/>
-    <measures xsi:type="roma:PercentileMeasure" id="_measure4" name="Percentile cont 0.42" column="/0" percentType="cont" percentile="0.42"/>
-    <measures xsi:type="roma:PercentileMeasure" id="_measure5" name="Percentile disc 0.5" column="/0" percentile="0.5"/>
-    <measures xsi:type="roma:PercentileMeasure" id="_measure6" name="Percentile cont 0.5" column="/0" percentType="cont" percentile="0.5"/>
-    <measures xsi:type="roma:PercentileMeasure" id="_measure7" name="Percentile disc 0.75" column="/0" percentile="0.75"/>
-    <measures xsi:type="roma:PercentileMeasure" id="_measure8" name="Percentile cont 0.75" column="/0" percentType="cont" percentile="0.75"/>
-    <measures xsi:type="roma:PercentileMeasure" id="_measure9" name="Percentile disc 1.00" column="/0"/>
-    <measures xsi:type="roma:PercentileMeasure" id="_measure10" name="Percentile cont 1.00" column="/0" percentType="cont"/>
-  </measureGroups>
-</roma:PhysicalCube>
+<rolaprel:OrderedColumn xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:rolaprel="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/relational" xmi:id="_orderedcolumn_value">
+  <column href="_column_fact_value"/>
+</rolaprel:OrderedColumn>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -87,34 +61,36 @@ This file represents the complete definition of the catalog.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:OrderedColumn column="_col"/>
-  <roma:Catalog description="Percentile aggregation functions" name="Daanse Tutorial - Measure Aggregator Percentile" cubes="_cube" dbschemas="_databaseSchema"/>
-  <roma:DatabaseSchema id="_databaseSchema">
-    <tables xsi:type="roma:PhysicalTable" id="_tab" name="Fact">
-      <columns xsi:type="roma:PhysicalColumn" id="_col_key" name="KEY"/>
-      <columns xsi:type="roma:PhysicalColumn" id="_col" name="VALUE" type="Integer"/>
-    </tables>
-  </roma:DatabaseSchema>
-  <roma:TableQuery id="_query" table="_tab"/>
-  <roma:Level id="_level" name="Level" column="_col_key"/>
-  <roma:ExplicitHierarchy id="_hierarchy_Hierarchy" name="Hierarchy" primaryKey="_col_key" query="_query" levels="_level"/>
-  <roma:StandardDimension id="_diml" name="Diml" hierarchies="_hierarchy_Hierarchy"/>
-  <roma:PhysicalCube id="_cube" name="MeasuresAggregatorsCube" query="_query">
-    <dimensionConnectors foreignKey="_col_key" dimension="_diml" overrideDimensionName="Dim" id="_dc_dim"/>
-    <measureGroups>
-      <measures xsi:type="roma:PercentileMeasure" id="_measure1" name="Percentile disc 0.25" column="/0" percentile="0.25"/>
-      <measures xsi:type="roma:PercentileMeasure" id="_measure2" name="Percentile cont 0.25" column="/0" percentType="cont" percentile="0.25"/>
-      <measures xsi:type="roma:PercentileMeasure" id="_measure3" name="Percentile disc 0.42" column="/0" percentile="0.42"/>
-      <measures xsi:type="roma:PercentileMeasure" id="_measure4" name="Percentile cont 0.42" column="/0" percentType="cont" percentile="0.42"/>
-      <measures xsi:type="roma:PercentileMeasure" id="_measure5" name="Percentile disc 0.5" column="/0" percentile="0.5"/>
-      <measures xsi:type="roma:PercentileMeasure" id="_measure6" name="Percentile cont 0.5" column="/0" percentType="cont" percentile="0.5"/>
-      <measures xsi:type="roma:PercentileMeasure" id="_measure7" name="Percentile disc 0.75" column="/0" percentile="0.75"/>
-      <measures xsi:type="roma:PercentileMeasure" id="_measure8" name="Percentile cont 0.75" column="/0" percentType="cont" percentile="0.75"/>
-      <measures xsi:type="roma:PercentileMeasure" id="_measure9" name="Percentile disc 1.00" column="/0"/>
-      <measures xsi:type="roma:PercentileMeasure" id="_measure10" name="Percentile cont 1.00" column="/0" percentType="cont"/>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapcat="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/catalog" xmlns:rolapcube="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube" xmlns:rolapdim="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapmeas="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube/measure" xmlns:rolaprel="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/relational" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
+  <relational:SQLSimpleType xmi:id="_sqlsimpletype_integer" name="INTEGER" structuralFeature="_column_fact_value" typeNumber="4"/>
+  <relational:SQLSimpleType xmi:id="_sqlsimpletype_character_varying" name="CHARACTER VARYING" structuralFeature="_column_fact_key" typeNumber="12"/>
+  <rolaprel:OrderedColumn xmi:id="_orderedcolumn_value" column="_column_fact_value"/>
+  <rolapcat:Catalog xmi:id="_catalog_measure_aggregator_percentile" description="Percentile aggregation functions" name="Daanse Tutorial - Measure Aggregator Percentile" cubes="_physicalcube_measuresaggregatorscube" dbschemas="_schema"/>
+  <relational:Schema xmi:id="_schema">
+    <ownedElement xsi:type="relational:Table" xmi:id="_table_fact" name="Fact">
+      <feature xsi:type="relational:Column" xmi:id="_column_fact_key" name="KEY" type="_sqlsimpletype_character_varying"/>
+      <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE" type="_sqlsimpletype_integer"/>
+    </ownedElement>
+  </relational:Schema>
+  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
+  <rolaplev:Level xmi:id="_level_level" name="Level" column="_column_fact_key"/>
+  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_hierarchy" name="Hierarchy" primaryKey="_column_fact_key" query="_tablesource_fact" levels="_level_level"/>
+  <rolapdim:StandardDimension xmi:id="_standarddimension_diml" name="Diml" hierarchies="_explicithierarchy_hierarchy"/>
+  <rolapcube:PhysicalCube xmi:id="_physicalcube_measuresaggregatorscube" name="MeasuresAggregatorsCube" query="_tablesource_fact">
+    <dimensionConnectors xmi:id="_dimensionconnector_dim" foreignKey="_column_fact_key" dimension="_standarddimension_diml" overrideDimensionName="Dim"/>
+    <measureGroups xmi:id="_measuregroup">
+      <measures xsi:type="rolapmeas:PercentileMeasure" xmi:id="_percentilemeasure_percentile_disc_0_25" name="Percentile disc 0.25" column="_orderedcolumn_value" percentile="0.25"/>
+      <measures xsi:type="rolapmeas:PercentileMeasure" xmi:id="_percentilemeasure_percentile_cont_0_25" name="Percentile cont 0.25" column="_orderedcolumn_value" percentType="cont" percentile="0.25"/>
+      <measures xsi:type="rolapmeas:PercentileMeasure" xmi:id="_percentilemeasure_percentile_disc_0_42" name="Percentile disc 0.42" column="_orderedcolumn_value" percentile="0.42"/>
+      <measures xsi:type="rolapmeas:PercentileMeasure" xmi:id="_percentilemeasure_percentile_cont_0_42" name="Percentile cont 0.42" column="_orderedcolumn_value" percentType="cont" percentile="0.42"/>
+      <measures xsi:type="rolapmeas:PercentileMeasure" xmi:id="_percentilemeasure_percentile_disc_0_5" name="Percentile disc 0.5" column="_orderedcolumn_value" percentile="0.5"/>
+      <measures xsi:type="rolapmeas:PercentileMeasure" xmi:id="_percentilemeasure_percentile_cont_0_5" name="Percentile cont 0.5" column="_orderedcolumn_value" percentType="cont" percentile="0.5"/>
+      <measures xsi:type="rolapmeas:PercentileMeasure" xmi:id="_percentilemeasure_percentile_disc_0_75" name="Percentile disc 0.75" column="_orderedcolumn_value" percentile="0.75"/>
+      <measures xsi:type="rolapmeas:PercentileMeasure" xmi:id="_percentilemeasure_percentile_cont_0_75" name="Percentile cont 0.75" column="_orderedcolumn_value" percentType="cont" percentile="0.75"/>
+      <measures xsi:type="rolapmeas:PercentileMeasure" xmi:id="_percentilemeasure_percentile_disc_1_00" name="Percentile disc 1.00" column="_orderedcolumn_value"/>
+      <measures xsi:type="rolapmeas:PercentileMeasure" xmi:id="_percentilemeasure_percentile_cont_1_00" name="Percentile cont 1.00" column="_orderedcolumn_value" percentType="cont"/>
     </measureGroups>
-  </roma:PhysicalCube>
+  </rolapcube:PhysicalCube>
 </xmi:XMI>
 
 ```

@@ -21,29 +21,42 @@ The `DATE_KEY` column is used as the discriminator in the Hierarchy definitions.
 
 
 ```xml
-<roma:DatabaseSchema   id="_databaseSchema_timeDimension">
-  <tables xsi:type="roma:PhysicalTable" id="_table_fact" name="Fact">
-    <columns xsi:type="roma:PhysicalColumn" id="_column_fact_dateKey" name="DATE_KEY" type="Timestamp"/>
-    <columns xsi:type="roma:PhysicalColumn" id="_column_fact_value" name="VALUE" type="Integer"/>
-    <columns xsi:type="roma:PhysicalColumn" id="_column_fact_yearId" name="YEAR_ID" type="Integer"/>
-    <columns xsi:type="roma:PhysicalColumn" id="_column_fact_qtrId" name="QTR_ID"/>
-    <columns xsi:type="roma:PhysicalColumn" id="_column_fact_qtrName" name="QTR_NAME"/>
-    <columns xsi:type="roma:PhysicalColumn" id="_column_fact_monthId" name="MONTH_ID"/>
-    <columns xsi:type="roma:PhysicalColumn" id="_column_fact_monthName" name="MONTH_NAME"/>
-    <columns xsi:type="roma:PhysicalColumn" id="_column_fact_weekInMonth" name="WEEK_IN_MONTH" type="Integer"/>
-    <columns xsi:type="roma:PhysicalColumn" id="_column_fact_dayInMonth" name="DAY_IN_MONTH" type="Integer"/>
-  </tables>
-</roma:DatabaseSchema>
+<relational:Schema xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmi:id="_schema">
+  <ownedElement xsi:type="relational:Table" xmi:id="_table_fact" name="Fact">
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_date_key" name="DATE_KEY"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_year_id" name="YEAR_ID"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_qtr_id" name="QTR_ID"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_qtr_name" name="QTR_NAME"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_month_id" name="MONTH_ID"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_month_name" name="MONTH_NAME"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_week_in_month" name="WEEK_IN_MONTH"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_day_in_month" name="DAY_IN_MONTH"/>
+  </ownedElement>
+</relational:Schema>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Query
 
-The Query is a simple TableQuery that selects all columns from the Fact table to use in the hierarchy and in the cube for the measures.
+The Query is a simple TableSource that selects all columns from the Fact table to use in the hierarchy and in the cube for the measures.
 
 
 ```xml
-<roma:TableQuery  id="_query_fact" table="_table_fact"/>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
+  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
+  <relational:Table xmi:id="_table_fact" name="Fact">
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_date_key" name="DATE_KEY"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_year_id" name="YEAR_ID"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_qtr_id" name="QTR_ID"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_qtr_name" name="QTR_NAME"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_month_id" name="MONTH_ID"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_month_name" name="MONTH_NAME"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_week_in_month" name="WEEK_IN_MONTH"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_day_in_month" name="DAY_IN_MONTH"/>
+  </relational:Table>
+</xmi:XMI>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -53,7 +66,9 @@ This Example uses Years level based on the YEAR_ID column and has TIME_YEARS typ
 
 
 ```xml
-<roma:Level  id="_level_years" name="Years" column="_column_fact_yearId" type="TimeYears" uniqueMembers="true"/>
+<rolaplev:Level xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmi:id="_level_years" name="Years" type="TimeYears" uniqueMembers="true">
+  <column href="_column_fact_year_id"/>
+</rolaplev:Level>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -63,7 +78,9 @@ This Example uses Quarters level based on the QTR_ID column and has TIME_QUARTER
 
 
 ```xml
-<roma:Level  id="_level_quarters" name="Quarters" column="_column_fact_qtrName" type="TimeQuarters"/>
+<rolaplev:Level xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmi:id="_level_quarters" name="Quarters" type="TimeQuarters">
+  <column href="_column_fact_qtr_name"/>
+</rolaplev:Level>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -73,7 +90,9 @@ This Example uses Months level based on the MONTH_ID column and has TIME_MONTHS 
 
 
 ```xml
-<roma:Level  id="_level_months" name="Months" column="_column_fact_monthName" type="TimeMonths"/>
+<rolaplev:Level xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmi:id="_level_months" name="Months" type="TimeMonths">
+  <column href="_column_fact_month_name"/>
+</rolaplev:Level>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -83,7 +102,9 @@ This Example uses Week level based on the MONTH_ID column and has TIME_WEEKS typ
 
 
 ```xml
-<roma:Level  id="_level_week" name="Week" column="_column_fact_weekInMonth" type="TimeWeeks"/>
+<rolaplev:Level xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmi:id="_level_week" name="Week" type="TimeWeeks">
+  <column href="_column_fact_week_in_month"/>
+</rolaplev:Level>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -93,7 +114,9 @@ This Example uses Week level based on the MONTH_ID column and has TIME_DAYS type
 
 
 ```xml
-<roma:Level  id="_level_day" name="Day" column="_column_fact_dayInMonth" type="TimeDays"/>
+<rolaplev:Level xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmi:id="_level_day" name="Day" type="TimeDays">
+  <column href="_column_fact_day_in_month"/>
+</rolaplev:Level>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -103,7 +126,30 @@ The Hierarchy1 is defined with the hasAll property set to false and the one leve
 
 
 ```xml
-<roma:ExplicitHierarchy  id="_hierarchy_time" allMemberName="All Years" primaryKey="_column_fact_dateKey" query="_query_fact" levels="_level_years _level_quarters _level_months _level_week _level_day"/>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
+  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_date_key" allMemberName="All Years" primaryKey="_column_fact_date_key" query="_tablesource_fact" levels="_level_years _level_quarters _level_months _level_week _level_day"/>
+  <relational:Table xmi:id="_table_fact" name="Fact">
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_date_key" name="DATE_KEY"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_year_id" name="YEAR_ID"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_qtr_id" name="QTR_ID"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_qtr_name" name="QTR_NAME"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_month_id" name="MONTH_ID"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_month_name" name="MONTH_NAME"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_week_in_month" name="WEEK_IN_MONTH"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_day_in_month" name="DAY_IN_MONTH"/>
+  </relational:Table>
+  <rolaplev:Level xmi:id="_level_day" name="Day" column="_column_fact_day_in_month" type="TimeDays"/>
+  <rolaplev:Level xmi:id="_level_months" name="Months" column="_column_fact_month_name" type="TimeMonths">
+    <ordinalColumns xmi:id="_orderedcolumn_month_id" column="_column_fact_month_id"/>
+  </rolaplev:Level>
+  <rolaplev:Level xmi:id="_level_years" name="Years" column="_column_fact_year_id" type="TimeYears" uniqueMembers="true"/>
+  <rolaplev:Level xmi:id="_level_quarters" name="Quarters" column="_column_fact_qtr_name" type="TimeQuarters">
+    <ordinalColumns xmi:id="_orderedcolumn_qtr_id" column="_column_fact_qtr_id"/>
+  </rolaplev:Level>
+  <rolaplev:Level xmi:id="_level_week" name="Week" column="_column_fact_week_in_month" type="TimeWeeks"/>
+  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
+</xmi:XMI>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -113,7 +159,31 @@ The time dimension is defined with the one hierarchy.
 
 
 ```xml
-<roma:TimeDimension  id="_dimension_time" name="Time" hierarchies="roma:ExplicitHierarchy _hierarchy_time"/>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapdim="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
+  <rolapdim:TimeDimension xmi:id="_timedimension_time" name="Time" hierarchies="_explicithierarchy_date_key"/>
+  <relational:Table xmi:id="_table_fact" name="Fact">
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_date_key" name="DATE_KEY"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_year_id" name="YEAR_ID"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_qtr_id" name="QTR_ID"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_qtr_name" name="QTR_NAME"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_month_id" name="MONTH_ID"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_month_name" name="MONTH_NAME"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_week_in_month" name="WEEK_IN_MONTH"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_day_in_month" name="DAY_IN_MONTH"/>
+  </relational:Table>
+  <rolaplev:Level xmi:id="_level_day" name="Day" column="_column_fact_day_in_month" type="TimeDays"/>
+  <rolaplev:Level xmi:id="_level_months" name="Months" column="_column_fact_month_name" type="TimeMonths">
+    <ordinalColumns xmi:id="_orderedcolumn_month_id" column="_column_fact_month_id"/>
+  </rolaplev:Level>
+  <rolaplev:Level xmi:id="_level_years" name="Years" column="_column_fact_year_id" type="TimeYears" uniqueMembers="true"/>
+  <rolaplev:Level xmi:id="_level_quarters" name="Quarters" column="_column_fact_qtr_name" type="TimeQuarters">
+    <ordinalColumns xmi:id="_orderedcolumn_qtr_id" column="_column_fact_qtr_id"/>
+  </rolaplev:Level>
+  <rolaplev:Level xmi:id="_level_week" name="Week" column="_column_fact_week_in_month" type="TimeWeeks"/>
+  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_date_key" allMemberName="All Years" primaryKey="_column_fact_date_key" query="_tablesource_fact" levels="_level_years _level_quarters _level_months _level_week _level_day"/>
+  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
+</xmi:XMI>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -130,12 +200,37 @@ Time cube have TimeDimension. The role of a level in a time dimension is indicat
 
 
 ```xml
-<roma:PhysicalCube   id="_cube_timeDimension" name="CubeTimeDimension" query="_query_fact">
-  <dimensionConnectors dimension="roma:TimeDimension _dimension_time" overrideDimensionName="Time" id="_dimensionConnector_time"/>
-  <measureGroups>
-    <measures xsi:type="roma:SumMeasure" id="_measure_sum" name="Measure-Sum" column="_column_fact_value"/>
-  </measureGroups>
-</roma:PhysicalCube>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapcube="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube" xmlns:rolapdim="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapmeas="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube/measure" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
+  <rolapcube:PhysicalCube xmi:id="_physicalcube_cubetimedimension" name="CubeTimeDimension" query="_tablesource_fact">
+    <dimensionConnectors xmi:id="_dimensionconnector_time" dimension="_timedimension_time" overrideDimensionName="Time"/>
+    <measureGroups xmi:id="_measuregroup">
+      <measures xsi:type="rolapmeas:SumMeasure" xmi:id="_summeasure_measure_sum" name="Measure-Sum" column="_column_fact_value"/>
+    </measureGroups>
+  </rolapcube:PhysicalCube>
+  <relational:Table xmi:id="_table_fact" name="Fact">
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_date_key" name="DATE_KEY"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_year_id" name="YEAR_ID"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_qtr_id" name="QTR_ID"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_qtr_name" name="QTR_NAME"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_month_id" name="MONTH_ID"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_month_name" name="MONTH_NAME"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_week_in_month" name="WEEK_IN_MONTH"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_day_in_month" name="DAY_IN_MONTH"/>
+  </relational:Table>
+  <rolapdim:TimeDimension xmi:id="_timedimension_time" name="Time" hierarchies="_explicithierarchy_date_key"/>
+  <rolaplev:Level xmi:id="_level_years" name="Years" column="_column_fact_year_id" type="TimeYears" uniqueMembers="true"/>
+  <rolaplev:Level xmi:id="_level_months" name="Months" column="_column_fact_month_name" type="TimeMonths">
+    <ordinalColumns xmi:id="_orderedcolumn_month_id" column="_column_fact_month_id"/>
+  </rolaplev:Level>
+  <rolaplev:Level xmi:id="_level_quarters" name="Quarters" column="_column_fact_qtr_name" type="TimeQuarters">
+    <ordinalColumns xmi:id="_orderedcolumn_qtr_id" column="_column_fact_qtr_id"/>
+  </rolaplev:Level>
+  <rolaplev:Level xmi:id="_level_week" name="Week" column="_column_fact_week_in_month" type="TimeWeeks"/>
+  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_date_key" allMemberName="All Years" primaryKey="_column_fact_date_key" query="_tablesource_fact" levels="_level_years _level_quarters _level_months _level_week _level_day"/>
+  <rolaplev:Level xmi:id="_level_day" name="Day" column="_column_fact_day_in_month" type="TimeDays"/>
+  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
+</xmi:XMI>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -146,39 +241,42 @@ This file represents the complete definition of the catalog.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:Catalog description="Time dimension configuration" name="Daanse Tutorial - Dimension Time Dimension" cubes="_cube_timeDimension" dbschemas="_databaseSchema_timeDimension"/>
-  <roma:DatabaseSchema id="_databaseSchema_timeDimension">
-    <tables xsi:type="roma:PhysicalTable" id="_table_fact" name="Fact">
-      <columns xsi:type="roma:PhysicalColumn" id="_column_fact_dateKey" name="DATE_KEY" type="Timestamp"/>
-      <columns xsi:type="roma:PhysicalColumn" id="_column_fact_value" name="VALUE" type="Integer"/>
-      <columns xsi:type="roma:PhysicalColumn" id="_column_fact_yearId" name="YEAR_ID" type="Integer"/>
-      <columns xsi:type="roma:PhysicalColumn" id="_column_fact_qtrId" name="QTR_ID"/>
-      <columns xsi:type="roma:PhysicalColumn" id="_column_fact_qtrName" name="QTR_NAME"/>
-      <columns xsi:type="roma:PhysicalColumn" id="_column_fact_monthId" name="MONTH_ID"/>
-      <columns xsi:type="roma:PhysicalColumn" id="_column_fact_monthName" name="MONTH_NAME"/>
-      <columns xsi:type="roma:PhysicalColumn" id="_column_fact_weekInMonth" name="WEEK_IN_MONTH" type="Integer"/>
-      <columns xsi:type="roma:PhysicalColumn" id="_column_fact_dayInMonth" name="DAY_IN_MONTH" type="Integer"/>
-    </tables>
-  </roma:DatabaseSchema>
-  <roma:TableQuery id="_query_fact" table="_table_fact"/>
-  <roma:Level id="_level_day" name="Day" column="_column_fact_dayInMonth" type="TimeDays"/>
-  <roma:Level id="_level_months" name="Months" column="_column_fact_monthName" type="TimeMonths">
-    <ordinalColumns column="_column_fact_monthId"/>
-  </roma:Level>
-  <roma:Level id="_level_quarters" name="Quarters" column="_column_fact_qtrName" type="TimeQuarters">
-    <ordinalColumns column="_column_fact_qtrId"/>
-  </roma:Level>
-  <roma:Level id="_level_week" name="Week" column="_column_fact_weekInMonth" type="TimeWeeks"/>
-  <roma:Level id="_level_years" name="Years" column="_column_fact_yearId" type="TimeYears" uniqueMembers="true"/>
-  <roma:ExplicitHierarchy id="_hierarchy_time" allMemberName="All Years" primaryKey="_column_fact_dateKey" query="_query_fact" levels="_level_years _level_quarters _level_months _level_week _level_day"/>
-  <roma:TimeDimension id="_dimension_time" name="Time" hierarchies="_hierarchy_time"/>
-  <roma:PhysicalCube id="_cube_timeDimension" name="CubeTimeDimension" query="_query_fact">
-    <dimensionConnectors dimension="_dimension_time" overrideDimensionName="Time" id="_dimensionConnector_time"/>
-    <measureGroups>
-      <measures xsi:type="roma:SumMeasure" id="_measure_sum" name="Measure-Sum" column="_column_fact_value"/>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapcat="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/catalog" xmlns:rolapcube="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube" xmlns:rolapdim="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapmeas="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube/measure" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
+  <relational:SQLSimpleType xmi:id="_sqlsimpletype_integer" name="INTEGER" structuralFeature="_column_fact_year_id _column_fact_week_in_month _column_fact_value _column_fact_day_in_month" typeNumber="4"/>
+  <relational:SQLSimpleType xmi:id="_sqlsimpletype_character_varying" name="CHARACTER VARYING" structuralFeature="_column_fact_qtr_name _column_fact_qtr_id _column_fact_month_id _column_fact_month_name" typeNumber="12"/>
+  <relational:SQLSimpleType xmi:id="_sqlsimpletype_timestamp" name="TIMESTAMP" structuralFeature="_column_fact_date_key" typeNumber="93"/>
+  <rolapcat:Catalog xmi:id="_catalog_dimension_time_dimension" description="Time dimension configuration" name="Daanse Tutorial - Dimension Time Dimension" cubes="_physicalcube_cubetimedimension" dbschemas="_schema"/>
+  <relational:Schema xmi:id="_schema">
+    <ownedElement xsi:type="relational:Table" xmi:id="_table_fact" name="Fact">
+      <feature xsi:type="relational:Column" xmi:id="_column_fact_date_key" name="DATE_KEY" type="_sqlsimpletype_timestamp"/>
+      <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE" type="_sqlsimpletype_integer"/>
+      <feature xsi:type="relational:Column" xmi:id="_column_fact_year_id" name="YEAR_ID" type="_sqlsimpletype_integer"/>
+      <feature xsi:type="relational:Column" xmi:id="_column_fact_qtr_id" name="QTR_ID" type="_sqlsimpletype_character_varying"/>
+      <feature xsi:type="relational:Column" xmi:id="_column_fact_qtr_name" name="QTR_NAME" type="_sqlsimpletype_character_varying"/>
+      <feature xsi:type="relational:Column" xmi:id="_column_fact_month_id" name="MONTH_ID" type="_sqlsimpletype_character_varying"/>
+      <feature xsi:type="relational:Column" xmi:id="_column_fact_month_name" name="MONTH_NAME" type="_sqlsimpletype_character_varying"/>
+      <feature xsi:type="relational:Column" xmi:id="_column_fact_week_in_month" name="WEEK_IN_MONTH" type="_sqlsimpletype_integer"/>
+      <feature xsi:type="relational:Column" xmi:id="_column_fact_day_in_month" name="DAY_IN_MONTH" type="_sqlsimpletype_integer"/>
+    </ownedElement>
+  </relational:Schema>
+  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
+  <rolaplev:Level xmi:id="_level_years" name="Years" column="_column_fact_year_id" type="TimeYears" uniqueMembers="true"/>
+  <rolaplev:Level xmi:id="_level_quarters" name="Quarters" column="_column_fact_qtr_name" type="TimeQuarters">
+    <ordinalColumns xmi:id="_orderedcolumn_qtr_id" column="_column_fact_qtr_id"/>
+  </rolaplev:Level>
+  <rolaplev:Level xmi:id="_level_week" name="Week" column="_column_fact_week_in_month" type="TimeWeeks"/>
+  <rolaplev:Level xmi:id="_level_months" name="Months" column="_column_fact_month_name" type="TimeMonths">
+    <ordinalColumns xmi:id="_orderedcolumn_month_id" column="_column_fact_month_id"/>
+  </rolaplev:Level>
+  <rolaplev:Level xmi:id="_level_day" name="Day" column="_column_fact_day_in_month" type="TimeDays"/>
+  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_date_key" allMemberName="All Years" primaryKey="_column_fact_date_key" query="_tablesource_fact" levels="_level_years _level_quarters _level_months _level_week _level_day"/>
+  <rolapdim:TimeDimension xmi:id="_timedimension_time" name="Time" hierarchies="_explicithierarchy_date_key"/>
+  <rolapcube:PhysicalCube xmi:id="_physicalcube_cubetimedimension" name="CubeTimeDimension" query="_tablesource_fact">
+    <dimensionConnectors xmi:id="_dimensionconnector_time" dimension="_timedimension_time" overrideDimensionName="Time"/>
+    <measureGroups xmi:id="_measuregroup">
+      <measures xsi:type="rolapmeas:SumMeasure" xmi:id="_summeasure_measure_sum" name="Measure-Sum" column="_column_fact_value"/>
     </measureGroups>
-  </roma:PhysicalCube>
+  </rolapcube:PhysicalCube>
 </xmi:XMI>
 
 ```

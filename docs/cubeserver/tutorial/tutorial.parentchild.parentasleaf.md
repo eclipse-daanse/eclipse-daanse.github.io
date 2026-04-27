@@ -23,23 +23,30 @@ The `NAME` column is used as the discriminator in the Hierarchy definitions.
 
 
 ```xml
-<roma:DatabaseSchema   id="_databaseSchema_parentAsLeaf">
-  <tables xsi:type="roma:PhysicalTable" id="_table_parent" name="Parent">
-    <columns xsi:type="roma:PhysicalColumn" id="_column_parent_name" name="NAME"/>
-    <columns xsi:type="roma:PhysicalColumn" id="_column_parent_parent" name="PARENT"/>
-    <columns xsi:type="roma:PhysicalColumn" id="_column_parent_value" name="VALUE" type="Integer"/>
-  </tables>
-</roma:DatabaseSchema>
+<relational:Schema xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmi:id="_schema">
+  <ownedElement xsi:type="relational:Table" xmi:id="_table_parent" name="Parent">
+    <feature xsi:type="relational:Column" xmi:id="_column_parent_name" name="NAME"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parent_parent" name="PARENT"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parent_value" name="VALUE"/>
+  </ownedElement>
+</relational:Schema>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Fact Query
 
-The Query is a simple TableQuery that selects all columns from the `Parent` table to use in the measures.
+The Query is a simple TableSource that selects all columns from the `Parent` table to use in the measures.
 
 
 ```xml
-<roma:TableQuery  id="_query_parentFact" table="_table_parent"/>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
+  <rolapsrc:TableSource xmi:id="_tablesource_parent" table="_table_parent"/>
+  <relational:Table xmi:id="_table_parent" name="Parent">
+    <feature xsi:type="relational:Column" xmi:id="_column_parent_name" name="NAME"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parent_parent" name="PARENT"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parent_value" name="VALUE"/>
+  </relational:Table>
+</xmi:XMI>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -49,7 +56,10 @@ This Example uses 'Name' level based on the `NAME` column as key and name column
 
 
 ```xml
-<roma:Level  id="_level_name" name="Name" column="_column_parent_name" nameColumn="_column_parent_name" uniqueMembers="true"/>
+<rolaplev:Level xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmi:id="_level_name" name="Name" uniqueMembers="true">
+  <column href="_column_parent_name"/>
+  <nameColumn href="_column_parent_name"/>
+</rolaplev:Level>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -67,7 +77,16 @@ When true, parents can have their own measures and participate in aggregations a
 
 
 ```xml
-<roma:ParentChildHierarchy  id="_hierarchy_parentChild" name="Hierarchy" allMemberName="All" primaryKey="_column_parent_name" query="_query_parentFact" nullParentValue="all" parentColumn="roma:PhysicalColumn _column_parent_parent" parentAsLeafEnable="true" parentAsLeafNameFormat="parent %s" level="_level_name"/>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
+  <rolaphier:ParentChildHierarchy xmi:id="_parentchildhierarchy_hierarchy" name="Hierarchy" allMemberName="All" primaryKey="_column_parent_name" query="_tablesource_parent" nullParentValue="all" parentColumn="_column_parent_parent" parentAsLeafEnable="true" parentAsLeafNameFormat="parent %s" level="_level_name"/>
+  <rolaplev:Level xmi:id="_level_name" name="Name" column="_column_parent_name" nameColumn="_column_parent_name" uniqueMembers="true"/>
+  <rolapsrc:TableSource xmi:id="_tablesource_parent" table="_table_parent"/>
+  <relational:Table xmi:id="_table_parent" name="Parent">
+    <feature xsi:type="relational:Column" xmi:id="_column_parent_name" name="NAME"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parent_parent" name="PARENT"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parent_value" name="VALUE"/>
+  </relational:Table>
+</xmi:XMI>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -77,7 +96,17 @@ The time dimension is defined with the one hierarchy.
 
 
 ```xml
-<roma:StandardDimension  id="_dimension_parentChild" name="Dimension" hierarchies="roma:ParentChildHierarchy _hierarchy_parentChild"/>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapdim="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
+  <rolapdim:StandardDimension xmi:id="_standarddimension_dimension" name="Dimension" hierarchies="_parentchildhierarchy_hierarchy"/>
+  <rolaplev:Level xmi:id="_level_name" name="Name" column="_column_parent_name" nameColumn="_column_parent_name" uniqueMembers="true"/>
+  <rolapsrc:TableSource xmi:id="_tablesource_parent" table="_table_parent"/>
+  <rolaphier:ParentChildHierarchy xmi:id="_parentchildhierarchy_hierarchy" name="Hierarchy" allMemberName="All" primaryKey="_column_parent_name" query="_tablesource_parent" nullParentValue="all" parentColumn="_column_parent_parent" parentAsLeafEnable="true" parentAsLeafNameFormat="parent %s" level="_level_name"/>
+  <relational:Table xmi:id="_table_parent" name="Parent">
+    <feature xsi:type="relational:Column" xmi:id="_column_parent_name" name="NAME"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parent_parent" name="PARENT"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parent_value" name="VALUE"/>
+  </relational:Table>
+</xmi:XMI>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -87,12 +116,23 @@ The cube with Parent Child Hierarchy.
 
 
 ```xml
-<roma:PhysicalCube   id="_cube_parentAsLeaf" name="Cube" query="_query_parentFact">
-  <dimensionConnectors foreignKey="roma:PhysicalColumn _column_parent_name" dimension="roma:StandardDimension _dimension_parentChild" overrideDimensionName="Dimension" id="_dimensionConnector_parentChild"/>
-  <measureGroups>
-    <measures xsi:type="roma:SumMeasure" id="_measure_value" name="Value" column="_column_parent_value"/>
-  </measureGroups>
-</roma:PhysicalCube>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapcube="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube" xmlns:rolapdim="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapmeas="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube/measure" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
+  <rolapcube:PhysicalCube xmi:id="_physicalcube_cube" name="Cube" query="_tablesource_parent">
+    <dimensionConnectors xmi:id="_dimensionconnector_dimension" foreignKey="_column_parent_name" dimension="_standarddimension_dimension" overrideDimensionName="Dimension"/>
+    <measureGroups xmi:id="_measuregroup">
+      <measures xsi:type="rolapmeas:SumMeasure" xmi:id="_summeasure_value" name="Value" column="_column_parent_value"/>
+    </measureGroups>
+  </rolapcube:PhysicalCube>
+  <rolaplev:Level xmi:id="_level_name" name="Name" column="_column_parent_name" nameColumn="_column_parent_name" uniqueMembers="true"/>
+  <rolapdim:StandardDimension xmi:id="_standarddimension_dimension" name="Dimension" hierarchies="_parentchildhierarchy_hierarchy"/>
+  <rolapsrc:TableSource xmi:id="_tablesource_parent" table="_table_parent"/>
+  <rolaphier:ParentChildHierarchy xmi:id="_parentchildhierarchy_hierarchy" name="Hierarchy" allMemberName="All" primaryKey="_column_parent_name" query="_tablesource_parent" nullParentValue="all" parentColumn="_column_parent_parent" parentAsLeafEnable="true" parentAsLeafNameFormat="parent %s" level="_level_name"/>
+  <relational:Table xmi:id="_table_parent" name="Parent">
+    <feature xsi:type="relational:Column" xmi:id="_column_parent_name" name="NAME"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parent_parent" name="PARENT"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_parent_value" name="VALUE"/>
+  </relational:Table>
+</xmi:XMI>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -103,25 +143,27 @@ This file represents the complete definition of the catalog.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:Catalog description="Parent-child hierarchy with parent as leaf enabled" name="Daanse Tutorial - Parent Child Parent As Leaf" cubes="_cube_parentAsLeaf" dbschemas="_databaseSchema_parentAsLeaf"/>
-  <roma:DatabaseSchema id="_databaseSchema_parentAsLeaf">
-    <tables xsi:type="roma:PhysicalTable" id="_table_parent" name="Parent">
-      <columns xsi:type="roma:PhysicalColumn" id="_column_parent_name" name="NAME"/>
-      <columns xsi:type="roma:PhysicalColumn" id="_column_parent_parent" name="PARENT"/>
-      <columns xsi:type="roma:PhysicalColumn" id="_column_parent_value" name="VALUE" type="Integer"/>
-    </tables>
-  </roma:DatabaseSchema>
-  <roma:TableQuery id="_query_parentFact" table="_table_parent"/>
-  <roma:Level id="_level_name" name="Name" column="_column_parent_name" nameColumn="_column_parent_name" uniqueMembers="true"/>
-  <roma:ParentChildHierarchy id="_hierarchy_parentChild" name="Hierarchy" allMemberName="All" primaryKey="_column_parent_name" query="_query_parentFact" nullParentValue="all" parentColumn="_column_parent_parent" parentAsLeafEnable="true" parentAsLeafNameFormat="parent %s" level="_level_name"/>
-  <roma:StandardDimension id="_dimension_parentChild" name="Dimension" hierarchies="_hierarchy_parentChild"/>
-  <roma:PhysicalCube id="_cube_parentAsLeaf" name="Cube" query="_query_parentFact">
-    <dimensionConnectors foreignKey="_column_parent_name" dimension="_dimension_parentChild" overrideDimensionName="Dimension" id="_dimensionConnector_parentChild"/>
-    <measureGroups>
-      <measures xsi:type="roma:SumMeasure" id="_measure_value" name="Value" column="_column_parent_value"/>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapcat="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/catalog" xmlns:rolapcube="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube" xmlns:rolapdim="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapmeas="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube/measure" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
+  <relational:SQLSimpleType xmi:id="_sqlsimpletype_character_varying" name="CHARACTER VARYING" structuralFeature="_column_parent_name _column_parent_parent" typeNumber="12"/>
+  <relational:SQLSimpleType xmi:id="_sqlsimpletype_integer" name="INTEGER" structuralFeature="_column_parent_value" typeNumber="4"/>
+  <rolapcat:Catalog xmi:id="_catalog_parent_child_parent_as_leaf" description="Parent-child hierarchy with parent as leaf enabled" name="Daanse Tutorial - Parent Child Parent As Leaf" cubes="_physicalcube_cube" dbschemas="_schema"/>
+  <relational:Schema xmi:id="_schema">
+    <ownedElement xsi:type="relational:Table" xmi:id="_table_parent" name="Parent">
+      <feature xsi:type="relational:Column" xmi:id="_column_parent_name" name="NAME" type="_sqlsimpletype_character_varying"/>
+      <feature xsi:type="relational:Column" xmi:id="_column_parent_parent" name="PARENT" type="_sqlsimpletype_character_varying"/>
+      <feature xsi:type="relational:Column" xmi:id="_column_parent_value" name="VALUE" type="_sqlsimpletype_integer"/>
+    </ownedElement>
+  </relational:Schema>
+  <rolapsrc:TableSource xmi:id="_tablesource_parent" table="_table_parent"/>
+  <rolaplev:Level xmi:id="_level_name" name="Name" column="_column_parent_name" nameColumn="_column_parent_name" uniqueMembers="true"/>
+  <rolaphier:ParentChildHierarchy xmi:id="_parentchildhierarchy_hierarchy" name="Hierarchy" allMemberName="All" primaryKey="_column_parent_name" query="_tablesource_parent" nullParentValue="all" parentColumn="_column_parent_parent" parentAsLeafEnable="true" parentAsLeafNameFormat="parent %s" level="_level_name"/>
+  <rolapdim:StandardDimension xmi:id="_standarddimension_dimension" name="Dimension" hierarchies="_parentchildhierarchy_hierarchy"/>
+  <rolapcube:PhysicalCube xmi:id="_physicalcube_cube" name="Cube" query="_tablesource_parent">
+    <dimensionConnectors xmi:id="_dimensionconnector_dimension" foreignKey="_column_parent_name" dimension="_standarddimension_dimension" overrideDimensionName="Dimension"/>
+    <measureGroups xmi:id="_measuregroup">
+      <measures xsi:type="rolapmeas:SumMeasure" xmi:id="_summeasure_value" name="Value" column="_column_parent_value"/>
     </measureGroups>
-  </roma:PhysicalCube>
+  </rolapcube:PhysicalCube>
 </xmi:XMI>
 
 ```

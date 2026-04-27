@@ -15,7 +15,7 @@ A Column has the fields `id,` `name`, `description` and `nullable`. Id is used t
 
 
 ```xml
-<roma:PhysicalColumn  id="_column_tableWithColumnTypes_columnWithDescription" description="Non nullable Column with description" name="ColumnWithDescription" nullable="true"/>
+<relational:Column xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmi:id="_column_columnwithdescription" name="ColumnWithDescription"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -29,7 +29,7 @@ The ColumnSize field in represents the maximum width or precision of a column, d
 
 
 ```xml
-<roma:PhysicalColumn  id="_column_tableWithColumnTypes_columnVarchar" name="ColumnVarchar" columnSize="255"/>
+<relational:Column xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmi:id="_column_columnvarchar" name="ColumnVarchar"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -45,7 +45,7 @@ The NumPrecRadix field represents the numeric precision radix (or base) used for
 
 
 ```xml
-<roma:PhysicalColumn  id="_column_tableWithColumnTypes_columnDecimal" name="ColumnDecimal" type="Decimal" decimalDigits="2" numPrecRadix="3"/>
+<relational:Column xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmi:id="_column_columndecimal" name="ColumnDecimal"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -54,7 +54,7 @@ The NumPrecRadix field represents the numeric precision radix (or base) used for
 Numeric are the same as DECIMAL, but some databases treat it as stricter in enforcing precision.
 
 ```xml
-<roma:PhysicalColumn  id="_column_tableWithColumnTypes_columnNumeric" name="ColumnNumeric" type="Numeric"/>
+<relational:Column xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmi:id="_column_columnnumeric" name="ColumnNumeric"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -63,7 +63,7 @@ Numeric are the same as DECIMAL, but some databases treat it as stricter in enfo
 Float Approximate floating-point number, implementation-dependent precision, can introduce rounding errors
 
 ```xml
-<roma:PhysicalColumn  id="_column_tableWithColumnTypes_columnFloat" name="ColumnFloat" type="Float"/>
+<relational:Column xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmi:id="_column_columnfloat" name="ColumnFloat"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -72,7 +72,7 @@ Float Approximate floating-point number, implementation-dependent precision, can
 REAL are Single-precision (32-bit) floating-point number, less precise than DOUBLE.
 
 ```xml
-<roma:PhysicalColumn  id="_column_tableWithColumnTypes_columnReal" name="ColumnReal" type="Real"/>
+<relational:Column xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmi:id="_column_columnreal" name="ColumnReal"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -81,7 +81,7 @@ REAL are Single-precision (32-bit) floating-point number, less precise than DOUB
 DOUBLE (or DOUBLE PRECISION) – Double-precision (64-bit) floating-point number, more accurate than REAL.
 
 ```xml
-<roma:PhysicalColumn  id="_column_tableWithColumnTypes_columnDouble" name="ColumnDouble" type="Double"/>
+<relational:Column xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmi:id="_column_columndouble" name="ColumnDouble"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -90,7 +90,7 @@ DOUBLE (or DOUBLE PRECISION) – Double-precision (64-bit) floating-point number
 INTEGER are the whole number type, typically 32-bit, used for exact, non-decimal values.
 
 ```xml
-<roma:PhysicalColumn  id="_column_tableWithColumnTypes_columnInteger" name="ColumnInteger" type="Integer"/>
+<relational:Column xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmi:id="_column_columninteger" name="ColumnInteger"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -101,20 +101,27 @@ This file represents the complete definition of the catalog.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:Catalog id="_catalog_databaseColumnTypes" description="Database column types and configuration" name="Daanse Tutorial - Database Column" dbschemas="_databaseSchema_columnTypes"/>
-  <roma:DatabaseSchema id="_databaseSchema_columnTypes">
-    <tables xsi:type="roma:PhysicalTable" id="_table_tableWithColumnTypes" name="TableWithColumnTypes">
-      <columns xsi:type="roma:PhysicalColumn" id="_column_tableWithColumnTypes_columnWithDescription" description="Non nullable Column with description" name="ColumnWithDescription" nullable="true"/>
-      <columns xsi:type="roma:PhysicalColumn" id="_column_tableWithColumnTypes_columnVarchar" name="ColumnVarchar" columnSize="255"/>
-      <columns xsi:type="roma:PhysicalColumn" id="_column_tableWithColumnTypes_columnDecimal" name="ColumnDecimal" type="Decimal" decimalDigits="2" numPrecRadix="3"/>
-      <columns xsi:type="roma:PhysicalColumn" id="_column_tableWithColumnTypes_columnNumeric" name="ColumnNumeric" type="Numeric"/>
-      <columns xsi:type="roma:PhysicalColumn" id="_column_tableWithColumnTypes_columnFloat" name="ColumnFloat" type="Float"/>
-      <columns xsi:type="roma:PhysicalColumn" id="_column_tableWithColumnTypes_columnReal" name="ColumnReal" type="Real"/>
-      <columns xsi:type="roma:PhysicalColumn" id="_column_tableWithColumnTypes_columnDouble" name="ColumnDouble" type="Double"/>
-      <columns xsi:type="roma:PhysicalColumn" id="_column_tableWithColumnTypes_columnInteger" name="ColumnInteger" type="Integer"/>
-    </tables>
-  </roma:DatabaseSchema>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapcat="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/catalog">
+  <relational:SQLSimpleType xmi:id="_sqlsimpletype_character_varying" name="CHARACTER VARYING" structuralFeature="_column_tablewithcolumntypes_columnwithdescription _column_tablewithcolumntypes_columnvarchar" typeNumber="12"/>
+  <relational:SQLSimpleType xmi:id="_sqlsimpletype_float" name="FLOAT" structuralFeature="_column_tablewithcolumntypes_columnfloat" typeNumber="6" numericPrecisionRadix="2"/>
+  <relational:SQLSimpleType xmi:id="_sqlsimpletype_real" name="REAL" structuralFeature="_column_tablewithcolumntypes_columnreal" typeNumber="7" numericPrecisionRadix="2"/>
+  <relational:SQLSimpleType xmi:id="_sqlsimpletype_integer" name="INTEGER" structuralFeature="_column_tablewithcolumntypes_columninteger" typeNumber="4"/>
+  <relational:SQLSimpleType xmi:id="_sqlsimpletype_decimal" name="DECIMAL" structuralFeature="_column_tablewithcolumntypes_columndecimal" typeNumber="3" numericPrecision="18" numericPrecisionRadix="10" numericScale="4"/>
+  <relational:SQLSimpleType xmi:id="_sqlsimpletype_numeric" name="NUMERIC" structuralFeature="_column_tablewithcolumntypes_columnnumeric" typeNumber="2" numericPrecision="18" numericPrecisionRadix="10" numericScale="4"/>
+  <relational:SQLSimpleType xmi:id="_sqlsimpletype_double_precision" name="DOUBLE PRECISION" structuralFeature="_column_tablewithcolumntypes_columndouble" typeNumber="8" numericPrecisionRadix="2"/>
+  <rolapcat:Catalog xmi:id="_catalog_databasecolumntypes" id="_catalog_databaseColumnTypes" description="Database column types and configuration" name="Daanse Tutorial - Database Column" dbschemas="_schema"/>
+  <relational:Schema xmi:id="_schema">
+    <ownedElement xsi:type="relational:Table" xmi:id="_table_tablewithcolumntypes" name="TableWithColumnTypes">
+      <feature xsi:type="relational:Column" xmi:id="_column_tablewithcolumntypes_columnwithdescription" name="ColumnWithDescription" type="_sqlsimpletype_character_varying"/>
+      <feature xsi:type="relational:Column" xmi:id="_column_tablewithcolumntypes_columnvarchar" name="ColumnVarchar" type="_sqlsimpletype_character_varying"/>
+      <feature xsi:type="relational:Column" xmi:id="_column_tablewithcolumntypes_columndecimal" name="ColumnDecimal" type="_sqlsimpletype_decimal"/>
+      <feature xsi:type="relational:Column" xmi:id="_column_tablewithcolumntypes_columnnumeric" name="ColumnNumeric" type="_sqlsimpletype_numeric"/>
+      <feature xsi:type="relational:Column" xmi:id="_column_tablewithcolumntypes_columnfloat" name="ColumnFloat" type="_sqlsimpletype_float"/>
+      <feature xsi:type="relational:Column" xmi:id="_column_tablewithcolumntypes_columnreal" name="ColumnReal" type="_sqlsimpletype_real"/>
+      <feature xsi:type="relational:Column" xmi:id="_column_tablewithcolumntypes_columndouble" name="ColumnDouble" type="_sqlsimpletype_double_precision"/>
+      <feature xsi:type="relational:Column" xmi:id="_column_tablewithcolumntypes_columninteger" name="ColumnInteger" type="_sqlsimpletype_integer"/>
+    </ownedElement>
+  </relational:Schema>
 </xmi:XMI>
 
 ```

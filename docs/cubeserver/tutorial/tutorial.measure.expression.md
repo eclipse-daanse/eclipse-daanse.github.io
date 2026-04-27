@@ -17,30 +17,30 @@ The cube defined in this example is based on a two tables that stores all the da
 
 
 ```xml
-<roma:DatabaseSchema   id="_databaseSchema_expression">
-  <tables xsi:type="roma:PhysicalTable" id="_fact" name="FACT">
-    <columns xsi:type="roma:PhysicalColumn" id="_column_fact_key" name="KEY"/>
-    <columns xsi:type="roma:PhysicalColumn" id="_column_fact_value" name="VALUE" type="Integer"/>
-    <columns xsi:type="roma:PhysicalColumn" id="_column_fact_value_numeric" name="VALUE_NUMERIC" type="Numeric"/>
-  </tables>
-  <tables xsi:type="roma:PhysicalTable" id="_measure_table" name="MEASURE_TABLE">
-    <columns xsi:type="roma:PhysicalColumn" id="_measure_table_id" name="ID" type="Integer"/>
-    <columns xsi:type="roma:PhysicalColumn" id="_measure_table_value" name="VALUE" type="Integer"/>
-    <columns xsi:type="roma:PhysicalColumn" id="_measure_table_flag" name="FLAG" type="Integer"/>
-    <columns xsi:type="roma:SQLExpressionColumn" id="_measureExpression1" name="measureExpression1">
-      <sqls sql="(select sum(&quot;MEASURE_TABLE&quot;.&quot;VALUE&quot;) from &quot;MEASURE_TABLE&quot; where &quot;MEASURE_TABLE&quot;.&quot;FLAG&quot; = 1)">
+<relational:Schema xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolaprel="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/relational" xmi:id="_schema">
+  <ownedElement xsi:type="relational:Table" xmi:id="_table_fact" name="FACT">
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_key" name="KEY"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_value_numeric" name="VALUE_NUMERIC"/>
+  </ownedElement>
+  <ownedElement xsi:type="relational:Table" xmi:id="_table_measure_table" name="MEASURE_TABLE">
+    <feature xsi:type="relational:Column" xmi:id="_column_measure_table_id" name="ID"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_measure_table_value" name="VALUE"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_measure_table_flag" name="FLAG"/>
+    <feature xsi:type="rolaprel:ExpressionColumn" xmi:id="_expressioncolumn_measureexpression1" name="measureExpression1">
+      <sqls xmi:id="_sqlstatement" sql="(select sum(&quot;MEASURE_TABLE&quot;.&quot;VALUE&quot;) from &quot;MEASURE_TABLE&quot; where &quot;MEASURE_TABLE&quot;.&quot;FLAG&quot; = 1)">
         <dialects>generic</dialects>
         <dialects>h2</dialects>
       </sqls>
-    </columns>
-    <columns xsi:type="roma:SQLExpressionColumn" id="_measureExpression2" name="measureExpression2">
-      <sqls sql="(CASE WHEN &quot;FACT&quot;.&quot;VALUE&quot; > 21 THEN 50 ELSE &quot;FACT&quot;.&quot;VALUE&quot; END)">
+    </feature>
+    <feature xsi:type="rolaprel:ExpressionColumn" xmi:id="_expressioncolumn_measureexpression2" name="measureExpression2">
+      <sqls xmi:id="_sqlstatement_1" sql="(CASE WHEN &quot;FACT&quot;.&quot;VALUE&quot; > 21 THEN 50 ELSE &quot;FACT&quot;.&quot;VALUE&quot; END)">
         <dialects>generic</dialects>
         <dialects>h2</dialects>
       </sqls>
-    </columns>
-  </tables>
-</roma:DatabaseSchema>
+    </feature>
+  </ownedElement>
+</relational:Schema>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -50,7 +50,14 @@ This example uses a TableQuery, as it directly references the physical table `Fa
 
 
 ```xml
-<roma:TableQuery  id="_table_factQuery" table="_fact"/>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
+  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
+  <relational:Table xmi:id="_table_fact" name="FACT">
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_key" name="KEY"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_value_numeric" name="VALUE_NUMERIC"/>
+  </relational:Table>
+</xmi:XMI>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -61,12 +68,12 @@ This example uses a TableQuery, as it directly references the physical table `Fa
 
 
 ```xml
-<roma:SQLExpressionColumn  id="_measureExpression1" name="measureExpression1">
-  <sqls sql="(select sum(&quot;MEASURE_TABLE&quot;.&quot;VALUE&quot;) from &quot;MEASURE_TABLE&quot; where &quot;MEASURE_TABLE&quot;.&quot;FLAG&quot; = 1)">
+<rolaprel:ExpressionColumn xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:rolaprel="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/relational" xmi:id="_expressioncolumn_measureexpression1" name="measureExpression1">
+  <sqls xmi:id="_sqlstatement" sql="(select sum(&quot;MEASURE_TABLE&quot;.&quot;VALUE&quot;) from &quot;MEASURE_TABLE&quot; where &quot;MEASURE_TABLE&quot;.&quot;FLAG&quot; = 1)">
     <dialects>generic</dialects>
     <dialects>h2</dialects>
   </sqls>
-</roma:SQLExpressionColumn>
+</rolaprel:ExpressionColumn>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -77,32 +84,36 @@ This example uses a TableQuery, as it directly references the physical table `Fa
 
 
 ```xml
-<roma:SQLExpressionColumn  id="_measureExpression2" name="measureExpression2">
-  <sqls sql="(CASE WHEN &quot;FACT&quot;.&quot;VALUE&quot; > 21 THEN 50 ELSE &quot;FACT&quot;.&quot;VALUE&quot; END)">
+<rolaprel:ExpressionColumn xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:rolaprel="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/relational" xmi:id="_expressioncolumn_measureexpression2" name="measureExpression2">
+  <sqls xmi:id="_sqlstatement" sql="(CASE WHEN &quot;FACT&quot;.&quot;VALUE&quot; > 21 THEN 50 ELSE &quot;FACT&quot;.&quot;VALUE&quot; END)">
     <dialects>generic</dialects>
     <dialects>h2</dialects>
   </sqls>
-</roma:SQLExpressionColumn>
+</rolaprel:ExpressionColumn>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Measure1
 
-        Measure with SQLExpressionColumn as column. measure use SQL expression to MEASURE_TABL table.
+        Measure with ExpressionColumn as column. measure use SQL expression to MEASURE_TABL table.
 
 
 ```xml
-<roma:SumMeasure  id="_measure1-sum" name="Measure1-Sum" column="roma:SQLExpressionColumn _measureExpression1"/>
+<rolapmeas:SumMeasure xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:rolapmeas="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube/measure" xmi:id="_summeasure_measure1_sum" name="Measure1-Sum">
+  <column href="_expressioncolumn_measureexpression1"/>
+</rolapmeas:SumMeasure>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Measure1
 
-        Measure with SQLExpressionColumn as column. measure use SQL expression to FACT table.
+        Measure with ExpressionColumn as column. measure use SQL expression to FACT table.
 
 
 ```xml
-<roma:SumMeasure  id="_measure1-sum" name="Measure1-Sum" column="roma:SQLExpressionColumn _measureExpression1"/>
+<rolapmeas:SumMeasure xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:rolapmeas="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube/measure" xmi:id="_summeasure_measure1_sum" name="Measure1-Sum">
+  <column href="_expressioncolumn_measureexpression1"/>
+</rolapmeas:SumMeasure>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -112,12 +123,24 @@ In this example, measure with SQLExpressionColumn. Measures use SQL expression a
 
 
 ```xml
-<roma:PhysicalCube   id="_cube" name="Cube With MeasureExpression" query="_table_factQuery">
-  <measureGroups>
-    <measures xsi:type="roma:SumMeasure" id="_measure1-sum" name="Measure1-Sum" column="roma:SQLExpressionColumn _measureExpression1"/>
-    <measures xsi:type="roma:SumMeasure" id="_measure2-sum" name="Measure2-Sum" column="roma:SQLExpressionColumn _measureExpression2"/>
-  </measureGroups>
-</roma:PhysicalCube>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapcube="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube" xmlns:rolapmeas="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube/measure" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
+  <rolapcube:PhysicalCube xmi:id="_physicalcube_cube_with_measureexpression" name="Cube With MeasureExpression" query="_tablesource_fact">
+    <measureGroups xmi:id="_measuregroup">
+      <measures xsi:type="rolapmeas:SumMeasure" xmi:id="_summeasure_measure1_sum" name="Measure1-Sum">
+        <column href="_expressioncolumn_measureexpression1"/>
+      </measures>
+      <measures xsi:type="rolapmeas:SumMeasure" xmi:id="_summeasure_measure2_sum" name="Measure2-Sum">
+        <column href="_expressioncolumn_measureexpression2"/>
+      </measures>
+    </measureGroups>
+  </rolapcube:PhysicalCube>
+  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
+  <relational:Table xmi:id="_table_fact" name="FACT">
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_key" name="KEY"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_value_numeric" name="VALUE_NUMERIC"/>
+  </relational:Table>
+</xmi:XMI>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -128,39 +151,42 @@ This file represents the complete definition of the catalog.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:Catalog description="Measure with expression-based calculations" name="Daanse Tutorial - Measure Expression" cubes="_cube" dbschemas="_databaseSchema_expression"/>
-  <roma:DatabaseSchema id="_databaseSchema_expression">
-    <tables xsi:type="roma:PhysicalTable" id="_fact" name="FACT">
-      <columns xsi:type="roma:PhysicalColumn" id="_column_fact_key" name="KEY"/>
-      <columns xsi:type="roma:PhysicalColumn" id="_column_fact_value" name="VALUE" type="Integer"/>
-      <columns xsi:type="roma:PhysicalColumn" id="_column_fact_value_numeric" name="VALUE_NUMERIC" type="Numeric"/>
-    </tables>
-    <tables xsi:type="roma:PhysicalTable" id="_measure_table" name="MEASURE_TABLE">
-      <columns xsi:type="roma:PhysicalColumn" id="_measure_table_id" name="ID" type="Integer"/>
-      <columns xsi:type="roma:PhysicalColumn" id="_measure_table_value" name="VALUE" type="Integer"/>
-      <columns xsi:type="roma:PhysicalColumn" id="_measure_table_flag" name="FLAG" type="Integer"/>
-      <columns xsi:type="roma:SQLExpressionColumn" id="_measureExpression1" name="measureExpression1">
-        <sqls sql="(select sum(&quot;MEASURE_TABLE&quot;.&quot;VALUE&quot;) from &quot;MEASURE_TABLE&quot; where &quot;MEASURE_TABLE&quot;.&quot;FLAG&quot; = 1)">
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapcat="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/catalog" xmlns:rolapcube="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube" xmlns:rolapmeas="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube/measure" xmlns:rolaprel="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/relational" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
+  <relational:SQLSimpleType xmi:id="_sqlsimpletype_character_varying" name="CHARACTER VARYING" structuralFeature="_column_fact_key" typeNumber="12"/>
+  <relational:SQLSimpleType xmi:id="_sqlsimpletype_numeric" name="NUMERIC" structuralFeature="_column_fact_value_numeric" typeNumber="2" numericPrecision="18" numericPrecisionRadix="10" numericScale="4"/>
+  <relational:SQLSimpleType xmi:id="_sqlsimpletype_integer" name="INTEGER" structuralFeature="_column_measure_table_value _column_measure_table_flag _column_fact_value _column_measure_table_id" typeNumber="4"/>
+  <rolapcat:Catalog xmi:id="_catalog_measure_expression" description="Measure with expression-based calculations" name="Daanse Tutorial - Measure Expression" cubes="_physicalcube_cube_with_measureexpression" dbschemas="_schema"/>
+  <relational:Schema xmi:id="_schema">
+    <ownedElement xsi:type="relational:Table" xmi:id="_table_fact" name="FACT">
+      <feature xsi:type="relational:Column" xmi:id="_column_fact_key" name="KEY" type="_sqlsimpletype_character_varying"/>
+      <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE" type="_sqlsimpletype_integer"/>
+      <feature xsi:type="relational:Column" xmi:id="_column_fact_value_numeric" name="VALUE_NUMERIC" type="_sqlsimpletype_numeric"/>
+    </ownedElement>
+    <ownedElement xsi:type="relational:Table" xmi:id="_table_measure_table" name="MEASURE_TABLE">
+      <feature xsi:type="relational:Column" xmi:id="_column_measure_table_id" name="ID" type="_sqlsimpletype_integer"/>
+      <feature xsi:type="relational:Column" xmi:id="_column_measure_table_value" name="VALUE" type="_sqlsimpletype_integer"/>
+      <feature xsi:type="relational:Column" xmi:id="_column_measure_table_flag" name="FLAG" type="_sqlsimpletype_integer"/>
+      <feature xsi:type="rolaprel:ExpressionColumn" xmi:id="_expressioncolumn_measureexpression1" name="measureExpression1">
+        <sqls xmi:id="_sqlstatement_1" sql="(select sum(&quot;MEASURE_TABLE&quot;.&quot;VALUE&quot;) from &quot;MEASURE_TABLE&quot; where &quot;MEASURE_TABLE&quot;.&quot;FLAG&quot; = 1)">
           <dialects>generic</dialects>
           <dialects>h2</dialects>
         </sqls>
-      </columns>
-      <columns xsi:type="roma:SQLExpressionColumn" id="_measureExpression2" name="measureExpression2">
-        <sqls sql="(CASE WHEN &quot;FACT&quot;.&quot;VALUE&quot; > 21 THEN 50 ELSE &quot;FACT&quot;.&quot;VALUE&quot; END)">
+      </feature>
+      <feature xsi:type="rolaprel:ExpressionColumn" xmi:id="_expressioncolumn_measureexpression2" name="measureExpression2">
+        <sqls xmi:id="_sqlstatement" sql="(CASE WHEN &quot;FACT&quot;.&quot;VALUE&quot; > 21 THEN 50 ELSE &quot;FACT&quot;.&quot;VALUE&quot; END)">
           <dialects>generic</dialects>
           <dialects>h2</dialects>
         </sqls>
-      </columns>
-    </tables>
-  </roma:DatabaseSchema>
-  <roma:TableQuery id="_table_factQuery" table="_fact"/>
-  <roma:PhysicalCube id="_cube" name="Cube With MeasureExpression" query="_table_factQuery">
-    <measureGroups>
-      <measures xsi:type="roma:SumMeasure" id="_measure1-sum" name="Measure1-Sum" column="_measureExpression1"/>
-      <measures xsi:type="roma:SumMeasure" id="_measure2-sum" name="Measure2-Sum" column="_measureExpression2"/>
+      </feature>
+    </ownedElement>
+  </relational:Schema>
+  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
+  <rolapcube:PhysicalCube xmi:id="_physicalcube_cube_with_measureexpression" name="Cube With MeasureExpression" query="_tablesource_fact">
+    <measureGroups xmi:id="_measuregroup">
+      <measures xsi:type="rolapmeas:SumMeasure" xmi:id="_summeasure_measure1_sum" name="Measure1-Sum" column="_expressioncolumn_measureexpression1"/>
+      <measures xsi:type="rolapmeas:SumMeasure" xmi:id="_summeasure_measure2_sum" name="Measure2-Sum" column="_expressioncolumn_measureexpression2"/>
     </measureGroups>
-  </roma:PhysicalCube>
+  </rolapcube:PhysicalCube>
 </xmi:XMI>
 
 ```

@@ -14,21 +14,23 @@ eliminating the need for separate database tables for static reference data.
 
 ## Database Schema
 
-DatabaseSchema includes InlineTable with data embedded directly in the schema definition.
+Schema includes InlineTable with data embedded directly in the schema definition.
 InlineTable, named `Fact`, contains two columns: `KEY` and `VALUE`.
 
 
 ```xml
-<roma:DatabaseSchema   id="_databaseSchema_inlinetable">
-  <tables xsi:type="roma:InlineTable" id="_table_fact" name="Fact">
-    <columns xsi:type="roma:PhysicalColumn" id="_column_fact_key" name="KEY"/>
-    <columns xsi:type="roma:PhysicalColumn" id="_column_fact_value" name="VALUE" type="Integer"/>
-    <rows>
-      <rowValues column="_column_fact_key" value="A"/>
-      <rowValues column="_column_fact_value" value="100.5"/>
-    </rows>
-  </tables>
-</roma:DatabaseSchema>
+<relational:Schema xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:instance="http://www.omg.org/spec/CWM/1.1/objectmodel/instance" xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolaprel="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/relational" xmi:id="_schema">
+  <ownedElement xsi:type="rolaprel:InlineTable" xmi:id="_inlinetable_fact" name="Fact">
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_key" name="KEY" slot="_dataslot"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE" slot="_dataslot_1"/>
+    <extent xmi:id="_rowset">
+      <ownedElement xsi:type="relational:Row" xmi:id="_row">
+        <slot xsi:type="instance:DataSlot" xmi:id="_dataslot" feature="_column_fact_key" dataValue="A"/>
+        <slot xsi:type="instance:DataSlot" xmi:id="_dataslot_1" feature="_column_fact_value" dataValue="100.5"/>
+      </ownedElement>
+    </extent>
+  </ownedElement>
+</relational:Schema>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -38,7 +40,19 @@ This example uses a InlineTableQuery, as it directly references the InlineTable 
 
 
 ```xml
-<roma:InlineTableQuery  id="_query_fact" alias="Fact" table="_table_fact"/>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:instance="http://www.omg.org/spec/CWM/1.1/objectmodel/instance" xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolaprel="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/relational" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
+  <rolapsrc:InlineTableSource xmi:id="_inlinetablesource_fact" alias="Fact" table="_inlinetable_fact"/>
+  <rolaprel:InlineTable xmi:id="_inlinetable_fact" name="Fact">
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_key" name="KEY" slot="_dataslot"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE" slot="_dataslot_1"/>
+    <extent xmi:id="_rowset">
+      <ownedElement xsi:type="relational:Row" xmi:id="_row">
+        <slot xsi:type="instance:DataSlot" xmi:id="_dataslot" feature="_column_fact_key" dataValue="A"/>
+        <slot xsi:type="instance:DataSlot" xmi:id="_dataslot_1" feature="_column_fact_value" dataValue="100.5"/>
+      </ownedElement>
+    </extent>
+  </rolaprel:InlineTable>
+</xmi:XMI>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -48,7 +62,9 @@ This example uses a InlineTableQuery, as it directly references the InlineTable 
 
 
 ```xml
-<roma:SumMeasure  id="_measure-sum" name="Measure-Sum" column="_column_fact_value"/>
+<rolapmeas:SumMeasure xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:rolapmeas="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube/measure" xmi:id="_summeasure_measure_sum" name="Measure-Sum">
+  <column href="_column_fact_value"/>
+</rolapmeas:SumMeasure>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -58,11 +74,24 @@ In this example uses cube with InlineTable as data.
 
 
 ```xml
-<roma:PhysicalCube   id="_cube" name="Cube" query="roma:InlineTableQuery _query_fact">
-  <measureGroups>
-    <measures xsi:type="roma:SumMeasure" id="_measure-sum" name="Measure-Sum" column="_column_fact_value"/>
-  </measureGroups>
-</roma:PhysicalCube>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:instance="http://www.omg.org/spec/CWM/1.1/objectmodel/instance" xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapcube="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube" xmlns:rolapmeas="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube/measure" xmlns:rolaprel="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/relational" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
+  <rolapcube:PhysicalCube xmi:id="_physicalcube_cube" name="Cube" query="_inlinetablesource_fact">
+    <measureGroups xmi:id="_measuregroup">
+      <measures xsi:type="rolapmeas:SumMeasure" xmi:id="_summeasure_measure_sum" name="Measure-Sum" column="_column_fact_value"/>
+    </measureGroups>
+  </rolapcube:PhysicalCube>
+  <rolaprel:InlineTable xmi:id="_inlinetable_fact" name="Fact">
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_key" name="KEY" slot="_dataslot"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE" slot="_dataslot_1"/>
+    <extent xmi:id="_rowset">
+      <ownedElement xsi:type="relational:Row" xmi:id="_row">
+        <slot xsi:type="instance:DataSlot" xmi:id="_dataslot" feature="_column_fact_key" dataValue="A"/>
+        <slot xsi:type="instance:DataSlot" xmi:id="_dataslot_1" feature="_column_fact_value" dataValue="100.5"/>
+      </ownedElement>
+    </extent>
+  </rolaprel:InlineTable>
+  <rolapsrc:InlineTableSource xmi:id="_inlinetablesource_fact" alias="Fact" table="_inlinetable_fact"/>
+</xmi:XMI>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -73,24 +102,28 @@ This file represents the complete definition of the catalog.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:Catalog description="Measure with inline table data" name="Daanse Tutorial - Measure Inline Table" cubes="_cube" dbschemas="_databaseSchema_inlinetable"/>
-  <roma:DatabaseSchema id="_databaseSchema_inlinetable">
-    <tables xsi:type="roma:InlineTable" id="_table_fact" name="Fact">
-      <columns xsi:type="roma:PhysicalColumn" id="_column_fact_key" name="KEY"/>
-      <columns xsi:type="roma:PhysicalColumn" id="_column_fact_value" name="VALUE" type="Integer"/>
-      <rows>
-        <rowValues column="_column_fact_key" value="A"/>
-        <rowValues column="_column_fact_value" value="100.5"/>
-      </rows>
-    </tables>
-  </roma:DatabaseSchema>
-  <roma:InlineTableQuery id="_query_fact" alias="Fact" table="_table_fact"/>
-  <roma:PhysicalCube id="_cube" name="Cube" query="_query_fact">
-    <measureGroups>
-      <measures xsi:type="roma:SumMeasure" id="_measure-sum" name="Measure-Sum" column="_column_fact_value"/>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:instance="http://www.omg.org/spec/CWM/1.1/objectmodel/instance" xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapcat="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/catalog" xmlns:rolapcube="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube" xmlns:rolapmeas="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube/measure" xmlns:rolaprel="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/relational" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
+  <relational:SQLSimpleType xmi:id="_sqlsimpletype_integer" name="INTEGER" structuralFeature="_column_fact_value" typeNumber="4"/>
+  <relational:SQLSimpleType xmi:id="_sqlsimpletype_character_varying" name="CHARACTER VARYING" structuralFeature="_column_fact_key" typeNumber="12"/>
+  <rolapcat:Catalog xmi:id="_catalog_measure_inline_table" description="Measure with inline table data" name="Daanse Tutorial - Measure Inline Table" cubes="_physicalcube_cube" dbschemas="_schema"/>
+  <relational:Schema xmi:id="_schema">
+    <ownedElement xsi:type="rolaprel:InlineTable" xmi:id="_inlinetable_fact" name="Fact">
+      <feature xsi:type="relational:Column" xmi:id="_column_fact_key" name="KEY" type="_sqlsimpletype_character_varying" slot="_dataslot"/>
+      <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE" type="_sqlsimpletype_integer" slot="_dataslot_1"/>
+      <extent xmi:id="_rowset">
+        <ownedElement xsi:type="relational:Row" xmi:id="_row">
+          <slot xsi:type="instance:DataSlot" xmi:id="_dataslot" feature="_column_fact_key" dataValue="A"/>
+          <slot xsi:type="instance:DataSlot" xmi:id="_dataslot_1" feature="_column_fact_value" dataValue="100.5"/>
+        </ownedElement>
+      </extent>
+    </ownedElement>
+  </relational:Schema>
+  <rolapsrc:InlineTableSource xmi:id="_inlinetablesource_fact" alias="Fact" table="_inlinetable_fact"/>
+  <rolapcube:PhysicalCube xmi:id="_physicalcube_cube" name="Cube" query="_inlinetablesource_fact">
+    <measureGroups xmi:id="_measuregroup">
+      <measures xsi:type="rolapmeas:SumMeasure" xmi:id="_summeasure_measure_sum" name="Measure-Sum" column="_column_fact_value"/>
     </measureGroups>
-  </roma:PhysicalCube>
+  </rolapcube:PhysicalCube>
 </xmi:XMI>
 
 ```

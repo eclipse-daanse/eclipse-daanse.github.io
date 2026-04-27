@@ -6,7 +6,7 @@ number: 2.08.02
 ---
 # Daanse Tutorial - Aggregation Aggregate Tables
 
-This tutorial discusses TableQuery with AggregationExclude.
+This tutorial discusses TableSource with AggregationExclude.
 AggregationExclude defines exclusion rules that prevent specific tables from being used as aggregation tables,
 even if they would otherwise match aggregation patterns or be considered suitable for aggregation optimization.
 AggregationExclude is essential for maintaining aggregation accuracy and system reliability by providing explicit
@@ -26,29 +26,29 @@ The cube defined in this example is based on
 
 
 ```xml
-<roma:DatabaseSchema   id="_databaseSchema_AggregateTables">
-  <tables xsi:type="roma:PhysicalTable" id="_table_sales_fact_1997" name="SALES_FACT_1997">
-    <columns xsi:type="roma:PhysicalColumn" id="_column_sales_fact_1997_product_id" name="PRODUCT_ID" type="Integer"/>
-    <columns xsi:type="roma:PhysicalColumn" id="_column_sales_fact_1997_store_cost" name="STORE_COST" type="Decimal" columnSize="10" decimalDigits="4"/>
-  </tables>
-  <tables xsi:type="roma:PhysicalTable" id="_table_product" name="PRODUCT">
-    <columns xsi:type="roma:PhysicalColumn" id="_column_product_product_class_id" name="PRODUCT_CLASS_ID" type="Integer"/>
-    <columns xsi:type="roma:PhysicalColumn" id="_column_product_product_id" name="PRODUCT_ID" type="Integer"/>
-    <columns xsi:type="roma:PhysicalColumn" id="_column_product_brandName" name="brand_name" columnSize="60"/>
-    <columns xsi:type="roma:PhysicalColumn" id="_column_product_productName" name="product_name" columnSize="60"/>
-  </tables>
-  <tables xsi:type="roma:PhysicalTable" id="_table_product_class" name="PRODUCT_CLASS">
-    <columns xsi:type="roma:PhysicalColumn" id="_column_product_class_product_class_id" name="PRODUCT_CLASS_ID" type="Integer"/>
-    <columns xsi:type="roma:PhysicalColumn" id="_column_product_class_product_famile" name="PRODUCT_FAMILE" columnSize="60"/>
-  </tables>
-  <tables xsi:type="roma:PhysicalTable" id="_table_agg_c_special_sales_fact_1997" name="AGG_C_SPECIAL_SALES_FACT_1997">
-    <columns xsi:type="roma:PhysicalColumn" id="_column_agg_c_special_sales_fact_1997_product_id" name="PRODUCT_ID" type="Integer"/>
-    <columns xsi:type="roma:PhysicalColumn" id="_column_agg_c_special_sales_fact_1997_store_cost_sum" name="STORE_COST_SUM" type="Decimal" columnSize="10" decimalDigits="4"/>
-    <columns xsi:type="roma:PhysicalColumn" id="_column_agg_c_special_sales_fact_1997_fact_count" name="FACT_COUNT" type="Integer"/>
-  </tables>
-  <tables xsi:type="roma:PhysicalTable" id="_table_agg_c_14_sales_fact_1997" name="AGG_C_14_SALES_FACT_1997"/>
-  <tables xsi:type="roma:PhysicalTable" id="_table_agg_lc_100_sales_fact_1997" name="AGG_LC_100_SALES_FACT_1997"/>
-</roma:DatabaseSchema>
+<relational:Schema xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmi:id="_schema">
+  <ownedElement xsi:type="relational:Table" xmi:id="_table_sales_fact_1997" name="SALES_FACT_1997">
+    <feature xsi:type="relational:Column" xmi:id="_column_sales_fact_1997_product_id" name="PRODUCT_ID"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_sales_fact_1997_store_cost" name="STORE_COST"/>
+  </ownedElement>
+  <ownedElement xsi:type="relational:Table" xmi:id="_table_product" name="PRODUCT">
+    <feature xsi:type="relational:Column" xmi:id="_column_product_product_class_id" name="PRODUCT_CLASS_ID"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_product_product_id" name="PRODUCT_ID"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_product_brand_name" name="brand_name"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_product_product_name" name="product_name"/>
+  </ownedElement>
+  <ownedElement xsi:type="relational:Table" xmi:id="_table_product_class" name="PRODUCT_CLASS">
+    <feature xsi:type="relational:Column" xmi:id="_column_product_class_product_class_id" name="PRODUCT_CLASS_ID"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_product_class_product_famile" name="PRODUCT_FAMILE"/>
+  </ownedElement>
+  <ownedElement xsi:type="relational:Table" xmi:id="_table_agg_c_special_sales_fact_1997" name="AGG_C_SPECIAL_SALES_FACT_1997">
+    <feature xsi:type="relational:Column" xmi:id="_column_agg_c_special_sales_fact_1997_product_id" name="PRODUCT_ID"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_agg_c_special_sales_fact_1997_store_cost_sum" name="STORE_COST_SUM"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_agg_c_special_sales_fact_1997_fact_count" name="FACT_COUNT"/>
+  </ownedElement>
+  <ownedElement xsi:type="relational:Table" xmi:id="_table_agg_c_14_sales_fact_1997" name="AGG_C_14_SALES_FACT_1997"/>
+  <ownedElement xsi:type="relational:Table" xmi:id="_table_agg_lc_100_sales_fact_1997" name="AGG_LC_100_SALES_FACT_1997"/>
+</relational:Schema>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -56,51 +56,86 @@ The cube defined in this example is based on
 
 The bridge between the cube and the database is the query element. In this case, it is a TableQuery, as it directly references the physical table `SALES_FACT_1997`.
 The query element is not visible to users accessing the cube through the XMLA API, such as Daanse Dashboard, Power BI, or Excel.
-this TableQuery have one AggregationTable with reference to 'AGG_C_SPECIAL_SALES_FACT_1997' the specific database table that contains the pre-computed aggregation data.
+this TableSource have one AggregationTable with reference to 'AGG_C_SPECIAL_SALES_FACT_1997' the specific database table that contains the pre-computed aggregation data.
 this tabele will use for calculate aggregation data for aggregationMeasure [Measures].[Store Cost] for level [Product].[Product Family].[Product Family].
 
 
 ```xml
-<roma:TableQuery  id="_query_salesFact1997Query" aggregationTables="roma:AggregationName _aggregationName_AGG_C_SPECIAL_SALES_FACT_1997" table="_table_sales_fact_1997">
-  <aggregationExcludes name="AGG_C_14_SALES_FACT_1997"/>
-  <aggregationExcludes name="AGG_LC_100_SALES_FACT_1997"/>
-</roma:TableQuery>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapagg="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/aggregation" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
+  <rolapsrc:TableSource xmi:id="_tablesource_sales_fact_1997" table="_table_sales_fact_1997">
+    <aggregationExcludes xmi:id="_aggregationexclude_agg_c_14_sales_fact_1997" name="AGG_C_14_SALES_FACT_1997"/>
+    <aggregationExcludes xmi:id="_aggregationexclude_agg_lc_100_sales_fact_1997" name="AGG_LC_100_SALES_FACT_1997"/>
+    <aggregationTables xsi:type="rolapagg:AggregationName" href="_aggregationname"/>
+  </rolapsrc:TableSource>
+  <relational:Table xmi:id="_table_sales_fact_1997" name="SALES_FACT_1997">
+    <feature xsi:type="relational:Column" xmi:id="_column_sales_fact_1997_product_id" name="PRODUCT_ID"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_sales_fact_1997_store_cost" name="STORE_COST"/>
+  </relational:Table>
+</xmi:XMI>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Product Query
 
-The TableQuery for the PRODUCT table.
+The TableSource for the PRODUCT table.
 
 
 ```xml
-<roma:TableQuery  id="_query_productQuery" table="_table_product"/>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
+  <rolapsrc:TableSource xmi:id="_tablesource_product" table="_table_product"/>
+  <relational:Table xmi:id="_table_product" name="PRODUCT">
+    <feature xsi:type="relational:Column" xmi:id="_column_product_product_class_id" name="PRODUCT_CLASS_ID"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_product_product_id" name="PRODUCT_ID"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_product_brand_name" name="brand_name"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_product_product_name" name="product_name"/>
+  </relational:Table>
+</xmi:XMI>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Product Class Query
 
-The TableQuery for the PRODUCT_CLASS table.
+The TableSource for the PRODUCT_CLASS table.
 
 
 ```xml
-<roma:TableQuery  id="_query_productClassQuery" table="_table_product_class"/>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
+  <rolapsrc:TableSource xmi:id="_tablesource_product_class" table="_table_product_class"/>
+  <relational:Table xmi:id="_table_product_class" name="PRODUCT_CLASS">
+    <feature xsi:type="relational:Column" xmi:id="_column_product_class_product_class_id" name="PRODUCT_CLASS_ID"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_product_class_product_famile" name="PRODUCT_FAMILE"/>
+  </relational:Table>
+</xmi:XMI>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
 ## Product Class Query
 
-The JoinQuery specifies which TableQueries should be joined. It also defines the columns in each table that are used for the join:
+The JoinSource specifies which TableQueries should be joined. It also defines the columns in each table that are used for the join:
 
 - In the PRODUCT the join uses the foreign key.
 - In the PRODUCT_CLASS table, the join uses the primary key.
 
 
 ```xml
-<roma:JoinQuery  id="_joinQuery_productClassProduct">
-  <left key="_column_product_product_class_id" query="_query_productQuery"/>
-  <right key="_column_product_class_product_class_id" query="_query_productClassQuery"/>
-</roma:JoinQuery>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
+  <rolapsrc:JoinSource xmi:id="_joinsource">
+    <left xmi:id="_joinedqueryelement_product_class_id" key="_column_product_product_class_id" query="_tablesource_product"/>
+    <right xmi:id="_joinedqueryelement_product_class_id_1" key="_column_product_class_product_class_id" query="_tablesource_product_class"/>
+  </rolapsrc:JoinSource>
+  <rolapsrc:TableSource xmi:id="_tablesource_product_class" table="_table_product_class"/>
+  <relational:Table xmi:id="_table_product_class" name="PRODUCT_CLASS">
+    <feature xsi:type="relational:Column" xmi:id="_column_product_class_product_class_id" name="PRODUCT_CLASS_ID"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_product_class_product_famile" name="PRODUCT_FAMILE"/>
+  </relational:Table>
+  <rolapsrc:TableSource xmi:id="_tablesource_product" table="_table_product"/>
+  <relational:Table xmi:id="_table_product" name="PRODUCT">
+    <feature xsi:type="relational:Column" xmi:id="_column_product_product_class_id" name="PRODUCT_CLASS_ID"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_product_product_id" name="PRODUCT_ID"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_product_brand_name" name="brand_name"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_product_product_name" name="product_name"/>
+  </relational:Table>
+</xmi:XMI>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -110,7 +145,9 @@ The Level Product Family uses the column attribute to specify the primary key co
 
 
 ```xml
-<roma:Level  id="_level_Product_Family_Level" name="Product Family" column="_column_product_class_product_famile"/>
+<rolaplev:Level xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmi:id="_level_product_family" name="Product Family">
+  <column href="_column_product_class_product_famile"/>
+</rolaplev:Level>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -122,7 +159,26 @@ This hierarchy consists the level Product Family.
 
 
 ```xml
-<roma:ExplicitHierarchy  id="_hierarchy_Product_Family_Hierarchy" name="Product Family" displayFolder="Details" primaryKey="_column_product_product_id" query="_joinQuery_productClassProduct" levels="_level_Product_Family_Level"/>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
+  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_product_family" name="Product Family" displayFolder="Details" primaryKey="_column_product_product_id" query="_joinsource" levels="_level_product_family"/>
+  <rolapsrc:JoinSource xmi:id="_joinsource">
+    <left xmi:id="_joinedqueryelement_product_class_id" key="_column_product_product_class_id" query="_tablesource_product"/>
+    <right xmi:id="_joinedqueryelement_product_class_id_1" key="_column_product_class_product_class_id" query="_tablesource_product_class"/>
+  </rolapsrc:JoinSource>
+  <rolapsrc:TableSource xmi:id="_tablesource_product_class" table="_table_product_class"/>
+  <relational:Table xmi:id="_table_product_class" name="PRODUCT_CLASS">
+    <feature xsi:type="relational:Column" xmi:id="_column_product_class_product_class_id" name="PRODUCT_CLASS_ID"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_product_class_product_famile" name="PRODUCT_FAMILE"/>
+  </relational:Table>
+  <rolapsrc:TableSource xmi:id="_tablesource_product" table="_table_product"/>
+  <rolaplev:Level xmi:id="_level_product_family" name="Product Family" column="_column_product_class_product_famile"/>
+  <relational:Table xmi:id="_table_product" name="PRODUCT">
+    <feature xsi:type="relational:Column" xmi:id="_column_product_product_class_id" name="PRODUCT_CLASS_ID"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_product_product_id" name="PRODUCT_ID"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_product_brand_name" name="brand_name"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_product_product_name" name="product_name"/>
+  </relational:Table>
+</xmi:XMI>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -132,27 +188,27 @@ The Dimension has only one hierarchy.
 
 
 ```xml
-<roma:StandardDimension  id="_dimension_ProductDimension" name="Product" hierarchies="roma:ExplicitHierarchy _hierarchy_Product_Family_Hierarchy"/>
-
-```
-*<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
-## Cube, MeasureGroup and Measure
-
-The cube is the element visible to users in analysis tools. A cube is based on elements such as measures, dimensions, hierarchies, KPIs, and named sets.
-In this case, we only define measures, which are the minimal required elements. The other elements are optional. To link a measure to the cube, we use the `MeasureGroup` element.
-The `MeasureGroup` is useful for organizing multiple measures into logical groups. Measures are used to define the data that should be aggregated.
-In this example, the measure is named Store Cost and references the `STORE_COST` column in the SALES_FACT_1997 table.
-But fact table query has AggregationTable 'AGG_C_SPECIAL_SALES_FACT_1997'. The aggregation calculation will use AGG_C_SPECIAL_SALES_FACT_1997 table instead of SALES_FACT_1997.
-The measure is aggregated using summation.
-
-
-```xml
-<roma:PhysicalCube   id="_cube_Sales" name="Sales" query="_query_salesFact1997Query">
-  <dimensionConnectors foreignKey="roma:PhysicalColumn _column_sales_fact_1997_product_id" dimension="roma:StandardDimension _dimension_ProductDimension" overrideDimensionName="Product" id="_dimensionConnector_product"/>
-  <measureGroups>
-    <measures xsi:type="roma:SumMeasure" id="_measure_StoreCost" name="Store Cost" formatString=",###.00" column="_column_sales_fact_1997_store_cost"/>
-  </measureGroups>
-</roma:PhysicalCube>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapdim="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
+  <rolapdim:StandardDimension xmi:id="_standarddimension_product" name="Product" hierarchies="_explicithierarchy_product_family"/>
+  <rolapsrc:JoinSource xmi:id="_joinsource">
+    <left xmi:id="_joinedqueryelement_product_class_id" key="_column_product_product_class_id" query="_tablesource_product"/>
+    <right xmi:id="_joinedqueryelement_product_class_id_1" key="_column_product_class_product_class_id" query="_tablesource_product_class"/>
+  </rolapsrc:JoinSource>
+  <rolapsrc:TableSource xmi:id="_tablesource_product_class" table="_table_product_class"/>
+  <relational:Table xmi:id="_table_product_class" name="PRODUCT_CLASS">
+    <feature xsi:type="relational:Column" xmi:id="_column_product_class_product_class_id" name="PRODUCT_CLASS_ID"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_product_class_product_famile" name="PRODUCT_FAMILE"/>
+  </relational:Table>
+  <rolapsrc:TableSource xmi:id="_tablesource_product" table="_table_product"/>
+  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_product_family" name="Product Family" displayFolder="Details" primaryKey="_column_product_product_id" query="_joinsource" levels="_level_product_family"/>
+  <rolaplev:Level xmi:id="_level_product_family" name="Product Family" column="_column_product_class_product_famile"/>
+  <relational:Table xmi:id="_table_product" name="PRODUCT">
+    <feature xsi:type="relational:Column" xmi:id="_column_product_product_class_id" name="PRODUCT_CLASS_ID"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_product_product_id" name="PRODUCT_ID"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_product_brand_name" name="brand_name"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_product_product_name" name="product_name"/>
+  </relational:Table>
+</xmi:XMI>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -163,55 +219,58 @@ This file represents the complete definition of the catalog.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:AggregationName id="_aggregationName_AGG_C_SPECIAL_SALES_FACT_1997" name="_table_agg_c_special_sales_fact_1997">
-    <aggregationFactCount column="_column_agg_c_special_sales_fact_1997_fact_count"/>
-    <aggregationMeasures column="_column_agg_c_special_sales_fact_1997_store_cost_sum" name="[Measures].[Store Cost]"/>
-    <aggregationLevels column="_column_product_class_product_famile" name="[Product].[Product Family].[Product Family]"/>
-  </roma:AggregationName>
-  <roma:Catalog description="Aggregate table optimization techniques" name="Daanse Tutorial - Aggregation Aggregate Tables" cubes="_cube_Sales" dbschemas="_databaseSchema_AggregateTables"/>
-  <roma:DatabaseSchema id="_databaseSchema_AggregateTables">
-    <tables xsi:type="roma:PhysicalTable" id="_table_sales_fact_1997" name="SALES_FACT_1997">
-      <columns xsi:type="roma:PhysicalColumn" id="_column_sales_fact_1997_product_id" name="PRODUCT_ID" type="Integer"/>
-      <columns xsi:type="roma:PhysicalColumn" id="_column_sales_fact_1997_store_cost" name="STORE_COST" type="Decimal" columnSize="10" decimalDigits="4"/>
-    </tables>
-    <tables xsi:type="roma:PhysicalTable" id="_table_product" name="PRODUCT">
-      <columns xsi:type="roma:PhysicalColumn" id="_column_product_product_class_id" name="PRODUCT_CLASS_ID" type="Integer"/>
-      <columns xsi:type="roma:PhysicalColumn" id="_column_product_product_id" name="PRODUCT_ID" type="Integer"/>
-      <columns xsi:type="roma:PhysicalColumn" id="_column_product_brandName" name="brand_name" columnSize="60"/>
-      <columns xsi:type="roma:PhysicalColumn" id="_column_product_productName" name="product_name" columnSize="60"/>
-    </tables>
-    <tables xsi:type="roma:PhysicalTable" id="_table_product_class" name="PRODUCT_CLASS">
-      <columns xsi:type="roma:PhysicalColumn" id="_column_product_class_product_class_id" name="PRODUCT_CLASS_ID" type="Integer"/>
-      <columns xsi:type="roma:PhysicalColumn" id="_column_product_class_product_famile" name="PRODUCT_FAMILE" columnSize="60"/>
-    </tables>
-    <tables xsi:type="roma:PhysicalTable" id="_table_agg_c_special_sales_fact_1997" name="AGG_C_SPECIAL_SALES_FACT_1997">
-      <columns xsi:type="roma:PhysicalColumn" id="_column_agg_c_special_sales_fact_1997_product_id" name="PRODUCT_ID" type="Integer"/>
-      <columns xsi:type="roma:PhysicalColumn" id="_column_agg_c_special_sales_fact_1997_store_cost_sum" name="STORE_COST_SUM" type="Decimal" columnSize="10" decimalDigits="4"/>
-      <columns xsi:type="roma:PhysicalColumn" id="_column_agg_c_special_sales_fact_1997_fact_count" name="FACT_COUNT" type="Integer"/>
-    </tables>
-    <tables xsi:type="roma:PhysicalTable" id="_table_agg_c_14_sales_fact_1997" name="AGG_C_14_SALES_FACT_1997"/>
-    <tables xsi:type="roma:PhysicalTable" id="_table_agg_lc_100_sales_fact_1997" name="AGG_LC_100_SALES_FACT_1997"/>
-  </roma:DatabaseSchema>
-  <roma:TableQuery id="_query_productClassQuery" table="_table_product_class"/>
-  <roma:TableQuery id="_query_productQuery" table="_table_product"/>
-  <roma:TableQuery id="_query_salesFact1997Query" aggregationTables="_aggregationName_AGG_C_SPECIAL_SALES_FACT_1997" table="_table_sales_fact_1997">
-    <aggregationExcludes name="AGG_C_14_SALES_FACT_1997"/>
-    <aggregationExcludes name="AGG_LC_100_SALES_FACT_1997"/>
-  </roma:TableQuery>
-  <roma:JoinQuery id="_joinQuery_productClassProduct">
-    <left key="_column_product_product_class_id" query="_query_productQuery"/>
-    <right key="_column_product_class_product_class_id" query="_query_productClassQuery"/>
-  </roma:JoinQuery>
-  <roma:Level id="_level_Product_Family_Level" name="Product Family" column="_column_product_class_product_famile"/>
-  <roma:ExplicitHierarchy id="_hierarchy_Product_Family_Hierarchy" name="Product Family" displayFolder="Details" primaryKey="_column_product_product_id" query="_joinQuery_productClassProduct" levels="_level_Product_Family_Level"/>
-  <roma:StandardDimension id="_dimension_ProductDimension" name="Product" hierarchies="_hierarchy_Product_Family_Hierarchy"/>
-  <roma:PhysicalCube id="_cube_Sales" name="Sales" query="_query_salesFact1997Query">
-    <dimensionConnectors foreignKey="_column_sales_fact_1997_product_id" dimension="_dimension_ProductDimension" overrideDimensionName="Product" id="_dimensionConnector_product"/>
-    <measureGroups>
-      <measures xsi:type="roma:SumMeasure" id="_measure_StoreCost" name="Store Cost" formatString="#,###.00" column="_column_sales_fact_1997_store_cost"/>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapagg="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/aggregation" xmlns:rolapcat="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/catalog" xmlns:rolapcube="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube" xmlns:rolapdim="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapmeas="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube/measure" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
+  <relational:SQLSimpleType xmi:id="_sqlsimpletype_decimal" name="DECIMAL" structuralFeature="_column_agg_c_special_sales_fact_1997_store_cost_sum _column_sales_fact_1997_store_cost" typeNumber="3" numericPrecision="18" numericPrecisionRadix="10" numericScale="4"/>
+  <relational:SQLSimpleType xmi:id="_sqlsimpletype_character_varying" name="CHARACTER VARYING" structuralFeature="_column_product_brand_name _column_product_product_name _column_product_class_product_famile" typeNumber="12"/>
+  <relational:SQLSimpleType xmi:id="_sqlsimpletype_integer" name="INTEGER" structuralFeature="_column_agg_c_special_sales_fact_1997_fact_count _column_product_class_product_class_id _column_product_product_class_id _column_product_product_id _column_sales_fact_1997_product_id _column_agg_c_special_sales_fact_1997_product_id" typeNumber="4"/>
+  <rolapagg:AggregationName xmi:id="_aggregationname" name="_table_agg_c_special_sales_fact_1997">
+    <aggregationFactCount xmi:id="_aggregationcolumnname_fact_count" column="_column_agg_c_special_sales_fact_1997_fact_count"/>
+    <aggregationMeasures xmi:id="_aggregationmeasure_measures_store_cost" column="_column_agg_c_special_sales_fact_1997_store_cost_sum" name="[Measures].[Store Cost]"/>
+    <aggregationLevels xmi:id="_aggregationlevel_product_product_family_product_family" column="_column_product_class_product_famile" name="[Product].[Product Family].[Product Family]"/>
+  </rolapagg:AggregationName>
+  <rolapcat:Catalog xmi:id="_catalog_aggregation_aggregate_tables" description="Aggregate table optimization techniques" name="Daanse Tutorial - Aggregation Aggregate Tables" cubes="_physicalcube_sales" dbschemas="_schema"/>
+  <relational:Schema xmi:id="_schema">
+    <ownedElement xsi:type="relational:Table" xmi:id="_table_sales_fact_1997" name="SALES_FACT_1997">
+      <feature xsi:type="relational:Column" xmi:id="_column_sales_fact_1997_product_id" name="PRODUCT_ID" type="_sqlsimpletype_integer"/>
+      <feature xsi:type="relational:Column" xmi:id="_column_sales_fact_1997_store_cost" name="STORE_COST" type="_sqlsimpletype_decimal"/>
+    </ownedElement>
+    <ownedElement xsi:type="relational:Table" xmi:id="_table_product" name="PRODUCT">
+      <feature xsi:type="relational:Column" xmi:id="_column_product_product_class_id" name="PRODUCT_CLASS_ID" type="_sqlsimpletype_integer"/>
+      <feature xsi:type="relational:Column" xmi:id="_column_product_product_id" name="PRODUCT_ID" type="_sqlsimpletype_integer"/>
+      <feature xsi:type="relational:Column" xmi:id="_column_product_brand_name" name="brand_name" type="_sqlsimpletype_character_varying"/>
+      <feature xsi:type="relational:Column" xmi:id="_column_product_product_name" name="product_name" type="_sqlsimpletype_character_varying"/>
+    </ownedElement>
+    <ownedElement xsi:type="relational:Table" xmi:id="_table_product_class" name="PRODUCT_CLASS">
+      <feature xsi:type="relational:Column" xmi:id="_column_product_class_product_class_id" name="PRODUCT_CLASS_ID" type="_sqlsimpletype_integer"/>
+      <feature xsi:type="relational:Column" xmi:id="_column_product_class_product_famile" name="PRODUCT_FAMILE" type="_sqlsimpletype_character_varying"/>
+    </ownedElement>
+    <ownedElement xsi:type="relational:Table" xmi:id="_table_agg_c_special_sales_fact_1997" name="AGG_C_SPECIAL_SALES_FACT_1997">
+      <feature xsi:type="relational:Column" xmi:id="_column_agg_c_special_sales_fact_1997_product_id" name="PRODUCT_ID" type="_sqlsimpletype_integer"/>
+      <feature xsi:type="relational:Column" xmi:id="_column_agg_c_special_sales_fact_1997_store_cost_sum" name="STORE_COST_SUM" type="_sqlsimpletype_decimal"/>
+      <feature xsi:type="relational:Column" xmi:id="_column_agg_c_special_sales_fact_1997_fact_count" name="FACT_COUNT" type="_sqlsimpletype_integer"/>
+    </ownedElement>
+    <ownedElement xsi:type="relational:Table" xmi:id="_table_agg_c_14_sales_fact_1997" name="AGG_C_14_SALES_FACT_1997"/>
+    <ownedElement xsi:type="relational:Table" xmi:id="_table_agg_lc_100_sales_fact_1997" name="AGG_LC_100_SALES_FACT_1997"/>
+  </relational:Schema>
+  <rolapsrc:TableSource xmi:id="_tablesource_product" table="_table_product"/>
+  <rolapsrc:TableSource xmi:id="_tablesource_sales_fact_1997" table="_table_sales_fact_1997" aggregationTables="_aggregationname">
+    <aggregationExcludes xmi:id="_aggregationexclude_agg_c_14_sales_fact_1997" name="AGG_C_14_SALES_FACT_1997"/>
+    <aggregationExcludes xmi:id="_aggregationexclude_agg_lc_100_sales_fact_1997" name="AGG_LC_100_SALES_FACT_1997"/>
+  </rolapsrc:TableSource>
+  <rolapsrc:TableSource xmi:id="_tablesource_product_class" table="_table_product_class"/>
+  <rolapsrc:JoinSource xmi:id="_joinsource">
+    <left xmi:id="_joinedqueryelement_product_class_id_1" key="_column_product_product_class_id" query="_tablesource_product"/>
+    <right xmi:id="_joinedqueryelement_product_class_id" key="_column_product_class_product_class_id" query="_tablesource_product_class"/>
+  </rolapsrc:JoinSource>
+  <rolaplev:Level xmi:id="_level_product_family" name="Product Family" column="_column_product_class_product_famile"/>
+  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_product_family" name="Product Family" displayFolder="Details" primaryKey="_column_product_product_id" query="_joinsource" levels="_level_product_family"/>
+  <rolapdim:StandardDimension xmi:id="_standarddimension_product" name="Product" hierarchies="_explicithierarchy_product_family"/>
+  <rolapcube:PhysicalCube xmi:id="_physicalcube_sales" name="Sales" query="_tablesource_sales_fact_1997">
+    <dimensionConnectors xmi:id="_dimensionconnector_product" foreignKey="_column_sales_fact_1997_product_id" dimension="_standarddimension_product" overrideDimensionName="Product"/>
+    <measureGroups xmi:id="_measuregroup">
+      <measures xsi:type="rolapmeas:SumMeasure" xmi:id="_summeasure_store_cost" name="Store Cost" formatString="#,###.00" column="_column_sales_fact_1997_store_cost"/>
     </measureGroups>
-  </roma:PhysicalCube>
+  </rolapcube:PhysicalCube>
 </xmi:XMI>
 
 ```

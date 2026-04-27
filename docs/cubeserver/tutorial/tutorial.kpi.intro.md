@@ -19,11 +19,11 @@ A table `Fact` with a Column `VALUE` to have a reference for the Measure.
 
 
 ```xml
-<roma:DatabaseSchema   id="_databaseSchema_KpiIntro">
-  <tables xsi:type="roma:PhysicalTable" id="_table_fact" name="Fact">
-    <columns xsi:type="roma:PhysicalColumn" id="_column_fact_value" name="VALUE" type="Integer"/>
-  </tables>
-</roma:DatabaseSchema>
+<relational:Schema xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmi:id="_schema">
+  <ownedElement xsi:type="relational:Table" xmi:id="_table_fact" name="Fact">
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE"/>
+  </ownedElement>
+</relational:Schema>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -33,7 +33,7 @@ This KPI is defined solely by its value expression, which in this example refere
 
 
 ```xml
-<roma:Kpi  id="_kpi_Kpi1" name="Kpi1" value="[Measures].[Measure1-Sum]"/>
+<rolapcube:Kpi xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:rolapcube="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube" xmi:id="_kpi_kpi1" name="Kpi1" value="[Measures].[Measure1-Sum]"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -43,7 +43,9 @@ This KPI is additionally using a `ParentKpiID`.
 
 
 ```xml
-<roma:Kpi  id="_kpi_Kpi2" name="Kpi2" value="[Measures].[Measure1-Sum]" parentKpi="_kpi_Kpi1"/>
+<rolapcube:Kpi xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:rolapcube="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube" xmi:id="_kpi_kpi2" name="Kpi2" value="[Measures].[Measure1-Sum]">
+  <parentKpi href="_kpi_kpi1"/>
+</rolapcube:Kpi>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -53,7 +55,7 @@ In addition to its value, this KPI has a display folder defined, which includes 
 
 
 ```xml
-<roma:Kpi  id="_kpi_Kpi3" name="Kpi3" displayFolder="theDisplayFolder\otherDisplayFolder" value="[Measures].[Measure1-Sum]"/>
+<rolapcube:Kpi xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:rolapcube="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube" xmi:id="_kpi_kpi3" name="Kpi3" displayFolder="theDisplayFolder\otherDisplayFolder" value="[Measures].[Measure1-Sum]"/>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -63,14 +65,20 @@ This cube holds references to the KPI, and does not use any dimensions.
 
 
 ```xml
-<roma:PhysicalCube   id="_cube_CubeKpi" name="Cube Kpi" query="_query_factQuery">
-  <kpis id="_kpi_Kpi1" name="Kpi1" value="[Measures].[Measure1-Sum]"/>
-  <kpis id="_kpi_Kpi2" name="Kpi2" value="[Measures].[Measure1-Sum]" parentKpi="_kpi_Kpi1"/>
-  <kpis id="_kpi_Kpi3" name="Kpi3" displayFolder="theDisplayFolder\otherDisplayFolder" value="[Measures].[Measure1-Sum]"/>
-  <measureGroups>
-    <measures xsi:type="roma:SumMeasure" id="_measure_Measure1Sum" name="Measure1-Sum" column="_column_fact_value"/>
-  </measureGroups>
-</roma:PhysicalCube>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapcube="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube" xmlns:rolapmeas="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube/measure" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
+  <rolapcube:PhysicalCube xmi:id="_physicalcube_cube_kpi" name="Cube Kpi" query="_tablesource_fact">
+    <kpis xmi:id="_kpi_kpi1" name="Kpi1" value="[Measures].[Measure1-Sum]"/>
+    <kpis xmi:id="_kpi_kpi2" name="Kpi2" value="[Measures].[Measure1-Sum]" parentKpi="_kpi_kpi1"/>
+    <kpis xmi:id="_kpi_kpi3" name="Kpi3" displayFolder="theDisplayFolder\otherDisplayFolder" value="[Measures].[Measure1-Sum]"/>
+    <measureGroups xmi:id="_measuregroup">
+      <measures xsi:type="rolapmeas:SumMeasure" xmi:id="_summeasure_measure1_sum" name="Measure1-Sum" column="_column_fact_value"/>
+    </measureGroups>
+  </rolapcube:PhysicalCube>
+  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
+  <relational:Table xmi:id="_table_fact" name="Fact">
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE"/>
+  </relational:Table>
+</xmi:XMI>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -81,22 +89,23 @@ This file represents the complete definition of the catalog.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:Catalog description="Introduction to Key Performance Indicators" name="Daanse Tutorial - KPI Intro" cubes="_cube_CubeKpi" dbschemas="_databaseSchema_KpiIntro"/>
-  <roma:DatabaseSchema id="_databaseSchema_KpiIntro">
-    <tables xsi:type="roma:PhysicalTable" id="_table_fact" name="Fact">
-      <columns xsi:type="roma:PhysicalColumn" id="_column_fact_value" name="VALUE" type="Integer"/>
-    </tables>
-  </roma:DatabaseSchema>
-  <roma:TableQuery id="_query_factQuery" table="_table_fact"/>
-  <roma:PhysicalCube id="_cube_CubeKpi" name="Cube Kpi" query="_query_factQuery">
-    <kpis id="_kpi_Kpi1" name="Kpi1" value="[Measures].[Measure1-Sum]"/>
-    <kpis id="_kpi_Kpi2" name="Kpi2" value="[Measures].[Measure1-Sum]" parentKpi="_kpi_Kpi1"/>
-    <kpis id="_kpi_Kpi3" name="Kpi3" displayFolder="theDisplayFolder\otherDisplayFolder" value="[Measures].[Measure1-Sum]"/>
-    <measureGroups>
-      <measures xsi:type="roma:SumMeasure" id="_measure_Measure1Sum" name="Measure1-Sum" column="_column_fact_value"/>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapcat="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/catalog" xmlns:rolapcube="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube" xmlns:rolapmeas="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube/measure" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
+  <relational:SQLSimpleType xmi:id="_sqlsimpletype_integer" name="INTEGER" structuralFeature="_column_fact_value" typeNumber="4"/>
+  <rolapcat:Catalog xmi:id="_catalog_kpi_intro" description="Introduction to Key Performance Indicators" name="Daanse Tutorial - KPI Intro" cubes="_physicalcube_cube_kpi" dbschemas="_schema"/>
+  <relational:Schema xmi:id="_schema">
+    <ownedElement xsi:type="relational:Table" xmi:id="_table_fact" name="Fact">
+      <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE" type="_sqlsimpletype_integer"/>
+    </ownedElement>
+  </relational:Schema>
+  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
+  <rolapcube:PhysicalCube xmi:id="_physicalcube_cube_kpi" name="Cube Kpi" query="_tablesource_fact">
+    <kpis xmi:id="_kpi_kpi1" name="Kpi1" value="[Measures].[Measure1-Sum]"/>
+    <kpis xmi:id="_kpi_kpi2" name="Kpi2" value="[Measures].[Measure1-Sum]" parentKpi="_kpi_kpi1"/>
+    <kpis xmi:id="_kpi_kpi3" name="Kpi3" displayFolder="theDisplayFolder\otherDisplayFolder" value="[Measures].[Measure1-Sum]"/>
+    <measureGroups xmi:id="_measuregroup">
+      <measures xsi:type="rolapmeas:SumMeasure" xmi:id="_summeasure_measure1_sum" name="Measure1-Sum" column="_column_fact_value"/>
     </measureGroups>
-  </roma:PhysicalCube>
+  </rolapcube:PhysicalCube>
 </xmi:XMI>
 
 ```

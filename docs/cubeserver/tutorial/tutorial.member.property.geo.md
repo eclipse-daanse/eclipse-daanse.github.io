@@ -30,20 +30,20 @@ This normalized structure allows rich member properties while maintaining effici
 
 
 ```xml
-<roma:DatabaseSchema   id="_databaseSchema_main">
-  <tables xsi:type="roma:PhysicalTable" id="_table_fact" name="Fact">
-    <columns xsi:type="roma:PhysicalColumn" id="_column_fact_memberId" name="MEMBER_ID" type="Integer"/>
-    <columns xsi:type="roma:PhysicalColumn" id="_column_fact_value" name="VALUE" type="Decimal"/>
-  </tables>
-  <tables xsi:type="roma:PhysicalTable" id="_table_member" name="Member">
-    <columns xsi:type="roma:PhysicalColumn" id="_column_member_id" name="ID" type="Integer"/>
-    <columns xsi:type="roma:PhysicalColumn" id="_column_member_name" name="NAME"/>
-    <columns xsi:type="roma:PhysicalColumn" id="_column_member_location" name="LOCATION"/>
-    <columns xsi:type="roma:PhysicalColumn" id="_column_member_latitude" name="LATITUDE" type="Decimal"/>
-    <columns xsi:type="roma:PhysicalColumn" id="_column_member_longitude" name="LONGITUDE" type="Decimal"/>
-    <columns xsi:type="roma:PhysicalColumn" id="_column_member_description" name="DESCRIPTION"/>
-  </tables>
-</roma:DatabaseSchema>
+<relational:Schema xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmi:id="_schema">
+  <ownedElement xsi:type="relational:Table" xmi:id="_table_fact" name="Fact">
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_member_id" name="MEMBER_ID"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE"/>
+  </ownedElement>
+  <ownedElement xsi:type="relational:Table" xmi:id="_table_member" name="Member">
+    <feature xsi:type="relational:Column" xmi:id="_column_member_id" name="ID"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_member_name" name="NAME"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_member_location" name="LOCATION"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_member_latitude" name="LATITUDE"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_member_longitude" name="LONGITUDE"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_member_description" name="DESCRIPTION"/>
+  </ownedElement>
+</relational:Schema>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -53,7 +53,13 @@ Simple table query referencing the Fact table for measure data.
 
 
 ```xml
-<roma:TableQuery  id="_query_fact" table="_table_fact"/>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
+  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
+  <relational:Table xmi:id="_table_fact" name="Fact">
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_member_id" name="MEMBER_ID"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE"/>
+  </relational:Table>
+</xmi:XMI>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -63,7 +69,17 @@ Simple table query referencing the Member table for location data and properties
 
 
 ```xml
-<roma:TableQuery  id="_query_member" table="_table_member"/>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
+  <rolapsrc:TableSource xmi:id="_tablesource_member" table="_table_member"/>
+  <relational:Table xmi:id="_table_member" name="Member">
+    <feature xsi:type="relational:Column" xmi:id="_column_member_id" name="ID"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_member_name" name="NAME"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_member_location" name="LOCATION"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_member_latitude" name="LATITUDE"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_member_longitude" name="LONGITUDE"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_member_description" name="DESCRIPTION"/>
+  </relational:Table>
+</xmi:XMI>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -76,10 +92,26 @@ This allows the hierarchy to access member properties while the cube measures re
 
 
 ```xml
-<roma:JoinQuery  id="_query_factToMember">
-  <left key="_column_fact_memberId" query="_query_fact"/>
-  <right key="_column_member_id" query="_query_member"/>
-</roma:JoinQuery>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
+  <rolapsrc:JoinSource xmi:id="_joinsource">
+    <left xmi:id="_joinedqueryelement_member_id" key="_column_fact_member_id" query="_tablesource_fact"/>
+    <right xmi:id="_joinedqueryelement_id" key="_column_member_id" query="_tablesource_member"/>
+  </rolapsrc:JoinSource>
+  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
+  <rolapsrc:TableSource xmi:id="_tablesource_member" table="_table_member"/>
+  <relational:Table xmi:id="_table_member" name="Member">
+    <feature xsi:type="relational:Column" xmi:id="_column_member_id" name="ID"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_member_name" name="NAME"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_member_location" name="LOCATION"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_member_latitude" name="LATITUDE"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_member_longitude" name="LONGITUDE"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_member_description" name="DESCRIPTION"/>
+  </relational:Table>
+  <relational:Table xmi:id="_table_fact" name="Fact">
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_member_id" name="MEMBER_ID"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE"/>
+  </relational:Table>
+</xmi:XMI>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -90,7 +122,9 @@ This allows complex geographic shapes to be associated with each member for mapp
 
 
 ```xml
-<roma:MemberProperty  id="_memberProperty_location" name="Location" column="_column_member_location" propertyType="String"/>
+<rolaplev:MemberProperty xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmi:id="_memberproperty_location" name="Location" propertyType="String">
+  <column href="_column_member_location"/>
+</rolaplev:MemberProperty>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -100,7 +134,9 @@ The Latitude member property stores the decimal latitude coordinate as a numeric
 
 
 ```xml
-<roma:MemberProperty  id="_memberProperty_latitude" name="Latitude" column="_column_member_latitude" propertyType="Numeric"/>
+<rolaplev:MemberProperty xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmi:id="_memberproperty_latitude" name="Latitude" propertyType="Numeric">
+  <column href="_column_member_latitude"/>
+</rolaplev:MemberProperty>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -110,7 +146,9 @@ The Longitude member property stores the decimal longitude coordinate as a numer
 
 
 ```xml
-<roma:MemberProperty  id="_memberProperty_longitude" name="Longitude" column="_column_member_longitude" propertyType="Numeric"/>
+<rolaplev:MemberProperty xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmi:id="_memberproperty_longitude" name="Longitude" propertyType="Numeric">
+  <column href="_column_member_longitude"/>
+</rolaplev:MemberProperty>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -120,7 +158,9 @@ The Description member property provides additional contextual information about
 
 
 ```xml
-<roma:MemberProperty  id="_memberProperty_description" name="Description" column="_column_member_description" propertyType="String"/>
+<rolaplev:MemberProperty xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmi:id="_memberproperty_description" name="Description" propertyType="String">
+  <column href="_column_member_description"/>
+</rolaplev:MemberProperty>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -131,7 +171,10 @@ Multiple member properties are attached to provide rich geographic information f
 
 
 ```xml
-<roma:Level  id="_level_location" name="Location" column="_column_member_id" nameColumn="_column_member_name"/>
+<rolaplev:Level xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmi:id="_level_location" name="Location">
+  <column href="_column_member_id"/>
+  <nameColumn href="_column_member_name"/>
+</rolaplev:Level>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -142,7 +185,33 @@ The query joins the Member table to access both the level data and the member pr
 
 
 ```xml
-<roma:ExplicitHierarchy  id="_hierarchy_location" name="LocationHierarchy" primaryKey="_column_member_id" query="_query_factToMember" levels="_level_location"/>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
+  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_locationhierarchy" name="LocationHierarchy" primaryKey="_column_member_id" query="_joinsource" levels="_level_location"/>
+  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
+  <rolapsrc:TableSource xmi:id="_tablesource_member" table="_table_member"/>
+  <relational:Table xmi:id="_table_member" name="Member">
+    <feature xsi:type="relational:Column" xmi:id="_column_member_id" name="ID"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_member_name" name="NAME"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_member_location" name="LOCATION"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_member_latitude" name="LATITUDE"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_member_longitude" name="LONGITUDE"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_member_description" name="DESCRIPTION"/>
+  </relational:Table>
+  <rolaplev:Level xmi:id="_level_location" name="Location" column="_column_member_id" nameColumn="_column_member_name">
+    <memberProperties xmi:id="_memberproperty_location" name="Location" column="_column_member_location" propertyType="String"/>
+    <memberProperties xmi:id="_memberproperty_latitude" name="Latitude" column="_column_member_latitude" propertyType="Numeric"/>
+    <memberProperties xmi:id="_memberproperty_longitude" name="Longitude" column="_column_member_longitude" propertyType="Numeric"/>
+    <memberProperties xmi:id="_memberproperty_description" name="Description" column="_column_member_description" propertyType="String"/>
+  </rolaplev:Level>
+  <rolapsrc:JoinSource xmi:id="_joinsource">
+    <left xmi:id="_joinedqueryelement_member_id" key="_column_fact_member_id" query="_tablesource_fact"/>
+    <right xmi:id="_joinedqueryelement_id" key="_column_member_id" query="_tablesource_member"/>
+  </rolapsrc:JoinSource>
+  <relational:Table xmi:id="_table_fact" name="Fact">
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_member_id" name="MEMBER_ID"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE"/>
+  </relational:Table>
+</xmi:XMI>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -152,7 +221,34 @@ The Location dimension contains one hierarchy with geographic member properties.
 
 
 ```xml
-<roma:StandardDimension  id="_dimension_location" name="Location" hierarchies="roma:ExplicitHierarchy _hierarchy_location"/>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapdim="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
+  <rolapdim:StandardDimension xmi:id="_standarddimension_location" name="Location" hierarchies="_explicithierarchy_locationhierarchy"/>
+  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
+  <rolapsrc:TableSource xmi:id="_tablesource_member" table="_table_member"/>
+  <relational:Table xmi:id="_table_member" name="Member">
+    <feature xsi:type="relational:Column" xmi:id="_column_member_id" name="ID"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_member_name" name="NAME"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_member_location" name="LOCATION"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_member_latitude" name="LATITUDE"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_member_longitude" name="LONGITUDE"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_member_description" name="DESCRIPTION"/>
+  </relational:Table>
+  <rolaplev:Level xmi:id="_level_location" name="Location" column="_column_member_id" nameColumn="_column_member_name">
+    <memberProperties xmi:id="_memberproperty_location" name="Location" column="_column_member_location" propertyType="String"/>
+    <memberProperties xmi:id="_memberproperty_latitude" name="Latitude" column="_column_member_latitude" propertyType="Numeric"/>
+    <memberProperties xmi:id="_memberproperty_longitude" name="Longitude" column="_column_member_longitude" propertyType="Numeric"/>
+    <memberProperties xmi:id="_memberproperty_description" name="Description" column="_column_member_description" propertyType="String"/>
+  </rolaplev:Level>
+  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_locationhierarchy" name="LocationHierarchy" primaryKey="_column_member_id" query="_joinsource" levels="_level_location"/>
+  <rolapsrc:JoinSource xmi:id="_joinsource">
+    <left xmi:id="_joinedqueryelement_member_id" key="_column_fact_member_id" query="_tablesource_fact"/>
+    <right xmi:id="_joinedqueryelement_id" key="_column_member_id" query="_tablesource_member"/>
+  </rolapsrc:JoinSource>
+  <relational:Table xmi:id="_table_fact" name="Fact">
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_member_id" name="MEMBER_ID"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE"/>
+  </relational:Table>
+</xmi:XMI>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -163,12 +259,40 @@ via a join query. The DimensionConnector uses MEMBER_ID as the foreign key to li
 
 
 ```xml
-<roma:PhysicalCube   id="_cube_geographic" name="Geographic Analysis" query="_query_fact">
-  <dimensionConnectors foreignKey="roma:PhysicalColumn _column_fact_memberId" dimension="roma:StandardDimension _dimension_location" id="_dimensionConnector_location"/>
-  <measureGroups>
-    <measures xsi:type="roma:SumMeasure" id="_measure_totalValue" name="TotalValue" column="_column_fact_value"/>
-  </measureGroups>
-</roma:PhysicalCube>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapcube="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube" xmlns:rolapdim="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapmeas="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube/measure" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
+  <rolapcube:PhysicalCube xmi:id="_physicalcube_geographic_analysis" name="Geographic Analysis" query="_tablesource_fact">
+    <dimensionConnectors xmi:id="_dimensionconnector_location" foreignKey="_column_fact_member_id" dimension="_standarddimension_location"/>
+    <measureGroups xmi:id="_measuregroup">
+      <measures xsi:type="rolapmeas:SumMeasure" xmi:id="_summeasure_totalvalue" name="TotalValue" column="_column_fact_value"/>
+    </measureGroups>
+  </rolapcube:PhysicalCube>
+  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
+  <rolapsrc:TableSource xmi:id="_tablesource_member" table="_table_member"/>
+  <rolaplev:Level xmi:id="_level_location" name="Location" column="_column_member_id" nameColumn="_column_member_name">
+    <memberProperties xmi:id="_memberproperty_location" name="Location" column="_column_member_location" propertyType="String"/>
+    <memberProperties xmi:id="_memberproperty_latitude" name="Latitude" column="_column_member_latitude" propertyType="Numeric"/>
+    <memberProperties xmi:id="_memberproperty_longitude" name="Longitude" column="_column_member_longitude" propertyType="Numeric"/>
+    <memberProperties xmi:id="_memberproperty_description" name="Description" column="_column_member_description" propertyType="String"/>
+  </rolaplev:Level>
+  <relational:Table xmi:id="_table_fact" name="Fact">
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_member_id" name="MEMBER_ID"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE"/>
+  </relational:Table>
+  <rolapdim:StandardDimension xmi:id="_standarddimension_location" name="Location" hierarchies="_explicithierarchy_locationhierarchy"/>
+  <relational:Table xmi:id="_table_member" name="Member">
+    <feature xsi:type="relational:Column" xmi:id="_column_member_id" name="ID"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_member_name" name="NAME"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_member_location" name="LOCATION"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_member_latitude" name="LATITUDE"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_member_longitude" name="LONGITUDE"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_member_description" name="DESCRIPTION"/>
+  </relational:Table>
+  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_locationhierarchy" name="LocationHierarchy" primaryKey="_column_member_id" query="_joinsource" levels="_level_location"/>
+  <rolapsrc:JoinSource xmi:id="_joinsource">
+    <left xmi:id="_joinedqueryelement_member_id" key="_column_fact_member_id" query="_tablesource_fact"/>
+    <right xmi:id="_joinedqueryelement_id" key="_column_member_id" query="_tablesource_member"/>
+  </rolapsrc:JoinSource>
+</xmi:XMI>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -179,42 +303,45 @@ This file represents the complete definition of the catalog.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roma="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping">
-  <roma:Catalog description="Tutorial showing member properties with location data across multiple tables" name="Daanse Tutorial - Member Properties with Geographic Data" cubes="_cube_geographic" dbschemas="_databaseSchema_main"/>
-  <roma:DatabaseSchema id="_databaseSchema_main">
-    <tables xsi:type="roma:PhysicalTable" id="_table_fact" name="Fact">
-      <columns xsi:type="roma:PhysicalColumn" id="_column_fact_memberId" name="MEMBER_ID" type="Integer"/>
-      <columns xsi:type="roma:PhysicalColumn" id="_column_fact_value" name="VALUE" type="Decimal"/>
-    </tables>
-    <tables xsi:type="roma:PhysicalTable" id="_table_member" name="Member">
-      <columns xsi:type="roma:PhysicalColumn" id="_column_member_id" name="ID" type="Integer"/>
-      <columns xsi:type="roma:PhysicalColumn" id="_column_member_name" name="NAME"/>
-      <columns xsi:type="roma:PhysicalColumn" id="_column_member_location" name="LOCATION"/>
-      <columns xsi:type="roma:PhysicalColumn" id="_column_member_latitude" name="LATITUDE" type="Decimal"/>
-      <columns xsi:type="roma:PhysicalColumn" id="_column_member_longitude" name="LONGITUDE" type="Decimal"/>
-      <columns xsi:type="roma:PhysicalColumn" id="_column_member_description" name="DESCRIPTION"/>
-    </tables>
-  </roma:DatabaseSchema>
-  <roma:TableQuery id="_query_fact" table="_table_fact"/>
-  <roma:TableQuery id="_query_member" table="_table_member"/>
-  <roma:JoinQuery id="_query_factToMember">
-    <left key="_column_fact_memberId" query="_query_fact"/>
-    <right key="_column_member_id" query="_query_member"/>
-  </roma:JoinQuery>
-  <roma:Level id="_level_location" name="Location" column="_column_member_id" nameColumn="_column_member_name">
-    <memberProperties id="_memberProperty_location" name="Location" column="_column_member_location" propertyType="String"/>
-    <memberProperties id="_memberProperty_latitude" name="Latitude" column="_column_member_latitude" propertyType="Numeric"/>
-    <memberProperties id="_memberProperty_longitude" name="Longitude" column="_column_member_longitude" propertyType="Numeric"/>
-    <memberProperties id="_memberProperty_description" name="Description" column="_column_member_description" propertyType="String"/>
-  </roma:Level>
-  <roma:ExplicitHierarchy id="_hierarchy_location" name="LocationHierarchy" primaryKey="_column_member_id" query="_query_factToMember" levels="_level_location"/>
-  <roma:StandardDimension id="_dimension_location" name="Location" hierarchies="_hierarchy_location"/>
-  <roma:PhysicalCube id="_cube_geographic" name="Geographic Analysis" query="_query_fact">
-    <dimensionConnectors foreignKey="_column_fact_memberId" dimension="_dimension_location" id="_dimensionConnector_location"/>
-    <measureGroups>
-      <measures xsi:type="roma:SumMeasure" id="_measure_totalValue" name="TotalValue" column="_column_fact_value"/>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapcat="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/catalog" xmlns:rolapcube="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube" xmlns:rolapdim="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapmeas="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube/measure" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
+  <relational:SQLSimpleType xmi:id="_sqlsimpletype_integer" name="INTEGER" structuralFeature="_column_member_id _column_fact_member_id" typeNumber="4"/>
+  <relational:SQLSimpleType xmi:id="_sqlsimpletype_character_varying" name="CHARACTER VARYING" structuralFeature="_column_member_description _column_member_name _column_member_location" typeNumber="12"/>
+  <relational:SQLSimpleType xmi:id="_sqlsimpletype_decimal" name="DECIMAL" structuralFeature="_column_member_latitude _column_fact_value _column_member_longitude" typeNumber="3" numericPrecision="18" numericPrecisionRadix="10" numericScale="4"/>
+  <rolapcat:Catalog xmi:id="_catalog_member_properties_with_geographic_data" description="Tutorial showing member properties with location data across multiple tables" name="Daanse Tutorial - Member Properties with Geographic Data" cubes="_physicalcube_geographic_analysis" dbschemas="_schema"/>
+  <relational:Schema xmi:id="_schema">
+    <ownedElement xsi:type="relational:Table" xmi:id="_table_fact" name="Fact">
+      <feature xsi:type="relational:Column" xmi:id="_column_fact_member_id" name="MEMBER_ID" type="_sqlsimpletype_integer"/>
+      <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE" type="_sqlsimpletype_decimal"/>
+    </ownedElement>
+    <ownedElement xsi:type="relational:Table" xmi:id="_table_member" name="Member">
+      <feature xsi:type="relational:Column" xmi:id="_column_member_id" name="ID" type="_sqlsimpletype_integer"/>
+      <feature xsi:type="relational:Column" xmi:id="_column_member_name" name="NAME" type="_sqlsimpletype_character_varying"/>
+      <feature xsi:type="relational:Column" xmi:id="_column_member_location" name="LOCATION" type="_sqlsimpletype_character_varying"/>
+      <feature xsi:type="relational:Column" xmi:id="_column_member_latitude" name="LATITUDE" type="_sqlsimpletype_decimal"/>
+      <feature xsi:type="relational:Column" xmi:id="_column_member_longitude" name="LONGITUDE" type="_sqlsimpletype_decimal"/>
+      <feature xsi:type="relational:Column" xmi:id="_column_member_description" name="DESCRIPTION" type="_sqlsimpletype_character_varying"/>
+    </ownedElement>
+  </relational:Schema>
+  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
+  <rolapsrc:TableSource xmi:id="_tablesource_member" table="_table_member"/>
+  <rolapsrc:JoinSource xmi:id="_joinsource">
+    <left xmi:id="_joinedqueryelement_member_id" key="_column_fact_member_id" query="_tablesource_fact"/>
+    <right xmi:id="_joinedqueryelement_id" key="_column_member_id" query="_tablesource_member"/>
+  </rolapsrc:JoinSource>
+  <rolaplev:Level xmi:id="_level_location" name="Location" column="_column_member_id" nameColumn="_column_member_name">
+    <memberProperties xmi:id="_memberproperty_location" name="Location" column="_column_member_location" propertyType="String"/>
+    <memberProperties xmi:id="_memberproperty_latitude" name="Latitude" column="_column_member_latitude" propertyType="Numeric"/>
+    <memberProperties xmi:id="_memberproperty_longitude" name="Longitude" column="_column_member_longitude" propertyType="Numeric"/>
+    <memberProperties xmi:id="_memberproperty_description" name="Description" column="_column_member_description" propertyType="String"/>
+  </rolaplev:Level>
+  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_locationhierarchy" name="LocationHierarchy" primaryKey="_column_member_id" query="_joinsource" levels="_level_location"/>
+  <rolapdim:StandardDimension xmi:id="_standarddimension_location" name="Location" hierarchies="_explicithierarchy_locationhierarchy"/>
+  <rolapcube:PhysicalCube xmi:id="_physicalcube_geographic_analysis" name="Geographic Analysis" query="_tablesource_fact">
+    <dimensionConnectors xmi:id="_dimensionconnector_location" foreignKey="_column_fact_member_id" dimension="_standarddimension_location"/>
+    <measureGroups xmi:id="_measuregroup">
+      <measures xsi:type="rolapmeas:SumMeasure" xmi:id="_summeasure_totalvalue" name="TotalValue" column="_column_fact_value"/>
     </measureGroups>
-  </roma:PhysicalCube>
+  </rolapcube:PhysicalCube>
 </xmi:XMI>
 
 ```
