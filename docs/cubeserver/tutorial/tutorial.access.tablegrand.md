@@ -51,7 +51,7 @@ The cube1 is defined by the DimensionConnector1 and the DimensionConnector2  and
 
 ```xml
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapcube="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube" xmlns:rolapmeas="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube/measure" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
-  <rolapcube:PhysicalCube xmi:id="_physicalcube_cube1" name="Cube1" query="_tablesource_fact">
+  <rolapcube:PhysicalCube xmi:id="_physicalcube_cube1" name="Cube1" source="_tablesource_fact">
     <measureGroups xmi:id="_measuregroup">
       <measures xsi:type="rolapmeas:SumMeasure" xmi:id="_summeasure_measure1" name="Measure1" column="_column_fact_value"/>
     </measureGroups>
@@ -161,14 +161,14 @@ This file represents the complete definition of the catalog.
     </ownedElement>
   </relational:Schema>
   <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
-  <rolapcube:PhysicalCube xmi:id="_physicalcube_cube1" name="Cube1" query="_tablesource_fact">
+  <rolapcube:PhysicalCube xmi:id="_physicalcube_cube1" name="Cube1" source="_tablesource_fact">
     <measureGroups xmi:id="_measuregroup">
       <measures xsi:type="rolapmeas:SumMeasure" xmi:id="_summeasure_measure1" name="Measure1" column="_column_fact_value"/>
     </measureGroups>
   </rolapcube:PhysicalCube>
   <rolapcacc:AccessRole xmi:id="_accessrole_rolenone" name="roleNone">
     <accessCatalogGrants xmi:id="_accesscataloggrant" catalogAccess="all">
-      <cubeGrants xmi:id="_accesscubegrant_cube1" cubeAccess="all" cube="_physicalcube_cube1"/>
+      <cubeGrants xmi:id="_accesscubegrant_cube1_1" cubeAccess="all" cube="_physicalcube_cube1"/>
       <databaseSchemaGrants xmi:id="_accessdatabaseschemagrant_1" databaseSchemaAccess="custom" databaseSchema="_schema">
         <tableGrants xmi:id="_accesstablegrant_fact_1" table="_table_fact"/>
       </databaseSchemaGrants>
@@ -176,7 +176,7 @@ This file represents the complete definition of the catalog.
   </rolapcacc:AccessRole>
   <rolapcacc:AccessRole xmi:id="_accessrole_roleall" name="roleAll">
     <accessCatalogGrants xmi:id="_accesscataloggrant_1" catalogAccess="all">
-      <cubeGrants xmi:id="_accesscubegrant_cube1_1" cubeAccess="all" cube="_physicalcube_cube1"/>
+      <cubeGrants xmi:id="_accesscubegrant_cube1" cubeAccess="all" cube="_physicalcube_cube1"/>
       <databaseSchemaGrants xmi:id="_accessdatabaseschemagrant" databaseSchemaAccess="custom" databaseSchema="_schema">
         <tableGrants xmi:id="_accesstablegrant_fact" tableAccess="all" table="_table_fact"/>
       </databaseSchemaGrants>

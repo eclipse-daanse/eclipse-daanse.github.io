@@ -78,14 +78,14 @@ Elements items with PARENT = 'All' are root elements in the tree
 
 ```xml
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
-  <rolaphier:ParentChildHierarchy xmi:id="_parentchildhierarchy_hierarchy" name="Hierarchy" allMemberName="All" primaryKey="_column_parent_name" query="_tablesource_parent" nullParentValue="all" parentColumn="_column_parent_parent" level="_level_name"/>
-  <rolapsrc:TableSource xmi:id="_tablesource_parent" table="_table_parent"/>
+  <rolaphier:ParentChildHierarchy xmi:id="_parentchildhierarchy_hierarchy" name="Hierarchy" allMemberName="All" primaryKey="_column_parent_name" source="_tablesource_parent" nullParentValue="all" parentColumn="_column_parent_parent" level="_level_name"/>
+  <rolaplev:Level xmi:id="_level_name" name="Name" column="_column_parent_name" nameColumn="_column_parent_name" uniqueMembers="true"/>
   <relational:Table xmi:id="_table_parent" name="Parent">
     <feature xsi:type="relational:Column" xmi:id="_column_parent_name" name="NAME"/>
     <feature xsi:type="relational:Column" xmi:id="_column_parent_parent" name="PARENT"/>
     <feature xsi:type="relational:Column" xmi:id="_column_parent_value" name="VALUE"/>
   </relational:Table>
-  <rolaplev:Level xmi:id="_level_name" name="Name" column="_column_parent_name" nameColumn="_column_parent_name" uniqueMembers="true"/>
+  <rolapsrc:TableSource xmi:id="_tablesource_parent" table="_table_parent"/>
 </xmi:XMI>
 
 ```
@@ -98,14 +98,14 @@ The time dimension is defined with the one hierarchy.
 ```xml
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapdim="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
   <rolapdim:StandardDimension xmi:id="_standarddimension_dimension" name="Dimension" hierarchies="_parentchildhierarchy_hierarchy"/>
-  <rolapsrc:TableSource xmi:id="_tablesource_parent" table="_table_parent"/>
+  <rolaphier:ParentChildHierarchy xmi:id="_parentchildhierarchy_hierarchy" name="Hierarchy" allMemberName="All" primaryKey="_column_parent_name" source="_tablesource_parent" nullParentValue="all" parentColumn="_column_parent_parent" level="_level_name"/>
+  <rolaplev:Level xmi:id="_level_name" name="Name" column="_column_parent_name" nameColumn="_column_parent_name" uniqueMembers="true"/>
   <relational:Table xmi:id="_table_parent" name="Parent">
     <feature xsi:type="relational:Column" xmi:id="_column_parent_name" name="NAME"/>
     <feature xsi:type="relational:Column" xmi:id="_column_parent_parent" name="PARENT"/>
     <feature xsi:type="relational:Column" xmi:id="_column_parent_value" name="VALUE"/>
   </relational:Table>
-  <rolaphier:ParentChildHierarchy xmi:id="_parentchildhierarchy_hierarchy" name="Hierarchy" allMemberName="All" primaryKey="_column_parent_name" query="_tablesource_parent" nullParentValue="all" parentColumn="_column_parent_parent" level="_level_name"/>
-  <rolaplev:Level xmi:id="_level_name" name="Name" column="_column_parent_name" nameColumn="_column_parent_name" uniqueMembers="true"/>
+  <rolapsrc:TableSource xmi:id="_tablesource_parent" table="_table_parent"/>
 </xmi:XMI>
 
 ```
@@ -117,21 +117,21 @@ The cube with Parent Child Hierarchy.
 
 ```xml
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapcube="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube" xmlns:rolapdim="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapmeas="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube/measure" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
-  <rolapcube:PhysicalCube xmi:id="_physicalcube_cube" name="Cube" query="_tablesource_parent">
+  <rolapcube:PhysicalCube xmi:id="_physicalcube_cube" name="Cube" source="_tablesource_parent">
     <dimensionConnectors xmi:id="_dimensionconnector_dimension" foreignKey="_column_parent_name" dimension="_standarddimension_dimension" overrideDimensionName="Dimension"/>
     <measureGroups xmi:id="_measuregroup">
       <measures xsi:type="rolapmeas:SumMeasure" xmi:id="_summeasure_value" name="Value" column="_column_parent_value"/>
     </measureGroups>
   </rolapcube:PhysicalCube>
+  <rolaphier:ParentChildHierarchy xmi:id="_parentchildhierarchy_hierarchy" name="Hierarchy" allMemberName="All" primaryKey="_column_parent_name" source="_tablesource_parent" nullParentValue="all" parentColumn="_column_parent_parent" level="_level_name"/>
   <rolaplev:Level xmi:id="_level_name" name="Name" column="_column_parent_name" nameColumn="_column_parent_name" uniqueMembers="true"/>
-  <rolapsrc:TableSource xmi:id="_tablesource_parent" table="_table_parent"/>
+  <rolapdim:StandardDimension xmi:id="_standarddimension_dimension" name="Dimension" hierarchies="_parentchildhierarchy_hierarchy"/>
   <relational:Table xmi:id="_table_parent" name="Parent">
     <feature xsi:type="relational:Column" xmi:id="_column_parent_name" name="NAME"/>
     <feature xsi:type="relational:Column" xmi:id="_column_parent_parent" name="PARENT"/>
     <feature xsi:type="relational:Column" xmi:id="_column_parent_value" name="VALUE"/>
   </relational:Table>
-  <rolaphier:ParentChildHierarchy xmi:id="_parentchildhierarchy_hierarchy" name="Hierarchy" allMemberName="All" primaryKey="_column_parent_name" query="_tablesource_parent" nullParentValue="all" parentColumn="_column_parent_parent" level="_level_name"/>
-  <rolapdim:StandardDimension xmi:id="_standarddimension_dimension" name="Dimension" hierarchies="_parentchildhierarchy_hierarchy"/>
+  <rolapsrc:TableSource xmi:id="_tablesource_parent" table="_table_parent"/>
 </xmi:XMI>
 
 ```
@@ -156,9 +156,9 @@ This file represents the complete definition of the catalog.
   </relational:Schema>
   <rolapsrc:TableSource xmi:id="_tablesource_parent" table="_table_parent"/>
   <rolaplev:Level xmi:id="_level_name" name="Name" column="_column_parent_name" nameColumn="_column_parent_name" uniqueMembers="true"/>
-  <rolaphier:ParentChildHierarchy xmi:id="_parentchildhierarchy_hierarchy" name="Hierarchy" allMemberName="All" primaryKey="_column_parent_name" query="_tablesource_parent" nullParentValue="all" parentColumn="_column_parent_parent" level="_level_name"/>
+  <rolaphier:ParentChildHierarchy xmi:id="_parentchildhierarchy_hierarchy" name="Hierarchy" allMemberName="All" primaryKey="_column_parent_name" source="_tablesource_parent" nullParentValue="all" parentColumn="_column_parent_parent" level="_level_name"/>
   <rolapdim:StandardDimension xmi:id="_standarddimension_dimension" name="Dimension" hierarchies="_parentchildhierarchy_hierarchy"/>
-  <rolapcube:PhysicalCube xmi:id="_physicalcube_cube" name="Cube" query="_tablesource_parent">
+  <rolapcube:PhysicalCube xmi:id="_physicalcube_cube" name="Cube" source="_tablesource_parent">
     <dimensionConnectors xmi:id="_dimensionconnector_dimension" foreignKey="_column_parent_name" dimension="_standarddimension_dimension" overrideDimensionName="Dimension"/>
     <measureGroups xmi:id="_measuregroup">
       <measures xsi:type="rolapmeas:SumMeasure" xmi:id="_summeasure_value" name="Value" column="_column_parent_value"/>

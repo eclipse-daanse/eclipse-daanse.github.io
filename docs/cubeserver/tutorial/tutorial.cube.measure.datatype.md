@@ -62,17 +62,17 @@ If the `datatype` attribute is not explicitly defined, the data type is determin
 
 ```xml
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapcube="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube" xmlns:rolapmeas="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube/measure" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
-  <rolapcube:PhysicalCube xmi:id="_physicalcube_measuresdatatypecube" name="MeasuresDatatypeCube" query="_tablesource_fact">
+  <rolapcube:PhysicalCube xmi:id="_physicalcube_measuresdatatypecube" name="MeasuresDatatypeCube" source="_tablesource_fact">
     <measureGroups xmi:id="_measuregroup">
       <measures xsi:type="rolapmeas:SumMeasure" xmi:id="_summeasure_measure_datatype_integer" name="Measure - Datatype Integer" dataType="Integer" column="_column_fact_value"/>
       <measures xsi:type="rolapmeas:SumMeasure" xmi:id="_summeasure_measure_datatype_numeric" name="Measure - Datatype Numeric" dataType="Numeric" column="_column_fact_value"/>
     </measureGroups>
   </rolapcube:PhysicalCube>
+  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
   <relational:Table xmi:id="_table_fact" name="Fact">
     <feature xsi:type="relational:Column" xmi:id="_column_fact_key" name="KEY"/>
     <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE"/>
   </relational:Table>
-  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
 </xmi:XMI>
 
 ```
@@ -95,7 +95,7 @@ This file represents the complete definition of the catalog.
     </ownedElement>
   </relational:Schema>
   <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
-  <rolapcube:PhysicalCube xmi:id="_physicalcube_measuresdatatypecube" name="MeasuresDatatypeCube" query="_tablesource_fact">
+  <rolapcube:PhysicalCube xmi:id="_physicalcube_measuresdatatypecube" name="MeasuresDatatypeCube" source="_tablesource_fact">
     <measureGroups xmi:id="_measuregroup">
       <measures xsi:type="rolapmeas:SumMeasure" xmi:id="_summeasure_measure_datatype_integer" name="Measure - Datatype Integer" dataType="Integer" column="_column_fact_value"/>
       <measures xsi:type="rolapmeas:SumMeasure" xmi:id="_summeasure_measure_datatype_numeric" name="Measure - Datatype Numeric" dataType="Numeric" column="_column_fact_value"/>

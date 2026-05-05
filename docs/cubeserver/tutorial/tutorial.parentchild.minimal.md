@@ -94,7 +94,7 @@ definition that describes the properties and behavior of all members regardless 
 
 ```xml
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
-  <rolaphier:ParentChildHierarchy xmi:id="_parentchildhierarchy_hierarchy1" name="Hierarchy1" primaryKey="_column_hier_one_top_member_key" query="_tablesource_hier_one_top_member" parentColumn="_column_hier_one_top_member_parent_key" level="_level_level"/>
+  <rolaphier:ParentChildHierarchy xmi:id="_parentchildhierarchy_hierarchy1" name="Hierarchy1" primaryKey="_column_hier_one_top_member_key" source="_tablesource_hier_one_top_member" parentColumn="_column_hier_one_top_member_parent_key" level="_level_level"/>
   <relational:Table xmi:id="_table_hier_one_top_member" name="Hier_One_Top_Member">
     <feature xsi:type="relational:Column" xmi:id="_column_hier_one_top_member_key" name="KEY"/>
     <feature xsi:type="relational:Column" xmi:id="_column_hier_one_top_member_name" name="NAME"/>
@@ -119,9 +119,9 @@ The time dimension is defined with the one hierarchy.
     <feature xsi:type="relational:Column" xmi:id="_column_hier_one_top_member_name" name="NAME"/>
     <feature xsi:type="relational:Column" xmi:id="_column_hier_one_top_member_parent_key" name="PARENT_KEY"/>
   </relational:Table>
+  <rolaphier:ParentChildHierarchy xmi:id="_parentchildhierarchy_hierarchy1" name="Hierarchy1" primaryKey="_column_hier_one_top_member_key" source="_tablesource_hier_one_top_member" parentColumn="_column_hier_one_top_member_parent_key" level="_level_level"/>
   <rolaplev:Level xmi:id="_level_level" name="Level" column="_column_hier_one_top_member_key" nameColumn="_column_hier_one_top_member_name" uniqueMembers="true"/>
   <rolapsrc:TableSource xmi:id="_tablesource_hier_one_top_member" table="_table_hier_one_top_member"/>
-  <rolaphier:ParentChildHierarchy xmi:id="_parentchildhierarchy_hierarchy1" name="Hierarchy1" primaryKey="_column_hier_one_top_member_key" query="_tablesource_hier_one_top_member" parentColumn="_column_hier_one_top_member_parent_key" level="_level_level"/>
 </xmi:XMI>
 
 ```
@@ -133,26 +133,26 @@ The cube with Parent Child Hierarchy.
 
 ```xml
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapcube="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube" xmlns:rolapdim="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapmeas="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube/measure" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
-  <rolapcube:PhysicalCube xmi:id="_physicalcube_cube" name="Cube" query="_tablesource_fact">
+  <rolapcube:PhysicalCube xmi:id="_physicalcube_cube" name="Cube" source="_tablesource_fact">
     <dimensionConnectors xmi:id="_dimensionconnector_dimension1" foreignKey="_column_fact_dim_key" dimension="_standarddimension_dimension1" overrideDimensionName="Dimension1"/>
     <measureGroups xmi:id="_measuregroup">
       <measures xsi:type="rolapmeas:SumMeasure" xmi:id="_summeasure_measure1" name="Measure1" column="_column_fact_value"/>
     </measureGroups>
   </rolapcube:PhysicalCube>
-  <rolapdim:StandardDimension xmi:id="_standarddimension_dimension1" name="Dimension1" hierarchies="_parentchildhierarchy_hierarchy1"/>
   <relational:Table xmi:id="_table_hier_one_top_member" name="Hier_One_Top_Member">
     <feature xsi:type="relational:Column" xmi:id="_column_hier_one_top_member_key" name="KEY"/>
     <feature xsi:type="relational:Column" xmi:id="_column_hier_one_top_member_name" name="NAME"/>
     <feature xsi:type="relational:Column" xmi:id="_column_hier_one_top_member_parent_key" name="PARENT_KEY"/>
   </relational:Table>
+  <rolaphier:ParentChildHierarchy xmi:id="_parentchildhierarchy_hierarchy1" name="Hierarchy1" primaryKey="_column_hier_one_top_member_key" source="_tablesource_hier_one_top_member" parentColumn="_column_hier_one_top_member_parent_key" level="_level_level"/>
+  <rolaplev:Level xmi:id="_level_level" name="Level" column="_column_hier_one_top_member_key" nameColumn="_column_hier_one_top_member_name" uniqueMembers="true"/>
+  <rolapsrc:TableSource xmi:id="_tablesource_hier_one_top_member" table="_table_hier_one_top_member"/>
+  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
+  <rolapdim:StandardDimension xmi:id="_standarddimension_dimension1" name="Dimension1" hierarchies="_parentchildhierarchy_hierarchy1"/>
   <relational:Table xmi:id="_table_fact" name="Fact">
     <feature xsi:type="relational:Column" xmi:id="_column_fact_dim_key" name="DIM_KEY"/>
     <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE"/>
   </relational:Table>
-  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
-  <rolaplev:Level xmi:id="_level_level" name="Level" column="_column_hier_one_top_member_key" nameColumn="_column_hier_one_top_member_name" uniqueMembers="true"/>
-  <rolapsrc:TableSource xmi:id="_tablesource_hier_one_top_member" table="_table_hier_one_top_member"/>
-  <rolaphier:ParentChildHierarchy xmi:id="_parentchildhierarchy_hierarchy1" name="Hierarchy1" primaryKey="_column_hier_one_top_member_key" query="_tablesource_hier_one_top_member" parentColumn="_column_hier_one_top_member_parent_key" level="_level_level"/>
 </xmi:XMI>
 
 ```
@@ -165,7 +165,7 @@ This file represents the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapcat="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/catalog" xmlns:rolapcube="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube" xmlns:rolapdim="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapmeas="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube/measure" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
-  <relational:SQLSimpleType xmi:id="_sqlsimpletype_integer" name="INTEGER" structuralFeature="_column_hier_one_top_member_key _column_fact_value _column_fact_dim_key _column_hier_one_top_member_parent_key" typeNumber="4"/>
+  <relational:SQLSimpleType xmi:id="_sqlsimpletype_integer" name="INTEGER" structuralFeature="_column_hier_one_top_member_key _column_fact_dim_key _column_hier_one_top_member_parent_key _column_fact_value" typeNumber="4"/>
   <relational:SQLSimpleType xmi:id="_sqlsimpletype_character_varying" name="CHARACTER VARYING" structuralFeature="_column_hier_one_top_member_name" typeNumber="12"/>
   <rolapcat:Catalog xmi:id="_catalog_parent_child_minimal" description="Minimal parent-child hierarchy" name="Daanse Tutorial - Parent Child Minimal" cubes="_physicalcube_cube" dbschemas="_schema"/>
   <relational:Schema xmi:id="_schema">
@@ -182,9 +182,9 @@ This file represents the complete definition of the catalog.
   <rolapsrc:TableSource xmi:id="_tablesource_hier_one_top_member" table="_table_hier_one_top_member"/>
   <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
   <rolaplev:Level xmi:id="_level_level" name="Level" column="_column_hier_one_top_member_key" nameColumn="_column_hier_one_top_member_name" uniqueMembers="true"/>
-  <rolaphier:ParentChildHierarchy xmi:id="_parentchildhierarchy_hierarchy1" name="Hierarchy1" primaryKey="_column_hier_one_top_member_key" query="_tablesource_hier_one_top_member" parentColumn="_column_hier_one_top_member_parent_key" level="_level_level"/>
+  <rolaphier:ParentChildHierarchy xmi:id="_parentchildhierarchy_hierarchy1" name="Hierarchy1" primaryKey="_column_hier_one_top_member_key" source="_tablesource_hier_one_top_member" parentColumn="_column_hier_one_top_member_parent_key" level="_level_level"/>
   <rolapdim:StandardDimension xmi:id="_standarddimension_dimension1" name="Dimension1" hierarchies="_parentchildhierarchy_hierarchy1"/>
-  <rolapcube:PhysicalCube xmi:id="_physicalcube_cube" name="Cube" query="_tablesource_fact">
+  <rolapcube:PhysicalCube xmi:id="_physicalcube_cube" name="Cube" source="_tablesource_fact">
     <dimensionConnectors xmi:id="_dimensionconnector_dimension1" foreignKey="_column_fact_dim_key" dimension="_standarddimension_dimension1" overrideDimensionName="Dimension1"/>
     <measureGroups xmi:id="_measuregroup">
       <measures xsi:type="rolapmeas:SumMeasure" xmi:id="_summeasure_measure1" name="Measure1" column="_column_fact_value"/>

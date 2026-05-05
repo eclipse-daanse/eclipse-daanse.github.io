@@ -72,7 +72,7 @@ This cube holds references to the KPI, and does not use any dimensions.
 
 ```xml
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapcube="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube" xmlns:rolapmeas="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube/measure" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
-  <rolapcube:PhysicalCube xmi:id="_physicalcube_cube_kpi" name="Cube Kpi" query="_tablesource_fact">
+  <rolapcube:PhysicalCube xmi:id="_physicalcube_cube_kpi" name="Cube Kpi" source="_tablesource_fact">
     <kpis xmi:id="_kpi_kpi1" name="Kpi1" value="[Measures].[Measure1-Sum]" parentKpi="_kpi_kpi3"/>
     <kpis xmi:id="_kpi_kpi2" name="Kpi2" value="[Measures].[Measure1-Sum]" parentKpi="_kpi_kpi1"/>
     <kpis xmi:id="_kpi_kpi3" name="Kpi3" value="[Measures].[Measure1-Sum]" parentKpi="_kpi_kpi1"/>
@@ -104,7 +104,7 @@ This file represents the complete definition of the catalog.
     </ownedElement>
   </relational:Schema>
   <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
-  <rolapcube:PhysicalCube xmi:id="_physicalcube_cube_kpi" name="Cube Kpi" query="_tablesource_fact">
+  <rolapcube:PhysicalCube xmi:id="_physicalcube_cube_kpi" name="Cube Kpi" source="_tablesource_fact">
     <kpis xmi:id="_kpi_kpi1" name="Kpi1" value="[Measures].[Measure1-Sum]" parentKpi="_kpi_kpi3"/>
     <kpis xmi:id="_kpi_kpi2" name="Kpi2" value="[Measures].[Measure1-Sum]" parentKpi="_kpi_kpi1"/>
     <kpis xmi:id="_kpi_kpi3" name="Kpi3" value="[Measures].[Measure1-Sum]" parentKpi="_kpi_kpi1"/>

@@ -153,18 +153,18 @@ The join is a simple JoinedQuery that unites l1TableQuery and l2TableQuery by `L
 ```xml
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
   <rolapsrc:JoinSource xmi:id="_joinsource">
-    <left xmi:id="_joinedqueryelement_l2" key="_column_l1_l2" query="_tablesource_l1"/>
-    <right xmi:id="_joinedqueryelement_l2_1" key="_column_l2_l2" query="_tablesource_l2"/>
+    <left xmi:id="_joinedqueryelement_l2" key="_column_l1_l2" source="_tablesource_l1"/>
+    <right xmi:id="_joinedqueryelement_l2_1" key="_column_l2_l2" source="_tablesource_l2"/>
   </rolapsrc:JoinSource>
   <relational:Table xmi:id="_table_l1" name="L1">
     <feature xsi:type="relational:Column" xmi:id="_column_l1_l1" name="L1"/>
     <feature xsi:type="relational:Column" xmi:id="_column_l1_l2" name="L2"/>
   </relational:Table>
+  <rolapsrc:TableSource xmi:id="_tablesource_l2" table="_table_l2"/>
   <rolapsrc:TableSource xmi:id="_tablesource_l1" table="_table_l1"/>
   <relational:Table xmi:id="_table_l2" name="L2">
     <feature xsi:type="relational:Column" xmi:id="_column_l2_l2" name="L2"/>
   </relational:Table>
-  <rolapsrc:TableSource xmi:id="_tablesource_l2" table="_table_l2"/>
 </xmi:XMI>
 
 ```
@@ -200,22 +200,22 @@ The Hierarchy is defined with the hasAll property set to true and the two levels
 
 ```xml
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
-  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_hierarchywithhasall" name="HierarchyWithHasAll" primaryKey="_column_l1_l2" query="_joinsource" levels="_level_l1 _level_l2"/>
-  <rolaplev:Level xmi:id="_level_l2" name="L2" column="_column_l2_l2"/>
+  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_hierarchywithhasall" name="HierarchyWithHasAll" primaryKey="_column_l1_l2" source="_joinsource" levels="_level_l1 _level_l2"/>
+  <rolaplev:Level xmi:id="_level_l1" name="L1" column="_column_l1_l1"/>
   <relational:Table xmi:id="_table_l1" name="L1">
     <feature xsi:type="relational:Column" xmi:id="_column_l1_l1" name="L1"/>
     <feature xsi:type="relational:Column" xmi:id="_column_l1_l2" name="L2"/>
   </relational:Table>
+  <rolaplev:Level xmi:id="_level_l2" name="L2" column="_column_l2_l2"/>
+  <rolapsrc:JoinSource xmi:id="_joinsource">
+    <left xmi:id="_joinedqueryelement_l2" key="_column_l1_l2" source="_tablesource_l1"/>
+    <right xmi:id="_joinedqueryelement_l2_1" key="_column_l2_l2" source="_tablesource_l2"/>
+  </rolapsrc:JoinSource>
+  <rolapsrc:TableSource xmi:id="_tablesource_l2" table="_table_l2"/>
   <rolapsrc:TableSource xmi:id="_tablesource_l1" table="_table_l1"/>
   <relational:Table xmi:id="_table_l2" name="L2">
     <feature xsi:type="relational:Column" xmi:id="_column_l2_l2" name="L2"/>
   </relational:Table>
-  <rolapsrc:TableSource xmi:id="_tablesource_l2" table="_table_l2"/>
-  <rolaplev:Level xmi:id="_level_l1" name="L1" column="_column_l1_l1"/>
-  <rolapsrc:JoinSource xmi:id="_joinsource">
-    <left xmi:id="_joinedqueryelement_l2" key="_column_l1_l2" query="_tablesource_l1"/>
-    <right xmi:id="_joinedqueryelement_l2_1" key="_column_l2_l2" query="_tablesource_l2"/>
-  </rolapsrc:JoinSource>
 </xmi:XMI>
 
 ```
@@ -228,22 +228,22 @@ The dimension is defined with the one hierarchy.
 ```xml
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapdim="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
   <rolapdim:StandardDimension xmi:id="_standarddimension_dimension" name="Dimension" hierarchies="_explicithierarchy_hierarchywithhasall"/>
-  <rolaplev:Level xmi:id="_level_l2" name="L2" column="_column_l2_l2"/>
+  <rolaplev:Level xmi:id="_level_l1" name="L1" column="_column_l1_l1"/>
   <relational:Table xmi:id="_table_l1" name="L1">
     <feature xsi:type="relational:Column" xmi:id="_column_l1_l1" name="L1"/>
     <feature xsi:type="relational:Column" xmi:id="_column_l1_l2" name="L2"/>
   </relational:Table>
+  <rolaplev:Level xmi:id="_level_l2" name="L2" column="_column_l2_l2"/>
+  <rolapsrc:JoinSource xmi:id="_joinsource">
+    <left xmi:id="_joinedqueryelement_l2" key="_column_l1_l2" source="_tablesource_l1"/>
+    <right xmi:id="_joinedqueryelement_l2_1" key="_column_l2_l2" source="_tablesource_l2"/>
+  </rolapsrc:JoinSource>
+  <rolapsrc:TableSource xmi:id="_tablesource_l2" table="_table_l2"/>
+  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_hierarchywithhasall" name="HierarchyWithHasAll" primaryKey="_column_l1_l2" source="_joinsource" levels="_level_l1 _level_l2"/>
   <rolapsrc:TableSource xmi:id="_tablesource_l1" table="_table_l1"/>
   <relational:Table xmi:id="_table_l2" name="L2">
     <feature xsi:type="relational:Column" xmi:id="_column_l2_l2" name="L2"/>
   </relational:Table>
-  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_hierarchywithhasall" name="HierarchyWithHasAll" primaryKey="_column_l1_l2" query="_joinsource" levels="_level_l1 _level_l2"/>
-  <rolapsrc:TableSource xmi:id="_tablesource_l2" table="_table_l2"/>
-  <rolaplev:Level xmi:id="_level_l1" name="L1" column="_column_l1_l1"/>
-  <rolapsrc:JoinSource xmi:id="_joinsource">
-    <left xmi:id="_joinedqueryelement_l2" key="_column_l1_l2" query="_tablesource_l1"/>
-    <right xmi:id="_joinedqueryelement_l2_1" key="_column_l2_l2" query="_tablesource_l2"/>
-  </rolapsrc:JoinSource>
 </xmi:XMI>
 
 ```
@@ -256,7 +256,7 @@ The cube also contains a FACTWB WritebackTable configuration with a WritebackAtt
 
 ```xml
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:instance="http://www.omg.org/spec/CWM/1.1/objectmodel/instance" xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapcube="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube" xmlns:rolapdim="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapmeas="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube/measure" xmlns:rolaprel="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/relational" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
-  <rolapcube:PhysicalCube xmi:id="_physicalcube_c" name="C" query="_inlinetablesource_fact">
+  <rolapcube:PhysicalCube xmi:id="_physicalcube_c" name="C" source="_inlinetablesource_fact">
     <dimensionConnectors xmi:id="_dimensionconnector_d1" foreignKey="_column_fact_l2" dimension="_standarddimension_dimension" overrideDimensionName="D1"/>
     <writebackTable xmi:id="_writebacktable_factwb" name="FACTWB">
       <writebackAttribute xmi:id="_writebackattribute_l2" column="_column_fact_l2" dimensionConnector="_dimensionconnector_d1"/>
@@ -268,6 +268,13 @@ The cube also contains a FACTWB WritebackTable configuration with a WritebackAtt
       <measures xsi:type="rolapmeas:SumMeasure" xmi:id="_summeasure_measure2" name="Measure2" column="_column_fact_val1"/>
     </measureGroups>
   </rolapcube:PhysicalCube>
+  <relational:Table xmi:id="_table_l2" name="L2">
+    <feature xsi:type="relational:Column" xmi:id="_column_l2_l2" name="L2"/>
+  </relational:Table>
+  <relational:Table xmi:id="_table_l1" name="L1">
+    <feature xsi:type="relational:Column" xmi:id="_column_l1_l1" name="L1"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_l1_l2" name="L2"/>
+  </relational:Table>
   <rolaprel:InlineTable xmi:id="_inlinetable_fact" name="FACT">
     <feature xsi:type="relational:Column" xmi:id="_column_fact_val" name="VAL" slot="_dataslot _dataslot_3 _dataslot_6 _dataslot_9 _dataslot_12"/>
     <feature xsi:type="relational:Column" xmi:id="_column_fact_val1" name="VAL1" slot="_dataslot_1 _dataslot_4 _dataslot_7 _dataslot_10 _dataslot_13"/>
@@ -303,23 +310,22 @@ The cube also contains a FACTWB WritebackTable configuration with a WritebackAtt
   <rolaplev:Level xmi:id="_level_l2" name="L2">
     <column href="_column_l2_l2"/>
   </rolaplev:Level>
-  <relational:Table xmi:id="_table_l1" name="L1">
-    <feature xsi:type="relational:Column" xmi:id="_column_l1_l1" name="L1"/>
-    <feature xsi:type="relational:Column" xmi:id="_column_l1_l2" name="L2"/>
-  </relational:Table>
-  <rolapsrc:InlineTableSource xmi:id="_inlinetablesource_fact" alias="FACT" table="_inlinetable_fact"/>
-  <rolapsrc:TableSource xmi:id="_tablesource_l1" table="_table_l1"/>
-  <rolapdim:StandardDimension xmi:id="_standarddimension_dimension" name="Dimension" hierarchies="_explicithierarchy_hierarchywithhasall"/>
-  <rolapsrc:TableSource xmi:id="_tablesource_l2" table="_table_l2"/>
-  <relational:Table xmi:id="_table_l2" name="L2">
-    <feature xsi:type="relational:Column" xmi:id="_column_l2_l2" name="L2"/>
-  </relational:Table>
-  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_hierarchywithhasall" name="HierarchyWithHasAll" primaryKey="_column_l1_l2" query="_joinsource" levels="_level_l1 _level_l2"/>
-  <rolaplev:Level xmi:id="_level_l1" name="L1" column="_column_l1_l1"/>
   <rolapsrc:JoinSource xmi:id="_joinsource">
-    <left xmi:id="_joinedqueryelement_l2" key="_column_l1_l2" query="_tablesource_l1"/>
-    <right xmi:id="_joinedqueryelement_l2_1" key="_column_l2_l2" query="_tablesource_l2"/>
+    <left xmi:id="_joinedqueryelement_l2" source="_tablesource_l1">
+      <key href="_column_l1_l2"/>
+    </left>
+    <right xmi:id="_joinedqueryelement_l2_1" key="_column_l2_l2" source="_tablesource_l2"/>
   </rolapsrc:JoinSource>
+  <rolapsrc:TableSource xmi:id="_tablesource_l2" table="_table_l2"/>
+  <rolaplev:Level xmi:id="_level_l1" name="L1">
+    <column href="_column_l1_l1"/>
+  </rolaplev:Level>
+  <rolapsrc:InlineTableSource xmi:id="_inlinetablesource_fact" alias="FACT" table="_inlinetable_fact"/>
+  <rolapdim:StandardDimension xmi:id="_standarddimension_dimension" name="Dimension" hierarchies="_explicithierarchy_hierarchywithhasall"/>
+  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_hierarchywithhasall" name="HierarchyWithHasAll" source="_joinsource" levels="_level_l1 _level_l2">
+    <primaryKey href="_column_l1_l2"/>
+  </rolaphier:ExplicitHierarchy>
+  <rolapsrc:TableSource xmi:id="_tablesource_l1" table="_table_l1"/>
 </xmi:XMI>
 
 ```
@@ -332,39 +338,39 @@ This file represents the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:instance="http://www.omg.org/spec/CWM/1.1/objectmodel/instance" xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapcat="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/catalog" xmlns:rolapcube="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube" xmlns:rolapdim="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapmeas="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube/measure" xmlns:rolaprel="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/relational" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
-  <relational:SQLSimpleType xmi:id="_sqlsimpletype_integer" name="INTEGER" structuralFeature="_column_fact_val _column_factwb_val1 _column_factwb_val _column_fact_val1" typeNumber="4"/>
-  <relational:SQLSimpleType xmi:id="_sqlsimpletype_character_varying" name="CHARACTER VARYING" structuralFeature="_column_factwb_user _column_factwb_l2 _column_l1_l2 _column_factwb_id _column_fact_l2 _column_l1_l1 _column_l2_l2" typeNumber="12"/>
+  <relational:SQLSimpleType xmi:id="_sqlsimpletype_character_varying" name="CHARACTER VARYING" structuralFeature="_column_factwb_id _column_l1_l2 _column_factwb_user _column_fact_l2 _column_l2_l2 _column_factwb_l2 _column_l1_l1" typeNumber="12"/>
+  <relational:SQLSimpleType xmi:id="_sqlsimpletype_integer" name="INTEGER" structuralFeature="_column_factwb_val _column_fact_val1 _column_factwb_val1 _column_fact_val" typeNumber="4"/>
   <rolapcat:Catalog xmi:id="_catalog_writeback_inline_table" description="Inline table writeback functionality" name="Daanse Tutorial - Writeback Inline Table" cubes="_physicalcube_c" dbschemas="_schema"/>
   <relational:Schema xmi:id="_schema">
     <ownedElement xsi:type="rolaprel:InlineTable" xmi:id="_inlinetable_fact" name="FACT">
-      <feature xsi:type="relational:Column" xmi:id="_column_fact_val" name="VAL" type="_sqlsimpletype_integer" slot="_dataslot_2 _dataslot_5 _dataslot_7 _dataslot_8 _dataslot_3"/>
-      <feature xsi:type="relational:Column" xmi:id="_column_fact_val1" name="VAL1" type="_sqlsimpletype_integer" slot="_dataslot _dataslot_10 _dataslot_13 _dataslot_1 _dataslot_12"/>
-      <feature xsi:type="relational:Column" xmi:id="_column_fact_l2" name="L2" type="_sqlsimpletype_character_varying" slot="_dataslot_6 _dataslot_14 _dataslot_11 _dataslot_9 _dataslot_4"/>
+      <feature xsi:type="relational:Column" xmi:id="_column_fact_val" name="VAL" type="_sqlsimpletype_integer" slot="_dataslot_10 _dataslot_2 _dataslot _dataslot_6 _dataslot_3"/>
+      <feature xsi:type="relational:Column" xmi:id="_column_fact_val1" name="VAL1" type="_sqlsimpletype_integer" slot="_dataslot_11 _dataslot_4 _dataslot_5 _dataslot_12 _dataslot_14"/>
+      <feature xsi:type="relational:Column" xmi:id="_column_fact_l2" name="L2" type="_sqlsimpletype_character_varying" slot="_dataslot_9 _dataslot_8 _dataslot_13 _dataslot_1 _dataslot_7"/>
       <extent xmi:id="_rowset">
-        <ownedElement xsi:type="relational:Row" xmi:id="_row_2">
-          <slot xsi:type="instance:DataSlot" xmi:id="_dataslot_2" feature="_column_fact_val" dataValue="42"/>
-          <slot xsi:type="instance:DataSlot" xmi:id="_dataslot" feature="_column_fact_val1" dataValue="21"/>
-          <slot xsi:type="instance:DataSlot" xmi:id="_dataslot_6" feature="_column_fact_l2" dataValue="Level11"/>
+        <ownedElement xsi:type="relational:Row" xmi:id="_row_1">
+          <slot xsi:type="instance:DataSlot" xmi:id="_dataslot_10" feature="_column_fact_val" dataValue="42"/>
+          <slot xsi:type="instance:DataSlot" xmi:id="_dataslot_11" feature="_column_fact_val1" dataValue="21"/>
+          <slot xsi:type="instance:DataSlot" xmi:id="_dataslot_9" feature="_column_fact_l2" dataValue="Level11"/>
         </ownedElement>
         <ownedElement xsi:type="relational:Row" xmi:id="_row_4">
-          <slot xsi:type="instance:DataSlot" xmi:id="_dataslot_5" feature="_column_fact_val" dataValue="62"/>
-          <slot xsi:type="instance:DataSlot" xmi:id="_dataslot_10" feature="_column_fact_val1" dataValue="31"/>
-          <slot xsi:type="instance:DataSlot" xmi:id="_dataslot_14" feature="_column_fact_l2" dataValue="Level22"/>
+          <slot xsi:type="instance:DataSlot" xmi:id="_dataslot_2" feature="_column_fact_val" dataValue="62"/>
+          <slot xsi:type="instance:DataSlot" xmi:id="_dataslot_4" feature="_column_fact_val1" dataValue="31"/>
+          <slot xsi:type="instance:DataSlot" xmi:id="_dataslot_8" feature="_column_fact_l2" dataValue="Level22"/>
+        </ownedElement>
+        <ownedElement xsi:type="relational:Row" xmi:id="_row_2">
+          <slot xsi:type="instance:DataSlot" xmi:id="_dataslot" feature="_column_fact_val" dataValue="20"/>
+          <slot xsi:type="instance:DataSlot" xmi:id="_dataslot_5" feature="_column_fact_val1" dataValue="10"/>
+          <slot xsi:type="instance:DataSlot" xmi:id="_dataslot_13" feature="_column_fact_l2" dataValue="Level33"/>
         </ownedElement>
         <ownedElement xsi:type="relational:Row" xmi:id="_row">
-          <slot xsi:type="instance:DataSlot" xmi:id="_dataslot_7" feature="_column_fact_val" dataValue="20"/>
-          <slot xsi:type="instance:DataSlot" xmi:id="_dataslot_13" feature="_column_fact_val1" dataValue="10"/>
-          <slot xsi:type="instance:DataSlot" xmi:id="_dataslot_11" feature="_column_fact_l2" dataValue="Level33"/>
-        </ownedElement>
-        <ownedElement xsi:type="relational:Row" xmi:id="_row_1">
-          <slot xsi:type="instance:DataSlot" xmi:id="_dataslot_8" feature="_column_fact_val" dataValue="40"/>
-          <slot xsi:type="instance:DataSlot" xmi:id="_dataslot_1" feature="_column_fact_val1" dataValue="20"/>
-          <slot xsi:type="instance:DataSlot" xmi:id="_dataslot_9" feature="_column_fact_l2" dataValue="Level44"/>
+          <slot xsi:type="instance:DataSlot" xmi:id="_dataslot_6" feature="_column_fact_val" dataValue="40"/>
+          <slot xsi:type="instance:DataSlot" xmi:id="_dataslot_12" feature="_column_fact_val1" dataValue="20"/>
+          <slot xsi:type="instance:DataSlot" xmi:id="_dataslot_1" feature="_column_fact_l2" dataValue="Level44"/>
         </ownedElement>
         <ownedElement xsi:type="relational:Row" xmi:id="_row_3">
           <slot xsi:type="instance:DataSlot" xmi:id="_dataslot_3" feature="_column_fact_val" dataValue="60"/>
-          <slot xsi:type="instance:DataSlot" xmi:id="_dataslot_12" feature="_column_fact_val1" dataValue="30"/>
-          <slot xsi:type="instance:DataSlot" xmi:id="_dataslot_4" feature="_column_fact_l2" dataValue="Level55"/>
+          <slot xsi:type="instance:DataSlot" xmi:id="_dataslot_14" feature="_column_fact_val1" dataValue="30"/>
+          <slot xsi:type="instance:DataSlot" xmi:id="_dataslot_7" feature="_column_fact_l2" dataValue="Level55"/>
         </ownedElement>
       </extent>
     </ownedElement>
@@ -387,14 +393,14 @@ This file represents the complete definition of the catalog.
   <rolapsrc:TableSource xmi:id="_tablesource_l1" table="_table_l1"/>
   <rolapsrc:InlineTableSource xmi:id="_inlinetablesource_fact" alias="FACT" table="_inlinetable_fact"/>
   <rolapsrc:JoinSource xmi:id="_joinsource">
-    <left xmi:id="_joinedqueryelement_l2" key="_column_l1_l2" query="_tablesource_l1"/>
-    <right xmi:id="_joinedqueryelement_l2_1" key="_column_l2_l2" query="_tablesource_l2"/>
+    <left xmi:id="_joinedqueryelement_l2_1" key="_column_l1_l2" source="_tablesource_l1"/>
+    <right xmi:id="_joinedqueryelement_l2" key="_column_l2_l2" source="_tablesource_l2"/>
   </rolapsrc:JoinSource>
-  <rolaplev:Level xmi:id="_level_l1" name="L1" column="_column_l1_l1"/>
   <rolaplev:Level xmi:id="_level_l2" name="L2" column="_column_l2_l2"/>
-  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_hierarchywithhasall" name="HierarchyWithHasAll" primaryKey="_column_l1_l2" query="_joinsource" levels="_level_l1 _level_l2"/>
+  <rolaplev:Level xmi:id="_level_l1" name="L1" column="_column_l1_l1"/>
+  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_hierarchywithhasall" name="HierarchyWithHasAll" primaryKey="_column_l1_l2" source="_joinsource" levels="_level_l1 _level_l2"/>
   <rolapdim:StandardDimension xmi:id="_standarddimension_dimension" name="Dimension" hierarchies="_explicithierarchy_hierarchywithhasall"/>
-  <rolapcube:PhysicalCube xmi:id="_physicalcube_c" name="C" query="_inlinetablesource_fact">
+  <rolapcube:PhysicalCube xmi:id="_physicalcube_c" name="C" source="_inlinetablesource_fact">
     <dimensionConnectors xmi:id="_dimensionconnector_d1" foreignKey="_column_fact_l2" dimension="_standarddimension_dimension" overrideDimensionName="D1"/>
     <writebackTable xmi:id="_writebacktable_factwb" name="FACTWB">
       <writebackAttribute xmi:id="_writebackattribute_l2" column="_column_fact_l2" dimensionConnector="_dimensionconnector_d1"/>

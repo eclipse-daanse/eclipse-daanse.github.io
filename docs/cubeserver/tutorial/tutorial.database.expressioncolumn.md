@@ -34,14 +34,14 @@ This file represents the complete definition of the catalog.
     <ownedElement xsi:type="relational:Table" xmi:id="_table_tablewithexpressioncolumn" name="TableWithExpressionColumn">
       <feature xsi:type="relational:Column" xmi:id="_column_tablewithexpressioncolumn_column1" name="column1"/>
       <feature xsi:type="rolaprel:ExpressionColumn" xmi:id="_expressioncolumn_sqlexpressioncolumn" name="SqlExpressionColumn">
-        <sqls xmi:id="_sqlstatement_1" sql="SUBSTRING(column1,1,3)">
+        <sqls xmi:id="_sqlstatement" sql="SUBSTRING(column1,1,3)">
           <dialects>generic</dialects>
           <dialects>mysql</dialects>
         </sqls>
-        <sqls xmi:id="_sqlstatement_2" sql="SUBSTR(column1,1,3)">
+        <sqls xmi:id="_sqlstatement_1" sql="SUBSTR(column1,1,3)">
           <dialects>oracle</dialects>
         </sqls>
-        <sqls xmi:id="_sqlstatement" sql="substring(column1, 1, 3)">
+        <sqls xmi:id="_sqlstatement_2" sql="substring(column1, 1, 3)">
           <dialects>h2</dialects>
         </sqls>
       </feature>

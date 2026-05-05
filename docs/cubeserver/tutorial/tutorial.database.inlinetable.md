@@ -22,16 +22,16 @@ This file represents the complete definition of the catalog.
   <rolapcat:Catalog xmi:id="_catalog_databaseinlinetable" id="_catalog_databaseInlineTable" description="Inline table definitions with row data" name="Daanse Tutorial - Database Inline Table" dbschemas="_schema"/>
   <relational:Schema xmi:id="_schema">
     <ownedElement xsi:type="rolaprel:InlineTable" xmi:id="_inlinetable_fact" name="FACT">
-      <feature xsi:type="relational:Column" xmi:id="_column_fact_key" name="KEY" type="_sqlsimpletype_character_varying" slot="_dataslot_2 _dataslot_3"/>
-      <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE" type="_sqlsimpletype_integer" slot="_dataslot_1 _dataslot"/>
+      <feature xsi:type="relational:Column" xmi:id="_column_fact_key" name="KEY" type="_sqlsimpletype_character_varying" slot="_dataslot_3 _dataslot_1"/>
+      <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE" type="_sqlsimpletype_integer" slot="_dataslot _dataslot_2"/>
       <extent xmi:id="_rowset">
-        <ownedElement xsi:type="relational:Row" xmi:id="_row">
-          <slot xsi:type="instance:DataSlot" xmi:id="_dataslot_2" feature="_column_fact_key" dataValue="A"/>
-          <slot xsi:type="instance:DataSlot" xmi:id="_dataslot_1" feature="_column_fact_value" dataValue="100"/>
-        </ownedElement>
         <ownedElement xsi:type="relational:Row" xmi:id="_row_1">
-          <slot xsi:type="instance:DataSlot" xmi:id="_dataslot_3" feature="_column_fact_key" dataValue="B"/>
-          <slot xsi:type="instance:DataSlot" xmi:id="_dataslot" feature="_column_fact_value" dataValue="42"/>
+          <slot xsi:type="instance:DataSlot" xmi:id="_dataslot_3" feature="_column_fact_key" dataValue="A"/>
+          <slot xsi:type="instance:DataSlot" xmi:id="_dataslot" feature="_column_fact_value" dataValue="100"/>
+        </ownedElement>
+        <ownedElement xsi:type="relational:Row" xmi:id="_row">
+          <slot xsi:type="instance:DataSlot" xmi:id="_dataslot_1" feature="_column_fact_key" dataValue="B"/>
+          <slot xsi:type="instance:DataSlot" xmi:id="_dataslot_2" feature="_column_fact_value" dataValue="42"/>
         </ownedElement>
       </extent>
     </ownedElement>

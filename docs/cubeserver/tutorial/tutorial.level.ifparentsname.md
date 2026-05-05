@@ -102,20 +102,20 @@ The JoinSource specifies which TableQueries should be joined. It also defines th
 ```xml
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
   <rolapsrc:JoinSource xmi:id="_joinsource">
-    <left xmi:id="_joinedqueryelement_l1_key" key="_column_level_2_l1_key" query="_tablesource_level_2"/>
-    <right xmi:id="_joinedqueryelement_key" key="_column_level_1_key" query="_tablesource_level_1"/>
+    <left xmi:id="_joinedqueryelement_l1_key" key="_column_level_2_l1_key" source="_tablesource_level_2"/>
+    <right xmi:id="_joinedqueryelement_key" key="_column_level_1_key" source="_tablesource_level_1"/>
   </rolapsrc:JoinSource>
+  <rolapsrc:TableSource xmi:id="_tablesource_level_2" table="_table_level_2"/>
+  <rolapsrc:TableSource xmi:id="_tablesource_level_1" table="_table_level_1"/>
+  <relational:Table xmi:id="_table_level_1" name="Level_1">
+    <feature xsi:type="relational:Column" xmi:id="_column_level_1_key" name="KEY"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_level_1_name" name="NAME"/>
+  </relational:Table>
   <relational:Table xmi:id="_table_level_2" name="Level_2">
     <feature xsi:type="relational:Column" xmi:id="_column_level_2_key" name="KEY"/>
     <feature xsi:type="relational:Column" xmi:id="_column_level_2_name" name="NAME"/>
     <feature xsi:type="relational:Column" xmi:id="_column_level_2_l1_key" name="L1_KEY"/>
   </relational:Table>
-  <rolapsrc:TableSource xmi:id="_tablesource_level_2" table="_table_level_2"/>
-  <relational:Table xmi:id="_table_level_1" name="Level_1">
-    <feature xsi:type="relational:Column" xmi:id="_column_level_1_key" name="KEY"/>
-    <feature xsi:type="relational:Column" xmi:id="_column_level_1_name" name="NAME"/>
-  </relational:Table>
-  <rolapsrc:TableSource xmi:id="_tablesource_level_1" table="_table_level_1"/>
 </xmi:XMI>
 
 ```
@@ -128,24 +128,24 @@ The Dimension has only one hierarchy.
 ```xml
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapdim="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
   <rolapdim:StandardDimension xmi:id="_standarddimension_dimensionmembershiddenifparentsname" name="DimensionMembersHiddenIfParentsName" hierarchies="_explicithierarchy_hierarchy1"/>
+  <rolapsrc:TableSource xmi:id="_tablesource_level_2" table="_table_level_2"/>
+  <rolaplev:Level xmi:id="_level_level1" name="Level1" column="_column_level_1_key" nameColumn="_column_level_1_name"/>
+  <rolapsrc:TableSource xmi:id="_tablesource_level_1" table="_table_level_1"/>
+  <relational:Table xmi:id="_table_level_1" name="Level_1">
+    <feature xsi:type="relational:Column" xmi:id="_column_level_1_key" name="KEY"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_level_1_name" name="NAME"/>
+  </relational:Table>
+  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_hierarchy1" name="Hierarchy1" primaryKey="_column_level_2_key" source="_joinsource" levels="_level_level1 _level_level2"/>
   <rolaplev:Level xmi:id="_level_level2" name="Level2" column="_column_level_2_key" hideMemberIf="IfParentsName" nameColumn="_column_level_2_name"/>
+  <rolapsrc:JoinSource xmi:id="_joinsource">
+    <left xmi:id="_joinedqueryelement_l1_key" key="_column_level_2_l1_key" source="_tablesource_level_2"/>
+    <right xmi:id="_joinedqueryelement_key" key="_column_level_1_key" source="_tablesource_level_1"/>
+  </rolapsrc:JoinSource>
   <relational:Table xmi:id="_table_level_2" name="Level_2">
     <feature xsi:type="relational:Column" xmi:id="_column_level_2_key" name="KEY"/>
     <feature xsi:type="relational:Column" xmi:id="_column_level_2_name" name="NAME"/>
     <feature xsi:type="relational:Column" xmi:id="_column_level_2_l1_key" name="L1_KEY"/>
   </relational:Table>
-  <rolapsrc:TableSource xmi:id="_tablesource_level_2" table="_table_level_2"/>
-  <relational:Table xmi:id="_table_level_1" name="Level_1">
-    <feature xsi:type="relational:Column" xmi:id="_column_level_1_key" name="KEY"/>
-    <feature xsi:type="relational:Column" xmi:id="_column_level_1_name" name="NAME"/>
-  </relational:Table>
-  <rolapsrc:TableSource xmi:id="_tablesource_level_1" table="_table_level_1"/>
-  <rolaplev:Level xmi:id="_level_level1" name="Level1" column="_column_level_1_key" nameColumn="_column_level_1_name"/>
-  <rolapsrc:JoinSource xmi:id="_joinsource">
-    <left xmi:id="_joinedqueryelement_l1_key" key="_column_level_2_l1_key" query="_tablesource_level_2"/>
-    <right xmi:id="_joinedqueryelement_key" key="_column_level_1_key" query="_tablesource_level_1"/>
-  </rolapsrc:JoinSource>
-  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_hierarchy1" name="Hierarchy1" primaryKey="_column_level_2_key" query="_joinsource" levels="_level_level1 _level_level2"/>
 </xmi:XMI>
 
 ```
@@ -159,24 +159,24 @@ This hierarchy consists two levels Level1 and Level2.
 
 ```xml
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
-  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_hierarchy1" name="Hierarchy1" primaryKey="_column_level_2_key" query="_joinsource" levels="_level_level1 _level_level2"/>
+  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_hierarchy1" name="Hierarchy1" primaryKey="_column_level_2_key" source="_joinsource" levels="_level_level1 _level_level2"/>
+  <rolapsrc:TableSource xmi:id="_tablesource_level_2" table="_table_level_2"/>
+  <rolaplev:Level xmi:id="_level_level1" name="Level1" column="_column_level_1_key" nameColumn="_column_level_1_name"/>
+  <rolapsrc:TableSource xmi:id="_tablesource_level_1" table="_table_level_1"/>
+  <relational:Table xmi:id="_table_level_1" name="Level_1">
+    <feature xsi:type="relational:Column" xmi:id="_column_level_1_key" name="KEY"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_level_1_name" name="NAME"/>
+  </relational:Table>
   <rolaplev:Level xmi:id="_level_level2" name="Level2" column="_column_level_2_key" hideMemberIf="IfParentsName" nameColumn="_column_level_2_name"/>
+  <rolapsrc:JoinSource xmi:id="_joinsource">
+    <left xmi:id="_joinedqueryelement_l1_key" key="_column_level_2_l1_key" source="_tablesource_level_2"/>
+    <right xmi:id="_joinedqueryelement_key" key="_column_level_1_key" source="_tablesource_level_1"/>
+  </rolapsrc:JoinSource>
   <relational:Table xmi:id="_table_level_2" name="Level_2">
     <feature xsi:type="relational:Column" xmi:id="_column_level_2_key" name="KEY"/>
     <feature xsi:type="relational:Column" xmi:id="_column_level_2_name" name="NAME"/>
     <feature xsi:type="relational:Column" xmi:id="_column_level_2_l1_key" name="L1_KEY"/>
   </relational:Table>
-  <rolapsrc:TableSource xmi:id="_tablesource_level_2" table="_table_level_2"/>
-  <relational:Table xmi:id="_table_level_1" name="Level_1">
-    <feature xsi:type="relational:Column" xmi:id="_column_level_1_key" name="KEY"/>
-    <feature xsi:type="relational:Column" xmi:id="_column_level_1_name" name="NAME"/>
-  </relational:Table>
-  <rolapsrc:TableSource xmi:id="_tablesource_level_1" table="_table_level_1"/>
-  <rolaplev:Level xmi:id="_level_level1" name="Level1" column="_column_level_1_key" nameColumn="_column_level_1_name"/>
-  <rolapsrc:JoinSource xmi:id="_joinsource">
-    <left xmi:id="_joinedqueryelement_l1_key" key="_column_level_2_l1_key" query="_tablesource_level_2"/>
-    <right xmi:id="_joinedqueryelement_key" key="_column_level_1_key" query="_tablesource_level_1"/>
-  </rolapsrc:JoinSource>
 </xmi:XMI>
 
 ```
@@ -233,39 +233,39 @@ In this example uses cube with fact table Fact as data.
 
 ```xml
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapcube="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube" xmlns:rolapdim="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapmeas="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube/measure" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
-  <rolapcube:PhysicalCube xmi:id="_physicalcube_cube" name="Cube" query="_tablesource_fact">
+  <rolapcube:PhysicalCube xmi:id="_physicalcube_cube" name="Cube" source="_tablesource_fact">
     <dimensionConnectors xmi:id="_dimensionconnector_dimensionmembershiddenifblankname" foreignKey="_column_fact_dim_key" dimension="_standarddimension_dimensionmembershiddenifparentsname" overrideDimensionName="DimensionMembersHiddenIfBlankName"/>
     <measureGroups xmi:id="_measuregroup">
       <measures xsi:type="rolapmeas:SumMeasure" xmi:id="_summeasure_measure1" name="Measure1" column="_column_fact_value"/>
     </measureGroups>
   </rolapcube:PhysicalCube>
   <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
-  <rolaplev:Level xmi:id="_level_level2" name="Level2" hideMemberIf="IfParentsName">
-    <column href="_column_level_2_key"/>
-    <nameColumn href="_column_level_2_name"/>
+  <rolapsrc:TableSource xmi:id="_tablesource_level_2" table="_table_level_2"/>
+  <rolaplev:Level xmi:id="_level_level1" name="Level1">
+    <column href="_column_level_1_key"/>
+    <nameColumn href="_column_level_1_name"/>
   </rolaplev:Level>
+  <rolapsrc:TableSource xmi:id="_tablesource_level_1" table="_table_level_1"/>
+  <relational:Table xmi:id="_table_level_1" name="Level_1">
+    <feature xsi:type="relational:Column" xmi:id="_column_level_1_key" name="KEY"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_level_1_name" name="NAME"/>
+  </relational:Table>
+  <rolapdim:StandardDimension xmi:id="_standarddimension_dimensionmembershiddenifparentsname" name="DimensionMembersHiddenIfParentsName" hierarchies="_explicithierarchy_hierarchy1"/>
+  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_hierarchy1" name="Hierarchy1" primaryKey="_column_level_2_key" source="_joinsource" levels="_level_level1 _level_level2"/>
+  <rolaplev:Level xmi:id="_level_level2" name="Level2" column="_column_level_2_key" hideMemberIf="IfParentsName" nameColumn="_column_level_2_name"/>
+  <rolapsrc:JoinSource xmi:id="_joinsource">
+    <left xmi:id="_joinedqueryelement_l1_key" key="_column_level_2_l1_key" source="_tablesource_level_2"/>
+    <right xmi:id="_joinedqueryelement_key" key="_column_level_1_key" source="_tablesource_level_1"/>
+  </rolapsrc:JoinSource>
+  <relational:Table xmi:id="_table_fact" name="Fact">
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_dim_key" name="DIM_KEY"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE"/>
+  </relational:Table>
   <relational:Table xmi:id="_table_level_2" name="Level_2">
     <feature xsi:type="relational:Column" xmi:id="_column_level_2_key" name="KEY"/>
     <feature xsi:type="relational:Column" xmi:id="_column_level_2_name" name="NAME"/>
     <feature xsi:type="relational:Column" xmi:id="_column_level_2_l1_key" name="L1_KEY"/>
   </relational:Table>
-  <rolapsrc:TableSource xmi:id="_tablesource_level_2" table="_table_level_2"/>
-  <relational:Table xmi:id="_table_fact" name="Fact">
-    <feature xsi:type="relational:Column" xmi:id="_column_fact_dim_key" name="DIM_KEY"/>
-    <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE"/>
-  </relational:Table>
-  <rolapdim:StandardDimension xmi:id="_standarddimension_dimensionmembershiddenifparentsname" name="DimensionMembersHiddenIfParentsName" hierarchies="_explicithierarchy_hierarchy1"/>
-  <relational:Table xmi:id="_table_level_1" name="Level_1">
-    <feature xsi:type="relational:Column" xmi:id="_column_level_1_key" name="KEY"/>
-    <feature xsi:type="relational:Column" xmi:id="_column_level_1_name" name="NAME"/>
-  </relational:Table>
-  <rolapsrc:TableSource xmi:id="_tablesource_level_1" table="_table_level_1"/>
-  <rolaplev:Level xmi:id="_level_level1" name="Level1" column="_column_level_1_key" nameColumn="_column_level_1_name"/>
-  <rolapsrc:JoinSource xmi:id="_joinsource">
-    <left xmi:id="_joinedqueryelement_l1_key" key="_column_level_2_l1_key" query="_tablesource_level_2"/>
-    <right xmi:id="_joinedqueryelement_key" key="_column_level_1_key" query="_tablesource_level_1"/>
-  </rolapsrc:JoinSource>
-  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_hierarchy1" name="Hierarchy1" primaryKey="_column_level_2_key" query="_joinsource" levels="_level_level1 _level_level2"/>
 </xmi:XMI>
 
 ```
@@ -278,7 +278,7 @@ This file represents the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapcat="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/catalog" xmlns:rolapcube="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube" xmlns:rolapdim="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapmeas="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube/measure" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
-  <relational:SQLSimpleType xmi:id="_sqlsimpletype_integer" name="INTEGER" structuralFeature="_column_fact_value _column_level_2_l1_key _column_level_1_key _column_fact_dim_key _column_level_2_key" typeNumber="4"/>
+  <relational:SQLSimpleType xmi:id="_sqlsimpletype_integer" name="INTEGER" structuralFeature="_column_fact_value _column_level_1_key _column_fact_dim_key _column_level_2_key _column_level_2_l1_key" typeNumber="4"/>
   <relational:SQLSimpleType xmi:id="_sqlsimpletype_character_varying" name="CHARACTER VARYING" structuralFeature="_column_level_1_name _column_level_2_name" typeNumber="12"/>
   <rolapcat:Catalog xmi:id="_catalog_level_if_parents_name" description="Level handling parent name references" name="Daanse Tutorial - Level If Parents Name" cubes="_physicalcube_cube" dbschemas="_schema"/>
   <relational:Schema xmi:id="_schema">
@@ -300,14 +300,14 @@ This file represents the complete definition of the catalog.
   <rolapsrc:TableSource xmi:id="_tablesource_level_2" table="_table_level_2"/>
   <rolapsrc:TableSource xmi:id="_tablesource_level_1" table="_table_level_1"/>
   <rolapsrc:JoinSource xmi:id="_joinsource">
-    <left xmi:id="_joinedqueryelement_l1_key" key="_column_level_2_l1_key" query="_tablesource_level_2"/>
-    <right xmi:id="_joinedqueryelement_key" key="_column_level_1_key" query="_tablesource_level_1"/>
+    <left xmi:id="_joinedqueryelement_l1_key" key="_column_level_2_l1_key" source="_tablesource_level_2"/>
+    <right xmi:id="_joinedqueryelement_key" key="_column_level_1_key" source="_tablesource_level_1"/>
   </rolapsrc:JoinSource>
-  <rolaplev:Level xmi:id="_level_level2" name="Level2" column="_column_level_2_key" hideMemberIf="IfParentsName" nameColumn="_column_level_2_name"/>
   <rolaplev:Level xmi:id="_level_level1" name="Level1" column="_column_level_1_key" nameColumn="_column_level_1_name"/>
-  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_hierarchy1" name="Hierarchy1" primaryKey="_column_level_2_key" query="_joinsource" levels="_level_level1 _level_level2"/>
+  <rolaplev:Level xmi:id="_level_level2" name="Level2" column="_column_level_2_key" hideMemberIf="IfParentsName" nameColumn="_column_level_2_name"/>
+  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_hierarchy1" name="Hierarchy1" primaryKey="_column_level_2_key" source="_joinsource" levels="_level_level1 _level_level2"/>
   <rolapdim:StandardDimension xmi:id="_standarddimension_dimensionmembershiddenifparentsname" name="DimensionMembersHiddenIfParentsName" hierarchies="_explicithierarchy_hierarchy1"/>
-  <rolapcube:PhysicalCube xmi:id="_physicalcube_cube" name="Cube" query="_tablesource_fact">
+  <rolapcube:PhysicalCube xmi:id="_physicalcube_cube" name="Cube" source="_tablesource_fact">
     <dimensionConnectors xmi:id="_dimensionconnector_dimensionmembershiddenifblankname" foreignKey="_column_fact_dim_key" dimension="_standarddimension_dimensionmembershiddenifparentsname" overrideDimensionName="DimensionMembersHiddenIfBlankName"/>
     <measureGroups xmi:id="_measuregroup">
       <measures xsi:type="rolapmeas:SumMeasure" xmi:id="_summeasure_measure1" name="Measure1" column="_column_fact_value"/>

@@ -124,7 +124,7 @@ In this example, measure with SQLExpressionColumn. Measures use SQL expression a
 
 ```xml
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapcube="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube" xmlns:rolapmeas="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube/measure" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
-  <rolapcube:PhysicalCube xmi:id="_physicalcube_cube_with_measureexpression" name="Cube With MeasureExpression" query="_tablesource_fact">
+  <rolapcube:PhysicalCube xmi:id="_physicalcube_cube_with_measureexpression" name="Cube With MeasureExpression" source="_tablesource_fact">
     <measureGroups xmi:id="_measuregroup">
       <measures xsi:type="rolapmeas:SumMeasure" xmi:id="_summeasure_measure1_sum" name="Measure1-Sum">
         <column href="_expressioncolumn_measureexpression1"/>
@@ -154,7 +154,7 @@ This file represents the complete definition of the catalog.
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapcat="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/catalog" xmlns:rolapcube="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube" xmlns:rolapmeas="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube/measure" xmlns:rolaprel="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/relational" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
   <relational:SQLSimpleType xmi:id="_sqlsimpletype_character_varying" name="CHARACTER VARYING" structuralFeature="_column_fact_key" typeNumber="12"/>
   <relational:SQLSimpleType xmi:id="_sqlsimpletype_numeric" name="NUMERIC" structuralFeature="_column_fact_value_numeric" typeNumber="2" numericPrecision="18" numericPrecisionRadix="10" numericScale="4"/>
-  <relational:SQLSimpleType xmi:id="_sqlsimpletype_integer" name="INTEGER" structuralFeature="_column_measure_table_value _column_measure_table_flag _column_fact_value _column_measure_table_id" typeNumber="4"/>
+  <relational:SQLSimpleType xmi:id="_sqlsimpletype_integer" name="INTEGER" structuralFeature="_column_measure_table_id _column_measure_table_value _column_measure_table_flag _column_fact_value" typeNumber="4"/>
   <rolapcat:Catalog xmi:id="_catalog_measure_expression" description="Measure with expression-based calculations" name="Daanse Tutorial - Measure Expression" cubes="_physicalcube_cube_with_measureexpression" dbschemas="_schema"/>
   <relational:Schema xmi:id="_schema">
     <ownedElement xsi:type="relational:Table" xmi:id="_table_fact" name="FACT">
@@ -167,13 +167,13 @@ This file represents the complete definition of the catalog.
       <feature xsi:type="relational:Column" xmi:id="_column_measure_table_value" name="VALUE" type="_sqlsimpletype_integer"/>
       <feature xsi:type="relational:Column" xmi:id="_column_measure_table_flag" name="FLAG" type="_sqlsimpletype_integer"/>
       <feature xsi:type="rolaprel:ExpressionColumn" xmi:id="_expressioncolumn_measureexpression1" name="measureExpression1">
-        <sqls xmi:id="_sqlstatement_1" sql="(select sum(&quot;MEASURE_TABLE&quot;.&quot;VALUE&quot;) from &quot;MEASURE_TABLE&quot; where &quot;MEASURE_TABLE&quot;.&quot;FLAG&quot; = 1)">
+        <sqls xmi:id="_sqlstatement" sql="(select sum(&quot;MEASURE_TABLE&quot;.&quot;VALUE&quot;) from &quot;MEASURE_TABLE&quot; where &quot;MEASURE_TABLE&quot;.&quot;FLAG&quot; = 1)">
           <dialects>generic</dialects>
           <dialects>h2</dialects>
         </sqls>
       </feature>
       <feature xsi:type="rolaprel:ExpressionColumn" xmi:id="_expressioncolumn_measureexpression2" name="measureExpression2">
-        <sqls xmi:id="_sqlstatement" sql="(CASE WHEN &quot;FACT&quot;.&quot;VALUE&quot; > 21 THEN 50 ELSE &quot;FACT&quot;.&quot;VALUE&quot; END)">
+        <sqls xmi:id="_sqlstatement_1" sql="(CASE WHEN &quot;FACT&quot;.&quot;VALUE&quot; > 21 THEN 50 ELSE &quot;FACT&quot;.&quot;VALUE&quot; END)">
           <dialects>generic</dialects>
           <dialects>h2</dialects>
         </sqls>
@@ -181,7 +181,7 @@ This file represents the complete definition of the catalog.
     </ownedElement>
   </relational:Schema>
   <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
-  <rolapcube:PhysicalCube xmi:id="_physicalcube_cube_with_measureexpression" name="Cube With MeasureExpression" query="_tablesource_fact">
+  <rolapcube:PhysicalCube xmi:id="_physicalcube_cube_with_measureexpression" name="Cube With MeasureExpression" source="_tablesource_fact">
     <measureGroups xmi:id="_measuregroup">
       <measures xsi:type="rolapmeas:SumMeasure" xmi:id="_summeasure_measure1_sum" name="Measure1-Sum" column="_expressioncolumn_measureexpression1"/>
       <measures xsi:type="rolapmeas:SumMeasure" xmi:id="_summeasure_measure2_sum" name="Measure2-Sum" column="_expressioncolumn_measureexpression2"/>

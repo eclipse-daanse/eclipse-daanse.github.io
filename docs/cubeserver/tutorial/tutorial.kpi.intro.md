@@ -66,7 +66,7 @@ This cube holds references to the KPI, and does not use any dimensions.
 
 ```xml
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapcube="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube" xmlns:rolapmeas="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube/measure" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
-  <rolapcube:PhysicalCube xmi:id="_physicalcube_cube_kpi" name="Cube Kpi" query="_tablesource_fact">
+  <rolapcube:PhysicalCube xmi:id="_physicalcube_cube_kpi" name="Cube Kpi" source="_tablesource_fact">
     <kpis xmi:id="_kpi_kpi1" name="Kpi1" value="[Measures].[Measure1-Sum]"/>
     <kpis xmi:id="_kpi_kpi2" name="Kpi2" value="[Measures].[Measure1-Sum]" parentKpi="_kpi_kpi1"/>
     <kpis xmi:id="_kpi_kpi3" name="Kpi3" displayFolder="theDisplayFolder\otherDisplayFolder" value="[Measures].[Measure1-Sum]"/>
@@ -74,10 +74,10 @@ This cube holds references to the KPI, and does not use any dimensions.
       <measures xsi:type="rolapmeas:SumMeasure" xmi:id="_summeasure_measure1_sum" name="Measure1-Sum" column="_column_fact_value"/>
     </measureGroups>
   </rolapcube:PhysicalCube>
-  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
   <relational:Table xmi:id="_table_fact" name="Fact">
     <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE"/>
   </relational:Table>
+  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
 </xmi:XMI>
 
 ```
@@ -98,7 +98,7 @@ This file represents the complete definition of the catalog.
     </ownedElement>
   </relational:Schema>
   <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
-  <rolapcube:PhysicalCube xmi:id="_physicalcube_cube_kpi" name="Cube Kpi" query="_tablesource_fact">
+  <rolapcube:PhysicalCube xmi:id="_physicalcube_cube_kpi" name="Cube Kpi" source="_tablesource_fact">
     <kpis xmi:id="_kpi_kpi1" name="Kpi1" value="[Measures].[Measure1-Sum]"/>
     <kpis xmi:id="_kpi_kpi2" name="Kpi2" value="[Measures].[Measure1-Sum]" parentKpi="_kpi_kpi1"/>
     <kpis xmi:id="_kpi_kpi3" name="Kpi3" displayFolder="theDisplayFolder\otherDisplayFolder" value="[Measures].[Measure1-Sum]"/>

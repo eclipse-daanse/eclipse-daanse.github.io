@@ -105,14 +105,14 @@ Also Hierarchy1 defined the ParentChildLink with reference to Closure table.
 
 ```xml
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
-  <rolaphier:ParentChildHierarchy xmi:id="_parentchildhierarchy_hierarchy" name="Hierarchy" primaryKey="_column_fact_name" query="_tablesource_fact" nullParentValue="0" parentColumn="_column_fact_parent" level="_level_name"/>
+  <rolaphier:ParentChildHierarchy xmi:id="_parentchildhierarchy_hierarchy" name="Hierarchy" primaryKey="_column_fact_name" source="_tablesource_fact" nullParentValue="0" parentColumn="_column_fact_parent" level="_level_name"/>
   <relational:Table xmi:id="_table_fact" name="Fact">
     <feature xsi:type="relational:Column" xmi:id="_column_fact_name" name="NAME"/>
     <feature xsi:type="relational:Column" xmi:id="_column_fact_parent" name="PARENT"/>
     <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE"/>
   </relational:Table>
-  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
   <rolaplev:Level xmi:id="_level_name" name="Name" column="_column_fact_name" nameColumn="_column_fact_name" uniqueMembers="true"/>
+  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
 </xmi:XMI>
 
 ```
@@ -130,18 +130,18 @@ The time dimension is defined with the one hierarchy.
     <feature xsi:type="relational:Column" xmi:id="_column_fact_parent" name="PARENT"/>
     <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE"/>
   </relational:Table>
+  <rolaphier:ParentChildHierarchy xmi:id="_parentchildhierarchy_hierarchy" name="Hierarchy" primaryKey="_column_fact_name" source="_tablesource_fact" nullParentValue="0" parentColumn="_column_fact_parent" level="_level_name">
+    <parentChildLink xmi:id="_parentchildlink" childColumn="_column_closure_name" parentColumn="_column_closure_parent">
+      <table xmi:id="_tablesource_closure" table="_table_closure"/>
+    </parentChildLink>
+  </rolaphier:ParentChildHierarchy>
+  <rolaplev:Level xmi:id="_level_name" name="Name" column="_column_fact_name" nameColumn="_column_fact_name" uniqueMembers="true"/>
   <relational:Table xmi:id="_table_closure" name="Closure">
     <feature xsi:type="relational:Column" xmi:id="_column_closure_name" name="NAME"/>
     <feature xsi:type="relational:Column" xmi:id="_column_closure_parent" name="PARENT"/>
     <feature xsi:type="relational:Column" xmi:id="_column_closure_distance" name="DISTANCE"/>
   </relational:Table>
-  <rolaphier:ParentChildHierarchy xmi:id="_parentchildhierarchy_hierarchy" name="Hierarchy" primaryKey="_column_fact_name" query="_tablesource_fact" nullParentValue="0" parentColumn="_column_fact_parent" level="_level_name">
-    <parentChildLink xmi:id="_parentchildlink" childColumn="_column_closure_name" parentColumn="_column_closure_parent">
-      <table xmi:id="_tablesource_closure" table="_table_closure"/>
-    </parentChildLink>
-  </rolaphier:ParentChildHierarchy>
   <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
-  <rolaplev:Level xmi:id="_level_name" name="Name" column="_column_fact_name" nameColumn="_column_fact_name" uniqueMembers="true"/>
 </xmi:XMI>
 
 ```
@@ -153,7 +153,7 @@ The cube with Parent Child Hierarchy.
 
 ```xml
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapcube="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube" xmlns:rolapdim="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapmeas="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube/measure" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
-  <rolapcube:PhysicalCube xmi:id="_physicalcube_cube" name="Cube" query="_tablesource_fact">
+  <rolapcube:PhysicalCube xmi:id="_physicalcube_cube" name="Cube" source="_tablesource_fact">
     <dimensionConnectors xmi:id="_dimensionconnector_dimension" foreignKey="_column_fact_name" dimension="_standarddimension_dimension" overrideDimensionName="Dimension"/>
     <measureGroups xmi:id="_measuregroup">
       <measures xsi:type="rolapmeas:SumMeasure" xmi:id="_summeasure_value" name="Value" column="_column_fact_value"/>
@@ -164,19 +164,19 @@ The cube with Parent Child Hierarchy.
     <feature xsi:type="relational:Column" xmi:id="_column_fact_parent" name="PARENT"/>
     <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE"/>
   </relational:Table>
+  <rolaphier:ParentChildHierarchy xmi:id="_parentchildhierarchy_hierarchy" name="Hierarchy" primaryKey="_column_fact_name" source="_tablesource_fact" nullParentValue="0" parentColumn="_column_fact_parent" level="_level_name">
+    <parentChildLink xmi:id="_parentchildlink" childColumn="_column_closure_name" parentColumn="_column_closure_parent">
+      <table xmi:id="_tablesource_closure" table="_table_closure"/>
+    </parentChildLink>
+  </rolaphier:ParentChildHierarchy>
+  <rolaplev:Level xmi:id="_level_name" name="Name" column="_column_fact_name" nameColumn="_column_fact_name" uniqueMembers="true"/>
   <relational:Table xmi:id="_table_closure" name="Closure">
     <feature xsi:type="relational:Column" xmi:id="_column_closure_name" name="NAME"/>
     <feature xsi:type="relational:Column" xmi:id="_column_closure_parent" name="PARENT"/>
     <feature xsi:type="relational:Column" xmi:id="_column_closure_distance" name="DISTANCE"/>
   </relational:Table>
   <rolapdim:StandardDimension xmi:id="_standarddimension_dimension" name="Dimension" hierarchies="_parentchildhierarchy_hierarchy"/>
-  <rolaphier:ParentChildHierarchy xmi:id="_parentchildhierarchy_hierarchy" name="Hierarchy" primaryKey="_column_fact_name" query="_tablesource_fact" nullParentValue="0" parentColumn="_column_fact_parent" level="_level_name">
-    <parentChildLink xmi:id="_parentchildlink" childColumn="_column_closure_name" parentColumn="_column_closure_parent">
-      <table xmi:id="_tablesource_closure" table="_table_closure"/>
-    </parentChildLink>
-  </rolaphier:ParentChildHierarchy>
   <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
-  <rolaplev:Level xmi:id="_level_name" name="Name" column="_column_fact_name" nameColumn="_column_fact_name" uniqueMembers="true"/>
 </xmi:XMI>
 
 ```
@@ -189,8 +189,8 @@ This file represents the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapcat="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/catalog" xmlns:rolapcube="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube" xmlns:rolapdim="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapmeas="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube/measure" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
-  <relational:SQLSimpleType xmi:id="_sqlsimpletype_character_varying" name="CHARACTER VARYING" structuralFeature="_column_fact_parent _column_closure_parent _column_fact_name" typeNumber="12"/>
-  <relational:SQLSimpleType xmi:id="_sqlsimpletype_integer" name="INTEGER" structuralFeature="_column_fact_value _column_closure_name _column_closure_distance" typeNumber="4"/>
+  <relational:SQLSimpleType xmi:id="_sqlsimpletype_character_varying" name="CHARACTER VARYING" structuralFeature="_column_closure_parent _column_fact_parent _column_fact_name" typeNumber="12"/>
+  <relational:SQLSimpleType xmi:id="_sqlsimpletype_integer" name="INTEGER" structuralFeature="_column_closure_name _column_fact_value _column_closure_distance" typeNumber="4"/>
   <rolapcat:Catalog xmi:id="_catalog_parent_child_link" description="Parent-child hierarchy with links" name="Daanse Tutorial - Parent Child Link" cubes="_physicalcube_cube" dbschemas="_schema"/>
   <relational:Schema xmi:id="_schema">
     <ownedElement xsi:type="relational:Table" xmi:id="_table_fact" name="Fact">
@@ -206,13 +206,13 @@ This file represents the complete definition of the catalog.
   </relational:Schema>
   <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
   <rolaplev:Level xmi:id="_level_name" name="Name" column="_column_fact_name" nameColumn="_column_fact_name" uniqueMembers="true"/>
-  <rolaphier:ParentChildHierarchy xmi:id="_parentchildhierarchy_hierarchy" name="Hierarchy" primaryKey="_column_fact_name" query="_tablesource_fact" nullParentValue="0" parentColumn="_column_fact_parent" level="_level_name">
+  <rolaphier:ParentChildHierarchy xmi:id="_parentchildhierarchy_hierarchy" name="Hierarchy" primaryKey="_column_fact_name" source="_tablesource_fact" nullParentValue="0" parentColumn="_column_fact_parent" level="_level_name">
     <parentChildLink xmi:id="_parentchildlink" childColumn="_column_closure_name" parentColumn="_column_closure_parent">
       <table xmi:id="_tablesource_closure" table="_table_closure"/>
     </parentChildLink>
   </rolaphier:ParentChildHierarchy>
   <rolapdim:StandardDimension xmi:id="_standarddimension_dimension" name="Dimension" hierarchies="_parentchildhierarchy_hierarchy"/>
-  <rolapcube:PhysicalCube xmi:id="_physicalcube_cube" name="Cube" query="_tablesource_fact">
+  <rolapcube:PhysicalCube xmi:id="_physicalcube_cube" name="Cube" source="_tablesource_fact">
     <dimensionConnectors xmi:id="_dimensionconnector_dimension" foreignKey="_column_fact_name" dimension="_standarddimension_dimension" overrideDimensionName="Dimension"/>
     <measureGroups xmi:id="_measuregroup">
       <measures xsi:type="rolapmeas:SumMeasure" xmi:id="_summeasure_value" name="Value" column="_column_fact_value"/>
