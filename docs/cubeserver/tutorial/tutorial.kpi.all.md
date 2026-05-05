@@ -57,7 +57,7 @@ Cube have two measures (Measure1-Sum, Measure2-Count) and 4 CalculatedMembers (C
 
 ```xml
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapcube="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube" xmlns:rolapmeas="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube/measure" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
-  <rolapcube:PhysicalCube xmi:id="_physicalcube_cubekpi" name="CubeKPI" query="_tablesource_fact">
+  <rolapcube:PhysicalCube xmi:id="_physicalcube_cubekpi" name="CubeKPI" source="_tablesource_fact">
     <calculatedMembers xmi:id="_calculatedmember_calculatedvalue" name="CalculatedValue" visible="false" formula="[Measures].[Measure1-Sum] / [Measures].[Measure2-Count]"/>
     <calculatedMembers xmi:id="_calculatedmember_calculatedgoal" name="CalculatedGoal" visible="false" formula="[Measures].[Measure1-Sum] / [Measures].[Measure2-Count]"/>
     <calculatedMembers xmi:id="_calculatedmember_calculatedstatus" name="CalculatedStatus" visible="false" formula="[Measures].[Measure1-Sum] / [Measures].[Measure2-Count]"/>
@@ -86,18 +86,19 @@ This file represents the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapcat="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/catalog" xmlns:rolapcube="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube" xmlns:rolapmeas="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube/measure" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
+  <relational:SQLSimpleType xmi:id="_sqlsimpletype_integer" name="INTEGER" structuralFeature="_column_fact_value" typeNumber="4"/>
   <relational:SQLSimpleType xmi:id="_sqlsimpletype_character_varying" name="CHARACTER VARYING" structuralFeature="_column_fact_key" typeNumber="12"/>
-  <relational:SQLSimpleType xmi:id="_sqlsimpletype_integer" name="INTEGER" structuralFeature="_column_fact_value _column_fact_value_numeric" typeNumber="4"/>
+  <relational:SQLSimpleType xmi:id="_sqlsimpletype_numeric" name="NUMERIC" structuralFeature="_column_fact_value_numeric" typeNumber="2" numericPrecisionRadix="10"/>
   <rolapcat:Catalog xmi:id="_catalog_kpi_all" description="Complete KPI implementation examples" name="Daanse Tutorial - KPI All" cubes="_physicalcube_cubekpi" dbschemas="_schema"/>
   <relational:Schema xmi:id="_schema">
     <ownedElement xsi:type="relational:Table" xmi:id="_table_fact" name="Fact">
       <feature xsi:type="relational:Column" xmi:id="_column_fact_key" name="KEY" type="_sqlsimpletype_character_varying"/>
       <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE" type="_sqlsimpletype_integer"/>
-      <feature xsi:type="relational:Column" xmi:id="_column_fact_value_numeric" name="VALUE_NUMERIC" type="_sqlsimpletype_integer"/>
+      <feature xsi:type="relational:Column" xmi:id="_column_fact_value_numeric" name="VALUE_NUMERIC" type="_sqlsimpletype_numeric"/>
     </ownedElement>
   </relational:Schema>
   <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
-  <rolapcube:PhysicalCube xmi:id="_physicalcube_cubekpi" name="CubeKPI" query="_tablesource_fact">
+  <rolapcube:PhysicalCube xmi:id="_physicalcube_cubekpi" name="CubeKPI" source="_tablesource_fact">
     <calculatedMembers xmi:id="_calculatedmember_calculatedvalue" name="CalculatedValue" visible="false" formula="[Measures].[Measure1-Sum] / [Measures].[Measure2-Count]"/>
     <calculatedMembers xmi:id="_calculatedmember_calculatedgoal" name="CalculatedGoal" visible="false" formula="[Measures].[Measure1-Sum] / [Measures].[Measure2-Count]"/>
     <calculatedMembers xmi:id="_calculatedmember_calculatedstatus" name="CalculatedStatus" visible="false" formula="[Measures].[Measure1-Sum] / [Measures].[Measure2-Count]"/>

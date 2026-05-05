@@ -101,7 +101,7 @@ In this example uses cube with fact table C1_Fact as data.
 
 ```xml
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapcube="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube" xmlns:rolapmeas="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube/measure" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
-  <rolapcube:PhysicalCube xmi:id="_physicalcube_cube1" name="Cube1" query="_tablesource_c1_fact">
+  <rolapcube:PhysicalCube xmi:id="_physicalcube_cube1" name="Cube1" source="_tablesource_c1_fact">
     <measureGroups xmi:id="_measuregroup">
       <measures xsi:type="rolapmeas:SumMeasure" xmi:id="_summeasure_c1_measure_sum" name="C1-Measure-Sum" column="_column_c1_fact_value"/>
     </measureGroups>
@@ -122,7 +122,7 @@ In this example uses cube with fact table C2_Fact as data.
 
 ```xml
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapcube="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube" xmlns:rolapmeas="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube/measure" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
-  <rolapcube:PhysicalCube xmi:id="_physicalcube_cube1" name="Cube1" query="_tablesource_c1_fact">
+  <rolapcube:PhysicalCube xmi:id="_physicalcube_cube1" name="Cube1" source="_tablesource_c1_fact">
     <measureGroups xmi:id="_measuregroup">
       <measures xsi:type="rolapmeas:SumMeasure" xmi:id="_summeasure_c1_measure_sum" name="C1-Measure-Sum" column="_column_c1_fact_value"/>
     </measureGroups>
@@ -180,12 +180,12 @@ This file represents the complete definition of the catalog.
   </relational:Schema>
   <rolapsrc:TableSource xmi:id="_tablesource_c2_fact" table="_table_c2_fact"/>
   <rolapsrc:TableSource xmi:id="_tablesource_c1_fact" table="_table_c1_fact"/>
-  <rolapcube:PhysicalCube xmi:id="_physicalcube_cube1" name="Cube1" query="_tablesource_c1_fact">
+  <rolapcube:PhysicalCube xmi:id="_physicalcube_cube1" name="Cube1" source="_tablesource_c1_fact">
     <measureGroups xmi:id="_measuregroup">
       <measures xsi:type="rolapmeas:SumMeasure" xmi:id="_summeasure_c1_measure_sum" name="C1-Measure-Sum" column="_column_c1_fact_value"/>
     </measureGroups>
   </rolapcube:PhysicalCube>
-  <rolapcube:PhysicalCube xmi:id="_physicalcube_cube2" name="Cube2" query="_tablesource_c2_fact">
+  <rolapcube:PhysicalCube xmi:id="_physicalcube_cube2" name="Cube2" source="_tablesource_c2_fact">
     <measureGroups xmi:id="_measuregroup_1">
       <measures xsi:type="rolapmeas:SumMeasure" xmi:id="_summeasure_c2_measure_sum" name="C2-Measure-Sum" column="_column_c2_fact_value"/>
     </measureGroups>

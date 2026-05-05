@@ -47,17 +47,17 @@ This file represents the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapcat="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/catalog">
-  <relational:SQLSimpleType xmi:id="_sqlsimpletype_character_varying" name="CHARACTER VARYING" structuralFeature="_column_viewone_columnone _column_tableone_columnone _column_tableone_columnone_1" typeNumber="12"/>
+  <relational:SQLSimpleType xmi:id="_sqlsimpletype_character_varying" name="CHARACTER VARYING" structuralFeature="_column_tableone_columnone_1 _column_tableone_columnone _column_viewone_columnone" typeNumber="12"/>
   <rolapcat:Catalog xmi:id="_catalog_databasetable" id="_catalog_databaseTable" description="Physical table definitions and types" name="Daanse Tutorial - Database Table" dbschemas="_schema"/>
   <relational:Schema xmi:id="_schema">
     <ownedElement xsi:type="relational:Table" xmi:id="_table_tableone" name="TableOne">
-      <feature xsi:type="relational:Column" xmi:id="_column_tableone_columnone_1" name="ColumnOne" type="_sqlsimpletype_character_varying"/>
+      <feature xsi:type="relational:Column" xmi:id="_column_tableone_columnone" name="ColumnOne" type="_sqlsimpletype_character_varying"/>
     </ownedElement>
     <ownedElement xsi:type="relational:View" xmi:id="_view_viewone" name="ViewOne">
       <feature xsi:type="relational:Column" xmi:id="_column_viewone_columnone" name="ColumnOne" type="_sqlsimpletype_character_varying"/>
     </ownedElement>
     <ownedElement xsi:type="relational:Table" xmi:id="_table_tableone_1" name="TableOne">
-      <feature xsi:type="relational:Column" xmi:id="_column_tableone_columnone" name="ColumnOne" type="_sqlsimpletype_character_varying"/>
+      <feature xsi:type="relational:Column" xmi:id="_column_tableone_columnone_1" name="ColumnOne" type="_sqlsimpletype_character_varying"/>
     </ownedElement>
   </relational:Schema>
 </xmi:XMI>

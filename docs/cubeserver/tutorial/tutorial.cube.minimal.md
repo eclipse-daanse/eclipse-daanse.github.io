@@ -58,7 +58,7 @@ This file represents the complete definition of the catalog.
     </ownedElement>
   </relational:Schema>
   <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
-  <rolapcube:PhysicalCube xmi:id="_physicalcube_minimalcube" name="MinimalCube" query="_tablesource_fact">
+  <rolapcube:PhysicalCube xmi:id="_physicalcube_minimalcube" name="MinimalCube" source="_tablesource_fact">
     <measureGroups xmi:id="_measuregroup">
       <measures xsi:type="rolapmeas:SumMeasure" xmi:id="_summeasure_measure_sum" name="Measure-Sum" column="_column_fact_value"/>
     </measureGroups>

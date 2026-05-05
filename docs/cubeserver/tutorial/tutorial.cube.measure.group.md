@@ -47,7 +47,7 @@ A `MeasureGroup` is a logical container designed to group related measures. Each
 
 ```xml
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapcube="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube" xmlns:rolapmeas="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube/measure" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
-  <rolapcube:PhysicalCube xmi:id="_physicalcube_measuregroupcube" name="MeasureGroupCube" query="_tablesource_fact">
+  <rolapcube:PhysicalCube xmi:id="_physicalcube_measuregroupcube" name="MeasureGroupCube" source="_tablesource_fact">
     <measureGroups xmi:id="_measuregroup_group_alphabetic" name="Group Alphabetic">
       <measures xsi:type="rolapmeas:SumMeasure" xmi:id="_summeasure_measure_a" name="Measure A" column="_column_fact_value"/>
       <measures xsi:type="rolapmeas:SumMeasure" xmi:id="_summeasure_measure_b" name="Measure B" column="_column_fact_value"/>
@@ -56,11 +56,11 @@ A `MeasureGroup` is a logical container designed to group related measures. Each
       <measures xsi:type="rolapmeas:SumMeasure" xmi:id="_summeasure_measure_1" name="Measure 1" column="_column_fact_value"/>
     </measureGroups>
   </rolapcube:PhysicalCube>
+  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
   <relational:Table xmi:id="_table_fact" name="Fact">
     <feature xsi:type="relational:Column" xmi:id="_column_fact_key" name="KEY"/>
     <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE"/>
   </relational:Table>
-  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
 </xmi:XMI>
 
 ```
@@ -83,7 +83,7 @@ This file represents the complete definition of the catalog.
     </ownedElement>
   </relational:Schema>
   <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
-  <rolapcube:PhysicalCube xmi:id="_physicalcube_measuregroupcube" name="MeasureGroupCube" query="_tablesource_fact">
+  <rolapcube:PhysicalCube xmi:id="_physicalcube_measuregroupcube" name="MeasureGroupCube" source="_tablesource_fact">
     <measureGroups xmi:id="_measuregroup_group_alphabetic" name="Group Alphabetic">
       <measures xsi:type="rolapmeas:SumMeasure" xmi:id="_summeasure_measure_a" name="Measure A" column="_column_fact_value"/>
       <measures xsi:type="rolapmeas:SumMeasure" xmi:id="_summeasure_measure_b" name="Measure B" column="_column_fact_value"/>

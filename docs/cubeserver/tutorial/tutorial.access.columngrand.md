@@ -50,7 +50,7 @@ The `cube1` is defined by the DimensionConnector1 and the DimensionConnector2  a
 
 ```xml
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapcube="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube" xmlns:rolapmeas="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube/measure" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
-  <rolapcube:PhysicalCube xmi:id="_physicalcube_cube1" name="Cube1" query="_tablesource_fact">
+  <rolapcube:PhysicalCube xmi:id="_physicalcube_cube1" name="Cube1" source="_tablesource_fact">
     <measureGroups xmi:id="_measuregroup">
       <measures xsi:type="rolapmeas:SumMeasure" xmi:id="_summeasure_measure1" name="Measure1" column="_column_fact_value"/>
     </measureGroups>
@@ -129,8 +129,8 @@ This file represents the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapcacc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/access/common" xmlns:rolapcat="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/catalog" xmlns:rolapcube="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube" xmlns:rolapmeas="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube/measure" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
-  <relational:SQLSimpleType xmi:id="_sqlsimpletype_character_varying" name="CHARACTER VARYING" structuralFeature="_column_fact_key" typeNumber="12"/>
   <relational:SQLSimpleType xmi:id="_sqlsimpletype_integer" name="INTEGER" structuralFeature="_column_fact_value" typeNumber="4"/>
+  <relational:SQLSimpleType xmi:id="_sqlsimpletype_character_varying" name="CHARACTER VARYING" structuralFeature="_column_fact_key" typeNumber="12"/>
   <rolapcat:Catalog xmi:id="_catalog_access_column_grant" description="Demonstrates access control with column-level grants" name="Daanse Tutorial - Access Column Grant" cubes="_physicalcube_cube1" accessRoles="_accessrole_roleall _accessrole_rolenone" dbschemas="_schema"/>
   <relational:Schema xmi:id="_schema">
     <ownedElement xsi:type="relational:Table" xmi:id="_table_fact" name="Fact">
@@ -139,28 +139,28 @@ This file represents the complete definition of the catalog.
     </ownedElement>
   </relational:Schema>
   <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
-  <rolapcube:PhysicalCube xmi:id="_physicalcube_cube1" name="Cube1" query="_tablesource_fact">
+  <rolapcube:PhysicalCube xmi:id="_physicalcube_cube1" name="Cube1" source="_tablesource_fact">
     <measureGroups xmi:id="_measuregroup">
       <measures xsi:type="rolapmeas:SumMeasure" xmi:id="_summeasure_measure1" name="Measure1" column="_column_fact_value"/>
     </measureGroups>
   </rolapcube:PhysicalCube>
-  <rolapcacc:AccessRole xmi:id="_accessrole_roleall" name="roleAll">
-    <accessCatalogGrants xmi:id="_accesscataloggrant_1" catalogAccess="all">
+  <rolapcacc:AccessRole xmi:id="_accessrole_rolenone" name="roleNone">
+    <accessCatalogGrants xmi:id="_accesscataloggrant" catalogAccess="all">
       <cubeGrants xmi:id="_accesscubegrant_cube1_1" cubeAccess="all" cube="_physicalcube_cube1"/>
       <databaseSchemaGrants xmi:id="_accessdatabaseschemagrant_1" databaseSchemaAccess="custom" databaseSchema="_schema">
         <tableGrants xmi:id="_accesstablegrant_fact" tableAccess="custom" table="_table_fact">
-          <columnGrants xmi:id="_accesscolumngrant_value_1" columnAccess="all" column="_column_fact_value"/>
-          <columnGrants xmi:id="_accesscolumngrant_key" columnAccess="all" column="_column_fact_key"/>
+          <columnGrants xmi:id="_accesscolumngrant_value" column="_column_fact_value"/>
         </tableGrants>
       </databaseSchemaGrants>
     </accessCatalogGrants>
   </rolapcacc:AccessRole>
-  <rolapcacc:AccessRole xmi:id="_accessrole_rolenone" name="roleNone">
-    <accessCatalogGrants xmi:id="_accesscataloggrant" catalogAccess="all">
+  <rolapcacc:AccessRole xmi:id="_accessrole_roleall" name="roleAll">
+    <accessCatalogGrants xmi:id="_accesscataloggrant_1" catalogAccess="all">
       <cubeGrants xmi:id="_accesscubegrant_cube1" cubeAccess="all" cube="_physicalcube_cube1"/>
       <databaseSchemaGrants xmi:id="_accessdatabaseschemagrant" databaseSchemaAccess="custom" databaseSchema="_schema">
         <tableGrants xmi:id="_accesstablegrant_fact_1" tableAccess="custom" table="_table_fact">
-          <columnGrants xmi:id="_accesscolumngrant_value" column="_column_fact_value"/>
+          <columnGrants xmi:id="_accesscolumngrant_value_1" columnAccess="all" column="_column_fact_value"/>
+          <columnGrants xmi:id="_accesscolumngrant_key" columnAccess="all" column="_column_fact_key"/>
         </tableGrants>
       </databaseSchemaGrants>
     </accessCatalogGrants>

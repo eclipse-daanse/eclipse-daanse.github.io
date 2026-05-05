@@ -96,20 +96,20 @@ The JoinSource specifies which TableQueries should be joined. It also defines th
 ```xml
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
   <rolapsrc:JoinSource xmi:id="_joinsource">
-    <left xmi:id="_joinedqueryelement_continent_id" key="_column_country_continent_id" query="_tablesource_country"/>
-    <right xmi:id="_joinedqueryelement_id" key="_column_continent_id" query="_tablesource_continent"/>
+    <left xmi:id="_joinedqueryelement_continent_id" key="_column_country_continent_id" source="_tablesource_country"/>
+    <right xmi:id="_joinedqueryelement_id" key="_column_continent_id" source="_tablesource_continent"/>
   </rolapsrc:JoinSource>
-  <rolapsrc:TableSource xmi:id="_tablesource_country" table="_table_country"/>
   <relational:Table xmi:id="_table_continent" name="Continent">
     <feature xsi:type="relational:Column" xmi:id="_column_continent_id" name="ID"/>
     <feature xsi:type="relational:Column" xmi:id="_column_continent_name" name="NAME"/>
   </relational:Table>
-  <rolapsrc:TableSource xmi:id="_tablesource_continent" table="_table_continent"/>
   <relational:Table xmi:id="_table_country" name="Country">
     <feature xsi:type="relational:Column" xmi:id="_column_country_id" name="ID"/>
     <feature xsi:type="relational:Column" xmi:id="_column_country_name" name="NAME"/>
     <feature xsi:type="relational:Column" xmi:id="_column_country_continent_id" name="CONTINENT_ID"/>
   </relational:Table>
+  <rolapsrc:TableSource xmi:id="_tablesource_country" table="_table_country"/>
+  <rolapsrc:TableSource xmi:id="_tablesource_continent" table="_table_continent"/>
 </xmi:XMI>
 
 ```
@@ -146,30 +146,30 @@ Please note that within a JoinQuery, another JoinSource may only be used on the 
 ```xml
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
   <rolapsrc:JoinSource xmi:id="_joinsource">
-    <left xmi:id="_joinedqueryelement_country_id" key="_column_town_country_id" query="_tablesource_town"/>
-    <right xmi:id="_joinedqueryelement_id" key="_column_country_id" query="_joinsource_1"/>
+    <left xmi:id="_joinedqueryelement_country_id" key="_column_town_country_id" source="_tablesource_town"/>
+    <right xmi:id="_joinedqueryelement_id" key="_column_country_id" source="_joinsource_1"/>
+  </rolapsrc:JoinSource>
+  <relational:Table xmi:id="_table_continent" name="Continent">
+    <feature xsi:type="relational:Column" xmi:id="_column_continent_id" name="ID"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_continent_name" name="NAME"/>
+  </relational:Table>
+  <rolapsrc:TableSource xmi:id="_tablesource_town" table="_table_town"/>
+  <rolapsrc:JoinSource xmi:id="_joinsource_1">
+    <left xmi:id="_joinedqueryelement_continent_id" key="_column_country_continent_id" source="_tablesource_country"/>
+    <right xmi:id="_joinedqueryelement_id_1" key="_column_continent_id" source="_tablesource_continent"/>
   </rolapsrc:JoinSource>
   <relational:Table xmi:id="_table_town" name="Town">
     <feature xsi:type="relational:Column" xmi:id="_column_town_id" name="ID"/>
     <feature xsi:type="relational:Column" xmi:id="_column_town_name" name="NAME"/>
     <feature xsi:type="relational:Column" xmi:id="_column_town_country_id" name="COUNTRY_ID"/>
   </relational:Table>
-  <rolapsrc:TableSource xmi:id="_tablesource_country" table="_table_country"/>
-  <rolapsrc:JoinSource xmi:id="_joinsource_1">
-    <left xmi:id="_joinedqueryelement_continent_id" key="_column_country_continent_id" query="_tablesource_country"/>
-    <right xmi:id="_joinedqueryelement_id_1" key="_column_continent_id" query="_tablesource_continent"/>
-  </rolapsrc:JoinSource>
-  <rolapsrc:TableSource xmi:id="_tablesource_town" table="_table_town"/>
-  <relational:Table xmi:id="_table_continent" name="Continent">
-    <feature xsi:type="relational:Column" xmi:id="_column_continent_id" name="ID"/>
-    <feature xsi:type="relational:Column" xmi:id="_column_continent_name" name="NAME"/>
-  </relational:Table>
-  <rolapsrc:TableSource xmi:id="_tablesource_continent" table="_table_continent"/>
   <relational:Table xmi:id="_table_country" name="Country">
     <feature xsi:type="relational:Column" xmi:id="_column_country_id" name="ID"/>
     <feature xsi:type="relational:Column" xmi:id="_column_country_name" name="NAME"/>
     <feature xsi:type="relational:Column" xmi:id="_column_country_continent_id" name="CONTINENT_ID"/>
   </relational:Table>
+  <rolapsrc:TableSource xmi:id="_tablesource_country" table="_table_country"/>
+  <rolapsrc:TableSource xmi:id="_tablesource_continent" table="_table_continent"/>
 </xmi:XMI>
 
 ```
@@ -240,35 +240,35 @@ The order of the Levels in the hierarchy is important, as it determines the dril
 
 ```xml
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
-  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_townhierarchy" name="TownHierarchy" primaryKey="_column_town_id" query="_joinsource" levels="_level_continent _level_county _level_town"/>
-  <rolaplev:Level xmi:id="_level_county" name="County" column="_column_country_id" nameColumn="_column_country_name"/>
-  <rolapsrc:JoinSource xmi:id="_joinsource">
-    <left xmi:id="_joinedqueryelement_country_id" key="_column_town_country_id" query="_tablesource_town"/>
-    <right xmi:id="_joinedqueryelement_id" key="_column_country_id" query="_joinsource_1"/>
-  </rolapsrc:JoinSource>
-  <rolapsrc:TableSource xmi:id="_tablesource_country" table="_table_country"/>
-  <rolapsrc:TableSource xmi:id="_tablesource_town" table="_table_town"/>
-  <relational:Table xmi:id="_table_country" name="Country">
-    <feature xsi:type="relational:Column" xmi:id="_column_country_id" name="ID"/>
-    <feature xsi:type="relational:Column" xmi:id="_column_country_name" name="NAME"/>
-    <feature xsi:type="relational:Column" xmi:id="_column_country_continent_id" name="CONTINENT_ID"/>
+  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_townhierarchy" name="TownHierarchy" primaryKey="_column_town_id" source="_joinsource" levels="_level_continent _level_county _level_town"/>
+  <relational:Table xmi:id="_table_continent" name="Continent">
+    <feature xsi:type="relational:Column" xmi:id="_column_continent_id" name="ID"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_continent_name" name="NAME"/>
   </relational:Table>
-  <rolaplev:Level xmi:id="_level_town" name="Town" column="_column_town_id" nameColumn="_column_town_name"/>
+  <rolaplev:Level xmi:id="_level_county" name="County" column="_column_country_id" nameColumn="_column_country_name"/>
   <rolaplev:Level xmi:id="_level_continent" name="Continent" column="_column_continent_id" nameColumn="_column_continent_name"/>
+  <rolapsrc:TableSource xmi:id="_tablesource_country" table="_table_country"/>
+  <rolapsrc:JoinSource xmi:id="_joinsource">
+    <left xmi:id="_joinedqueryelement_country_id" key="_column_town_country_id" source="_tablesource_town"/>
+    <right xmi:id="_joinedqueryelement_id" key="_column_country_id" source="_joinsource_1"/>
+  </rolapsrc:JoinSource>
+  <rolapsrc:TableSource xmi:id="_tablesource_town" table="_table_town"/>
+  <rolapsrc:JoinSource xmi:id="_joinsource_1">
+    <left xmi:id="_joinedqueryelement_continent_id" key="_column_country_continent_id" source="_tablesource_country"/>
+    <right xmi:id="_joinedqueryelement_id_1" key="_column_continent_id" source="_tablesource_continent"/>
+  </rolapsrc:JoinSource>
   <relational:Table xmi:id="_table_town" name="Town">
     <feature xsi:type="relational:Column" xmi:id="_column_town_id" name="ID"/>
     <feature xsi:type="relational:Column" xmi:id="_column_town_name" name="NAME"/>
     <feature xsi:type="relational:Column" xmi:id="_column_town_country_id" name="COUNTRY_ID"/>
   </relational:Table>
-  <rolapsrc:JoinSource xmi:id="_joinsource_1">
-    <left xmi:id="_joinedqueryelement_continent_id" key="_column_country_continent_id" query="_tablesource_country"/>
-    <right xmi:id="_joinedqueryelement_id_1" key="_column_continent_id" query="_tablesource_continent"/>
-  </rolapsrc:JoinSource>
-  <relational:Table xmi:id="_table_continent" name="Continent">
-    <feature xsi:type="relational:Column" xmi:id="_column_continent_id" name="ID"/>
-    <feature xsi:type="relational:Column" xmi:id="_column_continent_name" name="NAME"/>
+  <relational:Table xmi:id="_table_country" name="Country">
+    <feature xsi:type="relational:Column" xmi:id="_column_country_id" name="ID"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_country_name" name="NAME"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_country_continent_id" name="CONTINENT_ID"/>
   </relational:Table>
   <rolapsrc:TableSource xmi:id="_tablesource_continent" table="_table_continent"/>
+  <rolaplev:Level xmi:id="_level_town" name="Town" column="_column_town_id" nameColumn="_column_town_name"/>
 </xmi:XMI>
 
 ```
@@ -281,45 +281,47 @@ The Dimension has only one hierarchy.
 ```xml
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapdim="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
   <rolapdim:StandardDimension xmi:id="_standarddimension_continent_country_town" name="Continent - Country - Town" hierarchies="_explicithierarchy_townhierarchy"/>
+  <relational:Table xmi:id="_table_continent" name="Continent">
+    <feature xsi:type="relational:Column" xmi:id="_column_continent_id" name="ID"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_continent_name" name="NAME"/>
+  </relational:Table>
   <rolaplev:Level xmi:id="_level_county" name="County">
     <column href="_column_country_id"/>
     <nameColumn href="_column_country_name"/>
   </rolaplev:Level>
-  <rolapsrc:JoinSource xmi:id="_joinsource">
-    <left xmi:id="_joinedqueryelement_country_id" key="_column_town_country_id" query="_tablesource_town"/>
-    <right xmi:id="_joinedqueryelement_id" query="_joinsource_1">
-      <key href="_column_country_id"/>
-    </right>
-  </rolapsrc:JoinSource>
-  <rolapsrc:TableSource xmi:id="_tablesource_country" table="_table_country"/>
-  <rolapsrc:TableSource xmi:id="_tablesource_town" table="_table_town"/>
-  <relational:Table xmi:id="_table_country" name="Country">
-    <feature xsi:type="relational:Column" xmi:id="_column_country_id" name="ID"/>
-    <feature xsi:type="relational:Column" xmi:id="_column_country_name" name="NAME"/>
-    <feature xsi:type="relational:Column" xmi:id="_column_country_continent_id" name="CONTINENT_ID"/>
-  </relational:Table>
-  <rolaplev:Level xmi:id="_level_town" name="Town" column="_column_town_id" nameColumn="_column_town_name"/>
-  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_townhierarchy" name="TownHierarchy" primaryKey="_column_town_id" query="_joinsource" levels="_level_continent _level_county _level_town"/>
   <rolaplev:Level xmi:id="_level_continent" name="Continent">
     <column href="_column_continent_id"/>
     <nameColumn href="_column_continent_name"/>
   </rolaplev:Level>
+  <rolapsrc:TableSource xmi:id="_tablesource_country" table="_table_country"/>
+  <rolapsrc:JoinSource xmi:id="_joinsource">
+    <left xmi:id="_joinedqueryelement_country_id" key="_column_town_country_id" source="_tablesource_town"/>
+    <right xmi:id="_joinedqueryelement_id" source="_joinsource_1">
+      <key href="_column_country_id"/>
+    </right>
+  </rolapsrc:JoinSource>
+  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_townhierarchy" name="TownHierarchy" primaryKey="_column_town_id" source="_joinsource" levels="_level_continent _level_county _level_town"/>
+  <rolapsrc:TableSource xmi:id="_tablesource_town" table="_table_town"/>
+  <rolapsrc:JoinSource xmi:id="_joinsource_1">
+    <left xmi:id="_joinedqueryelement_continent_id" source="_tablesource_country">
+      <key href="_column_country_continent_id"/>
+    </left>
+    <right xmi:id="_joinedqueryelement_id_1" source="_tablesource_continent">
+      <key href="_column_continent_id"/>
+    </right>
+  </rolapsrc:JoinSource>
   <relational:Table xmi:id="_table_town" name="Town">
     <feature xsi:type="relational:Column" xmi:id="_column_town_id" name="ID"/>
     <feature xsi:type="relational:Column" xmi:id="_column_town_name" name="NAME"/>
     <feature xsi:type="relational:Column" xmi:id="_column_town_country_id" name="COUNTRY_ID"/>
   </relational:Table>
-  <rolapsrc:JoinSource xmi:id="_joinsource_1">
-    <left xmi:id="_joinedqueryelement_continent_id" key="_column_country_continent_id" query="_tablesource_country"/>
-    <right xmi:id="_joinedqueryelement_id_1" query="_tablesource_continent">
-      <key href="_column_continent_id"/>
-    </right>
-  </rolapsrc:JoinSource>
-  <relational:Table xmi:id="_table_continent" name="Continent">
-    <feature xsi:type="relational:Column" xmi:id="_column_continent_id" name="ID"/>
-    <feature xsi:type="relational:Column" xmi:id="_column_continent_name" name="NAME"/>
+  <relational:Table xmi:id="_table_country" name="Country">
+    <feature xsi:type="relational:Column" xmi:id="_column_country_id" name="ID"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_country_name" name="NAME"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_country_continent_id" name="CONTINENT_ID"/>
   </relational:Table>
   <rolapsrc:TableSource xmi:id="_tablesource_continent" table="_table_continent"/>
+  <rolaplev:Level xmi:id="_level_town" name="Town" column="_column_town_id" nameColumn="_column_town_name"/>
 </xmi:XMI>
 
 ```
@@ -333,61 +335,54 @@ To connect the dimension to the cube, a DimensionConnector is used. The dimensio
 
 ```xml
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapcube="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube" xmlns:rolapdim="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapmeas="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube/measure" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
-  <rolapcube:PhysicalCube xmi:id="_physicalcube_cube_query_linked_tables" name="Cube Query linked Tables" query="_tablesource_fact">
+  <rolapcube:PhysicalCube xmi:id="_physicalcube_cube_query_linked_tables" name="Cube Query linked Tables" source="_tablesource_fact">
     <dimensionConnectors xmi:id="_dimensionconnector_continent_country_town" foreignKey="_column_fact_town_id" dimension="_standarddimension_continent_country_town"/>
     <measureGroups xmi:id="_measuregroup">
       <measures xsi:type="rolapmeas:SumMeasure" xmi:id="_summeasure_themeasure" name="theMeasure" column="_column_fact_value"/>
     </measureGroups>
   </rolapcube:PhysicalCube>
+  <relational:Table xmi:id="_table_fact" name="Fact">
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_town_id" name="TOWN_ID"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE"/>
+  </relational:Table>
   <rolaplev:Level xmi:id="_level_county" name="County">
     <column href="_column_country_id"/>
     <nameColumn href="_column_country_name"/>
   </rolaplev:Level>
-  <rolapsrc:JoinSource xmi:id="_joinsource">
-    <left xmi:id="_joinedqueryelement_country_id" query="_tablesource_town">
-      <key href="_column_town_country_id"/>
-    </left>
-    <right xmi:id="_joinedqueryelement_id" query="_joinsource_1">
-      <key href="_column_country_id"/>
-    </right>
-  </rolapsrc:JoinSource>
-  <rolapsrc:TableSource xmi:id="_tablesource_country">
-    <table href="_table_country"/>
-  </rolapsrc:TableSource>
-  <rolapsrc:TableSource xmi:id="_tablesource_town" table="_table_town"/>
-  <rolapdim:StandardDimension xmi:id="_standarddimension_continent_country_town" name="Continent - Country - Town" hierarchies="_explicithierarchy_townhierarchy"/>
-  <rolaplev:Level xmi:id="_level_town" name="Town">
-    <column href="_column_town_id"/>
-    <nameColumn href="_column_town_name"/>
-  </rolaplev:Level>
-  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_townhierarchy" name="TownHierarchy" query="_joinsource" levels="_level_continent _level_county _level_town">
-    <primaryKey href="_column_town_id"/>
-  </rolaphier:ExplicitHierarchy>
   <rolaplev:Level xmi:id="_level_continent" name="Continent">
     <column href="_column_continent_id"/>
     <nameColumn href="_column_continent_name"/>
   </rolaplev:Level>
+  <rolapsrc:TableSource xmi:id="_tablesource_country">
+    <table href="_table_country"/>
+  </rolapsrc:TableSource>
+  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
+  <rolapsrc:JoinSource xmi:id="_joinsource">
+    <left xmi:id="_joinedqueryelement_country_id" key="_column_town_country_id" source="_tablesource_town"/>
+    <right xmi:id="_joinedqueryelement_id" source="_joinsource_1">
+      <key href="_column_country_id"/>
+    </right>
+  </rolapsrc:JoinSource>
+  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_townhierarchy" name="TownHierarchy" primaryKey="_column_town_id" source="_joinsource" levels="_level_continent _level_county _level_town"/>
+  <rolapsrc:TableSource xmi:id="_tablesource_town" table="_table_town"/>
+  <rolapsrc:JoinSource xmi:id="_joinsource_1">
+    <left xmi:id="_joinedqueryelement_continent_id" source="_tablesource_country">
+      <key href="_column_country_continent_id"/>
+    </left>
+    <right xmi:id="_joinedqueryelement_id_1" source="_tablesource_continent">
+      <key href="_column_continent_id"/>
+    </right>
+  </rolapsrc:JoinSource>
   <relational:Table xmi:id="_table_town" name="Town">
     <feature xsi:type="relational:Column" xmi:id="_column_town_id" name="ID"/>
     <feature xsi:type="relational:Column" xmi:id="_column_town_name" name="NAME"/>
     <feature xsi:type="relational:Column" xmi:id="_column_town_country_id" name="COUNTRY_ID"/>
   </relational:Table>
-  <relational:Table xmi:id="_table_fact" name="Fact">
-    <feature xsi:type="relational:Column" xmi:id="_column_fact_town_id" name="TOWN_ID"/>
-    <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE"/>
-  </relational:Table>
-  <rolapsrc:JoinSource xmi:id="_joinsource_1">
-    <left xmi:id="_joinedqueryelement_continent_id" query="_tablesource_country">
-      <key href="_column_country_continent_id"/>
-    </left>
-    <right xmi:id="_joinedqueryelement_id_1" query="_tablesource_continent">
-      <key href="_column_continent_id"/>
-    </right>
-  </rolapsrc:JoinSource>
+  <rolapdim:StandardDimension xmi:id="_standarddimension_continent_country_town" name="Continent - Country - Town" hierarchies="_explicithierarchy_townhierarchy"/>
   <rolapsrc:TableSource xmi:id="_tablesource_continent">
     <table href="_table_continent"/>
   </rolapsrc:TableSource>
-  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
+  <rolaplev:Level xmi:id="_level_town" name="Town" column="_column_town_id" nameColumn="_column_town_name"/>
 </xmi:XMI>
 
 ```
@@ -400,8 +395,8 @@ This file represents the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapcat="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/catalog" xmlns:rolapcube="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube" xmlns:rolapdim="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapmeas="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube/measure" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
-  <relational:SQLSimpleType xmi:id="_sqlsimpletype_integer" name="INTEGER" structuralFeature="_column_town_country_id _column_fact_value _column_country_id _column_town_id _column_fact_town_id _column_continent_id _column_country_continent_id" typeNumber="4"/>
-  <relational:SQLSimpleType xmi:id="_sqlsimpletype_character_varying" name="CHARACTER VARYING" structuralFeature="_column_continent_name _column_town_name _column_country_name" typeNumber="12"/>
+  <relational:SQLSimpleType xmi:id="_sqlsimpletype_character_varying" name="CHARACTER VARYING" structuralFeature="_column_town_name _column_continent_name _column_country_name" typeNumber="12"/>
+  <relational:SQLSimpleType xmi:id="_sqlsimpletype_integer" name="INTEGER" structuralFeature="_column_fact_value _column_fact_town_id _column_town_id _column_country_continent_id _column_town_country_id _column_country_id _column_continent_id" typeNumber="4"/>
   <rolapcat:Catalog xmi:id="_catalog_hierarchy_query_join_multi" description="Multi-level hierarchy with joins" name="Daanse Tutorial - Hierarchy Query Join Multi" cubes="_physicalcube_cube_query_linked_tables" dbschemas="_schema"/>
   <relational:Schema xmi:id="_schema">
     <ownedElement xsi:type="relational:Table" xmi:id="_table_fact" name="Fact">
@@ -425,22 +420,22 @@ This file represents the complete definition of the catalog.
   </relational:Schema>
   <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
   <rolapsrc:TableSource xmi:id="_tablesource_country" table="_table_country"/>
-  <rolapsrc:TableSource xmi:id="_tablesource_town" table="_table_town"/>
   <rolapsrc:TableSource xmi:id="_tablesource_continent" table="_table_continent"/>
+  <rolapsrc:TableSource xmi:id="_tablesource_town" table="_table_town"/>
   <rolapsrc:JoinSource xmi:id="_joinsource">
-    <left xmi:id="_joinedqueryelement_country_id" key="_column_town_country_id" query="_tablesource_town"/>
-    <right xmi:id="_joinedqueryelement_id_1" key="_column_country_id" query="_joinsource_1"/>
+    <left xmi:id="_joinedqueryelement_continent_id" key="_column_country_continent_id" source="_tablesource_country"/>
+    <right xmi:id="_joinedqueryelement_id" key="_column_continent_id" source="_tablesource_continent"/>
   </rolapsrc:JoinSource>
   <rolapsrc:JoinSource xmi:id="_joinsource_1">
-    <left xmi:id="_joinedqueryelement_continent_id" key="_column_country_continent_id" query="_tablesource_country"/>
-    <right xmi:id="_joinedqueryelement_id" key="_column_continent_id" query="_tablesource_continent"/>
+    <left xmi:id="_joinedqueryelement_country_id" key="_column_town_country_id" source="_tablesource_town"/>
+    <right xmi:id="_joinedqueryelement_id_1" key="_column_country_id" source="_joinsource"/>
   </rolapsrc:JoinSource>
+  <rolaplev:Level xmi:id="_level_continent" name="Continent" column="_column_continent_id" nameColumn="_column_continent_name"/>
   <rolaplev:Level xmi:id="_level_town" name="Town" column="_column_town_id" nameColumn="_column_town_name"/>
   <rolaplev:Level xmi:id="_level_county" name="County" column="_column_country_id" nameColumn="_column_country_name"/>
-  <rolaplev:Level xmi:id="_level_continent" name="Continent" column="_column_continent_id" nameColumn="_column_continent_name"/>
-  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_townhierarchy" name="TownHierarchy" primaryKey="_column_town_id" query="_joinsource" levels="_level_continent _level_county _level_town"/>
+  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_townhierarchy" name="TownHierarchy" primaryKey="_column_town_id" source="_joinsource_1" levels="_level_continent _level_county _level_town"/>
   <rolapdim:StandardDimension xmi:id="_standarddimension_continent_country_town" name="Continent - Country - Town" hierarchies="_explicithierarchy_townhierarchy"/>
-  <rolapcube:PhysicalCube xmi:id="_physicalcube_cube_query_linked_tables" name="Cube Query linked Tables" query="_tablesource_fact">
+  <rolapcube:PhysicalCube xmi:id="_physicalcube_cube_query_linked_tables" name="Cube Query linked Tables" source="_tablesource_fact">
     <dimensionConnectors xmi:id="_dimensionconnector_continent_country_town" foreignKey="_column_fact_town_id" dimension="_standarddimension_continent_country_town"/>
     <measureGroups xmi:id="_measuregroup">
       <measures xsi:type="rolapmeas:SumMeasure" xmi:id="_summeasure_themeasure" name="theMeasure" column="_column_fact_value"/>

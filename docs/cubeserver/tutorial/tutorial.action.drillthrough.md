@@ -104,21 +104,21 @@ The JoinSource specifies which TableQueries should be joined. It also defines th
 ```xml
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
   <rolapsrc:JoinSource xmi:id="_joinsource">
-    <left xmi:id="_joinedqueryelement_h1l1_key" key="_column_hx_l2_h1l1_key" query="_tablesource_hx_l2"/>
-    <right xmi:id="_joinedqueryelement_key" key="_column_h1_l1_key" query="_tablesource_h1_l1"/>
+    <left xmi:id="_joinedqueryelement_h1l1_key" key="_column_hx_l2_h1l1_key" source="_tablesource_hx_l2"/>
+    <right xmi:id="_joinedqueryelement_key" key="_column_h1_l1_key" source="_tablesource_h1_l1"/>
   </rolapsrc:JoinSource>
+  <rolapsrc:TableSource xmi:id="_tablesource_hx_l2" table="_table_hx_l2"/>
+  <rolapsrc:TableSource xmi:id="_tablesource_h1_l1" table="_table_h1_l1"/>
+  <relational:Table xmi:id="_table_h1_l1" name="H1_L1">
+    <feature xsi:type="relational:Column" xmi:id="_column_h1_l1_key" name="KEY"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_h1_l1_name" name="NAME"/>
+  </relational:Table>
   <relational:Table xmi:id="_table_hx_l2" name="HX_L2">
     <feature xsi:type="relational:Column" xmi:id="_column_hx_l2_key" name="KEY"/>
     <feature xsi:type="relational:Column" xmi:id="_column_hx_l2_name" name="NAME"/>
     <feature xsi:type="relational:Column" xmi:id="_column_hx_l2_h1l1_key" name="H1L1_KEY"/>
     <feature xsi:type="relational:Column" xmi:id="_column_hx_l2_h2l1_key" name="H2L1_KEY"/>
   </relational:Table>
-  <rolapsrc:TableSource xmi:id="_tablesource_h1_l1" table="_table_h1_l1"/>
-  <relational:Table xmi:id="_table_h1_l1" name="H1_L1">
-    <feature xsi:type="relational:Column" xmi:id="_column_h1_l1_key" name="KEY"/>
-    <feature xsi:type="relational:Column" xmi:id="_column_h1_l1_name" name="NAME"/>
-  </relational:Table>
-  <rolapsrc:TableSource xmi:id="_tablesource_hx_l2" table="_table_hx_l2"/>
 </xmi:XMI>
 
 ```
@@ -134,21 +134,21 @@ The JoinSource specifies which TableQueries should be joined. It also defines th
 ```xml
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
   <rolapsrc:JoinSource xmi:id="_joinsource">
-    <left xmi:id="_joinedqueryelement_h2l1_key" key="_column_hx_l2_h2l1_key" query="_tablesource_hx_l2"/>
-    <right xmi:id="_joinedqueryelement_key" key="_column_h2_l1_key" query="_tablesource_h2_l1"/>
+    <left xmi:id="_joinedqueryelement_h2l1_key" key="_column_hx_l2_h2l1_key" source="_tablesource_hx_l2"/>
+    <right xmi:id="_joinedqueryelement_key" key="_column_h2_l1_key" source="_tablesource_h2_l1"/>
   </rolapsrc:JoinSource>
+  <rolapsrc:TableSource xmi:id="_tablesource_hx_l2" table="_table_hx_l2"/>
+  <rolapsrc:TableSource xmi:id="_tablesource_h2_l1" table="_table_h2_l1"/>
+  <relational:Table xmi:id="_table_h2_l1" name="H2_L1">
+    <feature xsi:type="relational:Column" xmi:id="_column_h2_l1_key" name="KEY"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_h2_l1_name" name="NAME"/>
+  </relational:Table>
   <relational:Table xmi:id="_table_hx_l2" name="HX_L2">
     <feature xsi:type="relational:Column" xmi:id="_column_hx_l2_key" name="KEY"/>
     <feature xsi:type="relational:Column" xmi:id="_column_hx_l2_name" name="NAME"/>
     <feature xsi:type="relational:Column" xmi:id="_column_hx_l2_h1l1_key" name="H1L1_KEY"/>
     <feature xsi:type="relational:Column" xmi:id="_column_hx_l2_h2l1_key" name="H2L1_KEY"/>
   </relational:Table>
-  <rolapsrc:TableSource xmi:id="_tablesource_h2_l1" table="_table_h2_l1"/>
-  <relational:Table xmi:id="_table_h2_l1" name="H2_L1">
-    <feature xsi:type="relational:Column" xmi:id="_column_h2_l1_key" name="KEY"/>
-    <feature xsi:type="relational:Column" xmi:id="_column_h2_l1_name" name="NAME"/>
-  </relational:Table>
-  <rolapsrc:TableSource xmi:id="_tablesource_hx_l2" table="_table_hx_l2"/>
 </xmi:XMI>
 
 ```
@@ -230,10 +230,17 @@ The Hierarchy1 is defined with the hasAll property set to false and the two leve
 
 ```xml
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
-  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_hierarchy1" name="Hierarchy1" primaryKey="_column_hx_l2_key" query="_joinsource" levels="_level_h1_level1 _level_h1_level2"/>
+  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_hierarchy1" name="Hierarchy1" primaryKey="_column_hx_l2_key" source="_joinsource" levels="_level_h1_level1 _level_h1_level2"/>
+  <rolapsrc:TableSource xmi:id="_tablesource_hx_l2" table="_table_hx_l2"/>
+  <rolapsrc:TableSource xmi:id="_tablesource_h1_l1" table="_table_h1_l1"/>
+  <relational:Table xmi:id="_table_h1_l1" name="H1_L1">
+    <feature xsi:type="relational:Column" xmi:id="_column_h1_l1_key" name="KEY"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_h1_l1_name" name="NAME"/>
+  </relational:Table>
+  <rolaplev:Level xmi:id="_level_h1_level1" name="H1_Level1" column="_column_h1_l1_key" nameColumn="_column_h1_l1_name"/>
   <rolapsrc:JoinSource xmi:id="_joinsource">
-    <left xmi:id="_joinedqueryelement_h1l1_key" key="_column_hx_l2_h1l1_key" query="_tablesource_hx_l2"/>
-    <right xmi:id="_joinedqueryelement_key" key="_column_h1_l1_key" query="_tablesource_h1_l1"/>
+    <left xmi:id="_joinedqueryelement_h1l1_key" key="_column_hx_l2_h1l1_key" source="_tablesource_hx_l2"/>
+    <right xmi:id="_joinedqueryelement_key" key="_column_h1_l1_key" source="_tablesource_h1_l1"/>
   </rolapsrc:JoinSource>
   <rolaplev:Level xmi:id="_level_h1_level2" name="H1_Level2" column="_column_hx_l2_key" nameColumn="_column_hx_l2_name"/>
   <relational:Table xmi:id="_table_hx_l2" name="HX_L2">
@@ -242,13 +249,6 @@ The Hierarchy1 is defined with the hasAll property set to false and the two leve
     <feature xsi:type="relational:Column" xmi:id="_column_hx_l2_h1l1_key" name="H1L1_KEY"/>
     <feature xsi:type="relational:Column" xmi:id="_column_hx_l2_h2l1_key" name="H2L1_KEY"/>
   </relational:Table>
-  <rolaplev:Level xmi:id="_level_h1_level1" name="H1_Level1" column="_column_h1_l1_key" nameColumn="_column_h1_l1_name"/>
-  <rolapsrc:TableSource xmi:id="_tablesource_h1_l1" table="_table_h1_l1"/>
-  <relational:Table xmi:id="_table_h1_l1" name="H1_L1">
-    <feature xsi:type="relational:Column" xmi:id="_column_h1_l1_key" name="KEY"/>
-    <feature xsi:type="relational:Column" xmi:id="_column_h1_l1_name" name="NAME"/>
-  </relational:Table>
-  <rolapsrc:TableSource xmi:id="_tablesource_hx_l2" table="_table_hx_l2"/>
 </xmi:XMI>
 
 ```
@@ -260,25 +260,25 @@ The Hierarchy1 is defined with the hasAll property set to false and the two leve
 
 ```xml
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
-  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_hierarchy2" name="Hierarchy2" primaryKey="_column_hx_l2_key" query="_joinsource" levels="_level_h2_level1 _level_h2_level2"/>
-  <relational:Table xmi:id="_table_hx_l2" name="HX_L2">
-    <feature xsi:type="relational:Column" xmi:id="_column_hx_l2_key" name="KEY"/>
-    <feature xsi:type="relational:Column" xmi:id="_column_hx_l2_name" name="NAME"/>
-    <feature xsi:type="relational:Column" xmi:id="_column_hx_l2_h1l1_key" name="H1L1_KEY"/>
-    <feature xsi:type="relational:Column" xmi:id="_column_hx_l2_h2l1_key" name="H2L1_KEY"/>
-  </relational:Table>
+  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_hierarchy2" name="Hierarchy2" primaryKey="_column_hx_l2_key" source="_joinsource" levels="_level_h2_level1 _level_h2_level2"/>
+  <rolapsrc:TableSource xmi:id="_tablesource_hx_l2" table="_table_hx_l2"/>
   <rolapsrc:TableSource xmi:id="_tablesource_h2_l1" table="_table_h2_l1"/>
   <relational:Table xmi:id="_table_h2_l1" name="H2_L1">
     <feature xsi:type="relational:Column" xmi:id="_column_h2_l1_key" name="KEY"/>
     <feature xsi:type="relational:Column" xmi:id="_column_h2_l1_name" name="NAME"/>
   </relational:Table>
   <rolaplev:Level xmi:id="_level_h2_level2" name="H2_Level2" column="_column_hx_l2_key" nameColumn="_column_hx_l2_name"/>
-  <rolaplev:Level xmi:id="_level_h2_level1" name="H2_Level1" column="_column_h2_l1_key" nameColumn="_column_h2_l1_name"/>
   <rolapsrc:JoinSource xmi:id="_joinsource">
-    <left xmi:id="_joinedqueryelement_h2l1_key" key="_column_hx_l2_h2l1_key" query="_tablesource_hx_l2"/>
-    <right xmi:id="_joinedqueryelement_key" key="_column_h2_l1_key" query="_tablesource_h2_l1"/>
+    <left xmi:id="_joinedqueryelement_h2l1_key" key="_column_hx_l2_h2l1_key" source="_tablesource_hx_l2"/>
+    <right xmi:id="_joinedqueryelement_key" key="_column_h2_l1_key" source="_tablesource_h2_l1"/>
   </rolapsrc:JoinSource>
-  <rolapsrc:TableSource xmi:id="_tablesource_hx_l2" table="_table_hx_l2"/>
+  <rolaplev:Level xmi:id="_level_h2_level1" name="H2_Level1" column="_column_h2_l1_key" nameColumn="_column_h2_l1_name"/>
+  <relational:Table xmi:id="_table_hx_l2" name="HX_L2">
+    <feature xsi:type="relational:Column" xmi:id="_column_hx_l2_key" name="KEY"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_hx_l2_name" name="NAME"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_hx_l2_h1l1_key" name="H1L1_KEY"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_hx_l2_h2l1_key" name="H2L1_KEY"/>
+  </relational:Table>
 </xmi:XMI>
 
 ```
@@ -291,16 +291,25 @@ The time dimension is defined with the 2 hierarchies.
 ```xml
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapdim="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
   <rolapdim:StandardDimension xmi:id="_standarddimension_dimension1" name="Dimension1" hierarchies="_explicithierarchy_hierarchy1 _explicithierarchy_hierarchy2"/>
+  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_hierarchy2" name="Hierarchy2" primaryKey="_column_hx_l2_key" source="_joinsource_1" levels="_level_h2_level1 _level_h2_level2"/>
   <rolapsrc:TableSource xmi:id="_tablesource_h2_l1" table="_table_h2_l1"/>
-  <rolaplev:Level xmi:id="_level_h2_level2" name="H2_Level2" column="_column_hx_l2_key" nameColumn="_column_hx_l2_name"/>
-  <rolaplev:Level xmi:id="_level_h1_level1" name="H1_Level1" column="_column_h1_l1_key" nameColumn="_column_h1_l1_name"/>
-  <rolaplev:Level xmi:id="_level_h2_level1" name="H2_Level1" column="_column_h2_l1_key" nameColumn="_column_h2_l1_name"/>
-  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_hierarchy2" name="Hierarchy2" primaryKey="_column_hx_l2_key" query="_joinsource_1" levels="_level_h2_level1 _level_h2_level2"/>
-  <rolapsrc:TableSource xmi:id="_tablesource_hx_l2" table="_table_hx_l2"/>
+  <relational:Table xmi:id="_table_h1_l1" name="H1_L1">
+    <feature xsi:type="relational:Column" xmi:id="_column_h1_l1_key" name="KEY"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_h1_l1_name" name="NAME"/>
+  </relational:Table>
   <rolapsrc:JoinSource xmi:id="_joinsource">
-    <left xmi:id="_joinedqueryelement_h1l1_key" key="_column_hx_l2_h1l1_key" query="_tablesource_hx_l2"/>
-    <right xmi:id="_joinedqueryelement_key" key="_column_h1_l1_key" query="_tablesource_h1_l1"/>
+    <left xmi:id="_joinedqueryelement_h1l1_key" key="_column_hx_l2_h1l1_key" source="_tablesource_hx_l2"/>
+    <right xmi:id="_joinedqueryelement_key" key="_column_h1_l1_key" source="_tablesource_h1_l1"/>
   </rolapsrc:JoinSource>
+  <rolapsrc:TableSource xmi:id="_tablesource_hx_l2" table="_table_hx_l2"/>
+  <rolapsrc:TableSource xmi:id="_tablesource_h1_l1" table="_table_h1_l1"/>
+  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_hierarchy1" name="Hierarchy1" primaryKey="_column_hx_l2_key" source="_joinsource" levels="_level_h1_level1 _level_h1_level2"/>
+  <rolaplev:Level xmi:id="_level_h1_level1" name="H1_Level1" column="_column_h1_l1_key" nameColumn="_column_h1_l1_name"/>
+  <relational:Table xmi:id="_table_h2_l1" name="H2_L1">
+    <feature xsi:type="relational:Column" xmi:id="_column_h2_l1_key" name="KEY"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_h2_l1_name" name="NAME"/>
+  </relational:Table>
+  <rolaplev:Level xmi:id="_level_h2_level2" name="H2_Level2" column="_column_hx_l2_key" nameColumn="_column_hx_l2_name"/>
   <rolaplev:Level xmi:id="_level_h1_level2" name="H1_Level2" column="_column_hx_l2_key" nameColumn="_column_hx_l2_name"/>
   <relational:Table xmi:id="_table_hx_l2" name="HX_L2">
     <feature xsi:type="relational:Column" xmi:id="_column_hx_l2_key" name="KEY"/>
@@ -308,20 +317,11 @@ The time dimension is defined with the 2 hierarchies.
     <feature xsi:type="relational:Column" xmi:id="_column_hx_l2_h1l1_key" name="H1L1_KEY"/>
     <feature xsi:type="relational:Column" xmi:id="_column_hx_l2_h2l1_key" name="H2L1_KEY"/>
   </relational:Table>
-  <relational:Table xmi:id="_table_h2_l1" name="H2_L1">
-    <feature xsi:type="relational:Column" xmi:id="_column_h2_l1_key" name="KEY"/>
-    <feature xsi:type="relational:Column" xmi:id="_column_h2_l1_name" name="NAME"/>
-  </relational:Table>
-  <rolapsrc:TableSource xmi:id="_tablesource_h1_l1" table="_table_h1_l1"/>
   <rolapsrc:JoinSource xmi:id="_joinsource_1">
-    <left xmi:id="_joinedqueryelement_h2l1_key" key="_column_hx_l2_h2l1_key" query="_tablesource_hx_l2"/>
-    <right xmi:id="_joinedqueryelement_key_1" key="_column_h2_l1_key" query="_tablesource_h2_l1"/>
+    <left xmi:id="_joinedqueryelement_h2l1_key" key="_column_hx_l2_h2l1_key" source="_tablesource_hx_l2"/>
+    <right xmi:id="_joinedqueryelement_key_1" key="_column_h2_l1_key" source="_tablesource_h2_l1"/>
   </rolapsrc:JoinSource>
-  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_hierarchy1" name="Hierarchy1" primaryKey="_column_hx_l2_key" query="_joinsource" levels="_level_h1_level1 _level_h1_level2"/>
-  <relational:Table xmi:id="_table_h1_l1" name="H1_L1">
-    <feature xsi:type="relational:Column" xmi:id="_column_h1_l1_key" name="KEY"/>
-    <feature xsi:type="relational:Column" xmi:id="_column_h1_l1_name" name="NAME"/>
-  </relational:Table>
+  <rolaplev:Level xmi:id="_level_h2_level1" name="H2_Level1" column="_column_h2_l1_key" nameColumn="_column_h2_l1_name"/>
 </xmi:XMI>
 
 ```
@@ -363,7 +363,7 @@ The cube with DrillThroughAction
 
 ```xml
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapact="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube/action" xmlns:rolapcube="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube" xmlns:rolapdim="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapmeas="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube/measure" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
-  <rolapcube:PhysicalCube xmi:id="_physicalcube_cube" name="Cube" query="_tablesource_fact">
+  <rolapcube:PhysicalCube xmi:id="_physicalcube_cube" name="Cube" source="_tablesource_fact">
     <dimensionConnectors xmi:id="_dimensionconnector_dimension1" foreignKey="_column_fact_key" dimension="_standarddimension_dimension1" overrideDimensionName="Dimension1"/>
     <action xsi:type="rolapact:DrillThroughAction" xmi:id="_drillthroughaction_drillthroughh1l1" name="DrillthroughH1L1" drillThroughMeasure="_summeasure_measure1" default="true">
       <drillThroughAttribute xmi:id="_drillthroughattribute_dimension1" dimension="_standarddimension_dimension1" hierarchy="_explicithierarchy_hierarchy1" level="_level_h1_level1"/>
@@ -375,24 +375,26 @@ The cube with DrillThroughAction
       <measures xsi:type="rolapmeas:SumMeasure" xmi:id="_summeasure_measure1" name="Measure1" column="_column_fact_value"/>
     </measureGroups>
   </rolapcube:PhysicalCube>
-  <rolapsrc:TableSource xmi:id="_tablesource_h2_l1" table="_table_h2_l1"/>
-  <rolaplev:Level xmi:id="_level_h1_level1" name="H1_Level1" column="_column_h1_l1_key" nameColumn="_column_h1_l1_name"/>
-  <rolaplev:Level xmi:id="_level_h2_level2" name="H2_Level2" column="_column_hx_l2_key" nameColumn="_column_hx_l2_name"/>
-  <rolaplev:Level xmi:id="_level_h2_level1" name="H2_Level1" column="_column_h2_l1_key" nameColumn="_column_h2_l1_name"/>
-  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_hierarchy2" name="Hierarchy2" primaryKey="_column_hx_l2_key" query="_joinsource_1" levels="_level_h2_level1 _level_h2_level2"/>
-  <rolapsrc:TableSource xmi:id="_tablesource_hx_l2" table="_table_hx_l2"/>
-  <rolapdim:StandardDimension xmi:id="_standarddimension_dimension1" name="Dimension1" hierarchies="_explicithierarchy_hierarchy1 _explicithierarchy_hierarchy2"/>
+  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_hierarchy2" name="Hierarchy2" primaryKey="_column_hx_l2_key" source="_joinsource" levels="_level_h2_level1 _level_h2_level2"/>
+  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
   <rolapsrc:JoinSource xmi:id="_joinsource">
-    <left xmi:id="_joinedqueryelement_h1l1_key" key="_column_hx_l2_h1l1_key" query="_tablesource_hx_l2"/>
-    <right xmi:id="_joinedqueryelement_key" key="_column_h1_l1_key" query="_tablesource_h1_l1"/>
+    <left xmi:id="_joinedqueryelement_h2l1_key" key="_column_hx_l2_h2l1_key" source="_tablesource_hx_l2"/>
+    <right xmi:id="_joinedqueryelement_key" key="_column_h2_l1_key" source="_tablesource_h2_l1"/>
   </rolapsrc:JoinSource>
-  <rolaplev:Level xmi:id="_level_h1_level2" name="H1_Level2" column="_column_hx_l2_key" nameColumn="_column_hx_l2_name"/>
-  <relational:Table xmi:id="_table_hx_l2" name="HX_L2">
-    <feature xsi:type="relational:Column" xmi:id="_column_hx_l2_key" name="KEY"/>
-    <feature xsi:type="relational:Column" xmi:id="_column_hx_l2_name" name="NAME"/>
-    <feature xsi:type="relational:Column" xmi:id="_column_hx_l2_h1l1_key" name="H1L1_KEY"/>
-    <feature xsi:type="relational:Column" xmi:id="_column_hx_l2_h2l1_key" name="H2L1_KEY"/>
+  <rolapdim:StandardDimension xmi:id="_standarddimension_dimension1" name="Dimension1" hierarchies="_explicithierarchy_hierarchy1 _explicithierarchy_hierarchy2"/>
+  <rolapsrc:TableSource xmi:id="_tablesource_h2_l1" table="_table_h2_l1"/>
+  <relational:Table xmi:id="_table_h1_l1" name="H1_L1">
+    <feature xsi:type="relational:Column" xmi:id="_column_h1_l1_key" name="KEY"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_h1_l1_name" name="NAME"/>
   </relational:Table>
+  <rolapsrc:JoinSource xmi:id="_joinsource_1">
+    <left xmi:id="_joinedqueryelement_h1l1_key" key="_column_hx_l2_h1l1_key" source="_tablesource_hx_l2"/>
+    <right xmi:id="_joinedqueryelement_key_1" key="_column_h1_l1_key" source="_tablesource_h1_l1"/>
+  </rolapsrc:JoinSource>
+  <rolapsrc:TableSource xmi:id="_tablesource_hx_l2" table="_table_hx_l2"/>
+  <rolapsrc:TableSource xmi:id="_tablesource_h1_l1" table="_table_h1_l1"/>
+  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_hierarchy1" name="Hierarchy1" primaryKey="_column_hx_l2_key" source="_joinsource_1" levels="_level_h1_level1 _level_h1_level2"/>
+  <rolaplev:Level xmi:id="_level_h1_level1" name="H1_Level1" column="_column_h1_l1_key" nameColumn="_column_h1_l1_name"/>
   <relational:Table xmi:id="_table_h2_l1" name="H2_L1">
     <feature xsi:type="relational:Column" xmi:id="_column_h2_l1_key" name="KEY"/>
     <feature xsi:type="relational:Column" xmi:id="_column_h2_l1_name" name="NAME"/>
@@ -401,17 +403,15 @@ The cube with DrillThroughAction
     <feature xsi:type="relational:Column" xmi:id="_column_fact_key" name="KEY"/>
     <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE"/>
   </relational:Table>
-  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
-  <rolapsrc:TableSource xmi:id="_tablesource_h1_l1" table="_table_h1_l1"/>
-  <rolapsrc:JoinSource xmi:id="_joinsource_1">
-    <left xmi:id="_joinedqueryelement_h2l1_key" key="_column_hx_l2_h2l1_key" query="_tablesource_hx_l2"/>
-    <right xmi:id="_joinedqueryelement_key_1" key="_column_h2_l1_key" query="_tablesource_h2_l1"/>
-  </rolapsrc:JoinSource>
-  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_hierarchy1" name="Hierarchy1" primaryKey="_column_hx_l2_key" query="_joinsource" levels="_level_h1_level1 _level_h1_level2"/>
-  <relational:Table xmi:id="_table_h1_l1" name="H1_L1">
-    <feature xsi:type="relational:Column" xmi:id="_column_h1_l1_key" name="KEY"/>
-    <feature xsi:type="relational:Column" xmi:id="_column_h1_l1_name" name="NAME"/>
+  <rolaplev:Level xmi:id="_level_h2_level2" name="H2_Level2" column="_column_hx_l2_key" nameColumn="_column_hx_l2_name"/>
+  <rolaplev:Level xmi:id="_level_h1_level2" name="H1_Level2" column="_column_hx_l2_key" nameColumn="_column_hx_l2_name"/>
+  <relational:Table xmi:id="_table_hx_l2" name="HX_L2">
+    <feature xsi:type="relational:Column" xmi:id="_column_hx_l2_key" name="KEY"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_hx_l2_name" name="NAME"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_hx_l2_h1l1_key" name="H1L1_KEY"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_hx_l2_h2l1_key" name="H2L1_KEY"/>
   </relational:Table>
+  <rolaplev:Level xmi:id="_level_h2_level1" name="H2_Level1" column="_column_h2_l1_key" nameColumn="_column_h2_l1_name"/>
 </xmi:XMI>
 
 ```
@@ -424,8 +424,8 @@ This file represents the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapact="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube/action" xmlns:rolapcat="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/catalog" xmlns:rolapcube="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube" xmlns:rolapdim="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapmeas="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube/measure" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
-  <relational:SQLSimpleType xmi:id="_sqlsimpletype_integer" name="INTEGER" structuralFeature="_column_hx_l2_h2l1_key _column_hx_l2_key _column_h2_l1_key _column_fact_value _column_hx_l2_h1l1_key _column_h1_l1_key" typeNumber="4"/>
-  <relational:SQLSimpleType xmi:id="_sqlsimpletype_character_varying" name="CHARACTER VARYING" structuralFeature="_column_hx_l2_name _column_h2_l1_name _column_h1_l1_name _column_fact_key" typeNumber="12"/>
+  <relational:SQLSimpleType xmi:id="_sqlsimpletype_integer" name="INTEGER" structuralFeature="_column_h1_l1_key _column_fact_value _column_hx_l2_h1l1_key _column_h2_l1_key _column_hx_l2_key _column_hx_l2_h2l1_key" typeNumber="4"/>
+  <relational:SQLSimpleType xmi:id="_sqlsimpletype_character_varying" name="CHARACTER VARYING" structuralFeature="_column_h1_l1_name _column_h2_l1_name _column_hx_l2_name _column_fact_key" typeNumber="12"/>
   <rolapcat:Catalog xmi:id="_catalog_action_drillthrough" description="Drill-through action configuration" name="Daanse Tutorial - Action Drillthrough" cubes="_physicalcube_cube" dbschemas="_schema"/>
   <relational:Schema xmi:id="_schema">
     <ownedElement xsi:type="relational:Table" xmi:id="_table_fact" name="Fact">
@@ -447,32 +447,32 @@ This file represents the complete definition of the catalog.
       <feature xsi:type="relational:Column" xmi:id="_column_hx_l2_h2l1_key" name="H2L1_KEY" type="_sqlsimpletype_integer"/>
     </ownedElement>
   </relational:Schema>
-  <rolapsrc:TableSource xmi:id="_tablesource_h1_l1" table="_table_h1_l1"/>
-  <rolapsrc:TableSource xmi:id="_tablesource_h2_l1" table="_table_h2_l1"/>
   <rolapsrc:TableSource xmi:id="_tablesource_hx_l2" table="_table_hx_l2"/>
+  <rolapsrc:TableSource xmi:id="_tablesource_h1_l1" table="_table_h1_l1"/>
   <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
+  <rolapsrc:TableSource xmi:id="_tablesource_h2_l1" table="_table_h2_l1"/>
   <rolapsrc:JoinSource xmi:id="_joinsource">
-    <left xmi:id="_joinedqueryelement_h2l1_key" key="_column_hx_l2_h2l1_key" query="_tablesource_hx_l2"/>
-    <right xmi:id="_joinedqueryelement_key" key="_column_h2_l1_key" query="_tablesource_h2_l1"/>
+    <left xmi:id="_joinedqueryelement_h2l1_key" key="_column_hx_l2_h2l1_key" source="_tablesource_hx_l2"/>
+    <right xmi:id="_joinedqueryelement_key" key="_column_h2_l1_key" source="_tablesource_h2_l1"/>
   </rolapsrc:JoinSource>
   <rolapsrc:JoinSource xmi:id="_joinsource_1">
-    <left xmi:id="_joinedqueryelement_h1l1_key" key="_column_hx_l2_h1l1_key" query="_tablesource_hx_l2"/>
-    <right xmi:id="_joinedqueryelement_key_1" key="_column_h1_l1_key" query="_tablesource_h1_l1"/>
+    <left xmi:id="_joinedqueryelement_h1l1_key" key="_column_hx_l2_h1l1_key" source="_tablesource_hx_l2"/>
+    <right xmi:id="_joinedqueryelement_key_1" key="_column_h1_l1_key" source="_tablesource_h1_l1"/>
   </rolapsrc:JoinSource>
-  <rolaplev:Level xmi:id="_level_h1_level2" name="H1_Level2" column="_column_hx_l2_key" nameColumn="_column_hx_l2_name"/>
-  <rolaplev:Level xmi:id="_level_h2_level2" name="H2_Level2" column="_column_hx_l2_key" nameColumn="_column_hx_l2_name"/>
   <rolaplev:Level xmi:id="_level_h1_level1" name="H1_Level1" column="_column_h1_l1_key" nameColumn="_column_h1_l1_name"/>
   <rolaplev:Level xmi:id="_level_h2_level1" name="H2_Level1" column="_column_h2_l1_key" nameColumn="_column_h2_l1_name"/>
-  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_hierarchy2" name="Hierarchy2" primaryKey="_column_hx_l2_key" query="_joinsource" levels="_level_h2_level1 _level_h2_level2"/>
-  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_hierarchy1" name="Hierarchy1" primaryKey="_column_hx_l2_key" query="_joinsource_1" levels="_level_h1_level1 _level_h1_level2"/>
+  <rolaplev:Level xmi:id="_level_h2_level2" name="H2_Level2" column="_column_hx_l2_key" nameColumn="_column_hx_l2_name"/>
+  <rolaplev:Level xmi:id="_level_h1_level2" name="H1_Level2" column="_column_hx_l2_key" nameColumn="_column_hx_l2_name"/>
+  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_hierarchy1" name="Hierarchy1" primaryKey="_column_hx_l2_key" source="_joinsource_1" levels="_level_h1_level1 _level_h1_level2"/>
+  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_hierarchy2" name="Hierarchy2" primaryKey="_column_hx_l2_key" source="_joinsource" levels="_level_h2_level1 _level_h2_level2"/>
   <rolapdim:StandardDimension xmi:id="_standarddimension_dimension1" name="Dimension1" hierarchies="_explicithierarchy_hierarchy1 _explicithierarchy_hierarchy2"/>
-  <rolapcube:PhysicalCube xmi:id="_physicalcube_cube" name="Cube" query="_tablesource_fact">
+  <rolapcube:PhysicalCube xmi:id="_physicalcube_cube" name="Cube" source="_tablesource_fact">
     <dimensionConnectors xmi:id="_dimensionconnector_dimension1" foreignKey="_column_fact_key" dimension="_standarddimension_dimension1" overrideDimensionName="Dimension1"/>
     <action xsi:type="rolapact:DrillThroughAction" xmi:id="_drillthroughaction_drillthroughh1l1" name="DrillthroughH1L1" drillThroughMeasure="_summeasure_measure1" default="true">
-      <drillThroughAttribute xmi:id="_drillthroughattribute_dimension1_1" dimension="_standarddimension_dimension1" hierarchy="_explicithierarchy_hierarchy1" level="_level_h1_level1"/>
+      <drillThroughAttribute xmi:id="_drillthroughattribute_dimension1" dimension="_standarddimension_dimension1" hierarchy="_explicithierarchy_hierarchy1" level="_level_h1_level1"/>
     </action>
     <action xsi:type="rolapact:DrillThroughAction" xmi:id="_drillthroughaction_drillthroughh2l1" name="DrillthroughH2L1" drillThroughMeasure="_summeasure_measure1">
-      <drillThroughAttribute xmi:id="_drillthroughattribute_dimension1" dimension="_standarddimension_dimension1" hierarchy="_explicithierarchy_hierarchy2" level="_level_h2_level1"/>
+      <drillThroughAttribute xmi:id="_drillthroughattribute_dimension1_1" dimension="_standarddimension_dimension1" hierarchy="_explicithierarchy_hierarchy2" level="_level_h2_level1"/>
     </action>
     <measureGroups xmi:id="_measuregroup">
       <measures xsi:type="rolapmeas:SumMeasure" xmi:id="_summeasure_measure1" name="Measure1" column="_column_fact_value"/>

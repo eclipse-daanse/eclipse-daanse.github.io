@@ -102,13 +102,13 @@ This file represents the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapcat="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/catalog">
-  <relational:SQLSimpleType xmi:id="_sqlsimpletype_character_varying" name="CHARACTER VARYING" structuralFeature="_column_tablewithcolumntypes_columnwithdescription _column_tablewithcolumntypes_columnvarchar" typeNumber="12"/>
-  <relational:SQLSimpleType xmi:id="_sqlsimpletype_float" name="FLOAT" structuralFeature="_column_tablewithcolumntypes_columnfloat" typeNumber="6" numericPrecisionRadix="2"/>
-  <relational:SQLSimpleType xmi:id="_sqlsimpletype_real" name="REAL" structuralFeature="_column_tablewithcolumntypes_columnreal" typeNumber="7" numericPrecisionRadix="2"/>
-  <relational:SQLSimpleType xmi:id="_sqlsimpletype_integer" name="INTEGER" structuralFeature="_column_tablewithcolumntypes_columninteger" typeNumber="4"/>
-  <relational:SQLSimpleType xmi:id="_sqlsimpletype_decimal" name="DECIMAL" structuralFeature="_column_tablewithcolumntypes_columndecimal" typeNumber="3" numericPrecision="18" numericPrecisionRadix="10" numericScale="4"/>
-  <relational:SQLSimpleType xmi:id="_sqlsimpletype_numeric" name="NUMERIC" structuralFeature="_column_tablewithcolumntypes_columnnumeric" typeNumber="2" numericPrecision="18" numericPrecisionRadix="10" numericScale="4"/>
   <relational:SQLSimpleType xmi:id="_sqlsimpletype_double_precision" name="DOUBLE PRECISION" structuralFeature="_column_tablewithcolumntypes_columndouble" typeNumber="8" numericPrecisionRadix="2"/>
+  <relational:SQLSimpleType xmi:id="_sqlsimpletype_float" name="FLOAT" structuralFeature="_column_tablewithcolumntypes_columnfloat" typeNumber="6" numericPrecisionRadix="2"/>
+  <relational:SQLSimpleType xmi:id="_sqlsimpletype_integer" name="INTEGER" structuralFeature="_column_tablewithcolumntypes_columninteger" typeNumber="4"/>
+  <relational:SQLSimpleType xmi:id="_sqlsimpletype_character_varying" name="CHARACTER VARYING" structuralFeature="_column_tablewithcolumntypes_columnvarchar _column_tablewithcolumntypes_columnwithdescription" typeNumber="12"/>
+  <relational:SQLSimpleType xmi:id="_sqlsimpletype_numeric" name="NUMERIC" structuralFeature="_column_tablewithcolumntypes_columnnumeric" typeNumber="2" numericPrecision="18" numericPrecisionRadix="10" numericScale="4"/>
+  <relational:SQLSimpleType xmi:id="_sqlsimpletype_decimal" name="DECIMAL" structuralFeature="_column_tablewithcolumntypes_columndecimal" typeNumber="3" numericPrecision="18" numericPrecisionRadix="10" numericScale="4"/>
+  <relational:SQLSimpleType xmi:id="_sqlsimpletype_real" name="REAL" structuralFeature="_column_tablewithcolumntypes_columnreal" typeNumber="7" numericPrecisionRadix="2"/>
   <rolapcat:Catalog xmi:id="_catalog_databasecolumntypes" id="_catalog_databaseColumnTypes" description="Database column types and configuration" name="Daanse Tutorial - Database Column" dbschemas="_schema"/>
   <relational:Schema xmi:id="_schema">
     <ownedElement xsi:type="relational:Table" xmi:id="_table_tablewithcolumntypes" name="TableWithColumnTypes">
