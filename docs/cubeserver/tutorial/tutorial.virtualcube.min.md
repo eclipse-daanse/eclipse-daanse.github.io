@@ -106,11 +106,11 @@ In this example uses cube with fact table C1_Fact as data.
       <measures xsi:type="rolapmeas:SumMeasure" xmi:id="_summeasure_c1_measure_sum" name="C1-Measure-Sum" column="_column_c1_fact_value"/>
     </measureGroups>
   </rolapcube:PhysicalCube>
-  <rolapsrc:TableSource xmi:id="_tablesource_c1_fact" table="_table_c1_fact"/>
   <relational:Table xmi:id="_table_c1_fact" name="C1_Fact">
     <feature xsi:type="relational:Column" xmi:id="_column_c1_fact_key" name="KEY"/>
     <feature xsi:type="relational:Column" xmi:id="_column_c1_fact_value" name="VALUE"/>
   </relational:Table>
+  <rolapsrc:TableSource xmi:id="_tablesource_c1_fact" table="_table_c1_fact"/>
 </xmi:XMI>
 
 ```
@@ -127,11 +127,11 @@ In this example uses cube with fact table C2_Fact as data.
       <measures xsi:type="rolapmeas:SumMeasure" xmi:id="_summeasure_c1_measure_sum" name="C1-Measure-Sum" column="_column_c1_fact_value"/>
     </measureGroups>
   </rolapcube:PhysicalCube>
-  <rolapsrc:TableSource xmi:id="_tablesource_c1_fact" table="_table_c1_fact"/>
   <relational:Table xmi:id="_table_c1_fact" name="C1_Fact">
     <feature xsi:type="relational:Column" xmi:id="_column_c1_fact_key" name="KEY"/>
     <feature xsi:type="relational:Column" xmi:id="_column_c1_fact_value" name="VALUE"/>
   </relational:Table>
+  <rolapsrc:TableSource xmi:id="_tablesource_c1_fact" table="_table_c1_fact"/>
 </xmi:XMI>
 
 ```
@@ -166,7 +166,7 @@ This file represents the complete definition of the catalog.
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapcat="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/catalog" xmlns:rolapcube="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube" xmlns:rolapmeas="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube/measure" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
   <relational:SQLSimpleType xmi:id="_sqlsimpletype_character_varying" name="CHARACTER VARYING" structuralFeature="_column_c1_fact_key _column_c2_fact_key" typeNumber="12"/>
-  <relational:SQLSimpleType xmi:id="_sqlsimpletype_integer" name="INTEGER" structuralFeature="_column_c2_fact_value _column_c1_fact_value" typeNumber="4"/>
+  <relational:SQLSimpleType xmi:id="_sqlsimpletype_integer" name="INTEGER" structuralFeature="_column_c1_fact_value _column_c2_fact_value" typeNumber="4"/>
   <rolapcat:Catalog xmi:id="_catalog_virtual_cube_minimal" description="Minimal virtual cube configuration" name="Daanse Tutorial - Virtual Cube Minimal" cubes="_physicalcube_cube1 _physicalcube_cube2 _virtualcube_virtualcubemeasureonly" dbschemas="_schema"/>
   <relational:Schema xmi:id="_schema">
     <ownedElement xsi:type="relational:Table" xmi:id="_table_c1_fact" name="C1_Fact">
@@ -178,8 +178,8 @@ This file represents the complete definition of the catalog.
       <feature xsi:type="relational:Column" xmi:id="_column_c2_fact_value" name="VALUE" type="_sqlsimpletype_integer"/>
     </ownedElement>
   </relational:Schema>
-  <rolapsrc:TableSource xmi:id="_tablesource_c2_fact" table="_table_c2_fact"/>
   <rolapsrc:TableSource xmi:id="_tablesource_c1_fact" table="_table_c1_fact"/>
+  <rolapsrc:TableSource xmi:id="_tablesource_c2_fact" table="_table_c2_fact"/>
   <rolapcube:PhysicalCube xmi:id="_physicalcube_cube1" name="Cube1" source="_tablesource_c1_fact">
     <measureGroups xmi:id="_measuregroup">
       <measures xsi:type="rolapmeas:SumMeasure" xmi:id="_summeasure_c1_measure_sum" name="C1-Measure-Sum" column="_column_c1_fact_value"/>

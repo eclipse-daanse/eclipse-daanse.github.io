@@ -74,12 +74,12 @@ This Hierarchy sets the attribute `hasAll` to false, which means that no top lev
 ```xml
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
   <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_hierarchy_without_hasall" name="Hierarchy - Without HasAll" hasAll="false" primaryKey="_column_fact_key" source="_tablesource_fact" levels="_level_thelevel"/>
+  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
   <relational:Table xmi:id="_table_fact" name="Fact">
     <feature xsi:type="relational:Column" xmi:id="_column_fact_key" name="KEY"/>
     <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE"/>
   </relational:Table>
   <rolaplev:Level xmi:id="_level_thelevel" name="theLevel" column="_column_fact_key"/>
-  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
 </xmi:XMI>
 
 ```
@@ -92,12 +92,12 @@ This hierarchy sets the attribute `hasAll` to true, which means that a top level
 ```xml
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
   <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_hierarchy_with_hasall" name="Hierarchy - with HasAll" primaryKey="_column_fact_key" source="_tablesource_fact" levels="_level_thelevel"/>
+  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
   <relational:Table xmi:id="_table_fact" name="Fact">
     <feature xsi:type="relational:Column" xmi:id="_column_fact_key" name="KEY"/>
     <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE"/>
   </relational:Table>
   <rolaplev:Level xmi:id="_level_thelevel" name="theLevel" column="_column_fact_key"/>
-  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
 </xmi:XMI>
 
 ```
@@ -110,12 +110,12 @@ tHis hierarchy sets the attribute `hasAll` to true, which means that a top level
 ```xml
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
   <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_hierarchy_with_hasall_and_names" name="Hierarchy - with HasAll and Names" allLevelName="theAllLevelName" allMemberName="theAllMemberName" primaryKey="_column_fact_key" source="_tablesource_fact" levels="_level_thelevel"/>
+  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
   <relational:Table xmi:id="_table_fact" name="Fact">
     <feature xsi:type="relational:Column" xmi:id="_column_fact_key" name="KEY"/>
     <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE"/>
   </relational:Table>
   <rolaplev:Level xmi:id="_level_thelevel" name="theLevel" column="_column_fact_key"/>
-  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
 </xmi:XMI>
 
 ```
@@ -128,14 +128,14 @@ The Dimension that containes all the hierarchies.
 ```xml
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapdim="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
   <rolapdim:StandardDimension xmi:id="_standarddimension_dimension1" name="Dimension1" hierarchies="_explicithierarchy_hierarchy_with_hasall _explicithierarchy_hierarchy_with_hasall_and_names _explicithierarchy_hierarchy_without_hasall"/>
+  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_hierarchy_without_hasall" name="Hierarchy - Without HasAll" hasAll="false" primaryKey="_column_fact_key" source="_tablesource_fact" levels="_level_thelevel"/>
+  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_hierarchy_with_hasall" name="Hierarchy - with HasAll" primaryKey="_column_fact_key" source="_tablesource_fact" levels="_level_thelevel"/>
   <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_hierarchy_with_hasall_and_names" name="Hierarchy - with HasAll and Names" allLevelName="theAllLevelName" allMemberName="theAllMemberName" primaryKey="_column_fact_key" source="_tablesource_fact" levels="_level_thelevel"/>
+  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
   <relational:Table xmi:id="_table_fact" name="Fact">
     <feature xsi:type="relational:Column" xmi:id="_column_fact_key" name="KEY"/>
     <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE"/>
   </relational:Table>
-  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_hierarchy_with_hasall" name="Hierarchy - with HasAll" primaryKey="_column_fact_key" source="_tablesource_fact" levels="_level_thelevel"/>
-  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_hierarchy_without_hasall" name="Hierarchy - Without HasAll" hasAll="false" primaryKey="_column_fact_key" source="_tablesource_fact" levels="_level_thelevel"/>
-  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
   <rolaplev:Level xmi:id="_level_thelevel" name="theLevel" column="_column_fact_key"/>
 </xmi:XMI>
 
@@ -154,16 +154,16 @@ The cube contains only one Measure in a unnamed MeasureGroup and references to t
       <measures xsi:type="rolapmeas:SumMeasure" xmi:id="_summeasure_themeasure" name="theMeasure" column="_column_fact_value"/>
     </measureGroups>
   </rolapcube:PhysicalCube>
-  <rolaplev:Level xmi:id="_level_thelevel" name="theLevel" column="_column_fact_key"/>
+  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_hierarchy_without_hasall" name="Hierarchy - Without HasAll" hasAll="false" primaryKey="_column_fact_key" source="_tablesource_fact" levels="_level_thelevel"/>
+  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_hierarchy_with_hasall" name="Hierarchy - with HasAll" primaryKey="_column_fact_key" source="_tablesource_fact" levels="_level_thelevel"/>
   <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_hierarchy_with_hasall_and_names" name="Hierarchy - with HasAll and Names" allLevelName="theAllLevelName" allMemberName="theAllMemberName" primaryKey="_column_fact_key" source="_tablesource_fact" levels="_level_thelevel"/>
-  <rolapdim:StandardDimension xmi:id="_standarddimension_dimension1" name="Dimension1" hierarchies="_explicithierarchy_hierarchy_with_hasall _explicithierarchy_hierarchy_with_hasall_and_names _explicithierarchy_hierarchy_without_hasall"/>
+  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
   <relational:Table xmi:id="_table_fact" name="Fact">
     <feature xsi:type="relational:Column" xmi:id="_column_fact_key" name="KEY"/>
     <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE"/>
   </relational:Table>
-  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_hierarchy_with_hasall" name="Hierarchy - with HasAll" primaryKey="_column_fact_key" source="_tablesource_fact" levels="_level_thelevel"/>
-  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_hierarchy_without_hasall" name="Hierarchy - Without HasAll" hasAll="false" primaryKey="_column_fact_key" source="_tablesource_fact" levels="_level_thelevel"/>
-  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
+  <rolapdim:StandardDimension xmi:id="_standarddimension_dimension1" name="Dimension1" hierarchies="_explicithierarchy_hierarchy_with_hasall _explicithierarchy_hierarchy_with_hasall_and_names _explicithierarchy_hierarchy_without_hasall"/>
+  <rolaplev:Level xmi:id="_level_thelevel" name="theLevel" column="_column_fact_key"/>
 </xmi:XMI>
 
 ```
@@ -187,9 +187,9 @@ This file represents the complete definition of the catalog.
   </relational:Schema>
   <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
   <rolaplev:Level xmi:id="_level_thelevel" name="theLevel" column="_column_fact_key"/>
-  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_hierarchy_without_hasall" name="Hierarchy - Without HasAll" hasAll="false" primaryKey="_column_fact_key" source="_tablesource_fact" levels="_level_thelevel"/>
   <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_hierarchy_with_hasall" name="Hierarchy - with HasAll" primaryKey="_column_fact_key" source="_tablesource_fact" levels="_level_thelevel"/>
   <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_hierarchy_with_hasall_and_names" name="Hierarchy - with HasAll and Names" allLevelName="theAllLevelName" allMemberName="theAllMemberName" primaryKey="_column_fact_key" source="_tablesource_fact" levels="_level_thelevel"/>
+  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_hierarchy_without_hasall" name="Hierarchy - Without HasAll" hasAll="false" primaryKey="_column_fact_key" source="_tablesource_fact" levels="_level_thelevel"/>
   <rolapdim:StandardDimension xmi:id="_standarddimension_dimension1" name="Dimension1" hierarchies="_explicithierarchy_hierarchy_with_hasall _explicithierarchy_hierarchy_with_hasall_and_names _explicithierarchy_hierarchy_without_hasall"/>
   <rolapcube:PhysicalCube xmi:id="_physicalcube_hasall_cube" name="HasAll Cube" source="_tablesource_fact">
     <dimensionConnectors xmi:id="_dimensionconnector_dimension1" dimension="_standarddimension_dimension1"/>

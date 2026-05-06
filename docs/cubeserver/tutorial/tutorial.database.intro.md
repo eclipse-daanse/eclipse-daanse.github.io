@@ -16,7 +16,7 @@ The catalog is the primary object in a Daanse server. It serves as a logical gro
 
 
 ```xml
-<rolapcat:Catalog xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:rolapcat="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/catalog" xmi:id="_catalog_databaseintro" id="_catalog_databaseIntro" description="Basic introduction to database schema configuration" name="Daanse Tutorial - Database Intro">
+<rolapcat:Catalog xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:rolapcat="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/catalog" xmi:id="_catalog_database_intro" description="Basic introduction to database schema configuration" name="Daanse Tutorial - Database Intro">
   <dbschemas href="_schema_intro"/>
 </rolapcat:Catalog>
 
@@ -67,7 +67,7 @@ This file represents the complete definition of the catalog.
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapcat="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/catalog">
   <relational:SQLSimpleType xmi:id="_sqlsimpletype_character_varying" name="CHARACTER VARYING" structuralFeature="_column_intro_tableone_columnone" typeNumber="12" characterMaximumLength="255"/>
-  <rolapcat:Catalog xmi:id="_catalog_databaseintro" id="_catalog_databaseIntro" description="Basic introduction to database schema configuration" name="Daanse Tutorial - Database Intro" dbschemas="_schema_intro"/>
+  <rolapcat:Catalog xmi:id="_catalog_database_intro" description="Basic introduction to database schema configuration" name="Daanse Tutorial - Database Intro" dbschemas="_schema_intro"/>
   <relational:Schema xmi:id="_schema_intro" name="intro">
     <ownedElement xsi:type="relational:Table" xmi:id="_table_tableone" name="TableOne">
       <feature xsi:type="relational:Column" xmi:id="_column_intro_tableone_columnone" name="ColumnOne" type="_sqlsimpletype_character_varying"/>

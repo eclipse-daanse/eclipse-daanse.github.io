@@ -102,8 +102,6 @@ The Dimension has only one hierarchy.
 ```xml
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:instance="http://www.omg.org/spec/CWM/1.1/objectmodel/instance" xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapdim="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolaprel="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/relational" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
   <rolapdim:StandardDimension xmi:id="_standarddimension_dimension1" name="Dimension1" hierarchies="_explicithierarchy_hierarchy1"/>
-  <rolaplev:Level xmi:id="_level_level1" name="Level1" column="_column_ht_key" nameColumn="_column_ht_name"/>
-  <rolapsrc:InlineTableSource xmi:id="_inlinetablesource_ht" alias="HT" table="_inlinetable_ht"/>
   <rolaprel:InlineTable xmi:id="_inlinetable_ht" name="HT">
     <feature xsi:type="relational:Column" xmi:id="_column_ht_key" name="KEY" slot="_dataslot _dataslot_3"/>
     <feature xsi:type="relational:Column" xmi:id="_column_ht_value" name="VALUE" slot="_dataslot_1 _dataslot_4"/>
@@ -121,7 +119,9 @@ The Dimension has only one hierarchy.
       </ownedElement>
     </extent>
   </rolaprel:InlineTable>
+  <rolaplev:Level xmi:id="_level_level1" name="Level1" column="_column_ht_key" nameColumn="_column_ht_name"/>
   <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_hierarchy1" name="Hierarchy1" primaryKey="_column_ht_key" source="_inlinetablesource_ht" levels="_level_level1"/>
+  <rolapsrc:InlineTableSource xmi:id="_inlinetablesource_ht" alias="HT" table="_inlinetable_ht"/>
 </xmi:XMI>
 
 ```
@@ -137,8 +137,6 @@ Query uses Inline table as data sourse.
 ```xml
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:instance="http://www.omg.org/spec/CWM/1.1/objectmodel/instance" xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolaprel="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/relational" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
   <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_hierarchy1" name="Hierarchy1" primaryKey="_column_ht_key" source="_inlinetablesource_ht" levels="_level_level1"/>
-  <rolaplev:Level xmi:id="_level_level1" name="Level1" column="_column_ht_key" nameColumn="_column_ht_name"/>
-  <rolapsrc:InlineTableSource xmi:id="_inlinetablesource_ht" alias="HT" table="_inlinetable_ht"/>
   <rolaprel:InlineTable xmi:id="_inlinetable_ht" name="HT">
     <feature xsi:type="relational:Column" xmi:id="_column_ht_key" name="KEY" slot="_dataslot _dataslot_3"/>
     <feature xsi:type="relational:Column" xmi:id="_column_ht_value" name="VALUE" slot="_dataslot_1 _dataslot_4"/>
@@ -156,6 +154,8 @@ Query uses Inline table as data sourse.
       </ownedElement>
     </extent>
   </rolaprel:InlineTable>
+  <rolaplev:Level xmi:id="_level_level1" name="Level1" column="_column_ht_key" nameColumn="_column_ht_name"/>
+  <rolapsrc:InlineTableSource xmi:id="_inlinetablesource_ht" alias="HT" table="_inlinetable_ht"/>
 </xmi:XMI>
 
 ```
@@ -201,13 +201,6 @@ In this example uses cube with fact table Fact as data. This example shows combi
     </measureGroups>
   </rolapcube:PhysicalCube>
   <rolapdim:StandardDimension xmi:id="_standarddimension_dimension1" name="Dimension1" hierarchies="_explicithierarchy_hierarchy1"/>
-  <relational:Table xmi:id="_table_fact" name="Fact">
-    <feature xsi:type="relational:Column" xmi:id="_column_fact_dim_key" name="DIM_KEY"/>
-    <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE"/>
-  </relational:Table>
-  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
-  <rolaplev:Level xmi:id="_level_level1" name="Level1" column="_column_ht_key" nameColumn="_column_ht_name"/>
-  <rolapsrc:InlineTableSource xmi:id="_inlinetablesource_ht" alias="HT" table="_inlinetable_ht"/>
   <rolaprel:InlineTable xmi:id="_inlinetable_ht" name="HT">
     <feature xsi:type="relational:Column" xmi:id="_column_ht_key" name="KEY" slot="_dataslot _dataslot_3"/>
     <feature xsi:type="relational:Column" xmi:id="_column_ht_value" name="VALUE" slot="_dataslot_1 _dataslot_4"/>
@@ -225,7 +218,14 @@ In this example uses cube with fact table Fact as data. This example shows combi
       </ownedElement>
     </extent>
   </rolaprel:InlineTable>
+  <rolaplev:Level xmi:id="_level_level1" name="Level1" column="_column_ht_key" nameColumn="_column_ht_name"/>
+  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
+  <relational:Table xmi:id="_table_fact" name="Fact">
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_dim_key" name="DIM_KEY"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE"/>
+  </relational:Table>
   <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_hierarchy1" name="Hierarchy1" primaryKey="_column_ht_key" source="_inlinetablesource_ht" levels="_level_level1"/>
+  <rolapsrc:InlineTableSource xmi:id="_inlinetablesource_ht" alias="HT" table="_inlinetable_ht"/>
 </xmi:XMI>
 
 ```
@@ -238,9 +238,9 @@ This file represents the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:instance="http://www.omg.org/spec/CWM/1.1/objectmodel/instance" xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapcat="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/catalog" xmlns:rolapcube="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube" xmlns:rolapdim="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapmeas="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube/measure" xmlns:rolaprel="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/relational" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
-  <relational:SQLSimpleType xmi:id="_sqlsimpletype_numeric" name="NUMERIC" structuralFeature="_column_ht_value" typeNumber="2" numericPrecision="18" numericPrecisionRadix="10" numericScale="4"/>
   <relational:SQLSimpleType xmi:id="_sqlsimpletype_character_varying" name="CHARACTER VARYING" structuralFeature="_column_ht_key _column_fact_dim_key _column_ht_name" typeNumber="12"/>
   <relational:SQLSimpleType xmi:id="_sqlsimpletype_integer" name="INTEGER" structuralFeature="_column_fact_value" typeNumber="4"/>
+  <relational:SQLSimpleType xmi:id="_sqlsimpletype_numeric" name="NUMERIC" structuralFeature="_column_ht_value" typeNumber="2" numericPrecision="18" numericPrecisionRadix="10" numericScale="4"/>
   <rolapcat:Catalog xmi:id="_catalog_inline_table" description="Hierarchy with inline table data" name="Daanse Tutorial - Inline Table" cubes="_physicalcube_cube" dbschemas="_schema"/>
   <relational:Schema xmi:id="_schema">
     <ownedElement xsi:type="relational:Table" xmi:id="_table_fact" name="Fact">
@@ -248,19 +248,19 @@ This file represents the complete definition of the catalog.
       <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE" type="_sqlsimpletype_integer"/>
     </ownedElement>
     <ownedElement xsi:type="rolaprel:InlineTable" xmi:id="_inlinetable_ht" name="HT">
-      <feature xsi:type="relational:Column" xmi:id="_column_ht_key" name="KEY" type="_sqlsimpletype_character_varying" slot="_dataslot_3 _dataslot_2"/>
-      <feature xsi:type="relational:Column" xmi:id="_column_ht_value" name="VALUE" type="_sqlsimpletype_numeric" slot="_dataslot_5 _dataslot_1"/>
-      <feature xsi:type="relational:Column" xmi:id="_column_ht_name" name="NAME" type="_sqlsimpletype_character_varying" slot="_dataslot_4 _dataslot"/>
+      <feature xsi:type="relational:Column" xmi:id="_column_ht_key" name="KEY" type="_sqlsimpletype_character_varying" slot="_dataslot_4 _dataslot_3"/>
+      <feature xsi:type="relational:Column" xmi:id="_column_ht_value" name="VALUE" type="_sqlsimpletype_numeric" slot="_dataslot_1 _dataslot_5"/>
+      <feature xsi:type="relational:Column" xmi:id="_column_ht_name" name="NAME" type="_sqlsimpletype_character_varying" slot="_dataslot _dataslot_2"/>
       <extent xmi:id="_rowset">
         <ownedElement xsi:type="relational:Row" xmi:id="_row">
-          <slot xsi:type="instance:DataSlot" xmi:id="_dataslot_3" feature="_column_ht_key" dataValue="1"/>
-          <slot xsi:type="instance:DataSlot" xmi:id="_dataslot_5" feature="_column_ht_value" dataValue="100.5"/>
-          <slot xsi:type="instance:DataSlot" xmi:id="_dataslot_4" feature="_column_ht_name" dataValue="name1"/>
+          <slot xsi:type="instance:DataSlot" xmi:id="_dataslot_4" feature="_column_ht_key" dataValue="1"/>
+          <slot xsi:type="instance:DataSlot" xmi:id="_dataslot_1" feature="_column_ht_value" dataValue="100.5"/>
+          <slot xsi:type="instance:DataSlot" xmi:id="_dataslot" feature="_column_ht_name" dataValue="name1"/>
         </ownedElement>
         <ownedElement xsi:type="relational:Row" xmi:id="_row_1">
-          <slot xsi:type="instance:DataSlot" xmi:id="_dataslot_2" feature="_column_ht_key" dataValue="2"/>
-          <slot xsi:type="instance:DataSlot" xmi:id="_dataslot_1" feature="_column_ht_value" dataValue="100.2"/>
-          <slot xsi:type="instance:DataSlot" xmi:id="_dataslot" feature="_column_ht_name" dataValue="name2"/>
+          <slot xsi:type="instance:DataSlot" xmi:id="_dataslot_3" feature="_column_ht_key" dataValue="2"/>
+          <slot xsi:type="instance:DataSlot" xmi:id="_dataslot_5" feature="_column_ht_value" dataValue="100.2"/>
+          <slot xsi:type="instance:DataSlot" xmi:id="_dataslot_2" feature="_column_ht_name" dataValue="name2"/>
         </ownedElement>
       </extent>
     </ownedElement>

@@ -79,11 +79,11 @@ The dimension is defined with the one hierarchy. The hierarchy is used in the cu
 ```xml
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapdim="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
   <rolapdim:StandardDimension xmi:id="_standarddimension_thedimension" name="theDimension" hierarchies="_explicithierarchy_thehierarchy"/>
-  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_thehierarchy" name="theHierarchy" primaryKey="_column_fact_key" source="_tablesource_fact" levels="_level_thelevel"/>
   <relational:Table xmi:id="_table_fact" name="Fact">
     <feature xsi:type="relational:Column" xmi:id="_column_fact_key" name="KEY"/>
     <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE"/>
   </relational:Table>
+  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_thehierarchy" name="theHierarchy" primaryKey="_column_fact_key" source="_tablesource_fact" levels="_level_thelevel"/>
   <rolaplev:Level xmi:id="_level_thelevel" name="theLevel" column="_column_fact_key"/>
   <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
 </xmi:XMI>
@@ -98,11 +98,11 @@ This calculated member has `BACK_COLOR` in format string. It show possibility to
 ```xml
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
   <rolaplev:CalculatedMember xmi:id="_calculatedmember_calculated_member_1" name="Calculated Member 1" displayFolder="folder" formula="[Measures].[Measure-Sum] / [Measures].[Measure-Count]" parent="[theDimension].[theHierarchy].[All theHierarchys]" hierarchy="_explicithierarchy_thehierarchy"/>
-  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_thehierarchy" name="theHierarchy" primaryKey="_column_fact_key" source="_tablesource_fact" levels="_level_thelevel"/>
   <relational:Table xmi:id="_table_fact" name="Fact">
     <feature xsi:type="relational:Column" xmi:id="_column_fact_key" name="KEY"/>
     <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE"/>
   </relational:Table>
+  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_thehierarchy" name="theHierarchy" primaryKey="_column_fact_key" source="_tablesource_fact" levels="_level_thelevel"/>
   <rolaplev:Level xmi:id="_level_thelevel" name="theLevel" column="_column_fact_key"/>
   <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
 </xmi:XMI>
@@ -140,12 +140,12 @@ The cube is defined by the DimensionConnector and the MeasureGroup and most impo
       <measures xsi:type="rolapmeas:CountMeasure" xmi:id="_countmeasure_measure_count" name="Measure-Count" formatString="$#,##0.00;BACK_COLOR=16711680;FORE_COLOR=0" column="_column_fact_value"/>
     </measureGroups>
   </rolapcube:PhysicalCube>
-  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_thehierarchy" name="theHierarchy" primaryKey="_column_fact_key" source="_tablesource_fact" levels="_level_thelevel"/>
+  <rolapdim:StandardDimension xmi:id="_standarddimension_thedimension" name="theDimension" hierarchies="_explicithierarchy_thehierarchy"/>
   <relational:Table xmi:id="_table_fact" name="Fact">
     <feature xsi:type="relational:Column" xmi:id="_column_fact_key" name="KEY"/>
     <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE"/>
   </relational:Table>
-  <rolapdim:StandardDimension xmi:id="_standarddimension_thedimension" name="theDimension" hierarchies="_explicithierarchy_thehierarchy"/>
+  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_thehierarchy" name="theHierarchy" primaryKey="_column_fact_key" source="_tablesource_fact" levels="_level_thelevel"/>
   <rolaplev:Level xmi:id="_level_thelevel" name="theLevel" column="_column_fact_key"/>
   <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
 </xmi:XMI>
@@ -175,10 +175,10 @@ This file represents the complete definition of the catalog.
   <rolapdim:StandardDimension xmi:id="_standarddimension_thedimension" name="theDimension" hierarchies="_explicithierarchy_thehierarchy"/>
   <rolapcube:PhysicalCube xmi:id="_physicalcube_cube_calculatedmember_with_different_colors" name="Cube CalculatedMember with different colors" source="_tablesource_fact">
     <calculatedMembers xmi:id="_calculatedmember_calculated_member_2" name="Calculated Member 2" displayFolder="folder" formula="[Measures].[Measure-Sum] / [Measures].[Measure-Count]">
-      <calculatedMemberProperties xmi:id="_calculatedmemberproperty_format_string" name="FORMAT_STRING" value="$#,##;BACK_COLOR=255;FORE_COLOR=13369395"/>
+      <calculatedMemberProperties xmi:id="_calculatedmemberproperty_format_string_1" name="FORMAT_STRING" value="$#,##;BACK_COLOR=255;FORE_COLOR=13369395"/>
     </calculatedMembers>
     <calculatedMembers xmi:id="_calculatedmember_calculated_member_1" name="Calculated Member 1" displayFolder="folder" formula="[Measures].[Measure-Sum] / [Measures].[Measure-Count]" parent="[theDimension].[theHierarchy].[All theHierarchys]" hierarchy="_explicithierarchy_thehierarchy">
-      <calculatedMemberProperties xmi:id="_calculatedmemberproperty_format_string_1" name="FORMAT_STRING" value="$#,##0.00;BACK_COLOR=65535;FORE_COLOR=13369395"/>
+      <calculatedMemberProperties xmi:id="_calculatedmemberproperty_format_string" name="FORMAT_STRING" value="$#,##0.00;BACK_COLOR=65535;FORE_COLOR=13369395"/>
     </calculatedMembers>
     <dimensionConnectors xmi:id="_dimensionconnector_thedimension" foreignKey="_column_fact_key" dimension="_standarddimension_thedimension"/>
     <measureGroups xmi:id="_measuregroup">

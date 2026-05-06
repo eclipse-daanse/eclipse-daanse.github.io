@@ -77,11 +77,11 @@ The cube defines the calculated members with logic functions.
       <measures xsi:type="rolapmeas:CountMeasure" xmi:id="_countmeasure_measure_count" name="Measure-Count" column="_column_fact_value"/>
     </measureGroups>
   </rolapcube:PhysicalCube>
+  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
   <relational:Table xmi:id="_table_fact" name="Fact">
     <feature xsi:type="relational:Column" xmi:id="_column_fact_key" name="KEY"/>
     <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE"/>
   </relational:Table>
-  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
 </xmi:XMI>
 
 ```
@@ -115,8 +115,8 @@ This file represents the complete definition of the catalog.
     <calculatedMembers xmi:id="_calculatedmember_isempty_measures_measure_sum" name="IsEmpty([Measures].[Measure-Sum])" formula="IsEmpty([Measures].[Measure-Sum])"/>
     <calculatedMembers xmi:id="_calculatedmember_not_isempty_measures_measure_sum" name="NOT IsEmpty([Measures].[Measure-Sum])" formula="NOT IsEmpty([Measures].[Measure-Sum])"/>
     <calculatedMembers xmi:id="_calculatedmember_measures_measure_sum_is_null" name="[Measures].[Measure-Sum] IS NULL" formula="[Measures].[Measure-Sum] IS NULL"/>
-    <calculatedMembers xmi:id="_calculatedmember_measures_measure_sum_10" name="[Measures].[Measure-Sum]=10" formula="[Measures].[Measure-Sum]=10"/>
-    <calculatedMembers xmi:id="_calculatedmember_measures_measure_sum_10_1" name="[Measures].[Measure-Sum]&lt;>10" formula="[Measures].[Measure-Sum]&lt;>10"/>
+    <calculatedMembers xmi:id="_calculatedmember_measures_measure_sum_10_1" name="[Measures].[Measure-Sum]=10" formula="[Measures].[Measure-Sum]=10"/>
+    <calculatedMembers xmi:id="_calculatedmember_measures_measure_sum_10" name="[Measures].[Measure-Sum]&lt;>10" formula="[Measures].[Measure-Sum]&lt;>10"/>
     <calculatedMembers xmi:id="_calculatedmember_measures_measure_sum_10_xor_measures_measure_sum_10" name="[Measures].[Measure-Sum]=10 XOR [Measures].[Measure-Sum]>10" formula="[Measures].[Measure-Sum]=10 XOR [Measures].[Measure-Sum]>10"/>
     <measureGroups xmi:id="_measuregroup">
       <measures xsi:type="rolapmeas:SumMeasure" xmi:id="_summeasure_measure_sum" name="Measure-Sum" column="_column_fact_value"/>

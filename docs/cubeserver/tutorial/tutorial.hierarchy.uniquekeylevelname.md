@@ -79,13 +79,16 @@ The time dimension is defined with the one hierarchy.
 ```xml
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapdim="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
   <rolapdim:StandardDimension xmi:id="_standarddimension_automotive" name="Automotive" hierarchies="_explicithierarchy_auto_dim_id"/>
-  <rolaplev:Level xmi:id="_level_make" name="Make" column="_column_automotive_dim_make_id" nameColumn="_column_automotive_dim_make"/>
-  <rolapsrc:TableSource xmi:id="_tablesource_automotive_dim" table="_table_automotive_dim"/>
   <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_auto_dim_id" primaryKey="_column_automotive_dim_auto_dim_id" uniqueKeyLevelName="Vehicle Identification Number" source="_tablesource_automotive_dim" levels="_level_make _level_model _level_manufacturingplant _level_vehicle_identification_number _level_licenseplatenum"/>
+  <rolaplev:Level xmi:id="_level_make" name="Make" column="_column_automotive_dim_make_id" nameColumn="_column_automotive_dim_make"/>
+  <rolaplev:Level xmi:id="_level_licenseplatenum" name="LicensePlateNum" column="_column_automotive_dim_license_id">
+    <memberProperties xmi:id="_memberproperty_state" name="State" column="_column_automotive_dim_license_state_id" dependsOnLevelValue="true" propertyType="Numeric"/>
+  </rolaplev:Level>
   <rolaplev:Level xmi:id="_level_manufacturingplant" name="ManufacturingPlant" column="_column_automotive_dim_plant_id" nameColumn="_column_automotive_dim_plant">
-    <memberProperties xmi:id="_memberproperty_state" name="State" column="_column_automotive_dim_plant_state_id" dependsOnLevelValue="true" propertyType="Numeric"/>
+    <memberProperties xmi:id="_memberproperty_state_1" name="State" column="_column_automotive_dim_plant_state_id" dependsOnLevelValue="true" propertyType="Numeric"/>
     <memberProperties xmi:id="_memberproperty_city" name="City" column="_column_automotive_dim_plant_city_id" dependsOnLevelValue="true" propertyType="Numeric"/>
   </rolaplev:Level>
+  <rolapsrc:TableSource xmi:id="_tablesource_automotive_dim" table="_table_automotive_dim"/>
   <relational:Table xmi:id="_table_automotive_dim" name="AUTOMOTIVE_DIM">
     <feature xsi:type="relational:Column" xmi:id="_column_automotive_dim_auto_dim_id" name="AUTO_DIM_ID"/>
     <feature xsi:type="relational:Column" xmi:id="_column_automotive_dim_make_id" name="MAKE_ID"/>
@@ -104,9 +107,6 @@ The time dimension is defined with the one hierarchy.
     <feature xsi:type="relational:Column" xmi:id="_column_automotive_dim_license_state_id" name="LICENSE_STATE_ID"/>
     <feature xsi:type="relational:Column" xmi:id="_column_automotive_dim_price" name="PRICE"/>
   </relational:Table>
-  <rolaplev:Level xmi:id="_level_licenseplatenum" name="LicensePlateNum" column="_column_automotive_dim_license_id">
-    <memberProperties xmi:id="_memberproperty_state_1" name="State" column="_column_automotive_dim_license_state_id" dependsOnLevelValue="true" propertyType="Numeric"/>
-  </rolaplev:Level>
   <rolaplev:Level xmi:id="_level_model" name="Model" column="_column_automotive_dim_model_id" nameColumn="_column_automotive_dim_model"/>
   <rolaplev:Level xmi:id="_level_vehicle_identification_number" name="Vehicle Identification Number" column="_column_automotive_dim_vehicle_id">
     <memberProperties xmi:id="_memberproperty_color" name="Color" column="_column_automotive_dim_color_id" dependsOnLevelValue="true" propertyType="Numeric"/>
@@ -130,11 +130,14 @@ of values for all levels below it.
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
   <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_auto_dim_id" primaryKey="_column_automotive_dim_auto_dim_id" uniqueKeyLevelName="Vehicle Identification Number" source="_tablesource_automotive_dim" levels="_level_make _level_model _level_manufacturingplant _level_vehicle_identification_number _level_licenseplatenum"/>
   <rolaplev:Level xmi:id="_level_make" name="Make" column="_column_automotive_dim_make_id" nameColumn="_column_automotive_dim_make"/>
-  <rolapsrc:TableSource xmi:id="_tablesource_automotive_dim" table="_table_automotive_dim"/>
+  <rolaplev:Level xmi:id="_level_licenseplatenum" name="LicensePlateNum" column="_column_automotive_dim_license_id">
+    <memberProperties xmi:id="_memberproperty_state" name="State" column="_column_automotive_dim_license_state_id" dependsOnLevelValue="true" propertyType="Numeric"/>
+  </rolaplev:Level>
   <rolaplev:Level xmi:id="_level_manufacturingplant" name="ManufacturingPlant" column="_column_automotive_dim_plant_id" nameColumn="_column_automotive_dim_plant">
-    <memberProperties xmi:id="_memberproperty_state" name="State" column="_column_automotive_dim_plant_state_id" dependsOnLevelValue="true" propertyType="Numeric"/>
+    <memberProperties xmi:id="_memberproperty_state_1" name="State" column="_column_automotive_dim_plant_state_id" dependsOnLevelValue="true" propertyType="Numeric"/>
     <memberProperties xmi:id="_memberproperty_city" name="City" column="_column_automotive_dim_plant_city_id" dependsOnLevelValue="true" propertyType="Numeric"/>
   </rolaplev:Level>
+  <rolapsrc:TableSource xmi:id="_tablesource_automotive_dim" table="_table_automotive_dim"/>
   <relational:Table xmi:id="_table_automotive_dim" name="AUTOMOTIVE_DIM">
     <feature xsi:type="relational:Column" xmi:id="_column_automotive_dim_auto_dim_id" name="AUTO_DIM_ID"/>
     <feature xsi:type="relational:Column" xmi:id="_column_automotive_dim_make_id" name="MAKE_ID"/>
@@ -153,9 +156,6 @@ of values for all levels below it.
     <feature xsi:type="relational:Column" xmi:id="_column_automotive_dim_license_state_id" name="LICENSE_STATE_ID"/>
     <feature xsi:type="relational:Column" xmi:id="_column_automotive_dim_price" name="PRICE"/>
   </relational:Table>
-  <rolaplev:Level xmi:id="_level_licenseplatenum" name="LicensePlateNum" column="_column_automotive_dim_license_id">
-    <memberProperties xmi:id="_memberproperty_state_1" name="State" column="_column_automotive_dim_license_state_id" dependsOnLevelValue="true" propertyType="Numeric"/>
-  </rolaplev:Level>
   <rolaplev:Level xmi:id="_level_model" name="Model" column="_column_automotive_dim_model_id" nameColumn="_column_automotive_dim_model"/>
   <rolaplev:Level xmi:id="_level_vehicle_identification_number" name="Vehicle Identification Number" column="_column_automotive_dim_vehicle_id">
     <memberProperties xmi:id="_memberproperty_color" name="Color" column="_column_automotive_dim_color_id" dependsOnLevelValue="true" propertyType="Numeric"/>
@@ -268,14 +268,17 @@ The cube with hierarchy with functional dependency optimizations.
       <measures xsi:type="rolapmeas:SumMeasure" xmi:id="_summeasure_measure" name="Measure" column="_column_automotive_dim_price"/>
     </measureGroups>
   </rolapcube:PhysicalCube>
-  <rolaplev:Level xmi:id="_level_make" name="Make" column="_column_automotive_dim_make_id" nameColumn="_column_automotive_dim_make"/>
-  <rolapsrc:TableSource xmi:id="_tablesource_automotive_dim" table="_table_automotive_dim"/>
-  <rolapdim:StandardDimension xmi:id="_standarddimension_automotive" name="Automotive" hierarchies="_explicithierarchy_auto_dim_id"/>
   <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_auto_dim_id" primaryKey="_column_automotive_dim_auto_dim_id" uniqueKeyLevelName="Vehicle Identification Number" source="_tablesource_automotive_dim" levels="_level_make _level_model _level_manufacturingplant _level_vehicle_identification_number _level_licenseplatenum"/>
+  <rolaplev:Level xmi:id="_level_make" name="Make" column="_column_automotive_dim_make_id" nameColumn="_column_automotive_dim_make"/>
+  <rolaplev:Level xmi:id="_level_licenseplatenum" name="LicensePlateNum" column="_column_automotive_dim_license_id">
+    <memberProperties xmi:id="_memberproperty_state" name="State" column="_column_automotive_dim_license_state_id" dependsOnLevelValue="true" propertyType="Numeric"/>
+  </rolaplev:Level>
+  <rolapdim:StandardDimension xmi:id="_standarddimension_automotive" name="Automotive" hierarchies="_explicithierarchy_auto_dim_id"/>
   <rolaplev:Level xmi:id="_level_manufacturingplant" name="ManufacturingPlant" column="_column_automotive_dim_plant_id" nameColumn="_column_automotive_dim_plant">
-    <memberProperties xmi:id="_memberproperty_state" name="State" column="_column_automotive_dim_plant_state_id" dependsOnLevelValue="true" propertyType="Numeric"/>
+    <memberProperties xmi:id="_memberproperty_state_1" name="State" column="_column_automotive_dim_plant_state_id" dependsOnLevelValue="true" propertyType="Numeric"/>
     <memberProperties xmi:id="_memberproperty_city" name="City" column="_column_automotive_dim_plant_city_id" dependsOnLevelValue="true" propertyType="Numeric"/>
   </rolaplev:Level>
+  <rolapsrc:TableSource xmi:id="_tablesource_automotive_dim" table="_table_automotive_dim"/>
   <relational:Table xmi:id="_table_automotive_dim" name="AUTOMOTIVE_DIM">
     <feature xsi:type="relational:Column" xmi:id="_column_automotive_dim_auto_dim_id" name="AUTO_DIM_ID"/>
     <feature xsi:type="relational:Column" xmi:id="_column_automotive_dim_make_id" name="MAKE_ID"/>
@@ -294,9 +297,6 @@ The cube with hierarchy with functional dependency optimizations.
     <feature xsi:type="relational:Column" xmi:id="_column_automotive_dim_license_state_id" name="LICENSE_STATE_ID"/>
     <feature xsi:type="relational:Column" xmi:id="_column_automotive_dim_price" name="PRICE"/>
   </relational:Table>
-  <rolaplev:Level xmi:id="_level_licenseplatenum" name="LicensePlateNum" column="_column_automotive_dim_license_id">
-    <memberProperties xmi:id="_memberproperty_state_1" name="State" column="_column_automotive_dim_license_state_id" dependsOnLevelValue="true" propertyType="Numeric"/>
-  </rolaplev:Level>
   <rolaplev:Level xmi:id="_level_model" name="Model" column="_column_automotive_dim_model_id" nameColumn="_column_automotive_dim_model"/>
   <rolaplev:Level xmi:id="_level_vehicle_identification_number" name="Vehicle Identification Number" column="_column_automotive_dim_vehicle_id">
     <memberProperties xmi:id="_memberproperty_color" name="Color" column="_column_automotive_dim_color_id" dependsOnLevelValue="true" propertyType="Numeric"/>
@@ -314,8 +314,8 @@ This file represents the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapcat="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/catalog" xmlns:rolapcube="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube" xmlns:rolapdim="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapmeas="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube/measure" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
-  <relational:SQLSimpleType xmi:id="_sqlsimpletype_integer" name="INTEGER" structuralFeature="_column_automotive_dim_license_id _column_automotive_dim_plant_city_id _column_automotive_dim_auto_dim_id _column_automotive_dim_vehicle_id _column_automotive_dim_model_id _column_automotive_dim_plant_state_id _column_automotive_dim_plant_id _column_automotive_dim_trim_id _column_automotive_dim_license_state_id _column_automotive_dim_color_id _column_automotive_dim_price _column_automotive_dim_make_id" typeNumber="4"/>
-  <relational:SQLSimpleType xmi:id="_sqlsimpletype_character_varying" name="CHARACTER VARYING" structuralFeature="_column_automotive_dim_plant _column_automotive_dim_license _column_automotive_dim_model _column_automotive_dim_make" typeNumber="12"/>
+  <relational:SQLSimpleType xmi:id="_sqlsimpletype_character_varying" name="CHARACTER VARYING" structuralFeature="_column_automotive_dim_license _column_automotive_dim_make _column_automotive_dim_model _column_automotive_dim_plant" typeNumber="12"/>
+  <relational:SQLSimpleType xmi:id="_sqlsimpletype_integer" name="INTEGER" structuralFeature="_column_automotive_dim_plant_state_id _column_automotive_dim_auto_dim_id _column_automotive_dim_color_id _column_automotive_dim_license_id _column_automotive_dim_license_state_id _column_automotive_dim_make_id _column_automotive_dim_model_id _column_automotive_dim_plant_city_id _column_automotive_dim_plant_id _column_automotive_dim_price _column_automotive_dim_trim_id _column_automotive_dim_vehicle_id" typeNumber="4"/>
   <rolapcat:Catalog xmi:id="_catalog_unique_key_level_name" description="Hierarchy with unique key level name optimizations" name="Daanse Tutorial - Unique Key Level Name" cubes="_physicalcube_cube" dbschemas="_schema"/>
   <relational:Schema xmi:id="_schema">
     <ownedElement xsi:type="relational:Table" xmi:id="_table_automotive_dim" name="AUTOMOTIVE_DIM">
@@ -338,15 +338,15 @@ This file represents the complete definition of the catalog.
     </ownedElement>
   </relational:Schema>
   <rolapsrc:TableSource xmi:id="_tablesource_automotive_dim" table="_table_automotive_dim"/>
+  <rolaplev:Level xmi:id="_level_licenseplatenum" name="LicensePlateNum" column="_column_automotive_dim_license_id">
+    <memberProperties xmi:id="_memberproperty_state_1" name="State" column="_column_automotive_dim_license_state_id" dependsOnLevelValue="true" propertyType="Numeric"/>
+  </rolaplev:Level>
+  <rolaplev:Level xmi:id="_level_make" name="Make" column="_column_automotive_dim_make_id" nameColumn="_column_automotive_dim_make"/>
   <rolaplev:Level xmi:id="_level_manufacturingplant" name="ManufacturingPlant" column="_column_automotive_dim_plant_id" nameColumn="_column_automotive_dim_plant">
     <memberProperties xmi:id="_memberproperty_state" name="State" column="_column_automotive_dim_plant_state_id" dependsOnLevelValue="true" propertyType="Numeric"/>
     <memberProperties xmi:id="_memberproperty_city" name="City" column="_column_automotive_dim_plant_city_id" dependsOnLevelValue="true" propertyType="Numeric"/>
   </rolaplev:Level>
   <rolaplev:Level xmi:id="_level_model" name="Model" column="_column_automotive_dim_model_id" nameColumn="_column_automotive_dim_model"/>
-  <rolaplev:Level xmi:id="_level_licenseplatenum" name="LicensePlateNum" column="_column_automotive_dim_license_id">
-    <memberProperties xmi:id="_memberproperty_state_1" name="State" column="_column_automotive_dim_license_state_id" dependsOnLevelValue="true" propertyType="Numeric"/>
-  </rolaplev:Level>
-  <rolaplev:Level xmi:id="_level_make" name="Make" column="_column_automotive_dim_make_id" nameColumn="_column_automotive_dim_make"/>
   <rolaplev:Level xmi:id="_level_vehicle_identification_number" name="Vehicle Identification Number" column="_column_automotive_dim_vehicle_id">
     <memberProperties xmi:id="_memberproperty_color" name="Color" column="_column_automotive_dim_color_id" dependsOnLevelValue="true" propertyType="Numeric"/>
     <memberProperties xmi:id="_memberproperty_trim" name="Trim" column="_column_automotive_dim_trim_id" dependsOnLevelValue="true" propertyType="Numeric"/>

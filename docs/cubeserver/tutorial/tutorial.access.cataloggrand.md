@@ -65,12 +65,12 @@ The Hierarchy1 is defined with the hasAll property set to false and the one leve
 ```xml
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
   <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_hierarchy1" name="Hierarchy1" hasAll="false" primaryKey="_column_fact_key" source="_tablesource_fact" levels="_level_level1"/>
-  <rolaplev:Level xmi:id="_level_level1" name="Level1" column="_column_fact_key"/>
   <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
   <relational:Table xmi:id="_table_fact" name="Fact">
     <feature xsi:type="relational:Column" xmi:id="_column_fact_key" name="KEY"/>
     <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE"/>
   </relational:Table>
+  <rolaplev:Level xmi:id="_level_level1" name="Level1" column="_column_fact_key"/>
 </xmi:XMI>
 
 ```
@@ -83,13 +83,13 @@ The dimension1 is defined with the one hierarchy1.
 ```xml
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapdim="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
   <rolapdim:StandardDimension xmi:id="_standarddimension_dimension1" name="Dimension1" hierarchies="_explicithierarchy_hierarchy1"/>
-  <rolaplev:Level xmi:id="_level_level1" name="Level1" column="_column_fact_key"/>
-  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_hierarchy1" name="Hierarchy1" hasAll="false" primaryKey="_column_fact_key" source="_tablesource_fact" levels="_level_level1"/>
   <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
   <relational:Table xmi:id="_table_fact" name="Fact">
     <feature xsi:type="relational:Column" xmi:id="_column_fact_key" name="KEY"/>
     <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE"/>
   </relational:Table>
+  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_hierarchy1" name="Hierarchy1" hasAll="false" primaryKey="_column_fact_key" source="_tablesource_fact" levels="_level_level1"/>
+  <rolaplev:Level xmi:id="_level_level1" name="Level1" column="_column_fact_key"/>
 </xmi:XMI>
 
 ```
@@ -109,13 +109,13 @@ The cube1 is defined by the DimensionConnector1 and the DimensionConnector2  and
     </measureGroups>
   </rolapcube:PhysicalCube>
   <rolaplev:Level xmi:id="_level_level1" name="Level1" column="_column_fact_key"/>
-  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_hierarchy1" name="Hierarchy1" hasAll="false" primaryKey="_column_fact_key" source="_tablesource_fact" levels="_level_level1"/>
-  <rolapdim:StandardDimension xmi:id="_standarddimension_dimension1" name="Dimension1" hierarchies="_explicithierarchy_hierarchy1"/>
   <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
+  <rolapdim:StandardDimension xmi:id="_standarddimension_dimension1" name="Dimension1" hierarchies="_explicithierarchy_hierarchy1"/>
   <relational:Table xmi:id="_table_fact" name="Fact">
     <feature xsi:type="relational:Column" xmi:id="_column_fact_key" name="KEY"/>
     <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE"/>
   </relational:Table>
+  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_hierarchy1" name="Hierarchy1" hasAll="false" primaryKey="_column_fact_key" source="_tablesource_fact" levels="_level_level1"/>
 </xmi:XMI>
 
 ```
@@ -195,8 +195,8 @@ This file represents the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapcacc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/access/common" xmlns:rolapcat="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/catalog" xmlns:rolapcube="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube" xmlns:rolapdim="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapmeas="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube/measure" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
-  <relational:SQLSimpleType xmi:id="_sqlsimpletype_integer" name="INTEGER" structuralFeature="_column_fact_value" typeNumber="4"/>
   <relational:SQLSimpleType xmi:id="_sqlsimpletype_character_varying" name="CHARACTER VARYING" structuralFeature="_column_fact_key" typeNumber="12"/>
+  <relational:SQLSimpleType xmi:id="_sqlsimpletype_integer" name="INTEGER" structuralFeature="_column_fact_value" typeNumber="4"/>
   <rolapcat:Catalog xmi:id="_catalog_access_catalog_grant" description="Demonstrates access control with catalog grants and roles" name="Daanse Tutorial - Access Catalog Grant" cubes="_physicalcube_cube1" accessRoles="_accessrole_roleall _accessrole_rolenone _accessrole_rolealldimwithcubegrand _accessrole_rolealldimwithoutcubegrand" dbschemas="_schema"/>
   <relational:Schema xmi:id="_schema">
     <ownedElement xsi:type="relational:Table" xmi:id="_table_fact" name="Fact">
@@ -215,25 +215,25 @@ This file represents the complete definition of the catalog.
       <measures xsi:type="rolapmeas:SumMeasure" xmi:id="_summeasure_measure1" name="Measure1" column="_column_fact_value"/>
     </measureGroups>
   </rolapcube:PhysicalCube>
+  <rolapcacc:AccessRole xmi:id="_accessrole_roleall" name="roleAll">
+    <accessCatalogGrants xmi:id="_accesscataloggrant_3" catalogAccess="all">
+      <databaseSchemaGrants xmi:id="_accessdatabaseschemagrant" databaseSchemaAccess="all" databaseSchema="_schema"/>
+    </accessCatalogGrants>
+  </rolapcacc:AccessRole>
   <rolapcacc:AccessRole xmi:id="_accessrole_rolealldimwithcubegrand" name="roleAllDimWithCubeGrand">
-    <accessCatalogGrants xmi:id="_accesscataloggrant_3" catalogAccess="all_dimensions">
+    <accessCatalogGrants xmi:id="_accesscataloggrant_2" catalogAccess="all_dimensions">
       <cubeGrants xmi:id="_accesscubegrant_cube1" cubeAccess="all" cube="_physicalcube_cube1"/>
+      <databaseSchemaGrants xmi:id="_accessdatabaseschemagrant_3" databaseSchemaAccess="all" databaseSchema="_schema"/>
+    </accessCatalogGrants>
+  </rolapcacc:AccessRole>
+  <rolapcacc:AccessRole xmi:id="_accessrole_rolealldimwithoutcubegrand" name="roleAllDimWithoutCubeGrand">
+    <accessCatalogGrants xmi:id="_accesscataloggrant" catalogAccess="all_dimensions">
       <databaseSchemaGrants xmi:id="_accessdatabaseschemagrant_2" databaseSchemaAccess="all" databaseSchema="_schema"/>
     </accessCatalogGrants>
   </rolapcacc:AccessRole>
   <rolapcacc:AccessRole xmi:id="_accessrole_rolenone" name="roleNone">
     <accessCatalogGrants xmi:id="_accesscataloggrant_1">
-      <databaseSchemaGrants xmi:id="_accessdatabaseschemagrant_3" databaseSchemaAccess="all" databaseSchema="_schema"/>
-    </accessCatalogGrants>
-  </rolapcacc:AccessRole>
-  <rolapcacc:AccessRole xmi:id="_accessrole_roleall" name="roleAll">
-    <accessCatalogGrants xmi:id="_accesscataloggrant_2" catalogAccess="all">
       <databaseSchemaGrants xmi:id="_accessdatabaseschemagrant_1" databaseSchemaAccess="all" databaseSchema="_schema"/>
-    </accessCatalogGrants>
-  </rolapcacc:AccessRole>
-  <rolapcacc:AccessRole xmi:id="_accessrole_rolealldimwithoutcubegrand" name="roleAllDimWithoutCubeGrand">
-    <accessCatalogGrants xmi:id="_accesscataloggrant" catalogAccess="all_dimensions">
-      <databaseSchemaGrants xmi:id="_accessdatabaseschemagrant" databaseSchemaAccess="all" databaseSchema="_schema"/>
     </accessCatalogGrants>
   </rolapcacc:AccessRole>
 </xmi:XMI>

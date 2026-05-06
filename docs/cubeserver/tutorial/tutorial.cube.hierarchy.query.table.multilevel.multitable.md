@@ -111,6 +111,7 @@ The order of the Levels in the hierarchy is important, as it determines the dril
 ```xml
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
   <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_townhierarchy" name="TownHierarchy" primaryKey="_column_town_id" source="_tablesource_town" levels="_level_country _level_town"/>
+  <rolaplev:Level xmi:id="_level_town" name="Town" column="_column_town_id" nameColumn="_column_town_name"/>
   <rolaplev:Level xmi:id="_level_country" name="Country" column="_column_town_country"/>
   <rolapsrc:TableSource xmi:id="_tablesource_town" table="_table_town"/>
   <relational:Table xmi:id="_table_town" name="Town">
@@ -118,7 +119,6 @@ The order of the Levels in the hierarchy is important, as it determines the dril
     <feature xsi:type="relational:Column" xmi:id="_column_town_name" name="NAME"/>
     <feature xsi:type="relational:Column" xmi:id="_column_town_country" name="COUNTRY"/>
   </relational:Table>
-  <rolaplev:Level xmi:id="_level_town" name="Town" column="_column_town_id" nameColumn="_column_town_name"/>
 </xmi:XMI>
 
 ```
@@ -131,6 +131,8 @@ The Dimension has only one hierarchy.
 ```xml
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapdim="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
   <rolapdim:StandardDimension xmi:id="_standarddimension_town" name="Town" hierarchies="_explicithierarchy_townhierarchy"/>
+  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_townhierarchy" name="TownHierarchy" primaryKey="_column_town_id" source="_tablesource_town" levels="_level_country _level_town"/>
+  <rolaplev:Level xmi:id="_level_town" name="Town" column="_column_town_id" nameColumn="_column_town_name"/>
   <rolaplev:Level xmi:id="_level_country" name="Country" column="_column_town_country"/>
   <rolapsrc:TableSource xmi:id="_tablesource_town" table="_table_town"/>
   <relational:Table xmi:id="_table_town" name="Town">
@@ -138,8 +140,6 @@ The Dimension has only one hierarchy.
     <feature xsi:type="relational:Column" xmi:id="_column_town_name" name="NAME"/>
     <feature xsi:type="relational:Column" xmi:id="_column_town_country" name="COUNTRY"/>
   </relational:Table>
-  <rolaplev:Level xmi:id="_level_town" name="Town" column="_column_town_id" nameColumn="_column_town_name"/>
-  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_townhierarchy" name="TownHierarchy" primaryKey="_column_town_id" source="_tablesource_town" levels="_level_country _level_town"/>
 </xmi:XMI>
 
 ```
@@ -160,12 +160,14 @@ To connect the dimension to the cube, a DimensionConnector is used. The dimensio
       <measures xsi:type="rolapmeas:SumMeasure" xmi:id="_summeasure_themeasure" name="theMeasure" column="_column_fact_value"/>
     </measureGroups>
   </rolapcube:PhysicalCube>
+  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_townhierarchy" name="TownHierarchy" primaryKey="_column_town_id" source="_tablesource_town" levels="_level_country _level_town"/>
+  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
   <rolapdim:StandardDimension xmi:id="_standarddimension_town" name="Town" hierarchies="_explicithierarchy_townhierarchy"/>
+  <rolaplev:Level xmi:id="_level_town" name="Town" column="_column_town_id" nameColumn="_column_town_name"/>
   <relational:Table xmi:id="_table_fact" name="Fact">
     <feature xsi:type="relational:Column" xmi:id="_column_fact_town_id" name="TOWN_ID"/>
     <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE"/>
   </relational:Table>
-  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
   <rolaplev:Level xmi:id="_level_country" name="Country" column="_column_town_country"/>
   <rolapsrc:TableSource xmi:id="_tablesource_town" table="_table_town"/>
   <relational:Table xmi:id="_table_town" name="Town">
@@ -173,8 +175,6 @@ To connect the dimension to the cube, a DimensionConnector is used. The dimensio
     <feature xsi:type="relational:Column" xmi:id="_column_town_name" name="NAME"/>
     <feature xsi:type="relational:Column" xmi:id="_column_town_country" name="COUNTRY"/>
   </relational:Table>
-  <rolaplev:Level xmi:id="_level_town" name="Town" column="_column_town_id" nameColumn="_column_town_name"/>
-  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_townhierarchy" name="TownHierarchy" primaryKey="_column_town_id" source="_tablesource_town" levels="_level_country _level_town"/>
 </xmi:XMI>
 
 ```
@@ -188,7 +188,7 @@ This file represents the complete definition of the catalog.
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapcat="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/catalog" xmlns:rolapcube="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube" xmlns:rolapdim="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapmeas="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube/measure" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
   <relational:SQLSimpleType xmi:id="_sqlsimpletype_character_varying" name="CHARACTER VARYING" structuralFeature="_column_town_country _column_town_name" typeNumber="12"/>
-  <relational:SQLSimpleType xmi:id="_sqlsimpletype_integer" name="INTEGER" structuralFeature="_column_fact_town_id _column_town_id _column_fact_value" typeNumber="4"/>
+  <relational:SQLSimpleType xmi:id="_sqlsimpletype_integer" name="INTEGER" structuralFeature="_column_fact_value _column_town_id _column_fact_town_id" typeNumber="4"/>
   <rolapcat:Catalog xmi:id="_catalog_hierarchy_query_table_multilevel_multitable" description="Multi-level hierarchy across multiple tables" name="Daanse Tutorial - Hierarchy Query Table Multilevel Multitable" cubes="_physicalcube_cube_query_linked_tables" dbschemas="_schema"/>
   <relational:Schema xmi:id="_schema">
     <ownedElement xsi:type="relational:Table" xmi:id="_table_fact" name="Fact">
@@ -201,10 +201,10 @@ This file represents the complete definition of the catalog.
       <feature xsi:type="relational:Column" xmi:id="_column_town_country" name="COUNTRY" type="_sqlsimpletype_character_varying"/>
     </ownedElement>
   </relational:Schema>
-  <rolapsrc:TableSource xmi:id="_tablesource_town" table="_table_town"/>
   <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
-  <rolaplev:Level xmi:id="_level_town" name="Town" column="_column_town_id" nameColumn="_column_town_name"/>
+  <rolapsrc:TableSource xmi:id="_tablesource_town" table="_table_town"/>
   <rolaplev:Level xmi:id="_level_country" name="Country" column="_column_town_country"/>
+  <rolaplev:Level xmi:id="_level_town" name="Town" column="_column_town_id" nameColumn="_column_town_name"/>
   <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_townhierarchy" name="TownHierarchy" primaryKey="_column_town_id" source="_tablesource_town" levels="_level_country _level_town"/>
   <rolapdim:StandardDimension xmi:id="_standarddimension_town" name="Town" hierarchies="_explicithierarchy_townhierarchy"/>
   <rolapcube:PhysicalCube xmi:id="_physicalcube_cube_query_linked_tables" name="Cube Query linked Tables" source="_tablesource_fact">

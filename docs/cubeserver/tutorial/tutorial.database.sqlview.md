@@ -33,7 +33,7 @@ This file represents the complete definition of the catalog.
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapcat="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/catalog" xmlns:rolaprel="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/relational">
   <relational:SQLSimpleType xmi:id="_sqlsimpletype_character_varying" name="CHARACTER VARYING" structuralFeature="_column_sqlview_columnone" typeNumber="12"/>
-  <rolapcat:Catalog xmi:id="_catalog_databasesqlview" id="_catalog_databaseSqlView" description="SQL view definitions and usage" name="Daanse Tutorial - Database SQL View" dbschemas="_schema"/>
+  <rolapcat:Catalog xmi:id="_catalog_database_sql_view" description="SQL view definitions and usage" name="Daanse Tutorial - Database SQL View" dbschemas="_schema"/>
   <relational:Schema xmi:id="_schema">
     <ownedElement xsi:type="rolaprel:DialectSqlView" xmi:id="_dialectsqlview_sqlview" name="sqlview">
       <feature xsi:type="relational:Column" xmi:id="_column_sqlview_columnone" name="ColumnOne" type="_sqlsimpletype_character_varying"/>

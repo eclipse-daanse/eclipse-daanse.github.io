@@ -102,18 +102,18 @@ The order of the Levels in the hierarchy is important, as it determines the dril
 ```xml
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
   <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_countryhierarchy" name="CountryHierarchy" primaryKey="_column_fact_key" source="_tablesource_fact" levels="_level_country _level_town"/>
-  <rolaplev:Level xmi:id="_level_country" name="Country" column="_column_fact_country">
-    <ordinalColumns xmi:id="_orderedcolumn_country" column="_column_fact_country"/>
-  </rolaplev:Level>
   <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
-  <rolaplev:Level xmi:id="_level_town" name="Town" column="_column_fact_key">
-    <ordinalColumns xmi:id="_orderedcolumn_key" column="_column_fact_key" direction="Desc"/>
-  </rolaplev:Level>
   <relational:Table xmi:id="_table_fact" name="Fact">
     <feature xsi:type="relational:Column" xmi:id="_column_fact_key" name="KEY"/>
     <feature xsi:type="relational:Column" xmi:id="_column_fact_country" name="COUNTRY"/>
     <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE"/>
   </relational:Table>
+  <rolaplev:Level xmi:id="_level_country" name="Country" column="_column_fact_country">
+    <ordinalColumns xmi:id="_orderedcolumn_country" column="_column_fact_country"/>
+  </rolaplev:Level>
+  <rolaplev:Level xmi:id="_level_town" name="Town" column="_column_fact_key">
+    <ordinalColumns xmi:id="_orderedcolumn_key" column="_column_fact_key" direction="Desc"/>
+  </rolaplev:Level>
 </xmi:XMI>
 
 ```
@@ -126,18 +126,18 @@ The Dimension has only one hierarchy.
 ```xml
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapdim="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
   <rolapdim:StandardDimension xmi:id="_standarddimension_country" name="Country" hierarchies="_explicithierarchy_countryhierarchy"/>
-  <rolaplev:Level xmi:id="_level_country" name="Country" column="_column_fact_country">
-    <ordinalColumns xmi:id="_orderedcolumn_country" column="_column_fact_country"/>
-  </rolaplev:Level>
   <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
-  <rolaplev:Level xmi:id="_level_town" name="Town" column="_column_fact_key">
-    <ordinalColumns xmi:id="_orderedcolumn_key" column="_column_fact_key" direction="Desc"/>
-  </rolaplev:Level>
   <relational:Table xmi:id="_table_fact" name="Fact">
     <feature xsi:type="relational:Column" xmi:id="_column_fact_key" name="KEY"/>
     <feature xsi:type="relational:Column" xmi:id="_column_fact_country" name="COUNTRY"/>
     <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE"/>
   </relational:Table>
+  <rolaplev:Level xmi:id="_level_country" name="Country" column="_column_fact_country">
+    <ordinalColumns xmi:id="_orderedcolumn_country" column="_column_fact_country"/>
+  </rolaplev:Level>
+  <rolaplev:Level xmi:id="_level_town" name="Town" column="_column_fact_key">
+    <ordinalColumns xmi:id="_orderedcolumn_key" column="_column_fact_key" direction="Desc"/>
+  </rolaplev:Level>
   <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_countryhierarchy" name="CountryHierarchy" primaryKey="_column_fact_key" source="_tablesource_fact" levels="_level_country _level_town"/>
 </xmi:XMI>
 
@@ -158,16 +158,16 @@ To connect the dimension to the cube, a DimensionConnector is used.
       <measures xsi:type="rolapmeas:SumMeasure" xmi:id="_summeasure_themeasure" name="theMeasure" column="_column_fact_value"/>
     </measureGroups>
   </rolapcube:PhysicalCube>
-  <rolaplev:Level xmi:id="_level_country" name="Country" column="_column_fact_country">
-    <ordinalColumns xmi:id="_orderedcolumn_country" column="_column_fact_country"/>
-  </rolaplev:Level>
-  <rolapdim:StandardDimension xmi:id="_standarddimension_country" name="Country" hierarchies="_explicithierarchy_countryhierarchy"/>
   <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
   <relational:Table xmi:id="_table_fact" name="Fact">
     <feature xsi:type="relational:Column" xmi:id="_column_fact_key" name="KEY"/>
     <feature xsi:type="relational:Column" xmi:id="_column_fact_country" name="COUNTRY"/>
     <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE"/>
   </relational:Table>
+  <rolaplev:Level xmi:id="_level_country" name="Country" column="_column_fact_country">
+    <ordinalColumns xmi:id="_orderedcolumn_country" column="_column_fact_country"/>
+  </rolaplev:Level>
+  <rolapdim:StandardDimension xmi:id="_standarddimension_country" name="Country" hierarchies="_explicithierarchy_countryhierarchy"/>
   <rolaplev:Level xmi:id="_level_town" name="Town" column="_column_fact_key">
     <ordinalColumns xmi:id="_orderedcolumn_key" column="_column_fact_key" direction="Desc"/>
   </rolaplev:Level>
@@ -184,8 +184,8 @@ This file represents the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapcat="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/catalog" xmlns:rolapcube="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube" xmlns:rolapdim="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapmeas="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube/measure" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
-  <relational:SQLSimpleType xmi:id="_sqlsimpletype_integer" name="INTEGER" structuralFeature="_column_fact_value" typeNumber="4"/>
   <relational:SQLSimpleType xmi:id="_sqlsimpletype_character_varying" name="CHARACTER VARYING" structuralFeature="_column_fact_country _column_fact_key" typeNumber="12"/>
+  <relational:SQLSimpleType xmi:id="_sqlsimpletype_integer" name="INTEGER" structuralFeature="_column_fact_value" typeNumber="4"/>
   <rolapcat:Catalog xmi:id="_catalog_levels_with_ordinal_columns" description="Levels with ordinal columns" name="Daanse Tutorial - Levels with ordinal columns" cubes="_physicalcube_cube_with_ordinal_columns" dbschemas="_schema"/>
   <relational:Schema xmi:id="_schema">
     <ownedElement xsi:type="relational:Table" xmi:id="_table_fact" name="Fact">

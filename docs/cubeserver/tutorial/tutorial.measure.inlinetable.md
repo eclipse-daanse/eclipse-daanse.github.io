@@ -80,6 +80,7 @@ In this example uses cube with InlineTable as data.
       <measures xsi:type="rolapmeas:SumMeasure" xmi:id="_summeasure_measure_sum" name="Measure-Sum" column="_column_fact_value"/>
     </measureGroups>
   </rolapcube:PhysicalCube>
+  <rolapsrc:InlineTableSource xmi:id="_inlinetablesource_fact" alias="Fact" table="_inlinetable_fact"/>
   <rolaprel:InlineTable xmi:id="_inlinetable_fact" name="Fact">
     <feature xsi:type="relational:Column" xmi:id="_column_fact_key" name="KEY" slot="_dataslot"/>
     <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE" slot="_dataslot_1"/>
@@ -90,7 +91,6 @@ In this example uses cube with InlineTable as data.
       </ownedElement>
     </extent>
   </rolaprel:InlineTable>
-  <rolapsrc:InlineTableSource xmi:id="_inlinetablesource_fact" alias="Fact" table="_inlinetable_fact"/>
 </xmi:XMI>
 
 ```

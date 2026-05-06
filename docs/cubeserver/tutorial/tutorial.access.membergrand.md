@@ -71,12 +71,12 @@ The Hierarchy1 is defined with the hasAll property set to false and the one leve
 ```xml
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
   <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_hierarchy1" name="Hierarchy1" primaryKey="_column_fact_key" source="_tablesource_fact" levels="_level_level1"/>
+  <rolaplev:Level xmi:id="_level_level1" name="Level1" column="_column_fact_key"/>
+  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
   <relational:Table xmi:id="_table_fact" name="Fact">
     <feature xsi:type="relational:Column" xmi:id="_column_fact_key" name="KEY"/>
     <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE"/>
   </relational:Table>
-  <rolaplev:Level xmi:id="_level_level1" name="Level1" column="_column_fact_key"/>
-  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
 </xmi:XMI>
 
 ```
@@ -89,13 +89,13 @@ The dimension1 is defined with the one hierarchy1.
 ```xml
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapdim="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
   <rolapdim:StandardDimension xmi:id="_standarddimension_dimension1" name="Dimension1" hierarchies="_explicithierarchy_hierarchy1"/>
+  <rolaplev:Level xmi:id="_level_level1" name="Level1" column="_column_fact_key"/>
+  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
   <relational:Table xmi:id="_table_fact" name="Fact">
     <feature xsi:type="relational:Column" xmi:id="_column_fact_key" name="KEY"/>
     <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE"/>
   </relational:Table>
   <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_hierarchy1" name="Hierarchy1" primaryKey="_column_fact_key" source="_tablesource_fact" levels="_level_level1"/>
-  <rolaplev:Level xmi:id="_level_level1" name="Level1" column="_column_fact_key"/>
-  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
 </xmi:XMI>
 
 ```
@@ -114,14 +114,14 @@ The cube1 is defined by the DimensionConnector1 and the DimensionConnector2  and
       <measures xsi:type="rolapmeas:SumMeasure" xmi:id="_summeasure_measure1" name="Measure1" column="_column_fact_value"/>
     </measureGroups>
   </rolapcube:PhysicalCube>
+  <rolaplev:Level xmi:id="_level_level1" name="Level1" column="_column_fact_key"/>
+  <rolapdim:StandardDimension xmi:id="_standarddimension_dimension1" name="Dimension1" hierarchies="_explicithierarchy_hierarchy1"/>
+  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
   <relational:Table xmi:id="_table_fact" name="Fact">
     <feature xsi:type="relational:Column" xmi:id="_column_fact_key" name="KEY"/>
     <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE"/>
   </relational:Table>
   <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_hierarchy1" name="Hierarchy1" primaryKey="_column_fact_key" source="_tablesource_fact" levels="_level_level1"/>
-  <rolapdim:StandardDimension xmi:id="_standarddimension_dimension1" name="Dimension1" hierarchies="_explicithierarchy_hierarchy1"/>
-  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
-  <rolaplev:Level xmi:id="_level_level1" name="Level1" column="_column_fact_key"/>
 </xmi:XMI>
 
 ```
@@ -155,14 +155,14 @@ hierarchyGrant hierarchy1 access custom with member grants<br />
       </databaseSchemaGrants>
     </accessCatalogGrants>
   </rolapcacc:AccessRole>
+  <rolaplev:Level xmi:id="_level_level1" name="Level1" column="_column_fact_key"/>
+  <rolapdim:StandardDimension xmi:id="_standarddimension_dimension1" name="Dimension1" hierarchies="_explicithierarchy_hierarchy1"/>
+  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
   <relational:Table xmi:id="_table_fact" name="Fact">
     <feature xsi:type="relational:Column" xmi:id="_column_fact_key" name="KEY"/>
     <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE"/>
   </relational:Table>
   <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_hierarchy1" name="Hierarchy1" primaryKey="_column_fact_key" source="_tablesource_fact" levels="_level_level1"/>
-  <rolapdim:StandardDimension xmi:id="_standarddimension_dimension1" name="Dimension1" hierarchies="_explicithierarchy_hierarchy1"/>
-  <rolaplev:Level xmi:id="_level_level1" name="Level1" column="_column_fact_key"/>
-  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
 </xmi:XMI>
 
 ```
@@ -201,9 +201,9 @@ This file represents the complete definition of the catalog.
         <dimensionGrants xmi:id="_accessdimensiongrant_dimension1" dimensionAccess="all" dimension="_standarddimension_dimension1"/>
         <hierarchyGrants xmi:id="_accesshierarchygrant" hierarchyAccess="all"/>
         <hierarchyGrants xmi:id="_accesshierarchygrant_hierarchy1" hierarchyAccess="custom" hierarchy="_explicithierarchy_hierarchy1" bottomLevel="_level_level1" topLevel="_level_level1">
-          <memberGrants xmi:id="_accessmembergrant" memberAccess="all" member="[Dimension1].[Hierarchy1].[A]"/>
+          <memberGrants xmi:id="_accessmembergrant_1" memberAccess="all" member="[Dimension1].[Hierarchy1].[A]"/>
           <memberGrants xmi:id="_accessmembergrant_2" member="[Dimension1].[Hierarchy1].[B]"/>
-          <memberGrants xmi:id="_accessmembergrant_1" member="[Dimension1].[Hierarchy1].[C]"/>
+          <memberGrants xmi:id="_accessmembergrant" member="[Dimension1].[Hierarchy1].[C]"/>
         </hierarchyGrants>
       </cubeGrants>
       <databaseSchemaGrants xmi:id="_accessdatabaseschemagrant" databaseSchemaAccess="all" databaseSchema="_schema"/>

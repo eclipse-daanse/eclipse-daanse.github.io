@@ -76,9 +76,9 @@ This file represents the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapcat="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/catalog" xmlns:rolapcube="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube" xmlns:rolapdim="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapmeas="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube/measure" xmlns:rolaprel="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/relational" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
-  <relational:SQLSimpleType xmi:id="_sqlsimpletype_character_varying" name="CHARACTER VARYING" structuralFeature="_column_fact_continent _column_fact_comment _column_fact_key _column_fact_month_name _column_fact_user _column_fact_country" typeNumber="12"/>
-  <relational:SQLSimpleType xmi:id="_sqlsimpletype_integer" name="INTEGER" structuralFeature="_column_fact_value _column_fact_year _column_fact_month" typeNumber="4"/>
   <rolaprel:OrderedColumn xmi:id="_orderedcolumn_comment" column="_column_fact_comment"/>
+  <relational:SQLSimpleType xmi:id="_sqlsimpletype_character_varying" name="CHARACTER VARYING" structuralFeature="_column_fact_user _column_fact_comment _column_fact_continent _column_fact_country _column_fact_key _column_fact_month_name" typeNumber="12"/>
+  <relational:SQLSimpleType xmi:id="_sqlsimpletype_integer" name="INTEGER" structuralFeature="_column_fact_value _column_fact_month _column_fact_year" typeNumber="4"/>
   <rolapcat:Catalog xmi:id="_catalog_measure_aggregator_text_agg" description="Text aggregation functions" name="Daanse Tutorial - Measure Aggregator Text Agg" cubes="_physicalcube_measurestextaggregatorscube" dbschemas="_schema"/>
   <relational:Schema xmi:id="_schema">
     <ownedElement xsi:type="relational:Table" xmi:id="_table_fact" name="Fact">
@@ -100,11 +100,11 @@ This file represents the complete definition of the catalog.
     </sqls>
   </rolaprel:ExpressionColumn>
   <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
-  <rolaplev:Level xmi:id="_level_month" name="Month" column="_column_fact_month" type="TimeMonths" nameColumn="_column_fact_month_name"/>
-  <rolaplev:Level xmi:id="_level_year" name="Year" column="_column_fact_year" type="TimeYears"/>
-  <rolaplev:Level xmi:id="_level_country" name="Country" column="_column_fact_country"/>
   <rolaplev:Level xmi:id="_level_continent" name="Continent" column="_column_fact_continent"/>
+  <rolaplev:Level xmi:id="_level_country" name="Country" column="_column_fact_country"/>
+  <rolaplev:Level xmi:id="_level_month" name="Month" column="_column_fact_month" type="TimeMonths" nameColumn="_column_fact_month_name"/>
   <rolaplev:Level xmi:id="_level_town" name="Town" column="_column_fact_key"/>
+  <rolaplev:Level xmi:id="_level_year" name="Year" column="_column_fact_year" type="TimeYears"/>
   <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_timehierarchy" name="TimeHierarchy" primaryKey="_column_fact_key" source="_tablesource_fact" levels="_level_year _level_month"/>
   <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_townhierarchy" name="TownHierarchy" primaryKey="_column_fact_key" source="_tablesource_fact" levels="_level_continent _level_country _level_town"/>
   <rolapdim:StandardDimension xmi:id="_standarddimension_town" name="Town" hierarchies="_explicithierarchy_townhierarchy"/>
