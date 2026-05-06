@@ -80,10 +80,10 @@ This cube holds references to the KPI, and does not use any dimensions.
       <measures xsi:type="rolapmeas:SumMeasure" xmi:id="_summeasure_measure1_sum" name="Measure1-Sum" column="_column_fact_value"/>
     </measureGroups>
   </rolapcube:PhysicalCube>
+  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
   <relational:Table xmi:id="_table_fact" name="Fact">
     <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE"/>
   </relational:Table>
-  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
 </xmi:XMI>
 
 ```

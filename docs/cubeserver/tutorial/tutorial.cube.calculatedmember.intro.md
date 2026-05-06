@@ -61,12 +61,12 @@ The Hierarchy is defined with the hasAll property set to true and the one level.
 ```xml
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
   <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_thehierarchy" name="theHierarchy" primaryKey="_column_fact_key" source="_tablesource_fact" levels="_level_thelevel"/>
+  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
+  <rolaplev:Level xmi:id="_level_thelevel" name="theLevel" column="_column_fact_key"/>
   <relational:Table xmi:id="_table_fact" name="Fact">
     <feature xsi:type="relational:Column" xmi:id="_column_fact_key" name="KEY"/>
     <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE"/>
   </relational:Table>
-  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
-  <rolaplev:Level xmi:id="_level_thelevel" name="theLevel" column="_column_fact_key"/>
 </xmi:XMI>
 
 ```
@@ -79,13 +79,13 @@ The dimension is defined with the one hierarchy. The hierarchy is used in the cu
 ```xml
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapdim="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
   <rolapdim:StandardDimension xmi:id="_standarddimension_thedimension" name="theDimension" hierarchies="_explicithierarchy_thehierarchy"/>
+  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
+  <rolaplev:Level xmi:id="_level_thelevel" name="theLevel" column="_column_fact_key"/>
+  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_thehierarchy" name="theHierarchy" primaryKey="_column_fact_key" source="_tablesource_fact" levels="_level_thelevel"/>
   <relational:Table xmi:id="_table_fact" name="Fact">
     <feature xsi:type="relational:Column" xmi:id="_column_fact_key" name="KEY"/>
     <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE"/>
   </relational:Table>
-  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
-  <rolaplev:Level xmi:id="_level_thelevel" name="theLevel" column="_column_fact_key"/>
-  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_thehierarchy" name="theHierarchy" primaryKey="_column_fact_key" source="_tablesource_fact" levels="_level_thelevel"/>
 </xmi:XMI>
 
 ```
@@ -109,13 +109,13 @@ This calculated member has also a Formula. Additionaly it references the Hierarc
 ```xml
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
   <rolaplev:CalculatedMember xmi:id="_calculatedmember_calculated_member_2" name="Calculated Member 2" formula="[Measures].[Measure1-Sum] / [Measures].[Measure2-Count]" parent="[theDimension].[theHierarchy].[All theHierarchys]" hierarchy="_explicithierarchy_thehierarchy"/>
+  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
+  <rolaplev:Level xmi:id="_level_thelevel" name="theLevel" column="_column_fact_key"/>
+  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_thehierarchy" name="theHierarchy" primaryKey="_column_fact_key" source="_tablesource_fact" levels="_level_thelevel"/>
   <relational:Table xmi:id="_table_fact" name="Fact">
     <feature xsi:type="relational:Column" xmi:id="_column_fact_key" name="KEY"/>
     <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE"/>
   </relational:Table>
-  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
-  <rolaplev:Level xmi:id="_level_thelevel" name="theLevel" column="_column_fact_key"/>
-  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_thehierarchy" name="theHierarchy" primaryKey="_column_fact_key" source="_tablesource_fact" levels="_level_thelevel"/>
 </xmi:XMI>
 
 ```
@@ -136,14 +136,14 @@ The cube is defined by the DimensionConnector and the MeasureGroup and most impo
       <measures xsi:type="rolapmeas:CountMeasure" xmi:id="_countmeasure_measure2_count" name="Measure2-Count" column="_column_fact_value"/>
     </measureGroups>
   </rolapcube:PhysicalCube>
+  <rolapdim:StandardDimension xmi:id="_standarddimension_thedimension" name="theDimension" hierarchies="_explicithierarchy_thehierarchy"/>
+  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
+  <rolaplev:Level xmi:id="_level_thelevel" name="theLevel" column="_column_fact_key"/>
+  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_thehierarchy" name="theHierarchy" primaryKey="_column_fact_key" source="_tablesource_fact" levels="_level_thelevel"/>
   <relational:Table xmi:id="_table_fact" name="Fact">
     <feature xsi:type="relational:Column" xmi:id="_column_fact_key" name="KEY"/>
     <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE"/>
   </relational:Table>
-  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
-  <rolaplev:Level xmi:id="_level_thelevel" name="theLevel" column="_column_fact_key"/>
-  <rolapdim:StandardDimension xmi:id="_standarddimension_thedimension" name="theDimension" hierarchies="_explicithierarchy_thehierarchy"/>
-  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_thehierarchy" name="theHierarchy" primaryKey="_column_fact_key" source="_tablesource_fact" levels="_level_thelevel"/>
 </xmi:XMI>
 
 ```

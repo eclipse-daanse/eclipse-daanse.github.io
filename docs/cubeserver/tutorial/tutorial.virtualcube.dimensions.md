@@ -85,13 +85,13 @@ In this example uses cube with fact table `Fact` as data.
     </measureGroups>
   </rolapcube:PhysicalCube>
   <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_hierarchywithouthasall" name="HierarchyWithoutHasAll" hasAll="false" primaryKey="_column_fact_key" source="_tablesource_fact" levels="_level_level"/>
-  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
-  <rolapdim:StandardDimension xmi:id="_standarddimension_dimension1" name="Dimension1" hierarchies="_explicithierarchy_hierarchywithouthasall"/>
+  <rolaplev:Level xmi:id="_level_level" name="Level" column="_column_fact_key"/>
   <relational:Table xmi:id="_table_fact" name="Fact">
     <feature xsi:type="relational:Column" xmi:id="_column_fact_key" name="KEY"/>
     <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE"/>
   </relational:Table>
-  <rolaplev:Level xmi:id="_level_level" name="Level" column="_column_fact_key"/>
+  <rolapdim:StandardDimension xmi:id="_standarddimension_dimension1" name="Dimension1" hierarchies="_explicithierarchy_hierarchywithouthasall"/>
+  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
 </xmi:XMI>
 
 ```
@@ -110,13 +110,13 @@ In this example uses cube with fact table Fact as data.
     </measureGroups>
   </rolapcube:PhysicalCube>
   <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_hierarchywithouthasall" name="HierarchyWithoutHasAll" hasAll="false" primaryKey="_column_fact_key" source="_tablesource_fact" levels="_level_level"/>
-  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
-  <rolapdim:StandardDimension xmi:id="_standarddimension_dimension1" name="Dimension1" hierarchies="_explicithierarchy_hierarchywithouthasall"/>
+  <rolaplev:Level xmi:id="_level_level" name="Level" column="_column_fact_key"/>
   <relational:Table xmi:id="_table_fact" name="Fact">
     <feature xsi:type="relational:Column" xmi:id="_column_fact_key" name="KEY"/>
     <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE"/>
   </relational:Table>
-  <rolaplev:Level xmi:id="_level_level" name="Level" column="_column_fact_key"/>
+  <rolapdim:StandardDimension xmi:id="_standarddimension_dimension1" name="Dimension1" hierarchies="_explicithierarchy_hierarchywithouthasall"/>
+  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
 </xmi:XMI>
 
 ```
