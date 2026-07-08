@@ -63,12 +63,12 @@ The Hierarchy1 is defined with the hasAll property set to false and the one `lev
 ```xml
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
   <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_hierarchy1" name="Hierarchy1" primaryKey="_column_fact_key" source="_tablesource_fact" levels="_level_level1"/>
+  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
+  <rolaplev:Level xmi:id="_level_level1" name="Level1" column="_column_fact_key"/>
   <relational:Table xmi:id="_table_fact" name="Fact">
     <feature xsi:type="relational:Column" xmi:id="_column_fact_key" name="KEY"/>
     <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE"/>
   </relational:Table>
-  <rolaplev:Level xmi:id="_level_level1" name="Level1" column="_column_fact_key"/>
-  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
 </xmi:XMI>
 
 ```
@@ -81,13 +81,13 @@ The `dimension1` is defined with the one `hierarchy1`.
 ```xml
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapdim="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
   <rolapdim:StandardDimension xmi:id="_standarddimension_dimension1" name="Dimension1" hierarchies="_explicithierarchy_hierarchy1"/>
+  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
+  <rolaplev:Level xmi:id="_level_level1" name="Level1" column="_column_fact_key"/>
   <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_hierarchy1" name="Hierarchy1" primaryKey="_column_fact_key" source="_tablesource_fact" levels="_level_level1"/>
   <relational:Table xmi:id="_table_fact" name="Fact">
     <feature xsi:type="relational:Column" xmi:id="_column_fact_key" name="KEY"/>
     <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE"/>
   </relational:Table>
-  <rolaplev:Level xmi:id="_level_level1" name="Level1" column="_column_fact_key"/>
-  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
 </xmi:XMI>
 
 ```
@@ -106,17 +106,17 @@ The `cube1` is defined by the DimensionConnector1 and the DimensionConnector2  a
       <measures xsi:type="rolapmeas:SumMeasure" xmi:id="_summeasure_measure1" name="Measure1" column="_column_fact_value"/>
     </measureGroups>
   </rolapcube:PhysicalCube>
+  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
   <rolapdim:StandardDimension xmi:id="_standarddimension_dimension2" name="Dimension2" hierarchies="_explicithierarchy_hierarchy2"/>
+  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_hierarchy2" name="Hierarchy2" primaryKey="_column_fact_key" source="_tablesource_fact" levels="_level_level2"/>
+  <rolapdim:StandardDimension xmi:id="_standarddimension_dimension1" name="Dimension1" hierarchies="_explicithierarchy_hierarchy1"/>
+  <rolaplev:Level xmi:id="_level_level1" name="Level1" column="_column_fact_key"/>
   <rolaplev:Level xmi:id="_level_level2" name="Level2" column="_column_fact_key"/>
   <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_hierarchy1" name="Hierarchy1" primaryKey="_column_fact_key" source="_tablesource_fact" levels="_level_level1"/>
   <relational:Table xmi:id="_table_fact" name="Fact">
     <feature xsi:type="relational:Column" xmi:id="_column_fact_key" name="KEY"/>
     <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE"/>
   </relational:Table>
-  <rolapdim:StandardDimension xmi:id="_standarddimension_dimension1" name="Dimension1" hierarchies="_explicithierarchy_hierarchy1"/>
-  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_hierarchy2" name="Hierarchy2" primaryKey="_column_fact_key" source="_tablesource_fact" levels="_level_level2"/>
-  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
-  <rolaplev:Level xmi:id="_level_level1" name="Level1" column="_column_fact_key"/>
 </xmi:XMI>
 
 ```
@@ -142,17 +142,17 @@ The `role1` use CatalogGrant access `all_dimensions`; CubeGrant `cube1` access `
       </databaseSchemaGrants>
     </accessCatalogGrants>
   </rolapcacc:AccessRole>
+  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
   <rolapdim:StandardDimension xmi:id="_standarddimension_dimension2" name="Dimension2" hierarchies="_explicithierarchy_hierarchy2"/>
+  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_hierarchy2" name="Hierarchy2" primaryKey="_column_fact_key" source="_tablesource_fact" levels="_level_level2"/>
+  <rolapdim:StandardDimension xmi:id="_standarddimension_dimension1" name="Dimension1" hierarchies="_explicithierarchy_hierarchy1"/>
+  <rolaplev:Level xmi:id="_level_level1" name="Level1" column="_column_fact_key"/>
   <rolaplev:Level xmi:id="_level_level2" name="Level2" column="_column_fact_key"/>
   <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_hierarchy1" name="Hierarchy1" primaryKey="_column_fact_key" source="_tablesource_fact" levels="_level_level1"/>
   <relational:Table xmi:id="_table_fact" name="Fact">
     <feature xsi:type="relational:Column" xmi:id="_column_fact_key" name="KEY"/>
     <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE"/>
   </relational:Table>
-  <rolapdim:StandardDimension xmi:id="_standarddimension_dimension1" name="Dimension1" hierarchies="_explicithierarchy_hierarchy1"/>
-  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_hierarchy2" name="Hierarchy2" primaryKey="_column_fact_key" source="_tablesource_fact" levels="_level_level2"/>
-  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
-  <rolaplev:Level xmi:id="_level_level1" name="Level1" column="_column_fact_key"/>
 </xmi:XMI>
 
 ```

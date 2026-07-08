@@ -26,14 +26,14 @@ The cube defined in this example is based on a single table that stores all the 
     <feature xsi:type="relational:Column" xmi:id="_column_bike_finishedgoodsflag" name="FinishedGoodsFlag"/>
     <feature xsi:type="relational:Column" xmi:id="_column_bike_color" name="Color"/>
     <feature xsi:type="relational:Column" xmi:id="_column_bike_listprice" name="ListPrice"/>
-    <feature xsi:type="relational:Column" xmi:id="_column_bike_size" name="Size"/>
-    <feature xsi:type="relational:Column" xmi:id="_column_bike_sizerange" name="SizeRange"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_bike_size" name="Size" isNullable="columnNullable"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_bike_sizerange" name="SizeRange" isNullable="columnNullable"/>
     <feature xsi:type="relational:Column" xmi:id="_column_bike_weight" name="Weight"/>
     <feature xsi:type="relational:Column" xmi:id="_column_bike_dealerprice" name="DealerPrice"/>
     <feature xsi:type="relational:Column" xmi:id="_column_bike_class" name="Class"/>
     <feature xsi:type="relational:Column" xmi:id="_column_bike_style" name="Style"/>
     <feature xsi:type="relational:Column" xmi:id="_column_bike_modelname" name="ModelName"/>
-    <feature xsi:type="relational:Column" xmi:id="_column_bike_description" name="Description"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_bike_description" name="Description" isNullable="columnNullable"/>
     <feature xsi:type="relational:Column" xmi:id="_column_bike_weightunitmeasurecode" name="WeightUnitMeasureCode"/>
     <feature xsi:type="relational:Column" xmi:id="_column_bike_sizeunitmeasurecode" name="SizeUnitMeasureCode"/>
     <feature xsi:type="relational:Column" xmi:id="_column_bike_safetystocklevel" name="SafetyStockLevel"/>
@@ -61,8 +61,8 @@ The cube defined in this example is based on a single table that stores all the 
     <feature xsi:type="relational:Column" xmi:id="_column_bikesales_salesamount" name="SalesAmount"/>
     <feature xsi:type="relational:Column" xmi:id="_column_bikesales_taxamt" name="TaxAmt"/>
     <feature xsi:type="relational:Column" xmi:id="_column_bikesales_freight" name="Freight"/>
-    <feature xsi:type="relational:Column" xmi:id="_column_bikesales_carriertrackingnumber" name="CarrierTrackingNumber"/>
-    <feature xsi:type="relational:Column" xmi:id="_column_bikesales_customerponumber" name="CustomerPONumber"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_bikesales_carriertrackingnumber" name="CarrierTrackingNumber" isNullable="columnNullable"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_bikesales_customerponumber" name="CustomerPONumber" isNullable="columnNullable"/>
     <feature xsi:type="relational:Column" xmi:id="_column_bikesales_customeraccountnumber" name="CustomerAccountNumber"/>
   </ownedElement>
   <ownedElement xsi:type="relational:Table" xmi:id="_table_bikesubcategory" name="BikeSubcategory">
@@ -112,14 +112,14 @@ The bridge between the cube and the database is the query element. In this case,
     <feature xsi:type="relational:Column" xmi:id="_column_bike_finishedgoodsflag" name="FinishedGoodsFlag"/>
     <feature xsi:type="relational:Column" xmi:id="_column_bike_color" name="Color"/>
     <feature xsi:type="relational:Column" xmi:id="_column_bike_listprice" name="ListPrice"/>
-    <feature xsi:type="relational:Column" xmi:id="_column_bike_size" name="Size"/>
-    <feature xsi:type="relational:Column" xmi:id="_column_bike_sizerange" name="SizeRange"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_bike_size" name="Size" isNullable="columnNullable"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_bike_sizerange" name="SizeRange" isNullable="columnNullable"/>
     <feature xsi:type="relational:Column" xmi:id="_column_bike_weight" name="Weight"/>
     <feature xsi:type="relational:Column" xmi:id="_column_bike_dealerprice" name="DealerPrice"/>
     <feature xsi:type="relational:Column" xmi:id="_column_bike_class" name="Class"/>
     <feature xsi:type="relational:Column" xmi:id="_column_bike_style" name="Style"/>
     <feature xsi:type="relational:Column" xmi:id="_column_bike_modelname" name="ModelName"/>
-    <feature xsi:type="relational:Column" xmi:id="_column_bike_description" name="Description"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_bike_description" name="Description" isNullable="columnNullable"/>
     <feature xsi:type="relational:Column" xmi:id="_column_bike_weightunitmeasurecode" name="WeightUnitMeasureCode"/>
     <feature xsi:type="relational:Column" xmi:id="_column_bike_sizeunitmeasurecode" name="SizeUnitMeasureCode"/>
     <feature xsi:type="relational:Column" xmi:id="_column_bike_safetystocklevel" name="SafetyStockLevel"/>
@@ -151,43 +151,58 @@ The Cube CSDLBI 1.0.
       <measures xsi:type="rolapmeas:SumMeasure" xmi:id="_summeasure_sum_of_salesamount" name="Sum of SalesAmount" column="_column_bikesales_salesamount"/>
     </measureGroups>
   </rolapcube:PhysicalCube>
-  <rolapsrc:TableSource xmi:id="_tablesource_currency" table="_table_currency"/>
-  <rolaplev:Level xmi:id="_level_currencykey" name="CurrencyKey" column="_column_currency_currencykey"/>
-  <rolaplev:Level xmi:id="_level_rownumber" name="RowNumber" uniqueMembers="true">
-    <column href="_column_bikesubcategory_rownumber"/>
+  <rolaplev:Level xmi:id="_level_currencyalternatekey" name="CurrencyAlternateKey" column="_column_currency_currencyalternatekey"/>
+  <rolaplev:Level xmi:id="_level_subcategory" name="Subcategory">
+    <column href="_column_bikesubcategory_subcategory"/>
   </rolaplev:Level>
-  <rolaplev:Level xmi:id="_level_listprice" name="ListPrice" column="_column_bike_listprice"/>
-  <rolaplev:Level xmi:id="_level_rownumber_1" name="RowNumber" column="_column_bike_rownumber" uniqueMembers="true"/>
+  <rolaplev:Level xmi:id="_level_size" name="Size" column="_column_bike_size"/>
+  <rolapdim:StandardDimension xmi:id="_standarddimension_calendarquarter" name="CalendarQuarter" hierarchies="_explicithierarchy_calendarquarter2"/>
+  <rolaplev:Level xmi:id="_level_sizeunitmeasurecode" name="SizeUnitMeasureCode" column="_column_bike_sizeunitmeasurecode"/>
+  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_productkey" primaryKey="_column_bike_productkey" source="_joinsource" levels="_level_rownumber_2 _level_productsubcategorykey_1 _level_subcategory"/>
+  <rolaplev:Level xmi:id="_level_productsubcategorykey" name="ProductSubcategoryKey" column="_column_bike_productsubcategorykey"/>
+  <rolapdim:StandardDimension xmi:id="_standarddimension_bike" name="Bike" hierarchies="_explicithierarchy_product_hierarchy"/>
+  <relational:Table xmi:id="_table_bikesubcategory" name="BikeSubcategory">
+    <feature xsi:type="relational:Column" xmi:id="_column_bikesubcategory_rownumber" name="RowNumber"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_bikesubcategory_productsubcategorykey" name="ProductSubcategoryKey"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_bikesubcategory_subcategory" name="Subcategory"/>
+  </relational:Table>
+  <rolaplev:Level xmi:id="_level_rownumber" name="RowNumber" column="_column_currency_rownumber" uniqueMembers="true"/>
+  <rolapsrc:TableSource xmi:id="_tablesource_bikesubcategory" table="_table_bikesubcategory"/>
+  <rolaplev:Level xmi:id="_level_calendarquarter2" name="CalendarQuarter2" column="_column_calendarquarter_calendarquarter2"/>
+  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_product_hierarchy" name="Product_Hierarchy" primaryKey="_column_bike_productkey" source="_tablesource_bike" levels="_level_rownumber_5 _level_productkey _level_productalternatekey _level_productsubcategorykey _level_productname _level_standardcost _level_finishedgoodsflag _level_color _level_listprice _level_size _level_sizerange _level_weight _level_dealerprice _level_class _level_style _level_modelname _level_description _level_weightunitmeasurecode _level_sizeunitmeasurecode _level_safetystocklevel _level_reorderpoint _level_daystomanufacture _level_productline"/>
   <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_saleschannelcode" primaryKey="_column_saleschannel_saleschannelcode" source="_tablesource_saleschannel" levels="_level_rownumber_4 _level_saleschannelcode _level_saleschannelname"/>
-  <rolaplev:Level xmi:id="_level_productkey" name="ProductKey" column="_column_bike_productkey"/>
-  <rolapdim:StandardDimension xmi:id="_standarddimension_saleschannel" name="SalesChannel" hierarchies="_explicithierarchy_saleschannelcode"/>
-  <relational:Table xmi:id="_table_calendarquarter" name="CalendarQuarter">
-    <feature xsi:type="relational:Column" xmi:id="_column_calendarquarter_rownumber" name="RowNumber"/>
-    <feature xsi:type="relational:Column" xmi:id="_column_calendarquarter_calendarquarter2" name="CalendarQuarter2"/>
-  </relational:Table>
   <rolaplev:Level xmi:id="_level_description" name="Description" column="_column_bike_description"/>
-  <rolaplev:Level xmi:id="_level_reorderpoint" name="ReorderPoint" column="_column_bike_reorderpoint"/>
-  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_calendarquarter2" primaryKey="_column_calendarquarter_calendarquarter2" source="_tablesource_calendarquarter" levels="_level_rownumber_2 _level_calendarquarter2"/>
-  <rolaplev:Level xmi:id="_level_saleschannelname" name="SalesChannelName" column="_column_saleschannel_saleschannelname"/>
-  <rolaplev:Level xmi:id="_level_saleschannelcode" name="SalesChannelCode" column="_column_saleschannel_saleschannelcode"/>
+  <rolaplev:Level xmi:id="_level_productname" name="ProductName" column="_column_bike_productname"/>
   <rolaplev:Level xmi:id="_level_currencyname" name="CurrencyName" column="_column_currency_currencyname"/>
-  <relational:Table xmi:id="_table_country" name="Country">
-    <feature xsi:type="relational:Column" xmi:id="_column_country_rownumber" name="RowNumber"/>
-    <feature xsi:type="relational:Column" xmi:id="_column_country_countrycode" name="CountryCode"/>
-    <feature xsi:type="relational:Column" xmi:id="_column_country_countryname" name="CountryName"/>
-  </relational:Table>
+  <rolaplev:Level xmi:id="_level_countrycode" name="CountryCode" column="_column_country_countrycode"/>
+  <rolaplev:Level xmi:id="_level_productalternatekey" name="ProductAlternateKey" column="_column_bike_productalternatekey"/>
+  <rolaplev:Level xmi:id="_level_dealerprice" name="DealerPrice" column="_column_bike_dealerprice"/>
+  <rolaplev:Level xmi:id="_level_rownumber_1" name="RowNumber" column="_column_country_rownumber" uniqueMembers="true"/>
+  <rolapsrc:TableSource xmi:id="_tablesource_currency" table="_table_currency"/>
+  <rolapsrc:TableSource xmi:id="_tablesource_bike" table="_table_bike"/>
   <relational:Table xmi:id="_table_currency" name="Currency">
     <feature xsi:type="relational:Column" xmi:id="_column_currency_rownumber" name="RowNumber"/>
     <feature xsi:type="relational:Column" xmi:id="_column_currency_currencykey" name="CurrencyKey"/>
     <feature xsi:type="relational:Column" xmi:id="_column_currency_currencyalternatekey" name="CurrencyAlternateKey"/>
     <feature xsi:type="relational:Column" xmi:id="_column_currency_currencyname" name="CurrencyName"/>
   </relational:Table>
-  <rolaplev:Level xmi:id="_level_class" name="Class" column="_column_bike_class"/>
-  <rolaplev:Level xmi:id="_level_finishedgoodsflag" name="FinishedGoodsFlag" column="_column_bike_finishedgoodsflag"/>
-  <rolaplev:Level xmi:id="_level_style" name="Style" column="_column_bike_style"/>
-  <rolaplev:Level xmi:id="_level_subcategory" name="Subcategory">
-    <column href="_column_bikesubcategory_subcategory"/>
-  </rolaplev:Level>
+  <rolapsrc:TableSource xmi:id="_tablesource_calendarquarter" table="_table_calendarquarter"/>
+  <rolaplev:Level xmi:id="_level_weight" name="Weight" column="_column_bike_weight"/>
+  <rolaplev:Level xmi:id="_level_modelname" name="ModelName" column="_column_bike_modelname"/>
+  <rolaplev:Level xmi:id="_level_reorderpoint" name="ReorderPoint" column="_column_bike_reorderpoint"/>
+  <rolaplev:Level xmi:id="_level_saleschannelcode" name="SalesChannelCode" column="_column_saleschannel_saleschannelcode"/>
+  <rolaplev:Level xmi:id="_level_sizerange" name="SizeRange" column="_column_bike_sizerange"/>
+  <rolaplev:Level xmi:id="_level_listprice" name="ListPrice" column="_column_bike_listprice"/>
+  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_countrycode" primaryKey="_column_country_countrycode" source="_tablesource_country" levels="_level_rownumber_1 _level_countrycode _level_countryname"/>
+  <rolaplev:Level xmi:id="_level_currencykey" name="CurrencyKey" column="_column_currency_currencykey"/>
+  <rolaplev:Level xmi:id="_level_standardcost" name="StandardCost" column="_column_bike_standardcost"/>
+  <rolapdim:StandardDimension xmi:id="_standarddimension_saleschannel" name="SalesChannel" hierarchies="_explicithierarchy_saleschannelcode"/>
+  <relational:Table xmi:id="_table_country" name="Country">
+    <feature xsi:type="relational:Column" xmi:id="_column_country_rownumber" name="RowNumber"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_country_countrycode" name="CountryCode"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_country_countryname" name="CountryName"/>
+  </relational:Table>
+  <rolapdim:StandardDimension xmi:id="_standarddimension_bikesubcategory" name="BikeSubcategory" hierarchies="_explicithierarchy_productkey"/>
   <relational:Table xmi:id="_table_bike" name="Bike">
     <feature xsi:type="relational:Column" xmi:id="_column_bike_rownumber" name="RowNumber"/>
     <feature xsi:type="relational:Column" xmi:id="_column_bike_productkey" name="ProductKey"/>
@@ -198,14 +213,14 @@ The Cube CSDLBI 1.0.
     <feature xsi:type="relational:Column" xmi:id="_column_bike_finishedgoodsflag" name="FinishedGoodsFlag"/>
     <feature xsi:type="relational:Column" xmi:id="_column_bike_color" name="Color"/>
     <feature xsi:type="relational:Column" xmi:id="_column_bike_listprice" name="ListPrice"/>
-    <feature xsi:type="relational:Column" xmi:id="_column_bike_size" name="Size"/>
-    <feature xsi:type="relational:Column" xmi:id="_column_bike_sizerange" name="SizeRange"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_bike_size" name="Size" isNullable="columnNullable"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_bike_sizerange" name="SizeRange" isNullable="columnNullable"/>
     <feature xsi:type="relational:Column" xmi:id="_column_bike_weight" name="Weight"/>
     <feature xsi:type="relational:Column" xmi:id="_column_bike_dealerprice" name="DealerPrice"/>
     <feature xsi:type="relational:Column" xmi:id="_column_bike_class" name="Class"/>
     <feature xsi:type="relational:Column" xmi:id="_column_bike_style" name="Style"/>
     <feature xsi:type="relational:Column" xmi:id="_column_bike_modelname" name="ModelName"/>
-    <feature xsi:type="relational:Column" xmi:id="_column_bike_description" name="Description"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_bike_description" name="Description" isNullable="columnNullable"/>
     <feature xsi:type="relational:Column" xmi:id="_column_bike_weightunitmeasurecode" name="WeightUnitMeasureCode"/>
     <feature xsi:type="relational:Column" xmi:id="_column_bike_sizeunitmeasurecode" name="SizeUnitMeasureCode"/>
     <feature xsi:type="relational:Column" xmi:id="_column_bike_safetystocklevel" name="SafetyStockLevel"/>
@@ -213,14 +228,18 @@ The Cube CSDLBI 1.0.
     <feature xsi:type="relational:Column" xmi:id="_column_bike_daystomanufacture" name="DaysToManufacture"/>
     <feature xsi:type="relational:Column" xmi:id="_column_bike_productline" name="ProductLine"/>
   </relational:Table>
-  <rolapdim:StandardDimension xmi:id="_standarddimension_currency" name="Currency" hierarchies="_explicithierarchy_currencykey"/>
-  <rolapsrc:TableSource xmi:id="_tablesource_calendarquarter" table="_table_calendarquarter"/>
-  <rolaplev:Level xmi:id="_level_productalternatekey" name="ProductAlternateKey" column="_column_bike_productalternatekey"/>
-  <rolaplev:Level xmi:id="_level_sizeunitmeasurecode" name="SizeUnitMeasureCode" column="_column_bike_sizeunitmeasurecode"/>
-  <rolaplev:Level xmi:id="_level_countrycode" name="CountryCode" column="_column_country_countrycode"/>
-  <rolaplev:Level xmi:id="_level_color" name="Color" column="_column_bike_color"/>
-  <rolapdim:StandardDimension xmi:id="_standarddimension_bike" name="Bike" hierarchies="_explicithierarchy_product_hierarchy"/>
-  <rolapdim:StandardDimension xmi:id="_standarddimension_calendarquarter" name="CalendarQuarter" hierarchies="_explicithierarchy_calendarquarter2"/>
+  <rolaplev:Level xmi:id="_level_weightunitmeasurecode" name="WeightUnitMeasureCode" column="_column_bike_weightunitmeasurecode"/>
+  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_calendarquarter2" primaryKey="_column_calendarquarter_calendarquarter2" source="_tablesource_calendarquarter" levels="_level_rownumber_3 _level_calendarquarter2"/>
+  <rolaplev:Level xmi:id="_level_productline" name="ProductLine" column="_column_bike_productline"/>
+  <rolaplev:Level xmi:id="_level_finishedgoodsflag" name="FinishedGoodsFlag" column="_column_bike_finishedgoodsflag"/>
+  <rolapsrc:TableSource xmi:id="_tablesource_saleschannel" table="_table_saleschannel"/>
+  <rolaplev:Level xmi:id="_level_productkey" name="ProductKey" column="_column_bike_productkey"/>
+  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_currencykey" primaryKey="_column_currency_currencykey" source="_tablesource_currency" levels="_level_rownumber _level_currencykey _level_currencyalternatekey _level_currencyname"/>
+  <rolapsrc:JoinSource xmi:id="_joinsource">
+    <left xmi:id="_joinedqueryelement_productsubcategorykey" key="_column_bike_productsubcategorykey" source="_tablesource_bike"/>
+    <right xmi:id="_joinedqueryelement_productsubcategorykey_1" key="_column_bikesubcategory_productsubcategorykey" source="_tablesource_bikesubcategory"/>
+  </rolapsrc:JoinSource>
+  <rolaplev:Level xmi:id="_level_safetystocklevel" name="SafetyStockLevel" column="_column_bike_safetystocklevel"/>
   <relational:Table xmi:id="_table_bikesales" name="BikeSales">
     <feature xsi:type="relational:Column" xmi:id="_column_bikesales_rownumber" name="RowNumber"/>
     <feature xsi:type="relational:Column" xmi:id="_column_bikesales_salesordernumber" name="SalesOrderNumber"/>
@@ -241,55 +260,34 @@ The Cube CSDLBI 1.0.
     <feature xsi:type="relational:Column" xmi:id="_column_bikesales_salesamount" name="SalesAmount"/>
     <feature xsi:type="relational:Column" xmi:id="_column_bikesales_taxamt" name="TaxAmt"/>
     <feature xsi:type="relational:Column" xmi:id="_column_bikesales_freight" name="Freight"/>
-    <feature xsi:type="relational:Column" xmi:id="_column_bikesales_carriertrackingnumber" name="CarrierTrackingNumber"/>
-    <feature xsi:type="relational:Column" xmi:id="_column_bikesales_customerponumber" name="CustomerPONumber"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_bikesales_carriertrackingnumber" name="CarrierTrackingNumber" isNullable="columnNullable"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_bikesales_customerponumber" name="CustomerPONumber" isNullable="columnNullable"/>
     <feature xsi:type="relational:Column" xmi:id="_column_bikesales_customeraccountnumber" name="CustomerAccountNumber"/>
   </relational:Table>
-  <rolaplev:Level xmi:id="_level_productline" name="ProductLine" column="_column_bike_productline"/>
-  <rolaplev:Level xmi:id="_level_weightunitmeasurecode" name="WeightUnitMeasureCode" column="_column_bike_weightunitmeasurecode"/>
+  <rolaplev:Level xmi:id="_level_countryname" name="CountryName" column="_column_country_countryname" uniqueMembers="true"/>
+  <rolaplev:Level xmi:id="_level_productsubcategorykey_1" name="ProductSubcategoryKey" column="_column_bikesubcategory_productsubcategorykey"/>
+  <rolapdim:StandardDimension xmi:id="_standarddimension_currency" name="Currency" hierarchies="_explicithierarchy_currencykey"/>
+  <rolaplev:Level xmi:id="_level_rownumber_2" name="RowNumber" column="_column_bikesubcategory_rownumber" uniqueMembers="true"/>
+  <rolaplev:Level xmi:id="_level_color" name="Color" column="_column_bike_color"/>
   <rolapdim:StandardDimension xmi:id="_standarddimension_country" name="Country" hierarchies="_explicithierarchy_countrycode"/>
-  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_countrycode" primaryKey="_column_country_countrycode" source="_tablesource_country" levels="_level_rownumber_5 _level_countrycode _level_countryname"/>
-  <rolaplev:Level xmi:id="_level_safetystocklevel" name="SafetyStockLevel" column="_column_bike_safetystocklevel"/>
-  <rolapsrc:TableSource xmi:id="_tablesource_bikesubcategory" table="_table_bikesubcategory"/>
-  <rolaplev:Level xmi:id="_level_daystomanufacture" name="DaysToManufacture" column="_column_bike_daystomanufacture"/>
-  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_currencykey" primaryKey="_column_currency_currencykey" source="_tablesource_currency" levels="_level_rownumber_3 _level_currencykey _level_currencyalternatekey _level_currencyname"/>
-  <rolaplev:Level xmi:id="_level_rownumber_2" name="RowNumber" column="_column_calendarquarter_rownumber" uniqueMembers="true"/>
-  <rolaplev:Level xmi:id="_level_dealerprice" name="DealerPrice" column="_column_bike_dealerprice"/>
-  <rolaplev:Level xmi:id="_level_rownumber_3" name="RowNumber" column="_column_currency_rownumber" uniqueMembers="true"/>
-  <rolaplev:Level xmi:id="_level_calendarquarter2" name="CalendarQuarter2" column="_column_calendarquarter_calendarquarter2"/>
+  <rolaplev:Level xmi:id="_level_rownumber_3" name="RowNumber" column="_column_calendarquarter_rownumber" uniqueMembers="true"/>
   <rolaplev:Level xmi:id="_level_rownumber_4" name="RowNumber" column="_column_saleschannel_rownumber" uniqueMembers="true"/>
-  <relational:Table xmi:id="_table_bikesubcategory" name="BikeSubcategory">
-    <feature xsi:type="relational:Column" xmi:id="_column_bikesubcategory_rownumber" name="RowNumber"/>
-    <feature xsi:type="relational:Column" xmi:id="_column_bikesubcategory_productsubcategorykey" name="ProductSubcategoryKey"/>
-    <feature xsi:type="relational:Column" xmi:id="_column_bikesubcategory_subcategory" name="Subcategory"/>
-  </relational:Table>
-  <rolaplev:Level xmi:id="_level_productsubcategorykey" name="ProductSubcategoryKey" column="_column_bikesubcategory_productsubcategorykey"/>
-  <rolaplev:Level xmi:id="_level_weight" name="Weight" column="_column_bike_weight"/>
-  <rolaplev:Level xmi:id="_level_productsubcategorykey_1" name="ProductSubcategoryKey" column="_column_bike_productsubcategorykey"/>
-  <rolapsrc:TableSource xmi:id="_tablesource_bikesales" table="_table_bikesales"/>
-  <rolapsrc:TableSource xmi:id="_tablesource_country" table="_table_country"/>
-  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_product_hierarchy" name="Product_Hierarchy" primaryKey="_column_bike_productkey" source="_tablesource_bike" levels="_level_rownumber_1 _level_productkey _level_productalternatekey _level_productsubcategorykey_1 _level_productname _level_standardcost _level_finishedgoodsflag _level_color _level_listprice _level_size _level_sizerange _level_weight _level_dealerprice _level_class _level_style _level_modelname _level_description _level_weightunitmeasurecode _level_sizeunitmeasurecode _level_safetystocklevel _level_reorderpoint _level_daystomanufacture _level_productline"/>
   <relational:Table xmi:id="_table_saleschannel" name="SalesChannel">
     <feature xsi:type="relational:Column" xmi:id="_column_saleschannel_rownumber" name="RowNumber"/>
     <feature xsi:type="relational:Column" xmi:id="_column_saleschannel_saleschannelcode" name="SalesChannelCode"/>
     <feature xsi:type="relational:Column" xmi:id="_column_saleschannel_saleschannelname" name="SalesChannelName"/>
   </relational:Table>
-  <rolapsrc:JoinSource xmi:id="_joinsource">
-    <left xmi:id="_joinedqueryelement_productsubcategorykey" key="_column_bike_productsubcategorykey" source="_tablesource_bike"/>
-    <right xmi:id="_joinedqueryelement_productsubcategorykey_1" key="_column_bikesubcategory_productsubcategorykey" source="_tablesource_bikesubcategory"/>
-  </rolapsrc:JoinSource>
-  <rolaplev:Level xmi:id="_level_countryname" name="CountryName" column="_column_country_countryname" uniqueMembers="true"/>
-  <rolaplev:Level xmi:id="_level_sizerange" name="SizeRange" column="_column_bike_sizerange"/>
-  <rolapsrc:TableSource xmi:id="_tablesource_bike" table="_table_bike"/>
-  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_productkey" primaryKey="_column_bike_productkey" source="_joinsource" levels="_level_rownumber _level_productsubcategorykey _level_subcategory"/>
-  <rolaplev:Level xmi:id="_level_modelname" name="ModelName" column="_column_bike_modelname"/>
-  <rolaplev:Level xmi:id="_level_standardcost" name="StandardCost" column="_column_bike_standardcost"/>
-  <rolapsrc:TableSource xmi:id="_tablesource_saleschannel" table="_table_saleschannel"/>
-  <rolaplev:Level xmi:id="_level_size" name="Size" column="_column_bike_size"/>
-  <rolaplev:Level xmi:id="_level_rownumber_5" name="RowNumber" column="_column_country_rownumber" uniqueMembers="true"/>
-  <rolapdim:StandardDimension xmi:id="_standarddimension_bikesubcategory" name="BikeSubcategory" hierarchies="_explicithierarchy_productkey"/>
-  <rolaplev:Level xmi:id="_level_productname" name="ProductName" column="_column_bike_productname"/>
-  <rolaplev:Level xmi:id="_level_currencyalternatekey" name="CurrencyAlternateKey" column="_column_currency_currencyalternatekey"/>
+  <rolapsrc:TableSource xmi:id="_tablesource_bikesales" table="_table_bikesales"/>
+  <rolaplev:Level xmi:id="_level_saleschannelname" name="SalesChannelName" column="_column_saleschannel_saleschannelname"/>
+  <relational:Table xmi:id="_table_calendarquarter" name="CalendarQuarter">
+    <feature xsi:type="relational:Column" xmi:id="_column_calendarquarter_rownumber" name="RowNumber"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_calendarquarter_calendarquarter2" name="CalendarQuarter2"/>
+  </relational:Table>
+  <rolaplev:Level xmi:id="_level_style" name="Style" column="_column_bike_style"/>
+  <rolapsrc:TableSource xmi:id="_tablesource_country" table="_table_country"/>
+  <rolaplev:Level xmi:id="_level_class" name="Class" column="_column_bike_class"/>
+  <rolaplev:Level xmi:id="_level_rownumber_5" name="RowNumber" column="_column_bike_rownumber" uniqueMembers="true"/>
+  <rolaplev:Level xmi:id="_level_daystomanufacture" name="DaysToManufacture" column="_column_bike_daystomanufacture"/>
 </xmi:XMI>
 
 ```
@@ -303,10 +301,10 @@ This file represents the complete definition of the catalog.
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapcat="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/catalog" xmlns:rolapcube="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube" xmlns:rolapdim="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapmeas="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube/measure" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
   <relational:SQLSimpleType xmi:id="_sqlsimpletype_boolean" name="BOOLEAN" structuralFeature="_column_bike_finishedgoodsflag" typeNumber="16"/>
-  <relational:SQLSimpleType xmi:id="_sqlsimpletype_character_varying" name="CHARACTER VARYING" structuralFeature="_column_bike_color _column_bikesales_calendarquarter _column_calendarquarter_calendarquarter2 _column_bikesales_carriertrackingnumber _column_bike_class _column_bikesales_countrycode _column_country_countryname _column_currency_currencyalternatekey _column_currency_currencyname _column_bikesales_customeraccountnumber _column_bikesales_customerponumber _column_bike_description _column_bike_modelname _column_bike_productalternatekey _column_bike_productline _column_bike_productname _column_saleschannel_saleschannelcode _column_bikesales_saleschannelcode _column_saleschannel_saleschannelname _column_bikesales_salesordernumber _column_bike_size _column_bike_sizerange _column_bike_style _column_bikesubcategory_subcategory _column_bike_weightunitmeasurecode" typeNumber="12"/>
-  <relational:SQLSimpleType xmi:id="_sqlsimpletype_decimal" name="DECIMAL" structuralFeature="_column_bikesales_taxamt _column_bike_dealerprice _column_bikesales_extendedamount _column_bikesales_freight _column_bike_listprice _column_bikesales_productstandardcost _column_bikesales_salesamount _column_bike_standardcost _column_bikesales_totalproductcost _column_bikesales_unitprice" typeNumber="3" numericPrecision="18" numericPrecisionRadix="10" numericScale="4"/>
-  <relational:SQLSimpleType xmi:id="_sqlsimpletype_double_precision" name="DOUBLE PRECISION" structuralFeature="_column_bikesales_unitpricediscountpct _column_bikesales_discountamount _column_bike_weight" typeNumber="8" numericPrecisionRadix="2"/>
-  <relational:SQLSimpleType xmi:id="_sqlsimpletype_integer" name="INTEGER" structuralFeature="_column_bike_reorderpoint _column_country_countrycode _column_currency_currencykey _column_bikesales_currencykey _column_bike_daystomanufacture _column_bikesales_orderquantity _column_bikesales_productkey _column_bike_productkey _column_bikesubcategory_productsubcategorykey _column_bike_productsubcategorykey _column_bikesales_revisionnumber _column_bikesubcategory_rownumber _column_calendarquarter_rownumber _column_bike_rownumber _column_saleschannel_rownumber _column_country_rownumber _column_bikesales_rownumber _column_currency_rownumber _column_bike_safetystocklevel _column_bikesales_salesorderlinenumber _column_bike_sizeunitmeasurecode" typeNumber="4"/>
+  <relational:SQLSimpleType xmi:id="_sqlsimpletype_character_varying" name="CHARACTER VARYING" structuralFeature="_column_bike_productline _column_bikesales_calendarquarter _column_calendarquarter_calendarquarter2 _column_bikesales_carriertrackingnumber _column_bike_class _column_bike_color _column_bikesales_countrycode _column_country_countryname _column_currency_currencyalternatekey _column_currency_currencyname _column_bikesales_customeraccountnumber _column_bikesales_customerponumber _column_bike_description _column_bike_modelname _column_bike_productalternatekey _column_bike_productname _column_bikesales_saleschannelcode _column_saleschannel_saleschannelcode _column_saleschannel_saleschannelname _column_bikesales_salesordernumber _column_bike_size _column_bike_sizerange _column_bike_style _column_bikesubcategory_subcategory _column_bike_weightunitmeasurecode" typeNumber="12"/>
+  <relational:SQLSimpleType xmi:id="_sqlsimpletype_decimal" name="DECIMAL" structuralFeature="_column_bikesales_salesamount _column_bike_dealerprice _column_bikesales_extendedamount _column_bikesales_freight _column_bike_listprice _column_bikesales_productstandardcost _column_bike_standardcost _column_bikesales_taxamt _column_bikesales_totalproductcost _column_bikesales_unitprice" typeNumber="3" numericPrecision="18" numericPrecisionRadix="10" numericScale="4"/>
+  <relational:SQLSimpleType xmi:id="_sqlsimpletype_double_precision" name="DOUBLE PRECISION" structuralFeature="_column_bikesales_discountamount _column_bikesales_unitpricediscountpct _column_bike_weight" typeNumber="8" numericPrecisionRadix="2"/>
+  <relational:SQLSimpleType xmi:id="_sqlsimpletype_integer" name="INTEGER" structuralFeature="_column_bikesales_salesorderlinenumber _column_country_countrycode _column_bikesales_currencykey _column_currency_currencykey _column_bike_daystomanufacture _column_bikesales_orderquantity _column_bikesales_productkey _column_bike_productkey _column_bikesubcategory_productsubcategorykey _column_bike_productsubcategorykey _column_bike_reorderpoint _column_bikesales_revisionnumber _column_country_rownumber _column_bikesales_rownumber _column_calendarquarter_rownumber _column_bike_rownumber _column_bikesubcategory_rownumber _column_saleschannel_rownumber _column_currency_rownumber _column_bike_safetystocklevel _column_bike_sizeunitmeasurecode" typeNumber="4"/>
   <rolapcat:Catalog xmi:id="_catalog_csdlbi_1_1" name="CSDLBI 1.1" cubes="_physicalcube_saleschannel" measuresDimensionName="BikeSales" dbschemas="_schema"/>
   <relational:Schema xmi:id="_schema">
     <ownedElement xsi:type="relational:Table" xmi:id="_table_bike" name="Bike">
@@ -319,14 +317,14 @@ This file represents the complete definition of the catalog.
       <feature xsi:type="relational:Column" xmi:id="_column_bike_finishedgoodsflag" name="FinishedGoodsFlag" type="_sqlsimpletype_boolean"/>
       <feature xsi:type="relational:Column" xmi:id="_column_bike_color" name="Color" type="_sqlsimpletype_character_varying"/>
       <feature xsi:type="relational:Column" xmi:id="_column_bike_listprice" name="ListPrice" type="_sqlsimpletype_decimal"/>
-      <feature xsi:type="relational:Column" xmi:id="_column_bike_size" name="Size" type="_sqlsimpletype_character_varying"/>
-      <feature xsi:type="relational:Column" xmi:id="_column_bike_sizerange" name="SizeRange" type="_sqlsimpletype_character_varying"/>
+      <feature xsi:type="relational:Column" xmi:id="_column_bike_size" name="Size" type="_sqlsimpletype_character_varying" isNullable="columnNullable"/>
+      <feature xsi:type="relational:Column" xmi:id="_column_bike_sizerange" name="SizeRange" type="_sqlsimpletype_character_varying" isNullable="columnNullable"/>
       <feature xsi:type="relational:Column" xmi:id="_column_bike_weight" name="Weight" type="_sqlsimpletype_double_precision"/>
       <feature xsi:type="relational:Column" xmi:id="_column_bike_dealerprice" name="DealerPrice" type="_sqlsimpletype_decimal"/>
       <feature xsi:type="relational:Column" xmi:id="_column_bike_class" name="Class" type="_sqlsimpletype_character_varying"/>
       <feature xsi:type="relational:Column" xmi:id="_column_bike_style" name="Style" type="_sqlsimpletype_character_varying"/>
       <feature xsi:type="relational:Column" xmi:id="_column_bike_modelname" name="ModelName" type="_sqlsimpletype_character_varying"/>
-      <feature xsi:type="relational:Column" xmi:id="_column_bike_description" name="Description" type="_sqlsimpletype_character_varying"/>
+      <feature xsi:type="relational:Column" xmi:id="_column_bike_description" name="Description" type="_sqlsimpletype_character_varying" isNullable="columnNullable"/>
       <feature xsi:type="relational:Column" xmi:id="_column_bike_weightunitmeasurecode" name="WeightUnitMeasureCode" type="_sqlsimpletype_character_varying"/>
       <feature xsi:type="relational:Column" xmi:id="_column_bike_sizeunitmeasurecode" name="SizeUnitMeasureCode" type="_sqlsimpletype_integer"/>
       <feature xsi:type="relational:Column" xmi:id="_column_bike_safetystocklevel" name="SafetyStockLevel" type="_sqlsimpletype_integer"/>
@@ -354,8 +352,8 @@ This file represents the complete definition of the catalog.
       <feature xsi:type="relational:Column" xmi:id="_column_bikesales_salesamount" name="SalesAmount" type="_sqlsimpletype_decimal"/>
       <feature xsi:type="relational:Column" xmi:id="_column_bikesales_taxamt" name="TaxAmt" type="_sqlsimpletype_decimal"/>
       <feature xsi:type="relational:Column" xmi:id="_column_bikesales_freight" name="Freight" type="_sqlsimpletype_decimal"/>
-      <feature xsi:type="relational:Column" xmi:id="_column_bikesales_carriertrackingnumber" name="CarrierTrackingNumber" type="_sqlsimpletype_character_varying"/>
-      <feature xsi:type="relational:Column" xmi:id="_column_bikesales_customerponumber" name="CustomerPONumber" type="_sqlsimpletype_character_varying"/>
+      <feature xsi:type="relational:Column" xmi:id="_column_bikesales_carriertrackingnumber" name="CarrierTrackingNumber" type="_sqlsimpletype_character_varying" isNullable="columnNullable"/>
+      <feature xsi:type="relational:Column" xmi:id="_column_bikesales_customerponumber" name="CustomerPONumber" type="_sqlsimpletype_character_varying" isNullable="columnNullable"/>
       <feature xsi:type="relational:Column" xmi:id="_column_bikesales_customeraccountnumber" name="CustomerAccountNumber" type="_sqlsimpletype_character_varying"/>
     </ownedElement>
     <ownedElement xsi:type="relational:Table" xmi:id="_table_bikesubcategory" name="BikeSubcategory">
@@ -384,13 +382,13 @@ This file represents the complete definition of the catalog.
       <feature xsi:type="relational:Column" xmi:id="_column_saleschannel_saleschannelname" name="SalesChannelName" type="_sqlsimpletype_character_varying"/>
     </ownedElement>
   </relational:Schema>
-  <rolapsrc:TableSource xmi:id="_tablesource_bike" table="_table_bike"/>
-  <rolapsrc:TableSource xmi:id="_tablesource_country" table="_table_country"/>
-  <rolapsrc:TableSource xmi:id="_tablesource_saleschannel" table="_table_saleschannel"/>
-  <rolapsrc:TableSource xmi:id="_tablesource_currency" table="_table_currency"/>
-  <rolapsrc:TableSource xmi:id="_tablesource_bikesubcategory" table="_table_bikesubcategory"/>
-  <rolapsrc:TableSource xmi:id="_tablesource_calendarquarter" table="_table_calendarquarter"/>
   <rolapsrc:TableSource xmi:id="_tablesource_bikesales" table="_table_bikesales"/>
+  <rolapsrc:TableSource xmi:id="_tablesource_bikesubcategory" table="_table_bikesubcategory"/>
+  <rolapsrc:TableSource xmi:id="_tablesource_country" table="_table_country"/>
+  <rolapsrc:TableSource xmi:id="_tablesource_currency" table="_table_currency"/>
+  <rolapsrc:TableSource xmi:id="_tablesource_saleschannel" table="_table_saleschannel"/>
+  <rolapsrc:TableSource xmi:id="_tablesource_bike" table="_table_bike"/>
+  <rolapsrc:TableSource xmi:id="_tablesource_calendarquarter" table="_table_calendarquarter"/>
   <rolapsrc:JoinSource xmi:id="_joinsource">
     <left xmi:id="_joinedqueryelement_productsubcategorykey_1" key="_column_bike_productsubcategorykey" source="_tablesource_bike"/>
     <right xmi:id="_joinedqueryelement_productsubcategorykey" key="_column_bikesubcategory_productsubcategorykey" source="_tablesource_bikesubcategory"/>
@@ -416,12 +414,12 @@ This file represents the complete definition of the catalog.
   <rolaplev:Level xmi:id="_level_productsubcategorykey" name="ProductSubcategoryKey" column="_column_bike_productsubcategorykey"/>
   <rolaplev:Level xmi:id="_level_productsubcategorykey_1" name="ProductSubcategoryKey" column="_column_bikesubcategory_productsubcategorykey"/>
   <rolaplev:Level xmi:id="_level_reorderpoint" name="ReorderPoint" column="_column_bike_reorderpoint"/>
-  <rolaplev:Level xmi:id="_level_rownumber" name="RowNumber" column="_column_calendarquarter_rownumber" uniqueMembers="true"/>
-  <rolaplev:Level xmi:id="_level_rownumber_1" name="RowNumber" column="_column_country_rownumber" uniqueMembers="true"/>
-  <rolaplev:Level xmi:id="_level_rownumber_2" name="RowNumber" column="_column_currency_rownumber" uniqueMembers="true"/>
-  <rolaplev:Level xmi:id="_level_rownumber_3" name="RowNumber" column="_column_bike_rownumber" uniqueMembers="true"/>
-  <rolaplev:Level xmi:id="_level_rownumber_4" name="RowNumber" column="_column_bikesubcategory_rownumber" uniqueMembers="true"/>
-  <rolaplev:Level xmi:id="_level_rownumber_5" name="RowNumber" column="_column_saleschannel_rownumber" uniqueMembers="true"/>
+  <rolaplev:Level xmi:id="_level_rownumber" name="RowNumber" column="_column_saleschannel_rownumber" uniqueMembers="true"/>
+  <rolaplev:Level xmi:id="_level_rownumber_1" name="RowNumber" column="_column_bikesubcategory_rownumber" uniqueMembers="true"/>
+  <rolaplev:Level xmi:id="_level_rownumber_2" name="RowNumber" column="_column_bike_rownumber" uniqueMembers="true"/>
+  <rolaplev:Level xmi:id="_level_rownumber_3" name="RowNumber" column="_column_country_rownumber" uniqueMembers="true"/>
+  <rolaplev:Level xmi:id="_level_rownumber_4" name="RowNumber" column="_column_calendarquarter_rownumber" uniqueMembers="true"/>
+  <rolaplev:Level xmi:id="_level_rownumber_5" name="RowNumber" column="_column_currency_rownumber" uniqueMembers="true"/>
   <rolaplev:Level xmi:id="_level_safetystocklevel" name="SafetyStockLevel" column="_column_bike_safetystocklevel"/>
   <rolaplev:Level xmi:id="_level_saleschannelcode" name="SalesChannelCode" column="_column_saleschannel_saleschannelcode"/>
   <rolaplev:Level xmi:id="_level_saleschannelname" name="SalesChannelName" column="_column_saleschannel_saleschannelname"/>
@@ -433,12 +431,12 @@ This file represents the complete definition of the catalog.
   <rolaplev:Level xmi:id="_level_subcategory" name="Subcategory" column="_column_bikesubcategory_subcategory"/>
   <rolaplev:Level xmi:id="_level_weight" name="Weight" column="_column_bike_weight"/>
   <rolaplev:Level xmi:id="_level_weightunitmeasurecode" name="WeightUnitMeasureCode" column="_column_bike_weightunitmeasurecode"/>
-  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_currencykey" primaryKey="_column_currency_currencykey" source="_tablesource_currency" levels="_level_rownumber_2 _level_currencykey _level_currencyalternatekey _level_currencyname"/>
-  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_productkey" primaryKey="_column_bike_productkey" source="_joinsource" levels="_level_rownumber_4 _level_productsubcategorykey_1 _level_subcategory"/>
-  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_countrycode" primaryKey="_column_country_countrycode" source="_tablesource_country" levels="_level_rownumber_1 _level_countrycode _level_countryname"/>
-  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_saleschannelcode" primaryKey="_column_saleschannel_saleschannelcode" source="_tablesource_saleschannel" levels="_level_rownumber_5 _level_saleschannelcode _level_saleschannelname"/>
-  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_calendarquarter2" primaryKey="_column_calendarquarter_calendarquarter2" source="_tablesource_calendarquarter" levels="_level_rownumber _level_calendarquarter2"/>
-  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_product_hierarchy" name="Product_Hierarchy" primaryKey="_column_bike_productkey" source="_tablesource_bike" levels="_level_rownumber_3 _level_productkey _level_productalternatekey _level_productsubcategorykey _level_productname _level_standardcost _level_finishedgoodsflag _level_color _level_listprice _level_size _level_sizerange _level_weight _level_dealerprice _level_class _level_style _level_modelname _level_description _level_weightunitmeasurecode _level_sizeunitmeasurecode _level_safetystocklevel _level_reorderpoint _level_daystomanufacture _level_productline"/>
+  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_calendarquarter2" primaryKey="_column_calendarquarter_calendarquarter2" source="_tablesource_calendarquarter" levels="_level_rownumber_4 _level_calendarquarter2"/>
+  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_productkey" primaryKey="_column_bike_productkey" source="_joinsource" levels="_level_rownumber_1 _level_productsubcategorykey_1 _level_subcategory"/>
+  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_saleschannelcode" primaryKey="_column_saleschannel_saleschannelcode" source="_tablesource_saleschannel" levels="_level_rownumber _level_saleschannelcode _level_saleschannelname"/>
+  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_countrycode" primaryKey="_column_country_countrycode" source="_tablesource_country" levels="_level_rownumber_3 _level_countrycode _level_countryname"/>
+  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_currencykey" primaryKey="_column_currency_currencykey" source="_tablesource_currency" levels="_level_rownumber_5 _level_currencykey _level_currencyalternatekey _level_currencyname"/>
+  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_product_hierarchy" name="Product_Hierarchy" primaryKey="_column_bike_productkey" source="_tablesource_bike" levels="_level_rownumber_2 _level_productkey _level_productalternatekey _level_productsubcategorykey _level_productname _level_standardcost _level_finishedgoodsflag _level_color _level_listprice _level_size _level_sizerange _level_weight _level_dealerprice _level_class _level_style _level_modelname _level_description _level_weightunitmeasurecode _level_sizeunitmeasurecode _level_safetystocklevel _level_reorderpoint _level_daystomanufacture _level_productline"/>
   <rolapdim:StandardDimension xmi:id="_standarddimension_bike" name="Bike" hierarchies="_explicithierarchy_product_hierarchy"/>
   <rolapdim:StandardDimension xmi:id="_standarddimension_bikesubcategory" name="BikeSubcategory" hierarchies="_explicithierarchy_productkey"/>
   <rolapdim:StandardDimension xmi:id="_standarddimension_calendarquarter" name="CalendarQuarter" hierarchies="_explicithierarchy_calendarquarter2"/>

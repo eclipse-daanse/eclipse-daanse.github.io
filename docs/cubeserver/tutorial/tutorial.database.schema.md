@@ -49,7 +49,7 @@ This file represents the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapcat="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/catalog">
-  <relational:SQLSimpleType xmi:id="_sqlsimpletype_character_varying" name="CHARACTER VARYING" structuralFeature="_column_thetable_thecolumn _column_foo_thetable_thecolumn" typeNumber="12"/>
+  <relational:SQLSimpleType xmi:id="_sqlsimpletype_character_varying" name="CHARACTER VARYING" structuralFeature="_column_foo_thetable_thecolumn _column_thetable_thecolumn" typeNumber="12"/>
   <rolapcat:Catalog xmi:id="_catalog_database_schema" description="Database schema configuration and organization" name="Daanse Tutorial - Database Schema" dbschemas="_schema _schema_foo"/>
   <relational:Schema xmi:id="_schema">
     <ownedElement xsi:type="relational:Table" xmi:id="_table_thetable" name="theTable">

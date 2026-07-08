@@ -80,8 +80,8 @@ The Dimension has only one hierarchy.
 ```xml
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapdim="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
   <rolapdim:StandardDimension xmi:id="_standarddimension_dimension" name="Dimension" hierarchies="_explicithierarchy_hierarchy"/>
-  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_hierarchy" name="Hierarchy" primaryKey="_column_ht_view_key" source="_sqlselectsource" levels="_level_level1"/>
   <rolaplev:Level xmi:id="_level_level1" name="Level1" column="_column_ht_view_key" nameColumn="_column_ht_view_name"/>
+  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_hierarchy" name="Hierarchy" primaryKey="_column_ht_view_key" source="_sqlselectsource" levels="_level_level1"/>
   <rolapsrc:SqlSelectSource xmi:id="_sqlselectsource" alias="HT_VIEW">
     <sql xmi:id="_dialectsqlview_ht_view" name="HT_VIEW">
       <feature xsi:type="relational:Column" xmi:id="_column_ht_view_key" name="KEY"/>
@@ -164,14 +164,14 @@ In this example uses cube with fact table Fact as data. This example shows combi
       <measures xsi:type="rolapmeas:SumMeasure" xmi:id="_summeasure_measure1" name="Measure1" column="_column_fact_value"/>
     </measureGroups>
   </rolapcube:PhysicalCube>
-  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
+  <rolaplev:Level xmi:id="_level_level1" name="Level1" column="_column_ht_view_key" nameColumn="_column_ht_view_name"/>
   <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_hierarchy" name="Hierarchy" primaryKey="_column_ht_view_key" source="_sqlselectsource" levels="_level_level1"/>
+  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
   <relational:Table xmi:id="_table_fact" name="Fact">
     <feature xsi:type="relational:Column" xmi:id="_column_fact_dim_key" name="DIM_KEY"/>
     <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE"/>
   </relational:Table>
   <rolapdim:StandardDimension xmi:id="_standarddimension_dimension" name="Dimension" hierarchies="_explicithierarchy_hierarchy"/>
-  <rolaplev:Level xmi:id="_level_level1" name="Level1" column="_column_ht_view_key" nameColumn="_column_ht_view_name"/>
   <rolapsrc:SqlSelectSource xmi:id="_sqlselectsource" alias="HT_VIEW">
     <sql xmi:id="_dialectsqlview_ht_view" name="HT_VIEW">
       <feature xsi:type="relational:Column" xmi:id="_column_ht_view_key" name="KEY"/>
@@ -195,8 +195,8 @@ This file represents the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapcat="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/catalog" xmlns:rolapcube="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube" xmlns:rolapdim="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapmeas="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube/measure" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
-  <relational:SQLSimpleType xmi:id="_sqlsimpletype_character_varying" name="CHARACTER VARYING" structuralFeature="_column_fact_dim_key _column_ht_view_name _column_ht_name" typeNumber="12"/>
-  <relational:SQLSimpleType xmi:id="_sqlsimpletype_integer" name="INTEGER" structuralFeature="_column_ht_view_value _column_ht_view_key _column_ht_key _column_ht_value _column_fact_value" typeNumber="4"/>
+  <relational:SQLSimpleType xmi:id="_sqlsimpletype_character_varying" name="CHARACTER VARYING" structuralFeature="_column_ht_view_name _column_fact_dim_key _column_ht_name" typeNumber="12"/>
+  <relational:SQLSimpleType xmi:id="_sqlsimpletype_integer" name="INTEGER" structuralFeature="_column_ht_value _column_ht_key _column_ht_view_key _column_fact_value _column_ht_view_value" typeNumber="4"/>
   <rolapcat:Catalog xmi:id="_catalog_hierarchy_view" description="Hierarchy with SQL view references" name="Daanse Tutorial - Hierarchy View" cubes="_physicalcube_cube" dbschemas="_schema"/>
   <relational:Schema xmi:id="_schema">
     <ownedElement xsi:type="relational:Table" xmi:id="_table_fact" name="Fact">

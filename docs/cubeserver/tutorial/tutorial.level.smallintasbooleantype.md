@@ -68,13 +68,13 @@ This hierarchy consists of level Level.
 ```xml
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
   <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_hierarchywithhasall" name="HierarchyWithHasAll" primaryKey="_column_fact_key" source="_tablesource_fact" levels="_level_level"/>
-  <rolaplev:Level xmi:id="_level_level" name="_Level" column="_column_fact_flag" columnType="Boolean"/>
   <relational:Table xmi:id="_table_fact" name="Fact">
     <feature xsi:type="relational:Column" xmi:id="_column_fact_key" name="KEY"/>
     <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE"/>
     <feature xsi:type="relational:Column" xmi:id="_column_fact_flag" name="FLAG"/>
   </relational:Table>
   <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
+  <rolaplev:Level xmi:id="_level_level" name="_Level" column="_column_fact_flag" columnType="Boolean"/>
 </xmi:XMI>
 
 ```
@@ -87,14 +87,14 @@ The Dimension has only one hierarchy.
 ```xml
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapdim="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
   <rolapdim:StandardDimension xmi:id="_standarddimension_dimension" name="Dimension" hierarchies="_explicithierarchy_hierarchywithhasall"/>
-  <rolaplev:Level xmi:id="_level_level" name="_Level" column="_column_fact_flag" columnType="Boolean"/>
+  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_hierarchywithhasall" name="HierarchyWithHasAll" primaryKey="_column_fact_key" source="_tablesource_fact" levels="_level_level"/>
   <relational:Table xmi:id="_table_fact" name="Fact">
     <feature xsi:type="relational:Column" xmi:id="_column_fact_key" name="KEY"/>
     <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE"/>
     <feature xsi:type="relational:Column" xmi:id="_column_fact_flag" name="FLAG"/>
   </relational:Table>
   <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
-  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_hierarchywithhasall" name="HierarchyWithHasAll" primaryKey="_column_fact_key" source="_tablesource_fact" levels="_level_level"/>
+  <rolaplev:Level xmi:id="_level_level" name="_Level" column="_column_fact_flag" columnType="Boolean"/>
 </xmi:XMI>
 
 ```
@@ -125,7 +125,7 @@ This makes it possible to use level as boolean.
       <measures xsi:type="rolapmeas:SumMeasure" xmi:id="_summeasure_measure" name="Measure" column="_column_fact_value"/>
     </measureGroups>
   </rolapcube:PhysicalCube>
-  <rolaplev:Level xmi:id="_level_level" name="_Level" column="_column_fact_flag" columnType="Boolean"/>
+  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_hierarchywithhasall" name="HierarchyWithHasAll" primaryKey="_column_fact_key" source="_tablesource_fact" levels="_level_level"/>
   <relational:Table xmi:id="_table_fact" name="Fact">
     <feature xsi:type="relational:Column" xmi:id="_column_fact_key" name="KEY"/>
     <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE"/>
@@ -133,7 +133,7 @@ This makes it possible to use level as boolean.
   </relational:Table>
   <rolapdim:StandardDimension xmi:id="_standarddimension_dimension" name="Dimension" hierarchies="_explicithierarchy_hierarchywithhasall"/>
   <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
-  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_hierarchywithhasall" name="HierarchyWithHasAll" primaryKey="_column_fact_key" source="_tablesource_fact" levels="_level_level"/>
+  <rolaplev:Level xmi:id="_level_level" name="_Level" column="_column_fact_flag" columnType="Boolean"/>
 </xmi:XMI>
 
 ```

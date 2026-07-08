@@ -79,12 +79,12 @@ When true, parents can have their own measures and participate in aggregations a
 ```xml
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
   <rolaphier:ParentChildHierarchy xmi:id="_parentchildhierarchy_hierarchy" name="Hierarchy" allMemberName="All" primaryKey="_column_parent_name" source="_tablesource_parent" nullParentValue="all" parentColumn="_column_parent_parent" parentAsLeafEnable="true" parentAsLeafNameFormat="parent %s" level="_level_name"/>
-  <rolapsrc:TableSource xmi:id="_tablesource_parent" table="_table_parent"/>
   <relational:Table xmi:id="_table_parent" name="Parent">
     <feature xsi:type="relational:Column" xmi:id="_column_parent_name" name="NAME"/>
     <feature xsi:type="relational:Column" xmi:id="_column_parent_parent" name="PARENT"/>
     <feature xsi:type="relational:Column" xmi:id="_column_parent_value" name="VALUE"/>
   </relational:Table>
+  <rolapsrc:TableSource xmi:id="_tablesource_parent" table="_table_parent"/>
   <rolaplev:Level xmi:id="_level_name" name="Name" column="_column_parent_name" nameColumn="_column_parent_name" uniqueMembers="true"/>
 </xmi:XMI>
 
@@ -98,14 +98,14 @@ The time dimension is defined with the one hierarchy.
 ```xml
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapdim="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
   <rolapdim:StandardDimension xmi:id="_standarddimension_dimension" name="Dimension" hierarchies="_parentchildhierarchy_hierarchy"/>
-  <rolapsrc:TableSource xmi:id="_tablesource_parent" table="_table_parent"/>
+  <rolaphier:ParentChildHierarchy xmi:id="_parentchildhierarchy_hierarchy" name="Hierarchy" allMemberName="All" primaryKey="_column_parent_name" source="_tablesource_parent" nullParentValue="all" parentColumn="_column_parent_parent" parentAsLeafEnable="true" parentAsLeafNameFormat="parent %s" level="_level_name"/>
   <relational:Table xmi:id="_table_parent" name="Parent">
     <feature xsi:type="relational:Column" xmi:id="_column_parent_name" name="NAME"/>
     <feature xsi:type="relational:Column" xmi:id="_column_parent_parent" name="PARENT"/>
     <feature xsi:type="relational:Column" xmi:id="_column_parent_value" name="VALUE"/>
   </relational:Table>
+  <rolapsrc:TableSource xmi:id="_tablesource_parent" table="_table_parent"/>
   <rolaplev:Level xmi:id="_level_name" name="Name" column="_column_parent_name" nameColumn="_column_parent_name" uniqueMembers="true"/>
-  <rolaphier:ParentChildHierarchy xmi:id="_parentchildhierarchy_hierarchy" name="Hierarchy" allMemberName="All" primaryKey="_column_parent_name" source="_tablesource_parent" nullParentValue="all" parentColumn="_column_parent_parent" parentAsLeafEnable="true" parentAsLeafNameFormat="parent %s" level="_level_name"/>
 </xmi:XMI>
 
 ```
@@ -123,15 +123,15 @@ The cube with Parent Child Hierarchy.
       <measures xsi:type="rolapmeas:SumMeasure" xmi:id="_summeasure_value" name="Value" column="_column_parent_value"/>
     </measureGroups>
   </rolapcube:PhysicalCube>
-  <rolapsrc:TableSource xmi:id="_tablesource_parent" table="_table_parent"/>
+  <rolaphier:ParentChildHierarchy xmi:id="_parentchildhierarchy_hierarchy" name="Hierarchy" allMemberName="All" primaryKey="_column_parent_name" source="_tablesource_parent" nullParentValue="all" parentColumn="_column_parent_parent" parentAsLeafEnable="true" parentAsLeafNameFormat="parent %s" level="_level_name"/>
   <relational:Table xmi:id="_table_parent" name="Parent">
     <feature xsi:type="relational:Column" xmi:id="_column_parent_name" name="NAME"/>
     <feature xsi:type="relational:Column" xmi:id="_column_parent_parent" name="PARENT"/>
     <feature xsi:type="relational:Column" xmi:id="_column_parent_value" name="VALUE"/>
   </relational:Table>
-  <rolaplev:Level xmi:id="_level_name" name="Name" column="_column_parent_name" nameColumn="_column_parent_name" uniqueMembers="true"/>
+  <rolapsrc:TableSource xmi:id="_tablesource_parent" table="_table_parent"/>
   <rolapdim:StandardDimension xmi:id="_standarddimension_dimension" name="Dimension" hierarchies="_parentchildhierarchy_hierarchy"/>
-  <rolaphier:ParentChildHierarchy xmi:id="_parentchildhierarchy_hierarchy" name="Hierarchy" allMemberName="All" primaryKey="_column_parent_name" source="_tablesource_parent" nullParentValue="all" parentColumn="_column_parent_parent" parentAsLeafEnable="true" parentAsLeafNameFormat="parent %s" level="_level_name"/>
+  <rolaplev:Level xmi:id="_level_name" name="Name" column="_column_parent_name" nameColumn="_column_parent_name" uniqueMembers="true"/>
 </xmi:XMI>
 
 ```

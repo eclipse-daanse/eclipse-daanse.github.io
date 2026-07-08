@@ -79,11 +79,11 @@ In this example, the measure has a CellFormatter. The measure references the `VA
       </measures>
     </measureGroups>
   </rolapcube:PhysicalCube>
-  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
   <relational:Table xmi:id="_table_fact" name="Fact">
     <feature xsi:type="relational:Column" xmi:id="_column_fact_key" name="KEY"/>
     <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE"/>
   </relational:Table>
+  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
 </xmi:XMI>
 
 ```

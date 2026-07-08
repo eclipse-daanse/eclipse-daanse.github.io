@@ -17,39 +17,11 @@ Table, named `Fact`, contains 3 columns: `KEY`, `KEY1` and `VALUE`.
 
 
 ```xml
-<relational:Schema xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolaprel="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/relational" xmi:id="_schema">
+<relational:Schema xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmi:id="_schema">
   <ownedElement xsi:type="relational:Table" xmi:id="_table_fact" name="Fact">
     <feature xsi:type="relational:Column" xmi:id="_column_fact_key" name="KEY"/>
     <feature xsi:type="relational:Column" xmi:id="_column_fact_key1" name="KEY1"/>
     <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE"/>
-    <feature xsi:type="rolaprel:ExpressionColumn" xmi:id="_expressioncolumn_nameexpression" name="nameExpression">
-      <sqls xmi:id="_sqlstatement" sql="&quot;KEY&quot; || ' ' || &quot;KEY1&quot;">
-        <dialects>generic</dialects>
-        <dialects>h2</dialects>
-      </sqls>
-    </feature>
-    <feature xsi:type="rolaprel:ExpressionColumn" xmi:id="_expressioncolumn_keyexpression" name="keyExpression">
-      <sqls xmi:id="_sqlstatement_1" sql="KEY">
-        <dialects>generic</dialects>
-      </sqls>
-      <sqls xmi:id="_sqlstatement_2" sql="&quot;KEY1&quot; || ' ' || &quot;KEY&quot;">
-        <dialects>h2</dialects>
-      </sqls>
-    </feature>
-    <feature xsi:type="rolaprel:ExpressionColumn" xmi:id="_expressioncolumn_captionexpression" name="captionExpression">
-      <sqls xmi:id="_sqlstatement_3" sql="KEY">
-        <dialects>generic</dialects>
-      </sqls>
-      <sqls xmi:id="_sqlstatement_4" sql="&quot;KEY1&quot; || '___' || &quot;KEY&quot;">
-        <dialects>h2</dialects>
-      </sqls>
-    </feature>
-    <feature xsi:type="rolaprel:ExpressionColumn" xmi:id="_expressioncolumn_ordinalexpression" name="ordinalExpression">
-      <sqls xmi:id="_sqlstatement_5" sql="&quot;KEY&quot; || '___' || &quot;KEY1&quot;">
-        <dialects>generic</dialects>
-        <dialects>h2</dialects>
-      </sqls>
-    </feature>
   </ownedElement>
 </relational:Schema>
 
@@ -61,40 +33,12 @@ This example uses a TableQuery, as it directly references the table `Fact`.
 
 
 ```xml
-<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolaprel="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/relational" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
   <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
   <relational:Table xmi:id="_table_fact" name="Fact">
     <feature xsi:type="relational:Column" xmi:id="_column_fact_key" name="KEY"/>
     <feature xsi:type="relational:Column" xmi:id="_column_fact_key1" name="KEY1"/>
     <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE"/>
-    <feature xsi:type="rolaprel:ExpressionColumn" xmi:id="_expressioncolumn_nameexpression" name="nameExpression">
-      <sqls xmi:id="_sqlstatement" sql="&quot;KEY&quot; || ' ' || &quot;KEY1&quot;">
-        <dialects>generic</dialects>
-        <dialects>h2</dialects>
-      </sqls>
-    </feature>
-    <feature xsi:type="rolaprel:ExpressionColumn" xmi:id="_expressioncolumn_keyexpression" name="keyExpression">
-      <sqls xmi:id="_sqlstatement_1" sql="KEY">
-        <dialects>generic</dialects>
-      </sqls>
-      <sqls xmi:id="_sqlstatement_2" sql="&quot;KEY1&quot; || ' ' || &quot;KEY&quot;">
-        <dialects>h2</dialects>
-      </sqls>
-    </feature>
-    <feature xsi:type="rolaprel:ExpressionColumn" xmi:id="_expressioncolumn_captionexpression" name="captionExpression">
-      <sqls xmi:id="_sqlstatement_3" sql="KEY">
-        <dialects>generic</dialects>
-      </sqls>
-      <sqls xmi:id="_sqlstatement_4" sql="&quot;KEY1&quot; || '___' || &quot;KEY&quot;">
-        <dialects>h2</dialects>
-      </sqls>
-    </feature>
-    <feature xsi:type="rolaprel:ExpressionColumn" xmi:id="_expressioncolumn_ordinalexpression" name="ordinalExpression">
-      <sqls xmi:id="_sqlstatement_5" sql="&quot;KEY&quot; || '___' || &quot;KEY1&quot;">
-        <dialects>generic</dialects>
-        <dialects>h2</dialects>
-      </sqls>
-    </feature>
   </relational:Table>
 </xmi:XMI>
 
@@ -139,46 +83,24 @@ The order of the Levels in the hierarchy is important, as it determines the dril
 
 
 ```xml
-<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolaprel="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/relational" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
   <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_hierarchywithhasall" name="HierarchyWithHasAll" primaryKey="_column_fact_key" source="_tablesource_fact" levels="_level_level1 _level_level2"/>
-  <rolaplev:Level xmi:id="_level_level2" name="Level2" captionColumn="_expressioncolumn_captionexpression" column="_expressioncolumn_keyexpression">
-    <ordinalColumns xmi:id="_orderedcolumn_ordinalexpression" column="_expressioncolumn_ordinalexpression"/>
+  <rolaplev:Level xmi:id="_level_level2" name="Level2">
+    <captionColumn href="_expressioncolumn_captionexpression"/>
+    <column href="_expressioncolumn_keyexpression"/>
+    <ordinalColumns xmi:id="_orderedcolumn_ordinalexpression">
+      <column href="_expressioncolumn_ordinalexpression"/>
+    </ordinalColumns>
   </rolaplev:Level>
-  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
-  <rolaplev:Level xmi:id="_level_level1" name="Level1" column="_column_fact_key" nameColumn="_expressioncolumn_nameexpression"/>
   <relational:Table xmi:id="_table_fact" name="Fact">
     <feature xsi:type="relational:Column" xmi:id="_column_fact_key" name="KEY"/>
     <feature xsi:type="relational:Column" xmi:id="_column_fact_key1" name="KEY1"/>
     <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE"/>
-    <feature xsi:type="rolaprel:ExpressionColumn" xmi:id="_expressioncolumn_nameexpression" name="nameExpression">
-      <sqls xmi:id="_sqlstatement" sql="&quot;KEY&quot; || ' ' || &quot;KEY1&quot;">
-        <dialects>generic</dialects>
-        <dialects>h2</dialects>
-      </sqls>
-    </feature>
-    <feature xsi:type="rolaprel:ExpressionColumn" xmi:id="_expressioncolumn_keyexpression" name="keyExpression">
-      <sqls xmi:id="_sqlstatement_1" sql="KEY">
-        <dialects>generic</dialects>
-      </sqls>
-      <sqls xmi:id="_sqlstatement_2" sql="&quot;KEY1&quot; || ' ' || &quot;KEY&quot;">
-        <dialects>h2</dialects>
-      </sqls>
-    </feature>
-    <feature xsi:type="rolaprel:ExpressionColumn" xmi:id="_expressioncolumn_captionexpression" name="captionExpression">
-      <sqls xmi:id="_sqlstatement_3" sql="KEY">
-        <dialects>generic</dialects>
-      </sqls>
-      <sqls xmi:id="_sqlstatement_4" sql="&quot;KEY1&quot; || '___' || &quot;KEY&quot;">
-        <dialects>h2</dialects>
-      </sqls>
-    </feature>
-    <feature xsi:type="rolaprel:ExpressionColumn" xmi:id="_expressioncolumn_ordinalexpression" name="ordinalExpression">
-      <sqls xmi:id="_sqlstatement_5" sql="&quot;KEY&quot; || '___' || &quot;KEY1&quot;">
-        <dialects>generic</dialects>
-        <dialects>h2</dialects>
-      </sqls>
-    </feature>
   </relational:Table>
+  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
+  <rolaplev:Level xmi:id="_level_level1" name="Level1" column="_column_fact_key">
+    <nameColumn href="_expressioncolumn_nameexpression"/>
+  </rolaplev:Level>
 </xmi:XMI>
 
 ```
@@ -189,47 +111,25 @@ The Dimension has only one hierarchy.
 
 
 ```xml
-<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapdim="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolaprel="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/relational" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapdim="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
   <rolapdim:StandardDimension xmi:id="_standarddimension_dimension" name="Dimension" hierarchies="_explicithierarchy_hierarchywithhasall"/>
-  <rolaplev:Level xmi:id="_level_level2" name="Level2" captionColumn="_expressioncolumn_captionexpression" column="_expressioncolumn_keyexpression">
-    <ordinalColumns xmi:id="_orderedcolumn_ordinalexpression" column="_expressioncolumn_ordinalexpression"/>
+  <rolaplev:Level xmi:id="_level_level2" name="Level2">
+    <captionColumn href="_expressioncolumn_captionexpression"/>
+    <column href="_expressioncolumn_keyexpression"/>
+    <ordinalColumns xmi:id="_orderedcolumn_ordinalexpression">
+      <column href="_expressioncolumn_ordinalexpression"/>
+    </ordinalColumns>
   </rolaplev:Level>
-  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
-  <rolaplev:Level xmi:id="_level_level1" name="Level1" column="_column_fact_key" nameColumn="_expressioncolumn_nameexpression"/>
   <relational:Table xmi:id="_table_fact" name="Fact">
     <feature xsi:type="relational:Column" xmi:id="_column_fact_key" name="KEY"/>
     <feature xsi:type="relational:Column" xmi:id="_column_fact_key1" name="KEY1"/>
     <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE"/>
-    <feature xsi:type="rolaprel:ExpressionColumn" xmi:id="_expressioncolumn_nameexpression" name="nameExpression">
-      <sqls xmi:id="_sqlstatement" sql="&quot;KEY&quot; || ' ' || &quot;KEY1&quot;">
-        <dialects>generic</dialects>
-        <dialects>h2</dialects>
-      </sqls>
-    </feature>
-    <feature xsi:type="rolaprel:ExpressionColumn" xmi:id="_expressioncolumn_keyexpression" name="keyExpression">
-      <sqls xmi:id="_sqlstatement_1" sql="KEY">
-        <dialects>generic</dialects>
-      </sqls>
-      <sqls xmi:id="_sqlstatement_2" sql="&quot;KEY1&quot; || ' ' || &quot;KEY&quot;">
-        <dialects>h2</dialects>
-      </sqls>
-    </feature>
-    <feature xsi:type="rolaprel:ExpressionColumn" xmi:id="_expressioncolumn_captionexpression" name="captionExpression">
-      <sqls xmi:id="_sqlstatement_3" sql="KEY">
-        <dialects>generic</dialects>
-      </sqls>
-      <sqls xmi:id="_sqlstatement_4" sql="&quot;KEY1&quot; || '___' || &quot;KEY&quot;">
-        <dialects>h2</dialects>
-      </sqls>
-    </feature>
-    <feature xsi:type="rolaprel:ExpressionColumn" xmi:id="_expressioncolumn_ordinalexpression" name="ordinalExpression">
-      <sqls xmi:id="_sqlstatement_5" sql="&quot;KEY&quot; || '___' || &quot;KEY1&quot;">
-        <dialects>generic</dialects>
-        <dialects>h2</dialects>
-      </sqls>
-    </feature>
   </relational:Table>
   <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_hierarchywithhasall" name="HierarchyWithHasAll" primaryKey="_column_fact_key" source="_tablesource_fact" levels="_level_level1 _level_level2"/>
+  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
+  <rolaplev:Level xmi:id="_level_level1" name="Level1" column="_column_fact_key">
+    <nameColumn href="_expressioncolumn_nameexpression"/>
+  </rolaplev:Level>
 </xmi:XMI>
 
 ```
@@ -252,53 +152,31 @@ In this example uses cube with levels with SQL expressions as column.
 
 
 ```xml
-<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapcube="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube" xmlns:rolapdim="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapmeas="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube/measure" xmlns:rolaprel="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/relational" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapcube="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube" xmlns:rolapdim="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapmeas="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube/measure" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
   <rolapcube:PhysicalCube xmi:id="_physicalcube_cube" name="Cube" source="_tablesource_fact">
     <dimensionConnectors xmi:id="_dimensionconnector_dimension" dimension="_standarddimension_dimension" overrideDimensionName="Dimension"/>
     <measureGroups xmi:id="_measuregroup">
       <measures xsi:type="rolapmeas:SumMeasure" xmi:id="_summeasure_measure" name="Measure" column="_column_fact_value"/>
     </measureGroups>
   </rolapcube:PhysicalCube>
-  <rolapdim:StandardDimension xmi:id="_standarddimension_dimension" name="Dimension" hierarchies="_explicithierarchy_hierarchywithhasall"/>
-  <rolaplev:Level xmi:id="_level_level2" name="Level2" captionColumn="_expressioncolumn_captionexpression" column="_expressioncolumn_keyexpression">
-    <ordinalColumns xmi:id="_orderedcolumn_ordinalexpression" column="_expressioncolumn_ordinalexpression"/>
+  <rolaplev:Level xmi:id="_level_level2" name="Level2">
+    <captionColumn href="_expressioncolumn_captionexpression"/>
+    <column href="_expressioncolumn_keyexpression"/>
+    <ordinalColumns xmi:id="_orderedcolumn_ordinalexpression">
+      <column href="_expressioncolumn_ordinalexpression"/>
+    </ordinalColumns>
   </rolaplev:Level>
-  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
-  <rolaplev:Level xmi:id="_level_level1" name="Level1" column="_column_fact_key" nameColumn="_expressioncolumn_nameexpression"/>
   <relational:Table xmi:id="_table_fact" name="Fact">
     <feature xsi:type="relational:Column" xmi:id="_column_fact_key" name="KEY"/>
     <feature xsi:type="relational:Column" xmi:id="_column_fact_key1" name="KEY1"/>
     <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE"/>
-    <feature xsi:type="rolaprel:ExpressionColumn" xmi:id="_expressioncolumn_nameexpression" name="nameExpression">
-      <sqls xmi:id="_sqlstatement" sql="&quot;KEY&quot; || ' ' || &quot;KEY1&quot;">
-        <dialects>generic</dialects>
-        <dialects>h2</dialects>
-      </sqls>
-    </feature>
-    <feature xsi:type="rolaprel:ExpressionColumn" xmi:id="_expressioncolumn_keyexpression" name="keyExpression">
-      <sqls xmi:id="_sqlstatement_1" sql="KEY">
-        <dialects>generic</dialects>
-      </sqls>
-      <sqls xmi:id="_sqlstatement_2" sql="&quot;KEY1&quot; || ' ' || &quot;KEY&quot;">
-        <dialects>h2</dialects>
-      </sqls>
-    </feature>
-    <feature xsi:type="rolaprel:ExpressionColumn" xmi:id="_expressioncolumn_captionexpression" name="captionExpression">
-      <sqls xmi:id="_sqlstatement_3" sql="KEY">
-        <dialects>generic</dialects>
-      </sqls>
-      <sqls xmi:id="_sqlstatement_4" sql="&quot;KEY1&quot; || '___' || &quot;KEY&quot;">
-        <dialects>h2</dialects>
-      </sqls>
-    </feature>
-    <feature xsi:type="rolaprel:ExpressionColumn" xmi:id="_expressioncolumn_ordinalexpression" name="ordinalExpression">
-      <sqls xmi:id="_sqlstatement_5" sql="&quot;KEY&quot; || '___' || &quot;KEY1&quot;">
-        <dialects>generic</dialects>
-        <dialects>h2</dialects>
-      </sqls>
-    </feature>
   </relational:Table>
+  <rolapdim:StandardDimension xmi:id="_standarddimension_dimension" name="Dimension" hierarchies="_explicithierarchy_hierarchywithhasall"/>
   <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_hierarchywithhasall" name="HierarchyWithHasAll" primaryKey="_column_fact_key" source="_tablesource_fact" levels="_level_level1 _level_level2"/>
+  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
+  <rolaplev:Level xmi:id="_level_level1" name="Level1" column="_column_fact_key">
+    <nameColumn href="_expressioncolumn_nameexpression"/>
+  </rolaplev:Level>
 </xmi:XMI>
 
 ```
@@ -311,7 +189,7 @@ This file represents the complete definition of the catalog.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapcat="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/catalog" xmlns:rolapcube="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube" xmlns:rolapdim="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapmeas="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube/measure" xmlns:rolaprel="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/relational" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
-  <relational:SQLSimpleType xmi:id="_sqlsimpletype_character_varying" name="CHARACTER VARYING" structuralFeature="_column_fact_key _column_fact_key1" typeNumber="12"/>
+  <relational:SQLSimpleType xmi:id="_sqlsimpletype_character_varying" name="CHARACTER VARYING" structuralFeature="_column_fact_key1 _column_fact_key" typeNumber="12"/>
   <relational:SQLSimpleType xmi:id="_sqlsimpletype_integer" name="INTEGER" structuralFeature="_column_fact_value" typeNumber="4"/>
   <rolapcat:Catalog xmi:id="_catalog_level_expressions" description="Level with expression-based definitions" name="Daanse Tutorial - Level Expressions" cubes="_physicalcube_cube" dbschemas="_schema"/>
   <relational:Schema xmi:id="_schema">
@@ -319,36 +197,36 @@ This file represents the complete definition of the catalog.
       <feature xsi:type="relational:Column" xmi:id="_column_fact_key" name="KEY" type="_sqlsimpletype_character_varying"/>
       <feature xsi:type="relational:Column" xmi:id="_column_fact_key1" name="KEY1" type="_sqlsimpletype_character_varying"/>
       <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE" type="_sqlsimpletype_integer"/>
-      <feature xsi:type="rolaprel:ExpressionColumn" xmi:id="_expressioncolumn_nameexpression" name="nameExpression">
-        <sqls xmi:id="_sqlstatement_5" sql="&quot;KEY&quot; || ' ' || &quot;KEY1&quot;">
-          <dialects>generic</dialects>
-          <dialects>h2</dialects>
-        </sqls>
-      </feature>
-      <feature xsi:type="rolaprel:ExpressionColumn" xmi:id="_expressioncolumn_keyexpression" name="keyExpression">
-        <sqls xmi:id="_sqlstatement_2" sql="KEY">
-          <dialects>generic</dialects>
-        </sqls>
-        <sqls xmi:id="_sqlstatement_3" sql="&quot;KEY1&quot; || ' ' || &quot;KEY&quot;">
-          <dialects>h2</dialects>
-        </sqls>
-      </feature>
-      <feature xsi:type="rolaprel:ExpressionColumn" xmi:id="_expressioncolumn_captionexpression" name="captionExpression">
-        <sqls xmi:id="_sqlstatement" sql="KEY">
-          <dialects>generic</dialects>
-        </sqls>
-        <sqls xmi:id="_sqlstatement_1" sql="&quot;KEY1&quot; || '___' || &quot;KEY&quot;">
-          <dialects>h2</dialects>
-        </sqls>
-      </feature>
-      <feature xsi:type="rolaprel:ExpressionColumn" xmi:id="_expressioncolumn_ordinalexpression" name="ordinalExpression">
-        <sqls xmi:id="_sqlstatement_4" sql="&quot;KEY&quot; || '___' || &quot;KEY1&quot;">
-          <dialects>generic</dialects>
-          <dialects>h2</dialects>
-        </sqls>
-      </feature>
     </ownedElement>
   </relational:Schema>
+  <rolaprel:ExpressionColumn xmi:id="_expressioncolumn_captionexpression" name="captionExpression">
+    <sqls xmi:id="_sqlstatement_4" sql="KEY">
+      <dialects>generic</dialects>
+    </sqls>
+    <sqls xmi:id="_sqlstatement_2" sql="&quot;KEY1&quot; || '___' || &quot;KEY&quot;">
+      <dialects>h2</dialects>
+    </sqls>
+  </rolaprel:ExpressionColumn>
+  <rolaprel:ExpressionColumn xmi:id="_expressioncolumn_keyexpression" name="keyExpression">
+    <sqls xmi:id="_sqlstatement" sql="KEY">
+      <dialects>generic</dialects>
+    </sqls>
+    <sqls xmi:id="_sqlstatement_1" sql="&quot;KEY1&quot; || ' ' || &quot;KEY&quot;">
+      <dialects>h2</dialects>
+    </sqls>
+  </rolaprel:ExpressionColumn>
+  <rolaprel:ExpressionColumn xmi:id="_expressioncolumn_nameexpression" name="nameExpression">
+    <sqls xmi:id="_sqlstatement_3" sql="&quot;KEY&quot; || ' ' || &quot;KEY1&quot;">
+      <dialects>generic</dialects>
+      <dialects>h2</dialects>
+    </sqls>
+  </rolaprel:ExpressionColumn>
+  <rolaprel:ExpressionColumn xmi:id="_expressioncolumn_ordinalexpression" name="ordinalExpression">
+    <sqls xmi:id="_sqlstatement_5" sql="&quot;KEY&quot; || '___' || &quot;KEY1&quot;">
+      <dialects>generic</dialects>
+      <dialects>h2</dialects>
+    </sqls>
+  </rolaprel:ExpressionColumn>
   <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
   <rolaplev:Level xmi:id="_level_level1" name="Level1" column="_column_fact_key" nameColumn="_expressioncolumn_nameexpression"/>
   <rolaplev:Level xmi:id="_level_level2" name="Level2" captionColumn="_expressioncolumn_captionexpression" column="_expressioncolumn_keyexpression">

@@ -123,18 +123,18 @@ The JoinSource specifies which TableQueries should be joined. It also defines th
     <left xmi:id="_joinedqueryelement_product_class_id" key="_column_product_product_class_id" source="_tablesource_product"/>
     <right xmi:id="_joinedqueryelement_product_class_id_1" key="_column_product_class_product_class_id" source="_tablesource_product_class"/>
   </rolapsrc:JoinSource>
-  <rolapsrc:TableSource xmi:id="_tablesource_product" table="_table_product"/>
   <relational:Table xmi:id="_table_product" name="PRODUCT">
     <feature xsi:type="relational:Column" xmi:id="_column_product_product_class_id" name="PRODUCT_CLASS_ID"/>
     <feature xsi:type="relational:Column" xmi:id="_column_product_product_id" name="PRODUCT_ID"/>
     <feature xsi:type="relational:Column" xmi:id="_column_product_brand_name" name="brand_name"/>
     <feature xsi:type="relational:Column" xmi:id="_column_product_product_name" name="product_name"/>
   </relational:Table>
-  <rolapsrc:TableSource xmi:id="_tablesource_product_class" table="_table_product_class"/>
   <relational:Table xmi:id="_table_product_class" name="PRODUCT_CLASS">
     <feature xsi:type="relational:Column" xmi:id="_column_product_class_product_class_id" name="PRODUCT_CLASS_ID"/>
     <feature xsi:type="relational:Column" xmi:id="_column_product_class_product_famile" name="PRODUCT_FAMILE"/>
   </relational:Table>
+  <rolapsrc:TableSource xmi:id="_tablesource_product" table="_table_product"/>
+  <rolapsrc:TableSource xmi:id="_tablesource_product_class" table="_table_product_class"/>
 </xmi:XMI>
 
 ```
@@ -161,7 +161,6 @@ This hierarchy consists the level Product Family.
 ```xml
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
   <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_product_family" name="Product Family" displayFolder="Details" primaryKey="_column_product_product_id" source="_joinsource" levels="_level_product_family"/>
-  <rolapsrc:TableSource xmi:id="_tablesource_product" table="_table_product"/>
   <relational:Table xmi:id="_table_product" name="PRODUCT">
     <feature xsi:type="relational:Column" xmi:id="_column_product_product_class_id" name="PRODUCT_CLASS_ID"/>
     <feature xsi:type="relational:Column" xmi:id="_column_product_product_id" name="PRODUCT_ID"/>
@@ -173,11 +172,12 @@ This hierarchy consists the level Product Family.
     <left xmi:id="_joinedqueryelement_product_class_id" key="_column_product_product_class_id" source="_tablesource_product"/>
     <right xmi:id="_joinedqueryelement_product_class_id_1" key="_column_product_class_product_class_id" source="_tablesource_product_class"/>
   </rolapsrc:JoinSource>
-  <rolapsrc:TableSource xmi:id="_tablesource_product_class" table="_table_product_class"/>
   <relational:Table xmi:id="_table_product_class" name="PRODUCT_CLASS">
     <feature xsi:type="relational:Column" xmi:id="_column_product_class_product_class_id" name="PRODUCT_CLASS_ID"/>
     <feature xsi:type="relational:Column" xmi:id="_column_product_class_product_famile" name="PRODUCT_FAMILE"/>
   </relational:Table>
+  <rolapsrc:TableSource xmi:id="_tablesource_product" table="_table_product"/>
+  <rolapsrc:TableSource xmi:id="_tablesource_product_class" table="_table_product_class"/>
 </xmi:XMI>
 
 ```
@@ -190,7 +190,6 @@ The Dimension has only one hierarchy.
 ```xml
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapdim="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
   <rolapdim:StandardDimension xmi:id="_standarddimension_product" name="Product" hierarchies="_explicithierarchy_product_family"/>
-  <rolapsrc:TableSource xmi:id="_tablesource_product" table="_table_product"/>
   <relational:Table xmi:id="_table_product" name="PRODUCT">
     <feature xsi:type="relational:Column" xmi:id="_column_product_product_class_id" name="PRODUCT_CLASS_ID"/>
     <feature xsi:type="relational:Column" xmi:id="_column_product_product_id" name="PRODUCT_ID"/>
@@ -202,12 +201,13 @@ The Dimension has only one hierarchy.
     <left xmi:id="_joinedqueryelement_product_class_id" key="_column_product_product_class_id" source="_tablesource_product"/>
     <right xmi:id="_joinedqueryelement_product_class_id_1" key="_column_product_class_product_class_id" source="_tablesource_product_class"/>
   </rolapsrc:JoinSource>
-  <rolapsrc:TableSource xmi:id="_tablesource_product_class" table="_table_product_class"/>
-  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_product_family" name="Product Family" displayFolder="Details" primaryKey="_column_product_product_id" source="_joinsource" levels="_level_product_family"/>
   <relational:Table xmi:id="_table_product_class" name="PRODUCT_CLASS">
     <feature xsi:type="relational:Column" xmi:id="_column_product_class_product_class_id" name="PRODUCT_CLASS_ID"/>
     <feature xsi:type="relational:Column" xmi:id="_column_product_class_product_famile" name="PRODUCT_FAMILE"/>
   </relational:Table>
+  <rolapsrc:TableSource xmi:id="_tablesource_product" table="_table_product"/>
+  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_product_family" name="Product Family" displayFolder="Details" primaryKey="_column_product_product_id" source="_joinsource" levels="_level_product_family"/>
+  <rolapsrc:TableSource xmi:id="_tablesource_product_class" table="_table_product_class"/>
 </xmi:XMI>
 
 ```
@@ -225,9 +225,9 @@ This file represents the complete definition of the catalog.
     <aggregationMeasures xmi:id="_aggregationmeasure_measures_store_cost" column="_column_agg_c_special_sales_fact_1997_store_cost_sum" name="[Measures].[Store Cost]"/>
     <aggregationLevels xmi:id="_aggregationlevel_product_product_family_product_family" column="_column_product_class_product_famile" name="[Product].[Product Family].[Product Family]"/>
   </rolapagg:AggregationName>
-  <relational:SQLSimpleType xmi:id="_sqlsimpletype_character_varying" name="CHARACTER VARYING" structuralFeature="_column_product_class_product_famile _column_product_brand_name _column_product_product_name" typeNumber="12"/>
-  <relational:SQLSimpleType xmi:id="_sqlsimpletype_decimal" name="DECIMAL" structuralFeature="_column_agg_c_special_sales_fact_1997_store_cost_sum _column_sales_fact_1997_store_cost" typeNumber="3" numericPrecision="18" numericPrecisionRadix="10" numericScale="4"/>
-  <relational:SQLSimpleType xmi:id="_sqlsimpletype_integer" name="INTEGER" structuralFeature="_column_agg_c_special_sales_fact_1997_product_id _column_agg_c_special_sales_fact_1997_fact_count _column_product_class_product_class_id _column_product_product_class_id _column_sales_fact_1997_product_id _column_product_product_id" typeNumber="4"/>
+  <relational:SQLSimpleType xmi:id="_sqlsimpletype_character_varying" name="CHARACTER VARYING" structuralFeature="_column_product_product_name _column_product_brand_name _column_product_class_product_famile" typeNumber="12"/>
+  <relational:SQLSimpleType xmi:id="_sqlsimpletype_decimal" name="DECIMAL" structuralFeature="_column_sales_fact_1997_store_cost _column_agg_c_special_sales_fact_1997_store_cost_sum" typeNumber="3" numericPrecision="18" numericPrecisionRadix="10" numericScale="4"/>
+  <relational:SQLSimpleType xmi:id="_sqlsimpletype_integer" name="INTEGER" structuralFeature="_column_sales_fact_1997_product_id _column_agg_c_special_sales_fact_1997_fact_count _column_product_product_class_id _column_product_class_product_class_id _column_agg_c_special_sales_fact_1997_product_id _column_product_product_id" typeNumber="4"/>
   <rolapcat:Catalog xmi:id="_catalog_aggregation_aggregate_tables" description="Aggregate table optimization techniques" name="Daanse Tutorial - Aggregation Aggregate Tables" cubes="_physicalcube_sales" dbschemas="_schema"/>
   <relational:Schema xmi:id="_schema">
     <ownedElement xsi:type="relational:Table" xmi:id="_table_sales_fact_1997" name="SALES_FACT_1997">
@@ -252,12 +252,12 @@ This file represents the complete definition of the catalog.
     <ownedElement xsi:type="relational:Table" xmi:id="_table_agg_c_14_sales_fact_1997" name="AGG_C_14_SALES_FACT_1997"/>
     <ownedElement xsi:type="relational:Table" xmi:id="_table_agg_lc_100_sales_fact_1997" name="AGG_LC_100_SALES_FACT_1997"/>
   </relational:Schema>
-  <rolapsrc:TableSource xmi:id="_tablesource_product" table="_table_product"/>
   <rolapsrc:TableSource xmi:id="_tablesource_product_class" table="_table_product_class"/>
   <rolapsrc:TableSource xmi:id="_tablesource_sales_fact_1997" table="_table_sales_fact_1997" aggregationTables="_aggregationname">
     <aggregationExcludes xmi:id="_aggregationexclude_agg_c_14_sales_fact_1997" name="AGG_C_14_SALES_FACT_1997"/>
     <aggregationExcludes xmi:id="_aggregationexclude_agg_lc_100_sales_fact_1997" name="AGG_LC_100_SALES_FACT_1997"/>
   </rolapsrc:TableSource>
+  <rolapsrc:TableSource xmi:id="_tablesource_product" table="_table_product"/>
   <rolapsrc:JoinSource xmi:id="_joinsource">
     <left xmi:id="_joinedqueryelement_product_class_id" key="_column_product_product_class_id" source="_tablesource_product"/>
     <right xmi:id="_joinedqueryelement_product_class_id_1" key="_column_product_class_product_class_id" source="_tablesource_product_class"/>

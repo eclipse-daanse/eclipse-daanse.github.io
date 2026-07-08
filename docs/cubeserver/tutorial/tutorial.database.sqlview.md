@@ -17,7 +17,7 @@ The DialectSqlView must contain a SqlStatement that is used to get the data from
 ```xml
 <rolaprel:DialectSqlView xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolaprel="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/relational" xmi:id="_dialectsqlview_sqlview" name="sqlview">
   <feature xsi:type="relational:Column" xmi:id="_column_sqlview_columnone" name="ColumnOne"/>
-  <dialectStatements xmi:id="_sqlstatement" sql="select t.c as ColumnOne from table t">
+  <dialectStatements xmi:id="_sqlstatement" sql="select &quot;table&quot;.&quot;c&quot; as &quot;ColumnOne&quot; from table">
     <dialects>h2</dialects>
   </dialectStatements>
 </rolaprel:DialectSqlView>
@@ -37,7 +37,7 @@ This file represents the complete definition of the catalog.
   <relational:Schema xmi:id="_schema">
     <ownedElement xsi:type="rolaprel:DialectSqlView" xmi:id="_dialectsqlview_sqlview" name="sqlview">
       <feature xsi:type="relational:Column" xmi:id="_column_sqlview_columnone" name="ColumnOne" type="_sqlsimpletype_character_varying"/>
-      <dialectStatements xmi:id="_sqlstatement" sql="select t.c as ColumnOne from table t">
+      <dialectStatements xmi:id="_sqlstatement" sql="select &quot;table&quot;.&quot;c&quot; as &quot;ColumnOne&quot; from table">
         <dialects>h2</dialects>
       </dialectStatements>
     </ownedElement>
