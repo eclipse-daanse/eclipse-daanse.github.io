@@ -126,13 +126,13 @@ This file represents the complete definition of the catalog.
     </measureGroups>
   </rolapcube:PhysicalCube>
   <rolapcacc:AccessRole xmi:id="_accessrole_roleall" name="roleAll">
-    <accessCatalogGrants xmi:id="_accesscataloggrant_1" catalogAccess="all">
+    <accessCatalogGrants xmi:id="_accesscataloggrant" catalogAccess="all">
       <cubeGrants xmi:id="_accesscubegrant_cube1" cubeAccess="all" cube="_physicalcube_cube1"/>
       <databaseSchemaGrants xmi:id="_accessdatabaseschemagrant" databaseSchemaAccess="all" databaseSchema="_schema"/>
     </accessCatalogGrants>
   </rolapcacc:AccessRole>
   <rolapcacc:AccessRole xmi:id="_accessrole_rolenone" name="roleNone">
-    <accessCatalogGrants xmi:id="_accesscataloggrant" catalogAccess="all">
+    <accessCatalogGrants xmi:id="_accesscataloggrant_1" catalogAccess="all">
       <cubeGrants xmi:id="_accesscubegrant_cube1_1" cubeAccess="all" cube="_physicalcube_cube1"/>
       <databaseSchemaGrants xmi:id="_accessdatabaseschemagrant_1" databaseSchema="_schema"/>
     </accessCatalogGrants>

@@ -68,11 +68,11 @@ If the `datatype` attribute is not explicitly defined, the data type is determin
       <measures xsi:type="rolapmeas:SumMeasure" xmi:id="_summeasure_measure_datatype_numeric" name="Measure - Datatype Numeric" dataType="Numeric" column="_column_fact_value"/>
     </measureGroups>
   </rolapcube:PhysicalCube>
-  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
   <relational:Table xmi:id="_table_fact" name="Fact">
     <feature xsi:type="relational:Column" xmi:id="_column_fact_key" name="KEY"/>
     <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE"/>
   </relational:Table>
+  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
 </xmi:XMI>
 
 ```

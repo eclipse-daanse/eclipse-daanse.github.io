@@ -28,23 +28,12 @@ This file represents the complete definition of the catalog.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapcat="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/catalog" xmlns:rolaprel="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/relational">
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapcat="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/catalog">
+  <relational:SQLSimpleType xmi:id="_sqlsimpletype_character_varying" name="CHARACTER VARYING" structuralFeature="_column_tablewithexpressioncolumn_column1" typeNumber="12"/>
   <rolapcat:Catalog xmi:id="_catalog_database_expression_column" description="SQL expression columns and computed fields" name="Daanse Tutorial - Database Expression Column" dbschemas="_schema"/>
   <relational:Schema xmi:id="_schema">
     <ownedElement xsi:type="relational:Table" xmi:id="_table_tablewithexpressioncolumn" name="TableWithExpressionColumn">
-      <feature xsi:type="relational:Column" xmi:id="_column_tablewithexpressioncolumn_column1" name="column1"/>
-      <feature xsi:type="rolaprel:ExpressionColumn" xmi:id="_expressioncolumn_sqlexpressioncolumn" name="SqlExpressionColumn">
-        <sqls xmi:id="_sqlstatement" sql="SUBSTRING(column1,1,3)">
-          <dialects>generic</dialects>
-          <dialects>mysql</dialects>
-        </sqls>
-        <sqls xmi:id="_sqlstatement_1" sql="SUBSTR(column1,1,3)">
-          <dialects>oracle</dialects>
-        </sqls>
-        <sqls xmi:id="_sqlstatement_2" sql="substring(column1, 1, 3)">
-          <dialects>h2</dialects>
-        </sqls>
-      </feature>
+      <feature xsi:type="relational:Column" xmi:id="_column_tablewithexpressioncolumn_column1" name="column1" type="_sqlsimpletype_character_varying"/>
     </ownedElement>
   </relational:Schema>
 </xmi:XMI>

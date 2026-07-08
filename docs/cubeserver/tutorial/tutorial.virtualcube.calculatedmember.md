@@ -96,13 +96,13 @@ In this example uses cube with fact table `Fact` as data.
       <measures xsi:type="rolapmeas:SumMeasure" xmi:id="_summeasure_measurecube1" name="MeasureCube1" column="_column_fact_value"/>
     </measureGroups>
   </rolapcube:PhysicalCube>
-  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
-  <rolapdim:StandardDimension xmi:id="_standarddimension_dimension1" name="Dimension1" hierarchies="_explicithierarchy_hierarchywithouthasall"/>
   <relational:Table xmi:id="_table_fact" name="Fact">
     <feature xsi:type="relational:Column" xmi:id="_column_fact_key" name="KEY"/>
     <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE"/>
   </relational:Table>
+  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
   <rolaplev:Level xmi:id="_level_level" name="Level" column="_column_fact_key"/>
+  <rolapdim:StandardDimension xmi:id="_standarddimension_dimension1" name="Dimension1" hierarchies="_explicithierarchy_hierarchywithouthasall"/>
   <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_hierarchywithouthasall" name="HierarchyWithoutHasAll" hasAll="false" primaryKey="_column_fact_key" source="_tablesource_fact" levels="_level_level"/>
 </xmi:XMI>
 
@@ -122,13 +122,13 @@ In this example uses cube with fact table `Fact` as data.
       <measures xsi:type="rolapmeas:SumMeasure" xmi:id="_summeasure_measurecube1" name="MeasureCube1" column="_column_fact_value"/>
     </measureGroups>
   </rolapcube:PhysicalCube>
-  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
-  <rolapdim:StandardDimension xmi:id="_standarddimension_dimension1" name="Dimension1" hierarchies="_explicithierarchy_hierarchywithouthasall"/>
   <relational:Table xmi:id="_table_fact" name="Fact">
     <feature xsi:type="relational:Column" xmi:id="_column_fact_key" name="KEY"/>
     <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE"/>
   </relational:Table>
+  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
   <rolaplev:Level xmi:id="_level_level" name="Level" column="_column_fact_key"/>
+  <rolapdim:StandardDimension xmi:id="_standarddimension_dimension1" name="Dimension1" hierarchies="_explicithierarchy_hierarchywithouthasall"/>
   <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_hierarchywithouthasall" name="HierarchyWithoutHasAll" hasAll="false" primaryKey="_column_fact_key" source="_tablesource_fact" levels="_level_level"/>
 </xmi:XMI>
 
@@ -141,24 +141,15 @@ Also virtual cube has references to dimensions from Cube1 and Cube2
 
 
 ```xml
-<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapcube="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapmeas="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube/measure" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
-  <rolapcube:VirtualCube xmi:id="_virtualcube_cube1cube2" name="Cube1Cube2">
-    <calculatedMembers xmi:id="_calculatedmember_sum_cub" name="Sum_Cub" formula="[Measures].[MeasureCube1] + [Measures].[MeasureCube2]" hierarchy="_explicithierarchy_hierarchywithouthasall"/>
-    <dimensionConnectors href="_dimensionconnector_cube1dimension1"/>
-    <dimensionConnectors href="_dimensionconnector_cube2dimension1"/>
-    <referencedCalculatedMembers href="_calculatedmember_sum_cub1"/>
-    <referencedCalculatedMembers href="_calculatedmember_sum_cub2"/>
-    <referencedMeasures xsi:type="rolapmeas:SumMeasure" href="_summeasure_measurecube1"/>
-    <referencedMeasures xsi:type="rolapmeas:SumMeasure" href="_summeasure_measurecube2"/>
-  </rolapcube:VirtualCube>
-  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
-  <relational:Table xmi:id="_table_fact" name="Fact">
-    <feature xsi:type="relational:Column" xmi:id="_column_fact_key" name="KEY"/>
-    <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE"/>
-  </relational:Table>
-  <rolaplev:Level xmi:id="_level_level" name="Level" column="_column_fact_key"/>
-  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_hierarchywithouthasall" name="HierarchyWithoutHasAll" hasAll="false" primaryKey="_column_fact_key" source="_tablesource_fact" levels="_level_level"/>
-</xmi:XMI>
+<rolapcube:VirtualCube xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:rolapcube="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube" xmlns:rolapmeas="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube/measure" xmi:id="_virtualcube_cube1cube2" name="Cube1Cube2">
+  <calculatedMembers xmi:id="_calculatedmember_sum_cub" name="Sum_Cub" formula="[Measures].[MeasureCube1] + [Measures].[MeasureCube2]"/>
+  <dimensionConnectors href="_dimensionconnector_cube1dimension1"/>
+  <dimensionConnectors href="_dimensionconnector_cube2dimension1"/>
+  <referencedCalculatedMembers href="_calculatedmember_sum_cub1"/>
+  <referencedCalculatedMembers href="_calculatedmember_sum_cub2"/>
+  <referencedMeasures xsi:type="rolapmeas:SumMeasure" href="_summeasure_measurecube1"/>
+  <referencedMeasures xsi:type="rolapmeas:SumMeasure" href="_summeasure_measurecube2"/>
+</rolapcube:VirtualCube>
 
 ```
 *<small>Note: This is only a symbolic example. For the exact definition, see the [Definition](#definition) section.</small>*
@@ -186,19 +177,19 @@ This file represents the complete definition of the catalog.
   <rolapcube:PhysicalCube xmi:id="_physicalcube_cube1" name="Cube1" source="_tablesource_fact">
     <calculatedMembers xmi:id="_calculatedmember_sum_cub1" name="Sum_Cub1" formula="[Measures].[MeasureCube1] + [Measures].[MeasureCube1]"/>
     <dimensionConnectors xmi:id="_dimensionconnector_cube1dimension1" foreignKey="_column_fact_key" dimension="_standarddimension_dimension1" overrideDimensionName="Cube1Dimension1"/>
-    <measureGroups xmi:id="_measuregroup">
+    <measureGroups xmi:id="_measuregroup_1">
       <measures xsi:type="rolapmeas:SumMeasure" xmi:id="_summeasure_measurecube1" name="MeasureCube1" column="_column_fact_value"/>
     </measureGroups>
   </rolapcube:PhysicalCube>
   <rolapcube:PhysicalCube xmi:id="_physicalcube_cube2" name="Cube2" source="_tablesource_fact">
     <calculatedMembers xmi:id="_calculatedmember_sum_cub2" name="Sum_Cub2" formula="[Measures].[MeasureCube2] + [Measures].[MeasureCube2]"/>
     <dimensionConnectors xmi:id="_dimensionconnector_cube2dimension1" foreignKey="_column_fact_key" dimension="_standarddimension_dimension1" overrideDimensionName="Cube2Dimension1"/>
-    <measureGroups xmi:id="_measuregroup_1">
+    <measureGroups xmi:id="_measuregroup">
       <measures xsi:type="rolapmeas:SumMeasure" xmi:id="_summeasure_measurecube2" name="MeasureCube2" column="_column_fact_value"/>
     </measureGroups>
   </rolapcube:PhysicalCube>
   <rolapcube:VirtualCube xmi:id="_virtualcube_cube1cube2" name="Cube1Cube2" dimensionConnectors="_dimensionconnector_cube1dimension1 _dimensionconnector_cube2dimension1" referencedCalculatedMembers="_calculatedmember_sum_cub1 _calculatedmember_sum_cub2" referencedMeasures="_summeasure_measurecube1 _summeasure_measurecube2">
-    <calculatedMembers xmi:id="_calculatedmember_sum_cub" name="Sum_Cub" formula="[Measures].[MeasureCube1] + [Measures].[MeasureCube2]" hierarchy="_explicithierarchy_hierarchywithouthasall"/>
+    <calculatedMembers xmi:id="_calculatedmember_sum_cub" name="Sum_Cub" formula="[Measures].[MeasureCube1] + [Measures].[MeasureCube2]"/>
   </rolapcube:VirtualCube>
 </xmi:XMI>
 

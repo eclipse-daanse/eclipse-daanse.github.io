@@ -2,7 +2,7 @@
 title: Cube Minimal
 group: Cube
 kind: TUTORIAL
-number: 2.01
+number: 2.01.01
 ---
 # Daanse Tutorial - Cube Minimal
 

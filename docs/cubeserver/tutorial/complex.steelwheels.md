@@ -22,15 +22,15 @@ The Query selects all columns from the customer_w_ter table.
   <relational:Table xmi:id="_table_customer_w_ter" name="customer_w_ter">
     <feature xsi:type="relational:Column" xmi:id="_column_customer_w_ter_customernumber" name="CUSTOMERNUMBER"/>
     <feature xsi:type="relational:Column" xmi:id="_column_customer_w_ter_customername" name="CUSTOMERNAME"/>
-    <feature xsi:type="relational:Column" xmi:id="_column_customer_w_ter_territory" name="TERRITORY"/>
-    <feature xsi:type="relational:Column" xmi:id="_column_customer_w_ter_country" name="COUNTRY"/>
-    <feature xsi:type="relational:Column" xmi:id="_column_customer_w_ter_state" name="STATE"/>
-    <feature xsi:type="relational:Column" xmi:id="_column_customer_w_ter_city" name="CITY"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_customer_w_ter_territory" name="TERRITORY" isNullable="columnNullable"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_customer_w_ter_country" name="COUNTRY" isNullable="columnNullable"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_customer_w_ter_state" name="STATE" isNullable="columnNullable"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_customer_w_ter_city" name="CITY" isNullable="columnNullable"/>
     <feature xsi:type="relational:Column" xmi:id="_column_customer_w_ter_contactfirstname" name="CONTACTFIRSTNAME"/>
     <feature xsi:type="relational:Column" xmi:id="_column_customer_w_ter_contactlastname" name="CONTACTLASTNAME"/>
     <feature xsi:type="relational:Column" xmi:id="_column_customer_w_ter_phone" name="PHONE"/>
     <feature xsi:type="relational:Column" xmi:id="_column_customer_w_ter_addressline1" name="ADDRESSLINE1"/>
-    <feature xsi:type="relational:Column" xmi:id="_column_customer_w_ter_creditlimit" name="CREDITLIMIT"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_customer_w_ter_creditlimit" name="CREDITLIMIT" isNullable="columnNullable"/>
   </relational:Table>
 </xmi:XMI>
 
@@ -132,25 +132,25 @@ where SteelWheels operates, enabling regional sales analysis.
 ```xml
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapdim="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
   <rolapdim:StandardDimension xmi:id="_standarddimension_markets" name="Markets" hierarchies="_explicithierarchy_customernumber"/>
-  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_customernumber" allMemberName="All Markets" primaryKey="_column_customer_w_ter_customernumber" source="_tablesource_customer_w_ter" levels="_level_territory _level_country _level_state_province _level_city"/>
+  <rolaplev:Level xmi:id="_level_city" name="City" column="_column_customer_w_ter_city" columnType="String" uniqueMembers="true"/>
   <rolaplev:Level xmi:id="_level_state_province" name="State Province" column="_column_customer_w_ter_state" columnType="String" uniqueMembers="true"/>
+  <rolaplev:Level xmi:id="_level_territory" name="Territory" column="_column_customer_w_ter_territory" columnType="String" uniqueMembers="true"/>
+  <rolapsrc:TableSource xmi:id="_tablesource_customer_w_ter" table="_table_customer_w_ter"/>
   <relational:Table xmi:id="_table_customer_w_ter" name="customer_w_ter">
     <feature xsi:type="relational:Column" xmi:id="_column_customer_w_ter_customernumber" name="CUSTOMERNUMBER"/>
     <feature xsi:type="relational:Column" xmi:id="_column_customer_w_ter_customername" name="CUSTOMERNAME"/>
-    <feature xsi:type="relational:Column" xmi:id="_column_customer_w_ter_territory" name="TERRITORY"/>
-    <feature xsi:type="relational:Column" xmi:id="_column_customer_w_ter_country" name="COUNTRY"/>
-    <feature xsi:type="relational:Column" xmi:id="_column_customer_w_ter_state" name="STATE"/>
-    <feature xsi:type="relational:Column" xmi:id="_column_customer_w_ter_city" name="CITY"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_customer_w_ter_territory" name="TERRITORY" isNullable="columnNullable"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_customer_w_ter_country" name="COUNTRY" isNullable="columnNullable"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_customer_w_ter_state" name="STATE" isNullable="columnNullable"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_customer_w_ter_city" name="CITY" isNullable="columnNullable"/>
     <feature xsi:type="relational:Column" xmi:id="_column_customer_w_ter_contactfirstname" name="CONTACTFIRSTNAME"/>
     <feature xsi:type="relational:Column" xmi:id="_column_customer_w_ter_contactlastname" name="CONTACTLASTNAME"/>
     <feature xsi:type="relational:Column" xmi:id="_column_customer_w_ter_phone" name="PHONE"/>
     <feature xsi:type="relational:Column" xmi:id="_column_customer_w_ter_addressline1" name="ADDRESSLINE1"/>
-    <feature xsi:type="relational:Column" xmi:id="_column_customer_w_ter_creditlimit" name="CREDITLIMIT"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_customer_w_ter_creditlimit" name="CREDITLIMIT" isNullable="columnNullable"/>
   </relational:Table>
+  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_customernumber" allMemberName="All Markets" primaryKey="_column_customer_w_ter_customernumber" source="_tablesource_customer_w_ter" levels="_level_territory _level_country _level_state_province _level_city"/>
   <rolaplev:Level xmi:id="_level_country" name="Country" column="_column_customer_w_ter_country" columnType="String"/>
-  <rolaplev:Level xmi:id="_level_city" name="City" column="_column_customer_w_ter_city" columnType="String" uniqueMembers="true"/>
-  <rolapsrc:TableSource xmi:id="_tablesource_customer_w_ter" table="_table_customer_w_ter"/>
-  <rolaplev:Level xmi:id="_level_territory" name="Territory" column="_column_customer_w_ter_territory" columnType="String" uniqueMembers="true"/>
 </xmi:XMI>
 
 ```
@@ -164,22 +164,22 @@ for detailed customer-level sales analysis and segmentation.
 ```xml
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapdim="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
   <rolapdim:StandardDimension xmi:id="_standarddimension_customers" name="Customers" hierarchies="_explicithierarchy_customernumber"/>
-  <rolaplev:Level xmi:id="_level_customer" name="Customer" column="_column_customer_w_ter_customername" columnType="String" uniqueMembers="true"/>
+  <rolapsrc:TableSource xmi:id="_tablesource_customer_w_ter" table="_table_customer_w_ter"/>
   <relational:Table xmi:id="_table_customer_w_ter" name="customer_w_ter">
     <feature xsi:type="relational:Column" xmi:id="_column_customer_w_ter_customernumber" name="CUSTOMERNUMBER"/>
     <feature xsi:type="relational:Column" xmi:id="_column_customer_w_ter_customername" name="CUSTOMERNAME"/>
-    <feature xsi:type="relational:Column" xmi:id="_column_customer_w_ter_territory" name="TERRITORY"/>
-    <feature xsi:type="relational:Column" xmi:id="_column_customer_w_ter_country" name="COUNTRY"/>
-    <feature xsi:type="relational:Column" xmi:id="_column_customer_w_ter_state" name="STATE"/>
-    <feature xsi:type="relational:Column" xmi:id="_column_customer_w_ter_city" name="CITY"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_customer_w_ter_territory" name="TERRITORY" isNullable="columnNullable"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_customer_w_ter_country" name="COUNTRY" isNullable="columnNullable"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_customer_w_ter_state" name="STATE" isNullable="columnNullable"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_customer_w_ter_city" name="CITY" isNullable="columnNullable"/>
     <feature xsi:type="relational:Column" xmi:id="_column_customer_w_ter_contactfirstname" name="CONTACTFIRSTNAME"/>
     <feature xsi:type="relational:Column" xmi:id="_column_customer_w_ter_contactlastname" name="CONTACTLASTNAME"/>
     <feature xsi:type="relational:Column" xmi:id="_column_customer_w_ter_phone" name="PHONE"/>
     <feature xsi:type="relational:Column" xmi:id="_column_customer_w_ter_addressline1" name="ADDRESSLINE1"/>
-    <feature xsi:type="relational:Column" xmi:id="_column_customer_w_ter_creditlimit" name="CREDITLIMIT"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_customer_w_ter_creditlimit" name="CREDITLIMIT" isNullable="columnNullable"/>
   </relational:Table>
-  <rolapsrc:TableSource xmi:id="_tablesource_customer_w_ter" table="_table_customer_w_ter"/>
   <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_customernumber" allMemberName="All Customers" primaryKey="_column_customer_w_ter_customernumber" source="_tablesource_customer_w_ter" levels="_level_customer"/>
+  <rolaplev:Level xmi:id="_level_customer" name="Customer" column="_column_customer_w_ter_customername" columnType="String" uniqueMembers="true"/>
 </xmi:XMI>
 
 ```
@@ -194,6 +194,8 @@ into product lines, vendors, and individual product details for sales analysis.
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapdim="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
   <rolapdim:StandardDimension xmi:id="_standarddimension_product" name="Product" hierarchies="_explicithierarchy_productcode"/>
   <rolapsrc:TableSource xmi:id="_tablesource_products" table="_table_products"/>
+  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_productcode" allMemberName="All Products" primaryKey="_column_products_productcode" source="_tablesource_products" levels="_level_line _level_vendor _level_product"/>
+  <rolaplev:Level xmi:id="_level_vendor" name="Vendor" column="_column_products_productvendor" columnType="String" uniqueMembers="true"/>
   <relational:Table xmi:id="_table_products" name="products">
     <feature xsi:type="relational:Column" xmi:id="_column_products_productcode" name="PRODUCTCODE"/>
     <feature xsi:type="relational:Column" xmi:id="_column_products_productname" name="PRODUCTNAME"/>
@@ -201,10 +203,8 @@ into product lines, vendors, and individual product details for sales analysis.
     <feature xsi:type="relational:Column" xmi:id="_column_products_productvendor" name="PRODUCTVENDOR"/>
     <feature xsi:type="relational:Column" xmi:id="_column_products_productdescription" name="PRODUCTDESCRIPTION"/>
   </relational:Table>
-  <rolaplev:Level xmi:id="_level_vendor" name="Vendor" column="_column_products_productvendor" columnType="String" uniqueMembers="true"/>
   <rolaplev:Level xmi:id="_level_line" name="Line" column="_column_products_productline" columnType="String" uniqueMembers="true"/>
   <rolaplev:Level xmi:id="_level_product" name="Product" column="_column_products_productname" columnType="String" uniqueMembers="true"/>
-  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_productcode" allMemberName="All Products" primaryKey="_column_products_productcode" source="_tablesource_products" levels="_level_line _level_vendor _level_product"/>
 </xmi:XMI>
 
 ```
@@ -219,7 +219,8 @@ and quarterly breakdowns for trend analysis and seasonal comparisons.
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapdim="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
   <rolapdim:TimeDimension xmi:id="_timedimension_time" name="Time" hierarchies="_explicithierarchy_time_id"/>
   <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_time_id" allMemberName="All Years" primaryKey="_column_time_time_id" source="_tablesource_time" levels="_level_years _level_quarters _level_months"/>
-  <rolaplev:Level xmi:id="_level_years" name="Years" column="_column_time_year_id" type="TimeYears" columnType="Integer" uniqueMembers="true"/>
+  <rolaplev:Level xmi:id="_level_months" name="Months" column="_column_time_month_name" type="TimeMonths" columnType="String"/>
+  <rolapsrc:TableSource xmi:id="_tablesource_time" table="_table_time"/>
   <relational:Table xmi:id="_table_time" name="time">
     <feature xsi:type="relational:Column" xmi:id="_column_time_time_id" name="TIME_ID"/>
     <feature xsi:type="relational:Column" xmi:id="_column_time_year_id" name="YEAR_ID"/>
@@ -228,9 +229,8 @@ and quarterly breakdowns for trend analysis and seasonal comparisons.
     <feature xsi:type="relational:Column" xmi:id="_column_time_month_name" name="MONTH_NAME"/>
     <feature xsi:type="relational:Column" xmi:id="_column_time_month_id" name="MONTH_ID"/>
   </relational:Table>
-  <rolaplev:Level xmi:id="_level_months" name="Months" column="_column_time_month_name" type="TimeMonths" columnType="String"/>
+  <rolaplev:Level xmi:id="_level_years" name="Years" column="_column_time_year_id" type="TimeYears" columnType="Integer" uniqueMembers="true"/>
   <rolaplev:Level xmi:id="_level_quarters" name="Quarters" column="_column_time_qtr_name" type="TimeQuarters" columnType="String"/>
-  <rolapsrc:TableSource xmi:id="_tablesource_time" table="_table_time"/>
 </xmi:XMI>
 
 ```
@@ -242,12 +242,12 @@ The Order Status dimension represents the current state of orders for tracking f
 ```xml
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:rolapdim="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level">
   <rolapdim:StandardDimension xmi:id="_standarddimension_order_status" name="Order Status" hierarchies="_explicithierarchy_status"/>
-  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_status" allMemberName="All Status Types" levels="_level_type">
-    <primaryKey href="_column_orderfact_status"/>
-  </rolaphier:ExplicitHierarchy>
   <rolaplev:Level xmi:id="_level_type" name="Type" columnType="String" uniqueMembers="true">
     <column href="_column_orderfact_status"/>
   </rolaplev:Level>
+  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_status" allMemberName="All Status Types" levels="_level_type">
+    <primaryKey href="_column_orderfact_status"/>
+  </rolaphier:ExplicitHierarchy>
 </xmi:XMI>
 
 ```
@@ -259,24 +259,24 @@ The Markets hierarchy organizes geographic territories with hasAll enabled and p
 ```xml
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
   <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_customernumber" allMemberName="All Markets" primaryKey="_column_customer_w_ter_customernumber" source="_tablesource_customer_w_ter" levels="_level_territory _level_country _level_state_province _level_city"/>
+  <rolaplev:Level xmi:id="_level_city" name="City" column="_column_customer_w_ter_city" columnType="String" uniqueMembers="true"/>
   <rolaplev:Level xmi:id="_level_state_province" name="State Province" column="_column_customer_w_ter_state" columnType="String" uniqueMembers="true"/>
+  <rolaplev:Level xmi:id="_level_territory" name="Territory" column="_column_customer_w_ter_territory" columnType="String" uniqueMembers="true"/>
+  <rolapsrc:TableSource xmi:id="_tablesource_customer_w_ter" table="_table_customer_w_ter"/>
   <relational:Table xmi:id="_table_customer_w_ter" name="customer_w_ter">
     <feature xsi:type="relational:Column" xmi:id="_column_customer_w_ter_customernumber" name="CUSTOMERNUMBER"/>
     <feature xsi:type="relational:Column" xmi:id="_column_customer_w_ter_customername" name="CUSTOMERNAME"/>
-    <feature xsi:type="relational:Column" xmi:id="_column_customer_w_ter_territory" name="TERRITORY"/>
-    <feature xsi:type="relational:Column" xmi:id="_column_customer_w_ter_country" name="COUNTRY"/>
-    <feature xsi:type="relational:Column" xmi:id="_column_customer_w_ter_state" name="STATE"/>
-    <feature xsi:type="relational:Column" xmi:id="_column_customer_w_ter_city" name="CITY"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_customer_w_ter_territory" name="TERRITORY" isNullable="columnNullable"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_customer_w_ter_country" name="COUNTRY" isNullable="columnNullable"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_customer_w_ter_state" name="STATE" isNullable="columnNullable"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_customer_w_ter_city" name="CITY" isNullable="columnNullable"/>
     <feature xsi:type="relational:Column" xmi:id="_column_customer_w_ter_contactfirstname" name="CONTACTFIRSTNAME"/>
     <feature xsi:type="relational:Column" xmi:id="_column_customer_w_ter_contactlastname" name="CONTACTLASTNAME"/>
     <feature xsi:type="relational:Column" xmi:id="_column_customer_w_ter_phone" name="PHONE"/>
     <feature xsi:type="relational:Column" xmi:id="_column_customer_w_ter_addressline1" name="ADDRESSLINE1"/>
-    <feature xsi:type="relational:Column" xmi:id="_column_customer_w_ter_creditlimit" name="CREDITLIMIT"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_customer_w_ter_creditlimit" name="CREDITLIMIT" isNullable="columnNullable"/>
   </relational:Table>
   <rolaplev:Level xmi:id="_level_country" name="Country" column="_column_customer_w_ter_country" columnType="String"/>
-  <rolaplev:Level xmi:id="_level_city" name="City" column="_column_customer_w_ter_city" columnType="String" uniqueMembers="true"/>
-  <rolapsrc:TableSource xmi:id="_tablesource_customer_w_ter" table="_table_customer_w_ter"/>
-  <rolaplev:Level xmi:id="_level_territory" name="Territory" column="_column_customer_w_ter_territory" columnType="String" uniqueMembers="true"/>
 </xmi:XMI>
 
 ```
@@ -288,21 +288,21 @@ The Customers hierarchy provides customer-level analysis with hasAll enabled.
 ```xml
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
   <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_customernumber" allMemberName="All Customers" primaryKey="_column_customer_w_ter_customernumber" source="_tablesource_customer_w_ter" levels="_level_customer"/>
-  <rolaplev:Level xmi:id="_level_customer" name="Customer" column="_column_customer_w_ter_customername" columnType="String" uniqueMembers="true"/>
+  <rolapsrc:TableSource xmi:id="_tablesource_customer_w_ter" table="_table_customer_w_ter"/>
   <relational:Table xmi:id="_table_customer_w_ter" name="customer_w_ter">
     <feature xsi:type="relational:Column" xmi:id="_column_customer_w_ter_customernumber" name="CUSTOMERNUMBER"/>
     <feature xsi:type="relational:Column" xmi:id="_column_customer_w_ter_customername" name="CUSTOMERNAME"/>
-    <feature xsi:type="relational:Column" xmi:id="_column_customer_w_ter_territory" name="TERRITORY"/>
-    <feature xsi:type="relational:Column" xmi:id="_column_customer_w_ter_country" name="COUNTRY"/>
-    <feature xsi:type="relational:Column" xmi:id="_column_customer_w_ter_state" name="STATE"/>
-    <feature xsi:type="relational:Column" xmi:id="_column_customer_w_ter_city" name="CITY"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_customer_w_ter_territory" name="TERRITORY" isNullable="columnNullable"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_customer_w_ter_country" name="COUNTRY" isNullable="columnNullable"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_customer_w_ter_state" name="STATE" isNullable="columnNullable"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_customer_w_ter_city" name="CITY" isNullable="columnNullable"/>
     <feature xsi:type="relational:Column" xmi:id="_column_customer_w_ter_contactfirstname" name="CONTACTFIRSTNAME"/>
     <feature xsi:type="relational:Column" xmi:id="_column_customer_w_ter_contactlastname" name="CONTACTLASTNAME"/>
     <feature xsi:type="relational:Column" xmi:id="_column_customer_w_ter_phone" name="PHONE"/>
     <feature xsi:type="relational:Column" xmi:id="_column_customer_w_ter_addressline1" name="ADDRESSLINE1"/>
-    <feature xsi:type="relational:Column" xmi:id="_column_customer_w_ter_creditlimit" name="CREDITLIMIT"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_customer_w_ter_creditlimit" name="CREDITLIMIT" isNullable="columnNullable"/>
   </relational:Table>
-  <rolapsrc:TableSource xmi:id="_tablesource_customer_w_ter" table="_table_customer_w_ter"/>
+  <rolaplev:Level xmi:id="_level_customer" name="Customer" column="_column_customer_w_ter_customername" columnType="String" uniqueMembers="true"/>
 </xmi:XMI>
 
 ```
@@ -486,7 +486,6 @@ It provides analysis capabilities across customer markets, product categories, a
 ```xml
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapcube="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
   <rolapcube:PhysicalCube xmi:id="_physicalcube_steelwheelssales" name="SteelWheelsSales" source="_tablesource_orderfact"/>
-  <rolapsrc:TableSource xmi:id="_tablesource_orderfact" table="_table_orderfact"/>
   <relational:Table xmi:id="_table_orderfact" name="orderfact">
     <feature xsi:type="relational:Column" xmi:id="_column_orderfact_customernumber" name="CUSTOMERNUMBER"/>
     <feature xsi:type="relational:Column" xmi:id="_column_orderfact_productcode" name="PRODUCTCODE"/>
@@ -499,6 +498,7 @@ It provides analysis capabilities across customer markets, product categories, a
     <feature xsi:type="relational:Column" xmi:id="_column_orderfact_requireddate" name="REQUIREDDATE"/>
     <feature xsi:type="relational:Column" xmi:id="_column_orderfact_shippeddate" name="SHIPPEDDATE"/>
   </relational:Table>
+  <rolapsrc:TableSource xmi:id="_tablesource_orderfact" table="_table_orderfact"/>
 </xmi:XMI>
 
 ```
@@ -512,9 +512,9 @@ This file represents the complete definition of the catalog.
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapcat="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/catalog" xmlns:rolapcube="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube" xmlns:rolapdim="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapmeas="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/cube/measure" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
   <relational:SQLSimpleType xmi:id="_sqlsimpletype_character_varying" name="CHARACTER VARYING" structuralFeature="_column_products_productcode _column_customer_w_ter_addressline1 _column_customer_w_ter_city _column_customer_w_ter_contactfirstname _column_customer_w_ter_contactlastname _column_customer_w_ter_country _column_customer_w_ter_customername _column_time_month_name _column_customer_w_ter_phone _column_orderfact_productcode _column_products_productdescription _column_products_productline _column_products_productname _column_products_productvendor _column_time_qtr_name _column_customer_w_ter_state _column_orderfact_status _column_customer_w_ter_territory _column_orderfact_time_id _column_time_time_id" typeNumber="12"/>
-  <relational:SQLSimpleType xmi:id="_sqlsimpletype_integer" name="INTEGER" structuralFeature="_column_orderfact_customernumber _column_customer_w_ter_customernumber _column_time_month_id _column_time_qtr_id _column_orderfact_quantityordered _column_time_year_id" typeNumber="4"/>
-  <relational:SQLSimpleType xmi:id="_sqlsimpletype_numeric" name="NUMERIC" structuralFeature="_column_orderfact_totalprice _column_customer_w_ter_creditlimit _column_orderfact_priceeach" typeNumber="2" numericPrecision="18" numericPrecisionRadix="10" numericScale="4"/>
-  <relational:SQLSimpleType xmi:id="_sqlsimpletype_timestamp" name="TIMESTAMP" structuralFeature="_column_orderfact_shippeddate _column_orderfact_orderdate _column_orderfact_requireddate" typeNumber="93"/>
+  <relational:SQLSimpleType xmi:id="_sqlsimpletype_integer" name="INTEGER" structuralFeature="_column_time_month_id _column_customer_w_ter_customernumber _column_orderfact_customernumber _column_time_qtr_id _column_orderfact_quantityordered _column_time_year_id" typeNumber="4"/>
+  <relational:SQLSimpleType xmi:id="_sqlsimpletype_numeric" name="NUMERIC" structuralFeature="_column_orderfact_priceeach _column_customer_w_ter_creditlimit _column_orderfact_totalprice" typeNumber="2" numericPrecision="18" numericPrecisionRadix="10" numericScale="4"/>
+  <relational:SQLSimpleType xmi:id="_sqlsimpletype_timestamp" name="TIMESTAMP" structuralFeature="_column_orderfact_orderdate _column_orderfact_requireddate _column_orderfact_shippeddate" typeNumber="93"/>
   <rolapcat:Catalog xmi:id="_catalog_steelwheels" name="SteelWheels" cubes="_physicalcube_steelwheelssales" dbschemas="_schema"/>
   <relational:Schema xmi:id="_schema">
     <ownedElement xsi:type="relational:Table" xmi:id="_table_orderfact" name="orderfact">
@@ -532,15 +532,15 @@ This file represents the complete definition of the catalog.
     <ownedElement xsi:type="relational:Table" xmi:id="_table_customer_w_ter" name="customer_w_ter">
       <feature xsi:type="relational:Column" xmi:id="_column_customer_w_ter_customernumber" name="CUSTOMERNUMBER" type="_sqlsimpletype_integer"/>
       <feature xsi:type="relational:Column" xmi:id="_column_customer_w_ter_customername" name="CUSTOMERNAME" type="_sqlsimpletype_character_varying"/>
-      <feature xsi:type="relational:Column" xmi:id="_column_customer_w_ter_territory" name="TERRITORY" type="_sqlsimpletype_character_varying"/>
-      <feature xsi:type="relational:Column" xmi:id="_column_customer_w_ter_country" name="COUNTRY" type="_sqlsimpletype_character_varying"/>
-      <feature xsi:type="relational:Column" xmi:id="_column_customer_w_ter_state" name="STATE" type="_sqlsimpletype_character_varying"/>
-      <feature xsi:type="relational:Column" xmi:id="_column_customer_w_ter_city" name="CITY" type="_sqlsimpletype_character_varying"/>
+      <feature xsi:type="relational:Column" xmi:id="_column_customer_w_ter_territory" name="TERRITORY" type="_sqlsimpletype_character_varying" isNullable="columnNullable"/>
+      <feature xsi:type="relational:Column" xmi:id="_column_customer_w_ter_country" name="COUNTRY" type="_sqlsimpletype_character_varying" isNullable="columnNullable"/>
+      <feature xsi:type="relational:Column" xmi:id="_column_customer_w_ter_state" name="STATE" type="_sqlsimpletype_character_varying" isNullable="columnNullable"/>
+      <feature xsi:type="relational:Column" xmi:id="_column_customer_w_ter_city" name="CITY" type="_sqlsimpletype_character_varying" isNullable="columnNullable"/>
       <feature xsi:type="relational:Column" xmi:id="_column_customer_w_ter_contactfirstname" name="CONTACTFIRSTNAME" type="_sqlsimpletype_character_varying"/>
       <feature xsi:type="relational:Column" xmi:id="_column_customer_w_ter_contactlastname" name="CONTACTLASTNAME" type="_sqlsimpletype_character_varying"/>
       <feature xsi:type="relational:Column" xmi:id="_column_customer_w_ter_phone" name="PHONE" type="_sqlsimpletype_character_varying"/>
       <feature xsi:type="relational:Column" xmi:id="_column_customer_w_ter_addressline1" name="ADDRESSLINE1" type="_sqlsimpletype_character_varying"/>
-      <feature xsi:type="relational:Column" xmi:id="_column_customer_w_ter_creditlimit" name="CREDITLIMIT" type="_sqlsimpletype_numeric"/>
+      <feature xsi:type="relational:Column" xmi:id="_column_customer_w_ter_creditlimit" name="CREDITLIMIT" type="_sqlsimpletype_numeric" isNullable="columnNullable"/>
     </ownedElement>
     <ownedElement xsi:type="relational:Table" xmi:id="_table_products" name="products">
       <feature xsi:type="relational:Column" xmi:id="_column_products_productcode" name="PRODUCTCODE" type="_sqlsimpletype_character_varying"/>
@@ -559,8 +559,8 @@ This file represents the complete definition of the catalog.
     </ownedElement>
   </relational:Schema>
   <rolapsrc:TableSource xmi:id="_tablesource_products" table="_table_products"/>
-  <rolapsrc:TableSource xmi:id="_tablesource_orderfact" table="_table_orderfact"/>
   <rolapsrc:TableSource xmi:id="_tablesource_customer_w_ter" table="_table_customer_w_ter"/>
+  <rolapsrc:TableSource xmi:id="_tablesource_orderfact" table="_table_orderfact"/>
   <rolapsrc:TableSource xmi:id="_tablesource_time" table="_table_time"/>
   <rolaplev:Level xmi:id="_level_city" name="City" column="_column_customer_w_ter_city" columnType="String" uniqueMembers="true"/>
   <rolaplev:Level xmi:id="_level_country" name="Country" column="_column_customer_w_ter_country" columnType="String"/>
@@ -574,9 +574,9 @@ This file represents the complete definition of the catalog.
   <rolaplev:Level xmi:id="_level_type" name="Type" column="_column_orderfact_status" columnType="String" uniqueMembers="true"/>
   <rolaplev:Level xmi:id="_level_vendor" name="Vendor" column="_column_products_productvendor" columnType="String" uniqueMembers="true"/>
   <rolaplev:Level xmi:id="_level_years" name="Years" column="_column_time_year_id" type="TimeYears" columnType="Integer" uniqueMembers="true"/>
+  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_status" allMemberName="All Status Types" primaryKey="_column_orderfact_status" levels="_level_type"/>
   <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_customernumber" allMemberName="All Customers" primaryKey="_column_customer_w_ter_customernumber" source="_tablesource_customer_w_ter" levels="_level_customer"/>
   <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_productcode" allMemberName="All Products" primaryKey="_column_products_productcode" source="_tablesource_products" levels="_level_line _level_vendor _level_product"/>
-  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_status" allMemberName="All Status Types" primaryKey="_column_orderfact_status" levels="_level_type"/>
   <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_customernumber_1" allMemberName="All Markets" primaryKey="_column_customer_w_ter_customernumber" source="_tablesource_customer_w_ter" levels="_level_territory _level_country _level_state_province _level_city"/>
   <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_time_id" allMemberName="All Years" primaryKey="_column_time_time_id" source="_tablesource_time" levels="_level_years _level_quarters _level_months"/>
   <rolapdim:StandardDimension xmi:id="_standarddimension_customers" name="Customers" hierarchies="_explicithierarchy_customernumber"/>

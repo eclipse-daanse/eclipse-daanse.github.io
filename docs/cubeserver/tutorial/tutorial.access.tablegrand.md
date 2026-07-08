@@ -56,11 +56,11 @@ The cube1 is defined by the DimensionConnector1 and the DimensionConnector2  and
       <measures xsi:type="rolapmeas:SumMeasure" xmi:id="_summeasure_measure1" name="Measure1" column="_column_fact_value"/>
     </measureGroups>
   </rolapcube:PhysicalCube>
+  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
   <relational:Table xmi:id="_table_fact" name="Fact">
     <feature xsi:type="relational:Column" xmi:id="_column_fact_key" name="KEY"/>
     <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE"/>
   </relational:Table>
-  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
 </xmi:XMI>
 
 ```
@@ -168,7 +168,7 @@ This file represents the complete definition of the catalog.
   </rolapcube:PhysicalCube>
   <rolapcacc:AccessRole xmi:id="_accessrole_roleall" name="roleAll">
     <accessCatalogGrants xmi:id="_accesscataloggrant_1" catalogAccess="all">
-      <cubeGrants xmi:id="_accesscubegrant_cube1" cubeAccess="all" cube="_physicalcube_cube1"/>
+      <cubeGrants xmi:id="_accesscubegrant_cube1_1" cubeAccess="all" cube="_physicalcube_cube1"/>
       <databaseSchemaGrants xmi:id="_accessdatabaseschemagrant_1" databaseSchemaAccess="custom" databaseSchema="_schema">
         <tableGrants xmi:id="_accesstablegrant_fact" tableAccess="all" table="_table_fact"/>
       </databaseSchemaGrants>
@@ -176,7 +176,7 @@ This file represents the complete definition of the catalog.
   </rolapcacc:AccessRole>
   <rolapcacc:AccessRole xmi:id="_accessrole_rolenone" name="roleNone">
     <accessCatalogGrants xmi:id="_accesscataloggrant" catalogAccess="all">
-      <cubeGrants xmi:id="_accesscubegrant_cube1_1" cubeAccess="all" cube="_physicalcube_cube1"/>
+      <cubeGrants xmi:id="_accesscubegrant_cube1" cubeAccess="all" cube="_physicalcube_cube1"/>
       <databaseSchemaGrants xmi:id="_accessdatabaseschemagrant" databaseSchemaAccess="custom" databaseSchema="_schema">
         <tableGrants xmi:id="_accesstablegrant_fact_1" table="_table_fact"/>
       </databaseSchemaGrants>

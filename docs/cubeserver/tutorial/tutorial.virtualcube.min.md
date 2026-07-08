@@ -178,15 +178,15 @@ This file represents the complete definition of the catalog.
       <feature xsi:type="relational:Column" xmi:id="_column_c2_fact_value" name="VALUE" type="_sqlsimpletype_integer"/>
     </ownedElement>
   </relational:Schema>
-  <rolapsrc:TableSource xmi:id="_tablesource_c1_fact" table="_table_c1_fact"/>
   <rolapsrc:TableSource xmi:id="_tablesource_c2_fact" table="_table_c2_fact"/>
+  <rolapsrc:TableSource xmi:id="_tablesource_c1_fact" table="_table_c1_fact"/>
   <rolapcube:PhysicalCube xmi:id="_physicalcube_cube1" name="Cube1" source="_tablesource_c1_fact">
-    <measureGroups xmi:id="_measuregroup">
+    <measureGroups xmi:id="_measuregroup_1">
       <measures xsi:type="rolapmeas:SumMeasure" xmi:id="_summeasure_c1_measure_sum" name="C1-Measure-Sum" column="_column_c1_fact_value"/>
     </measureGroups>
   </rolapcube:PhysicalCube>
   <rolapcube:PhysicalCube xmi:id="_physicalcube_cube2" name="Cube2" source="_tablesource_c2_fact">
-    <measureGroups xmi:id="_measuregroup_1">
+    <measureGroups xmi:id="_measuregroup">
       <measures xsi:type="rolapmeas:SumMeasure" xmi:id="_summeasure_c2_measure_sum" name="C2-Measure-Sum" column="_column_c2_fact_value"/>
     </measureGroups>
   </rolapcube:PhysicalCube>

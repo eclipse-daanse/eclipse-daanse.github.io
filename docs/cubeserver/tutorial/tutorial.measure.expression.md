@@ -17,7 +17,7 @@ The cube defined in this example is based on a two tables that stores all the da
 
 
 ```xml
-<relational:Schema xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolaprel="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/relational" xmi:id="_schema">
+<relational:Schema xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmi:id="_schema">
   <ownedElement xsi:type="relational:Table" xmi:id="_table_fact" name="FACT">
     <feature xsi:type="relational:Column" xmi:id="_column_fact_key" name="KEY"/>
     <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE"/>
@@ -27,18 +27,6 @@ The cube defined in this example is based on a two tables that stores all the da
     <feature xsi:type="relational:Column" xmi:id="_column_measure_table_id" name="ID"/>
     <feature xsi:type="relational:Column" xmi:id="_column_measure_table_value" name="VALUE"/>
     <feature xsi:type="relational:Column" xmi:id="_column_measure_table_flag" name="FLAG"/>
-    <feature xsi:type="rolaprel:ExpressionColumn" xmi:id="_expressioncolumn_measureexpression1" name="measureExpression1">
-      <sqls xmi:id="_sqlstatement" sql="(select sum(&quot;MEASURE_TABLE&quot;.&quot;VALUE&quot;) from &quot;MEASURE_TABLE&quot; where &quot;MEASURE_TABLE&quot;.&quot;FLAG&quot; = 1)">
-        <dialects>generic</dialects>
-        <dialects>h2</dialects>
-      </sqls>
-    </feature>
-    <feature xsi:type="rolaprel:ExpressionColumn" xmi:id="_expressioncolumn_measureexpression2" name="measureExpression2">
-      <sqls xmi:id="_sqlstatement_1" sql="(CASE WHEN &quot;FACT&quot;.&quot;VALUE&quot; > 21 THEN 50 ELSE &quot;FACT&quot;.&quot;VALUE&quot; END)">
-        <dialects>generic</dialects>
-        <dialects>h2</dialects>
-      </sqls>
-    </feature>
   </ownedElement>
 </relational:Schema>
 
@@ -134,12 +122,12 @@ In this example, measure with SQLExpressionColumn. Measures use SQL expression a
       </measures>
     </measureGroups>
   </rolapcube:PhysicalCube>
+  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
   <relational:Table xmi:id="_table_fact" name="FACT">
     <feature xsi:type="relational:Column" xmi:id="_column_fact_key" name="KEY"/>
     <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE"/>
     <feature xsi:type="relational:Column" xmi:id="_column_fact_value_numeric" name="VALUE_NUMERIC"/>
   </relational:Table>
-  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
 </xmi:XMI>
 
 ```
@@ -166,20 +154,20 @@ This file represents the complete definition of the catalog.
       <feature xsi:type="relational:Column" xmi:id="_column_measure_table_id" name="ID" type="_sqlsimpletype_integer"/>
       <feature xsi:type="relational:Column" xmi:id="_column_measure_table_value" name="VALUE" type="_sqlsimpletype_integer"/>
       <feature xsi:type="relational:Column" xmi:id="_column_measure_table_flag" name="FLAG" type="_sqlsimpletype_integer"/>
-      <feature xsi:type="rolaprel:ExpressionColumn" xmi:id="_expressioncolumn_measureexpression1" name="measureExpression1">
-        <sqls xmi:id="_sqlstatement" sql="(select sum(&quot;MEASURE_TABLE&quot;.&quot;VALUE&quot;) from &quot;MEASURE_TABLE&quot; where &quot;MEASURE_TABLE&quot;.&quot;FLAG&quot; = 1)">
-          <dialects>generic</dialects>
-          <dialects>h2</dialects>
-        </sqls>
-      </feature>
-      <feature xsi:type="rolaprel:ExpressionColumn" xmi:id="_expressioncolumn_measureexpression2" name="measureExpression2">
-        <sqls xmi:id="_sqlstatement_1" sql="(CASE WHEN &quot;FACT&quot;.&quot;VALUE&quot; > 21 THEN 50 ELSE &quot;FACT&quot;.&quot;VALUE&quot; END)">
-          <dialects>generic</dialects>
-          <dialects>h2</dialects>
-        </sqls>
-      </feature>
     </ownedElement>
   </relational:Schema>
+  <rolaprel:ExpressionColumn xmi:id="_expressioncolumn_measureexpression1" name="measureExpression1">
+    <sqls xmi:id="_sqlstatement_1" sql="(select sum(&quot;MEASURE_TABLE&quot;.&quot;VALUE&quot;) from &quot;MEASURE_TABLE&quot; where &quot;MEASURE_TABLE&quot;.&quot;FLAG&quot; = 1)">
+      <dialects>generic</dialects>
+      <dialects>h2</dialects>
+    </sqls>
+  </rolaprel:ExpressionColumn>
+  <rolaprel:ExpressionColumn xmi:id="_expressioncolumn_measureexpression2" name="measureExpression2">
+    <sqls xmi:id="_sqlstatement" sql="(CASE WHEN &quot;FACT&quot;.&quot;VALUE&quot; > 21 THEN 50 ELSE &quot;FACT&quot;.&quot;VALUE&quot; END)">
+      <dialects>generic</dialects>
+      <dialects>h2</dialects>
+    </sqls>
+  </rolaprel:ExpressionColumn>
   <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
   <rolapcube:PhysicalCube xmi:id="_physicalcube_cube_with_measureexpression" name="Cube With MeasureExpression" source="_tablesource_fact">
     <measureGroups xmi:id="_measuregroup">

@@ -113,12 +113,12 @@ The order of the Levels in the hierarchy is important, as it determines the dril
   <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_townhierarchy" name="TownHierarchy" primaryKey="_column_town_id" source="_tablesource_town" levels="_level_country _level_town"/>
   <rolaplev:Level xmi:id="_level_town" name="Town" column="_column_town_id" nameColumn="_column_town_name"/>
   <rolaplev:Level xmi:id="_level_country" name="Country" column="_column_town_country"/>
-  <rolapsrc:TableSource xmi:id="_tablesource_town" table="_table_town"/>
   <relational:Table xmi:id="_table_town" name="Town">
     <feature xsi:type="relational:Column" xmi:id="_column_town_id" name="ID"/>
     <feature xsi:type="relational:Column" xmi:id="_column_town_name" name="NAME"/>
     <feature xsi:type="relational:Column" xmi:id="_column_town_country" name="COUNTRY"/>
   </relational:Table>
+  <rolapsrc:TableSource xmi:id="_tablesource_town" table="_table_town"/>
 </xmi:XMI>
 
 ```
@@ -131,15 +131,15 @@ The Dimension has only one hierarchy.
 ```xml
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"  xmlns:relational="http://www.omg.org/spec/CWM/1.1/resource/relational" xmlns:rolapdim="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension" xmlns:rolaphier="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy" xmlns:rolaplev="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/olap/dimension/hierarchy/level" xmlns:rolapsrc="https://www.daanse.org/spec/org.eclipse.daanse.rolap.mapping/database/source">
   <rolapdim:StandardDimension xmi:id="_standarddimension_town" name="Town" hierarchies="_explicithierarchy_townhierarchy"/>
-  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_townhierarchy" name="TownHierarchy" primaryKey="_column_town_id" source="_tablesource_town" levels="_level_country _level_town"/>
   <rolaplev:Level xmi:id="_level_town" name="Town" column="_column_town_id" nameColumn="_column_town_name"/>
   <rolaplev:Level xmi:id="_level_country" name="Country" column="_column_town_country"/>
-  <rolapsrc:TableSource xmi:id="_tablesource_town" table="_table_town"/>
+  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_townhierarchy" name="TownHierarchy" primaryKey="_column_town_id" source="_tablesource_town" levels="_level_country _level_town"/>
   <relational:Table xmi:id="_table_town" name="Town">
     <feature xsi:type="relational:Column" xmi:id="_column_town_id" name="ID"/>
     <feature xsi:type="relational:Column" xmi:id="_column_town_name" name="NAME"/>
     <feature xsi:type="relational:Column" xmi:id="_column_town_country" name="COUNTRY"/>
   </relational:Table>
+  <rolapsrc:TableSource xmi:id="_tablesource_town" table="_table_town"/>
 </xmi:XMI>
 
 ```
@@ -160,20 +160,20 @@ To connect the dimension to the cube, a DimensionConnector is used. The dimensio
       <measures xsi:type="rolapmeas:SumMeasure" xmi:id="_summeasure_themeasure" name="theMeasure" column="_column_fact_value"/>
     </measureGroups>
   </rolapcube:PhysicalCube>
-  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_townhierarchy" name="TownHierarchy" primaryKey="_column_town_id" source="_tablesource_town" levels="_level_country _level_town"/>
-  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
-  <rolapdim:StandardDimension xmi:id="_standarddimension_town" name="Town" hierarchies="_explicithierarchy_townhierarchy"/>
   <rolaplev:Level xmi:id="_level_town" name="Town" column="_column_town_id" nameColumn="_column_town_name"/>
-  <relational:Table xmi:id="_table_fact" name="Fact">
-    <feature xsi:type="relational:Column" xmi:id="_column_fact_town_id" name="TOWN_ID"/>
-    <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE"/>
-  </relational:Table>
+  <rolapsrc:TableSource xmi:id="_tablesource_fact" table="_table_fact"/>
   <rolaplev:Level xmi:id="_level_country" name="Country" column="_column_town_country"/>
-  <rolapsrc:TableSource xmi:id="_tablesource_town" table="_table_town"/>
+  <rolapdim:StandardDimension xmi:id="_standarddimension_town" name="Town" hierarchies="_explicithierarchy_townhierarchy"/>
+  <rolaphier:ExplicitHierarchy xmi:id="_explicithierarchy_townhierarchy" name="TownHierarchy" primaryKey="_column_town_id" source="_tablesource_town" levels="_level_country _level_town"/>
   <relational:Table xmi:id="_table_town" name="Town">
     <feature xsi:type="relational:Column" xmi:id="_column_town_id" name="ID"/>
     <feature xsi:type="relational:Column" xmi:id="_column_town_name" name="NAME"/>
     <feature xsi:type="relational:Column" xmi:id="_column_town_country" name="COUNTRY"/>
+  </relational:Table>
+  <rolapsrc:TableSource xmi:id="_tablesource_town" table="_table_town"/>
+  <relational:Table xmi:id="_table_fact" name="Fact">
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_town_id" name="TOWN_ID"/>
+    <feature xsi:type="relational:Column" xmi:id="_column_fact_value" name="VALUE"/>
   </relational:Table>
 </xmi:XMI>
 
