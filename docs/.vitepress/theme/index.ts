@@ -1,12 +1,18 @@
 import DefaultTheme from 'vitepress/theme'
-import { onMounted } from 'vue'
+import { h, onMounted } from 'vue'
 import './styles.css'
 import VueZoomable from 'vue-zoomable'
 import 'vue-zoomable/dist/style.css'
 import MermaidZoom from "./components/MermaidZoom.vue";
+import EclipseFooter from "./components/EclipseFooter.vue";
 
 export default {
   extends: DefaultTheme,
+  Layout() {
+    return h(DefaultTheme.Layout, null, {
+      'layout-bottom': () => h(EclipseFooter)
+    })
+  },
   enhanceApp({ app }) {
     // Komponente global registrieren
     app.component('VueZoomable', VueZoomable)

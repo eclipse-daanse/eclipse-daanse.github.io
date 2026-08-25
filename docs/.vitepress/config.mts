@@ -70,12 +70,10 @@ defineConfig({
     editLink: {
       pattern: 'https://github.com/eclipse-daanse/eclipse-daanse.github.io/edit/main/docs/:path',
       text: 'Edit this page on GitHub'
-    },
-
-    footer: {
-      message: 'Released under the Eclipse Public License 2.0',
-      copyright: 'Copyright © 2025 - Eclipse-Daanse'
     }
+
+    // Footer is rendered by the custom EclipseFooter component (layout-bottom slot)
+    // so it appears on all pages, including pages with a sidebar.
   }
 
 })
