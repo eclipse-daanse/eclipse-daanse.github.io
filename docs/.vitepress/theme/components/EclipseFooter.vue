@@ -58,11 +58,14 @@
   display: none;
 }
 
-:global(.dark) .logo-light {
+/* VitePress puts the .dark class on <html>, so these stay scoped.
+   `:global(.dark) .logo-light` would collapse to a bare `.dark` and drop
+   the descendant part, leaving both logos visible in dark mode. */
+html.dark .logo-light {
   display: none;
 }
 
-:global(.dark) .logo-dark {
+html.dark .logo-dark {
   display: block;
 }
 
