@@ -9,7 +9,7 @@ Package: [model.catalog](./package-model.catalog.md)
 
 The root container of an OLAP schema that defines a complete analytical database. A Catalog represents a logical grouping of related cubes, dimensions, and data sources that together form a cohesive analytical model for a specific business domain or application. It serves as the top-level entry point for OLAP connections and contains all the metadata necessary to perform multidimensional analysis. The Catalog manages shared resources like dimension hierarchies, access roles, parameters, and database schema references, ensuring consistency and reusability across all contained analytical objects. In XMLA terms, this corresponds to a database or catalog that clients can connect to and browse.
 ## Extends
-- Package [🔗](./class-Package)
+- Package
 - AbstractElement [🔗](./class-AbstractElement)
 
 ## Attributes

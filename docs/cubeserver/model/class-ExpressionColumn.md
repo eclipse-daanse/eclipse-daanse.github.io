@@ -9,7 +9,7 @@ Package: [model.database.relational](./package-model.database.relational.md)
 
 Daanse-specific extension of a CWM relational Column that is not backed by a physical column but by one or more SQL expressions (optionally per database dialect). We recommend using the column name together with the table name in SQL expressions.
 ## Extends
-- Column [🔗](./class-Column)
+- Column
 
 ## Attributes
 

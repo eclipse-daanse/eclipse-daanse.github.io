@@ -9,7 +9,7 @@ Package: [model.database.source](./package-model.database.source.md)
 
 Contains SQL expression text and database dialect information for database-specific SQL implementations. SqlStatement enables OLAP schemas to support multiple database platforms by providing dialect-specific SQL expressions.
 ## Extends
-- Expression [🔗](./class-Expression)
+- Expression
 
 ## Attributes
 

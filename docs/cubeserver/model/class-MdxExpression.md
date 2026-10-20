@@ -9,7 +9,7 @@ Package: [model](./index.md)
 
 An MDX expression, carried in the inherited CWM Expression.body. The class itself is the language marker (mirroring CWM's QueryExpression/ProcedureExpression marker subclasses); the inherited language attribute may name the language explicitly but the type is authoritative. Used for named-set and calculated-member formulas, KPI expressions and calculated member property expressions.
 ## Extends
-- Expression [🔗](./class-Expression)
+- Expression
 
 ## Attributes
 
