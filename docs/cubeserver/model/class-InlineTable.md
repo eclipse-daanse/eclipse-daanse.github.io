@@ -9,7 +9,7 @@ Package: [model.database.relational](./package-model.database.relational.md)
 
 Daanse-specific CWM ColumnSet extension that carries its data inline as Rows rather than referencing external persisted data. Unlike cwm::Table it is not a DB-schema element (no persistence, triggers, temporary-scope or SQL-structured-type semantics apply). It is a peer of cwm::QueryColumnSet: both sit under ColumnSet as non-persistent named column sets. Typically used for small lookup tables or test fixtures.
 ## Extends
-- ColumnSet [🔗](./class-ColumnSet)
+- ColumnSet
 
 ## Attributes
 

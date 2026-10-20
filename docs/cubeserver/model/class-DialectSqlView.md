@@ -9,7 +9,7 @@ Package: [model.database.relational](./package-model.database.relational.md)
 
 Daanse-specific extension of a CWM View that carries additional dialect-specific SQL statements beyond the standard queryExpression inherited from CWM View. The standard SQL is in View.queryExpression; only deviating dialects need an additional SqlStatement.
 ## Extends
-- View [🔗](./class-View)
+- View
 
 ## Attributes
 
