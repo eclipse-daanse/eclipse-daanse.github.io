@@ -5,6 +5,8 @@ group: Class
 
 # AggregationForeignKey<a name="class-aggregationforeignkey"></a>
 
+Package: [model.database.aggregation](./package-model.database.aggregation.md)
+
 Defines column relationships between aggregation tables and fact tables that enable query optimization through transparent fact-to-aggregation table substitution. Maps foreign key columns in aggregation tables to their corresponding columns in fact tables, maintaining referential integrity and dimensional relationships for performance-optimized OLAP query processing.
 
 ## Attributes

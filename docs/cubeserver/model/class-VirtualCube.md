@@ -5,9 +5,12 @@ group: Class
 
 # VirtualCube<a name="class-virtualcube"></a>
 
+Package: [model.olap.cube](./package-model.olap.cube.md)
+
 A virtual cube that combines measures and dimensions from multiple physical cubes into a unified analytical view. Virtual cubes enable cross-cube analysis by creating a logical integration layer over existing physical cubes, allowing users to analyze related metrics from different business processes in a single query. For example, a virtual cube might combine sales data from a Sales cube with inventory data from an Inventory cube to enable integrated sales and stock analysis. Virtual cubes don't have their own fact tables but instead reference and aggregate data from their constituent physical cubes.
 ## Extends
 - Cube [🔗](./class-Cube)
+
 ## Attributes
 
 <table>

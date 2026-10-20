@@ -5,9 +5,12 @@ group: Class
 
 # BaseMeasure<a name="class-basemeasure"></a>
 
+Package: [model.olap.cube.measure](./package-model.olap.cube.measure.md)
+
 Abstract base class for all measure types in the OLAP model, representing quantitative facts that can be analyzed and aggregated in multidimensional queries. BaseMeasure extends Member to leverage the OLAP member infrastructure while adding measure-specific capabilities like data type specification, formatting rules, and aggregation behavior. All concrete measure implementations (SumMeasure, CountMeasure, etc.) inherit from this class, ensuring consistent measure behavior and enabling polymorphic measure handling throughout the OLAP framework. Measures are special members that belong to the [Measures] dimension and provide the numeric values for analytical operations.
 ## Extends
-- Member [🔗](./class-Member)
+- MemberLike [🔗](./class-MemberLike)
+
 ## Attributes
 
 <table>
@@ -25,7 +28,7 @@ Abstract base class for all measure types in the OLAP model, representing quanti
     <tr>
       <td><strong>backColor</strong></td>
       <td>false</td>
-      <td><em>EString</em></td>
+      <td><em>String</em></td>
       <td>0</td>
       <td>1</td>
       <td></td>
@@ -47,7 +50,7 @@ Abstract base class for all measure types in the OLAP model, representing quanti
     <tr>
       <td><strong>formatter</strong></td>
       <td>false</td>
-      <td><em>EString</em></td>
+      <td><em>String</em></td>
       <td>0</td>
       <td>1</td>
       <td></td>
@@ -97,12 +100,12 @@ Abstract base class for all measure types in the OLAP model, representing quanti
 ```mermaid
 classDiagram
   class BaseMeasure {
-    + backColor : EString
+    + backColor : String
     + dataType : ColumnInternalDataType
-    + formatter : EString
+    + formatter : String
   }
 
-  Member <|-- BaseMeasure
+  MemberLike <|-- BaseMeasure
   BaseMeasure --> MeasureGroup : measureGroup
 
 ```

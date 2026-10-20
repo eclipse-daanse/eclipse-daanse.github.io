@@ -5,6 +5,8 @@ group: Enum
 
 # CubeAccess<a name="enum-cubeaccess"></a>
 
+Package: [model.access.olap](./package-model.access.olap.md)
+
 Enumeration defining access levels for OLAP cubes within the security framework. Controls user access to analytical cubes, their measures, calculated members, and dimensional context within the multidimensional data space.
 ## Enumeration Literals
 

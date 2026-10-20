@@ -5,6 +5,8 @@ group: Class
 
 # AccessHierarchyGrant<a name="class-accesshierarchygrant"></a>
 
+Package: [model.access.olap](./package-model.access.olap.md)
+
 Provides sophisticated hierarchy-level access control that enables fine-grained security policies for dimensional navigation, member visibility, and aggregation behavior within a specific hierarchy. AccessHierarchyGrant represents one of the most powerful and complex aspects of the OLAP security model, supporting advanced scenarios including member-level restrictions, level-based access boundaries, dynamic security expressions, and rollup policy controls that determine how aggregate values are calculated when some members are inaccessible.
 
 ## Attributes

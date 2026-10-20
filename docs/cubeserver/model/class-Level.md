@@ -5,9 +5,12 @@ group: Class
 
 # Level<a name="class-level"></a>
 
+Package: [model.olap.dimension.hierarchy.level](./package-model.olap.dimension.hierarchy.level.md)
+
 Represents a group of members in a hierarchy, all at the same depth and sharing the same attributes and behavior patterns. Levels define the fundamental granularity layers within a dimension hierarchy that enable multidimensional analysis and navigation. For example, a Time dimension might contain levels like Year-Quarter-Month-Day, while a Geography dimension could have Country-State-City-ZipCode levels. Each level maps to specific database columns that provide member identification (key column), human-readable display (name column), localized captions (caption column), and custom sorting (ordinal column). Levels support various advanced features including member properties for additional attributes, custom formatters for display logic, data type specifications for proper SQL generation, uniqueness constraints for optimization, visibility controls for user interface management, and hiding conditions for handling ragged hierarchies and data quality issues. The level type attribute provides semantic meaning for specialized processing in time intelligence, geographic analysis, and business domain-specific operations.
 ## Extends
 - AbstractElement [🔗](./class-AbstractElement)
+
 ## Attributes
 
 <table>
@@ -25,7 +28,7 @@ Represents a group of members in a hierarchy, all at the same depth and sharing 
     <tr>
       <td><strong>approxRowCount</strong></td>
       <td>false</td>
-      <td><em>EString</em></td>
+      <td><em>String</em></td>
       <td>0</td>
       <td>1</td>
       <td></td>
@@ -86,7 +89,7 @@ Represents a group of members in a hierarchy, all at the same depth and sharing 
       <td>true</td>
     </tr>
     <tr>
-      <td colspan="6"><em>Controls whether this level appears in client tool level browsers, dimension trees, and metadata discovery. When false, the level becomes hidden from normal user interfaces but remains accessible for programmatic queries and advanced users who know the level name explicitly.</em></td>
+      <td colspan="6"><em>Controls whether this level appears in client tool level browsers, dimension trees, and metadata discovery. When false, the level becomes hidden from normal user interfaces but remains accessible for programmatic queries and advanced users who know the level name explicitly. Deliberately distinct from the inherited CWM ModelElement.visibility, which carries namespace access semantics: visible is a client display hint only, and invisible elements stay fully addressable in MDX. The attribute stays declared per class instead of moving to AbstractElement, where it would bleed onto Catalog, AccessRole and friends.</em></td>
     </tr>
   </tbody>
 </table>
@@ -164,6 +167,16 @@ Represents a group of members in a hierarchy, all at the same depth and sharing 
     <tr>
       <td colspan="5"><em>Optional columns providing sort order values for level members, overriding alphabetical sorting based on names. This enables custom member ordering such as chronological sequences, business hierarchies, or priority-based arrangements that don't follow natural string sorting.</em></td>
     </tr>
+    <tr>
+      <td><strong>relationalSource</strong></td>
+      <td>RelationalSource<a href="./class-RelationalSource">🔗</a></td>
+      <td>0</td>
+      <td>1</td>
+      <td>false</td>
+    </tr>
+    <tr>
+      <td colspan="5"><em>Optional reference to the specific relational source that this level's columns are read from. The target is the abstract RelationalSource, so it may be any source form (TableSource, InlineTableSource, SqlSelectSource, or a JoinSource occurrence), typically one alias of a self-join. When set, the SQL alias for this level's key/name/caption/ordinal/property columns is taken from this source's alias, disambiguating cases where the same physical source appears under multiple aliases. When null, the alias is inferred from the key column's owning table via identity search over the hierarchy's join tree (backward compatible).</em></td>
+    </tr>
   </tbody>
 </table>
 
@@ -171,19 +184,19 @@ Represents a group of members in a hierarchy, all at the same depth and sharing 
 
 ## Used by
 
+- AccessHierarchyGrant[🔗](./class-AccessHierarchyGrant) → bottomLevel
+- AccessHierarchyGrant[🔗](./class-AccessHierarchyGrant) → topLevel
+- DrillThroughAttribute[🔗](./class-DrillThroughAttribute) → level
 - DimensionConnector[🔗](./class-DimensionConnector) → level
 - ExplicitHierarchy[🔗](./class-ExplicitHierarchy) → levels
 - ParentChildHierarchy[🔗](./class-ParentChildHierarchy) → level
-- DrillThroughAttribute[🔗](./class-DrillThroughAttribute) → level
-- AccessHierarchyGrant[🔗](./class-AccessHierarchyGrant) → bottomLevel
-- AccessHierarchyGrant[🔗](./class-AccessHierarchyGrant) → topLevel
 
 ## ClassDiagramm
 
 ```mermaid
 classDiagram
   class Level {
-    + approxRowCount : EString
+    + approxRowCount : String
     + hideMemberIf : HideMemberIf
     + type : LevelDefinition
     + columnType : ColumnInternalDataType
@@ -198,5 +211,6 @@ classDiagram
   Level --> Column : column
   Level --> Column : nameColumn
   Level --> OrderedColumn : ordinalColumns
+  Level --> RelationalSource : relationalSource
 
 ```

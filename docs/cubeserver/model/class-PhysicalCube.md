@@ -5,9 +5,12 @@ group: Class
 
 # PhysicalCube<a name="class-physicalcube"></a>
 
+Package: [model.olap.cube](./package-model.olap.cube.md)
+
 A concrete cube implementation that maps directly to one or more fact tables in the underlying database. PhysicalCube represents the most common type of OLAP cube, where measures are derived from numeric columns in fact tables and dimensions provide different analytical perspectives on that factual data. Each PhysicalCube is built around a central fact table (or fact view) that contains the quantitative data to be analyzed, connected to dimension tables through foreign key relationships. The PhysicalCube handles the mapping between the logical OLAP model and the physical relational database structure, enabling the OLAP engine to generate efficient SQL queries for analysis operations.
 ## Extends
 - Cube [🔗](./class-Cube)
+
 ## Attributes
 
 <table>
@@ -60,8 +63,8 @@ A concrete cube implementation that maps directly to one or more fact tables in 
       <td colspan="5"><em>Collection of dimension connectors that link this physical cube to its analytical dimensions. Each DimensionConnector defines how a dimension relates to the cube's fact table, specifying the foreign key columns that connect facts to dimension members. These connectors enable the cube to be sliced and diced along different analytical axes, such as time, geography, product categories, or customer segments. The connectors handle both shared dimensions (used across multiple cubes) and cube-specific dimensions.</em></td>
     </tr>
     <tr>
-      <td><strong>query</strong></td>
-      <td>Query<a href="./class-Query">🔗</a></td>
+      <td><strong>source</strong></td>
+      <td>RelationalSource<a href="./class-RelationalSource">🔗</a></td>
       <td>1</td>
       <td>1</td>
       <td>false</td>
@@ -119,7 +122,7 @@ classDiagram
 
   Cube <|-- PhysicalCube
   PhysicalCube --> DimensionConnector : dimensionConnectors
-  PhysicalCube --> Query : query
+  PhysicalCube --> RelationalSource : source
   PhysicalCube --> WritebackTable : writebackTable
   PhysicalCube --> Action : action
   PhysicalCube --> MeasureGroup : measureGroups

@@ -5,9 +5,12 @@ group: Class
 
 # SQLExpressionBaseMeasure<a name="class-sqlexpressionbasemeasure"></a>
 
+Package: [model.olap.cube.measure](./package-model.olap.cube.measure.md)
+
 Advanced measure implementation that enables sophisticated analytical calculations through custom SQL expressions, providing powerful capabilities for implementing complex business logic, mathematical computations, and data transformations that cannot be achieved through standard column-based measures or simple aggregation functions.
 ## Extends
 - BaseMeasure [🔗](./class-BaseMeasure)
+
 ## Attributes
 
 <table>
@@ -40,7 +43,7 @@ Advanced measure implementation that enables sophisticated analytical calculatio
   <tbody>
     <tr>
       <td><strong>column</strong></td>
-      <td>SQLExpressionColumn<a href="./class-SQLExpressionColumn">🔗</a></td>
+      <td>ExpressionColumn<a href="./class-ExpressionColumn">🔗</a></td>
       <td>1</td>
       <td>1</td>
       <td>false</td>
@@ -64,6 +67,6 @@ classDiagram
   }
 
   BaseMeasure <|-- SQLExpressionBaseMeasure
-  SQLExpressionBaseMeasure --> SQLExpressionColumn : column
+  SQLExpressionBaseMeasure --> ExpressionColumn : column
 
 ```

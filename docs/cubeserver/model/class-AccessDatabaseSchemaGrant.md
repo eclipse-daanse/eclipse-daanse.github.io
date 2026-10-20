@@ -5,6 +5,8 @@ group: Class
 
 # AccessDatabaseSchemaGrant<a name="class-accessdatabaseschemagrant"></a>
 
+Package: [model.access.database](./package-model.access.database.md)
+
 Extends the OLAP security model to the database level by controlling access to database schemas, tables, and columns that underlie the OLAP analytical structures, providing comprehensive data governance that enforces security policies regardless of how data is accessed.
 
 ## Attributes
@@ -60,7 +62,7 @@ Extends the OLAP security model to the database level by controlling access to d
     </tr>
     <tr>
       <td><strong>databaseSchema</strong></td>
-      <td>DatabaseSchema<a href="./class-DatabaseSchema">🔗</a></td>
+      <td>Schema<a href="./class-Schema">🔗</a></td>
       <td>1</td>
       <td>1</td>
       <td>false</td>
@@ -87,6 +89,6 @@ classDiagram
 
 
   AccessDatabaseSchemaGrant --> AccessTableGrant : tableGrants
-  AccessDatabaseSchemaGrant --> DatabaseSchema : databaseSchema
+  AccessDatabaseSchemaGrant --> Schema : databaseSchema
 
 ```

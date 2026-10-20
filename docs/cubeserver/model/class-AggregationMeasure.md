@@ -5,7 +5,11 @@ group: Class
 
 # AggregationMeasure<a name="class-aggregationmeasure"></a>
 
+Package: [model.database.aggregation](./package-model.database.aggregation.md)
+
 Maps a cube measure to a column in an aggregation table that contains pre-computed aggregated values for that measure. AggregationMeasure is central to the performance optimization provided by aggregation tables, enabling the OLAP engine to substitute pre-calculated summary values for expensive fact table aggregations. Each mapping defines the relationship between a logical measure (such as Sales Amount, Quantity Sold, or Profit Margin) and the physical column in the aggregation table that stores the corresponding aggregated values. The mapping includes critical information about rollup behavior, specifying how aggregated values can be further combined when rolling up to higher levels of granularity. This supports complex aggregation scenarios including additive measures that use SUM rollup, semi-additive measures that require special handling across time dimensions, non-additive measures like ratios that need weighted averaging, and distinct count measures that have strict rollup requirements to maintain accuracy.
+## Extends
+- AbstractElement [🔗](./class-AbstractElement)
 
 ## Attributes
 
@@ -22,20 +26,9 @@ Maps a cube measure to a column in an aggregation table that contains pre-comput
   </thead>
   <tbody>
     <tr>
-      <td><strong>name</strong></td>
-      <td>false</td>
-      <td><em>EString</em></td>
-      <td>1</td>
-      <td>1</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td colspan="6"><em>Name of the cube measure that this aggregation measure mapping represents, typically specified in MDX notation such as '[Measures].[Sales Amount]' or '[Measures].[Unit Sales]'. This name must exactly match the measure name defined in the cube's measure group to ensure proper correlation between the logical measure definition and the aggregated data stored in the aggregation table. The name serves as the key for the aggregation matching algorithm to determine whether this aggregation table contains pre-computed values for measures required by a query, enabling the OLAP engine to substitute aggregation table access for fact table aggregation operations.</em></td>
-    </tr>
-    <tr>
       <td><strong>rollupType</strong></td>
       <td>false</td>
-      <td><em>EString</em></td>
+      <td><em>String</em></td>
       <td>0</td>
       <td>1</td>
       <td></td>
@@ -83,11 +76,10 @@ Maps a cube measure to a column in an aggregation table that contains pre-comput
 ```mermaid
 classDiagram
   class AggregationMeasure {
-    + name : EString
-    + rollupType : EString
+    + rollupType : String
   }
 
-
+  AbstractElement <|-- AggregationMeasure
   AggregationMeasure --> Column : column
 
 ```

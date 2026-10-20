@@ -5,9 +5,12 @@ group: Class
 
 # BitAggMeasure<a name="class-bitaggmeasure"></a>
 
+Package: [model.olap.cube.measure](./package-model.olap.cube.measure.md)
+
 A specialized measure that performs bitwise operations (AND, OR, XOR) on integer values from the referenced column across the aggregated data set. BitAggMeasure is designed for scenarios involving flag combinations, permission masks, feature toggles, or binary state aggregations. The measure supports different bitwise operations and optional negation (NOT) to create complex boolean logic evaluations. Common use cases include combining user permissions, aggregating feature flags, analyzing system status bits, or creating composite boolean indicators from multiple binary conditions.
 ## Extends
 - ColumnBaseMeasure [🔗](./class-ColumnBaseMeasure)
+
 ## Attributes
 
 <table>

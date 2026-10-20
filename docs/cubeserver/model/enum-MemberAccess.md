@@ -5,6 +5,8 @@ group: Enum
 
 # MemberAccess<a name="enum-memberaccess"></a>
 
+Package: [model.access.olap](./package-model.access.olap.md)
+
 Enumeration defining access levels for individual dimensional members within OLAP security. Provides the most granular level of access control by specifying which specific members users can access within hierarchies.
 ## Enumeration Literals
 

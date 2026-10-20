@@ -5,9 +5,12 @@ group: Class
 
 # DrillThroughAction<a name="class-drillthroughaction"></a>
 
+Package: [model.olap.cube.action](./package-model.olap.cube.action.md)
+
 Specialized action that enables users to drill through from aggregated analytical views to the underlying detailed transaction data that contributed to specific measure values, providing powerful capabilities for data exploration, validation, and detailed investigation of analytical results. DrillThroughAction represents one of the most valuable interactive features in modern OLAP applications, enabling users to seamlessly transition from high-level analytical summaries to detailed operational data without losing analytical context or requiring technical knowledge of underlying data structures.
 ## Extends
 - Action [🔗](./class-Action)
+
 ## Attributes
 
 <table>

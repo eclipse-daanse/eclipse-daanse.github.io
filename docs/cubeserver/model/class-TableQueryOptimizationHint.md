@@ -5,6 +5,8 @@ group: Class
 
 # TableQueryOptimizationHint<a name="class-tablequeryoptimizationhint"></a>
 
+Package: [model.database.source](./package-model.database.source.md)
+
 Provides database-specific optimization hints that can be embedded in generated SQL queries to influence query execution plans, performance characteristics, and resource utilization patterns for optimal analytical query performance.
 
 ## Attributes
@@ -24,7 +26,7 @@ Provides database-specific optimization hints that can be embedded in generated 
     <tr>
       <td><strong>value</strong></td>
       <td>false</td>
-      <td><em>EString</em></td>
+      <td><em>String</em></td>
       <td>0</td>
       <td>1</td>
       <td></td>
@@ -35,7 +37,7 @@ Provides database-specific optimization hints that can be embedded in generated 
     <tr>
       <td><strong>type</strong></td>
       <td>false</td>
-      <td><em>EString</em></td>
+      <td><em>String</em></td>
       <td>1</td>
       <td>1</td>
       <td></td>
@@ -66,15 +68,15 @@ Provides database-specific optimization hints that can be embedded in generated 
 
 ## Used by
 
-- TableQuery[🔗](./class-TableQuery) → optimizationHints
+- TableSource[🔗](./class-TableSource) → optimizationHints
 
 ## ClassDiagramm
 
 ```mermaid
 classDiagram
   class TableQueryOptimizationHint {
-    + value : EString
-    + type : EString
+    + value : String
+    + type : String
   }
 
 

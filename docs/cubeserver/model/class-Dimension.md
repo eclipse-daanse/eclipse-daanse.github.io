@@ -5,9 +5,12 @@ group: Class
 
 # Dimension<a name="class-dimension"></a>
 
+Package: [model.olap.dimension](./package-model.olap.dimension.md)
+
 Abstract foundational class for all dimensional structures in OLAP modeling, representing the core concept of analytical dimensions that provide the contextual framework for multidimensional analysis by organizing business entities into hierarchical structures that enable slicing, dicing, drilling, and pivoting operations across different perspectives of business data. Dimension serves as the architectural foundation for the entire dimensional modeling paradigm, encapsulating the essential characteristics and behaviors that all dimensional structures must support including hierarchical organization of members from detailed to aggregated levels, support for multiple alternative hierarchies that provide different analytical perspectives on the same business domain, integration with security frameworks that can restrict access at dimensional and member levels, and compatibility with various analytical operations that form the basis of OLAP functionality.
 ## Extends
 - AbstractElement [🔗](./class-AbstractElement)
+
 ## Attributes
 
 <table>
@@ -25,7 +28,7 @@ Abstract foundational class for all dimensional structures in OLAP modeling, rep
     <tr>
       <td><strong>usagePrefix</strong></td>
       <td>false</td>
-      <td><em>EString</em></td>
+      <td><em>String</em></td>
       <td>0</td>
       <td>1</td>
       <td></td>
@@ -42,7 +45,7 @@ Abstract foundational class for all dimensional structures in OLAP modeling, rep
       <td>true</td>
     </tr>
     <tr>
-      <td colspan="6"><em>Boolean flag controlling whether this dimension appears in client tool dimension lists, XMLA metadata discovery, and cube browsers. When set to false, the dimension becomes hidden from normal user interfaces but remains fully accessible through direct references in MDX queries. This is useful for creating internal system dimensions, intermediate calculation dimensions, or advanced dimensions intended only for power users who know the dimension names explicitly.</em></td>
+      <td colspan="6"><em>Boolean flag controlling whether this dimension appears in client tool dimension lists, XMLA metadata discovery, and cube browsers. When set to false, the dimension becomes hidden from normal user interfaces but remains fully accessible through direct references in MDX queries. This is useful for creating internal system dimensions, intermediate calculation dimensions, or advanced dimensions intended only for power users who know the dimension names explicitly. Deliberately distinct from the inherited CWM ModelElement.visibility, which carries namespace access semantics: visible is a client display hint only, and invisible elements stay fully addressable in MDX. The attribute stays declared per class instead of moving to AbstractElement, where it would bleed onto Catalog, AccessRole and friends.</em></td>
     </tr>
   </tbody>
 </table>
@@ -87,16 +90,16 @@ Abstract foundational class for all dimensional structures in OLAP modeling, rep
 
 ## Used by
 
-- DimensionConnector[🔗](./class-DimensionConnector) → dimension
-- DrillThroughAttribute[🔗](./class-DrillThroughAttribute) → dimension
 - AccessDimensionGrant[🔗](./class-AccessDimensionGrant) → dimension
+- DrillThroughAttribute[🔗](./class-DrillThroughAttribute) → dimension
+- DimensionConnector[🔗](./class-DimensionConnector) → dimension
 
 ## ClassDiagramm
 
 ```mermaid
 classDiagram
   class Dimension {
-    + usagePrefix : EString
+    + usagePrefix : String
     + visible : Boolean
   }
 

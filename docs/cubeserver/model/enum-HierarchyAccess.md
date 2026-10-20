@@ -5,6 +5,8 @@ group: Enum
 
 # HierarchyAccess<a name="enum-hierarchyaccess"></a>
 
+Package: [model.access.olap](./package-model.access.olap.md)
+
 Enumeration defining access levels for OLAP hierarchies within dimension security. Controls user access to hierarchical structures, levels, and member navigation paths that organize dimensional data.
 ## Enumeration Literals
 

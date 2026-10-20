@@ -5,7 +5,11 @@ group: Class
 
 # AggregationLevelProperty<a name="class-aggregationlevelproperty"></a>
 
+Package: [model.database.aggregation](./package-model.database.aggregation.md)
+
 Maps a level property to its corresponding column in an aggregation table, enabling access to dimensional member properties in aggregated queries. Level properties provide additional descriptive information about dimension members beyond their keys and names, such as member descriptions, custom attributes, or categorization data.
+## Extends
+- AbstractElement [🔗](./class-AbstractElement)
 
 ## Attributes
 
@@ -21,17 +25,6 @@ Maps a level property to its corresponding column in an aggregation table, enabl
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td><strong>name</strong></td>
-      <td>false</td>
-      <td><em>EString</em></td>
-      <td>1</td>
-      <td>1</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td colspan="6"><em>Required name identifier for the level property that this aggregation level property represents. This name must correspond to a property defined in the level schema, enabling proper property access in aggregated queries.</em></td>
-    </tr>
   </tbody>
 </table>
 
@@ -72,10 +65,9 @@ Maps a level property to its corresponding column in an aggregation table, enabl
 ```mermaid
 classDiagram
   class AggregationLevelProperty {
-    + name : EString
   }
 
-
+  AbstractElement <|-- AggregationLevelProperty
   AggregationLevelProperty --> Column : column
 
 ```

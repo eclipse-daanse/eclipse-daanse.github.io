@@ -5,6 +5,8 @@ group: Class
 
 # AccessDimensionGrant<a name="class-accessdimensiongrant"></a>
 
+Package: [model.access.olap](./package-model.access.olap.md)
+
 Defines dimension-level security permissions that control access to specific dimensions within a cube, providing targeted control over dimensional navigation and member visibility.
 
 ## Attributes

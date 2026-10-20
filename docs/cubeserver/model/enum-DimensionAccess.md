@@ -5,6 +5,8 @@ group: Enum
 
 # DimensionAccess<a name="enum-dimensionaccess"></a>
 
+Package: [model.access.olap](./package-model.access.olap.md)
+
 Enumeration defining access levels for OLAP dimensions within cube security. Controls user access to dimensional metadata, hierarchies, levels, and member data that form the analytical context for multidimensional queries.
 ## Enumeration Literals
 

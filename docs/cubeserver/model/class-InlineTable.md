@@ -5,9 +5,12 @@ group: Class
 
 # InlineTable<a name="class-inlinetable"></a>
 
-Represents a table with data embedded directly in the schema definition rather than referencing external database tables. InlineTable allows small lookup tables, dimension data, or test data to be included directly in the OLAP schema, eliminating the need for separate database tables for static reference data.
+Package: [model.database.relational](./package-model.database.relational.md)
+
+Daanse-specific CWM ColumnSet extension that carries its data inline as Rows rather than referencing external persisted data. Unlike cwm::Table it is not a DB-schema element (no persistence, triggers, temporary-scope or SQL-structured-type semantics apply). It is a peer of cwm::QueryColumnSet: both sit under ColumnSet as non-persistent named column sets. Typically used for small lookup tables or test fixtures.
 ## Extends
-- Table [🔗](./class-Table)
+- ColumnSet [🔗](./class-ColumnSet)
+
 ## Attributes
 
 <table>
@@ -39,14 +42,14 @@ Represents a table with data embedded directly in the schema definition rather t
   </thead>
   <tbody>
     <tr>
-      <td><strong>rows</strong></td>
-      <td>Row<a href="./class-Row">🔗</a></td>
+      <td><strong>extent</strong></td>
+      <td>RowSet<a href="./class-RowSet">🔗</a></td>
       <td>0</td>
-      <td>&infin;</td>
+      <td>1</td>
       <td>true</td>
     </tr>
     <tr>
-      <td colspan="5"><em>Collection of data rows that define the actual content of this inline table. Each row contains column values that correspond to the table's column definitions, providing the embedded data directly in the schema.</em></td>
+      <td colspan="5"><em>Inline data for this table, modeled as a CWM RowSet (Extent of Row instances). Each Row carries DataSlots that bind a Column to a literal data value.</em></td>
     </tr>
   </tbody>
 </table>
@@ -55,7 +58,7 @@ Represents a table with data embedded directly in the schema definition rather t
 
 ## Used by
 
-- InlineTableQuery[🔗](./class-InlineTableQuery) → table
+- InlineTableSource[🔗](./class-InlineTableSource) → table
 
 ## ClassDiagramm
 
@@ -64,7 +67,7 @@ classDiagram
   class InlineTable {
   }
 
-  Table <|-- InlineTable
-  InlineTable --> Row : rows
+  ColumnSet <|-- InlineTable
+  InlineTable --> RowSet : extent
 
 ```

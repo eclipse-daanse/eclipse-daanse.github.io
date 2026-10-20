@@ -5,9 +5,12 @@ group: Class
 
 # CalculatedMember<a name="class-calculatedmember"></a>
 
+Package: [model.olap.dimension.hierarchy.level](./package-model.olap.dimension.hierarchy.level.md)
+
 Represents sophisticated computed members that are dynamically calculated using MDX expressions, enabling powerful analytical capabilities including complex business logic, mathematical computations, conditional calculations, and cross-dimensional analysis that extend far beyond the capabilities of standard dimensional members stored in database tables. CalculatedMember provides the foundation for advanced analytical modeling where business requirements necessitate dynamic member creation based on complex formulas, business rules, or computational logic that cannot be pre-calculated and stored in traditional dimensional tables.
 ## Extends
 - Member [🔗](./class-Member)
+
 ## Attributes
 
 <table>
@@ -23,20 +26,9 @@ Represents sophisticated computed members that are dynamically calculated using 
   </thead>
   <tbody>
     <tr>
-      <td><strong>formula</strong></td>
-      <td>false</td>
-      <td><em>Formula</em></td>
-      <td>0</td>
-      <td>1</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td colspan="6"><em>MDX expression that defines the calculation logic for this computed member, encapsulating sophisticated business rules, mathematical formulations, and analytical computations that determine the member's value based on other measures, members, and dimensional context. The formula serves as the computational heart of the calculated member, enabling complex analytical scenarios including financial ratio calculations that combine multiple measures with mathematical operations, time-based calculations that implement period-over-period comparisons and trend analysis, conditional logic that applies different calculation rules based on dimensional attributes or member properties, and cross-dimensional calculations that aggregate or transform data across multiple analytical perspectives.</em></td>
-    </tr>
-    <tr>
       <td><strong>parent</strong></td>
       <td>false</td>
-      <td><em>EString</em></td>
+      <td><em>String</em></td>
       <td>0</td>
       <td>1</td>
       <td></td>
@@ -60,6 +52,16 @@ Represents sophisticated computed members that are dynamically calculated using 
     </tr>
   </thead>
   <tbody>
+    <tr>
+      <td><strong>formula</strong></td>
+      <td>MdxExpression<a href="./class-MdxExpression">🔗</a></td>
+      <td>0</td>
+      <td>1</td>
+      <td>true</td>
+    </tr>
+    <tr>
+      <td colspan="5"><em>MDX expression that defines the calculation logic for this computed member, encapsulating sophisticated business rules, mathematical formulations, and analytical computations that determine the member's value based on other measures, members, and dimensional context. The formula serves as the computational heart of the calculated member, enabling complex analytical scenarios including financial ratio calculations that combine multiple measures with mathematical operations, time-based calculations that implement period-over-period comparisons and trend analysis, conditional logic that applies different calculation rules based on dimensional attributes or member properties, and cross-dimensional calculations that aggregate or transform data across multiple analytical perspectives.</em></td>
+    </tr>
     <tr>
       <td><strong>hierarchy</strong></td>
       <td>Hierarchy<a href="./class-Hierarchy">🔗</a></td>
@@ -95,11 +97,11 @@ Represents sophisticated computed members that are dynamically calculated using 
 ```mermaid
 classDiagram
   class CalculatedMember {
-    + formula : Formula
-    + parent : EString
+    + parent : String
   }
 
   Member <|-- CalculatedMember
+  CalculatedMember --> MdxExpression : formula
   CalculatedMember --> Hierarchy : hierarchy
   CalculatedMember --> Cube : cube
 

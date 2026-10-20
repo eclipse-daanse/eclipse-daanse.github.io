@@ -5,6 +5,8 @@ group: Enum
 
 # BitAggType<a name="enum-bitaggtype"></a>
 
+Package: [model.olap.cube.measure](./package-model.olap.cube.measure.md)
+
 Enumeration defining bitwise aggregation operations for boolean-based measures and flag calculations in OLAP systems. BitAggType enables aggregation of binary data using logical operations.
 ## Enumeration Literals
 

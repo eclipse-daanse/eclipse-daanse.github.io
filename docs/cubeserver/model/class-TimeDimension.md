@@ -5,9 +5,12 @@ group: Class
 
 # TimeDimension<a name="class-timedimension"></a>
 
+Package: [model.olap.dimension](./package-model.olap.dimension.md)
+
 Specialized dimension for temporal analysis, providing built-in support for time-based hierarchies (Year-Quarter-Month-Day), time intelligence calculations, and temporal navigation. TimeDimensions enable sophisticated time-based analytics including period-over-period comparisons, year-to-date calculations, and time-based filtering. The dimension automatically understands temporal relationships and provides optimized query performance for time-based operations.
 ## Extends
 - Dimension [🔗](./class-Dimension)
+
 ## Attributes
 
 <table>

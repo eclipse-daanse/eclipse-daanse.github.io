@@ -5,7 +5,11 @@ group: Class
 
 # WritebackMeasure<a name="class-writebackmeasure"></a>
 
-Defines a measure that participates in writeback operations, enabling sophisticated collaborative planning, budgeting, forecasting, and analytical data modification scenarios where business users can directly update measure values through OLAP client applications and have those changes automatically persisted to designated database tables.
+Package: [model.olap.cube.measure](./package-model.olap.cube.measure.md)
+
+Defines a measure that participates in writeback operations, enabling sophisticated collaborative planning, budgeting, forecasting, and analytical data modification scenarios where business users can directly update measure values through OLAP client applications and have those changes automatically persisted to designated database tables. Conceptually a measure (lives in the olap.cube.measure package); paired with a database Column that stores the modified value.
+## Extends
+- AbstractElement [🔗](./class-AbstractElement)
 
 ## Attributes
 
@@ -22,15 +26,15 @@ Defines a measure that participates in writeback operations, enabling sophistica
   </thead>
   <tbody>
     <tr>
-      <td><strong>name</strong></td>
+      <td><strong>editable</strong></td>
       <td>false</td>
-      <td><em>EString</em></td>
-      <td>0</td>
+      <td><em>Boolean</em></td>
       <td>1</td>
-      <td></td>
+      <td>1</td>
+      <td>true</td>
     </tr>
     <tr>
-      <td colspan="6"><em>Logical name identifier for the measure that will be modified through writeback operations. This name is used to reference the measure in allocation policies and writeback procedures, corresponding to the measure definition in the cube schema.</em></td>
+      <td colspan="6"><em>true if writeback measure is editable</em></td>
     </tr>
   </tbody>
 </table>
@@ -72,10 +76,10 @@ Defines a measure that participates in writeback operations, enabling sophistica
 ```mermaid
 classDiagram
   class WritebackMeasure {
-    + name : EString
+    + editable : Boolean
   }
 
-
+  AbstractElement <|-- WritebackMeasure
   WritebackMeasure --> Column : column
 
 ```

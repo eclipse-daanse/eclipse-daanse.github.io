@@ -5,9 +5,12 @@ group: Class
 
 # CellFormatter<a name="class-cellformatter"></a>
 
+Package: [model.olap.format](./package-model.olap.format.md)
+
 Specialized formatter for controlling the presentation of cell values in analytical grids, pivot tables, and other tabular presentations, providing sophisticated capabilities for transforming raw measure values into compelling, contextually appropriate visual displays that enhance user comprehension and support effective business communication.
 ## Extends
 - Formatter [🔗](./class-Formatter)
+
 ## Attributes
 
 <table>
@@ -45,7 +48,7 @@ Specialized formatter for controlling the presentation of cell values in analyti
 
 ## Used by
 
-- Member[🔗](./class-Member) → cellFormatter
+- MemberLike[🔗](./class-MemberLike) → cellFormatter
 
 ## ClassDiagramm
 

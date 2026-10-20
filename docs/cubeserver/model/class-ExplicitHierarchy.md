@@ -5,9 +5,12 @@ group: Class
 
 # ExplicitHierarchy<a name="class-explicithierarchy"></a>
 
+Package: [model.olap.dimension.hierarchy](./package-model.olap.dimension.hierarchy.md)
+
 Hierarchy with explicitly defined levels organized in a fixed, predetermined structure. This is the most common hierarchy type, mapping to star schema and snowflake schema designs where levels correspond to dimension tables or normalized structures. ExplicitHierarchies provide optimal performance for predictable hierarchical structures and support complex multi-level drill-down operations with explicit level relationships defined through foreign keys.
 ## Extends
-- AbstractElement [🔗](./class-AbstractElement)- Hierarchy [🔗](./class-Hierarchy)
+- Hierarchy [🔗](./class-Hierarchy)
+
 ## Attributes
 
 <table>
@@ -63,7 +66,7 @@ classDiagram
   class ExplicitHierarchy {
   }
 
-  AbstractElement <|-- ExplicitHierarchy  Hierarchy <|-- ExplicitHierarchy
+  Hierarchy <|-- ExplicitHierarchy
   ExplicitHierarchy --> Level : levels
 
 ```

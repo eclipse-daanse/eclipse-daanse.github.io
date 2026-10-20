@@ -5,7 +5,11 @@ group: Class
 
 # DimensionConnector<a name="class-dimensionconnector"></a>
 
+Package: [model.olap.dimension](./package-model.olap.dimension.md)
+
 Connects a cube to a dimension, establishing the relationship between fact table and dimensional data through foreign key references and enabling dimensional analysis within the cube's multidimensional space.
+## Extends
+- AbstractElement [🔗](./class-AbstractElement)
 
 ## Attributes
 
@@ -24,7 +28,7 @@ Connects a cube to a dimension, establishing the relationship between fact table
     <tr>
       <td><strong>usagePrefix</strong></td>
       <td>false</td>
-      <td><em>EString</em></td>
+      <td><em>String</em></td>
       <td>0</td>
       <td>1</td>
       <td></td>
@@ -41,29 +45,18 @@ Connects a cube to a dimension, establishing the relationship between fact table
       <td>true</td>
     </tr>
     <tr>
-      <td colspan="6"><em>Boolean flag controlling whether this dimension appears in client tool dimension lists, XMLA metadata discovery, and cube browsers. When false, the dimension becomes hidden from normal user interfaces but remains accessible through direct MDX references.</em></td>
+      <td colspan="6"><em>Boolean flag controlling whether this dimension appears in client tool dimension lists, XMLA metadata discovery, and cube browsers. When false, the dimension becomes hidden from normal user interfaces but remains accessible through direct MDX references. Deliberately distinct from the inherited CWM ModelElement.visibility, which carries namespace access semantics: visible is a client display hint only, and invisible elements stay fully addressable in MDX. The attribute stays declared per class instead of moving to AbstractElement, where it would bleed onto Catalog, AccessRole and friends.</em></td>
     </tr>
     <tr>
       <td><strong>overrideDimensionName</strong></td>
       <td>false</td>
-      <td><em>EString</em></td>
+      <td><em>String</em></td>
       <td>0</td>
       <td>1</td>
       <td></td>
     </tr>
     <tr>
       <td colspan="6"><em>Optional custom name for this dimension as it appears in this specific cube context. When specified, this name overrides the dimension's default name for display purposes in this cube, allowing the same dimension to appear with different names in different cubes for contextual clarity.</em></td>
-    </tr>
-    <tr>
-      <td><strong>id</strong></td>
-      <td>true</td>
-      <td><em>EString</em></td>
-      <td>1</td>
-      <td>1</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td colspan="6"><em>Unique identifier for this DimensionConnector within the scope of its containing cube, serving as the primary key for this connector instance and enabling precise referencing in MDX queries, XMLA metadata, client applications, and system administration tools. The ID must be unique within all dimension connectors for a specific cube and should follow consistent naming conventions that support analytical application development and maintenance.</em></td>
     </tr>
   </tbody>
 </table>
@@ -128,22 +121,21 @@ Connects a cube to a dimension, establishing the relationship between fact table
 
 ## Used by
 
+- WritebackAttribute[🔗](./class-WritebackAttribute) → dimensionConnector
 - PhysicalCube[🔗](./class-PhysicalCube) → dimensionConnectors
 - VirtualCube[🔗](./class-VirtualCube) → dimensionConnectors
-- WritebackAttribute[🔗](./class-WritebackAttribute) → dimensionConnector
 
 ## ClassDiagramm
 
 ```mermaid
 classDiagram
   class DimensionConnector {
-    + usagePrefix : EString
+    + usagePrefix : String
     + visible : Boolean
-    + overrideDimensionName : EString
-    + id : EString
+    + overrideDimensionName : String
   }
 
-
+  AbstractElement <|-- DimensionConnector
   DimensionConnector --> Column : foreignKey
   DimensionConnector --> Dimension : dimension
   DimensionConnector --> Level : level

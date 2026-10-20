@@ -5,6 +5,8 @@ group: Class
 
 # AccessCatalogGrant<a name="class-accesscataloggrant"></a>
 
+Package: [model.access.common](./package-model.access.common.md)
+
 Represents a catalog-level security grant that defines the foundational access permissions for an OLAP catalog and serves as the root of the hierarchical access control evaluation process. AccessCatalogGrant establishes the primary security boundary that determines whether a role can access any resources within a specific catalog, and when custom access is specified, it provides the container for more granular cube-level and database schema-level grants that define precisely which catalog resources are accessible.
 
 ## Attributes

@@ -5,6 +5,8 @@ group: Enum
 
 # ColumnInternalDataType<a name="enum-columninternaldatatype"></a>
 
+Package: [model.database.relational](./package-model.database.relational.md)
+
 Enumeration that defines the internal data type classifications used throughout the OLAP framework for consistent data handling, SQL generation, comparison operations, formatting, and type validation across different database systems and analytical contexts. ColumnInternalDataType provides a unified type system that abstracts database-specific data type variations while maintaining the semantic information necessary for proper analytical processing, measure aggregation, dimensional sorting, and user interface presentation.
 ## Enumeration Literals
 

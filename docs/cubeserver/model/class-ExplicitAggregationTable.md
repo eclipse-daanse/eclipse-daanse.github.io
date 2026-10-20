@@ -1,13 +1,16 @@
 ---
-title: AggregationName
+title: ExplicitAggregationTable
 group: Class
 ---
 
-# AggregationName<a name="class-aggregationname"></a>
+# ExplicitAggregationTable<a name="class-explicitaggregationtable"></a>
 
-Concrete aggregation table implementation that explicitly specifies a named database table containing pre-computed aggregation data. AggregationName provides direct, deterministic mapping to a specific aggregation table, making it ideal for environments with well-defined, stable aggregation strategies where table names are known in advance. This approach offers maximum control and predictability in aggregation table usage, enabling precise performance tuning and explicit aggregation maintenance workflows. AggregationName is commonly used in enterprise data warehousing scenarios where aggregation tables are created through ETL processes, have standardized naming conventions, and require explicit management for data freshness and consistency. The named approach also supports detailed monitoring and administration since each aggregation table is explicitly declared and can be individually managed, validated, and optimized.
+Package: [model.database.aggregation](./package-model.database.aggregation.md)
+
+Concrete aggregation table implementation that explicitly binds one specific database table containing pre-computed aggregation data. ExplicitAggregationTable provides direct, deterministic mapping to a specific aggregation table, making it ideal for environments with well-defined, stable aggregation strategies where tables are known in advance. This approach offers maximum control and predictability in aggregation table usage, enabling precise performance tuning and explicit aggregation maintenance workflows. It is commonly used in enterprise data warehousing scenarios where aggregation tables are created through ETL processes, have standardized naming conventions, and require explicit management for data freshness and consistency. The explicit approach also supports detailed monitoring and administration since each aggregation table is explicitly declared and can be individually managed, validated, and optimized.
 ## Extends
 - AggregationTable [🔗](./class-AggregationTable)
+
 ## Attributes
 
 <table>
@@ -25,7 +28,7 @@ Concrete aggregation table implementation that explicitly specifies a named data
     <tr>
       <td><strong>approxRowCount</strong></td>
       <td>false</td>
-      <td><em>EString</em></td>
+      <td><em>String</em></td>
       <td>0</td>
       <td>1</td>
       <td></td>
@@ -50,8 +53,8 @@ Concrete aggregation table implementation that explicitly specifies a named data
   </thead>
   <tbody>
     <tr>
-      <td><strong>name</strong></td>
-      <td>Table<a href="./class-Table">🔗</a></td>
+      <td><strong>table</strong></td>
+      <td>NamedColumnSet<a href="./class-NamedColumnSet">🔗</a></td>
       <td>1</td>
       <td>1</td>
       <td>false</td>
@@ -71,11 +74,11 @@ Concrete aggregation table implementation that explicitly specifies a named data
 
 ```mermaid
 classDiagram
-  class AggregationName {
-    + approxRowCount : EString
+  class ExplicitAggregationTable {
+    + approxRowCount : String
   }
 
-  AggregationTable <|-- AggregationName
-  AggregationName --> Table : name
+  AggregationTable <|-- ExplicitAggregationTable
+  ExplicitAggregationTable --> NamedColumnSet : table
 
 ```

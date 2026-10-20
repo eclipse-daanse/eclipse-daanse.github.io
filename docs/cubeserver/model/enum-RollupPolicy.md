@@ -5,6 +5,8 @@ group: Enum
 
 # RollupPolicy<a name="enum-rolluppolicy"></a>
 
+Package: [model.olap.dimension.hierarchy](./package-model.olap.dimension.hierarchy.md)
+
 Enumeration that defines how aggregate values should be calculated when some members in a hierarchy are inaccessible due to security restrictions, providing critical control over data accuracy and security boundary handling in scenarios where partial member access could lead to misleading analytical results. RollupPolicy addresses one of the most complex challenges in secure OLAP systems where users may have access to some members in a hierarchy but not others, creating situations where standard aggregation operations could either reveal restricted information through inference or provide inaccurate results that misrepresent the true business situation.
 ## Enumeration Literals
 

@@ -5,7 +5,11 @@ group: Class
 
 # AggregationLevel<a name="class-aggregationlevel"></a>
 
+Package: [model.database.aggregation](./package-model.database.aggregation.md)
+
 Maps a dimension level to a column in an aggregation table, defining how dimensional data is represented in pre-computed aggregation structures. AggregationLevel is fundamental to the aggregation matching algorithm, enabling the OLAP engine to determine whether a specific aggregation table contains the appropriate dimensional granularity to satisfy query requirements. Each mapping specifies the relationship between a logical dimension level (such as Product Category, Time Month, or Customer Region) and the physical column in the aggregation table that stores the corresponding dimension key values.
+## Extends
+- AbstractElement [🔗](./class-AbstractElement)
 
 ## Attributes
 
@@ -31,17 +35,6 @@ Maps a dimension level to a column in an aggregation table, defining how dimensi
     </tr>
     <tr>
       <td colspan="6"><em>Boolean flag indicating whether this aggregation level represents a collapsed hierarchy level. When true, intermediate hierarchy levels are omitted in the aggregation table, allowing queries to roll up directly to higher levels without requiring intermediate level data. Default value is true.</em></td>
-    </tr>
-    <tr>
-      <td><strong>name</strong></td>
-      <td>false</td>
-      <td><em>EString</em></td>
-      <td>1</td>
-      <td>1</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td colspan="6"><em>Required name identifier for the dimension level that this aggregation level represents. This name must correspond to a level defined in the cube schema, enabling the aggregation matching algorithm to identify appropriate aggregations for queries involving this level.</em></td>
     </tr>
   </tbody>
 </table>
@@ -124,10 +117,9 @@ Maps a dimension level to a column in an aggregation table, defining how dimensi
 classDiagram
   class AggregationLevel {
     + collapsed : Boolean
-    + name : EString
   }
 
-
+  AbstractElement <|-- AggregationLevel
   AggregationLevel --> AggregationLevelProperty : aggregationLevelProperties
   AggregationLevel --> Column : captionColumn
   AggregationLevel --> Column : column

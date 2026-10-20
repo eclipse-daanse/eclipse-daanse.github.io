@@ -5,9 +5,12 @@ group: Class
 
 # NthAggMeasure<a name="class-nthaggmeasure"></a>
 
+Package: [model.olap.cube.measure](./package-model.olap.cube.measure.md)
+
 An advanced measure that returns the Nth value from an ordered set of values in the referenced column across the aggregated data set. NthAggMeasure is useful for retrieving specific positioned values such as the first occurrence, second highest value, last entry, or any specific rank within ordered data. The measure supports custom ordering criteria and null value handling, making it ideal for ranking analysis, top/bottom value identification, and position-specific data retrieval in business intelligence scenarios.
 ## Extends
 - ColumnBaseMeasure [🔗](./class-ColumnBaseMeasure)
+
 ## Attributes
 
 <table>
@@ -36,8 +39,8 @@ An advanced measure that returns the Nth value from an ordered set of values in 
     <tr>
       <td><strong>n</strong></td>
       <td>false</td>
-      <td><em>EIntegerObject</em></td>
-      <td>0</td>
+      <td><em>Integer</em></td>
+      <td>1</td>
       <td>1</td>
       <td></td>
     </tr>
@@ -65,7 +68,7 @@ An advanced measure that returns the Nth value from an ordered set of values in 
       <td>OrderedColumn<a href="./class-OrderedColumn">🔗</a></td>
       <td>1</td>
       <td>&infin;</td>
-      <td>false</td>
+      <td>true</td>
     </tr>
     <tr>
       <td colspan="5"><em>Collection of ordered columns that define the sorting criteria for determining the Nth value position. The ordering determines how values are ranked and which value corresponds to the specified position N. Multiple columns can be used for complex sorting scenarios, such as ordering by date first, then by amount. At least one OrderedColumn must be specified to ensure consistent and predictable Nth value selection.</em></td>
@@ -84,7 +87,7 @@ An advanced measure that returns the Nth value from an ordered set of values in 
 classDiagram
   class NthAggMeasure {
     + ignoreNulls : Boolean
-    + n : EIntegerObject
+    + n : Integer
   }
 
   ColumnBaseMeasure <|-- NthAggMeasure

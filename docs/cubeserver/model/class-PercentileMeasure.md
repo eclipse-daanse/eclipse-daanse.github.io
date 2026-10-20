@@ -5,9 +5,12 @@ group: Class
 
 # PercentileMeasure<a name="class-percentilemeasure"></a>
 
+Package: [model.olap.cube.measure](./package-model.olap.cube.measure.md)
+
 An advanced statistical measure that calculates percentile values from the referenced column across the aggregated data set. PercentileMeasure uses SQL percentile functions (PERCENTILE_DISC or PERCENTILE_CONT) to determine values at specific percentage points in the data distribution. This measure is essential for statistical analysis, distribution studies, quartile calculations, and performance benchmarking. Common use cases include median calculations (50th percentile), quartile analysis (25th, 75th percentiles), or identifying values at specific distribution points for outlier detection and performance analysis.
 ## Extends
 - BaseMeasure [🔗](./class-BaseMeasure)
+
 ## Attributes
 
 <table>
@@ -42,7 +45,7 @@ An advanced statistical measure that calculates percentile values from the refer
       <td>1.0</td>
     </tr>
     <tr>
-      <td colspan="6"><em>Double value between 0.0 and 1.0 that specifies which percentile to calculate. Common values include 0.25 (25th percentile/first quartile), 0.5 (50th percentile/median), 0.75 (75th percentile/third quartile), 0.9 (90th percentile), and 0.95 (95th percentile). The default value of 1.0 represents the maximum value (100th percentile). This value determines the specific point in the data distribution that the measure will return.</em></td>
+      <td colspan="6"><em>Double value between 0.0 and 1.0 that specifies which percentile to calculate. Common values include 0.25 (25th percentile/first quartile), 0.5 (50th percentile/median), 0.75 (75th percentile/third quartile), 0.9 (90th percentile), and 0.95 (95th percentile). The default value of 1.0 represents the maximum value (100th percentile). This value determines the specific point in the data distribution that the measure will return. Deliberately kept on the primitive XMLType double instead of core Float: the CWM core Float is string-typed (instanceClassName java.lang.String), a spec wart unusable for arithmetic.</em></td>
     </tr>
   </tbody>
 </table>
@@ -65,7 +68,7 @@ An advanced statistical measure that calculates percentile values from the refer
       <td>OrderedColumn<a href="./class-OrderedColumn">🔗</a></td>
       <td>1</td>
       <td>1</td>
-      <td>false</td>
+      <td>true</td>
     </tr>
     <tr>
       <td colspan="5"><em>Reference to the OrderedColumn that defines both the source data values and the sorting criteria for percentile calculation. The OrderedColumn specifies the column containing the values to analyze and the sort order (ascending or descending) that determines how percentiles are computed. This is essential for accurate percentile calculations as the ordering directly affects which values correspond to specific percentile positions.</em></td>

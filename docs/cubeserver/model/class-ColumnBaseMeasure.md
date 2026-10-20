@@ -5,9 +5,12 @@ group: Class
 
 # ColumnBaseMeasure<a name="class-columnbasemeasure"></a>
 
+Package: [model.olap.cube.measure](./package-model.olap.cube.measure.md)
+
 Abstract base class for measures that derive their values from direct column references in the database. ColumnBaseMeasure represents the most common and highest-performance type of measure where aggregation functions (SUM, COUNT, AVG, etc.) are applied directly to specific table columns. This provides optimal query performance, supports fast aggregation capabilities, and enables efficient use of database indexes and pre-computed aggregation tables.
 ## Extends
 - BaseMeasure [🔗](./class-BaseMeasure)
+
 ## Attributes
 
 <table>

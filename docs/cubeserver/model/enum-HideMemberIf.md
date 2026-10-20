@@ -5,6 +5,8 @@ group: Enum
 
 # HideMemberIf<a name="enum-hidememberif"></a>
 
+Package: [model.olap.dimension.hierarchy.level](./package-model.olap.dimension.hierarchy.level.md)
+
 Enumeration that specifies conditions under which dimensional members should be automatically hidden from client tools and analytical interfaces, providing sophisticated data quality management and user experience optimization for hierarchies that may contain incomplete, malformed, or inappropriate member data. HideMemberIf addresses common data quality challenges in real-world OLAP deployments where source systems may contain inconsistent data, incomplete hierarchical relationships, or members that should not be visible to end users due to business rules, data quality issues, or presentation requirements.
 ## Enumeration Literals
 

@@ -5,6 +5,8 @@ group: Enum
 
 # LevelDefinition<a name="enum-leveldefinition"></a>
 
+Package: [model.olap.dimension.hierarchy.level](./package-model.olap.dimension.hierarchy.level.md)
+
 Enumeration that defines semantic level types for dimensional hierarchy levels, providing business meaning and context that enables specialized analytical behavior, client tool integration, and intelligent query processing based on the conceptual role that each level plays within the business domain.
 ## Enumeration Literals
 

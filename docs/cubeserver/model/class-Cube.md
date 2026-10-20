@@ -5,9 +5,12 @@ group: Class
 
 # Cube<a name="class-cube"></a>
 
+Package: [model.olap.cube](./package-model.olap.cube.md)
+
 Abstract base class for all cube types in the OLAP model. A cube represents a multidimensional data structure that enables analytical queries across multiple business dimensions. It serves as the primary analytical object that users interact with to perform OLAP operations like slicing, dicing, drilling down, and rolling up. Cubes contain measures (the numeric facts to be analyzed) and are connected to dimensions (the analytical perspectives for viewing the data). The abstract Cube class defines common properties and behaviors shared by both PhysicalCube (backed by fact tables) and VirtualCube (combining multiple physical cubes) implementations.
 ## Extends
 - AbstractElement [🔗](./class-AbstractElement)
+
 ## Attributes
 
 <table>
@@ -42,7 +45,7 @@ Abstract base class for all cube types in the OLAP model. A cube represents a mu
       <td>true</td>
     </tr>
     <tr>
-      <td colspan="6"><em>Boolean flag that controls whether this cube appears in client tool listings and XMLA metadata discovery. Unlike the enabled flag, invisible cubes can still be queried if the cube name is known, but they don't appear in browse lists or cube explorers. This is useful for creating internal or system cubes, staging cubes for development, or providing advanced cubes only to power users who know the cube names explicitly.</em></td>
+      <td colspan="6"><em>Boolean flag that controls whether this cube appears in client tool listings and XMLA metadata discovery. Unlike the enabled flag, invisible cubes can still be queried if the cube name is known, but they don't appear in browse lists or cube explorers. This is useful for creating internal or system cubes, staging cubes for development, or providing advanced cubes only to power users who know the cube names explicitly. Deliberately distinct from the inherited CWM ModelElement.visibility, which carries namespace access semantics: visible is a client display hint only, and invisible elements stay fully addressable in MDX. The attribute stays declared per class instead of moving to AbstractElement, where it would bleed onto Catalog, AccessRole and friends.</em></td>
     </tr>
   </tbody>
 </table>
@@ -92,7 +95,7 @@ Abstract base class for all cube types in the OLAP model. A cube represents a mu
     </tr>
     <tr>
       <td><strong>defaultMeasure</strong></td>
-      <td>Member<a href="./class-Member">🔗</a></td>
+      <td>MemberLike<a href="./class-MemberLike">🔗</a></td>
       <td>0</td>
       <td>1</td>
       <td>false</td>
@@ -107,10 +110,9 @@ Abstract base class for all cube types in the OLAP model. A cube represents a mu
 
 ## Used by
 
-- Catalog[🔗](./class-Catalog) → cubes
+- AccessCubeGrant[🔗](./class-AccessCubeGrant) → cube
 - CubeConnector[🔗](./class-CubeConnector) → cube
 - CalculatedMember[🔗](./class-CalculatedMember) → cube
-- AccessCubeGrant[🔗](./class-AccessCubeGrant) → cube
 
 ## ClassDiagramm
 
@@ -125,6 +127,6 @@ classDiagram
   Cube --> CalculatedMember : calculatedMembers
   Cube --> NamedSet : namedSets
   Cube --> Kpi : kpis
-  Cube --> Member : defaultMeasure
+  Cube --> MemberLike : defaultMeasure
 
 ```

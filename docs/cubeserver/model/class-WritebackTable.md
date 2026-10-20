@@ -5,7 +5,11 @@ group: Class
 
 # WritebackTable<a name="class-writebacktable"></a>
 
+Package: [model.database.writeback](./package-model.database.writeback.md)
+
 Defines the physical database table structure that receives modified analytical data when users perform writeback operations. Maps cube measures and dimensional attributes to specific database columns where user modifications are persisted. Required for cubes that support data modification through OLAP interfaces. Integrates with WritebackUtil for SQL generation and allocation policy processing.
+## Extends
+- AbstractElement [🔗](./class-AbstractElement)
 
 ## Attributes
 
@@ -22,20 +26,9 @@ Defines the physical database table structure that receives modified analytical 
   </thead>
   <tbody>
     <tr>
-      <td><strong>name</strong></td>
-      <td>false</td>
-      <td><em>EString</em></td>
-      <td>1</td>
-      <td>1</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td colspan="6"><em>Database table name where writeback data is stored. Used by WritebackUtil.commit() to generate SQL INSERT statements. Must contain columns matching the WritebackMeasure and WritebackAttribute definitions plus system columns (ID, USER).</em></td>
-    </tr>
-    <tr>
       <td><strong>schema</strong></td>
       <td>false</td>
-      <td><em>EString</em></td>
+      <td><em>String</em></td>
       <td>0</td>
       <td>1</td>
       <td></td>
@@ -93,11 +86,10 @@ Defines the physical database table structure that receives modified analytical 
 ```mermaid
 classDiagram
   class WritebackTable {
-    + name : EString
-    + schema : EString
+    + schema : String
   }
 
-
+  AbstractElement <|-- WritebackTable
   WritebackTable --> WritebackAttribute : writebackAttribute
   WritebackTable --> WritebackMeasure : writebackMeasure
 

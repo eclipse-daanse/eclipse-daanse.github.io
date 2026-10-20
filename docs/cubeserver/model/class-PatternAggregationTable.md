@@ -1,13 +1,16 @@
 ---
-title: AggregationPattern
+title: PatternAggregationTable
 group: Class
 ---
 
-# AggregationPattern<a name="class-aggregationpattern"></a>
+# PatternAggregationTable<a name="class-patternaggregationtable"></a>
 
-Concrete aggregation table implementation that uses regular expression patterns to automatically discover and utilize aggregation tables that follow consistent naming conventions. AggregationPattern provides a scalable, dynamic approach to aggregation table management that is ideal for environments with automated aggregation table creation, standardized naming schemes, and large numbers of aggregation tables that would be impractical to manage individually. This pattern-based discovery mechanism enables the OLAP system to automatically adapt to newly created aggregation tables without requiring manual configuration updates, making it particularly valuable in environments with frequent aggregation table maintenance, automated ETL processes that generate aggregation tables, or data warehouse architectures that create aggregation tables programmatically based on usage patterns and performance requirements.
+Package: [model.database.aggregation](./package-model.database.aggregation.md)
+
+Concrete aggregation table implementation that uses regular expression patterns to automatically discover and utilize aggregation tables that follow consistent naming conventions. PatternAggregationTable provides a scalable, dynamic approach to aggregation table management that is ideal for environments with automated aggregation table creation, standardized naming schemes, and large numbers of aggregation tables that would be impractical to manage individually. This pattern-based discovery mechanism enables the OLAP system to automatically adapt to newly created aggregation tables without requiring manual configuration updates, making it particularly valuable in environments with frequent aggregation table maintenance, automated ETL processes that generate aggregation tables, or data warehouse architectures that create aggregation tables programmatically based on usage patterns and performance requirements.
 ## Extends
 - AggregationTable [🔗](./class-AggregationTable)
+
 ## Attributes
 
 <table>
@@ -25,7 +28,7 @@ Concrete aggregation table implementation that uses regular expression patterns 
     <tr>
       <td><strong>pattern</strong></td>
       <td>false</td>
-      <td><em>EString</em></td>
+      <td><em>String</em></td>
       <td>1</td>
       <td>1</td>
       <td></td>
@@ -71,11 +74,11 @@ Concrete aggregation table implementation that uses regular expression patterns 
 
 ```mermaid
 classDiagram
-  class AggregationPattern {
-    + pattern : EString
+  class PatternAggregationTable {
+    + pattern : String
   }
 
-  AggregationTable <|-- AggregationPattern
-  AggregationPattern --> AggregationExclude : excludes
+  AggregationTable <|-- PatternAggregationTable
+  PatternAggregationTable --> AggregationExclude : excludes
 
 ```

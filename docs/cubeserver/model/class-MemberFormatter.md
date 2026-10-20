@@ -5,9 +5,12 @@ group: Class
 
 # MemberFormatter<a name="class-memberformatter"></a>
 
+Package: [model.olap.format](./package-model.olap.format.md)
+
 Specialized formatter for controlling how dimensional members are displayed in hierarchical browsers, filter lists, axis labels, and other dimensional navigation interfaces, enabling sophisticated member presentation that can include custom naming schemes, contextual information, visual indicators, and hierarchical styling that enhances dimensional navigation and member selection experiences.
 ## Extends
 - Formatter [🔗](./class-Formatter)
+
 ## Attributes
 
 <table>

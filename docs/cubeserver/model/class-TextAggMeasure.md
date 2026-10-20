@@ -5,9 +5,12 @@ group: Class
 
 # TextAggMeasure<a name="class-textaggmeasure"></a>
 
+Package: [model.olap.cube.measure](./package-model.olap.cube.measure.md)
+
 A specialized measure that concatenates text values from the referenced column across the aggregated data set, creating a single string result from multiple text entries. TextAggMeasure is ideal for combining comments, descriptions, tags, or other textual data into unified displays. The measure supports custom separators, ordering of concatenated values, duplicate handling, and null value management. Common use cases include creating summary comment fields, combining product features, aggregating customer feedback, or building comma-separated lists of related items for analytical reporting.
 ## Extends
 - ColumnBaseMeasure [🔗](./class-ColumnBaseMeasure)
+
 ## Attributes
 
 <table>
@@ -25,7 +28,7 @@ A specialized measure that concatenates text values from the referenced column a
     <tr>
       <td><strong>separator</strong></td>
       <td>false</td>
-      <td><em>EString</em></td>
+      <td><em>String</em></td>
       <td>0</td>
       <td>1</td>
       <td></td>
@@ -47,7 +50,7 @@ A specialized measure that concatenates text values from the referenced column a
     <tr>
       <td><strong>coalesce</strong></td>
       <td>false</td>
-      <td><em>EString</em></td>
+      <td><em>String</em></td>
       <td>0</td>
       <td>1</td>
       <td></td>
@@ -58,7 +61,7 @@ A specialized measure that concatenates text values from the referenced column a
     <tr>
       <td><strong>onOverflowTruncate</strong></td>
       <td>false</td>
-      <td><em>EString</em></td>
+      <td><em>String</em></td>
       <td>0</td>
       <td>1</td>
       <td></td>
@@ -87,7 +90,7 @@ A specialized measure that concatenates text values from the referenced column a
       <td>OrderedColumn<a href="./class-OrderedColumn">🔗</a></td>
       <td>1</td>
       <td>&infin;</td>
-      <td>false</td>
+      <td>true</td>
     </tr>
     <tr>
       <td colspan="5"><em>Collection of ordered columns that determine the sequence in which text values are concatenated. The ordering is crucial for creating meaningful text aggregations where the sequence of values matters, such as chronological comments, ranked lists, or priority-ordered descriptions. At least one OrderedColumn must be specified to ensure consistent and predictable text concatenation results across different query executions.</em></td>
@@ -105,10 +108,10 @@ A specialized measure that concatenates text values from the referenced column a
 ```mermaid
 classDiagram
   class TextAggMeasure {
-    + separator : EString
+    + separator : String
     + distinct : Boolean
-    + coalesce : EString
-    + onOverflowTruncate : EString
+    + coalesce : String
+    + onOverflowTruncate : String
   }
 
   ColumnBaseMeasure <|-- TextAggMeasure

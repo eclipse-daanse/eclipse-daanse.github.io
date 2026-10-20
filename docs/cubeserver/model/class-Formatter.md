@@ -5,9 +5,12 @@ group: Class
 
 # Formatter<a name="class-formatter"></a>
 
+Package: [model.olap.format](./package-model.olap.format.md)
+
 Abstract base class for sophisticated display formatting components that control how analytical values, dimensional members, and other OLAP elements are presented to users in client applications, reports, and dashboards.
 ## Extends
 - AbstractElement [🔗](./class-AbstractElement)
+
 ## Attributes
 
 <table>
@@ -25,7 +28,7 @@ Abstract base class for sophisticated display formatting components that control
     <tr>
       <td><strong>ref</strong></td>
       <td>false</td>
-      <td><em>EString</em></td>
+      <td><em>String</em></td>
       <td>0</td>
       <td>1</td>
       <td></td>
@@ -62,7 +65,7 @@ Abstract base class for sophisticated display formatting components that control
 ```mermaid
 classDiagram
   class Formatter {
-    + ref : EString
+    + ref : String
   }
 
   AbstractElement <|-- Formatter
