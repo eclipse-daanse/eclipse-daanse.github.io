@@ -5,9 +5,12 @@ group: Class
 
 # ParentChildHierarchy<a name="class-parentchildhierarchy"></a>
 
+Package: [model.olap.dimension.hierarchy](./package-model.olap.dimension.hierarchy.md)
+
 Self-referencing hierarchy where members can have parent-child relationships within the same table, creating variable-depth structures. This hierarchy type is ideal for organizational charts, account hierarchies, or any structure where the depth varies by branch and members reference other members as parents. ParentChildHierarchies support recursive relationships and dynamic navigation without requiring fixed level definitions.
 ## Extends
-- AbstractElement [🔗](./class-AbstractElement)- Hierarchy [🔗](./class-Hierarchy)
+- Hierarchy [🔗](./class-Hierarchy)
+
 ## Attributes
 
 <table>
@@ -25,7 +28,7 @@ Self-referencing hierarchy where members can have parent-child relationships wit
     <tr>
       <td><strong>nullParentValue</strong></td>
       <td>false</td>
-      <td><em>EString</em></td>
+      <td><em>String</em></td>
       <td>0</td>
       <td>1</td>
       <td></td>
@@ -47,7 +50,7 @@ Self-referencing hierarchy where members can have parent-child relationships wit
     <tr>
       <td><strong>parentAsLeafNameFormat</strong></td>
       <td>false</td>
-      <td><em>EString</em></td>
+      <td><em>String</em></td>
       <td>0</td>
       <td>1</td>
       <td></td>
@@ -114,12 +117,12 @@ Self-referencing hierarchy where members can have parent-child relationships wit
 ```mermaid
 classDiagram
   class ParentChildHierarchy {
-    + nullParentValue : EString
+    + nullParentValue : String
     + parentAsLeafEnable : Boolean
-    + parentAsLeafNameFormat : EString
+    + parentAsLeafNameFormat : String
   }
 
-  AbstractElement <|-- ParentChildHierarchy  Hierarchy <|-- ParentChildHierarchy
+  Hierarchy <|-- ParentChildHierarchy
   ParentChildHierarchy --> ParentChildLink : parentChildLink
   ParentChildHierarchy --> Column : parentColumn
   ParentChildHierarchy --> Level : level

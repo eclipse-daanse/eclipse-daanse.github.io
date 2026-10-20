@@ -5,7 +5,11 @@ group: Class
 
 # SqlStatement<a name="class-sqlstatement"></a>
 
+Package: [model.database.source](./package-model.database.source.md)
+
 Contains SQL expression text and database dialect information for database-specific SQL implementations. SqlStatement enables OLAP schemas to support multiple database platforms by providing dialect-specific SQL expressions.
+## Extends
+- Expression [🔗](./class-Expression)
 
 ## Attributes
 
@@ -24,24 +28,13 @@ Contains SQL expression text and database dialect information for database-speci
     <tr>
       <td><strong>dialects</strong></td>
       <td>false</td>
-      <td><em>EString</em></td>
+      <td><em>String</em></td>
       <td>0</td>
       <td>&infin;</td>
       <td></td>
     </tr>
     <tr>
       <td colspan="6"><em>Collection of database dialect identifiers that specify which database systems this SQL statement applies to. Examples include 'mysql', 'postgresql', 'oracle', 'sqlserver'. When empty, the statement applies to all database types.</em></td>
-    </tr>
-    <tr>
-      <td><strong>sql</strong></td>
-      <td>false</td>
-      <td><em>EString</em></td>
-      <td>0</td>
-      <td>1</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td colspan="6"><em>The actual SQL expression text that defines this statement. Contains database-specific SQL syntax that will be executed or used in query generation by the OLAP engine.</em></td>
     </tr>
   </tbody>
 </table>
@@ -66,19 +59,18 @@ Contains SQL expression text and database dialect information for database-speci
 
 ## Used by
 
-- TableQuery[🔗](./class-TableQuery) → sqlWhereExpression
-- SQLExpressionColumn[🔗](./class-SQLExpressionColumn) → sqls
-- SqlView[🔗](./class-SqlView) → sqlStatements
+- ExpressionColumn[🔗](./class-ExpressionColumn) → sqls
+- DialectSqlView[🔗](./class-DialectSqlView) → dialectStatements
+- TableSource[🔗](./class-TableSource) → sqlWhereExpression
 
 ## ClassDiagramm
 
 ```mermaid
 classDiagram
   class SqlStatement {
-    + dialects : EString
-    + sql : EString
+    + dialects : String
   }
 
-
+  Expression <|-- SqlStatement
 
 ```

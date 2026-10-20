@@ -5,6 +5,8 @@ group: Class
 
 # AccessColumnGrant<a name="class-accesscolumngrant"></a>
 
+Package: [model.access.database](./package-model.access.database.md)
+
 Provides the most granular level of database security control by defining access permissions for individual database columns, enabling extremely precise data governance policies that can restrict access to specific data elements based on sensitivity, regulatory requirements, privacy concerns, or business confidentiality needs.
 
 ## Attributes

@@ -5,6 +5,8 @@ group: Class
 
 # AccessTableGrant<a name="class-accesstablegrant"></a>
 
+Package: [model.access.database](./package-model.access.database.md)
+
 Defines table-level security permissions that control access to specific database tables and their columns, providing fine-grained data governance at the physical storage level.
 
 ## Attributes
@@ -60,7 +62,7 @@ Defines table-level security permissions that control access to specific databas
     </tr>
     <tr>
       <td><strong>table</strong></td>
-      <td>Table<a href="./class-Table">🔗</a></td>
+      <td>NamedColumnSet<a href="./class-NamedColumnSet">🔗</a></td>
       <td>1</td>
       <td>1</td>
       <td>false</td>
@@ -87,6 +89,6 @@ classDiagram
 
 
   AccessTableGrant --> AccessColumnGrant : columnGrants
-  AccessTableGrant --> Table : table
+  AccessTableGrant --> NamedColumnSet : table
 
 ```

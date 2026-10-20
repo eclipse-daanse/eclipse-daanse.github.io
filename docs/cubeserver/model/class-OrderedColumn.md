@@ -5,9 +5,10 @@ group: Class
 
 # OrderedColumn<a name="class-orderedcolumn"></a>
 
+Package: [model.database.relational](./package-model.database.relational.md)
+
 Represents a column with specific ordering information used in queries and result sets. OrderedColumn is typically used in OLAP contexts where explicit column ordering is required for query processing or result presentation.
-## Extends
-- DocumentedElement [🔗](./class-DocumentedElement)
+
 ## Attributes
 
 <table>
@@ -31,7 +32,7 @@ Represents a column with specific ordering information used in queries and resul
       <td>Asc</td>
     </tr>
     <tr>
-      <td colspan="6"><em>Boolean flag indicating sort direction. When true, sort in ascending order; when false, sort in descending order. Defaults to true for ascending sort.</em></td>
+      <td colspan="6"><em>Sort direction. Ascending or Descending.</em></td>
     </tr>
   </tbody>
 </table>
@@ -79,7 +80,7 @@ classDiagram
     + direction : SortingDirection
   }
 
-  DocumentedElement <|-- OrderedColumn
+
   OrderedColumn --> Column : column
 
 ```

@@ -5,7 +5,11 @@ group: Class
 
 # Parameter<a name="class-parameter"></a>
 
+Package: [model](./index.md)
+
 Defines a parameterized input mechanism that enables dynamic, user-driven customization of analytical queries, calculated members, and other OLAP expressions, providing sophisticated capabilities for creating flexible, interactive analytical applications that can adapt to user preferences and changing business requirements.
+## Extends
+- AbstractElement [🔗](./class-AbstractElement)
 
 ## Attributes
 
@@ -24,24 +28,13 @@ Defines a parameterized input mechanism that enables dynamic, user-driven custom
     <tr>
       <td><strong>defaultValue</strong></td>
       <td>false</td>
-      <td><em>EString</em></td>
+      <td><em>String</em></td>
       <td>0</td>
       <td>1</td>
       <td></td>
     </tr>
     <tr>
       <td colspan="6"><em>Default parameter value that is automatically applied when users do not explicitly specify a parameter value, ensuring that parameterized analytical applications function correctly and provide meaningful results even when parameters are not explicitly set by end users.</em></td>
-    </tr>
-    <tr>
-      <td><strong>description</strong></td>
-      <td>false</td>
-      <td><em>EString</em></td>
-      <td>0</td>
-      <td>1</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td colspan="6"><em>Detailed explanatory text that describes the parameter's purpose, expected values, impact on analytical results, and usage guidelines, providing essential user guidance that enables effective parameter utilization in self-service analytical applications.</em></td>
     </tr>
     <tr>
       <td><strong>modifiable</strong></td>
@@ -53,17 +46,6 @@ Defines a parameterized input mechanism that enables dynamic, user-driven custom
     </tr>
     <tr>
       <td colspan="6"><em>Boolean flag controlling whether end users can modify this parameter's value through client interfaces, enabling sophisticated parameter governance scenarios where certain parameters can be locked to maintain analytical consistency, security, or compliance requirements while still allowing user customization of other parameters</em></td>
-    </tr>
-    <tr>
-      <td><strong>name</strong></td>
-      <td>false</td>
-      <td><em>EString</em></td>
-      <td>1</td>
-      <td>1</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td colspan="6"><em>Unique identifier for this parameter that serves as both the technical reference used in MDX expressions and calculated members, and the basis for user-facing parameter labels in client applications and analytical interfaces.</em></td>
     </tr>
     <tr>
       <td><strong>dataType</strong></td>
@@ -106,13 +88,11 @@ Defines a parameterized input mechanism that enables dynamic, user-driven custom
 ```mermaid
 classDiagram
   class Parameter {
-    + defaultValue : EString
-    + description : EString
+    + defaultValue : String
     + modifiable : Boolean
-    + name : EString
     + dataType : ColumnInternalDataType
   }
 
-
+  AbstractElement <|-- Parameter
 
 ```

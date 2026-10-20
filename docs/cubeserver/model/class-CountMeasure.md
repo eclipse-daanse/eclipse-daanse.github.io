@@ -5,9 +5,12 @@ group: Class
 
 # CountMeasure<a name="class-countmeasure"></a>
 
+Package: [model.olap.cube.measure](./package-model.olap.cube.measure.md)
+
 A measure that counts the number of non-null values in the referenced column across the aggregated data set. CountMeasure uses the SQL COUNT() aggregate function and is essential for metrics like number of transactions, customer count, product count, or event frequency. The measure provides fully additive behavior - counts can be meaningfully summed across all dimensions. CountMeasure offers excellent performance characteristics and supports fast aggregation, making it ideal for dashboard KPIs and summary statistics in analytical applications.
 ## Extends
 - ColumnBaseMeasure [🔗](./class-ColumnBaseMeasure)
+
 ## Attributes
 
 <table>

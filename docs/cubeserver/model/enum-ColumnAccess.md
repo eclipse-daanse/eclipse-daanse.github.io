@@ -5,6 +5,8 @@ group: Enum
 
 # ColumnAccess<a name="enum-columnaccess"></a>
 
+Package: [model.access.database](./package-model.access.database.md)
+
 Enumeration defining access levels for individual database columns in OLAP security. Controls user access to specific columns within tables, enabling column-level data protection for sensitive information.
 ## Enumeration Literals
 

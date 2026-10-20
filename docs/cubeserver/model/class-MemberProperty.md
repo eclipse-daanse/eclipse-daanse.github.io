@@ -5,9 +5,12 @@ group: Class
 
 # MemberProperty<a name="class-memberproperty"></a>
 
+Package: [model.olap.dimension.hierarchy.level](./package-model.olap.dimension.hierarchy.level.md)
+
 Defines an additional attribute that can be associated with dimension members to provide supplementary information beyond the basic member identification, naming, and captioning. Member properties enable rich analytical capabilities by exposing detailed member characteristics such as demographic data, geographic coordinates, financial metrics, temporal attributes, or any domain-specific descriptive information. These properties are fully integrated into the OLAP infrastructure, appearing in MDX query results, client tool member browsers, and XMLA metadata discovery.
 ## Extends
 - AbstractElement [🔗](./class-AbstractElement)
+
 ## Attributes
 
 <table>

@@ -5,6 +5,8 @@ group: Enum
 
 # SortingDirection<a name="enum-sortingdirection"></a>
 
+Package: [model.database.relational](./package-model.database.relational.md)
+
 Enumeration defining sorting direction.
 ## Enumeration Literals
 

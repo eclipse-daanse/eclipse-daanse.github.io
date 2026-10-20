@@ -5,6 +5,8 @@ group: Enum
 
 # CatalogAccess<a name="enum-catalogaccess"></a>
 
+Package: [model.access.common](./package-model.access.common.md)
+
 Enumeration defining the access permission levels for OLAP catalogs within the role-based security framework, establishing the fundamental security boundaries that control whether users can access catalog resources and determining the overall scope of analytical capabilities available to specific roles. CatalogAccess represents the highest level of the OLAP security hierarchy and serves as the primary access control decision point that influences all subordinate security evaluations for cubes, dimensions, hierarchies, and members contained within the catalog.
 ## Enumeration Literals
 

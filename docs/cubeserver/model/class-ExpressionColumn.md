@@ -1,13 +1,16 @@
 ---
-title: SQLExpressionColumn
+title: ExpressionColumn
 group: Class
 ---
 
-# SQLExpressionColumn<a name="class-sqlexpressioncolumn"></a>
+# ExpressionColumn<a name="class-expressioncolumn"></a>
 
-Represents a virtual column defined by SQL expressions rather than physical table columns. SQLExpressionColumn enables computed columns, derived values, and complex calculations in OLAP mappings.
+Package: [model.database.relational](./package-model.database.relational.md)
+
+Daanse-specific extension of a CWM relational Column that is not backed by a physical column but by one or more SQL expressions (optionally per database dialect). We recommend using the column name together with the table name in SQL expressions.
 ## Extends
 - Column [🔗](./class-Column)
+
 ## Attributes
 
 <table>
@@ -46,7 +49,7 @@ Represents a virtual column defined by SQL expressions rather than physical tabl
       <td>true</td>
     </tr>
     <tr>
-      <td colspan="5"><em>Collection of SQL statements that define the expression for this column. Multiple statements support database-specific SQL expressions for different database dialects.</em></td>
+      <td colspan="5"><em>SQL expressions defining the column value. Per-dialect entries supported.</em></td>
     </tr>
   </tbody>
 </table>
@@ -61,10 +64,10 @@ Represents a virtual column defined by SQL expressions rather than physical tabl
 
 ```mermaid
 classDiagram
-  class SQLExpressionColumn {
+  class ExpressionColumn {
   }
 
-  Column <|-- SQLExpressionColumn
-  SQLExpressionColumn --> SqlStatement : sqls
+  Column <|-- ExpressionColumn
+  ExpressionColumn --> SqlStatement : sqls
 
 ```

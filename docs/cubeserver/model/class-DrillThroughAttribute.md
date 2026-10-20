@@ -5,6 +5,8 @@ group: Class
 
 # DrillThroughAttribute<a name="class-drillthroughattribute"></a>
 
+Package: [model.olap.cube.action](./package-model.olap.cube.action.md)
+
 Defines a dimensional attribute or member property that should be included in drill-through result sets, providing sophisticated control over the contextual information that accompanies detailed transactional data when users drill through from aggregated analytical views. DrillThroughAttribute enables rich drill-through experiences where users can access not only the underlying fact data but also relevant dimensional context that provides business meaning and analytical insight into the detailed results.
 
 ## Attributes
@@ -24,7 +26,7 @@ Defines a dimensional attribute or member property that should be included in dr
     <tr>
       <td><strong>property</strong></td>
       <td>false</td>
-      <td><em>EString</em></td>
+      <td><em>String</em></td>
       <td>0</td>
       <td>1</td>
       <td></td>
@@ -92,7 +94,7 @@ Defines a dimensional attribute or member property that should be included in dr
 ```mermaid
 classDiagram
   class DrillThroughAttribute {
-    + property : EString
+    + property : String
   }
 
 

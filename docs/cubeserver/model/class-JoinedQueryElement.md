@@ -5,6 +5,8 @@ group: Class
 
 # JoinedQueryElement<a name="class-joinedqueryelement"></a>
 
+Package: [model.database.source](./package-model.database.source.md)
+
 Represents one side of a JOIN operation, encapsulating the query source, join key column, and optional table alias needed for proper SQL JOIN generation. JoinedQueryElement serves as the fundamental building block for composing complex multi-table queries in OLAP dimensional modeling, enabling the connection of normalized dimension tables, fact tables, and lookup tables through foreign key relationships. Each element specifies exactly how its query participates in the JOIN operation, including which column serves as the join key and what alias should be used in the generated SQL to avoid naming conflicts and ensure query clarity.
 
 ## Attributes
@@ -24,7 +26,7 @@ Represents one side of a JOIN operation, encapsulating the query source, join ke
     <tr>
       <td><strong>alias</strong></td>
       <td>false</td>
-      <td><em>EString</em></td>
+      <td><em>String</em></td>
       <td>0</td>
       <td>1</td>
       <td></td>
@@ -59,8 +61,8 @@ Represents one side of a JOIN operation, encapsulating the query source, join ke
       <td colspan="5"><em>Column that serves as the join key for connecting this query element to its JOIN partner. The key column must contain values that can be matched with the corresponding key column from the other side of the JOIN operation, typically representing a foreign key to primary key relationship. The column must be accessible within the query's result set and have compatible data types with its JOIN partner to ensure proper relational connectivity and optimal query performance.</em></td>
     </tr>
     <tr>
-      <td><strong>query</strong></td>
-      <td>Query<a href="./class-Query">🔗</a></td>
+      <td><strong>source</strong></td>
+      <td>RelationalSource<a href="./class-RelationalSource">🔗</a></td>
       <td>1</td>
       <td>1</td>
       <td>false</td>
@@ -75,19 +77,19 @@ Represents one side of a JOIN operation, encapsulating the query source, join ke
 
 ## Used by
 
-- JoinQuery[🔗](./class-JoinQuery) → left
-- JoinQuery[🔗](./class-JoinQuery) → right
+- JoinSource[🔗](./class-JoinSource) → left
+- JoinSource[🔗](./class-JoinSource) → right
 
 ## ClassDiagramm
 
 ```mermaid
 classDiagram
   class JoinedQueryElement {
-    + alias : EString
+    + alias : String
   }
 
 
   JoinedQueryElement --> Column : key
-  JoinedQueryElement --> Query : query
+  JoinedQueryElement --> RelationalSource : source
 
 ```

@@ -5,9 +5,12 @@ group: Class
 
 # CustomMeasure<a name="class-custommeasure"></a>
 
+Package: [model.olap.cube.measure](./package-model.olap.cube.measure.md)
+
 A flexible measure that allows custom aggregation implementations through configurable templates and properties. CustomMeasure enables advanced business logic, complex calculations, or integration with external systems that cannot be achieved through standard aggregation functions. The measure uses templates with placeholders that are populated from referenced columns and custom properties, providing a powerful extension mechanism for specialized analytical requirements while maintaining the standard measure interface.
 ## Extends
 - BaseMeasure [🔗](./class-BaseMeasure)
+
 ## Attributes
 
 <table>
@@ -25,7 +28,7 @@ A flexible measure that allows custom aggregation implementations through config
     <tr>
       <td><strong>template</strong></td>
       <td>false</td>
-      <td><em>EString</em></td>
+      <td><em>String</em></td>
       <td>0</td>
       <td>1</td>
       <td></td>
@@ -36,7 +39,7 @@ A flexible measure that allows custom aggregation implementations through config
     <tr>
       <td><strong>properties</strong></td>
       <td>false</td>
-      <td><em>EString</em></td>
+      <td><em>String</em></td>
       <td>1</td>
       <td>&infin;</td>
       <td></td>
@@ -83,8 +86,8 @@ A flexible measure that allows custom aggregation implementations through config
 ```mermaid
 classDiagram
   class CustomMeasure {
-    + template : EString
-    + properties : EString
+    + template : String
+    + properties : String
   }
 
   BaseMeasure <|-- CustomMeasure

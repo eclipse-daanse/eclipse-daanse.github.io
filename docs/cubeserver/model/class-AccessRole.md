@@ -5,9 +5,12 @@ group: Class
 
 # AccessRole<a name="class-accessrole"></a>
 
+Package: [model.access.common](./package-model.access.common.md)
+
 Defines a comprehensive role-based access control (RBAC) entity that encapsulates all security permissions and restrictions for accessing OLAP resources at multiple hierarchical levels of granularity. AccessRole serves as the fundamental security principal in the OLAP framework, implementing a sophisticated multi-level security model that operates from the catalog level down to individual members, columns, and database objects. Each role defines explicit access permissions through a collection of grants that specify whether access is completely allowed (ALL), completely denied (NONE), or selectively controlled (CUSTOM) with fine-grained sub-permissions.
 ## Extends
 - AbstractElement [🔗](./class-AbstractElement)
+
 ## Attributes
 
 <table>
@@ -53,7 +56,7 @@ Defines a comprehensive role-based access control (RBAC) entity that encapsulate
       <td>AccessRole<a href="./class-AccessRole">🔗</a></td>
       <td>0</td>
       <td>&infin;</td>
-      <td>true</td>
+      <td>false</td>
     </tr>
     <tr>
       <td colspan="5"><em>Collection of other AccessRole objects that should be combined with this role using union semantics, creating composite roles that aggregate permissions from multiple sources. This role composition mechanism enables sophisticated organizational security models where user permissions are derived from multiple overlapping sources such as department-based roles, project-based roles, geographic roles, and temporary access grants. The union operation combines permissions using the most permissive access level from any contributing role, ensuring that users receive the maximum access available from any of their assigned roles while maintaining security boundaries. Referenced roles support hierarchical organizational structures where users inherit permissions from organizational units, enable delegation scenarios where managers can grant subsets of their permissions to team members, facilitate temporary access elevation for specific projects or time periods, and implement complex matrix organizational structures where users have multiple reporting relationships. The composition mechanism also supports role template patterns where common permission sets are defined once and reused across multiple specific roles, reducing administrative overhead and ensuring consistency in security policy implementation across large enterprise deployments.</em></td>
@@ -65,7 +68,6 @@ Defines a comprehensive role-based access control (RBAC) entity that encapsulate
 
 ## Used by
 
-- Catalog[🔗](./class-Catalog) → accessRoles
 - Catalog[🔗](./class-Catalog) → defaultAccessRole
 
 ## ClassDiagramm

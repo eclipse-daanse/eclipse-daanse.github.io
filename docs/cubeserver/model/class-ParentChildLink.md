@@ -5,6 +5,8 @@ group: Class
 
 # ParentChildLink<a name="class-parentchildlink"></a>
 
+Package: [model.olap.dimension.hierarchy](./package-model.olap.dimension.hierarchy.md)
+
 Defines closure table configuration for parent-child hierarchies that dramatically improves query performance by pre-computing and storing all ancestor-descendant relationships in a separate table structure, enabling efficient recursive queries and aggregations without requiring complex recursive SQL operations.
 
 ## Attributes
@@ -39,7 +41,7 @@ Defines closure table configuration for parent-child hierarchies that dramatical
   <tbody>
     <tr>
       <td><strong>table</strong></td>
-      <td>TableQuery<a href="./class-TableQuery">🔗</a></td>
+      <td>TableSource<a href="./class-TableSource">🔗</a></td>
       <td>1</td>
       <td>1</td>
       <td>true</td>
@@ -84,7 +86,7 @@ classDiagram
   }
 
 
-  ParentChildLink --> TableQuery : table
+  ParentChildLink --> TableSource : table
   ParentChildLink --> Column : childColumn
   ParentChildLink --> Column : parentColumn
 

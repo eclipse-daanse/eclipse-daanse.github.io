@@ -5,9 +5,12 @@ group: Class
 
 # MinMeasure<a name="class-minmeasure"></a>
 
+Package: [model.olap.cube.measure](./package-model.olap.cube.measure.md)
+
 A measure that calculates the minimum value from the referenced column across the aggregated data set. MinMeasure uses the SQL MIN() aggregate function to find the smallest value in the grouped data, making it ideal for metrics like lowest price, earliest date, minimum temperature, or smallest quantity. The measure provides non-additive aggregation behavior, meaning the minimum of a set of minimums is simply the overall minimum value. This measure type supports fast database-optimized aggregation and is commonly used for trend analysis, quality control, and boundary condition monitoring.
 ## Extends
 - ColumnBaseMeasure [🔗](./class-ColumnBaseMeasure)
+
 ## Attributes
 
 <table>

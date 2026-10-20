@@ -5,7 +5,11 @@ group: Class
 
 # AggregationTable<a name="class-aggregationtable"></a>
 
+Package: [model.database.aggregation](./package-model.database.aggregation.md)
+
 Abstract base class for pre-computed aggregation tables that dramatically improve OLAP query performance by storing pre-calculated summary data at various levels of granularity. Aggregation tables contain rolled-up measures and dimension keys that enable the OLAP engine to answer analytical queries from summary data rather than scanning millions of fact table rows.
+## Extends
+- AbstractElement [🔗](./class-AbstractElement)
 
 ## Attributes
 
@@ -31,17 +35,6 @@ Abstract base class for pre-computed aggregation tables that dramatically improv
     </tr>
     <tr>
       <td colspan="6"><em>Boolean flag that controls whether string comparisons during aggregation table matching and name resolution should be case-sensitive or case-insensitive. When set to true, the aggregation matching algorithm will treat table names, column names, and string-based identifiers in a case-insensitive manner, which is particularly useful in environments with inconsistent naming conventions or when working with databases that have varying case sensitivity behaviors. This setting affects how aggregation patterns match table names, how column mappings are resolved, and how the OLAP engine correlates aggregation table elements with fact table and cube definitions. Case-insensitive matching can improve robustness in heterogeneous environments but should be used carefully to avoid ambiguous matches.</em></td>
-    </tr>
-    <tr>
-      <td><strong>id</strong></td>
-      <td>true</td>
-      <td><em>EString</em></td>
-      <td>1</td>
-      <td>1</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td colspan="6"><em>Unique identifier for this aggregation table within the catalog scope, serving as the primary key for referencing this aggregation definition from other OLAP model elements and internal system operations. The ID is used by the aggregation matching algorithm to track which aggregations have been evaluated, by logging and debugging systems to identify specific aggregation tables in performance analysis, and by administrative tools for aggregation management and monitoring. A well-chosen ID should be descriptive enough to identify the aggregation's purpose and scope while remaining concise for system efficiency, such as 'ProductMonthlySales' or 'CustomerRegionSummary'.</em></td>
     </tr>
   </tbody>
 </table>
@@ -126,7 +119,7 @@ Abstract base class for pre-computed aggregation tables that dramatically improv
 
 ## Used by
 
-- TableQuery[🔗](./class-TableQuery) → aggregationTables
+- TableSource[🔗](./class-TableSource) → aggregationTables
 
 ## ClassDiagramm
 
@@ -134,10 +127,9 @@ Abstract base class for pre-computed aggregation tables that dramatically improv
 classDiagram
   class AggregationTable {
     + ignorecase : Boolean
-    + id : EString
   }
 
-
+  AbstractElement <|-- AggregationTable
   AggregationTable --> AggregationColumnName : aggregationFactCount
   AggregationTable --> AggregationColumnName : aggregationIgnoreColumns
   AggregationTable --> AggregationForeignKey : aggregationForeignKeys

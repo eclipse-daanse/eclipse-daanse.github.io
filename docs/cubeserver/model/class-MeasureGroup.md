@@ -5,7 +5,11 @@ group: Class
 
 # MeasureGroup<a name="class-measuregroup"></a>
 
+Package: [model.olap.cube](./package-model.olap.cube.md)
+
 A logical container that organizes related measures within a physical cube, providing grouping for measures that share common characteristics, business context, or data sources. MeasureGroup serves as both an organizational and metadata management mechanism, enabling better structure for complex cubes with many measures. For example, a sales cube might have separate measure groups for 'Revenue Metrics' (containing sales amounts, discounts, taxes) and 'Volume Metrics' (containing quantities, units, counts). Each measure group belongs to exactly one physical cube and contains one or more measures that are processed and displayed together in OLAP clients and XMLA metadata. A MeasureGroup is typically based on a single fact table in the data warehouse, ensuring that all its measures share the same granularity and relationship to dimensions. This alignment simplifies processing, querying, and maintenance.
+## Extends
+- AbstractElement [🔗](./class-AbstractElement)
 
 ## Attributes
 
@@ -21,17 +25,6 @@ A logical container that organizes related measures within a physical cube, prov
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td><strong>name</strong></td>
-      <td>false</td>
-      <td><em>EString</em></td>
-      <td>0</td>
-      <td>1</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td colspan="6"><em>Display name for this measure group that appears in OLAP clients, cube browsers, and metadata discovery. The name should clearly indicate the business purpose or theme of the grouped measures, such as 'Sales Metrics', 'Financial KPIs', or 'Inventory Measures'. This name helps users understand the logical organization of measures and appears in XMLA metadata and client tool measure lists.</em></td>
-    </tr>
   </tbody>
 </table>
 
@@ -83,10 +76,9 @@ A logical container that organizes related measures within a physical cube, prov
 ```mermaid
 classDiagram
   class MeasureGroup {
-    + name : EString
   }
 
-
+  AbstractElement <|-- MeasureGroup
   MeasureGroup --> BaseMeasure : measures
   MeasureGroup --> PhysicalCube : physicalCube
 
